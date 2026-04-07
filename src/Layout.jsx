@@ -344,39 +344,38 @@ export default function Layout({ children, currentPageName }) {
             </div>
           </div>
           
-          {/* Service Areas */}
+          {/* Service Areas + Map */}
           <div className="border-t border-gray-800 mt-8 pt-8">
-            <Link to="/service-areas" className="block text-center hover:text-blue-400 transition-colors">
-              <h4 className="font-semibold mb-4">Service Areas — View All Suburbs</h4>
-            </Link>
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-400">
-              {["Burleigh Heads", "Surfers Paradise", "Broadbeach", "Southport", "Robina",
-                "Palm Beach", "Coomera", "Nerang", "Helensvale", "Currumbin",
-                "Coolangatta", "Hope Island", "Mermaid Beach", "Tweed Heads", "Kingscliff"].map(suburb => {
-                const slug = suburb.toLowerCase().replace(/ /g, '-');
-                return (
-                  <Link key={slug} to={`/window-cleaning/${slug}`} className="hover:text-white transition-colors">
-                    {suburb}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Google Map */}
-          <div className="border-t border-gray-800 mt-8 pt-8">
-            <h4 className="font-semibold text-center mb-4">Find Us</h4>
-            <div className="rounded-lg overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14083.42582439664!2d153.41225468715817!3d-28.059407199999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4da98023da1e33a5%3A0x8802b89fee690ea8!2sGold%20Coast%20Window%20and%20Pressure%20Cleaning!5e0!3m2!1sen!2sau!4v1775596752940!5m2!1sen!2sau"
-                width="100%"
-                height="300"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Gold Coast Window and Pressure Cleaning location on Google Maps"
-              />
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div className="flex-1">
+                <Link to="/service-areas" className="block hover:text-blue-400 transition-colors">
+                  <h4 className="font-semibold mb-4">Service Areas — View All Suburbs</h4>
+                </Link>
+                <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-400">
+                  {["Burleigh Heads", "Surfers Paradise", "Broadbeach", "Southport", "Robina",
+                    "Palm Beach", "Coomera", "Nerang", "Helensvale", "Currumbin",
+                    "Coolangatta", "Hope Island", "Mermaid Beach", "Tweed Heads", "Kingscliff"].map(suburb => {
+                    const slug = suburb.toLowerCase().replace(/ /g, '-');
+                    return (
+                      <Link key={slug} to={`/window-cleaning/${slug}`} className="hover:text-white transition-colors">
+                        {suburb}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="flex-shrink-0 w-full md:w-72 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14083.42582439664!2d153.41225468715817!3d-28.059407199999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4da98023da1e33a5%3A0x8802b89fee690ea8!2sGold%20Coast%20Window%20and%20Pressure%20Cleaning!5e0!3m2!1sen!2sau!4v1775596752940!5m2!1sen!2sau"
+                  width="100%"
+                  height="200"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Gold Coast Window and Pressure Cleaning location on Google Maps"
+                />
+              </div>
             </div>
           </div>
 
