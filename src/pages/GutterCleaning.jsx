@@ -7,7 +7,7 @@ import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
 import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 import { Shield, Users, Star, Phone } from "lucide-react";
 
@@ -71,7 +71,11 @@ export default function GutterCleaning() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Complete gutter cleaning and maintenance on the Gold Coast. Prevent water damage and keep your property storm-ready."
-    }
+    },
+    buildBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Gutter Cleaning", url: "/gutter-cleaning" }
+    ])
   ];
 
 
@@ -118,9 +122,9 @@ export default function GutterCleaning() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Expert Gutter Cleaning on the Gold Coast
-            </h2>
+            </h1>
             
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Locally Owned & Operated | Fully Insured | Police Checked Staff

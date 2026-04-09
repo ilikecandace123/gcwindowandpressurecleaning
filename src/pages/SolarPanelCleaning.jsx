@@ -7,7 +7,7 @@ import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
 import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 
 // Importing icons from lucide-react for the new hero section
@@ -78,7 +78,11 @@ export default function SolarPanelCleaning() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Professional solar panel cleaning on the Gold Coast. Boost energy output by up to 30% with safe, eco-friendly cleaning."
-    }
+    },
+    buildBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Solar Panel Cleaning", url: "/solar-panel-cleaning" }
+    ])
   ];
 
   return (
@@ -123,9 +127,9 @@ export default function SolarPanelCleaning() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Expert Solar Panel Cleaning on the Gold Coast
-            </h2>
+            </h1>
             
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Locally Owned & Operated | Fully Insured | Police Checked Staff

@@ -9,7 +9,7 @@ import { Shield, Users, Star, Phone } from "lucide-react"; // Import necessary i
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 
 export default function RoofCleaning() {
@@ -68,7 +68,11 @@ export default function RoofCleaning() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Professional roof cleaning on the Gold Coast. Manufacturer-recommended process removes moss, lichen, and algae while protecting your roof."
-    }
+    },
+    buildBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Roof Cleaning", url: "/roof-cleaning" }
+    ])
   ];
 
   return (
@@ -113,9 +117,9 @@ export default function RoofCleaning() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Professional Roof Cleaning on the Gold Coast
-            </h2>
+            </h1>
             
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Locally Owned & Operated | Fully Insured | Police Checked Staff

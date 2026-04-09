@@ -144,10 +144,13 @@ export default function CommercialLocationService() {
             {/* Image column */}
             <div className="lg:col-span-3 order-1 lg:order-2">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white">
-                <img
-                  src={heroImage}
-                  alt={`${service.name} in ${suburb.name}`}
-                  className="w-full h-auto block" loading="eager" decoding="async" fetchPriority="high" width="1024" height="768" />
+                <picture>
+                  <source srcSet={heroImage.endsWith('.webp') ? heroImage : heroImage.replace('.jpg', '.webp')} type="image/webp" />
+                  <img
+                    src={heroImage}
+                    alt={`${service.name} in ${suburb.name}`}
+                    className="w-full h-auto block" loading="eager" decoding="async" fetchPriority="high" width="1024" height="768" />
+                </picture>
               </div>
             </div>
           </div>
@@ -179,7 +182,10 @@ export default function CommercialLocationService() {
       <section className="py-12 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl overflow-hidden shadow-lg bg-gray-50">
-            <img src={secondaryImage} alt={`${service.name} in ${suburb.name}`} className="w-full h-auto max-h-[28rem] object-contain" loading="lazy" decoding="async" width="1024" height="768" />
+            <picture>
+              <source srcSet={secondaryImage.endsWith('.webp') ? secondaryImage : secondaryImage.replace('.jpg', '.webp')} type="image/webp" />
+              <img src={secondaryImage} alt={`${service.name} in ${suburb.name}`} className="w-full h-auto max-h-[28rem] object-contain" loading="lazy" decoding="async" width="1024" height="768" />
+            </picture>
           </div>
         </div>
       </section>

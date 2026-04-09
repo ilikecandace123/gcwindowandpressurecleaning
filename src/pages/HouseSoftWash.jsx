@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
@@ -75,7 +75,11 @@ export default function HouseSoftWash() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Gentle house softwash cleaning on the Gold Coast. Safely removes mould, dirt, and grime without damaging surfaces."
-    }
+    },
+    buildBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "House Softwash", url: "/house-softwash" }
+    ])
   ];
 
 
@@ -122,9 +126,9 @@ export default function HouseSoftWash() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Professional House & Building Washing on the Gold Coast
-            </h2>
+            </h1>
             
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Locally Owned & Operated | Fully Insured | Police Checked Staff

@@ -7,7 +7,7 @@ import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
 import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 
 import { Shield, Users, Star, Phone } from "lucide-react";
@@ -84,7 +84,11 @@ export default function BirdProofing() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Professional solar panel bird proofing mesh on the Gold Coast. Warranty-safe installation that stops pigeons and mynas nesting under your panels. Fully insured."
-    }
+    },
+    buildBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Bird Proofing", url: "/bird-proofing" }
+    ])
   ];
 
   return (
@@ -98,19 +102,25 @@ export default function BirdProofing() {
 
       <section className="relative bg-white text-gray-800 overflow-hidden">
         <div className="absolute inset-0 opacity-100 hidden md:block">
-          <img
-            src={HERO_IMAGE}
-            alt="Professional bird proofing mesh installed around rooftop solar panels"
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
+          <picture>
+            <source srcSet="/images/bird-proofing-hero.webp" type="image/webp" />
+            <img
+              src={HERO_IMAGE}
+              alt="Professional bird proofing mesh installed around rooftop solar panels"
+              className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
+          </picture>
         </div>
 
         {/* Mobile: Image first, then text below */}
         <div className="block md:hidden">
           <div className="h-64">
-            <img
-              src={HERO_IMAGE}
-              alt="Professional bird proofing mesh installed around rooftop solar panels"
-              className="w-full h-full object-cover" loading="lazy" decoding="async" width="1536" height="1024" />
+            <picture>
+              <source srcSet="/images/bird-proofing-hero.webp" type="image/webp" />
+              <img
+                src={HERO_IMAGE}
+                alt="Professional bird proofing mesh installed around rooftop solar panels"
+                className="w-full h-full object-cover" loading="lazy" decoding="async" width="1536" height="1024" />
+            </picture>
           </div>
           <div className="bg-white px-4 py-8">
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
@@ -124,9 +134,9 @@ export default function BirdProofing() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Solar Panel Bird Proofing on the Gold Coast
-            </h2>
+            </h1>
 
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Solar Panel Mesh • Warranty Safe • Marine Grade
@@ -260,11 +270,14 @@ export default function BirdProofing() {
               </div>
             </div>
             <div>
-              <img
-                src={SECONDARY_IMAGE}
-                alt="Pigeon nesting beneath rooftop solar panels showing why bird proofing is needed"
-                className="rounded-2xl shadow-lg"
-                loading="lazy" decoding="async" width="980" height="400" />
+              <picture>
+                <source srcSet="/images/bird-proofing-secondary.webp" type="image/webp" />
+                <img
+                  src={SECONDARY_IMAGE}
+                  alt="Pigeon nesting beneath rooftop solar panels showing why bird proofing is needed"
+                  className="rounded-2xl shadow-lg"
+                  loading="lazy" decoding="async" width="980" height="400" />
+              </picture>
             </div>
           </div>
         </div>

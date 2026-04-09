@@ -19,6 +19,11 @@ async function loadData() {
   return mod;
 }
 
+async function loadSchemaBuilders() {
+  const mod = await import(pathToFileURL(path.join(ROOT, "src/data/schema.js")).href);
+  return mod;
+}
+
 function escapeHtml(s) {
   return String(s)
     .replace(/&/g, "&amp;")
@@ -34,7 +39,7 @@ function absolute(url) {
   return SITE + (url.startsWith("/") ? url : "/" + url);
 }
 
-function buildMetaHtml({ title, description, canonical, image }) {
+function buildMetaHtml({ title, description, canonical, image, jsonLd = [] }) {
   const img = absolute(image || DEFAULT_IMAGE);
   const can = absolute(canonical);
   const tags = [
@@ -53,6 +58,14 @@ function buildMetaHtml({ title, description, canonical, image }) {
     `<meta name="twitter:description" content="${escapeHtml(description)}" />`,
     `<meta name="twitter:image" content="${img}" />`,
   ];
+
+  // Generate JSON-LD script tags
+  if (jsonLd.length > 0) {
+    for (const schema of jsonLd) {
+      tags.push(`<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
+    }
+  }
+
   return tags.join("\n    ");
 }
 
@@ -79,6 +92,7 @@ function writeRoute(routePath, html) {
 
 async function main() {
   const { SUBURBS, SERVICES, COMMERCIAL_SERVICES } = await loadData();
+  const { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } = await loadSchemaBuilders();
   const indexHtml = fs.readFileSync(path.join(DIST, "index.html"), "utf8");
 
   const routes = [];
@@ -91,6 +105,10 @@ async function main() {
       "Gold Coast's trusted window cleaning, pressure cleaning, roof cleaning, and house softwash service. Fully insured, police-checked staff. Call (07) 5651 2386 for a free quote.",
     canonical: `${SITE}/`,
     image: "/images/window.jpg",
+    jsonLd: [
+      buildLocalBusinessSchema(),
+      buildBreadcrumbSchema([{ name: "Home", url: "/" }])
+    ],
   });
 
   // Hub pages (kebab-case canonical URLs)
@@ -101,6 +119,10 @@ async function main() {
       "Gold Coast's trusted exterior cleaning service. Window, roof, pressure, softwash, gutter and solar panel cleaning. Fully insured. Call (07) 5651 2386.",
     canonical: `${SITE}/`,
     image: "/images/services-banner.jpg",
+    jsonLd: [
+      buildLocalBusinessSchema(),
+      buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Services", url: "/services" }])
+    ],
   });
   routes.push({
     path: "/service-areas",
@@ -108,18 +130,30 @@ async function main() {
     description:
       "We service all Gold Coast suburbs and Northern NSW. Find professional window, pressure, roof cleaning and more in your suburb. Call (07) 5651 2386.",
     canonical: `${SITE}/service-areas`,
+    jsonLd: [
+      buildLocalBusinessSchema(),
+      buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Service Areas", url: "/service-areas" }])
+    ],
   });
   routes.push({
     path: "/about",
     title: "About Us | Gold Coast Window and Pressure Cleaning",
     description: "Gold Coast's trusted exterior cleaning company. Locally owned, fully insured with police-checked staff. Learn about our team and commitment to quality.",
     canonical: `${SITE}/about`,
+    jsonLd: [
+      buildLocalBusinessSchema(),
+      buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "About", url: "/about" }])
+    ],
   });
   routes.push({
     path: "/contact",
     title: "Contact Us | Gold Coast Window and Pressure Cleaning",
     description: "Get in touch with Gold Coast Window and Pressure Cleaning. Call (07) 5651 2386 for a free quote. Serving all Gold Coast suburbs and Northern NSW.",
     canonical: `${SITE}/contact`,
+    jsonLd: [
+      buildLocalBusinessSchema(),
+      buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Contact", url: "/contact" }])
+    ],
   });
 
   // Main service pages (kebab-case)
@@ -140,6 +174,20 @@ async function main() {
       description: `Professional ${name.toLowerCase()} on the Gold Coast. Fully insured, police-checked staff. Call (07) 5651 2386 for a free quote.`,
       canonical: `${SITE}/${slug}`,
       image: img,
+      jsonLd: [
+        buildLocalBusinessSchema(),
+        buildServiceSchema({
+          name: name,
+          description: `Professional ${name.toLowerCase()} on the Gold Coast. Fully insured, police-checked staff. Call (07) 5651 2386 for a free quote.`,
+          image: img,
+          serviceType: name,
+          url: `${SITE}/${slug}`
+        }),
+        buildBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: name, url: `/${slug}` }
+        ])
+      ],
     });
   }
 
@@ -152,6 +200,22 @@ async function main() {
         description: `Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}). Fully insured, police-checked staff. Serving ${suburb.name} and surrounding Gold Coast suburbs. Call (07) 5651 2386.`,
         canonical: `${SITE}/${service.slug}/${suburb.slug}`,
         image: "/images/window.jpg",
+        jsonLd: [
+          buildLocalBusinessSchema(),
+          buildServiceSchema({
+            name: `${service.name} in ${suburb.name}`,
+            description: `Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}). Fully insured, police-checked staff. Serving ${suburb.name} and surrounding Gold Coast suburbs.`,
+            image: "/images/window.jpg",
+            serviceType: service.name,
+            areaName: suburb.name,
+            url: `${SITE}/${service.slug}/${suburb.slug}`
+          }),
+          buildBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: service.name, url: `/${service.slug}` },
+            { name: suburb.name, url: `/${service.slug}/${suburb.slug}` }
+          ])
+        ],
       });
     }
   }
@@ -163,6 +227,21 @@ async function main() {
       title: `${service.name} Gold Coast | Commercial & Strata Specialists`,
       description: `${service.shortDesc}. Fully insured with $20M public liability, SWMS supplied, after-hours scheduling. Call (07) 5651 2386.`,
       canonical: `${SITE}/commercial/${service.slug}`,
+      jsonLd: [
+        buildLocalBusinessSchema(),
+        buildServiceSchema({
+          name: service.name,
+          description: `${service.shortDesc}. Fully insured with $20M public liability, SWMS supplied, after-hours scheduling.`,
+          image: DEFAULT_IMAGE,
+          serviceType: service.name,
+          url: `${SITE}/commercial/${service.slug}`
+        }),
+        buildBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Commercial", url: "/commercial" },
+          { name: service.name, url: `/commercial/${service.slug}` }
+        ])
+      ],
     });
     for (const suburb of SUBURBS) {
       routes.push({
@@ -170,6 +249,23 @@ async function main() {
         title: `${service.name} in ${suburb.name} | Commercial & Strata Gold Coast`,
         description: `Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}) for commercial, strata and body corporate buildings. $20M public liability, SWMS supplied, after-hours service. Call (07) 5651 2386.`,
         canonical: `${SITE}/commercial/${service.slug}/${suburb.slug}`,
+        jsonLd: [
+          buildLocalBusinessSchema(),
+          buildServiceSchema({
+            name: `${service.name} in ${suburb.name}`,
+            description: `Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}) for commercial, strata and body corporate buildings. $20M public liability, SWMS supplied, after-hours service.`,
+            image: DEFAULT_IMAGE,
+            serviceType: service.name,
+            areaName: suburb.name,
+            url: `${SITE}/commercial/${service.slug}/${suburb.slug}`
+          }),
+          buildBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Commercial", url: "/commercial" },
+            { name: service.name, url: `/commercial/${service.slug}` },
+            { name: suburb.name, url: `/commercial/${service.slug}/${suburb.slug}` }
+          ])
+        ],
       });
     }
   }

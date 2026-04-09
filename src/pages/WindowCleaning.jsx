@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
@@ -75,7 +75,11 @@ export default function WindowCleaning() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Streak-free interior and exterior window cleaning up to 4 stories on the Gold Coast. Includes tracks and flyscreens."
-    }
+    },
+    buildBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Window Cleaning", url: "/window-cleaning" }
+    ])
   ];
 
 
@@ -121,9 +125,9 @@ export default function WindowCleaning() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Professional Window Cleaning on the Gold Coast
-            </h2>
+            </h1>
             
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Locally Owned & Operated | Fully Insured | Police Checked Staff

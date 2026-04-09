@@ -136,10 +136,13 @@ export default function CommercialService() {
             {/* Image column */}
             <div className="lg:col-span-3 order-1 lg:order-2">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white">
-                <img
-                  src={heroImage}
-                  alt={service.name}
-                  className="w-full h-auto block" loading="eager" decoding="async" fetchPriority="high" width="1024" height="768" />
+                <picture>
+                  <source srcSet={heroImage.endsWith('.webp') ? heroImage : heroImage.replace('.jpg', '.webp')} type="image/webp" />
+                  <img
+                    src={heroImage}
+                    alt={service.name}
+                    className="w-full h-auto block" loading="eager" decoding="async" fetchPriority="high" width="1024" height="768" />
+                </picture>
               </div>
             </div>
           </div>
@@ -201,7 +204,10 @@ export default function CommercialService() {
               </ul>
             </div>
             <div>
-              <img src={secondaryImage} alt={service.name} className="rounded-2xl shadow-lg w-full h-auto max-h-[28rem] object-contain bg-gray-50" loading="lazy" decoding="async" width="1024" height="768" />
+              <picture>
+                <source srcSet={secondaryImage.endsWith('.webp') ? secondaryImage : secondaryImage.replace('.jpg', '.webp')} type="image/webp" />
+                <img src={secondaryImage} alt={service.name} className="rounded-2xl shadow-lg w-full h-auto max-h-[28rem] object-contain bg-gray-50" loading="lazy" decoding="async" width="1024" height="768" />
+              </picture>
             </div>
           </div>
         </div>

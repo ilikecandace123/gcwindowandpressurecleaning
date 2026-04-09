@@ -44,7 +44,10 @@ export default function Layout({ children, currentPageName }) {
           <div className="flex justify-between items-center gap-4 h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 min-w-0">
-              <img src="/images/logo.avif" alt="Gold Coast Window and Pressure Cleaning" className="h-10 sm:h-12 object-contain flex-shrink-0" loading="eager" decoding="async" fetchPriority="high" />
+              <picture>
+                <source srcSet="/images/logo.avif" type="image/avif" />
+                <img src="/images/logo.png" alt="Gold Coast Window and Pressure Cleaning" className="h-10 sm:h-12 object-contain flex-shrink-0" loading="eager" decoding="async" fetchPriority="high" />
+              </picture>
               <div className="hidden xl:block min-w-0">
                 <span className="text-base font-bold text-gray-900 leading-tight whitespace-nowrap">Gold Coast Window and Pressure Cleaning</span>
                 <p className="text-xs text-gray-500 whitespace-nowrap">Professional Exterior Cleaning Services</p>
@@ -243,7 +246,10 @@ export default function Layout({ children, currentPageName }) {
           <div className="grid md:grid-cols-5 gap-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                 <img src="/images/logo.avif" alt="Company Logo" className="h-12 w-12 object-contain bg-white rounded-lg p-1" loading="lazy" decoding="async" />
+                 <picture>
+                   <source srcSet="/images/logo.avif" type="image/avif" />
+                   <img src="/images/logo.png" alt="Company Logo" className="h-12 w-12 object-contain bg-white rounded-lg p-1" loading="lazy" decoding="async" />
+                 </picture>
                 <div>
                   <h3 className="text-lg font-bold leading-tight">Gold Coast Window and Pressure Cleaning</h3>
                   {/* 'Professionals' is spelled the same in US and Australian English */}

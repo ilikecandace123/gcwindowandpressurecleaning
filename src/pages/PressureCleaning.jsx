@@ -7,7 +7,7 @@ import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
 import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 
 // Import icons needed for the new hero section (assuming lucide-react or similar)
@@ -77,7 +77,11 @@ export default function PressureCleaning() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Industrial-grade pressure cleaning for driveways, paths, patios, and concrete on the Gold Coast."
-    }
+    },
+    buildBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Pressure Cleaning", url: "/pressure-cleaning" }
+    ])
   ];
 
 
@@ -124,9 +128,9 @@ export default function PressureCleaning() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Professional Pressure Cleaning on the Gold Coast
-            </h2>
+            </h1>
             
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Locally Owned & Operated | Fully Insured | Police Checked Staff
