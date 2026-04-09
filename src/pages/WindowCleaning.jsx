@@ -8,7 +8,7 @@ import SuburbLinks from "../components/SuburbLinks";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
-import Testimonials from "../components/Testimonials";
+import GoogleReviews from "../components/GoogleReviews";
 import { Shield, Users, Star, Phone } from 'lucide-react';
 
 export default function WindowCleaning() {
@@ -346,7 +346,7 @@ export default function WindowCleaning() {
         title="Benefits of Professional Window Cleaning" />
 
 
-      <Testimonials />
+      <GoogleReviews />
 
       <QuoteForm serviceName="Window Cleaning" />
 

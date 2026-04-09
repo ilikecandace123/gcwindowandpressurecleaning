@@ -4,7 +4,7 @@ import { Shield, Users, Star, Phone } from "lucide-react"; // Added imports for 
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
-import Testimonials from "../components/Testimonials";
+import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
 import SuburbLinks from "../components/SuburbLinks";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
@@ -328,7 +328,7 @@ export default function PatioCleaning() {
         title="Why Professional Patio Cleaning Makes a Difference"
       />
 
-      <Testimonials />
+      <GoogleReviews />
 
       <QuoteForm serviceName="Patio Cleaning" />
 

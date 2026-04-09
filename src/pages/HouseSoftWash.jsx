@@ -8,7 +8,7 @@ import SuburbLinks from "../components/SuburbLinks";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
-import Testimonials from "../components/Testimonials";
+import GoogleReviews from "../components/GoogleReviews";
 import { Shield, Users, Star, Phone } from 'lucide-react'; // Import necessary icons
 
 export default function HouseSoftWash() {
@@ -319,7 +319,7 @@ export default function HouseSoftWash() {
         title="Why Choose Professional Softwashing?" />
 
 
-      <Testimonials />
+      <GoogleReviews />
 
       <QuoteForm serviceName="House & Building Softwash" />
 

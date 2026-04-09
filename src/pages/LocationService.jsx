@@ -4,7 +4,6 @@ import { Shield, Users, Star, Phone, CheckCircle, ChevronDown, ChevronUp, MapPin
 import { getSuburbBySlug, getServiceBySlug, SUBURBS, SERVICES } from "../data/locations";
 import Benefits from "../components/Benefits";
 import FAQ from "../components/FAQ";
-import Testimonials from "../components/Testimonials";
 import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";

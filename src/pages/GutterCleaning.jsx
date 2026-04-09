@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
-import Testimonials from "../components/Testimonials";
+import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
 import { buildLocalBusinessSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
@@ -317,7 +317,7 @@ export default function GutterCleaning() {
         title="Why Regular Gutter Cleaning is Essential" />
 
 
-      <Testimonials />
+      <GoogleReviews />
 
       <QuoteForm serviceName="Gutter Cleaning" />
 

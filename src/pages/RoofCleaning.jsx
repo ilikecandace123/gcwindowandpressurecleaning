@@ -4,7 +4,7 @@ import React from "react";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
-import Testimonials from "../components/Testimonials";
+import GoogleReviews from "../components/GoogleReviews";
 import { Shield, Users, Star, Phone } from "lucide-react"; // Import necessary icons
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -308,7 +308,7 @@ export default function RoofCleaning() {
         title="The Benefits of Professional Roof Cleaning" />
 
 
-      <Testimonials />
+      <GoogleReviews />
 
       <QuoteForm serviceName="Roof Cleaning" />
 

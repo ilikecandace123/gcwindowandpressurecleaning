@@ -5,6 +5,7 @@ import { getSuburbBySlug, getCommercialServiceBySlug, SUBURBS, COMMERCIAL_SERVIC
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
+import GoogleReviews from "../components/GoogleReviews";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
 
 const HERO_IMAGES = {
@@ -225,6 +226,8 @@ export default function CommercialLocationService() {
 
       {/* Benefits */}
       <Benefits benefits={service.benefits} title={`Benefits of Professional ${service.name}`} />
+
+      <GoogleReviews />
 
       {/* FAQs */}
       <section className="py-16 bg-gray-50">

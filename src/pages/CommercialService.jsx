@@ -5,6 +5,7 @@ import { getCommercialServiceBySlug } from "../data/locations";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
+import GoogleReviews from "../components/GoogleReviews";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 
@@ -232,7 +233,9 @@ export default function CommercialService() {
       {/* Benefits */}
       <Benefits benefits={service.benefits} title={`Benefits of Professional ${service.name}`} />
 
-      {/* FAQ */}
+      <GoogleReviews />
+
+      {/* Quote form */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
