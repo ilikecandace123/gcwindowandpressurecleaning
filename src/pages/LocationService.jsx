@@ -20,7 +20,7 @@ const SERVICE_SECONDARY_IMAGES = {
     alt: "Professional roof cleaning on Gold Coast property"
   },
   "house-softwash": {
-    src: "/images/softwash-1.jpg",
+    src: "/images/commercial-softwash-secondary.jpg",
     alt: "House softwash cleaning removing mould and grime"
   },
   "pressure-cleaning": {
