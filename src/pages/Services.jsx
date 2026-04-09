@@ -33,7 +33,7 @@ export default function Services() {
     page: "WindowCleaning"
   },
   {
-    imageUrl: "/images/softwash-1.jpg",
+    imageUrl: "/images/commercial-softwash-secondary.jpg",
     title: "House & Building Softwash",
     description: "Gentle surface-safe cleaning removes mould, dirt, spider webs, and wasp nests without damage.",
     benefits: ["Safe for surfaces", "Removes mould", "Long-lasting results"],
