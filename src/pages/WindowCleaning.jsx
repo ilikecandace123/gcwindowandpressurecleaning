@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
@@ -79,7 +79,8 @@ export default function WindowCleaning() {
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "Window Cleaning", url: "/window-cleaning" }
-    ])
+    ]),
+    buildFAQSchema(faqs)
   ];
 
 
@@ -355,6 +356,23 @@ export default function WindowCleaning() {
       <QuoteForm serviceName="Window Cleaning" />
 
       <FAQ faqs={faqs} title="Window Cleaning FAQ" />
+
+      {/* Related Services */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link to="/roof-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Roof Cleaning</h3>
+              <p className="text-sm text-gray-600">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
+            </Link>
+            <Link to="/house-soft-wash" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">House Softwash</h3>
+              <p className="text-sm text-gray-600">Gentle, effective cleaning that protects your home's exterior while removing dirt and stains.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <SuburbLinks serviceSlug="window-cleaning" serviceName="Window Cleaning" />
     </div>);

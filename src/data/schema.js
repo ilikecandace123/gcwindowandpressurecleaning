@@ -6,8 +6,17 @@ export const BUSINESS_NAME = "Gold Coast Window and Pressure Cleaning";
 export const BUSINESS_PHONE = "(07) 5651 2386";
 export const BUSINESS_EMAIL = "info@gcwindowandpressurecleaning.com.au";
 
-// Gold Coast centre + coverage radius (covers Coolangatta -> Beenleigh and hinterland)
-export const GEO_CENTER = { lat: -28.01667, lng: 153.39994 };
+// Business address (must match GBP exactly for NAP consistency)
+export const BUSINESS_ADDRESS = {
+  streetAddress: "54 Karbunya St",
+  addressLocality: "Mermaid Waters",
+  addressRegion: "QLD",
+  postalCode: "4218",
+  addressCountry: "AU"
+};
+
+// GBP-verified coordinates + coverage radius (covers Coolangatta -> Beenleigh and hinterland)
+export const GEO_CENTER = { lat: -28.0594072, lng: 153.4313091 };
 export const SERVICE_RADIUS_KM = 45;
 
 // Core LocalBusiness schema — include on every page.
@@ -23,12 +32,15 @@ export function buildLocalBusinessSchema() {
     "priceRange": "$$",
     "image": `${SITE_URL}/images/window.jpg`,
     "logo": `${SITE_URL}/images/logo.avif`,
+    "description": "Professional window cleaning, roof cleaning, pressure cleaning, house softwash, gutter cleaning, solar panel cleaning and bird proofing on the Gold Coast. Fully insured, police-checked staff.",
+    "additionalType": "https://www.wikidata.org/wiki/Q2308643",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Gold Coast",
-      "addressRegion": "QLD",
-      "postalCode": "4217",
-      "addressCountry": "AU"
+      "streetAddress": BUSINESS_ADDRESS.streetAddress,
+      "addressLocality": BUSINESS_ADDRESS.addressLocality,
+      "addressRegion": BUSINESS_ADDRESS.addressRegion,
+      "postalCode": BUSINESS_ADDRESS.postalCode,
+      "addressCountry": BUSINESS_ADDRESS.addressCountry
     },
     "geo": {
       "@type": "GeoCoordinates",
@@ -47,15 +59,9 @@ export function buildLocalBusinessSchema() {
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "07:00",
-        "closes": "17:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "08:00",
-        "closes": "14:00"
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
       }
     ],
     "aggregateRating": {

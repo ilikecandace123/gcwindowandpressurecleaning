@@ -9,7 +9,7 @@ import { Shield, Users, Star, Phone } from "lucide-react"; // Import necessary i
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 
 export default function RoofCleaning() {
@@ -72,7 +72,8 @@ export default function RoofCleaning() {
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "Roof Cleaning", url: "/roof-cleaning" }
-    ])
+    ]),
+    buildFAQSchema(faqs)
   ];
 
   return (
@@ -317,6 +318,28 @@ export default function RoofCleaning() {
       <QuoteForm serviceName="Roof Cleaning" />
 
       <FAQ faqs={faqs} title="Roof Cleaning FAQ" />
+
+      {/* Related Services */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link to="/gutter-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Gutter Cleaning</h3>
+              <p className="text-sm text-gray-600">Keep your gutters flowing freely with professional cleaning and maintenance.</p>
+            </Link>
+            <Link to="/solar-panel-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Solar Panel Cleaning</h3>
+              <p className="text-sm text-gray-600">Maintain solar panel efficiency with regular professional cleaning service.</p>
+            </Link>
+            <Link to="/window-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Window Cleaning</h3>
+              <p className="text-sm text-gray-600">Professional window cleaning to extend your roof's life and boost curb appeal.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <SuburbLinks serviceSlug="roof-cleaning" serviceName="Roof Cleaning" />
     </div>);
 

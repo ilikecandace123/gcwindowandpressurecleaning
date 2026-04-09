@@ -1,13 +1,14 @@
 
 import React from "react";
-import { Shield, Users, Star, Phone } from "lucide-react"; // Added imports for lucide-react icons
+import { Link } from "react-router-dom";
+import { Shield, Users, Star, Phone } from "lucide-react";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
 import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
 import SuburbLinks from "../components/SuburbLinks";
-import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 
 export default function PatioCleaning() {
   const benefits = [
@@ -79,7 +80,8 @@ export default function PatioCleaning() {
           buildBreadcrumbSchema([
             { name: "Home", url: "/" },
             { name: "Patio Cleaning", url: "/patio-cleaning" }
-          ])
+          ]),
+          buildFAQSchema(faqs)
         ]}
       />
       <section className="relative bg-white text-gray-800 overflow-hidden">
@@ -333,6 +335,23 @@ export default function PatioCleaning() {
       <QuoteForm serviceName="Patio Cleaning" />
 
       <FAQ faqs={faqs} title="Patio Cleaning FAQ" />
+
+      {/* Related Services */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link to="/pressure-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Pressure Cleaning</h3>
+              <p className="text-sm text-gray-600">Powerful pressure cleaning for driveways, patios, and hard surfaces.</p>
+            </Link>
+            <Link to="/house-soft-wash" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">House Softwash</h3>
+              <p className="text-sm text-gray-600">Gentle, effective cleaning that protects your home's exterior while removing dirt and stains.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <SuburbLinks serviceSlug="patio-cleaning" serviceName="Patio Cleaning" />
     </div>

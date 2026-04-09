@@ -7,7 +7,7 @@ import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
 import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 
 // Importing icons from lucide-react for the new hero section
@@ -82,7 +82,8 @@ export default function SolarPanelCleaning() {
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "Solar Panel Cleaning", url: "/solar-panel-cleaning" }
-    ])
+    ]),
+    buildFAQSchema(faqs)
   ];
 
   return (
@@ -322,6 +323,23 @@ export default function SolarPanelCleaning() {
       <QuoteForm serviceName="Solar Panel Cleaning" />
 
       <FAQ faqs={faqs} title="Solar Panel Cleaning FAQ" />
+
+      {/* Related Services */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link to="/bird-proofing" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Bird Proofing</h3>
+              <p className="text-sm text-gray-600">Protect your solar panels and roof from bird damage with professional bird proofing.</p>
+            </Link>
+            <Link to="/roof-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Roof Cleaning</h3>
+              <p className="text-sm text-gray-600">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <SuburbLinks serviceSlug="solar-panel-cleaning" serviceName="Solar Panel Cleaning" />
     </div>

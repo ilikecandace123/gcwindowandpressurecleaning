@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
@@ -79,7 +79,8 @@ export default function HouseSoftWash() {
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "House Softwash", url: "/house-softwash" }
-    ])
+    ]),
+    buildFAQSchema(faqs)
   ];
 
 
@@ -328,6 +329,27 @@ export default function HouseSoftWash() {
       <QuoteForm serviceName="House & Building Softwash" />
 
       <FAQ faqs={faqs} title="House Softwash FAQ" />
+
+      {/* Related Services */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link to="/pressure-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Pressure Cleaning</h3>
+              <p className="text-sm text-gray-600">Powerful pressure cleaning for driveways, patios, and hard surfaces.</p>
+            </Link>
+            <Link to="/window-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Window Cleaning</h3>
+              <p className="text-sm text-gray-600">Streak-free professional window cleaning for crystal clear results.</p>
+            </Link>
+            <Link to="/roof-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Roof Cleaning</h3>
+              <p className="text-sm text-gray-600">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <SuburbLinks serviceSlug="house-softwash" serviceName="House Softwash" />
     </div>);

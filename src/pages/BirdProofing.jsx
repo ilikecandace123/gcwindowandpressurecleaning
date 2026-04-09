@@ -7,7 +7,7 @@ import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
 import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 
 import { Shield, Users, Star, Phone } from "lucide-react";
@@ -88,7 +88,8 @@ export default function BirdProofing() {
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "Bird Proofing", url: "/bird-proofing" }
-    ])
+    ]),
+    buildFAQSchema(faqs)
   ];
 
   return (
@@ -346,6 +347,23 @@ export default function BirdProofing() {
       <QuoteForm serviceName="Solar Panel Bird Proofing" />
 
       <FAQ faqs={faqs} title="Solar Panel Bird Proofing FAQ" />
+
+      {/* Related Services */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link to="/solar-panel-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Solar Panel Cleaning</h3>
+              <p className="text-sm text-gray-600">Maintain solar panel efficiency with regular professional cleaning service.</p>
+            </Link>
+            <Link to="/roof-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Roof Cleaning</h3>
+              <p className="text-sm text-gray-600">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <SuburbLinks serviceSlug="bird-proofing" serviceName="Bird Proofing" />
     </div>
