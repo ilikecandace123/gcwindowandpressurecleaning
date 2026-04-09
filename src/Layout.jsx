@@ -335,8 +335,13 @@ export default function Layout({ children, currentPageName }) {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-            <p>© {new Date().getFullYear()} Gold Coast Window and Pressure Cleaning.</p>
+          <div className="border-t border-gray-800 mt-8 pt-8">
+            <div className="text-center text-gray-400 text-sm mb-2">
+              <p>© {new Date().getFullYear()} Gold Coast Window and Pressure Cleaning.</p>
+            </div>
+            <div className="text-center text-gray-500 text-xs">
+              <p>Last updated: April 2026</p>
+            </div>
           </div>
         </div>
       </footer>

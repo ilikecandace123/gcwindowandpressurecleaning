@@ -184,13 +184,6 @@ async function main() {
 
   // Generate sitemaps with index
   const today = new Date().toISOString().slice(0, 10);
-  const priorityFor = (p) => {
-    if (p === "/") return "1.0";
-    if (p.split("/").filter(Boolean).length === 1) return "0.9";
-    if (p.startsWith("/commercial/") && p.split("/").filter(Boolean).length === 2) return "0.8";
-    return "0.7";
-  };
-  const changefreqFor = (p) => (p === "/" ? "weekly" : "monthly");
 
   // Categorize routes
   const staticRoutes = routes.filter(
@@ -205,7 +198,7 @@ async function main() {
     const urlEntries = routeList
       .map((r) => {
         const loc = absolute(r.path === "/" ? "/" : r.path);
-        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${changefreqFor(r.path)}</changefreq>\n    <priority>${priorityFor(r.path)}</priority>\n  </url>`;
+        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`;
       })
       .join("\n");
     return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries}\n</urlset>\n`;

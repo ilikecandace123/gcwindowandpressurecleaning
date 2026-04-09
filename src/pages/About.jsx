@@ -36,13 +36,31 @@ export default function About() {
       {/* Our Story */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-          <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-            Gold Coast Window and Pressure Cleaning was built on a simple idea: provide honest, professional exterior cleaning services that Gold Coast residents and businesses can rely on. We know that finding trustworthy tradespeople can be stressful, which is why we go above and beyond to earn and keep your trust.
-          </p>
-          <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-            Based on the Gold Coast, we service all suburbs from Coolangatta to Ormeau, across the hinterland, and into Northern NSW including Tweed Heads and Kingscliff. Our local knowledge means we understand the unique cleaning challenges that coastal and subtropical conditions present — from salt spray and humidity to mould and tree debris.
-          </p>
+          <div className="md:flex md:gap-10 md:items-start">
+            <div className="md:flex-1">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                Gold Coast Window and Pressure Cleaning was built on a simple idea: provide honest, professional exterior cleaning services that Gold Coast residents and businesses can rely on. We know that finding trustworthy tradespeople can be stressful, which is why we go above and beyond to earn and keep your trust.
+              </p>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                Based on the Gold Coast, we service all suburbs from Coolangatta to Ormeau, across the hinterland, and into Northern NSW including Tweed Heads and Kingscliff. Our local knowledge means we understand the unique cleaning challenges that coastal and subtropical conditions present — from salt spray and humidity to mould and tree debris.
+              </p>
+            </div>
+            <div className="md:w-80 flex-shrink-0 mt-6 md:mt-0">
+              <picture>
+                <source srcSet="/images/services-banner.webp" type="image/webp" />
+                <img
+                  src="/images/services-banner.jpg"
+                  alt="Gold Coast Window and Pressure Cleaning team working on a residential property"
+                  width="1280"
+                  height="512"
+                  loading="eager"
+                  decoding="async"
+                  className="rounded-lg shadow-md w-full h-auto object-cover"
+                />
+              </picture>
+            </div>
+          </div>
         </div>
       </section>
 

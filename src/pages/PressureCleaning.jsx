@@ -37,7 +37,7 @@ export default function PressureCleaning() {
   },
   {
     title: "Protects Surface Longevity",
-    description: "Regular professional cleaning prevents permanent staining and deterioration, extending the life of your hard surfaces."
+    description: "Regular professional cleaning prevents permanent staining and deterioration, extending the life of your hard surfaces (Source: American Concrete Institute - maintenance guidelines)."
   }];
 
 
@@ -92,19 +92,25 @@ export default function PressureCleaning() {
       <section className="relative bg-white text-gray-800 overflow-hidden">
         {/* Desktop: Background image for overlay design */}
         <div className="absolute inset-0 opacity-100 hidden md:block">
-          <img
-            src="/images/pressure-hero.jpg"
-            alt="Pressure cleaning removing oil stains and grime from a concrete driveway"
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1536" height="1024" />
-        </div>
-        
-        {/* Mobile: Image first, then text below */}
-        <div className="block md:hidden">
-          <div className="h-64">
+          <picture>
+            <source srcSet="/images/pressure-hero.webp" type="image/webp" />
             <img
               src="/images/pressure-hero.jpg"
               alt="Pressure cleaning removing oil stains and grime from a concrete driveway"
-              className="w-full h-full object-cover" loading="lazy" decoding="async" />
+              className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1536" height="1024" />
+          </picture>
+        </div>
+
+        {/* Mobile: Image first, then text below */}
+        <div className="block md:hidden">
+          <div className="h-64">
+            <picture>
+              <source srcSet="/images/pressure-hero.webp" type="image/webp" />
+              <img
+                src="/images/pressure-hero.jpg"
+                alt="Pressure cleaning removing oil stains and grime from a concrete driveway"
+                className="w-full h-full object-cover" loading="lazy" decoding="async" width="1536" height="1024" />
+            </picture>
           </div>
           <div className="bg-white px-4 py-8">
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
@@ -253,11 +259,14 @@ export default function PressureCleaning() {
               </div>
             </div>
             <div>
-              <img
-                src="/images/pressure-secondary.jpg"
-                alt="Pressure cleaning service team demonstrating concrete surface restoration"
-                className="rounded-2xl shadow-lg"
-                loading="lazy" decoding="async" width="1024" height="682" />
+              <picture>
+                <source srcSet="/images/pressure-secondary.webp" type="image/webp" />
+                <img
+                  src="/images/pressure-secondary.jpg"
+                  alt="Pressure cleaning service team demonstrating concrete surface restoration"
+                  className="rounded-2xl shadow-lg"
+                  loading="lazy" decoding="async" width="1024" height="682" />
+              </picture>
 
             </div>
           </div>

@@ -6,6 +6,7 @@ import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
 import Testimonials from "../components/Testimonials";
 import PageSEO from "../components/PageSEO";
+import SuburbLinks from "../components/SuburbLinks";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
 
 export default function PatioCleaning() {
@@ -86,10 +87,13 @@ export default function PatioCleaning() {
         {/* Mobile: Image first, then text below */}
         <div className="block md:hidden">
           <div className="h-64">
-            <img
-              src="/images/patio-unsplash.jpg"
-              alt="Professional patio cleaning service"
-              className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="2070" height="1376" />
+            <picture>
+              <source srcSet="/images/patio-unsplash.webp" type="image/webp" />
+              <img
+                src="/images/patio-unsplash.jpg"
+                alt="Professional patio cleaning service"
+                className="w-full h-full object-cover" loading="lazy" decoding="async" width="2070" height="1376" />
+            </picture>
           </div>
           <div className="bg-white px-4 py-8">
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
@@ -146,10 +150,13 @@ export default function PatioCleaning() {
         {/* Desktop: Overlay design */}
         <div className="hidden md:block">
           <div className="absolute inset-0 opacity-100">
-            <img
-              src="/images/patio-unsplash.jpg"
-              alt="Professional patio cleaning service"
-              className="w-full h-full object-cover" loading="lazy" decoding="async" width="2070" height="1376" />
+            <picture>
+              <source srcSet="/images/patio-unsplash.webp" type="image/webp" />
+              <img
+                src="/images/patio-unsplash.jpg"
+                alt="Professional patio cleaning service"
+                className="w-full h-full object-cover" loading="lazy" decoding="async" width="2070" height="1376" />
+            </picture>
           </div>
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
@@ -326,6 +333,8 @@ export default function PatioCleaning() {
       <QuoteForm serviceName="Patio Cleaning" />
 
       <FAQ faqs={faqs} title="Patio Cleaning FAQ" />
+
+      <SuburbLinks serviceSlug="patio-cleaning" serviceName="Patio Cleaning" />
     </div>
   );
 }

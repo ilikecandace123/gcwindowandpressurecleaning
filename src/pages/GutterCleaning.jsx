@@ -46,7 +46,7 @@ export default function GutterCleaning() {
   },
   {
     question: "What happens if gutters aren't cleaned regularly?",
-    answer: "Blocked gutters can cause water overflow, leading to foundation damage, roof leaks, fascia board rot, and landscape erosion. The repair costs far exceed regular maintenance."
+    answer: "Blocked gutters can cause water overflow, leading to foundation damage, roof leaks, fascia board rot, and landscape erosion. The repair costs far exceed regular maintenance (Source: National Association of Home Builders - water damage prevention studies)."
   },
   {
     question: "Is gutter cleaning dangerous to do myself?",
@@ -85,20 +85,26 @@ export default function GutterCleaning() {
       />
       <section className="relative bg-white text-gray-800 overflow-hidden">
         <div className="absolute inset-0 opacity-100 hidden md:block">
-          <img
-            src="/images/gutter-screenshot.jpg"
-            alt="Professional gutter cleaning removing leaves and debris from roof gutters"
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1024" height="520" />
-
-        </div>
-        
-        {/* Mobile: Image first, then text below */}
-        <div className="block md:hidden">
-          <div className="h-64">
+          <picture>
+            <source srcSet="/images/gutter-screenshot.webp" type="image/webp" />
             <img
               src="/images/gutter-screenshot.jpg"
               alt="Professional gutter cleaning removing leaves and debris from roof gutters"
-              className="w-full h-full object-cover" loading="lazy" decoding="async" />
+              className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1024" height="520" />
+          </picture>
+
+        </div>
+
+        {/* Mobile: Image first, then text below */}
+        <div className="block md:hidden">
+          <div className="h-64">
+            <picture>
+              <source srcSet="/images/gutter-screenshot.webp" type="image/webp" />
+              <img
+                src="/images/gutter-screenshot.jpg"
+                alt="Professional gutter cleaning removing leaves and debris from roof gutters"
+                className="w-full h-full object-cover" loading="lazy" decoding="async" width="1024" height="520" />
+            </picture>
           </div>
           <div className="bg-white px-4 py-8">
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
@@ -247,11 +253,14 @@ export default function GutterCleaning() {
               </div>
             </div>
             <div>
-              <img
-                src="/images/gutter-secondary.jpg"
-                alt="Clean residential gutters with proper drainage system installed"
-                className="rounded-2xl shadow-lg"
-                loading="lazy" decoding="async" width="1024" height="682" />
+              <picture>
+                <source srcSet="/images/gutter-secondary.webp" type="image/webp" />
+                <img
+                  src="/images/gutter-secondary.jpg"
+                  alt="Clean residential gutters with proper drainage system installed"
+                  className="rounded-2xl shadow-lg"
+                  loading="lazy" decoding="async" width="1024" height="682" />
+              </picture>
 
             </div>
           </div>

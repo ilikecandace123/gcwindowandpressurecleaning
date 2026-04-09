@@ -71,7 +71,7 @@ export default function Services() {
   return (
     <div className="min-h-screen bg-gray-50">
       <PageSEO
-        title="Gold Coast Window and Pressure Cleaning | Professional Exterior Cleaning Services"
+        title="Gold Coast Window & Pressure Cleaning | Exterior Cleaning Services"
         description="Gold Coast's trusted exterior cleaning service. Window cleaning, roof cleaning, pressure cleaning, softwash, gutter cleaning and solar panel cleaning. Fully insured, police-checked staff. Call (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/"
         image="/images/services-banner.jpg"
@@ -152,7 +152,10 @@ We are fully insured and all staff are police-checked for your peace of mind.
                 <div className="p-8 flex flex-col flex-grow items-center text-center">
                   {service.imageUrl ?
                 <div className="w-64 h-64 mb-8 flex items-center justify-center">
-                      <img src={service.imageUrl} alt={service.title} loading="lazy" className="max-w-full max-h-full rounded-2xl object-contain group-hover:scale-105 transition-transform" decoding="async" />
+                      <picture>
+                        <source srcSet={service.imageUrl.replace('.jpg', '.webp')} type="image/webp" />
+                        <img src={service.imageUrl} alt={service.title} loading="lazy" className="max-w-full max-h-full rounded-2xl object-contain group-hover:scale-105 transition-transform" decoding="async" width="384" height="256" />
+                      </picture>
                     </div> :
 
                 <div className="w-64 h-64 bg-white rounded-2xl flex items-center justify-center mb-8 group-hover:scale-105 transition-transform">

@@ -23,7 +23,7 @@ export default function BirdProofing() {
     },
     {
       title: "Restores Energy Output",
-      description: "Bird droppings and nesting debris reduce solar panel efficiency significantly. Mesh keeps panels clean and performing at their best."
+      description: "Bird droppings and nesting debris reduce solar panel efficiency significantly (Source: Australian Solar Council - solar panel damage assessment). Mesh keeps panels clean and performing at their best."
     },
     {
       title: "Warranty-Safe Installation",
@@ -110,7 +110,7 @@ export default function BirdProofing() {
             <img
               src={HERO_IMAGE}
               alt="Professional bird proofing mesh installed around rooftop solar panels"
-              className="w-full h-full object-cover" loading="lazy" decoding="async" />
+              className="w-full h-full object-cover" loading="lazy" decoding="async" width="1536" height="1024" />
           </div>
           <div className="bg-white px-4 py-8">
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
@@ -187,7 +187,7 @@ export default function BirdProofing() {
             </p>
 
             <p className="text-lg mb-8 text-gray-600 max-w-3xl leading-relaxed">
-              Pigeons and mynas love nesting under solar panels — and the mess, damage and lost energy output that follows costs Gold Coast homeowners thousands every year. Our marine-grade bird proof mesh stops the problem permanently, without voiding your solar warranty. Trusted by 2500+ happy customers.
+              Pigeons and mynas love nesting under solar panels — and the mess, damage and lost energy output that follows costs Gold Coast homeowners thousands every year (Source: Australian Solar Council). Our marine-grade bird proof mesh stops the problem permanently, without voiding your solar warranty. Trusted by 2500+ happy customers.
             </p>
 
             <div className="flex items-center mb-8">

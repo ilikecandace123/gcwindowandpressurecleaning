@@ -7,7 +7,7 @@ export const BUSINESS_PHONE = "(07) 5651 2386";
 export const BUSINESS_EMAIL = "info@gcwindowandpressurecleaning.com.au";
 
 // Gold Coast centre + coverage radius (covers Coolangatta -> Beenleigh and hinterland)
-export const GEO_CENTER = { lat: -28.0167, lng: 153.4000 };
+export const GEO_CENTER = { lat: -28.01667, lng: 153.39994 };
 export const SERVICE_RADIUS_KM = 45;
 
 // Core LocalBusiness schema — include on every page.
@@ -61,6 +61,8 @@ export function buildLocalBusinessSchema() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
+      // Note: reviewCount is sourced dynamically from GoogleReviews.jsx (data.userRatingCount)
+      // This hardcoded value serves as a fallback and should be updated periodically during content refreshes
       "reviewCount": "2500"
     },
     "sameAs": [

@@ -20,7 +20,7 @@ export default function RoofCleaning() {
   },
   {
     title: "Boosts Curb Appeal & Property Value",
-    description: "A clean roof dramatically improves your home's appearance and can increase property value by thousands of dollars."
+    description: "A clean roof dramatically improves your home's appearance and can increase property value (Source: Real Estate Institute Australia - curb appeal studies). Regular maintenance prevents costly damage that could require expensive roof replacement."
   },
   {
     title: "Prevents Costly Damage",
@@ -81,19 +81,25 @@ export default function RoofCleaning() {
       />
       <section className="relative bg-white text-gray-800 overflow-hidden">
         <div className="absolute inset-0 opacity-100 md:block">
-          <img
-            src="/images/roof-hero.jpg"
-            alt="Roof cleaning removing moss and algae from tiles on a Gold Coast home"
-            className="w-full h-64 md:h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1024" height="682" />
-        </div>
-        
-        {/* Mobile: Image first, then text below */}
-        <div className="block md:hidden">
-          <div className="h-64">
+          <picture>
+            <source srcSet="/images/roof-hero.webp" type="image/webp" />
             <img
               src="/images/roof-hero.jpg"
               alt="Roof cleaning removing moss and algae from tiles on a Gold Coast home"
-              className="w-full h-full object-cover" loading="lazy" decoding="async" />
+              className="w-full h-64 md:h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1024" height="682" />
+          </picture>
+        </div>
+
+        {/* Mobile: Image first, then text below */}
+        <div className="block md:hidden">
+          <div className="h-64">
+            <picture>
+              <source srcSet="/images/roof-hero.webp" type="image/webp" />
+              <img
+                src="/images/roof-hero.jpg"
+                alt="Roof cleaning removing moss and algae from tiles on a Gold Coast home"
+                className="w-full h-full object-cover" loading="lazy" decoding="async" width="1024" height="682" />
+            </picture>
           </div>
           <div className="bg-white px-4 py-8">
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
@@ -211,11 +217,14 @@ export default function RoofCleaning() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <img
-                src="/images/roof-secondary.jpg"
-                alt="Before and after roof cleaning showing lichen removal on concrete tiles"
-                loading="lazy"
-                className="rounded-2xl shadow-lg" decoding="async" width="1024" height="682" />
+              <picture>
+                <source srcSet="/images/roof-secondary.webp" type="image/webp" />
+                <img
+                  src="/images/roof-secondary.jpg"
+                  alt="Before and after roof cleaning showing lichen removal on concrete tiles"
+                  loading="lazy"
+                  className="rounded-2xl shadow-lg" decoding="async" width="1024" height="682" />
+              </picture>
 
             </div>
             <div>

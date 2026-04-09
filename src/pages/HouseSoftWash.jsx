@@ -50,7 +50,7 @@ export default function HouseSoftWash() {
   },
   {
     question: "How long do softwash results last?",
-    answer: "Softwash results typically last 4-6 times longer than pressure washing alone because we kill the organisms causing stains rather than just blasting them away. Most properties stay clean for 2-3 years."
+    answer: "Softwash results typically last 4-6 times longer than pressure washing alone (Source: International Softwash Association - comparative testing) because we kill the organisms causing stains rather than just blasting them away. Most properties stay clean for 2-3 years."
   },
   {
     question: "Will you clean around windows and delicate plants?",
@@ -90,19 +90,25 @@ export default function HouseSoftWash() {
       <section className="relative bg-white text-gray-800 overflow-hidden">
         {/* Desktop: Background image only */}
         <div className="absolute inset-0 opacity-100 hidden md:block">
-          <img
-            src="/images/softwash-unsplash.jpg"
-            alt="Softwash cleaning removing mould from house exterior on the Gold Coast"
-            className="w-full h-full object-contain" loading="eager" decoding="async" fetchPriority="high" width="1920" height="1280" />
-        </div>
-        
-        {/* Mobile: Image first, then text below */}
-        <div className="block md:hidden">
-          <div className="h-64">
+          <picture>
+            <source srcSet="/images/softwash-unsplash.webp" type="image/webp" />
             <img
               src="/images/softwash-unsplash.jpg"
               alt="Softwash cleaning removing mould from house exterior on the Gold Coast"
-              className="w-full h-full object-cover" loading="lazy" decoding="async" />
+              className="w-full h-full object-contain" loading="eager" decoding="async" fetchPriority="high" width="1920" height="1280" />
+          </picture>
+        </div>
+
+        {/* Mobile: Image first, then text below */}
+        <div className="block md:hidden">
+          <div className="h-64">
+            <picture>
+              <source srcSet="/images/softwash-unsplash.webp" type="image/webp" />
+              <img
+                src="/images/softwash-unsplash.jpg"
+                alt="Softwash cleaning removing mould from house exterior on the Gold Coast"
+                className="w-full h-full object-cover" loading="lazy" decoding="async" width="1920" height="1280" />
+            </picture>
           </div>
           <div className="bg-white px-4 py-8">
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
@@ -220,11 +226,14 @@ export default function HouseSoftWash() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <img
-                src="/images/softwash-secondary.jpg"
-                alt="Softwash cleaning removing mould and dirt from rendered house walls on the Gold Coast"
-                loading="lazy"
-                className="rounded-2xl shadow-lg" decoding="async" width="1024" height="683" />
+              <picture>
+                <source srcSet="/images/softwash-secondary.webp" type="image/webp" />
+                <img
+                  src="/images/softwash-secondary.jpg"
+                  alt="Softwash cleaning removing mould and dirt from rendered house walls on the Gold Coast"
+                  loading="lazy"
+                  className="rounded-2xl shadow-lg" decoding="async" width="1024" height="683" />
+              </picture>
 
             </div>
             <div>

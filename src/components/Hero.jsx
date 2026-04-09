@@ -23,10 +23,13 @@ export default function Hero({
     <section className="relative hero-gradient text-white overflow-hidden">
       <div className={topOverlayClass}></div>
       <div className={imageContainerClassName}>
-        <img
-          src={backgroundImage || "/images/hero-bg-unsplash.jpg"}
-          alt="Professional cleaning service"
-          className={imageClassName} loading="eager" decoding="async" fetchPriority="high" width="2070" height="1380" />
+        <picture>
+          <source srcSet={backgroundImage ? backgroundImage.replace('.jpg', '.webp') : "/images/hero-bg-unsplash.webp"} type="image/webp" />
+          <img
+            src={backgroundImage || "/images/hero-bg-unsplash.jpg"}
+            alt="Professional cleaning service"
+            className={imageClassName} loading="eager" decoding="async" fetchPriority="high" width="2070" height="1380" />
+        </picture>
       </div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">

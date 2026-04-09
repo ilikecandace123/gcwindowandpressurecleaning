@@ -89,19 +89,25 @@ export default function WindowCleaning() {
       />
       <section className="relative bg-white text-gray-800 overflow-hidden">
         <div className="absolute inset-0 opacity-100 hidden md:block">
-          <img
-            src="/images/window.jpg"
-            alt="Window cleaner using professional equipment on a Gold Coast high-rise"
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="768" height="1024" />
+          <picture>
+            <source srcSet="/images/window.webp" type="image/webp" />
+            <img
+              src="/images/window.jpg"
+              alt="Window cleaner using professional equipment on a Gold Coast high-rise"
+              className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="768" height="1024" />
+          </picture>
         </div>
         
         {/* Mobile: Image first, then text below */}
         <div className="block md:hidden">
           <div className="h-64">
-            <img
-              src="/images/window.jpg"
-              alt="Window cleaner using professional equipment on a Gold Coast high-rise"
-              className="w-full h-full object-cover" loading="lazy" decoding="async" />
+            <picture>
+              <source srcSet="/images/window.webp" type="image/webp" />
+              <img
+                src="/images/window.jpg"
+                alt="Window cleaner using professional equipment on a Gold Coast high-rise"
+                className="w-full h-full object-cover" loading="lazy" decoding="async" width="768" height="1024" />
+            </picture>
           </div>
           <div className="bg-white px-4 py-8">
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
@@ -250,11 +256,14 @@ export default function WindowCleaning() {
               </div>
             </div>
             <div>
-              <img
-                src="/images/window-secondary.jpg"
-                alt="Before and after professional window cleaning"
-                loading="lazy"
-                className="rounded-2xl shadow-lg" decoding="async" width="682" height="1024" />
+              <picture>
+                <source srcSet="/images/window-secondary.webp" type="image/webp" />
+                <img
+                  src="/images/window-secondary.jpg"
+                  alt="Before and after professional window cleaning"
+                  loading="lazy"
+                  className="rounded-2xl shadow-lg" decoding="async" width="682" height="1024" />
+              </picture>
 
             </div>
           </div>

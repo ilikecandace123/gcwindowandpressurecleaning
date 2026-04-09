@@ -17,7 +17,7 @@ export default function SolarPanelCleaning() {
   const benefits = [
     {
       title: "Boost Efficiency by 30%",
-      description: "Clean panels can produce up to 30% more energy than dirty panels, directly impacting your electricity savings and ROI."
+      description: "Clean panels can produce up to 30% more energy than dirty panels (Source: Clean Energy Council), directly impacting your electricity savings and ROI."
     },
     {
       title: "Protect Your Investment",
@@ -48,7 +48,7 @@ export default function SolarPanelCleaning() {
     },
     {
       question: "Will dirty solar panels really affect my energy production?",
-      answer: "Yes, significantly. Studies show dirty panels can lose 15-30% of their efficiency. With the average home solar system, this could mean hundreds of dollars in lost savings annually."
+      answer: "Yes, significantly. Studies show dirty panels can lose 15-30% of their efficiency (Source: Solar Energy International). With the average home solar system, this could mean hundreds of dollars in lost savings annually."
     },
     {
       question: "Is it safe to clean solar panels myself?",
@@ -91,19 +91,25 @@ export default function SolarPanelCleaning() {
       />
       <section className="relative bg-white text-gray-800 overflow-hidden">
         <div className="absolute inset-0 opacity-100 hidden md:block">
-          <img
-            src="/images/solar-panel-hero.jpg"
-            alt="Solar panels on residential roof being cleaned by professionals"
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1920" height="1920" />
-        </div>
-        
-        {/* Mobile: Image first, then text below */}
-        <div className="block md:hidden">
-          <div className="h-64">
+          <picture>
+            <source srcSet="/images/solar-panel-hero.webp" type="image/webp" />
             <img
               src="/images/solar-panel-hero.jpg"
               alt="Solar panels on residential roof being cleaned by professionals"
-              className="w-full h-full object-cover" loading="lazy" decoding="async" />
+              className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1920" height="1920" />
+          </picture>
+        </div>
+
+        {/* Mobile: Image first, then text below */}
+        <div className="block md:hidden">
+          <div className="h-64">
+            <picture>
+              <source srcSet="/images/solar-panel-hero.webp" type="image/webp" />
+              <img
+                src="/images/solar-panel-hero.jpg"
+                alt="Solar panels on residential roof being cleaned by professionals"
+                className="w-full h-full object-cover" loading="lazy" decoding="async" width="1920" height="1920" />
+            </picture>
           </div>
           <div className="bg-white px-4 py-8">
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
@@ -180,7 +186,7 @@ export default function SolarPanelCleaning() {
             </p>
             
             <p className="text-lg mb-8 text-gray-600 max-w-3xl leading-relaxed">
-              Boost your solar panel efficiency by up to 30% with our professional cleaning service. Our eco-friendly process protects your investment while maximising energy production and savings. Trusted by 2500+ happy customers across Brisbane, Gold Coast, and Sunshine Coast.
+              Boost your solar panel efficiency by up to 30% (Source: Clean Energy Council) with our professional cleaning service. Our eco-friendly process protects your investment while maximising energy production and savings. Trusted by 2500+ happy customers across Brisbane, Gold Coast, and Sunshine Coast.
             </p>
 
             <div className="flex items-center mb-8">
