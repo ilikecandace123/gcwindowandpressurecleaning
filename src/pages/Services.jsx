@@ -154,7 +154,7 @@ We are fully insured and all staff are police-checked for your peace of mind.
                 <div className="w-64 h-64 mb-8 flex items-center justify-center">
                       <picture>
                         <source srcSet={service.imageUrl.replace('.jpg', '.webp')} type="image/webp" />
-                        <img src={service.imageUrl} alt={service.title} loading="lazy" className="max-w-full max-h-full rounded-2xl object-contain group-hover:scale-105 transition-transform" decoding="async" width="384" height="256" />
+                        <img src={service.imageUrl} alt={service.title} loading="lazy" className="w-full h-full rounded-2xl object-cover group-hover:scale-105 transition-transform" decoding="async" width="384" height="256" />
                       </picture>
                     </div> :
 
