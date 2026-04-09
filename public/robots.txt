@@ -18,7 +18,10 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap-index.xml
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap.xml
 Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap-static.xml
 Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap-residential.xml
 Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap-commercial.xml

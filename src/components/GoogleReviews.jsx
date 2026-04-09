@@ -307,16 +307,17 @@ export default function GoogleReviews() {
           {total > itemsPerView && (
             <div className="flex justify-center gap-2 mt-8">
               {allReviews.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => goTo(i)}
-                  aria-label={`Go to review ${i + 1}`}
-                  className={`h-2 rounded-full transition-all ${
-                    i === activeDot
-                      ? "w-8 bg-blue-600"
-                      : "w-2 bg-gray-300 hover:bg-gray-400"
-                  }`}
-                />
+                <div key={i} className="flex items-center justify-center min-h-[44px] min-w-[44px]">
+                  <button
+                    onClick={() => goTo(i)}
+                    aria-label={`Go to review ${i + 1}`}
+                    className={`h-2 rounded-full transition-all ${
+                      i === activeDot
+                        ? "w-8 bg-blue-600"
+                        : "w-2 bg-gray-300 hover:bg-gray-400"
+                    }`}
+                  />
+                </div>
               ))}
             </div>
           )}

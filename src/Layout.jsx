@@ -46,7 +46,7 @@ export default function Layout({ children, currentPageName }) {
             <Link to="/" className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 min-w-0">
               <picture>
                 <source srcSet="/images/logo.avif" type="image/avif" />
-                <img src="/images/logo.png" alt="Gold Coast Window and Pressure Cleaning" className="h-10 sm:h-12 object-contain flex-shrink-0" loading="eager" decoding="async" fetchPriority="high" />
+                <img src="/images/logo.png" alt="Gold Coast Window and Pressure Cleaning logo" width="48" height="48" className="h-10 sm:h-12 object-contain flex-shrink-0" loading="eager" decoding="async" fetchPriority="high" />
               </picture>
               <div className="hidden xl:block min-w-0">
                 <span className="text-base font-bold text-gray-900 leading-tight whitespace-nowrap">Gold Coast Window and Pressure Cleaning</span>
@@ -148,7 +148,7 @@ export default function Layout({ children, currentPageName }) {
                 <span className="hidden sm:inline">Get Free Quote</span>
                 <span className="sm:hidden">Quote</span>
               </a>
-              <a href="tel:0756512386" className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors flex items-center">
+              <a href="tel:0756512386" aria-label="Call (07) 5651 2386" className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors flex items-center">
                 <Phone className="w-4 h-4 sm:mr-1.5" />
                 <span className="hidden sm:inline">(07) 5651 2386</span>
               </a>
@@ -248,15 +248,15 @@ export default function Layout({ children, currentPageName }) {
               <div className="flex items-center space-x-3 mb-4">
                  <picture>
                    <source srcSet="/images/logo.avif" type="image/avif" />
-                   <img src="/images/logo.png" alt="Company Logo" className="h-12 w-12 object-contain bg-white rounded-lg p-1" loading="lazy" decoding="async" />
+                   <img src="/images/logo.png" alt="Gold Coast Window and Pressure Cleaning logo" width="48" height="48" className="h-12 w-12 object-contain bg-white rounded-lg p-1" loading="lazy" decoding="async" />
                  </picture>
                 <div>
                   <h3 className="text-lg font-bold leading-tight">Gold Coast Window and Pressure Cleaning</h3>
                   {/* 'Professionals' is spelled the same in US and Australian English */}
-                  <p className="text-gray-400 text-xs">Your Trusted Local Cleaning Professionals</p>
+                  <p className="text-gray-300 text-xs">Your Trusted Local Cleaning Professionals</p>
                 </div>
               </div>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-300 text-sm">
                 {/* 'Premier', 'service', 'insured', 'police-checked' are spelled the same in US and Australian English, or are common variations. */}
                 Gold Coast's premier exterior cleaning service. Fully insured and police-checked staff 
                 for your complete peace of mind.
@@ -268,13 +268,13 @@ export default function Layout({ children, currentPageName }) {
                 {/* 'Services' is spelled the same in US and Australian English */}
                 <h4 className="font-semibold mb-4">Our Services</h4>
                 <div className="flex gap-16">
-                  <div className="space-y-2 text-sm text-gray-400">
+                  <div className="space-y-2 text-sm text-gray-300">
                     <Link to={"/roof-cleaning"} className="block hover:text-white transition-colors">Roof Cleaning</Link>
                     <Link to={"/window-cleaning"} className="block hover:text-white transition-colors">Window Cleaning</Link>
                     <Link to={"/house-softwash"} className="block hover:text-white transition-colors">House &amp; Building Softwash</Link>
                     <Link to={"/pressure-cleaning"} className="block hover:text-white transition-colors">Pressure Cleaning</Link>
                   </div>
-                  <div className="space-y-2 text-sm text-gray-400">
+                  <div className="space-y-2 text-sm text-gray-300">
                     <Link to={"/gutter-cleaning"} className="block hover:text-white transition-colors">Gutter Cleaning</Link>
                     <Link to={"/solar-panel-cleaning"} className="block hover:text-white transition-colors">Solar Panel Cleaning</Link>
                     <Link to={"/bird-proofing"} className="block hover:text-white transition-colors">Solar Panel Bird Proofing</Link>
@@ -282,10 +282,10 @@ export default function Layout({ children, currentPageName }) {
                 </div>
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-4">Contact Us</h4>
-              <div className="space-y-2 text-sm text-gray-400">
+              <div className="space-y-2 text-sm text-gray-300">
                 <div className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
                   (07) 5651 2386
@@ -313,7 +313,7 @@ export default function Layout({ children, currentPageName }) {
                 <Link to="/service-areas" className="block hover:text-blue-400 transition-colors">
                   <h4 className="font-semibold mb-4">Service Areas — View All Suburbs</h4>
                 </Link>
-                <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-400">
+                <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-300">
                   {["Burleigh Heads", "Surfers Paradise", "Broadbeach", "Southport", "Robina",
                     "Palm Beach", "Coomera", "Nerang", "Helensvale", "Currumbin",
                     "Coolangatta", "Hope Island", "Mermaid Beach", "Tweed Heads", "Kingscliff"].map(suburb => {
@@ -342,10 +342,10 @@ export default function Layout({ children, currentPageName }) {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8">
-            <div className="text-center text-gray-400 text-sm mb-2">
+            <div className="text-center text-gray-300 text-sm mb-2">
               <p>© {new Date().getFullYear()} Gold Coast Window and Pressure Cleaning.</p>
             </div>
-            <p className="text-sm text-gray-500 text-center mt-1">Last updated: April 2026</p>
+            <p className="text-sm text-gray-400 text-center mt-1">Last updated: April 2026</p>
           </div>
         </div>
       </footer>
