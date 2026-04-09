@@ -48,10 +48,10 @@ const FALLBACK_REVIEWS = [
 const TRANSITION_MS = 700;
 
 export default function GoogleReviews() {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState(FALLBACK_REVIEWS);
   const [rating, setRating] = useState(5.0);
-  const [totalRatings, setTotalRatings] = useState(2500);
-  const [loading, setLoading] = useState(true);
+  const [totalRatings, setTotalRatings] = useState(62);
+  const [loading, setLoading] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
@@ -61,11 +61,8 @@ export default function GoogleReviews() {
     let cancelled = false;
 
     async function fetchReviews() {
-      if (!API_KEY) {
-        setReviews(FALLBACK_REVIEWS);
-        setLoading(false);
-        return;
-      }
+      // No API key — keep showing fallback reviews (already set as initial state)
+      if (!API_KEY) return;
 
       try {
         const res = await fetch(
@@ -91,9 +88,7 @@ export default function GoogleReviews() {
         if (data.userRatingCount) setTotalRatings(data.userRatingCount);
       } catch (err) {
         console.warn("GoogleReviews fetch failed:", err);
-        if (!cancelled) setReviews(FALLBACK_REVIEWS);
-      } finally {
-        if (!cancelled) setLoading(false);
+        // Keep fallback reviews (already showing)
       }
     }
 
@@ -338,9 +333,6 @@ export default function GoogleReviews() {
           </a>
         </div>
 
-        {loading && !reviews && (
-          <p className="text-center text-gray-400 text-sm mt-4">Loading reviews…</p>
-        )}
       </div>
     </section>
   );

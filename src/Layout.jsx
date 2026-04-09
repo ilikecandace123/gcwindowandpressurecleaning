@@ -345,9 +345,7 @@ export default function Layout({ children, currentPageName }) {
             <div className="text-center text-gray-400 text-sm mb-2">
               <p>© {new Date().getFullYear()} Gold Coast Window and Pressure Cleaning.</p>
             </div>
-            <div className="text-center text-gray-500 text-xs">
-              <p>Last updated: April 2026</p>
-            </div>
+            <p className="text-sm text-gray-500 text-center mt-1">Last updated: April 2026</p>
           </div>
         </div>
       </footer>

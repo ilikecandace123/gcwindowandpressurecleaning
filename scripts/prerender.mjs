@@ -24,6 +24,7 @@ async function loadSchemaBuilders() {
   return mod;
 }
 
+
 function escapeHtml(s) {
   return String(s)
     .replace(/&/g, "&amp;")
@@ -92,7 +93,7 @@ function writeRoute(routePath, html) {
 
 async function main() {
   const { SUBURBS, SERVICES, COMMERCIAL_SERVICES } = await loadData();
-  const { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } = await loadSchemaBuilders();
+  const { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema } = await loadSchemaBuilders();
   const indexHtml = fs.readFileSync(path.join(DIST, "index.html"), "utf8");
 
   const routes = [];
@@ -106,6 +107,8 @@ async function main() {
     canonical: `${SITE}/`,
     image: "/images/window.jpg",
     jsonLd: [
+      buildOrganizationSchema(),
+      buildWebSiteSchema(),
       buildLocalBusinessSchema(),
       buildBreadcrumbSchema([{ name: "Home", url: "/" }])
     ],

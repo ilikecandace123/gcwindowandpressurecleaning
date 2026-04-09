@@ -69,7 +69,8 @@ export function buildLocalBusinessSchema() {
       "ratingValue": "5.0",
       // Note: reviewCount is sourced dynamically from GoogleReviews.jsx (data.userRatingCount)
       // This hardcoded value serves as a fallback and should be updated periodically during content refreshes
-      "reviewCount": "2500"
+      // Last verified: 62 reviews on Google (2026-04-09)
+      "reviewCount": "62"
     },
     "sameAs": [
       "https://www.facebook.com/goldcoastwindowandpressurecleaning",
@@ -135,5 +136,44 @@ export function buildFAQSchema(faqs) {
       "name": f.question,
       "acceptedAnswer": { "@type": "Answer", "text": f.answer }
     }))
+  };
+}
+
+// Organization schema
+export function buildOrganizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    "name": BUSINESS_NAME,
+    "url": SITE_URL,
+    "logo": `${SITE_URL}/images/logo.avif`,
+    "image": `${SITE_URL}/images/window.jpg`,
+    "telephone": BUSINESS_PHONE,
+    "email": BUSINESS_EMAIL,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": BUSINESS_ADDRESS.streetAddress,
+      "addressLocality": BUSINESS_ADDRESS.addressLocality,
+      "addressRegion": BUSINESS_ADDRESS.addressRegion,
+      "postalCode": BUSINESS_ADDRESS.postalCode,
+      "addressCountry": BUSINESS_ADDRESS.addressCountry
+    },
+    "sameAs": [
+      "https://www.facebook.com/goldcoastwindowandpressurecleaning",
+      "https://g.page/goldcoastwindowcleaning"
+    ]
+  };
+}
+
+// WebSite schema
+export function buildWebSiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    "name": BUSINESS_NAME,
+    "url": SITE_URL,
+    "publisher": { "@id": `${SITE_URL}/#organization` }
   };
 }
