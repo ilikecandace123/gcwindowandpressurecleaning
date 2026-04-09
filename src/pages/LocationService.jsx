@@ -336,7 +336,7 @@ export default function LocationService() {
               alt={`${service.name} in ${suburb.name} - ${secondaryImage.alt}`}
               width={1024}
               height={682}
-              className="w-full h-64 md:h-96 object-cover"
+              className="w-full"
               loading="lazy" decoding="async" />
           </div>
         </div>

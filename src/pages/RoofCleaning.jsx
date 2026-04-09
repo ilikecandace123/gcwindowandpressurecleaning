@@ -35,7 +35,7 @@ export default function RoofCleaning() {
     },
     {
       title: "Protects All Roof Types",
-      description: "Whether you have terracotta tile, concrete tile, Colorbond metal, flat membrane, or asphalt shingle — we have a specific technique for each. No one-size-fits-all approach that risks damage."
+      description: "Whether you have terracotta tile, concrete tile, Colorbond metal, or flat membrane — we have a specific technique for each. No one-size-fits-all approach that risks damage."
     }
   ];
 
@@ -395,8 +395,7 @@ export default function RoofCleaning() {
                 {[
                   ["Concrete / Terracotta Tile", "Soft wash + low-pressure rinse", "Every 2–3 years", "Moss, lichen, paint fade, mortar integrity"],
                   ["Metal (Colorbond, Zincalume)", "Low-pressure soft wash", "Every 2–3 years", "Salt corrosion, rust stains, sealant degradation"],
-                  ["Flat Membrane / TPO", "Gentle hand wash + soft brush", "Annually", "UV degradation, debris blockage, ponding water"],
-                  ["Asphalt Shingle", "Soft wash only — no pressure", "Every 3–5 years", "Granule loss under pressure, algae streaking"]
+                  ["Flat Membrane / TPO", "Gentle hand wash + soft brush", "Annually", "UV degradation, debris blockage, ponding water"]
                 ].map(([type, method, freq, concerns], i) => (
                   <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                     <td className="p-4 font-medium text-gray-900 border border-gray-200">{type}</td>
