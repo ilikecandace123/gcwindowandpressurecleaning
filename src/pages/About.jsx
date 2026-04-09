@@ -94,7 +94,7 @@ export default function About() {
               <Star className="w-8 h-8 text-yellow-500 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">5-Star Reputation</h3>
-                <p className="text-gray-600">Rated 5.0 stars across 2,500+ Google reviews. We let our results and customer feedback speak for themselves.</p>
+                <p className="text-gray-600">Rated 5.0 stars across Google. We let our results and customer feedback speak for themselves.</p>
               </div>
             </div>
             <div className="flex gap-4">
