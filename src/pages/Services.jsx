@@ -151,10 +151,10 @@ We are fully insured and all staff are police-checked for your peace of mind.
 
                 <div className="p-8 flex flex-col flex-grow items-center text-center">
                   {service.imageUrl ?
-                <div className="w-64 h-64 mb-8 overflow-hidden rounded-2xl">
-                      <picture className="w-full h-full">
+                <div className="w-64 h-64 mb-8 flex items-center justify-center">
+                      <picture>
                         <source srcSet={service.imageUrl.replace('.jpg', '.webp')} type="image/webp" />
-                        <img src={service.imageUrl} alt={service.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform" decoding="async" width="256" height="256" />
+                        <img src={service.imageUrl} alt={service.title} loading="lazy" className="max-w-full max-h-full rounded-2xl object-contain group-hover:scale-105 transition-transform" decoding="async" width="256" height="256" />
                       </picture>
                     </div> :
 
