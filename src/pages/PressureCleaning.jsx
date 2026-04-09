@@ -77,11 +77,6 @@ export default function PressureCleaning() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Industrial-grade pressure cleaning for driveways, paths, patios, and concrete on the Gold Coast."
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } }))
     }
   ];
 
@@ -100,7 +95,7 @@ export default function PressureCleaning() {
           <img
             src="/images/pressure-hero.jpg"
             alt="Pressure cleaning removing oil stains and grime from a concrete driveway"
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
+            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1536" height="1024" />
         </div>
         
         {/* Mobile: Image first, then text below */}
@@ -145,7 +140,7 @@ export default function PressureCleaning() {
 
             <div className="flex flex-col gap-3">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
@@ -203,7 +198,7 @@ export default function PressureCleaning() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
@@ -262,7 +257,7 @@ export default function PressureCleaning() {
                 src="/images/pressure-secondary.jpg"
                 alt="Pressure cleaning service team demonstrating concrete surface restoration"
                 className="rounded-2xl shadow-lg"
-                loading="lazy" decoding="async" />
+                loading="lazy" decoding="async" width="1024" height="682" />
 
             </div>
           </div>

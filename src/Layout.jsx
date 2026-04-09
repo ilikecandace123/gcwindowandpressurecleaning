@@ -15,64 +15,11 @@ export default function Layout({ children, currentPageName }) {
     setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
     setCommercialDropdownOpen(false);
-    document.title = "Gold Coast Window and Pressure Cleaning";
   }, [location.pathname]);
 
-  useEffect(() => {
-    // Check if GTM script already exists to avoid duplication on hot reloads
-    if (!document.getElementById('gtm-script')) {
-      // Google Tag Manager script for <head>
-      const gtmScript = document.createElement('script');
-      gtmScript.id = 'gtm-script';
-      gtmScript.innerHTML = `
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-P4XCZCZZ');
-      `;
-      document.head.appendChild(gtmScript);
-
-      // Google Tag Manager (noscript) for <body>
-      const gtmNoScript = document.createElement('noscript');
-      gtmNoScript.id = 'gtm-noscript';
-      const gtmIframe = document.createElement('iframe');
-      gtmIframe.src = "https://www.googletagmanager.com/ns.html?id=GTM-P4XCZCZZ";
-      gtmIframe.height = "0";
-      gtmIframe.width = "0";
-      gtmIframe.style.display = "none";
-      gtmIframe.style.visibility = "hidden";
-      gtmNoScript.appendChild(gtmIframe);
-      document.body.prepend(gtmNoScript);
-    }
-  }, []); // Run only once on initial component mount
 
   return (
     <div className="min-h-screen bg-white">
-      <style>
-        {`
-          :root {
-            --primary-blue: #1e40af;
-            --secondary-blue: #3b82f6;
-            --accent-green: #10b981;
-            --light-blue: #eff6ff;
-            --dark-text: #1f2937;
-            --light-text: #6b7280;
-          }
-          
-          .hero-gradient {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-          }
-          
-          .text-gradient {
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-          }
-        `}
-      </style>
-
       {/* Trust Bar */}
       <div className="bg-blue-600 text-white text-xs sm:text-sm py-1.5 hidden sm:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center gap-6">
@@ -99,7 +46,7 @@ export default function Layout({ children, currentPageName }) {
             <Link to="/" className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 min-w-0">
               <img src="/images/logo.avif" alt="Gold Coast Window and Pressure Cleaning" className="h-10 sm:h-12 object-contain flex-shrink-0" loading="eager" decoding="async" fetchPriority="high" />
               <div className="hidden xl:block min-w-0">
-                <h1 className="text-base font-bold text-gray-900 leading-tight whitespace-nowrap">Gold Coast Window and Pressure Cleaning</h1>
+                <span className="text-base font-bold text-gray-900 leading-tight whitespace-nowrap">Gold Coast Window and Pressure Cleaning</span>
                 <p className="text-xs text-gray-500 whitespace-nowrap">Professional Exterior Cleaning Services</p>
               </div>
             </Link>
@@ -112,7 +59,7 @@ export default function Layout({ children, currentPageName }) {
                 onMouseEnter={() => setServicesDropdownOpen(true)}
                 onMouseLeave={() => setServicesDropdownOpen(false)}
               >
-                <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">
+                <button onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">
                   Residential
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -150,7 +97,7 @@ export default function Layout({ children, currentPageName }) {
                 onMouseEnter={() => setCommercialDropdownOpen(true)}
                 onMouseLeave={() => setCommercialDropdownOpen(false)}
               >
-                <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">
+                <button onClick={() => setCommercialDropdownOpen(!commercialDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">
                   Commercial & Strata
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${commercialDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -182,12 +129,15 @@ export default function Layout({ children, currentPageName }) {
                 )}
               </div>
 
+              <Link to="/about" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">About</Link>
+              <Link to="/contact" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Contact</Link>
+
             </nav>
 
             {/* CTA Buttons + Mobile Menu Toggle */}
             <div className="flex items-center gap-2 flex-shrink-0">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors"
@@ -203,6 +153,7 @@ export default function Layout({ children, currentPageName }) {
               {/* Mobile menu button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
                 className="lg:hidden ml-1 p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -260,6 +211,11 @@ export default function Layout({ children, currentPageName }) {
               <Link to="/commercial/bird-proofing" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Commercial Solar Bird Proofing
               </Link>
+
+              <div className="border-t border-gray-100 mt-2 pt-2">
+                <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">About Us</Link>
+                <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Contact</Link>
+              </div>
 
               <div className="border-t border-gray-100 mt-2 pt-2 flex items-center gap-4 px-3 py-2 text-xs text-gray-500">
                 <div className="flex items-center">

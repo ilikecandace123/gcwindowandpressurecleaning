@@ -89,7 +89,7 @@ export default function PatioCleaning() {
             <img
               src="/images/patio-unsplash.jpg"
               alt="Professional patio cleaning service"
-              className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
+              className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="2070" height="1376" />
           </div>
           <div className="bg-white px-4 py-8">
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
@@ -125,7 +125,7 @@ export default function PatioCleaning() {
 
             <div className="flex flex-col gap-3">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
@@ -149,7 +149,7 @@ export default function PatioCleaning() {
             <img
               src="/images/patio-unsplash.jpg"
               alt="Professional patio cleaning service"
-              className="w-full h-full object-cover" loading="lazy" decoding="async" />
+              className="w-full h-full object-cover" loading="lazy" decoding="async" width="2070" height="1376" />
           </div>
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
@@ -191,7 +191,7 @@ export default function PatioCleaning() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="https://tinyurl.com/jimscleaning"
+                  href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
@@ -219,7 +219,7 @@ export default function PatioCleaning() {
               <img
                 src="/images/patio-secondary-unsplash.jpg"
                 alt="Professional patio cleaning transformation"
-                className="rounded-2xl shadow-lg" loading="lazy" decoding="async" />
+                className="rounded-2xl shadow-lg" loading="lazy" decoding="async" width="1000" height="1500" />
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">

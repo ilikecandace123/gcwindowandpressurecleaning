@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Shield, Users, Star, Phone, CheckCircle, ChevronDown, ChevronUp, MapPin, ArrowRight } from 'lucide-react';
 import { getSuburbBySlug, getServiceBySlug, SUBURBS, SERVICES } from "../data/locations";
 import Benefits from "../components/Benefits";
@@ -7,7 +7,8 @@ import FAQ from "../components/FAQ";
 import Testimonials from "../components/Testimonials";
 import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
+import GoogleReviews from "../components/GoogleReviews";
+import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
 
 const SERVICE_SECONDARY_IMAGES = {
   "window-cleaning": {
@@ -158,67 +159,8 @@ export default function LocationService() {
     return basePoints;
   };
 
-  // Service-specific reviews — 3 per service, reviewer suburb always matches the page
-  const getLocalReviews = () => {
-    // Pool of Australian first names + last initials to pick from per service
-    // We use a simple hash of the suburb slug to pick consistent but varied names
-    const namePool = [
-      "John M.", "Peter K.", "Sarah L.", "Mark T.", "Jenny R.",
-      "David W.", "Karen B.", "Steve H.", "Lisa P.", "Greg C.",
-      "Michelle D.", "Andrew S.", "Tracey N.", "Shane F.", "Donna G.",
-      "Chris A.", "Julie W.", "Matt R.", "Bec H.", "Tony J.",
-      "Wendy S.", "Paul M.", "Sandra K.", "Brett L.", "Angela T.",
-      "Darren P.", "Joanne B.", "Simon C.", "Megan F.", "Craig D."
-    ];
 
-    // Simple hash to get consistent name picks per suburb
-    const hash = suburb.slug.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-
-    const getName = (offset) => namePool[(hash + offset) % namePool.length];
-
-    const reviewsByService = {
-      "window-cleaning": [
-        { name: getName(0), text: "Really happy with how the windows turned out. They got into all the corners and tracks that I can never reach. House feels so much brighter now." },
-        { name: getName(7), text: "Had them do inside and out plus the flyscreen clean. Honestly didn't realise how dirty the screens were until I saw the difference. Great job." },
-        { name: getName(14), text: "Been using these guys for about a year now. Always on time, always leave everything spotless. No complaints at all." }
-      ],
-      "roof-cleaning": [
-        { name: getName(1), text: "Roof was looking pretty rough with all the lichen and dark streaks. Looks brand new now. Neighbours asked if we'd had it replaced!" },
-        { name: getName(8), text: "They were careful with the gardens and cleaned up after themselves. Roof hasn't looked this good since we moved in." },
-        { name: getName(15), text: "Got a quote same day and they were out within the week. Very thorough job, even showed me before and after photos." }
-      ],
-      "house-softwash": [
-        { name: getName(2), text: "The mould on the rendered walls was driving me nuts. Soft wash took it all off without any damage. Should have done it ages ago." },
-        { name: getName(9), text: "Whole house looks like it's just been repainted. The eaves and fascia came up amazing. Really professional crew." },
-        { name: getName(16), text: "Was worried about the pressure damaging the paint but they explained the soft wash process and it was completely fine. House looks fantastic." }
-      ],
-      "pressure-cleaning": [
-        { name: getName(3), text: "Driveway was covered in tyre marks and oil stains. They got about 90% of it out which is way better than I expected. Looks great." },
-        { name: getName(10), text: "Had the paths, driveway and pool area done. Massive difference. Didn't realise how much grime had built up over the years." },
-        { name: getName(17), text: "Quick job, fair price, and the concrete looks like it was just poured. Will definitely book again next year." }
-      ],
-      "gutter-cleaning": [
-        { name: getName(4), text: "Gutters were completely blocked and overflowing in the last storm. All cleared out now and they checked the downpipes too. Good as gold." },
-        { name: getName(11), text: "They sent through photos of everything they found in the gutters. Was good to see the before and after. Very thorough." },
-        { name: getName(18), text: "I hate getting on the roof so happy to have someone reliable to do this. They were in and out in no time. Recommended to my mate already." }
-      ],
-      "solar-panel-cleaning": [
-        { name: getName(5), text: "Panels were filthy and I'd noticed the output dropping. Got them cleaned and the generation went straight back up. Pays for itself really." },
-        { name: getName(12), text: "Didn't want to get up on the roof myself and risk voiding the warranty. These guys knew exactly what they were doing. Panels look perfect." },
-        { name: getName(19), text: "Quick and easy. They used proper gear that won't scratch the panels. Energy output improved noticeably within a couple of days." }
-      ],
-      "bird-proofing": [
-        { name: getName(6), text: "Pigeons had been nesting under our solar panels for over a year and the mess was unreal. They cleaned everything up and fitted mesh all the way around the array. No more birds, no more droppings." },
-        { name: getName(14), text: "Mynas were driving us nuts getting under the panels. The mesh job is super neat, you can barely see it, and it's been months without a single bird. Reasonable price too." },
-        { name: getName(21), text: "Solar warranty was my big concern and they used panel clips instead of drilling. The installation is tidy and the birds have completely moved on. Very happy with the whole job." }
-      ]
-    };
-
-    const reviews = reviewsByService[serviceSlug] || reviewsByService["window-cleaning"];
-    return reviews.map(r => ({ ...r, suburb: suburb.name }));
-  };
-
-  // Structured data: LocalBusiness + Service + FAQ + Breadcrumb
+  // Structured data: LocalBusiness + Service + Breadcrumb
   const localBusinessSchema = buildLocalBusinessSchema();
   const serviceSchema = buildServiceSchema({
     name: `${service.name} in ${suburb.name}`,
@@ -228,7 +170,6 @@ export default function LocationService() {
     areaName: suburb.name,
     url: `https://gcwindowandpressurecleaning.com.au/${serviceSlug}/${suburbSlug}`
   });
-  const faqSchemaData = buildFAQSchema(service.faqs);
   const breadcrumbData = buildBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: service.name, url: `/${service.parentPage}` },
@@ -242,7 +183,7 @@ export default function LocationService() {
         description={`Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}). Fully insured, police-checked staff. Serving ${suburb.name} and surrounding Gold Coast suburbs. Call (07) 5651 2386 for a free quote.`}
         canonical={`https://gcwindowandpressurecleaning.com.au/${serviceSlug}/${suburbSlug}`}
         image={heroImage.src}
-        jsonLd={[localBusinessSchema, serviceSchema, faqSchemaData, breadcrumbData]}
+        jsonLd={[localBusinessSchema, serviceSchema, breadcrumbData]}
       />
 
       {/* Hero Section */}
@@ -251,6 +192,8 @@ export default function LocationService() {
           <img
             src={heroImage.src}
             alt={`Professional ${service.name} in ${suburb.name}`}
+            width={1024}
+            height={682}
             className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
         </div>
 
@@ -260,6 +203,8 @@ export default function LocationService() {
             <img
               src={heroImage.src}
               alt={`Professional ${service.name} in ${suburb.name}`}
+              width={1024}
+              height={682}
               className="w-full h-full object-cover" loading="lazy" decoding="async" />
           </div>
           <div className="bg-white px-4 py-8">
@@ -295,7 +240,7 @@ export default function LocationService() {
 
             <div className="flex flex-col gap-2">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-semibold text-sm text-center transition-all"
@@ -349,7 +294,7 @@ export default function LocationService() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
@@ -390,6 +335,8 @@ export default function LocationService() {
             <img
               src={secondaryImage.src}
               alt={`${service.name} in ${suburb.name} - ${secondaryImage.alt}`}
+              width={1024}
+              height={682}
               className="w-full h-64 md:h-96 object-cover"
               loading="lazy" decoding="async" />
           </div>
@@ -441,35 +388,8 @@ export default function LocationService() {
       {/* Benefits */}
       <Benefits benefits={service.benefits} title={`Benefits of Professional ${service.name}`} />
 
-      {/* Local Reviews */}
-      <section className="py-16 bg-blue-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">What {suburb.name} Residents Say</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {getLocalReviews().map((review, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex flex-col">
-                <div className="flex items-center mb-4">
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                </div>
-                <p className="text-gray-700 italic mb-4 flex-grow">"{review.text}"</p>
-                <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
-                  <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center">
-                    <span className="text-blue-600 font-semibold text-sm">{review.name.charAt(0)}</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm">{review.name}</p>
-                    <p className="text-gray-500 text-xs">{review.suburb}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Google Reviews */}
+      <GoogleReviews />
 
       {/* FAQ */}
       <section className="py-16 bg-gray-50">
@@ -525,16 +445,16 @@ export default function LocationService() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {SERVICES.filter(s => s.slug !== serviceSlug).map((otherService, idx) => (
-              <a
+              <Link
                 key={idx}
-                href={`/${otherService.slug}/${suburbSlug}`}
+                to={`/${otherService.slug}/${suburbSlug}`}
                 className="group flex items-center justify-between p-4 bg-white rounded-lg hover:bg-blue-50 transition-colors border border-gray-100 hover:border-blue-200 shadow-sm"
               >
                 <span className="font-medium text-gray-900 group-hover:text-blue-700">
                   {otherService.name} in {suburb.name}
                 </span>
                 <ArrowRight className="w-4 h-4 text-blue-600 flex-shrink-0 ml-2" />
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -555,14 +475,14 @@ export default function LocationService() {
                 const nearbySuburbData = SUBURBS.find(s => s.name === nearbySuburbName);
                 if (!nearbySuburbData) return null;
                 return (
-                  <a
+                  <Link
                     key={idx}
-                    href={`/${serviceSlug}/${nearbySuburbData.slug}`}
+                    to={`/${serviceSlug}/${nearbySuburbData.slug}`}
                     className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors border border-gray-100 hover:border-blue-200"
                   >
                     <span className="font-medium text-gray-900">{nearbySuburbName}</span>
                     <ArrowRight className="w-4 h-4 text-blue-600" />
-                  </a>
+                  </Link>
                 );
               })}
             </div>
@@ -584,7 +504,7 @@ export default function LocationService() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://tinyurl.com/jimscleaning"
+              href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all"

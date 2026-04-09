@@ -75,11 +75,6 @@ export default function WindowCleaning() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Streak-free interior and exterior window cleaning up to 4 stories on the Gold Coast. Includes tracks and flyscreens."
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } }))
     }
   ];
 
@@ -97,7 +92,7 @@ export default function WindowCleaning() {
           <img
             src="/images/window.jpg"
             alt="Window cleaner using professional equipment on a Gold Coast high-rise"
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
+            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="768" height="1024" />
         </div>
         
         {/* Mobile: Image first, then text below */}
@@ -142,7 +137,7 @@ export default function WindowCleaning() {
 
             <div className="flex flex-col gap-3">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
@@ -200,7 +195,7 @@ export default function WindowCleaning() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
@@ -259,7 +254,7 @@ export default function WindowCleaning() {
                 src="/images/window-secondary.jpg"
                 alt="Before and after professional window cleaning"
                 loading="lazy"
-                className="rounded-2xl shadow-lg" decoding="async" />
+                className="rounded-2xl shadow-lg" decoding="async" width="682" height="1024" />
 
             </div>
           </div>

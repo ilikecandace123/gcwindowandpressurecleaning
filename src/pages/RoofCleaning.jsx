@@ -68,11 +68,6 @@ export default function RoofCleaning() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Professional roof cleaning on the Gold Coast. Manufacturer-recommended process removes moss, lichen, and algae while protecting your roof."
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } }))
     }
   ];
 
@@ -89,7 +84,7 @@ export default function RoofCleaning() {
           <img
             src="/images/roof-hero.jpg"
             alt="Roof cleaning removing moss and algae from tiles on a Gold Coast home"
-            className="w-full h-64 md:h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
+            className="w-full h-64 md:h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1024" height="682" />
         </div>
         
         {/* Mobile: Image first, then text below */}
@@ -134,7 +129,7 @@ export default function RoofCleaning() {
 
             <div className="flex flex-col gap-3">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
@@ -192,7 +187,7 @@ export default function RoofCleaning() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
@@ -220,7 +215,7 @@ export default function RoofCleaning() {
                 src="/images/roof-secondary.jpg"
                 alt="Before and after roof cleaning showing lichen removal on concrete tiles"
                 loading="lazy"
-                className="rounded-2xl shadow-lg" decoding="async" />
+                className="rounded-2xl shadow-lg" decoding="async" width="1024" height="682" />
 
             </div>
             <div>

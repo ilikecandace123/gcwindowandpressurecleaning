@@ -23,10 +23,10 @@ export default function Hero({
     <section className="relative hero-gradient text-white overflow-hidden">
       <div className={topOverlayClass}></div>
       <div className={imageContainerClassName}>
-        <img 
-          src={backgroundImage || "/images/hero-bg-unsplash.jpg"} 
-          alt="Professional cleaning service" 
-          className={imageClassName} loading="eager" decoding="async" fetchPriority="high" />
+        <img
+          src={backgroundImage || "/images/hero-bg-unsplash.jpg"}
+          alt="Professional cleaning service"
+          className={imageClassName} loading="eager" decoding="async" fetchPriority="high" width="2070" height="1380" />
       </div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
@@ -71,7 +71,7 @@ export default function Hero({
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="https://tinyurl.com/jimscleaning"
+              href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"

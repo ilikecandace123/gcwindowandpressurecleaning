@@ -90,7 +90,7 @@ export default function Services() {
           <img
             src="/images/services-banner.jpg"
             alt="Professional exterior cleaning team working on a Gold Coast residential property"
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
+            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1024" height="768" />
 
         </div>
 
@@ -209,7 +209,7 @@ We are fully insured and all staff are police-checked for your peace of mind.
               <span>Call (07) 5651 2386</span>
             </a>
             <a
-              href="https://tinyurl.com/jimscleaning"
+              href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">

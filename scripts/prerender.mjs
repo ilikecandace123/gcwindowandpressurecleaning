@@ -64,6 +64,8 @@ function injectMeta(html, metaBlock) {
   out = out.replace(/<link\s+rel=["']canonical["'][^>]*>/gi, "");
   out = out.replace(/<meta\s+property=["']og:[^"']+["'][^>]*>/gi, "");
   out = out.replace(/<meta\s+name=["']twitter:[^"']+["'][^>]*>/gi, "");
+  // Remove hardcoded JSON-LD blocks from template
+  out = out.replace(/<script\s+type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi, "");
   // Inject new block before </head>
   out = out.replace("</head>", `    ${metaBlock}\n  </head>`);
   return out;
@@ -106,6 +108,18 @@ async function main() {
     description:
       "We service all Gold Coast suburbs and Northern NSW. Find professional window, pressure, roof cleaning and more in your suburb. Call (07) 5651 2386.",
     canonical: `${SITE}/service-areas`,
+  });
+  routes.push({
+    path: "/about",
+    title: "About Us | Gold Coast Window and Pressure Cleaning",
+    description: "Gold Coast's trusted exterior cleaning company. Locally owned, fully insured with police-checked staff. Learn about our team and commitment to quality.",
+    canonical: `${SITE}/about`,
+  });
+  routes.push({
+    path: "/contact",
+    title: "Contact Us | Gold Coast Window and Pressure Cleaning",
+    description: "Get in touch with Gold Coast Window and Pressure Cleaning. Call (07) 5651 2386 for a free quote. Serving all Gold Coast suburbs and Northern NSW.",
+    canonical: `${SITE}/contact`,
   });
 
   // Main service pages (kebab-case)
@@ -168,7 +182,7 @@ async function main() {
   }
   console.log(`Done. Wrote ${routes.length} per-route HTML files.`);
 
-  // Generate sitemap.xml
+  // Generate sitemaps with index
   const today = new Date().toISOString().slice(0, 10);
   const priorityFor = (p) => {
     if (p === "/") return "1.0";
@@ -177,15 +191,50 @@ async function main() {
     return "0.7";
   };
   const changefreqFor = (p) => (p === "/" ? "weekly" : "monthly");
-  const urlEntries = routes
-    .map((r) => {
-      const loc = absolute(r.path === "/" ? "/" : r.path);
-      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${changefreqFor(r.path)}</changefreq>\n    <priority>${priorityFor(r.path)}</priority>\n  </url>`;
-    })
-    .join("\n");
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries}\n</urlset>\n`;
-  fs.writeFileSync(path.join(DIST, "sitemap.xml"), sitemap, "utf8");
-  console.log(`Wrote sitemap.xml with ${routes.length} URLs.`);
+
+  // Categorize routes
+  const staticRoutes = routes.filter(
+    (r) => r.path === "/" || (r.path.split("/").filter(Boolean).length === 1 && !r.path.startsWith("/commercial/"))
+  );
+  const residentialRoutes = routes.filter(
+    (r) => r.path.split("/").filter(Boolean).length === 2 && !r.path.startsWith("/commercial/")
+  );
+  const commercialRoutes = routes.filter((r) => r.path.startsWith("/commercial/"));
+
+  function generateSitemapXml(routeList) {
+    const urlEntries = routeList
+      .map((r) => {
+        const loc = absolute(r.path === "/" ? "/" : r.path);
+        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${changefreqFor(r.path)}</changefreq>\n    <priority>${priorityFor(r.path)}</priority>\n  </url>`;
+      })
+      .join("\n");
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries}\n</urlset>\n`;
+  }
+
+  // Write individual sitemaps
+  fs.writeFileSync(path.join(DIST, "sitemap-static.xml"), generateSitemapXml(staticRoutes), "utf8");
+  fs.writeFileSync(path.join(DIST, "sitemap-residential.xml"), generateSitemapXml(residentialRoutes), "utf8");
+  fs.writeFileSync(path.join(DIST, "sitemap-commercial.xml"), generateSitemapXml(commercialRoutes), "utf8");
+
+  // Write sitemap index
+  const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${SITE}/sitemap-static.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${SITE}/sitemap-residential.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${SITE}/sitemap-commercial.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+</sitemapindex>
+`;
+  fs.writeFileSync(path.join(DIST, "sitemap.xml"), sitemapIndex, "utf8");
+  console.log(`Wrote 4 sitemaps: sitemap.xml (index), sitemap-static.xml (${staticRoutes.length} URLs), sitemap-residential.xml (${residentialRoutes.length} URLs), sitemap-commercial.xml (${commercialRoutes.length} URLs).`);
 }
 
 main().catch((err) => {

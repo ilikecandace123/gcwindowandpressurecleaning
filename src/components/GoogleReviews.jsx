@@ -288,7 +288,7 @@ export default function GoogleReviews() {
                                 src={photo}
                                 alt={name}
                                 className="w-10 h-10 rounded-full mr-3"
-                                referrerPolicy="no-referrer" loading="eager" decoding="async" fetchPriority="high" />
+                                referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                             ) : (
                               <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 font-semibold flex items-center justify-center mr-3">
                                 {name.charAt(0)}

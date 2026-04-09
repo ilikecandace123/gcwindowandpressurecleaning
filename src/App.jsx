@@ -18,19 +18,9 @@ const LocationService = lazy(() => import('./pages/LocationService'));
 const CommercialService = lazy(() => import('./pages/CommercialService'));
 const CommercialLocationService = lazy(() => import('./pages/CommercialLocationService'));
 const PatioCleaning = lazy(() => import('./pages/PatioCleaning'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-
-const lazyPages = {
-  RoofCleaning,
-  WindowCleaning,
-  HouseSoftWash,
-  PressureCleaning,
-  GutterCleaning,
-  SolarPanelCleaning,
-  BirdProofing,
-  ServiceAreas,
-  PatioCleaning,
-};
 
 const RouteFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -49,20 +39,7 @@ function App() {
           {/* Homepage — eager-loaded for fast LCP */}
           <Route path="/" element={<Layout currentPageName="Services"><Services /></Layout>} />
 
-          {/* Main service pages (PascalCase, legacy) */}
-          {Object.entries(lazyPages).map(([path, Page]) => (
-            <Route
-              key={path}
-              path={`/${path}`}
-              element={
-                <Layout currentPageName={path}>
-                  <Page />
-                </Layout>
-              }
-            />
-          ))}
-
-          {/* Kebab-case aliases for URL normalization */}
+          {/* Kebab-case routes for URL normalization */}
           <Route path="/services" element={<Layout currentPageName="Services"><Services /></Layout>} />
           <Route path="/service-areas" element={<Layout currentPageName="ServiceAreas"><ServiceAreas /></Layout>} />
           <Route path="/window-cleaning" element={<Layout currentPageName="WindowCleaning"><WindowCleaning /></Layout>} />
@@ -73,6 +50,8 @@ function App() {
           <Route path="/solar-panel-cleaning" element={<Layout currentPageName="SolarPanelCleaning"><SolarPanelCleaning /></Layout>} />
           <Route path="/bird-proofing" element={<Layout currentPageName="BirdProofing"><BirdProofing /></Layout>} />
           <Route path="/patio-cleaning" element={<Layout currentPageName="PatioCleaning"><PatioCleaning /></Layout>} />
+          <Route path="/about" element={<Layout currentPageName="About"><About /></Layout>} />
+          <Route path="/contact" element={<Layout currentPageName="Contact"><Contact /></Layout>} />
 
           {/* Commercial service + suburb pages (must come BEFORE the generic /:service/:suburb route) */}
           <Route

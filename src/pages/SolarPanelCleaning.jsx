@@ -78,11 +78,6 @@ export default function SolarPanelCleaning() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Professional solar panel cleaning on the Gold Coast. Boost energy output by up to 30% with safe, eco-friendly cleaning."
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } }))
     }
   ];
 
@@ -99,7 +94,7 @@ export default function SolarPanelCleaning() {
           <img
             src="/images/solar-panel-hero.jpg"
             alt="Solar panels on residential roof being cleaned by professionals"
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
+            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1920" height="1920" />
         </div>
         
         {/* Mobile: Image first, then text below */}
@@ -144,7 +139,7 @@ export default function SolarPanelCleaning() {
 
             <div className="flex flex-col gap-3">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
@@ -202,7 +197,7 @@ export default function SolarPanelCleaning() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
@@ -257,7 +252,7 @@ export default function SolarPanelCleaning() {
                 src="/images/solar-panel-dirty-vs-clean.webp"
                 alt="Professional solar panel cleaning team on roof"
                 className="rounded-2xl shadow-lg"
-                loading="lazy" decoding="async" />
+                loading="lazy" decoding="async" width="1936" height="1936" />
             </div>
           </div>
         </div>

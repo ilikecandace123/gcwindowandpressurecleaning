@@ -5,7 +5,7 @@ import { getCommercialServiceBySlug } from "../data/locations";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 
 // Commercial hero and secondary image mapping — reuses residential image library
@@ -60,7 +60,6 @@ export default function CommercialService() {
       serviceType: `Commercial ${service.name}`,
       url: `https://gcwindowandpressurecleaning.com.au/commercial/${service.slug}`
     }),
-    buildFAQSchema(service.faqs),
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "Commercial & Strata", url: "/commercial" },
@@ -121,7 +120,7 @@ export default function CommercialService() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <a href="https://tinyurl.com/jimscleaning" target="_blank" rel="noopener noreferrer"
+                <a href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b" target="_blank" rel="noopener noreferrer"
                   className="bg-green-500 hover:bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg text-center transition-all transform hover:scale-105 shadow-lg">
                   Request Commercial Quote
                 </a>
@@ -139,7 +138,7 @@ export default function CommercialService() {
                 <img
                   src={heroImage}
                   alt={service.name}
-                  className="w-full h-auto block" loading="eager" decoding="async" fetchPriority="high" />
+                  className="w-full h-auto block" loading="eager" decoding="async" fetchPriority="high" width="1024" height="768" />
               </div>
             </div>
           </div>
@@ -201,7 +200,7 @@ export default function CommercialService() {
               </ul>
             </div>
             <div>
-              <img src={secondaryImage} alt={service.name} className="rounded-2xl shadow-lg w-full h-auto max-h-[28rem] object-contain bg-gray-50" loading="lazy" decoding="async" />
+              <img src={secondaryImage} alt={service.name} className="rounded-2xl shadow-lg w-full h-auto max-h-[28rem] object-contain bg-gray-50" loading="lazy" decoding="async" width="1024" height="768" />
             </div>
           </div>
         </div>
@@ -270,7 +269,7 @@ export default function CommercialService() {
             Talk to the Gold Coast's commercial and strata cleaning specialists.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://tinyurl.com/jimscleaning" target="_blank" rel="noopener noreferrer"
+            <a href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b" target="_blank" rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
               Request Quote
             </a>

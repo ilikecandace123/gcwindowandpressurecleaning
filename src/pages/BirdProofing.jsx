@@ -84,11 +84,6 @@ export default function BirdProofing() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Professional solar panel bird proofing mesh on the Gold Coast. Warranty-safe installation that stops pigeons and mynas nesting under your panels. Fully insured."
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } }))
     }
   ];
 
@@ -151,7 +146,7 @@ export default function BirdProofing() {
 
             <div className="flex flex-col gap-3">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
@@ -209,7 +204,7 @@ export default function BirdProofing() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
@@ -269,7 +264,7 @@ export default function BirdProofing() {
                 src={SECONDARY_IMAGE}
                 alt="Pigeon nesting beneath rooftop solar panels showing why bird proofing is needed"
                 className="rounded-2xl shadow-lg"
-                loading="lazy" decoding="async" />
+                loading="lazy" decoding="async" width="980" height="400" />
             </div>
           </div>
         </div>

@@ -71,11 +71,6 @@ export default function GutterCleaning() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Complete gutter cleaning and maintenance on the Gold Coast. Prevent water damage and keep your property storm-ready."
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } }))
     }
   ];
 
@@ -93,7 +88,7 @@ export default function GutterCleaning() {
           <img
             src="/images/gutter-screenshot.jpg"
             alt="Professional gutter cleaning removing leaves and debris from roof gutters"
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
+            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1024" height="520" />
 
         </div>
         
@@ -139,7 +134,7 @@ export default function GutterCleaning() {
 
             <div className="flex flex-col gap-3">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
@@ -197,7 +192,7 @@ export default function GutterCleaning() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
@@ -256,7 +251,7 @@ export default function GutterCleaning() {
                 src="/images/gutter-secondary.jpg"
                 alt="Clean residential gutters with proper drainage system installed"
                 className="rounded-2xl shadow-lg"
-                loading="lazy" decoding="async" />
+                loading="lazy" decoding="async" width="1024" height="682" />
 
             </div>
           </div>

@@ -75,11 +75,6 @@ export default function HouseSoftWash() {
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
       "description": "Gentle house softwash cleaning on the Gold Coast. Safely removes mould, dirt, and grime without damaging surfaces."
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } }))
     }
   ];
 
@@ -98,7 +93,7 @@ export default function HouseSoftWash() {
           <img
             src="/images/softwash-unsplash.jpg"
             alt="Softwash cleaning removing mould from house exterior on the Gold Coast"
-            className="w-full h-full object-contain" loading="eager" decoding="async" fetchPriority="high" />
+            className="w-full h-full object-contain" loading="eager" decoding="async" fetchPriority="high" width="1920" height="1280" />
         </div>
         
         {/* Mobile: Image first, then text below */}
@@ -143,7 +138,7 @@ export default function HouseSoftWash() {
 
             <div className="flex flex-col gap-3">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
@@ -201,7 +196,7 @@ export default function HouseSoftWash() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://tinyurl.com/jimscleaning"
+                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
@@ -229,7 +224,7 @@ export default function HouseSoftWash() {
                 src="/images/softwash-secondary.jpg"
                 alt="Softwash cleaning removing mould and dirt from rendered house walls on the Gold Coast"
                 loading="lazy"
-                className="rounded-2xl shadow-lg" decoding="async" />
+                className="rounded-2xl shadow-lg" decoding="async" width="1024" height="683" />
 
             </div>
             <div>

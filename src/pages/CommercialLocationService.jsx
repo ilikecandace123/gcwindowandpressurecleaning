@@ -5,7 +5,7 @@ import { getSuburbBySlug, getCommercialServiceBySlug, SUBURBS, COMMERCIAL_SERVIC
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
 
 const HERO_IMAGES = {
   "window-cleaning": "/images/commercial-window-hero.jpg",
@@ -87,7 +87,6 @@ export default function CommercialLocationService() {
     areaName: suburb.name,
     url: `https://gcwindowandpressurecleaning.com.au/commercial/${serviceSlug}/${suburbSlug}`
   });
-  const faqSchemaData = buildFAQSchema(service.faqs);
   const breadcrumbData = buildBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Commercial & Strata", url: "/commercial" },
@@ -102,7 +101,7 @@ export default function CommercialLocationService() {
         description={`Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}) for commercial, strata and body corporate buildings. $20M public liability, SWMS supplied, after-hours service. Call (07) 5651 2386.`}
         canonical={`https://gcwindowandpressurecleaning.com.au/commercial/${serviceSlug}/${suburbSlug}`}
         image={heroImage}
-        jsonLd={[localBusinessSchema, serviceSchema, faqSchemaData, breadcrumbData]}
+        jsonLd={[localBusinessSchema, serviceSchema, breadcrumbData]}
       />
 
       {/* Hero */}
@@ -129,7 +128,7 @@ export default function CommercialLocationService() {
                 <span className="text-gray-600 ml-2">• 2500+ Happy Customers</span>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <a href="https://tinyurl.com/jimscleaning" target="_blank" rel="noopener noreferrer"
+                <a href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b" target="_blank" rel="noopener noreferrer"
                   className="bg-green-500 hover:bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg text-center transition-all transform hover:scale-105 shadow-lg">
                   Request Commercial Quote
                 </a>
@@ -147,7 +146,7 @@ export default function CommercialLocationService() {
                 <img
                   src={heroImage}
                   alt={`${service.name} in ${suburb.name}`}
-                  className="w-full h-auto block" loading="eager" decoding="async" fetchPriority="high" />
+                  className="w-full h-auto block" loading="eager" decoding="async" fetchPriority="high" width="1024" height="768" />
               </div>
             </div>
           </div>
@@ -179,7 +178,7 @@ export default function CommercialLocationService() {
       <section className="py-12 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl overflow-hidden shadow-lg bg-gray-50">
-            <img src={secondaryImage} alt={`${service.name} in ${suburb.name}`} className="w-full h-auto max-h-[28rem] object-contain" loading="lazy" decoding="async" />
+            <img src={secondaryImage} alt={`${service.name} in ${suburb.name}`} className="w-full h-auto max-h-[28rem] object-contain" loading="lazy" decoding="async" width="1024" height="768" />
           </div>
         </div>
       </section>
@@ -317,7 +316,7 @@ export default function CommercialLocationService() {
             Commercial and strata specialists on the Gold Coast. Fixed-price quotes, SWMS included.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://tinyurl.com/jimscleaning" target="_blank" rel="noopener noreferrer"
+            <a href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b" target="_blank" rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
               Request Quote
             </a>
