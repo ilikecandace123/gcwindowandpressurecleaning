@@ -226,14 +226,11 @@ export default function HouseSoftWash() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <picture>
-                <source srcSet="/images/softwash-secondary.webp" type="image/webp" />
-                <img
-                  src="/images/softwash-secondary.jpg"
-                  alt="Softwash cleaning removing mould and dirt from rendered house walls on the Gold Coast"
-                  loading="lazy"
-                  className="rounded-2xl shadow-lg" decoding="async" width="1024" height="683" />
-              </picture>
+              <img
+                src="/images/softwash-secondary.jpg"
+                alt="Softwash cleaning removing mould and dirt from rendered house walls on the Gold Coast"
+                loading="lazy"
+                className="rounded-2xl shadow-lg" decoding="async" width="1024" height="683" />
 
             </div>
             <div>
