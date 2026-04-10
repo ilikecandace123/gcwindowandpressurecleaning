@@ -14,7 +14,7 @@ import {
 import { useEffect } from "react";
 import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema } from "../data/schema";
 
 export default function Services() {
   const services = [
@@ -76,11 +76,10 @@ export default function Services() {
         canonical="https://gcwindowandpressurecleaning.com.au/"
         image="/images/services-banner.jpg"
         jsonLd={[
+          buildOrganizationSchema(),
+          buildWebSiteSchema(),
           buildLocalBusinessSchema(),
-          buildBreadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Services", url: "/services" }
-          ])
+          buildBreadcrumbSchema([{ name: "Home", url: "/" }])
         ]}
       />
       {/* Hero Section */}

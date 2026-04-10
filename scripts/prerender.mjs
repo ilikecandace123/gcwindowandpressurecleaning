@@ -284,6 +284,13 @@ async function main() {
   // Generate sitemaps with index
   const today = new Date().toISOString().slice(0, 10);
 
+  // CONTENT_DATE: the date when the site's page content was last meaningfully
+  // updated. Update this whenever you make substantive content changes so that
+  // Google treats the lastmod signal as reliable rather than ignoring it.
+  // Using the build date (today) for every URL causes Google to discount
+  // lastmod entirely because it never signals real content change.
+  const CONTENT_DATE = "2026-04-10";
+
   // Categorize routes
   const staticRoutes = routes.filter(
     (r) => r.path === "/" || (r.path.split("/").filter(Boolean).length === 1 && !r.path.startsWith("/commercial/"))
@@ -297,7 +304,9 @@ async function main() {
     const urlEntries = routeList
       .map((r) => {
         const loc = absolute(r.path === "/" ? "/" : r.path);
-        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`;
+        // Use CONTENT_DATE (not build date) so lastmod reflects real content
+        // changes, not whenever the build pipeline last ran.
+        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${CONTENT_DATE}</lastmod>\n  </url>`;
       })
       .join("\n");
     return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries}\n</urlset>\n`;

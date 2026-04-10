@@ -78,8 +78,10 @@ export default function PageSEO({ title, description, canonical, image, noindex,
     if (description) upsertMeta('meta[name="twitter:description"]', { name: "twitter:description", content: description });
     if (imageUrl) upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: imageUrl });
 
-    // Inject JSON-LD (remove previous dynamic ones first)
-    document.querySelectorAll('script[data-dynamic-jsonld]').forEach(s => s.remove());
+    // Remove ALL existing JSON-LD scripts (both static prerender-injected and
+    // previously dynamic ones) so stale prerender schemas never duplicate the
+    // schemas each page component explicitly declares.
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(s => s.remove());
 
     if (Array.isArray(jsonLd) && jsonLd.length > 0) {
       jsonLd.forEach(data => {

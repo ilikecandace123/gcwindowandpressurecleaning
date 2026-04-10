@@ -90,7 +90,7 @@ export default function PressureCleaning() {
     <div>
       <PageSEO
         title="Pressure Cleaning Gold Coast | Driveways, Paths & Concrete"
-        description="Professional pressure cleaning on the Gold Coast. Industrial-grade cleaning for driveways, paths, patios, and concrete surfaces. Fully insured. Call (07) 5651 2386."
+        description="Gold Coast pressure cleaning specialists. Industrial-grade equipment for driveways, concrete, paths & patios — results that last. 5★ rated, fully insured. Free quote: (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/pressure-cleaning"
         jsonLd={seoJsonLd}
       />

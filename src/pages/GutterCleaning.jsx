@@ -84,7 +84,7 @@ export default function GutterCleaning() {
     <div>
       <PageSEO
         title="Gutter Cleaning Gold Coast | Storm-Ready Maintenance"
-        description="Professional gutter cleaning on the Gold Coast. Complete gutter and downpipe clearing to prevent water damage. Fully insured, police-checked staff. Call (07) 5651 2386."
+        description="Gutter cleaning Gold Coast — full gutter & downpipe clearing to prevent storm damage. Includes inspection & written report. Police-checked, fully insured. Free quote: (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/gutter-cleaning"
         jsonLd={seoJsonLd}
       />
