@@ -190,6 +190,138 @@ export default function CommercialLocationService() {
         </div>
       </section>
 
+      {/* Roof Cleaning — Why Gold Coast Roofs Need Cleaning More Often */}
+      {serviceSlug === 'roof-cleaning' && (
+        <section className="py-16 bg-orange-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why {suburb.name} Commercial Roofs Need Regular Cleaning</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">Gold Coast's coastal and subtropical conditions accelerate biological growth and roof degradation compared to drier Australian markets.</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: "💧", title: "Year-Round Humidity", desc: "Average 65–80% relative humidity year-round accelerates moss and lichen growth on commercial roofs faster than almost any other major Australian city." },
+                { icon: "🌊", title: "Coastal Salt Aerosol", desc: "Salt from the Coral Sea is carried inland, leaving mineral deposits that trigger paint degradation and corrosion on Colorbond, Kliplok, and metal deck profiles." },
+                { icon: "⛈️", title: "Summer Storm Season", desc: "The Nov–Apr wet season deposits debris on commercial roofs that traps moisture and accelerates biological growth between maintenance visits." },
+                { icon: "☀️", title: "Intense UV Exposure", desc: "High UV intensity causes thermal expansion cracking in tiles and coatings, creating micro-crevices where moss and lichen spores establish and spread." },
+                { icon: "🌧️", title: "High Annual Rainfall", desc: "Over 1,400mm of annual rainfall keeps commercial roof surfaces wetter for longer than inland Queensland, accelerating algae and lichen growth cycles." },
+                { icon: "🌿", title: "Surrounding Vegetation", desc: "Coastal and hinterland vegetation deposits pollen, seeds, and debris that feed biological growth on commercial and strata roof surfaces." }
+              ].map((item, i) => (
+                <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-orange-100">
+                  <div className="text-3xl mb-3">{item.icon}</div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Roof Cleaning — Roof Type Guide */}
+      {serviceSlug === 'roof-cleaning' && (
+        <section className="py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Commercial Roof Type Cleaning Guide</h2>
+              <p className="text-lg text-gray-600">Different commercial roof profiles require different cleaning methods. Here's what we recommend for each.</p>
+            </div>
+            <div className="overflow-x-auto rounded-2xl shadow-sm border border-gray-100">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-gray-800 text-white">
+                    <th className="px-6 py-4 text-left font-semibold">Roof Type</th>
+                    <th className="px-6 py-4 text-left font-semibold">Recommended Method</th>
+                    <th className="px-6 py-4 text-left font-semibold">Frequency</th>
+                    <th className="px-6 py-4 text-left font-semibold">Key Concerns</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { type: "Concrete / Terracotta Tile", method: "Soft wash + low-pressure rinse", freq: "Every 2–3 years", concerns: "Moss, lichen, paint fade" },
+                    { type: "Metal (Colorbond, Zincalume)", method: "Low-pressure soft wash", freq: "Every 2–3 years", concerns: "Rust stains, sealant integrity" },
+                    { type: "Flat Membrane / TPO", method: "Gentle hand wash", freq: "Annually", concerns: "Debris blockage, UV degradation" }
+                  ].map((row, i) => (
+                    <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                      <td className="px-6 py-4 font-medium text-gray-900">{row.type}</td>
+                      <td className="px-6 py-4 text-gray-700">{row.method}</td>
+                      <td className="px-6 py-4 text-gray-700">{row.freq}</td>
+                      <td className="px-6 py-4 text-gray-600">{row.concerns}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Solar Panel Cleaning — Why Gold Coast Solar Panels Get Dirty Faster */}
+      {serviceSlug === 'solar-panel-cleaning' && (
+        <section className="py-16 bg-blue-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why {suburb.name} Commercial Solar Arrays Lose Output Faster</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">Gold Coast's coastal and subtropical environment creates multiple soiling sources that combine to reduce commercial solar output faster than most Australian locations.</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: "🌊", title: "Ocean Salt Aerosol", desc: "Salt particles from the Coral Sea settle on panel glass within days of a clean for coastal commercial sites, leaving mineral deposits that scatter and absorb sunlight." },
+                { icon: "🦅", title: "Heavy Bird Activity", desc: "Coastal ibis, cormorants, cockatoos, and mynas deposit acidic droppings that create hotspots on commercial arrays, causing cell damage and generation loss." },
+                { icon: "💧", title: "Subtropical Humidity", desc: "High year-round humidity traps dust and pollen on panel surfaces and promotes algae growth — a problem far less common in drier Australian commercial markets." },
+                { icon: "🌸", title: "Hinterland Pollen", desc: "Native species in the hinterland shed heavy pollen loads during spring and summer that coat commercial solar arrays in a yellow-brown film." },
+                { icon: "🚗", title: "Industrial & Traffic Pollution", desc: "Fine rubber and bitumen particles from the M1 corridor and nearby industrial areas build up as a dark greasy film on commercial solar panels." },
+                { icon: "☀️", title: "Intense UV Bonding", desc: "Gold Coast's high UV intensity accelerates the bonding of organic matter to panel glass on commercial rooftops, requiring professional-grade techniques to remove safely." }
+              ].map((item, i) => (
+                <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-blue-100">
+                  <div className="text-3xl mb-3">{item.icon}</div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Solar Panel Cleaning — Dirty vs Clean Comparison Table */}
+      {serviceSlug === 'solar-panel-cleaning' && (
+        <section className="py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Dirty vs Clean — What Your {suburb.name} Array Is Losing</h2>
+              <p className="text-lg text-gray-600">The real cost of skipping a professional clean on a Gold Coast commercial solar installation.</p>
+            </div>
+            <div className="overflow-x-auto rounded-2xl shadow-sm border border-gray-100">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-gray-800 text-white">
+                    <th className="px-6 py-4 text-left font-semibold w-1/3"></th>
+                    <th className="px-6 py-4 text-center font-semibold text-red-300">Dirty Array</th>
+                    <th className="px-6 py-4 text-center font-semibold text-green-300">After Professional Clean</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { label: "Generation output", dirty: "Up to 30% below rated output", clean: "Restored to rated output" },
+                    { label: "Annual revenue impact", dirty: "$3,000+/year lost on 100kW system", clean: "Revenue fully restored" },
+                    { label: "Hotspot risk", dirty: "High — bird droppings cause cell damage", clean: "Eliminated" },
+                    { label: "Panel warranty status", dirty: "Potentially voided by soiling damage", clean: "Maintained" },
+                    { label: "Array lifespan", dirty: "Shortened by UV-bonded deposits", clean: "Protected" }
+                  ].map((row, i) => (
+                    <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                      <td className="px-6 py-4 font-semibold text-gray-900">{row.label}</td>
+                      <td className="px-6 py-4 text-center text-red-700">{row.dirty}</td>
+                      <td className="px-6 py-4 text-center text-green-700 font-medium">{row.clean}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Why Choose Us */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

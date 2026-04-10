@@ -342,6 +342,165 @@ export default function LocationService() {
         </div>
       </section>
 
+      {/* Roof Cleaning — Why Gold Coast Roofs Need Cleaning More Often */}
+      {serviceSlug === 'roof-cleaning' && (
+        <section className="py-16 bg-orange-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Gold Coast Roofs Need Cleaning More Often</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">The Gold Coast climate creates conditions that accelerate biological growth and surface degradation on roofs compared to drier, inland areas.</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: "💧", title: "Year-Round Humidity", desc: "Average 65–80% relative humidity year-round accelerates moss and lichen growth faster than almost any other major Australian city." },
+                { icon: "🌊", title: "Coastal Salt Aerosol", desc: "Salt from the Coral Sea is carried up to 10km inland, leaving mineral deposits that trigger paint degradation and corrosion on Colorbond and terracotta." },
+                { icon: "⛈️", title: "Summer Storm Season", desc: "The Nov–Apr wet season deposits leaves, organic matter, and debris that trap moisture against roof surfaces, accelerating biological growth." },
+                { icon: "☀️", title: "Intense UV Exposure", desc: "High UV intensity causes thermal expansion cracking in tiles, creating micro-crevices where moss and lichen spores take hold and spread." },
+                { icon: "🌧️", title: "High Annual Rainfall", desc: "Over 1,400mm of annual rainfall keeps roof surfaces wetter for longer than inland Queensland, dramatically speeding up algae and lichen cycles." },
+                { icon: "🌿", title: "Surrounding Vegetation", desc: "Hinterland eucalyptus, paperbarks, and coastal Norfolk pines deposit pollen, seeds, and debris that feed biological growth on roof surfaces." }
+              ].map((item, i) => (
+                <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-orange-100">
+                  <div className="text-3xl mb-3">{item.icon}</div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Roof Cleaning — Roof Type Guide */}
+      {serviceSlug === 'roof-cleaning' && (
+        <section className="py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Roof Type Cleaning Guide</h2>
+              <p className="text-lg text-gray-600">Different roof materials require different cleaning methods. Here's what we recommend for each type.</p>
+            </div>
+            <div className="overflow-x-auto rounded-2xl shadow-sm border border-gray-100">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-gray-800 text-white">
+                    <th className="px-6 py-4 text-left font-semibold">Roof Type</th>
+                    <th className="px-6 py-4 text-left font-semibold">Recommended Method</th>
+                    <th className="px-6 py-4 text-left font-semibold">Frequency</th>
+                    <th className="px-6 py-4 text-left font-semibold">Key Concerns</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { type: "Concrete / Terracotta Tile", method: "Soft wash + low-pressure rinse", freq: "Every 2–3 years", concerns: "Moss, lichen, paint fade" },
+                    { type: "Metal (Colorbond, Zincalume)", method: "Low-pressure soft wash", freq: "Every 2–3 years", concerns: "Rust stains, sealant integrity" },
+                    { type: "Flat Membrane / TPO", method: "Gentle hand wash", freq: "Annually", concerns: "Debris blockage, UV degradation" }
+                  ].map((row, i) => (
+                    <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                      <td className="px-6 py-4 font-medium text-gray-900">{row.type}</td>
+                      <td className="px-6 py-4 text-gray-700">{row.method}</td>
+                      <td className="px-6 py-4 text-gray-700">{row.freq}</td>
+                      <td className="px-6 py-4 text-gray-600">{row.concerns}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Roof Cleaning — Signs Your Roof Needs Cleaning */}
+      {serviceSlug === 'roof-cleaning' && (
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Signs Your Roof Needs Cleaning</h2>
+              <p className="text-lg text-gray-600">If you notice any of these, it's time to book a professional clean.</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {[
+                { icon: "⬛", text: "Dark streaks or black staining — a sign of algae colonies spreading across the surface" },
+                { icon: "🟢", text: "Green or grey patches — moss and lichen actively growing and holding moisture against the roof" },
+                { icon: "🍂", text: "Visible debris in valleys and gutters — damp leaf packs accelerate biological growth" },
+                { icon: "💧", text: "Discolouration around downpipes — sediment and algae spores washing down from a dirty roof" },
+                { icon: "👃", text: "Musty smell in your ceiling space after rain — often a sign of biological matter on or under roof surfaces" },
+                { icon: "🎨", text: "Paint peeling or chalking on the roof surface — UV degradation compounded by moisture from biological growth" }
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-4 bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+                  <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                  <p className="text-gray-700 leading-relaxed">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Solar Panel Cleaning — Why Gold Coast Solar Panels Get Dirty Faster */}
+      {serviceSlug === 'solar-panel-cleaning' && (
+        <section className="py-16 bg-blue-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Gold Coast Solar Panels Get Dirty Faster</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">The Gold Coast's coastal and subtropical environment creates multiple soiling sources that combine to reduce panel output faster than most Australian locations.</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: "🌊", title: "Ocean Salt Aerosol", desc: "Salt particles from the Coral Sea settle on panel glass and leave mineral deposits that scatter and absorb sunlight, reducing output within weeks of a clean for coastal properties." },
+                { icon: "🦅", title: "Heavy Bird Activity", desc: "Coastal ibis, cormorants, cockatoos, and mynas are prolific along the Gold Coast. Bird droppings are acidic and create hotspots that can permanently damage individual cells if left on panels." },
+                { icon: "💧", title: "Subtropical Humidity", desc: "High year-round humidity traps dust and pollen on panel surfaces and promotes algae growth — a problem far less common in drier Australian cities like Perth or Adelaide." },
+                { icon: "🌸", title: "Hinterland Pollen", desc: "Eucalyptus, paperbarks, and other native species in the hinterland shed heavy pollen loads during spring and summer that coat south-facing panels in a yellow-brown film." },
+                { icon: "🚗", title: "M1 Motorway Dust", desc: "Fine rubber and bitumen particles from the M1 corridor settle on solar panels in bayside and northern suburbs, building up as a dark greasy film." },
+                { icon: "☀️", title: "Intense UV Bonding", desc: "Gold Coast's high UV intensity accelerates the bonding of organic matter to panel glass, making deposits harder to remove and requiring professional-grade techniques to clean safely." }
+              ].map((item, i) => (
+                <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-blue-100">
+                  <div className="text-3xl mb-3">{item.icon}</div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Solar Panel Cleaning — Dirty vs Clean Comparison Table */}
+      {serviceSlug === 'solar-panel-cleaning' && (
+        <section className="py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Dirty vs Clean — What You're Losing</h2>
+              <p className="text-lg text-gray-600">The real cost of skipping a professional solar panel clean on the Gold Coast.</p>
+            </div>
+            <div className="overflow-x-auto rounded-2xl shadow-sm border border-gray-100">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-gray-800 text-white">
+                    <th className="px-6 py-4 text-left font-semibold w-1/3"></th>
+                    <th className="px-6 py-4 text-center font-semibold text-red-300">Dirty Panels</th>
+                    <th className="px-6 py-4 text-center font-semibold text-green-300">After Professional Clean</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { label: "Efficiency", dirty: "Up to 30% below rated output", clean: "Restored to rated output" },
+                    { label: "Annual savings impact", dirty: "~$300–600 lost/year (6kW system)", clean: "Savings fully restored" },
+                    { label: "Visual appearance", dirty: "Streaked, discoloured", clean: "Clear, like-new" },
+                    { label: "Warranty status", dirty: "Potentially voided by soiling damage", clean: "Maintained" },
+                    { label: "Bird damage risk", dirty: "High — droppings attract more birds", clean: "Reduced" }
+                  ].map((row, i) => (
+                    <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                      <td className="px-6 py-4 font-semibold text-gray-900">{row.label}</td>
+                      <td className="px-6 py-4 text-center text-red-700">{row.dirty}</td>
+                      <td className="px-6 py-4 text-center text-green-700 font-medium">{row.clean}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Why Choose Us - Location Specific */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

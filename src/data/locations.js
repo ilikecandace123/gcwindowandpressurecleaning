@@ -829,49 +829,59 @@ export const SERVICES = [
     benefits: [
       {
         title: "Prevents Damage & Extends Life",
-        description: "Regular cleaning removes destructive moss, algae, and debris that can cause costly damage to roofing materials and lead to leaks."
+        description: "Regular cleaning removes destructive moss, algae, and lichen that trap moisture and cause tile cracking and rust in Gold Coast's humid subtropical climate."
       },
       {
-        title: "Improves Property Appearance",
-        description: "Clean roofs dramatically improve your property's curb appeal, making your home or business look well-maintained and professional."
+        title: "Fights Coastal Salt Corrosion",
+        description: "Salt aerosol from the Coral Sea degrades Colorbond, Zincalume, and terracotta roofing over time. Professional cleaning removes mineral deposits before permanent damage occurs."
       },
       {
         title: "Maintains Roof Health",
-        description: "Professional cleaning maintains optimal roof conditions, prevents deterioration, and helps identify potential issues early."
+        description: "Professional cleaning maintains optimal roof conditions, prevents biological growth from taking hold in UV-cracked tiles, and helps identify potential issues early."
       },
       {
-        title: "Increases Home Value",
-        description: "A clean, well-maintained roof increases your property's market value and appeal to potential buyers or investors."
+        title: "Increases Property Value",
+        description: "A clean, well-maintained roof increases your property's market value and signals proper upkeep to potential buyers and building inspectors."
       },
       {
         title: "Safe High-Access Cleaning",
-        description: "Our team uses professional safety equipment and techniques for secure roof cleaning, eliminating dangerous DIY risks."
+        description: "Our team uses professional safety equipment, harnesses, and techniques for secure roof cleaning, eliminating the dangerous risks of DIY ladder work."
       },
       {
-        title: "All Roof Types",
-        description: "We safely clean all roof materials including tile, metal, shingle, and flat roofs using appropriate techniques for each surface."
+        title: "Protects All Roof Types",
+        description: "We safely clean concrete tile, terracotta tile, Colorbond, Zincalume, and flat membrane roofs using the appropriate soft-wash technique for each surface."
       }
     ],
     process: [
       {
         step: 1,
-        title: "Initial Inspection",
-        description: "We assess your roof condition and determine the best cleaning approach for your specific roof type."
+        title: "Safety Setup & Inspection",
+        description: "Assess roof condition, identify cracked tiles, rusted flashings, and blocked valleys. Set up non-slip footwear, harness points, and safety equipment."
       },
       {
         step: 2,
-        title: "Pre-Treatment",
-        description: "Apply eco-friendly treatments to break down moss, algae, and stubborn stains safely."
+        title: "Anti-Microbial Pre-Treatment",
+        description: "Apply biodegradable treatment to kill moss, lichen, and algae at root level — dramatically slowing regrowth after cleaning."
       },
       {
         step: 3,
-        title: "Gentle Cleaning",
-        description: "Use soft washing and low-pressure techniques to clean without damaging roof materials."
+        title: "Soft-Brush Agitation",
+        description: "Loosen embedded organic matter from tiles and metal surfaces without causing surface damage."
       },
       {
         step: 4,
+        title: "Low-Pressure Rinse",
+        description: "Controlled low-pressure wash removes all residue and contamination, restoring original roof colour."
+      },
+      {
+        step: 5,
+        title: "Gutter & Valley Flush",
+        description: "Clear debris dislodged during cleaning from valleys, gutters, and downpipes to ensure free water flow."
+      },
+      {
+        step: 6,
         title: "Final Inspection",
-        description: "Complete inspection ensures your roof is clean, damage-free, and in excellent condition."
+        description: "Complete inspection confirms roof is clean and damage-free. Optional post-treatment sealant available to slow future growth."
       }
     ],
     faqs: [
@@ -881,7 +891,7 @@ export const SERVICES = [
       },
       {
         question: "Is roof cleaning safe for my roof?",
-        answer: "Yes, our professional techniques use low-pressure soft washing that's completely safe for all roof types. High-pressure cleaning can damage shingles and tiles, which is why we use gentler methods."
+        answer: "Yes, our professional techniques use low-pressure soft washing that's completely safe for all roof types. High-pressure cleaning can damage tiles and void roof warranties, which is why we use gentler methods."
       },
       {
         question: "What causes moss and algae growth on roofs?",
@@ -889,15 +899,27 @@ export const SERVICES = [
       },
       {
         question: "Can you clean metal roofs safely?",
-        answer: "Absolutely. We have specialist techniques for metal roofs that remove debris, rust stains, and discolouration without causing scratches or damage to the protective coating."
+        answer: "Absolutely. We have specialist techniques for metal roofs including Colorbond and Zincalume that remove debris, rust stains, and discolouration without causing scratches or damage to the protective coating."
       },
       {
         question: "Do you offer gutter cleaning with roof cleaning?",
-        answer: "Yes, we often recommend combining roof cleaning with gutter cleaning for comprehensive maintenance. This maximises water flow and prevents blockages from debris."
+        answer: "Yes, we often recommend combining roof cleaning with gutter cleaning for comprehensive maintenance. This maximises water flow and prevents blockages from debris dislodged during the roof clean."
       },
       {
         question: "Is your cleaning solution environmentally safe?",
         answer: "Yes, we use biodegradable, eco-friendly cleaning solutions that are safe for your family, pets, and landscaping while effectively removing moss, algae, and stains."
+      },
+      {
+        question: "What does roof cleaning cost on the Gold Coast?",
+        answer: "Most residential roof cleans on the Gold Coast range from $350–$800 depending on roof size, pitch, access difficulty, and the level of moss or lichen buildup. We provide free on-site or photo quotes so you know the exact price before we start."
+      },
+      {
+        question: "Is soft washing or pressure washing better for Gold Coast tile roofs?",
+        answer: "Soft washing is the recommended method for tile and metal roofs on the Gold Coast. High-pressure cleaning can crack aged terracotta tiles, strip Colorbond coatings, and force water under roof underlays. Soft washing kills moss and algae at the root without surface damage."
+      },
+      {
+        question: "How do I know if I have lichen vs moss on my roof?",
+        answer: "Moss is green, soft, and spongy — it lifts off relatively easily. Lichen is the harder, flat, grey-green growth that bonds tightly to roof surfaces. Lichen requires professional anti-microbial pre-treatment to remove properly, and both are extremely common on Gold Coast roofs due to the humid subtropical climate."
       }
     ]
   },
@@ -1148,50 +1170,55 @@ export const SERVICES = [
     shortDesc: "Professional solar panel cleaning to maintain maximum energy efficiency",
     benefits: [
       {
-        title: "Maximises Energy Output",
-        description: "Dirty solar panels can lose 15-25% efficiency. Professional cleaning restores maximum power generation and reduces your electricity bills."
+        title: "Restores Up to 30% Lost Output",
+        description: "Dirty Gold Coast solar panels lose up to 30% efficiency due to salt spray, bird droppings, and subtropical humidity. Professional cleaning restores your full rated generation."
       },
       {
         title: "Extends Panel Life",
-        description: "Regular cleaning prevents dust, salt, and debris buildup that can cause long-term damage to solar panels."
+        description: "Salt aerosol and bird dropping acids etch panel glass over time. Regular cleaning prevents permanent surface damage that shortens panel lifespan."
       },
       {
         title: "Improves ROI",
-        description: "Well-maintained solar systems generate more electricity, improving your return on investment faster."
+        description: "Every percentage point of lost efficiency costs you money. Well-maintained panels generate more electricity, improving your return on the solar investment faster."
       },
       {
-        title: "Safe Professional Service",
-        description: "Cleaning panels involves working at height with electrical equipment. Our trained team ensures safe, proper cleaning."
+        title: "Safe Rooftop Service",
+        description: "Cleaning panels involves working at height with live electrical equipment. Our trained team uses deionised water, soft brushes, and proper safety gear for every job."
       },
       {
-        title: "Ideal for Coastal Properties",
-        description: "Gold Coast's salt air deposits reduce panel efficiency quickly. Regular professional cleaning maintains peak performance."
+        title: "Coastal Salt Air Specialists",
+        description: "Gold Coast's salt aerosol deposits mineral residue on panels within weeks. Our pure-water process removes salt buildup completely without leaving streaks or residue."
       },
       {
-        title: "Environmentally Friendly",
-        description: "Cleaner solar systems generate more renewable energy, reducing your carbon footprint and electricity costs."
+        title: "Warranty-Safe Method",
+        description: "We use soft brushes, pH-neutral solutions, and deionised rinse water — the method recommended by Tier-1 solar panel manufacturers to preserve anti-reflective coatings and warranties."
       }
     ],
     process: [
       {
         step: 1,
-        title: "Safety Assessment",
-        description: "Assess roof safety and electrical systems before beginning cleaning work."
+        title: "Safety & Access Assessment",
+        description: "Assess roof safety, panel layout, and electrical systems before beginning. Confirm deionised water supply and access equipment for safe rooftop work."
       },
       {
         step: 2,
-        title: "Gentle Panel Washing",
-        description: "Use soft brushes, pure water, and low-pressure techniques that protect panel surfaces and electrical connections."
+        title: "Panel Inspection",
+        description: "Inspect panels for hotspots, micro-cracks, bird damage, and soiling patterns that may indicate underlying performance issues."
       },
       {
         step: 3,
-        title: "Debris Removal",
-        description: "Remove leaves, dust, salt spray, and bird droppings that reduce solar efficiency."
+        title: "Purified Water Pre-Rinse",
+        description: "Pre-rinse with deionised pure water as required by most manufacturers to preserve anti-reflective coatings — no tap water streaks or mineral deposits."
       },
       {
         step: 4,
-        title: "Final Inspection",
-        description: "Verify panels are clean and inspect for any damage or maintenance issues."
+        title: "Soft-Brush Scrub",
+        description: "Gently scrub panels with a pH-neutral solution and soft brush to remove bird droppings, salt deposits, pollen, and bonded organic matter."
+      },
+      {
+        step: 5,
+        title: "Output Check & Photo Report",
+        description: "Final inspection confirms panels are clean and connections are undisturbed. Before/after photos provided on request to document the clean."
       }
     ],
     faqs: [
@@ -1201,23 +1228,35 @@ export const SERVICES = [
       },
       {
         question: "How much efficiency is lost from dirty solar panels?",
-        answer: "Dirty panels can lose 15-25% of energy output, depending on the type of buildup. This directly translates to higher electricity bills and slower ROI on your solar investment."
+        answer: "Dirty panels can lose 15-30% of energy output depending on the type of buildup. Salt crust, bird droppings, and pollen are the biggest culprits on Gold Coast roofs. This directly translates to higher electricity bills and slower ROI."
       },
       {
         question: "Can I clean solar panels myself?",
-        answer: "We don't recommend DIY cleaning due to safety risks from working at height and damage risks to electrical systems. Professional cleaning is safer and more effective."
+        answer: "We don't recommend DIY cleaning due to safety risks from working at height and damage risks to electrical systems and anti-reflective coatings. Professional cleaning is safer and more effective."
       },
       {
         question: "What damages solar panels during cleaning?",
-        answer: "High-pressure cleaning, abrasive materials, and harsh chemicals can damage anti-reflective coatings. Professional teams use safe, proven methods."
+        answer: "High-pressure cleaning, abrasive materials, tap water mineral deposits, and harsh chemicals can all damage anti-reflective coatings. Professional teams use soft brushes, pH-neutral solutions, and deionised water."
       },
       {
         question: "Is solar panel cleaning necessary in winter?",
-        answer: "Yes, winter often brings algae and debris. Regular cleaning year-round ensures consistent energy generation throughout all seasons."
+        answer: "Yes, winter often brings algae, pollen, and debris. Regular cleaning year-round ensures consistent energy generation throughout all seasons, especially important on the Gold Coast where solar production is valuable all year."
       },
       {
         question: "Why do coastal solar panels get dirty faster?",
-        answer: "Gold Coast's salt air deposits salty residue on panels, combined with humidity that promotes algae growth. This is why coastal properties need more frequent professional cleaning."
+        answer: "Gold Coast's salt air deposits mineral residue on panels within weeks, combined with humidity that promotes algae growth and hinterland pollen that settles on glass. This is why coastal properties need more frequent professional cleaning."
+      },
+      {
+        question: "How does Gold Coast's coastal salt air affect solar panels?",
+        answer: "Salt aerosol from the ocean deposits mineral residue on panel glass within days of cleaning for coastal properties. This salt layer scatters and absorbs sunlight before it reaches the solar cells, reducing generation. Over time, salt deposits bond to the anti-reflective coating and can cause permanent micro-pitting if not regularly cleaned with purified water."
+      },
+      {
+        question: "Will cleaning void my solar panel warranty?",
+        answer: "No — as long as cleaning is done correctly. Our method uses soft brushes, pH-neutral solution, and deionised rinse water, which aligns with the manufacturer-recommended cleaning procedure for virtually all Tier-1 panel brands. We never use high-pressure jets or abrasive materials. We can provide our methodology in writing for your warranty records."
+      },
+      {
+        question: "How much energy am I losing right now if my panels are dirty?",
+        answer: "It depends on how dirty they are and your system size. A light dust film typically reduces output by 5–10%. Moderate soiling with bird droppings or salt crust can cause 15–25% losses. On a typical 6.6kW Gold Coast system, a 20% loss equates to roughly $300–500/year in missed electricity savings — often more than the cost of an annual professional clean."
       }
     ]
   },
@@ -1364,7 +1403,10 @@ export const COMMERCIAL_SERVICES = [
       { question: "Will cleaning void my Colorbond or solar warranty?", answer: "No. Soft washing at low pressure is compatible with Colorbond warranty requirements and is safe around solar arrays. We can work around rooftop solar installations, HVAC plant and skylights without damage." },
       { question: "How often should a commercial roof be cleaned?", answer: "Most Gold Coast commercial roofs benefit from cleaning every 2-3 years. Coastal or heavily shaded roofs may need annual treatment due to accelerated moss and algae growth in the humid salt air." },
       { question: "Do you provide documentation for strata capital works?", answer: "Yes. We provide detailed written scopes, before/after photos, invoices and certificates of currency suitable for strata committees, building managers and sinking fund or capital works approvals." },
-      { question: "Will the run-off damage our landscaping or parking?", answer: "Our treatments are biodegradable and we manage run-off carefully. We pre-wet vegetation and coordinate drainage to protect carparks, entries and landscaping throughout the clean." }
+      { question: "Will the run-off damage our landscaping or parking?", answer: "Our treatments are biodegradable and we manage run-off carefully. We pre-wet vegetation and coordinate drainage to protect carparks, entries and landscaping throughout the clean." },
+      { question: "What does commercial roof cleaning cost on the Gold Coast?", answer: "Commercial roof cleaning is priced per square metre based on roof size, pitch, access complexity, and contamination level. We provide detailed fixed-price quotes after a site inspection or drone assessment — no per-hour estimates, no surprise invoices." },
+      { question: "Can you clean a commercial roof after a storm?", answer: "Yes. After major storms we prioritise commercial clients with debris-loaded roofs and gutters. We can clear storm debris, flush downpipes, and inspect for damage, then provide a condition report for your insurer or building manager." },
+      { question: "Do you apply anti-moss coating after cleaning commercial roofs?", answer: "Yes. For commercial roofs with recurring moss or lichen problems, we can apply a professional-grade biocide coating after cleaning that dramatically slows regrowth — typically extending time between cleans from 2 years to 3–4 years." }
     ]
   },
   {
@@ -1484,7 +1526,10 @@ export const COMMERCIAL_SERVICES = [
       { question: "Can you clean large warehouse or industrial arrays?", answer: "Yes. We regularly service commercial arrays on warehouses, factories, schools, strata towers and retail centres. We're equipped for large-array cleans with the crews, water systems and height safety required." },
       { question: "How often should commercial solar panels be cleaned?", answer: "Most commercial Gold Coast arrays benefit from cleaning every 6-12 months. Coastal sites, sites near roads or industry, and arrays with heavy bird activity should consider more frequent cleans to protect generation and prevent hotspots." },
       { question: "Do you clean around inverters and DC isolators?", answer: "Yes — our technicians are trained to work safely around inverters, combiner boxes and DC isolators, and to spot and report any visible damage to the wider system during the clean." },
-      { question: "Can dirty panels actually damage the array?", answer: "Yes. Uneven soiling and bird droppings create hotspots that can permanently damage cells and shorten panel life, on top of the ongoing generation loss. Regular cleaning is both a performance and a protection measure." }
+      { question: "Can dirty panels actually damage the array?", answer: "Yes. Uneven soiling and bird droppings create hotspots that can permanently damage cells and shorten panel life, on top of the ongoing generation loss. Regular cleaning is both a performance and a protection measure." },
+      { question: "Do you clean solar panels on Gold Coast high-rise and multi-storey buildings?", answer: "Yes. We have the height safety training, equipment, and insurance to clean solar arrays on multi-storey strata, high-rise residential, and commercial towers across the Gold Coast. We'll assess access requirements and produce a site-specific SWMS for every elevated job." },
+      { question: "Will cleaning void the solar panel warranty on our commercial system?", answer: "No. Our pure-water, soft-brush method aligns with Tier-1 manufacturer cleaning guidelines. We never use high pressure or abrasive chemicals. We supply our methodology in writing for your warranty records — useful for strata and body corporate compliance files." },
+      { question: "How much generation revenue are we losing from dirty commercial panels?", answer: "On a dirty commercial array in Gold Coast conditions, 10–30% generation loss is common. For a 100kW commercial system generating $15,000/year in electricity value, a 20% loss costs $3,000/year in foregone export income or bill offsets — often 5–10× the cost of an annual clean." }
     ]
   },
   {
