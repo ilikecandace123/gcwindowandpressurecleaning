@@ -4,19 +4,50 @@ import { Link } from "react-router-dom";
 // Convert PascalCase page name to kebab-case URL
 const createPageUrl = (pageName) =>
   "/" + pageName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
-import {
-  ArrowRight,
-  Star,
-  Shield,
-  Users,
-  CheckCircle } from
-"lucide-react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { ArrowRight, Star, Shield, Users, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
-import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema, buildFAQSchema } from "../data/schema";
+
+const HOME_FAQS = [
+  {
+    question: "How much does window cleaning cost on the Gold Coast?",
+    answer: "Window cleaning starts at $220–$440 for most apartments and small offices (inside and out). Single-storey homes are typically $385–$550 including deep track and screen cleaning. Double-storey homes are $500–$800. Large properties with lots of glass are $800+ and require a site visit. All prices are a guide — contact us for a free quote."
+  },
+  {
+    question: "What areas do you service?",
+    answer: "We service all 81 Gold Coast suburbs from Coolangatta to Ormeau, including the Gold Coast Hinterland, plus Northern NSW including Tweed Heads, Kingscliff, Casuarina, and surrounding areas."
+  },
+  {
+    question: "How long does a typical job take?",
+    answer: "Window cleaning on a standard home takes 1–2 hours. Pressure cleaning a driveway takes about 1 hour. Roof cleaning varies from 2–4 hours depending on size and condition. We'll give you an estimate when you book."
+  },
+  {
+    question: "Are you insured and do you do police checks?",
+    answer: "Yes. We carry $20M public liability insurance and all staff are police-checked. We supply SWMS documentation for commercial and strata work."
+  },
+  {
+    question: "Do you clean solar panels without voiding the warranty?",
+    answer: "Yes. We use pure water and low-pressure methods that are safe for all major solar panel brands and won't void manufacturer warranties."
+  },
+  {
+    question: "What's included in the full home pressure cleaning package?",
+    answer: "Our full home package covers the driveway, pathways, patio, and pool area for around $660. It's the best value way to get the whole exterior done in one visit."
+  },
+  {
+    question: "How do I get a quote or book a job?",
+    answer: "Call us on (07) 5651 2386, email info@gcwindowandpressurecleaning.com.au, or book online via our website. We offer free, no-obligation quotes for all jobs."
+  },
+  {
+    question: "How often should I have my property professionally cleaned?",
+    answer: "Most residential properties benefit from window cleaning every 3–6 months, gutter cleaning once or twice a year, and pressure cleaning annually. Coastal properties near the ocean may need more frequent cleaning due to salt spray exposure."
+  }
+];
 
 export default function Services() {
+  const [openFaqIndex, setOpenFaqIndex] = useState(0);
+
   const services = [
   {
     imageUrl: "/images/roof-cleaning-1.jpg",
@@ -79,7 +110,8 @@ export default function Services() {
           buildOrganizationSchema(),
           buildWebSiteSchema(),
           buildLocalBusinessSchema(),
-          buildBreadcrumbSchema([{ name: "Home", url: "/" }])
+          buildBreadcrumbSchema([{ name: "Home", url: "/" }]),
+          buildFAQSchema(HOME_FAQS)
         ]}
       />
       {/* Hero Section */}
@@ -193,6 +225,38 @@ We are fully insured and all staff are police-checked for your peace of mind.
 
       {/* Google Reviews */}
       <GoogleReviews />
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-600">Common questions about our Gold Coast exterior cleaning services</p>
+          </div>
+          <div className="space-y-4">
+            {HOME_FAQS.map((faq, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFaqIndex(openFaqIndex === index ? -1 : index)}
+                >
+                  <h3 className="font-semibold text-gray-900 text-lg">{faq.question}</h3>
+                  {openFaqIndex === index
+                    ? <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                    : <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />}
+                </button>
+                {openFaqIndex === index && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-16 hero-gradient text-white">

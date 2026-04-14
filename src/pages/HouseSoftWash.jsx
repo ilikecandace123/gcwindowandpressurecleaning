@@ -41,6 +41,10 @@ export default function HouseSoftWash() {
 
   const faqs = [
   {
+    question: "How much does a house softwash cost on the Gold Coast?",
+    answer: "House softwash on the Gold Coast starts from $495 for a small single-storey home or small office. A large single-storey or small double-storey is typically $770, an XL single-storey or large double-storey is $990, and XL double-storey and beyond starts at $1,200+. These are guide prices — every property is individual, so contact us for a free, no-obligation quote."
+  },
+  {
     question: "What's the difference between softwash and pressure washing?",
     answer: "Softwashing uses low pressure with specialised cleaning solutions to kill mould and dirt at source, while pressure washing relies on high pressure alone. Softwashing is safer for surfaces and provides longer-lasting results."
   },

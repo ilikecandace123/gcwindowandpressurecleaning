@@ -21,4 +21,7 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap.xml

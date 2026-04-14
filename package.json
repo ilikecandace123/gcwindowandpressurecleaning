@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender.mjs && node scripts/prerender-content.mjs",
+    "build": "vite build && node scripts/prerender.mjs && node scripts/prerender-content.mjs && python3 scripts/generate_markdown_mirrors.py",
     "build:meta-only": "vite build && node scripts/prerender.mjs",
     "prerender": "node scripts/prerender.mjs",
     "prerender:content": "node scripts/prerender-content.mjs",
+    "mirrors": "python3 scripts/generate_markdown_mirrors.py",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -41,6 +41,10 @@ export default function RoofCleaning() {
 
   const faqs = [
     {
+      question: "How much does roof cleaning cost on the Gold Coast?",
+      answer: "Roof cleaning on the Gold Coast starts at $700 for a flatter single-storey roof and goes up to around $1,600 for a steeper double-storey roof. How dirty the roof is also affects the final price. Large commercial properties or three storeys and above start at $1,600+ and require a site visit for an accurate quote. These are guide prices — every property is individual, so contact us for a free, no-obligation quote."
+    },
+    {
       question: "How often should I have my Gold Coast roof cleaned?",
       answer: "Most Gold Coast roofs benefit from professional cleaning every 2–3 years. Coastal properties within 2km of the beach should clean every 1–2 years due to elevated salt aerosol. If you notice dark streaks, green patches, or moss starting to form, book a clean immediately — early treatment is far cheaper than waiting until growth is established."
     },

@@ -43,6 +43,10 @@ export default function SolarPanelCleaning() {
 
   const faqs = [
     {
+      question: "How much does solar panel cleaning cost on the Gold Coast?",
+      answer: "Solar panel cleaning on the Gold Coast starts at $220, which includes the first 20 panels. After that, it's $4–$10 per additional panel depending on how many panels you have and how dirty they are. These are guide prices — every system is different, so contact us for a free, no-obligation quote."
+    },
+    {
       question: "How often should Gold Coast solar panels be cleaned?",
       answer: "Every 6–12 months for most Gold Coast properties. Homes near the beach (within 2km of the ocean) or under coastal flight paths for birds like ibis and cockatoos should clean every 6 months. Properties in inland suburbs like Nerang or Mudgeeraba can often go 12 months between cleans."
     },

@@ -40,6 +40,10 @@ export default function PatioCleaning() {
 
   const faqs = [
     {
+      question: "How much does patio cleaning cost on the Gold Coast?",
+      answer: "Patio pressure cleaning on the Gold Coast is typically included in our full home package of around $660, which covers the driveway, pathways, patio, and pool area. For patio-only jobs, pricing depends on the size of the area. These are guide prices — every property is individual, so contact us for a free, no-obligation quote."
+    },
+    {
       question: "What types of patio surfaces can you clean?",
       answer: "We clean all types of patio surfaces including concrete, pavers, natural stone, brick, tile, and composite decking. Our techniques are adapted for each specific material."
     },

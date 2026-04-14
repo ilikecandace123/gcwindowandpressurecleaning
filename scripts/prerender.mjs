@@ -289,7 +289,7 @@ async function main() {
   // Google treats the lastmod signal as reliable rather than ignoring it.
   // Using the build date (today) for every URL causes Google to discount
   // lastmod entirely because it never signals real content change.
-  const CONTENT_DATE = "2026-04-10";
+  const CONTENT_DATE = "2026-04-15";
 
   // Categorize routes
   const staticRoutes = routes.filter(
@@ -300,13 +300,30 @@ async function main() {
   );
   const commercialRoutes = routes.filter((r) => r.path.startsWith("/commercial/"));
 
+  // Assign priority and changefreq based on page type
+  const UTILITY_PATHS = new Set(["/about", "/contact", "/service-areas"]);
+  const SERVICE_SLUGS = new Set([
+    "/window-cleaning", "/roof-cleaning", "/house-softwash",
+    "/pressure-cleaning", "/gutter-cleaning", "/solar-panel-cleaning",
+    "/bird-proofing", "/patio-cleaning"
+  ]);
+
+  function getUrlMeta(path) {
+    if (path === "/") return { priority: "1.0", changefreq: "weekly" };
+    if (SERVICE_SLUGS.has(path)) return { priority: "0.9", changefreq: "monthly" };
+    if (UTILITY_PATHS.has(path)) return { priority: "0.8", changefreq: "monthly" };
+    // Location/service pages and commercial pages
+    return { priority: "0.7", changefreq: "monthly" };
+  }
+
   function generateSitemapXml(routeList) {
     const urlEntries = routeList
       .map((r) => {
         const loc = absolute(r.path === "/" ? "/" : r.path);
+        const { priority, changefreq } = getUrlMeta(r.path);
         // Use CONTENT_DATE (not build date) so lastmod reflects real content
         // changes, not whenever the build pipeline last ran.
-        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${CONTENT_DATE}</lastmod>\n  </url>`;
+        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${CONTENT_DATE}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
       })
       .join("\n");
     return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries}\n</urlset>\n`;

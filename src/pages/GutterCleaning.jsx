@@ -41,6 +41,10 @@ export default function GutterCleaning() {
 
   const faqs = [
   {
+    question: "How much does gutter cleaning cost on the Gold Coast?",
+    answer: "Gutter cleaning on the Gold Coast ranges from $220–$550 for single-storey properties and $330–$770 for double-storey, depending on the size of the property and how full the gutters are. Large commercial properties or oversized homes start at $550+. These are guide prices — every property is individual, so contact us for a free, no-obligation quote."
+  },
+  {
     question: "How often should gutters be cleaned?",
     answer: "Most homes need gutter cleaning twice per year - once in late spring and once in autumn. Properties with many trees may require more frequent cleaning to prevent blockages."
   },

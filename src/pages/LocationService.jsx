@@ -7,7 +7,7 @@ import FAQ from "../components/FAQ";
 import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";
-import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
+import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 
 const SERVICE_SECONDARY_IMAGES = {
   "window-cleaning": {
@@ -174,6 +174,14 @@ export default function LocationService() {
     { name: service.name, url: `/${service.parentPage}` },
     { name: `${service.name} in ${suburb.name}`, url: `/${serviceSlug}/${suburbSlug}` }
   ]);
+  const allFaqs = [
+    ...(service.pricingGuide ? [{
+      question: `How much does ${service.name.toLowerCase()} cost in ${suburb.name}?`,
+      answer: service.pricingGuide.replace(/\[suburb\]/g, suburb.name)
+    }] : []),
+    ...service.faqs
+  ];
+  const faqSchema = buildFAQSchema(allFaqs);
 
   return (
     <div>
@@ -182,7 +190,7 @@ export default function LocationService() {
         description={`Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}). Fully insured, police-checked staff. Serving ${suburb.name} and surrounding Gold Coast suburbs. Call (07) 5651 2386 for a free quote.`}
         canonical={`https://gcwindowandpressurecleaning.com.au/${serviceSlug}/${suburbSlug}`}
         image={heroImage.src}
-        jsonLd={[localBusinessSchema, serviceSchema, breadcrumbData]}
+        jsonLd={[localBusinessSchema, serviceSchema, breadcrumbData, faqSchema]}
       />
 
       {/* Hero Section */}
@@ -560,7 +568,7 @@ export default function LocationService() {
           </div>
 
           <div className="space-y-4 max-w-4xl">
-            {service.faqs.map((faq, index) => (
+            {allFaqs.map((faq, index) => (
               <div
                 key={index}
                 className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"

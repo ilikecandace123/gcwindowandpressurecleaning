@@ -45,6 +45,10 @@ export default function BirdProofing() {
 
   const faqs = [
     {
+      question: "How much does solar panel bird proofing cost on the Gold Coast?",
+      answer: "Solar panel bird proofing on the Gold Coast costs $25–$35 per metre, depending on how dirty the roof and panels are. This price includes cleaning the roof and solar panels, plus supply and installation of marine-grade mesh. These are guide prices — every installation is different, so contact us for a free, no-obligation quote."
+    },
+    {
       question: "Why do I need bird proofing for my solar panels?",
       answer: "The gap beneath solar panels is the perfect nesting spot for pigeons and mynas. Nests damage wiring and leave acidic droppings all over your panels, dropping output significantly. Solar panel mesh stops the problem permanently and protects your investment."
     },

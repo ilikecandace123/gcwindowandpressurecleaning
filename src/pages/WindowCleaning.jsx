@@ -41,6 +41,10 @@ export default function WindowCleaning() {
 
   const faqs = [
   {
+    question: "How much does window cleaning cost on the Gold Coast?",
+    answer: "Window cleaning on the Gold Coast starts at $220–$440 for most apartments and small offices (inside and out). Single-storey homes and medium businesses are typically $385–$550, including deep track and screen cleaning. Double-storey homes and larger businesses are usually $500–$800, including tracks and screens. Large commercial properties, car dealerships, and homes with extensive glazing are $800+ and require a site visit. These are guide prices — every property is individual, so contact us for a free, no-obligation quote."
+  },
+  {
     question: "How often should windows be professionally cleaned?",
     answer: "Most residential properties benefit from window cleaning every 3-6 months, while commercial properties may need monthly or quarterly service depending on location and environmental factors."
   },
