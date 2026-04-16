@@ -40,9 +40,18 @@ function absolute(url) {
   return SITE + (url.startsWith("/") ? url : "/" + url);
 }
 
+/** Ensure a URL ends with a trailing slash (Cloudflare Pages enforces this). */
+function withSlash(url) {
+  if (!url || url.endsWith("/")) return url;
+  // Don't add slash to file-like paths (images, xml, etc.)
+  const last = url.split("/").pop();
+  if (last.includes(".")) return url;
+  return url + "/";
+}
+
 function buildMetaHtml({ title, description, canonical, image, jsonLd = [] }) {
   const img = absolute(image || DEFAULT_IMAGE);
-  const can = absolute(canonical);
+  const can = withSlash(absolute(canonical));
   const tags = [
     `<title>${escapeHtml(title)}</title>`,
     `<meta name="description" content="${escapeHtml(description)}" />`,
@@ -184,7 +193,7 @@ async function main() {
           description: `Professional ${name.toLowerCase()} on the Gold Coast. Fully insured, police-checked staff. Call (07) 5651 2386 for a free quote.`,
           image: img,
           serviceType: name,
-          url: `${SITE}/${slug}`
+          url: `${SITE}/${slug}/`
         }),
         buildBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -211,7 +220,7 @@ async function main() {
             image: "/images/window.jpg",
             serviceType: service.name,
             areaName: suburb.name,
-            url: `${SITE}/${service.slug}/${suburb.slug}`
+            url: `${SITE}/${service.slug}/${suburb.slug}/`
           }),
           buildBreadcrumbSchema([
             { name: "Home", url: "/" },
@@ -237,7 +246,7 @@ async function main() {
           description: `${service.shortDesc}. Fully insured with $20M public liability, SWMS supplied, after-hours scheduling.`,
           image: DEFAULT_IMAGE,
           serviceType: service.name,
-          url: `${SITE}/commercial/${service.slug}`
+          url: `${SITE}/commercial/${service.slug}/`
         }),
         buildBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -260,7 +269,7 @@ async function main() {
             image: DEFAULT_IMAGE,
             serviceType: service.name,
             areaName: suburb.name,
-            url: `${SITE}/commercial/${service.slug}/${suburb.slug}`
+            url: `${SITE}/commercial/${service.slug}/${suburb.slug}/`
           }),
           buildBreadcrumbSchema([
             { name: "Home", url: "/" },
@@ -319,7 +328,7 @@ async function main() {
   function generateSitemapXml(routeList) {
     const urlEntries = routeList
       .map((r) => {
-        const loc = absolute(r.path === "/" ? "/" : r.path);
+        const loc = withSlash(absolute(r.path === "/" ? "/" : r.path));
         const { priority, changefreq } = getUrlMeta(r.path);
         // Use CONTENT_DATE (not build date) so lastmod reflects real content
         // changes, not whenever the build pipeline last ran.

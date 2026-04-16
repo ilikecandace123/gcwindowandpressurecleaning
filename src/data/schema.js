@@ -121,7 +121,10 @@ export function buildBreadcrumbSchema(items) {
       "@type": "ListItem",
       "position": idx + 1,
       "name": item.name,
-      "item": item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`
+      "item": (() => {
+        const u = item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`;
+        return u.endsWith("/") ? u : u + "/";
+      })()
     }))
   };
 }
