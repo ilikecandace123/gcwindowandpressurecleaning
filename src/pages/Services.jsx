@@ -1,9 +1,10 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-// Convert PascalCase page name to kebab-case URL
+// Convert PascalCase page name to kebab-case URL with trailing slash
+// (trailing slash matches sitemap + canonical — avoids GSC redirect warnings)
 const createPageUrl = (pageName) =>
-  "/" + pageName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+  "/" + pageName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase() + "/";
 import { useState, useEffect } from "react";
 import { ArrowRight, Star, Shield, Users, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import GoogleReviews from "../components/GoogleReviews";
@@ -54,49 +55,49 @@ export default function Services() {
     title: "Roof Cleaning",
     description: "Professional manufacturer-recommended process extends roof life, improves curb appeal, and prevents costly damage.",
     benefits: ["Extends roof life", "Boosts curb appeal", "Prevents damage"],
-    page: "RoofCleaning"
+    slug: "roof-cleaning"
   },
   {
     imageUrl: "/images/window-hero.jpg",
     title: "Window Cleaning",
     description: "Streak-free interior and exterior window cleaning up to 4 stories. Includes tracks and flyscreens.",
     benefits: ["Streak-free results", "Up to 4 stories", "Includes extras"],
-    page: "WindowCleaning"
+    slug: "window-cleaning"
   },
   {
     imageUrl: "/images/commercial-softwash-secondary.jpg",
     title: "House & Building Softwash",
     description: "Gentle surface-safe cleaning removes mould, dirt, spider webs, and wasp nests without damage.",
     benefits: ["Safe for surfaces", "Removes mould", "Long-lasting results"],
-    page: "HouseSoftWash"
+    slug: "house-softwash"
   },
   {
     imageUrl: "/images/pressure-1.jpg",
     title: "Pressure Cleaning",
     description: "Industrial-grade cleaning for concrete, driveways, walkways, and patios. Deep clean that lasts.",
     benefits: ["Industrial grade", "Deep cleaning", "Long-lasting"],
-    page: "PressureCleaning"
+    slug: "pressure-cleaning"
   },
   {
     imageUrl: "/images/gutter-1.jpg",
     title: "Gutter Cleaning",
     description: "Complete gutter cleaning and maintenance to prevent water damage and keep your property storm-ready.",
     benefits: ["Prevents water damage", "Storm ready", "Complete maintenance"],
-    page: "GutterCleaning"
+    slug: "gutter-cleaning"
   },
   {
     imageUrl: "/images/solar-panel-hero.jpg",
     title: "Solar Panel Cleaning",
     description: "Professional solar panel cleaning to restore efficiency and maximise your energy output.",
     benefits: ["Restores efficiency", "Maximises output", "Extends panel life"],
-    page: "SolarPanelCleaning"
+    slug: "solar-panel-cleaning"
   },
   {
     imageUrl: "/images/bird-proofing-hero.jpg",
     title: "Solar Panel Bird Proofing",
     description: "Marine-grade mesh that stops pigeons and mynas nesting under your solar panels. Warranty-safe and humane.",
     benefits: ["Protects solar panels", "Restores energy output", "Warranty safe"],
-    page: "BirdProofing"
+    slug: "bird-proofing"
   }];
 
   return (
@@ -177,7 +178,7 @@ We are fully insured and all staff are police-checked for your peace of mind.
             {services.map((service, index) =>
             <Link
               key={index}
-              to={createPageUrl(service.page)}
+              to={`/${service.slug}/`}
               className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 flex flex-col">
 
                 <div className="p-8 flex flex-col flex-grow items-center text-center">

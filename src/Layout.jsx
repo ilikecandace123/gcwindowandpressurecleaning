@@ -1,7 +1,7 @@
 
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-const createPageUrl = (pageName) => "/" + pageName.replace(/ /g, "-");
+const createPageUrl = (pageName) => "/" + pageName.replace(/ /g, "-") + "/";
 import { Phone, Star, Shield, Users, Home, MapPin, Menu, X, ChevronDown } from "lucide-react";
 
 export default function Layout({ children, currentPageName }) {
