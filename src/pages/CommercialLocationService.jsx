@@ -54,8 +54,23 @@ export default function CommercialLocationService() {
   const heroImage = HERO_IMAGES[serviceSlug] || HERO_IMAGES["window-cleaning"];
   const secondaryImage = SECONDARY_IMAGES[serviceSlug] || SECONDARY_IMAGES["window-cleaning"];
 
-  // Commercial-specific intro copy per suburb
+  // Commercial-specific intro copy per suburb.
+  // Prefers per-suburb unique fields (propertyMix / environmentalNote / localHook)
+  // — falls back to generic regional copy only when those are absent.
   const getLocationIntro = () => {
+    const opener = `Professional ${service.name.toLowerCase()} in ${suburb.name} for commercial, strata and body corporate buildings. `;
+    const closer = `We deliver fixed-price scheduled programs, site-specific SWMS, after-hours and weekend service, and photographic reporting — everything facility managers and strata committees need to keep ${suburb.name} properties consistently well-maintained.`;
+
+    if (suburb.propertyMix && suburb.environmentalNote && suburb.localHook) {
+      return (
+        opener +
+        suburb.propertyMix + " " +
+        suburb.environmentalNote + " " +
+        suburb.localHook + " " +
+        closer
+      );
+    }
+
     let regional = "";
     if (suburb.region === "south_coast" || suburb.region === "central_coast") {
       regional = `${suburb.name} is a busy coastal Gold Coast hub with retail strips, hospitality venues, offices, medical practices and strata residential towers. The heavy salt air, UV exposure and high foot traffic mean commercial and strata properties in ${suburb.name} need scheduled professional maintenance to stay presentable and protect the building fabric. `;
@@ -69,11 +84,16 @@ export default function CommercialLocationService() {
       regional = `${suburb.name} sits just across the border in the Northern Rivers region of NSW. Our Gold Coast commercial crews service retail, hospitality, strata and industrial clients in ${suburb.name} with the same fully insured, SWMS-documented standards as our Queensland work. `;
     }
 
-    return `Professional ${service.name.toLowerCase()} in ${suburb.name} for commercial, strata and body corporate buildings. ${regional}We deliver fixed-price scheduled programs, site-specific SWMS, after-hours and weekend service, and photographic reporting — everything facility managers and strata committees need to keep ${suburb.name} properties consistently well-maintained.`;
+    return opener + regional + closer;
   };
 
+  // Use the per-suburb environmentalNote for a genuinely unique first bullet.
+  const commercialSpecialistDescription = suburb.environmentalNote
+    ? `Local commercial context in ${suburb.name}: ${suburb.environmentalNote}`
+    : `We understand the specific commercial, retail, hospitality and strata buildings in ${suburb.name} and service them to the standards their operators expect.`;
+
   const whyChooseUs = [
-    { icon: <Building2 className="w-6 h-6 text-blue-600" />, title: `${suburb.name} Commercial Specialists`, description: `We understand the specific commercial, retail, hospitality and strata buildings in ${suburb.name} and service them to the standards their operators expect.` },
+    { icon: <Building2 className="w-6 h-6 text-blue-600" />, title: `${suburb.name} Commercial Specialists`, description: commercialSpecialistDescription },
     { icon: <FileCheck className="w-6 h-6 text-blue-600" />, title: "Full Compliance Documentation", description: "Site-specific SWMS, JSA, certificates of currency, WHS inductions and photographic reporting — everything required for commercial and strata records." },
     { icon: <Clock className="w-6 h-6 text-blue-600" />, title: "After-Hours Scheduling", description: `Early mornings, evenings and weekends so ${suburb.name} businesses, tenants and customers are never disrupted.` },
     { icon: <HardHat className="w-6 h-6 text-blue-600" />, title: "Height Safety Trained", description: "All technicians are height safety trained, police-checked and uniformed, with $20M public liability on every job." }

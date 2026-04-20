@@ -10,6 +10,9 @@ export const SUBURBS = [
     postcode: 4225,
     description: "Southern Gold Coast beach town known for pristine beaches and holiday crowds. Salt air and coastal weather require regular professional cleaning maintenance.",
     landmarks: ["Coolangatta Beach", "Point Danger", "Kirra Beach"],
+    propertyMix: "Coolangatta sits right on the QLD–NSW border and blends mid-century beach shacks, holiday apartment towers along Marine Parade, and modern family homes up Kirra Hill.",
+    environmentalNote: "Direct Pacific exposure means salt crystals bake onto glass, aluminium window frames pit faster than inland suburbs, and east-facing render grows mould stripes after every humid spell.",
+    localHook: "We regularly work the strip between Rainbow Bay and Greenmount, plus the hillside streets above Duranbah lookout where ocean-facing glass needs quarterly attention to stay streak-free.",
     nearbySuburbs: ["Bilinga", "Kirra", "Tugun"]
   },
   {
@@ -19,6 +22,9 @@ export const SUBURBS = [
     postcode: 4225,
     description: "Small coastal suburb with stunning ocean views. The salt spray and humidity common to beachfront properties make professional cleaning services essential.",
     landmarks: ["Bilinga Headland", "Coolangatta Beach", "National Park"],
+    propertyMix: "Bilinga is a small beachside pocket tucked between the airport and Kirra — mostly single-storey timber cottages, 1970s brick-and-tile, and a handful of newer duplexes on Golden Four Drive.",
+    environmentalNote: "Aircraft kerosene residue combined with coastal salt spray leaves a greasy film on windows and solar panels that domestic cleaning rarely shifts; it needs surfactant-based softwash.",
+    localHook: "Most of our Bilinga work is along the Golden Four corridor and the quiet streets off Pacific Parade where low-set homes accumulate roof moss from shaded tree canopies.",
     nearbySuburbs: ["Coolangatta", "Kirra", "Tugun"]
   },
   {
@@ -28,6 +34,9 @@ export const SUBURBS = [
     postcode: 4225,
     description: "Popular beach suburb with excellent surfing conditions and family-friendly beaches. Coastal salt spray and sand accumulation require regular maintenance.",
     landmarks: ["Kirra Beach", "Kirra Reef", "Tallebudgera Valley"],
+    propertyMix: "Kirra is defined by its beachfront high-rises along Marine Parade and a tight grid of post-war cottages on the hill behind them.",
+    environmentalNote: "Strong onshore winds drive fine beach sand under eaves, into window tracks, and across pool decks — leaving abrasive deposits that scratch glass if wiped dry.",
+    localHook: "Window cleaning on the Kirra high-rises typically needs rope-access or water-fed pole work; we also clean the surf club and several cafés around the Kirra Point headland.",
     nearbySuburbs: ["Coolangatta", "Tugun", "Tallebudgera"]
   },
   {
@@ -37,6 +46,9 @@ export const SUBURBS = [
     postcode: 4224,
     description: "Quiet beachside village between major beaches. Residents appreciate the peaceful setting and require regular cleaning to maintain properties against coastal elements.",
     landmarks: ["Tugun Beach", "Tallebudgera Gorge", "Tallebudgera National Park"],
+    propertyMix: "Tugun is a quieter coastal village with a mix of retirement duplexes, family homes on green-title blocks, and boutique medical precincts near Gold Coast University Hospital.",
+    environmentalNote: "The suburb sits in a coastal rain shadow behind Tugun Hill so window ledges collect fine red-clay dust blown off the ridge — especially noticeable after dry westerly weeks.",
+    localHook: "We service the medical precinct around Boyd Street regularly (hospitals demand streak-free glazing) and many of the duplexes on Tugun's back streets.",
     nearbySuburbs: ["Kirra", "Currumbin", "Tallebudgera"]
   },
   {
@@ -46,6 +58,9 @@ export const SUBURBS = [
     postcode: 4223,
     description: "Vibrant beachfront suburb with rock pools, wildlife sanctuary, and pristine beaches. High salt content in air and regular weather exposure demand professional cleaning.",
     landmarks: ["Currumbin Beach", "Currumbin Rock Pools", "Currumbin Wildlife Sanctuary"],
+    propertyMix: "Currumbin stretches from the famous Alley surf break to Currumbin Hill; properties range from classic beachfront Queenslanders to cliff-top contemporary homes with floor-to-ceiling glass.",
+    environmentalNote: "Cliff-top homes face extreme wind-driven salt spray — windows on the ocean side can visibly haze within a fortnight without a hydrophobic surface treatment.",
+    localHook: "Much of our Currumbin work is on the hill streets above The Alley and around Currumbin Rock — elevated homes where pole-reach and rope-access are the practical options.",
     nearbySuburbs: ["Tugun", "Currumbin Waters", "Palm Beach"]
   },
   {
@@ -55,6 +70,9 @@ export const SUBURBS = [
     postcode: 4223,
     description: "Upmarket waterfront suburb with canals and exclusive properties. Regular professional cleaning maintains the premium appeal of waterfront homes.",
     landmarks: ["Currumbin Estuary", "Waterways", "Golf Courses"],
+    propertyMix: "Currumbin Waters is canal-estate territory — predominantly 1990s–2000s brick homes with pontoons, plus some newer waterfront rebuilds around The Spit and the lakes.",
+    environmentalNote: "Brackish water off the canals leaves mineral spotting on ground-floor glass and ducted air-con screens, and pontoon areas grow algae on timber decking faster than the Gold Coast average.",
+    localHook: "Our cleans here typically cover canal-side glass, pontoon softwash, and the terracotta or Colorbond roofs that need tree-sap removal from over-hanging paperbarks.",
     nearbySuburbs: ["Currumbin", "Currumbin Valley", "Palm Beach"]
   },
   {
@@ -64,6 +82,9 @@ export const SUBURBS = [
     postcode: 4223,
     description: "Picturesque hinterland suburb with rural properties and tree-covered homes. Dust, tree debris, and natural elements require regular professional maintenance.",
     landmarks: ["Tallebudgera National Park", "Rainforest", "Mountain Views"],
+    propertyMix: "Currumbin Valley is rural-residential hinterland — acreage blocks, timber country homes, hobby farms, and a few restored 1920s farmhouses along the Currumbin Creek Road corridor.",
+    environmentalNote: "Dense eucalypt canopy means gutters fill with leaf litter and seed pods within weeks, roofs grow lichen on the shaded southern side, and spider webs form across every external window frame.",
+    localHook: "Our hinterland crew knows the valley road well — we handle the steep driveway access and tall two-storey pole homes common to the upper valley properties.",
     nearbySuburbs: ["Currumbin Waters", "Bonogin", "Tallebudgera Valley"]
   },
   {
@@ -73,6 +94,9 @@ export const SUBURBS = [
     postcode: 4221,
     description: "Family-oriented beach suburb with calm waters and patrolled beaches. Salt air exposure and regular beachgoer traffic require frequent property cleaning.",
     landmarks: ["Palm Beach", "Tallebudgera National Park", "Surf Club"],
+    propertyMix: "Palm Beach is family-beach territory with a strong mid-century beach house identity — original 1950s cottages, renovated art-deco apartments, and an increasing number of coastal contemporary rebuilds.",
+    environmentalNote: "The north-facing beach orientation catches strong afternoon sun that bakes salt residue onto glass by mid-afternoon, so mid-morning cleans last noticeably longer than afternoon cleans.",
+    localHook: "We regularly clean homes along the Jefferson Lane strip and the streets running back to the Tallebudgera Creek mouth, including several pre-AirBnB holiday cottages.",
     nearbySuburbs: ["Currumbin", "Elanora", "Tallebudgera"]
   },
   {
@@ -82,6 +106,9 @@ export const SUBURBS = [
     postcode: 4221,
     description: "Exclusive hillside suburb with expansive views. Elevated position experiences coastal winds and requires professional cleaning for multi-level properties.",
     landmarks: ["Elanora Heights", "Tallebudgera National Park", "Valley Views"],
+    propertyMix: "Elanora is a largely hillside suburb set back from the beach — 1980s brick-veneer family homes, pocket estates on The Avenue, and rising modern architect-designed homes on the elevated blocks.",
+    environmentalNote: "Elevated sites face the southerly trade winds which accelerate window spotting from airborne salt, while the dense street-tree canopy means most roofs carry visible north-side moss bands.",
+    localHook: "Our Elanora work centres on the slope between The Pines shopping centre and the Tallebudgera Creek reserve — two-storey homes where extension-pole work is essential.",
     nearbySuburbs: ["Palm Beach", "Tallebudgera", "Burleigh Heads"]
   },
   {
@@ -91,6 +118,9 @@ export const SUBURBS = [
     postcode: 4220,
     description: "Stunning oceanside suburb nestled in a valley with protected beaches and lush surroundings. Perfect for families, requires regular window and house cleaning.",
     landmarks: ["Tallebudgera Beach", "Tallebudgera Valley", "National Park"],
+    propertyMix: "Tallebudgera runs from the creek mouth up a wooded valley — a mix of beachside low-sets, creekside stilt houses, and acreage blocks further west toward the national park boundary.",
+    environmentalNote: "The suburb's humid creek microclimate drives aggressive mildew growth on south-facing walls and roof sheets, particularly on homes shaded by the paperbark and eucalypt corridor along the creek.",
+    localHook: "We see a lot of the stilt-style creek homes off Tallebudgera Creek Road and the newer rebuilds near Tallebudgera Primary — softwash is often the go-to for the rendered lower storeys.",
     nearbySuburbs: ["Elanora", "Tallebudgera Valley", "Burleigh Heads"]
   },
   {
@@ -100,6 +130,9 @@ export const SUBURBS = [
     postcode: 4220,
     description: "Hinterland retreat with rainforest surroundings and mountain homes. Tree pollen, sap, and natural debris accumulation need professional attention.",
     landmarks: ["Rainforest", "Mountain Streams", "National Park"],
+    propertyMix: "Tallebudgera Valley is deep hinterland acreage country — timber homesteads, modern architect-designed pole homes, hobby farms, and equestrian properties along Tallebudgera Creek Road.",
+    environmentalNote: "Thick rainforest canopy and creek humidity produce heavy leaf-matter roof loading and lichen blooms on north-facing roof sheets within a single wet season.",
+    localHook: "Access requires 4WD-friendly crews for some driveways; we routinely service properties as far west as the Springbrook Road turn-off where full exterior softwashes are annual fixtures.",
     nearbySuburbs: ["Tallebudgera", "Bonogin", "Currumbin Valley"]
   },
   {
@@ -109,6 +142,9 @@ export const SUBURBS = [
     postcode: 4220,
     description: "Premier beachfront suburb with iconic headland, upmarket dining, and pristine beaches. Coastal exposure and high foot traffic require professional maintenance.",
     landmarks: ["Burleigh Heads", "Headland Park", "Burleigh Beach"],
+    propertyMix: "Burleigh Heads has become one of the Gold Coast's premium addresses — heritage cottages near James Street, luxury beachfront apartments along Goodwin Terrace, and tightly-held homes up Burleigh Hill.",
+    environmentalNote: "The famous Burleigh Point headland funnels onshore winds directly across the suburb, coating ocean-facing glass and balcony glass balustrades with a visible salt haze within days.",
+    localHook: "We clean several Goodwin Terrace high-rises, plus heritage render on many of the protected homes along James Street and Connor Street — where soft-wash is mandatory to protect original paintwork.",
     nearbySuburbs: ["Tallebudgera", "Burleigh Waters", "Miami"]
   },
   {
@@ -118,6 +154,9 @@ export const SUBURBS = [
     postcode: 4220,
     description: "Peaceful waterfront suburb with calm river access and family-friendly amenities. Water reflections and humidity create unique cleaning maintenance needs.",
     landmarks: ["Burleigh Lake", "Waterways", "Parkland"],
+    propertyMix: "Burleigh Waters is a canal and lake suburb — 1980s–2000s brick-veneer homes with pontoons, some newer waterfront knock-downs, and dense pockets of townhouse villages.",
+    environmentalNote: "Brackish canal water, boat fuel vapour, and humid still-air pockets drive aggressive black-spot mould on pontoons and the lower storey render of waterfront homes.",
+    localHook: "Most of our Burleigh Waters work is waterfront glass, pontoon softwash, and the Colorbond roofs around the Jacobs Ridge side of the suburb.",
     nearbySuburbs: ["Burleigh Heads", "Miami", "Broadbeach"]
   },
   {
@@ -127,6 +166,9 @@ export const SUBURBS = [
     postcode: 4220,
     description: "Charming beachfront suburb with village atmosphere and popular patrolled beach. Coastal salt and regular beachgoer activity necessitate frequent cleaning.",
     landmarks: ["Miami Beach", "Rock Pool", "Surf Club"],
+    propertyMix: "Miami is a tight coastal suburb straddling the Gold Coast Highway — surf-shack-era cottages, a growing set of beachside apartment blocks, and pockets of cafés and commercial space on Marine Parade.",
+    environmentalNote: "Miami catches direct easterly salt spray and also ambient highway grime — a two-pollutant combination that leaves a sticky film on east-facing windows that plain-water cleans cannot remove.",
+    localHook: "We regularly service the Marine Parade strip and the cafés around the Miami Marketta, plus the low-rise apartments between the highway and the beach.",
     nearbySuburbs: ["Burleigh Heads", "Mermaid Beach", "Broadbeach"]
   },
   {
@@ -136,6 +178,9 @@ export const SUBURBS = [
     postcode: 4218,
     description: "Beachfront suburb between Miami and Broadbeach with modern developments. Salt air and beachfront exposure require consistent professional cleaning services.",
     landmarks: ["Mermaid Beach", "Broadwater", "Beach Promenade"],
+    propertyMix: "Mermaid Beach hosts some of the Gold Coast's most expensive beachfront strips — including the famed Hedges Avenue 'Millionaires Row', mid-century beach houses, and tall boutique apartment towers.",
+    environmentalNote: "Hedges Avenue and Albatross Avenue homes sit directly behind the primary dune with zero shelter — window cleaning here is functionally a monthly requirement if owners want clear glass.",
+    localHook: "We work several Hedges Avenue and Albatross Avenue properties where rope-access and water-fed pole gear is standard kit for the tall glass frontages.",
     nearbySuburbs: ["Miami", "Mermaid Waters", "Broadbeach"]
   },
   {
@@ -145,6 +190,9 @@ export const SUBURBS = [
     postcode: 4218,
     description: "Luxury waterfront precinct with canals, high-end apartments, and resort facilities. Premium properties demand frequent professional cleaning and maintenance.",
     landmarks: ["Mermaid Waters Canal System", "Broadwater", "Shopping Centre"],
+    propertyMix: "Mermaid Waters is a canal estate of 1980s–1990s single- and two-storey homes with pontoons, plus newer waterfront rebuilds around Lake Heron and Clear Island Waters boundary.",
+    environmentalNote: "The canal system concentrates still humid air at ground level, driving heavy black-spot mould on south-facing render and bubble-growth algae under pontoon boards.",
+    localHook: "We service a lot of the Lakeland Drive loop and the streets around Markeri Street — canal glass, pontoon softwash, and terracotta roof moss removal are the common jobs.",
     nearbySuburbs: ["Mermaid Beach", "Broadbeach Waters", "Broadbeach"]
   },
   {
@@ -154,6 +202,9 @@ export const SUBURBS = [
     postcode: 4218,
     description: "Major tourist and residential hub with bustling beach culture and high-rise living. Heavy salt exposure and urban dust require regular professional cleaning.",
     landmarks: ["Broadbeach Beach", "Kurrawa Beach", "Shopping Centre"],
+    propertyMix: "Broadbeach is the Gold Coast's second high-rise hub — residential towers along Old Burleigh Road, strata apartment blocks, and the Oracle and Jewel tower cluster nearest Kurrawa.",
+    environmentalNote: "Sealed-facade towers here collect coastal salt at a rate that requires rostered commercial window-cleaning contracts — external glass visibly hazes within three weeks in summer.",
+    localHook: "Our commercial crew services multiple Broadbeach towers on strata cleaning contracts, and our residential team handles the low-rise pocket between Charles Avenue and Margaret Avenue.",
     nearbySuburbs: ["Mermaid Waters", "Surfers Paradise", "Broadbeach Waters"]
   },
   {
@@ -163,6 +214,9 @@ export const SUBURBS = [
     postcode: 4218,
     description: "Upscale waterfront suburb with canal estates and luxury properties. Water reflections and humidity create cleaning challenges requiring professional expertise.",
     landmarks: ["Broadwater", "Canal Estates", "Golf Course"],
+    propertyMix: "Broadbeach Waters is premium canal real estate — large 1990s–2010s family homes on waterfront blocks, many with pontoons and pool areas, plus some recent ultra-contemporary rebuilds.",
+    environmentalNote: "Waterfront glass here takes the combined hit of canal salt mist off the Nerang River system and direct Pacific exposure — cleaning cycles need to be tighter than inland canal suburbs.",
+    localHook: "We regularly work the T.E. Peters Drive / Monaco Street loop — multi-storey waterfront homes where extension-pole and pontoon-side glass cleaning are core tasks.",
     nearbySuburbs: ["Broadbeach", "Surfers Paradise", "Benowa"]
   },
   {
@@ -172,6 +226,9 @@ export const SUBURBS = [
     postcode: 4217,
     description: "Iconic tourist destination with world-famous beach, high-rise buildings, and vibrant nightlife. Heavy foot traffic and coastal salt require frequent professional cleaning.",
     landmarks: ["Surfers Paradise Beach", "Cavill Avenue", "Q1 Tower"],
+    propertyMix: "Surfers Paradise is the Gold Coast's tallest and densest tower precinct — Q1 and the Soul, Circle on Cavill, and Chevron Renaissance cluster dominate a skyline of commercial and residential high-rises.",
+    environmentalNote: "Tower glass here absorbs airborne salt, vehicle emissions from Surfers Paradise Boulevard, and holiday-crowd pollution — rostered façade cleaning is a base cost of owning strata here.",
+    localHook: "Our commercial rope-access and traverse-cradle crew handles scheduled façade cleaning on multiple Surfers towers; we also clean the mid-rises along Orchid and Ocean avenues.",
     nearbySuburbs: ["Broadbeach", "Main Beach", "Southport"]
   },
   {
@@ -181,6 +238,9 @@ export const SUBURBS = [
     postcode: 4217,
     description: "Upmarket beachfront suburb with luxury properties and stunning views. Coastal exposure and premium property standards demand professional cleaning services.",
     landmarks: ["Main Beach", "Tallebudgera Channel", "Exclusive Apartments"],
+    propertyMix: "Main Beach is a mix of upscale apartment towers along Tedder Avenue, luxury strata on Main Beach Parade, and some original Queenslanders hidden behind the beachfront line.",
+    environmentalNote: "The open north-facing beach means prevailing northerlies push salt directly into every north-facing balcony glass — cleans that last elsewhere won't last here.",
+    localHook: "We service several Tedder Avenue cafés and the towers along the Main Beach Parade strip closest to The Spit break-wall.",
     nearbySuburbs: ["Surfers Paradise", "Southport", "Labrador"]
   },
 
@@ -192,6 +252,9 @@ export const SUBURBS = [
     postcode: 4226,
     description: "Modern master-planned suburb with retail and business hubs. Urban environment with regular dust and pollution requires professional window and roof cleaning.",
     landmarks: ["Robina Town Centre", "Lake Oriordan", "Business District"],
+    propertyMix: "Robina is the master-planned centre of the southern Gold Coast — Robina Town Centre, the hospital precinct, Robina Stadium, plus residential estates from compact townhouses to golf-frontage lakeside homes.",
+    environmentalNote: "Robina's lake-estate homes face distinctive freshwater-lake algae blooms on pontoons and south-facing render, plus heavy pollen loading on cars and windows during the jacaranda and plane-tree flowering.",
+    localHook: "Our Robina work includes the Town Centre commercial glazing, the hospital precinct, and the lakefront homes around Lake Tabourie and the Robina Quays area.",
     nearbySuburbs: ["Mudgeeraba", "Varsity Lakes", "Bundall"]
   },
   {
@@ -201,6 +264,9 @@ export const SUBURBS = [
     postcode: 4213,
     description: "Charming hinterland village with rural properties and mountain appeal. Tree coverage and natural debris accumulation require regular professional maintenance.",
     landmarks: ["Mudgeeraba Creek", "Rainforest", "Mountain Homes"],
+    propertyMix: "Mudgeeraba is a semi-rural township — older main-street shops along Railway Street, 1980s family homes on larger blocks, and acreage properties on the western hinterland fringe.",
+    environmentalNote: "Mudgeeraba sits close enough to the hinterland canopy that most properties have visible roof moss within two years, and leaf-heavy gutters are the single most common service request.",
+    localHook: "We regularly service the old village along Railway Street plus the acreage blocks running up toward Springbrook Road and the Old Coach Road area.",
     nearbySuburbs: ["Currumbin Valley", "Bonogin", "Reedy Creek"]
   },
   {
@@ -210,6 +276,9 @@ export const SUBURBS = [
     postcode: 4227,
     description: "Rapidly growing suburb near Robina with modern houses and active lifestyle. Expanding urban environment with regular maintenance needs for growing families.",
     landmarks: ["Varsity Lakes", "Shopping Centre", "Schools"],
+    propertyMix: "Varsity Lakes is a mid-2000s master-planned suburb — townhouse villages, lakeside apartment blocks, commercial precincts along Varsity Parade, and Bond University campus buildings.",
+    environmentalNote: "Still, humid air pockets form around the central lake most mornings, driving black-spot mould on south-facing render and a distinctive algal bloom on lakefront pontoons and pool fencing.",
+    localHook: "We handle the Varsity Parade commercial strip, the Bond University-adjacent apartment blocks, and the lake-frontage townhouses along Lake Orr Drive.",
     nearbySuburbs: ["Robina", "Reedy Creek", "Ashmore"]
   },
   {
@@ -219,6 +288,9 @@ export const SUBURBS = [
     postcode: 4227,
     description: "Master-planned community with modern amenities and parks. Planned development areas require regular professional cleaning for maintained appearance.",
     landmarks: ["Reedy Creek", "Parks and Reserves", "Community Centre"],
+    propertyMix: "Reedy Creek is a hillside residential suburb — 1990s–2010s architect-designed family homes on sloped blocks, some acreage pockets toward the M1 boundary, and townhouse enclaves near the shops.",
+    environmentalNote: "Hillside two-storey homes here catch both morning ocean breeze salt and afternoon westerly dust — producing a layered residue that requires a pre-rinse before pole-and-brush cleaning.",
+    localHook: "We work a lot of Reedy Creek's sloped blocks where three-storey glass frontages on the downhill side need pole or rope-access work.",
     nearbySuburbs: ["Varsity Lakes", "Mudgeeraba", "Bonogin"]
   },
   {
@@ -228,6 +300,9 @@ export const SUBURBS = [
     postcode: 4213,
     description: "Rural hinterland locality with farms and country properties. Significant tree coverage and agricultural dust require regular professional cleaning services.",
     landmarks: ["Tallebudgera National Park", "Agricultural Land", "Rainforest"],
+    propertyMix: "Bonogin is full acreage hinterland — timber Queenslanders, architect-designed pole homes, hobby farms, and a scattering of modern rebuilds along Bonogin Road and Hardys Road.",
+    environmentalNote: "Heavy eucalypt canopy means annual roof-moss loading on southern slopes, ongoing leaf-litter gutters, and significant spider and wasp accumulation on window frames — all compounded by very low wash-down frequency on most acreage.",
+    localHook: "Our Bonogin jobs typically combine a full-house softwash, gutter clean, and window work in a single visit to amortise the drive in.",
     nearbySuburbs: ["Mudgeeraba", "Tallebudgera Valley", "Reedy Creek"]
   },
   {
@@ -237,6 +312,9 @@ export const SUBURBS = [
     postcode: 4226,
     description: "Suburban family neighbourhood near Robina with shops and facilities. Standard suburban properties with regular exposure to dust and weather.",
     landmarks: ["Shopping Centre", "Schools", "Parks"],
+    propertyMix: "Merrimac is family-suburbia across the Nerang River — 1980s–1990s brick homes, newer townhouse clusters near the M1, and the Merrimac State School and commercial strip on Boowaggan Road.",
+    environmentalNote: "Merrimac sits at a low point between ridges that traps morning fog and afternoon humidity — the result is persistent black-spot mould on south-facing render across older homes.",
+    localHook: "We clean a steady stream of the original Merrimac street grid plus the commercial glazing along Boowaggan Road near Merrimac Shopping Centre.",
     nearbySuburbs: ["Robina", "Carrara", "Ashmore"]
   },
   {
@@ -246,6 +324,9 @@ export const SUBURBS = [
     postcode: 4226,
     description: "Established suburb between Robina and Southport. Mature properties with trees and gardens require regular professional cleaning and maintenance.",
     landmarks: ["Carrara Shopping Centre", "Parks", "Residential Areas"],
+    propertyMix: "Carrara spans equestrian acreage (horse country along Nerang–Broadbeach Road), golf-estate homes around the Nerang River, and the Metricon Stadium precinct on the southern edge.",
+    environmentalNote: "Carrara's horse-country acreage generates airborne hay and paddock dust that settles on windows and solar arrays, while the golf-estate homes face the standard golf-corridor bore-water spotting issue.",
+    localHook: "We service both the Stadium-adjacent commercial glazing and the equestrian acreage along Beattie Road and the Emerald Lakes loop.",
     nearbySuburbs: ["Merrimac", "Robina", "Nerang"]
   },
   {
@@ -255,6 +336,9 @@ export const SUBURBS = [
     postcode: 4211,
     description: "Thriving hinterland town with river views and mixed properties. Natural surroundings with river influence require regular professional cleaning services.",
     landmarks: ["Nerang River", "Town Centre", "National Park Access"],
+    propertyMix: "Nerang is one of the oldest Gold Coast township suburbs — heritage main-street shopfronts on Price Street, 1960s–1970s lowset homes, plus hinterland acreage on the western side.",
+    environmentalNote: "The mix of older housing stock and hinterland proximity means nearly every Nerang roof needs periodic moss and lichen treatment, and gutters clog with gum leaves year-round.",
+    localHook: "We regularly work the heritage Price Street shopfronts and the older residential grid around Nerang High and Nerang Station.",
     nearbySuburbs: ["Carrara", "Merrimac", "Mudgeeraba"]
   },
   {
@@ -264,6 +348,9 @@ export const SUBURBS = [
     postcode: 4211,
     description: "Elevated suburb with views over Gold Coast. Higher altitude position exposed to more weather elements requiring professional maintenance.",
     landmarks: ["Highland Views", "Nerang River", "Parks"],
+    propertyMix: "Highland Park is a hillside residential suburb overlooking Nerang — 1990s brick-veneer family homes on sloped lots, with a higher density of split-level and two-storey designs than flat central suburbs.",
+    environmentalNote: "Ridge-line homes are hit by afternoon westerlies carrying hinterland dust, and the steep driveways and multi-level facades mean DIY cleaning is unusually impractical.",
+    localHook: "Our Highland Park work is heavily two-storey and split-level — extension-pole and soft-wash are the core methods here.",
     nearbySuburbs: ["Nerang", "Gilston", "Worongary"]
   },
   {
@@ -273,6 +360,9 @@ export const SUBURBS = [
     postcode: 4211,
     description: "Rural property area with acreage homes and natural surroundings. Tree coverage and natural debris require regular professional cleaning attention.",
     landmarks: ["Rural Properties", "National Park", "Scenic Views"],
+    propertyMix: "Gilston is rural-hinterland country — acreage blocks, timber country homes, hobby farms, and a scattering of modern architect rebuilds along Worongary Road and Gilston Road.",
+    environmentalNote: "Heavy canopy, creek humidity, and rural paddock dust combine to load roofs with lichen and fill gutters with leaf matter faster than coastal Gold Coast suburbs.",
+    localHook: "Our crews know the Gilston and Worongary Road properties well — the acreage driveways and long pole-home roof spans are standard fare here.",
     nearbySuburbs: ["Highland Park", "Worongary", "Mudgeeraba"]
   },
   {
@@ -282,6 +372,9 @@ export const SUBURBS = [
     postcode: 4212,
     description: "Upmarket hinterland retreat with luxury acreage properties. Premium homes in natural surroundings require professional cleaning for maintenance.",
     landmarks: ["Scenic Properties", "Rainforest", "Mountain Views"],
+    propertyMix: "Worongary is semi-rural and transitional — a mix of small-acreage lifestyle blocks, older rural homesteads, and a growing cluster of newer family-home estates near the shopping village.",
+    environmentalNote: "The valley floor here catches overnight mist that leaves a mineral film on east-facing windows and roof sheets — most homes benefit from an annual soft-wash reset.",
+    localHook: "We clean a regular flow of both the acreage homes off Mudgeeraba Creek Road and the estate homes closer to Worongary Shopping Village.",
     nearbySuburbs: ["Gilston", "Advancetown", "Mudgeeraba"]
   },
   {
@@ -291,6 +384,9 @@ export const SUBURBS = [
     postcode: 4211,
     description: "Small hinterland community with rural character and natural beauty. Limited development with focus on preserving natural environment.",
     landmarks: ["Natural Bushland", "Rural Properties", "Scenic Drives"],
+    propertyMix: "Advancetown is deep-hinterland dam-and-acreage country around the Hinze Dam catchment — timber country homes, architect pole-houses, and rural lifestyle blocks.",
+    environmentalNote: "Dam-side humidity, heavy canopy, and low housing density mean most homes go years between cleans and carry accumulated moss, lichen, and leaf loading that requires multi-stage softwash.",
+    localHook: "Our Advancetown jobs almost always involve pole-home glass at height, full-house softwash, and a gutter clean in one visit to justify the distance.",
     nearbySuburbs: ["Worongary", "Mudgeeraba", "Bonogin"]
   },
   {
@@ -300,6 +396,9 @@ export const SUBURBS = [
     postcode: 4214,
     description: "Family-friendly inland suburb with schools and shopping. Well-established neighbourhood requiring regular professional window and house cleaning.",
     landmarks: ["Shopping Centre", "Schools", "Sports Facilities"],
+    propertyMix: "Ashmore is one of the older central-suburb grids — 1970s–1980s brick-and-tile family homes, some lowset fibro originals, a light-industrial estate near Nerang Street, and Ashmore Plaza shopping precinct.",
+    environmentalNote: "Ashmore's older brick-and-tile housing stock has accumulated decades of roof lichen, and many homes still run steel-framed original windows whose timber reveals need careful water-fed pole pressure settings.",
+    localHook: "We clean a lot of Ashmore's original brick-and-tile homes along Nerang–Southport Road and around the Ashmore Plaza residential streets.",
     nearbySuburbs: ["Varsity Lakes", "Merrimac", "Benowa"]
   },
   {
@@ -309,6 +408,9 @@ export const SUBURBS = [
     postcode: 4217,
     description: "Diverse suburb near Southport and beaches with mixed development. Good location with urban dust and salt air exposure requiring maintenance.",
     landmarks: ["Broadwater", "Shopping Areas", "Residential"],
+    propertyMix: "Benowa spans golf-estate luxury on Benowa Waters, the Pindara medical precinct, and family suburbia through the central streets — a broader property mix than most Gold Coast suburbs.",
+    environmentalNote: "The Pindara precinct's HVAC and sterile-air exhausts deposit a fine greasy residue on surrounding commercial glass, and the golf-course bore-water spotting issue extends into Benowa Waters.",
+    localHook: "We handle a steady flow of Pindara-adjacent commercial glass plus the canal and golf-frontage homes around the Benowa Gardens loop.",
     nearbySuburbs: ["Ashmore", "Bundall", "Southport"]
   },
   {
@@ -318,6 +420,9 @@ export const SUBURBS = [
     postcode: 4217,
     description: "Established suburb adjacent to major business areas and shopping. Central location with regular urban pollution and dust exposure.",
     landmarks: ["Shopping Centre", "Business District", "Broadwater Access"],
+    propertyMix: "Bundall is a mixed-use precinct — corporate offices along Bundall Road, council chambers, the Gold Coast Turf Club, and residential pockets on canal blocks between Ashmore Road and the Nerang River.",
+    environmentalNote: "Commercial glazing along Bundall Road catches truck exhaust and road-spray grime that needs surfactant cleaning — a monthly cycle is typical for the office strip.",
+    localHook: "Our Bundall commercial crew services multiple office blocks along Bundall Road and the Ashmore Road boundary — mostly ground-floor and first-storey traverse work.",
     nearbySuburbs: ["Benowa", "Robina", "Southport"]
   },
   {
@@ -327,6 +432,9 @@ export const SUBURBS = [
     postcode: 4217,
     description: "Exclusive island suburb in the Broadwater with luxury waterfront properties. Premium properties require frequent professional cleaning services.",
     landmarks: ["Broadwater", "Exclusive Residences", "Water Views"],
+    propertyMix: "Chevron Island is a compact residential island in the Nerang River — a tight mix of mid-century original homes, 2000s townhouses, and new riverfront apartment blocks along Stanhill Drive.",
+    environmentalNote: "The river surrounding the island concentrates humid still air — south-facing walls and roofs carry persistent black-spot mould year-round, regardless of sun exposure.",
+    localHook: "Our Chevron work is almost all riverfront glass and pontoon softwash, with a growing number of café shopfronts along Thomas Drive.",
     nearbySuburbs: ["Isle of Capri", "Southport", "Main Beach"]
   },
   {
@@ -336,6 +444,9 @@ export const SUBURBS = [
     postcode: 4217,
     description: "Premium waterfront suburb with Mediterranean-style properties. Luxury homes with water exposure require professional cleaning expertise.",
     landmarks: ["Broadwater", "Luxury Properties", "Canals"],
+    propertyMix: "Isle of Capri is a premium canal enclave off the Nerang River — large 1990s–2010s homes on waterfront blocks, some early-2020s ultra-contemporary rebuilds, and a small village shopping strip.",
+    environmentalNote: "Capri's waterfront blocks sit where Nerang River salt meets Surfers high-rise shadow, producing both salt-mist spotting and shaded-wall mould in the same property.",
+    localHook: "We routinely service the River Links cluster and the Capri Village shopping strip, plus multi-level waterfront glass along Reef Island and Capri Reach.",
     nearbySuburbs: ["Chevron Island", "Southport", "Benowa"]
   },
   {
@@ -345,6 +456,9 @@ export const SUBURBS = [
     postcode: 4217,
     description: "Exclusive island community with canal estates and luxury waterfront living. Premium waterfront properties require frequent maintenance.",
     landmarks: ["Broadwater", "Canals", "Exclusive Homes"],
+    propertyMix: "Clear Island Waters is golf-course-and-canal living — large family homes on big blocks, Palm Meadows golf frontages, and gated estates with central lakes.",
+    environmentalNote: "Reticulated bore water used for irrigation across the golf corridor leaves visible mineral calcium spotting on ground-floor windows within a fortnight of every sprinkler cycle.",
+    localHook: "We specifically use a mineral-neutralising rinse for homes bordering the Palm Meadows fairways — standard water-fed pole alone leaves hard-water rings.",
     nearbySuburbs: ["Isle of Capri", "Biggera Waters", "Southport"]
   },
   {
@@ -354,6 +468,9 @@ export const SUBURBS = [
     postcode: 4215,
     description: "Major business and entertainment hub on the Broadwater. High-rise living and commercial properties require frequent professional cleaning.",
     landmarks: ["Broadwater", "Business District", "Entertainment Venues"],
+    propertyMix: "Southport is the Gold Coast's CBD — commercial towers around the Chinatown precinct, the Australia Fair strip, a growing hospital precinct, and a dense mix of apartment blocks along the Broadwater.",
+    environmentalNote: "Broadwater salt combined with heavy traffic exhaust along Nerang Street leaves a stubborn greasy film on ground-level and first-storey commercial glazing.",
+    localHook: "Much of our Southport work is commercial — Chinatown and Ferry Road shopfronts, plus the apartment blocks along Marine Parade facing the Broadwater.",
     nearbySuburbs: ["Surfers Paradise", "Benowa", "Labrador"]
   },
   {
@@ -363,6 +480,9 @@ export const SUBURBS = [
     postcode: 4215,
     description: "Established suburb near Broadwater with mixed residential and commercial properties. Waterfront location with salt air exposure.",
     landmarks: ["Broadwater", "Parks", "Residential Areas"],
+    propertyMix: "Labrador is mostly mid-density residential along the Broadwater — 1960s blonde-brick apartments, newer units along Marine Parade, and classic beach cottages through the back streets.",
+    environmentalNote: "Broadwater tidal mist settles on ground-level windows overnight, so morning cleans here almost always involve dissolving dried tidal salt before the actual wash.",
+    localHook: "We regularly service the Broadwater-facing apartment blocks along Marine Parade and the commercial strip near Grice Avenue.",
     nearbySuburbs: ["Southport", "Main Beach", "Biggera Waters"]
   },
   {
@@ -372,6 +492,9 @@ export const SUBURBS = [
     postcode: 4216,
     description: "Waterfront suburb with canal estates and moderate waterside living. Water proximity creates cleaning maintenance needs requiring professional services.",
     landmarks: ["Broadwater", "Canals", "Parks"],
+    propertyMix: "Biggera Waters is a Broadwater-side suburb of canal homes, boating estates around Harbour Town, and retirement-lifestyle developments with pools and marina access.",
+    environmentalNote: "Harbour-area diesel particulate combined with brackish canal humidity creates a distinctive tar-like spotting on ground-floor glass and outdoor glass pool fencing.",
+    localHook: "Our Biggera Waters work spans the Harbour Town boundary commercial strip, the Runaway Bay marine precinct, and the canal blocks between Hollywell and Paradise Point.",
     nearbySuburbs: ["Clear Island Waters", "Labrador", "Runaway Bay"]
   },
   {
@@ -381,6 +504,9 @@ export const SUBURBS = [
     postcode: 4216,
     description: "Family-oriented waterfront suburb with boat access and peaceful surroundings. Water exposure and maritime environment require regular cleaning.",
     landmarks: ["Broadwater", "Marina", "Parks"],
+    propertyMix: "Runaway Bay is boating-lifestyle territory — waterfront canal homes, a cluster of townhouses around the Runaway Bay Shopping Village, and Broadwater-facing apartment blocks.",
+    environmentalNote: "Canal-side homes here face persistent black-spot mould on rendered south walls and algae bloom on pontoon boards — both accelerated by the humid calm pockets off the Broadwater.",
+    localHook: "We handle a steady volume of pontoon softwash and waterfront glass on the Bayview Street / Oyster Cove side of the suburb.",
     nearbySuburbs: ["Biggera Waters", "Coombabah", "Paradise Point"]
   },
   {
@@ -390,6 +516,9 @@ export const SUBURBS = [
     postcode: 4216,
     description: "Rapidly growing northern suburb with waterfront and hinterland properties. Expanding area with diverse properties requiring varied cleaning services.",
     landmarks: ["Broadwater", "National Park", "Waterways"],
+    propertyMix: "Coombabah is family-suburbia north of the Broadwater — 1990s brick homes, newer lakeside townhouse estates around Coombabah Lake, and the conservation-wetlands buffer.",
+    environmentalNote: "The Coombabah wetlands bring significant insect and bird activity — windows accumulate insect residue and bird droppings faster than inland suburbs, and roof solar panels need tighter cleaning intervals.",
+    localHook: "We work a consistent stream of the Coombabah Village estates and the lakeside townhouse clusters near the wetland boundary.",
     nearbySuburbs: ["Runaway Bay", "Paradise Point", "Hollywell"]
   },
   {
@@ -399,6 +528,9 @@ export const SUBURBS = [
     postcode: 4216,
     description: "Exclusive waterfront community with stunning Broadwater views. Premium waterfront and hilltop properties require professional maintenance.",
     landmarks: ["Broadwater", "Lookout Point", "Luxury Homes"],
+    propertyMix: "Paradise Point is waterfront-lifestyle real estate — luxury canal homes around the Sovereign Island causeway, waterfront apartment blocks along The Esplanade, and a café strip on Grice Avenue.",
+    environmentalNote: "Broadwater salt combined with constant watercraft traffic off the Sovereign Island bridge deposits a film of outboard-fuel residue on north-facing waterfront glass.",
+    localHook: "Much of our Paradise Point work is the Sovereign Island causeway homes and the cafés along The Esplanade — both need tight cleaning cycles to stay presentation-ready.",
     nearbySuburbs: ["Coombabah", "Hollywell", "Hope Island"]
   },
   {
@@ -408,6 +540,9 @@ export const SUBURBS = [
     postcode: 4216,
     description: "Peaceful residential suburb with mixed properties. Good location between beaches and hinterland requiring regular professional cleaning.",
     landmarks: ["Broadwater Access", "Parks", "Residential"],
+    propertyMix: "Hollywell is Broadwater-facing suburbia — a mix of original 1970s holiday shacks, updated canal homes, and some high-end rebuilds with boatsheds on the water.",
+    environmentalNote: "Hollywell's ground-floor glass on Broadwater-facing homes collects tidal mist residue overnight — pre-dawn cleans are a practical waste here because the salt redeposits by mid-morning.",
+    localHook: "Our Hollywell work is mostly canal-side glass and pontoon soft-wash — Waterways Drive and the Broadwater Esplanade account for the majority.",
     nearbySuburbs: ["Paradise Point", "Coombabah", "Hope Island"]
   },
   {
@@ -417,6 +552,9 @@ export const SUBURBS = [
     postcode: 4212,
     description: "Upmarket island resort community with resort facilities and luxury homes. Premium properties and resort living require professional cleaning services.",
     landmarks: ["Resort Facilities", "Broadwater", "Golf Course"],
+    propertyMix: "Hope Island is a master-planned golf-and-canal resort suburb — gated estates, marina-side townhouses, the Hope Island Resort golf club, and large family homes on canal blocks.",
+    environmentalNote: "Hope Island's bore-water irrigation across the golf estates leaves hard-water mineral deposits on all windows within sprinkler reach, and the canal salt mist issue is present on top of that.",
+    localHook: "Our Hope Island crew uses a specific mineral-neutralising pre-rinse on golf-frontage homes — it's the only reliable way to avoid calcium rings after cleaning.",
     nearbySuburbs: ["Hollywell", "Paradise Point", "Helensvale"]
   },
 
@@ -428,6 +566,9 @@ export const SUBURBS = [
     postcode: 4212,
     description: "Major growth hub with modern residential and commercial development. Rapid expansion creates demand for professional cleaning services across properties.",
     landmarks: ["Town Centre", "Shopping Mall", "Schools"],
+    propertyMix: "Helensvale has grown around the Westfield, Movie World, and Wet'n'Wild corridor — a mix of 1990s–2000s brick family homes, newer townhouse estates, and a growing apartment cluster near the station.",
+    environmentalNote: "Theme-park-corridor particulate (fine dust off the asphalt car parks) settles on surrounding homes and drives more frequent window cleaning than suburbs further inland.",
+    localHook: "We work the Discovery Drive / Siganto Drive estate cluster plus the commercial glazing along Town Centre Drive near Westfield Helensvale.",
     nearbySuburbs: ["Pacific Pines", "Upper Coomera", "Hope Island"]
   },
   {
@@ -437,6 +578,9 @@ export const SUBURBS = [
     postcode: 4211,
     description: "Family-oriented suburb with modern homes and community facilities. Well-planned suburb with regular window cleaning and property maintenance needs.",
     landmarks: ["Shopping Centre", "Sports Complex", "Parks"],
+    propertyMix: "Pacific Pines is a master-planned late-1990s / early-2000s estate suburb — uniform brick-veneer family homes, a central village shopping centre, and extensive council greenbelts.",
+    environmentalNote: "The young-suburb tree canopy means less moss loading than older suburbs, but heavy subdivision street-tree pollen blankets windows and solar panels during spring.",
+    localHook: "We clean a steady flow of the original Pacific Pines estate grid off The Avenue and the newer pockets toward the Gaven boundary.",
     nearbySuburbs: ["Helensvale", "Gaven", "Upper Coomera"]
   },
   {
@@ -446,6 +590,9 @@ export const SUBURBS = [
     postcode: 4211,
     description: "Growing suburb with varied residential and commercial properties. Urban expansion creating steady demand for professional cleaning services.",
     landmarks: ["Shopping Areas", "Business District", "Schools"],
+    propertyMix: "Gaven is a mixed-density suburb along the Coomera River corridor — newer family estates, some acreage along the western river frontage, and the Gaven Station precinct.",
+    environmentalNote: "River-side homes catch morning mist off the Coomera River, while the estate homes face the standard new-build issue of construction-dust carryover on first-year cleans.",
+    localHook: "We handle a mix of Gaven station-precinct apartments and the river-frontage family homes off Maudsland Road.",
     nearbySuburbs: ["Pacific Pines", "Helensvale", "Oxenford"]
   },
   {
@@ -455,6 +602,9 @@ export const SUBURBS = [
     postcode: 4210,
     description: "Modern suburb between Helensvale and the highway. Strategic location with diverse properties requiring regular professional maintenance.",
     landmarks: ["Highway Corridor", "Business Parks", "Residential"],
+    propertyMix: "Oxenford straddles the M1 — mixed-use retail on the highway side, original 1980s–1990s housing through the core, and Warner Bros. studios / Movie World on the commercial west.",
+    environmentalNote: "Highway proximity means fine diesel particulate on windows and solar panels; it's the same particulate we see along Helensvale's theme-park corridor, but in a denser strip along Old Pacific Highway.",
+    localHook: "Much of our Oxenford work is the Old Pacific Highway commercial strip and the Tamborine Oxenford Road residential grid behind it.",
     nearbySuburbs: ["Gaven", "Coomera", "Pimpama"]
   },
   {
@@ -464,6 +614,9 @@ export const SUBURBS = [
     postcode: 4209,
     description: "Expanding northern suburb with residential and commercial growth. River location and growing residential areas require regular cleaning services.",
     landmarks: ["Coomera River", "Shopping Centre", "Schools"],
+    propertyMix: "Coomera is the Gold Coast's fastest-growing construction zone — Coomera Town Centre retail, the Westfield, dozens of new estates, and the Coomera Marine Precinct on the river.",
+    environmentalNote: "Active construction sites across the suburb mean near-constant airborne dust; new homes here typically need a full exterior wash within 6 months of handover.",
+    localHook: "Our Coomera work is heavy on new-build first-cleans — construction-dust removal on render, roofs, and windows is the core service request.",
     nearbySuburbs: ["Upper Coomera", "Oxenford", "Pimpama"]
   },
   {
@@ -473,6 +626,9 @@ export const SUBURBS = [
     postcode: 4209,
     description: "Rural-residential suburb with acreage properties and natural surroundings. Tree coverage and larger properties require comprehensive cleaning services.",
     landmarks: ["Rural Properties", "Coomera River", "Natural Bushland"],
+    propertyMix: "Upper Coomera is early-2000s master-planned suburbia — uniform brick family homes, pocket parks, and a scattering of newer estate extensions on the western M1 side.",
+    environmentalNote: "Heavy subdivision street-tree maturation now drops visible gum-leaf litter into gutters year-round — gutter cleaning is the single most requested service in the suburb.",
+    localHook: "We service a consistent flow of the Reserve Road and Days Road estate streets — combined gutter-clean-plus-window-clean visits are the usual format.",
     nearbySuburbs: ["Coomera", "Helensvale", "Ormeau"]
   },
   {
@@ -482,6 +638,9 @@ export const SUBURBS = [
     postcode: 4209,
     description: "Rapidly developing suburb with mixed residential and industrial areas. Urban expansion and diverse properties creating strong cleaning service demand.",
     landmarks: ["Industrial Area", "Residential Growth", "Highway Corridor"],
+    propertyMix: "Pimpama is the northern Gold Coast's newest construction frontier — large estate subdivisions, schools being built in parallel with houses, and a growing retail strip along Pimpama-Jacobs Well Road.",
+    environmentalNote: "Construction particulate dominates the cleaning conversation here — first-year homes need exterior wash-downs just to clear render of construction film before owners even move furniture in.",
+    localHook: "Most of our Pimpama work is brand-new-build first-cleans across the big estate clusters north of the M1 exit.",
     nearbySuburbs: ["Oxenford", "Coomera", "Ormeau"]
   },
   {
@@ -491,6 +650,9 @@ export const SUBURBS = [
     postcode: 4208,
     description: "Growing northern suburb with family homes and rural properties mixed. Diverse properties with tree coverage require regular professional maintenance.",
     landmarks: ["Town Centre", "Parks", "Rural and Urban Mix"],
+    propertyMix: "Ormeau is a transitional northern suburb — established 1980s–1990s family homes, a growing retail hub near the M1, and some acreage blocks on the western rural fringe.",
+    environmentalNote: "The M1-adjacent part of the suburb catches heavy highway particulate, while the acreage western side faces standard rural-hinterland leaf and moss loading.",
+    localHook: "Our Ormeau work splits between the Kingsmore estate streets and the acreage blocks off Peachey Road.",
     nearbySuburbs: ["Pimpama", "Ormeau Hills", "Jacobs Well"]
   },
   {
@@ -500,6 +662,9 @@ export const SUBURBS = [
     postcode: 4208,
     description: "Elevated suburb with views and modern home developments. Hill location exposure to weather elements requiring professional cleaning services.",
     landmarks: ["Elevated Views", "Modern Homes", "Parks"],
+    propertyMix: "Ormeau Hills is elevated suburbia on the ridge above Ormeau — 2000s–2010s brick family homes, many two-storey, with valley views across to the coast.",
+    environmentalNote: "Ridgeline westerlies carry fine hinterland dust that settles on the valley-facing glass of hillside homes — mid-morning cleans outlast afternoon cleans noticeably.",
+    localHook: "We work a steady run of the Creek Ridge Road / Ransom Road estates — two-storey, valley-facing homes where extension-pole work is standard.",
     nearbySuburbs: ["Ormeau", "Jacobs Well", "Yatala"]
   },
   {
@@ -509,6 +674,9 @@ export const SUBURBS = [
     postcode: 4208,
     description: "Semi-rural suburb with acreage properties and country homes. Natural surroundings and tree coverage requiring regular professional cleaning.",
     landmarks: ["Rural Properties", "Bushland", "Country Lifestyle"],
+    propertyMix: "Jacobs Well is a quiet waterside village — fishing shacks, canal homes on the Logan River estuary, and a working marina precinct with boat sheds and jetties.",
+    environmentalNote: "Estuarine salt, boat-motor residue, and marsh-humidity combine to accelerate mould growth on rendered homes — most local houses need an annual softwash reset just to stay presentable.",
+    localHook: "Our Jacobs Well work is mostly waterfront glass, pontoon softwash, and boat-shed render cleaning along Marine Parade and Jacobs Well Road.",
     nearbySuburbs: ["Ormeau", "Steiglitz", "Norwell"]
   },
   {
@@ -518,6 +686,9 @@ export const SUBURBS = [
     postcode: 4207,
     description: "Rural locality with farmland and country properties. Agricultural environment with natural dust and debris requiring professional cleaning services.",
     landmarks: ["Farmland", "Rural Properties", "Natural Areas"],
+    propertyMix: "Steiglitz is a rural-edge boating suburb — acreage blocks, some riverside homes along the Pimpama River, and a mix of older farmhouses and newer rural-residential builds.",
+    environmentalNote: "The combination of marsh-river humidity and low housing density means moss and lichen loading on roofs is significant — often requiring multi-pass softwash treatment.",
+    localHook: "We run a small but steady flow of Steiglitz jobs — typically a combined roof softwash, gutter clean, and full-house wash to justify the drive.",
     nearbySuburbs: ["Jacobs Well", "Norwell", "Yatala"]
   },
   {
@@ -527,6 +698,9 @@ export const SUBURBS = [
     postcode: 4208,
     description: "Semi-rural community with acreage properties and natural bushland. Tree-covered properties with significant cleaning maintenance requirements.",
     landmarks: ["Bushland", "Acreage Properties", "Nature Reserve"],
+    propertyMix: "Norwell is deep rural-residential and market-garden country — acreage blocks, long-established farm properties, and some newer rural lifestyle rebuilds.",
+    environmentalNote: "Paddock dust and agricultural spray drift settle on windows and solar arrays more than any other northern suburb — solar-panel cleaning delivers the most measurable productivity gain here.",
+    localHook: "Our Norwell jobs are typically large acreage homes where solar panel and roof softwash is booked alongside the window clean.",
     nearbySuburbs: ["Steiglitz", "Jacobs Well", "Yatala"]
   },
   {
@@ -536,6 +710,9 @@ export const SUBURBS = [
     postcode: 4207,
     description: "Growing suburban and industrial hub on the Gold Coast/Brisbane border. Diverse properties with regular dust exposure requiring maintenance.",
     landmarks: ["Industrial Area", "Business Parks", "Highway"],
+    propertyMix: "Yatala is primarily industrial — the Yatala Enterprise Area distribution warehouses, light-manufacturing estates, plus a smaller residential and acreage pocket.",
+    environmentalNote: "Industrial airborne residue (metal fabrication dust, forklift exhaust) dominates commercial glazing here — cleaning intervals for warehouse offices are typically monthly or fortnightly.",
+    localHook: "Most of our Yatala work is commercial warehouse office glazing and factory shopfronts along the Stanmore Road / Beenleigh-Yatala Road estate.",
     nearbySuburbs: ["Ormeau Hills", "Stapylton", "Norwell"]
   },
   {
@@ -545,6 +722,9 @@ export const SUBURBS = [
     postcode: 4207,
     description: "Semi-rural locality between Yatala and Brisbane. Mixed properties with agricultural and residential use requiring professional cleaning.",
     landmarks: ["Rural Areas", "Highway", "Business Parks"],
+    propertyMix: "Stapylton is an industrial/rural mix — warehousing north of the Pacific Highway, light-manufacturing, and some acreage residential blocks.",
+    environmentalNote: "Industrial particulate combined with proximity to the Motorsport Park brings distinctive rubber-dust and diesel particulate onto commercial glazing on race weekends.",
+    localHook: "Our Stapylton work centres on the industrial estate commercial glazing and the Motorsport Park shoulder — both need short cleaning intervals.",
     nearbySuburbs: ["Yatala", "Norwell", "Queensland Border"]
   },
 
@@ -556,6 +736,9 @@ export const SUBURBS = [
     postcode: 2485,
     description: "NSW coastal town just south of the Queensland border. Beach lifestyle with salt air exposure and regular holiday crowds requiring professional cleaning.",
     landmarks: ["Tweed Heads Beach", "Coolangatta Boardwalk", "Town Centre"],
+    propertyMix: "Tweed Heads is the NSW border hub — riverside apartments along the Tweed River, the Tweed City retail precinct, and a mix of original beach cottages and modern apartments along Coolangatta Road.",
+    environmentalNote: "The suburb catches both Tweed River estuary salt mist and direct Pacific salt spray — a dual exposure that puts beachfront glass here on a tighter cleaning cycle than even Coolangatta.",
+    localHook: "We service the Tweed City commercial precinct glazing and the Tweed River waterfront apartments along Wharf Street and Florence Street.",
     nearbySuburbs: ["Tweed Heads South", "Banora Point", "Coolangatta"]
   },
   {
@@ -565,6 +748,9 @@ export const SUBURBS = [
     postcode: 2486,
     description: "Large residential NSW suburb just south of the QLD border with a mix of established homes and newer developments. Proximity to the coast means salt air and humidity still affect properties.",
     landmarks: ["Tweed City Shopping Centre", "Seagulls Club", "Boyd Street Parks"],
+    propertyMix: "Tweed Heads South is residential and commercial mixed — older brick family homes, marina-side waterfront properties along the Tweed River, and retail strips along Minjungbal Drive.",
+    environmentalNote: "River-estuary humidity drives strong black-spot mould on south-facing render, and the Minjungbal Drive commercial strip collects heavy road-grime from its role as the main border traffic artery.",
+    localHook: "Our South Tweed work includes the Minjungbal Drive commercial strip and the marina-precinct waterfront homes.",
     nearbySuburbs: ["Tweed Heads", "Banora Point", "Terranora"]
   },
   {
@@ -574,6 +760,9 @@ export const SUBURBS = [
     postcode: 2486,
     description: "Inland NSW suburb with mixed residential and commercial development. Regular urban environment maintenance needs.",
     landmarks: ["Shopping Centre", "Schools", "Parks"],
+    propertyMix: "Tweed Heads West is mostly residential — 1970s–1980s brick homes, a few canal blocks along the Terranora Inlet, and the Tweed West sporting fields precinct.",
+    environmentalNote: "Terranora Inlet moisture creates persistent damp on south-facing walls, while the older housing stock means many roofs have accumulated decades of unchecked lichen growth.",
+    localHook: "Most of our Tweed West work is the older brick-home grid and the canal-side properties along the Terranora Inlet.",
     nearbySuburbs: ["Tweed Heads South", "Banora Point", "Bilambil"]
   },
   {
@@ -583,6 +772,9 @@ export const SUBURBS = [
     postcode: 2486,
     description: "Picturesque locality with riverside and lakeside properties. Water proximity and natural surroundings require professional maintenance.",
     landmarks: ["Lakes", "Riverside Property", "Parkland"],
+    propertyMix: "Banora Point is a broad residential suburb — 1990s–2000s family homes on sloped blocks, golf-frontage properties at Banora Golf Club, and a significant retirement-village presence.",
+    environmentalNote: "Sloped blocks mean lots of multi-storey glazing facing the Tweed River and the distant ocean — all of which catch morning salt mist off the estuary and need tight cleaning cycles.",
+    localHook: "Our Banora Point work is heavy on two-storey river-facing glass and the large flat retirement-village window arrays.",
     nearbySuburbs: ["Tweed Heads West", "Terranora", "Bilambil"]
   },
   {
@@ -592,6 +784,9 @@ export const SUBURBS = [
     postcode: 2486,
     description: "Peaceful residential community near border with mixed properties. Well-established neighbourhood requiring regular professional cleaning.",
     landmarks: ["Residential Areas", "Parks", "Community Centre"],
+    propertyMix: "Terranora is an elevated suburb overlooking the Terranora Inlet — 1990s–2000s architect-designed homes on ridge-line blocks, plus some acreage on the western side.",
+    environmentalNote: "Ridge-line position exposes these homes to both morning estuary mist and afternoon westerlies — a two-direction environmental load that shortens cleaning-interval effectiveness.",
+    localHook: "Our Terranora work is dominated by the Fraser Drive ridge homes — two-storey, long glass frontages, and most need pole-access or rope-access.",
     nearbySuburbs: ["Banora Point", "Bilambil", "Cobaki"]
   },
   {
@@ -601,6 +796,9 @@ export const SUBURBS = [
     postcode: 2486,
     description: "Semi-rural NSW community with acreage properties and natural surroundings. Tree coverage and rural environment creating cleaning needs.",
     landmarks: ["Acreage Properties", "Bushland", "Rural Setting"],
+    propertyMix: "Bilambil is a small rural village in the Tweed hinterland — older timber Queenslanders, modern rural rebuilds, and acreage blocks along Bilambil Road and the creek corridor.",
+    environmentalNote: "Dense canopy and creek-valley humidity create severe moss and lichen loading on roofs, and the low housing density means most homes need multi-stage softwash to reset.",
+    localHook: "Our Bilambil jobs are typically whole-house events — roof soft-wash, gutter clean, and window work on a single visit.",
     nearbySuburbs: ["Terranora", "Bilambil Heights", "Cobaki"]
   },
   {
@@ -610,6 +808,9 @@ export const SUBURBS = [
     postcode: 2486,
     description: "Elevated NSW locality with scenic views and newer properties. Hilltop exposure to weather elements requiring professional maintenance.",
     landmarks: ["Scenic Views", "Modern Homes", "Bushland"],
+    propertyMix: "Bilambil Heights is elevated family suburbia above the valley — 1990s–2010s brick family homes on sloped blocks with valley-and-ocean views.",
+    environmentalNote: "The elevated, exposed position means these homes catch both inland dust and ocean salt — and the two-storey glass frontages that take those views are also the hardest to clean DIY.",
+    localHook: "Most of our Heights work is along Bilambil Heights Road — two-storey homes, extension-pole work on the valley-facing side.",
     nearbySuburbs: ["Bilambil", "Cobaki Lakes", "Terranora"]
   },
   {
@@ -619,6 +820,9 @@ export const SUBURBS = [
     postcode: 2487,
     description: "Riverside NSW community with mixed waterfront and inland properties. Water environment and natural settings requiring regular cleaning.",
     landmarks: ["Cobaki Broadwater", "Riverside Properties", "Cobaki Lakes"],
+    propertyMix: "Cobaki is rural-residential — scattered older farmhouses, some newer acreage builds, and the developing Cobaki Lakes master-planned estate on the eastern side.",
+    environmentalNote: "Marsh-area humidity near the Cobaki Broadwater keeps roof lichen and render mould active year-round, and the new-estate homes face the standard new-build construction-film issue.",
+    localHook: "We split our Cobaki work between the older acreage homes and the new-build first-cleans in the Cobaki Lakes estate.",
     nearbySuburbs: ["Bilambil", "Cobaki Lakes", "Chinderah"]
   },
   {
@@ -628,6 +832,9 @@ export const SUBURBS = [
     postcode: 2487,
     description: "Modern waterfront community with lake views and mixed housing. Water reflection and humidity creating unique cleaning requirements.",
     landmarks: ["Lakes", "Waterfront Homes", "Community Facilities"],
+    propertyMix: "Cobaki Lakes is a new master-planned estate — uniform contemporary family homes, central lake and parkland, and ongoing construction phases.",
+    environmentalNote: "Construction across the estate keeps airborne dust levels high; almost every home we see in Cobaki Lakes is on a first-year first-clean or a recent-handover deep-clean.",
+    localHook: "Our Cobaki Lakes work is almost entirely new-build construction-dust removal from render and windows — often booked before landscaping goes in.",
     nearbySuburbs: ["Cobaki", "Chinderah", "Kingscliff"]
   },
   {
@@ -637,6 +844,9 @@ export const SUBURBS = [
     postcode: 2487,
     description: "Scenic NSW locality with natural surroundings and mixed properties. Hinterland characteristics with tree coverage requiring maintenance.",
     landmarks: ["Scenic Surroundings", "Bushland", "Rural Areas"],
+    propertyMix: "Chinderah is a riverside village — fishing-industry heritage homes along the Tweed River, caravan-park accommodation, and some newer rebuilds on river-frontage blocks.",
+    environmentalNote: "Tweed River estuary salt and a fishing-village marine-industrial air profile combine to accelerate metal oxidation on window frames and aluminium fittings.",
+    localHook: "Our Chinderah work is focused on the river-frontage cottages along Chinderah Bay Drive and the Philp Parade strip.",
     nearbySuburbs: ["Cobaki Lakes", "Kingscliff", "Bilambil"]
   },
   {
@@ -646,6 +856,9 @@ export const SUBURBS = [
     postcode: 2487,
     description: "Charming NSW beach town with strong community character. Coastal environment with salt air and beach proximity requiring professional cleaning.",
     landmarks: ["Kingscliff Beach", "Town Centre", "Headland"],
+    propertyMix: "Kingscliff is a premium NSW beach town — beachfront apartments along Marine Parade, a popular café strip on Marine Parade and Pearl Street, and dense residential streets behind.",
+    environmentalNote: "Kingscliff's beachfront glass faces direct easterly salt spray with zero dune buffer — the café-strip shopfronts need weekly cleaning to stay streak-free in summer.",
+    localHook: "We regularly clean the Marine Parade café strip, the beachfront apartment blocks, and the residential streets behind Kingscliff Beach.",
     nearbySuburbs: ["Chinderah", "Casuarina", "Salt"]
   },
   {
@@ -655,6 +868,9 @@ export const SUBURBS = [
     postcode: 2487,
     description: "Beachfront NSW suburb with stunning coastline views. Strong coastal exposure and beach lifestyle creating cleaning maintenance needs.",
     landmarks: ["Casuarina Beach", "Headland", "Lookout"],
+    propertyMix: "Casuarina is a premium coastal estate just south of Kingscliff — architect-designed beachfront homes, resort-style villas around Salt Village, and native dune-buffer streetscapes.",
+    environmentalNote: "Salt-spray exposure combined with native-plant pollen (casuarinas, banksias, pandanus) produces a gritty sap residue on windows that is unique to this stretch of coast.",
+    localHook: "Our Casuarina work is high-end beachfront — architect homes along Casuarina Way and the Salt Village villas where premium finishes need correspondingly careful soft-wash methods.",
     nearbySuburbs: ["Kingscliff", "Salt", "Cudgen"]
   },
   {
@@ -664,6 +880,9 @@ export const SUBURBS = [
     postcode: 2487,
     description: "Modern coastal resort community at Salt Village. Luxury beachfront properties requiring frequent professional maintenance and cleaning.",
     landmarks: ["Salt Village", "Beach Resort", "Premium Amenities"],
+    propertyMix: "Salt is the Salt Village resort precinct — holiday villas, boutique apartments, a café-and-restaurant strip around the Salt Bar & Restaurant, and short-stay accommodation.",
+    environmentalNote: "Holiday-traffic footfall and direct salt-spray exposure combine to keep shopfront glazing in need of weekly attention during peak season.",
+    localHook: "Our Salt work is commercial-heavy — shopfronts, villa common areas, and holiday-villa turnover cleans.",
     nearbySuburbs: ["Casuarina", "Kingscliff", "Duranbah"]
   },
   {
@@ -673,6 +892,9 @@ export const SUBURBS = [
     postcode: 2487,
     description: "Rural NSW locality with acreage properties and natural environment. Tree coverage and agricultural landscape requiring professional services.",
     landmarks: ["Rural Properties", "Bushland", "Natural Areas"],
+    propertyMix: "Cudgen is a rural agricultural suburb — sugar-cane and banana farms, scattered farmhouses, and some newer rural-residential rebuilds.",
+    environmentalNote: "Agricultural spray drift and cane-harvest dust are the dominant environmental factors — solar panels and roof sheets visibly accumulate agricultural residue within weeks.",
+    localHook: "Our Cudgen work is typically a combined solar-panel clean plus roof and gutter visit for the farmhouse and rural-residential blocks.",
     nearbySuburbs: ["Casuarina", "Duranbah", "Fingal Head"]
   },
   {
@@ -682,6 +904,9 @@ export const SUBURBS = [
     postcode: 2487,
     description: "Small coastal hamlet with pristine beaches and natural character. Quiet, secluded location with property maintenance requirements.",
     landmarks: ["Duranbah Beach", "Secluded Coves", "Nature Reserve"],
+    propertyMix: "Duranbah is a small agricultural-and-coastal suburb — banana farms, scattered rural homes, and the famous Duranbah surf break on the northern coastline edge.",
+    environmentalNote: "A unique dual profile: agricultural residue on the inland side, direct Pacific salt spray on the coastal side, and virtually no buffer between them.",
+    localHook: "Our Duranbah work ranges from the rural farmhouses along Duranbah Road to the cliff-edge homes on the surf break.",
     nearbySuburbs: ["Salt", "Cudgen", "Fingal Head"]
   },
   {
@@ -691,6 +916,9 @@ export const SUBURBS = [
     postcode: 2487,
     description: "Scenic headland locality with dramatic coastline and exclusive properties. Elevated coastal position with significant weather exposure.",
     landmarks: ["Fingal Head", "Lighthouse", "Scenic Walks"],
+    propertyMix: "Fingal Head is a small coastal village — heritage fishing cottages, modern beach-house rebuilds, and the Fingal Head Lighthouse precinct as the suburb's visual anchor.",
+    environmentalNote: "Headland exposure to both Pacific salt spray and Tweed River estuary mist produces some of the most aggressive glass-hazing rates on the Tweed coast.",
+    localHook: "We work a small but loyal stream of Fingal Head coastal homes — soft-wash, glass, and deck clean often booked together seasonally.",
     nearbySuburbs: ["Duranbah", "Pottsville", "Kings Forest"]
   },
   {
@@ -700,6 +928,9 @@ export const SUBURBS = [
     postcode: 2487,
     description: "Rural NSW community surrounded by bushland and natural forest. Natural environment with significant tree coverage and debris.",
     landmarks: ["Bushland", "Forest Areas", "Rural Properties"],
+    propertyMix: "Kings Forest is a large master-planned estate in development — contemporary family homes, ongoing construction phases, and central parkland framing the Cudgen Creek corridor.",
+    environmentalNote: "Active construction across the estate produces heavy airborne dust, and the creek corridor creates localised humid pockets that drive first-year mould on new-build render.",
+    localHook: "Our Kings Forest work is overwhelmingly new-build first-cleans — construction-film removal from render, windows, and roof tiles.",
     nearbySuburbs: ["Fingal Head", "Pottsville", "Bogangar"]
   },
   {
@@ -709,6 +940,9 @@ export const SUBURBS = [
     postcode: 2489,
     description: "Peaceful NSW beach town with low-key coastal lifestyle. Beachfront properties with salt air exposure requiring regular professional cleaning.",
     landmarks: ["Pottsville Beach", "Town Centre", "Beach Access"],
+    propertyMix: "Pottsville is a beach village in southern Tweed Shire — beachfront cottages, family-home streets behind the dunes, and a growing café strip on Coronation Avenue.",
+    environmentalNote: "Direct Pacific exposure with a shallow dune buffer means beachfront glass here hazes quickly; the café strip shopfronts sit far enough back to stay on a standard monthly cycle.",
+    localHook: "We regularly clean the Coronation Avenue café strip and the streets running back from Mooball Street to the beach.",
     nearbySuburbs: ["Fingal Head", "Cabarita Beach", "Kings Forest"]
   },
   {
@@ -718,6 +952,9 @@ export const SUBURBS = [
     postcode: 2488,
     description: "Beautiful NSW beach suburb with family-friendly atmosphere. Pristine beaches with coastal salt exposure and regular maintenance needs.",
     landmarks: ["Cabarita Beach", "Beach Promenade", "Rock Pools"],
+    propertyMix: "Cabarita Beach (historically Bogangar/Cabarita) is a beach village with resort-style holiday homes, a growing apartment presence, and a popular café strip around Norries Headland.",
+    environmentalNote: "Headland-adjacent homes face both salt spray and strong onshore winds — the winds drive fine beach sand into window tracks and across deck areas at a rate unusual for NSW coastal suburbs.",
+    localHook: "Our Cabarita work spans the Norries Headland luxury homes, the café strip around Pandanus Parade, and the beachfront apartment blocks.",
     nearbySuburbs: ["Pottsville", "Bogangar", "Hastings Point"]
   },
   {
@@ -727,6 +964,9 @@ export const SUBURBS = [
     postcode: 2488,
     description: "Scenic NSW village between Cabarita and Hastings Point. Elevated coastal position with stunning views and property maintenance needs.",
     landmarks: ["Scenic Views", "Headland", "Coastal Properties"],
+    propertyMix: "Bogangar is the broader residential area behind Cabarita Beach — beach cottages, post-war fibro, and a growing set of modern rebuilds on deep blocks.",
+    environmentalNote: "Backing onto the Cudgera Creek wetland corridor, many Bogangar homes experience wetland-insect loading on windows and roof sheets — particularly after summer hatching events.",
+    localHook: "Our Bogangar work focuses on the residential streets behind Cabarita — soft-wash on original fibro and render cleaning on the newer builds.",
     nearbySuburbs: ["Cabarita Beach", "Hastings Point", "Kings Forest"]
   },
   {
@@ -736,6 +976,9 @@ export const SUBURBS = [
     postcode: 2489,
     description: "Exclusive NSW headland community at the northern end of the Tweed. Premium coastal properties with significant salt air exposure.",
     landmarks: ["Hastings Point Headland", "Exclusive Homes", "Scenic Drives"],
+    propertyMix: "Hastings Point is a small heritage-coastal village — original fishing cottages, some recent boutique rebuilds, and the Hastings Point headland and creek mouth as landscape anchors.",
+    environmentalNote: "Headland salt spray combined with creek-mouth humidity accelerates aluminium oxidation on window frames — window-frame cleaning here is an ongoing preventative, not a cosmetic task.",
+    localHook: "We run a modest but regular stream of Hastings Point village homes — combined window and softwash visits are the most common booking format.",
     nearbySuburbs: ["Bogangar", "Cabarita Beach", "Pottsville"]
   }
 ];

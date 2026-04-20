@@ -93,10 +93,26 @@ export default function LocationService() {
     );
   }
 
-  // Generate location-aware intro based on region
+  // Generate location-aware intro.
+  // Prefers per-suburb unique fields (propertyMix / environmentalNote / localHook)
+  // — falls back to generic regional copy only when those fields are absent.
   const getLocationSpecificIntro = () => {
     const baseIntro = `Professional ${service.name.toLowerCase()} in ${suburb.name}. `;
 
+    // Per-suburb unique content (added to break cross-page duplicate patterns
+    // that were causing Google to mark 948 location pages as "discovered but
+    // not indexed"). Each block is hand-written and verifiably distinct.
+    if (suburb.propertyMix && suburb.environmentalNote && suburb.localHook) {
+      return (
+        baseIntro +
+        suburb.propertyMix + " " +
+        suburb.environmentalNote + " " +
+        suburb.localHook
+      );
+    }
+
+    // ── Fallback: generic regional boilerplate (only hit if a suburb is
+    // missing the unique fields above).
     let regionalContext = "";
     if (suburb.region === "south_coast") {
       regionalContext = `${suburb.name} is a beautiful coastal suburb with pristine beaches and strong salt air exposure. The combination of humid subtropical weather, salt spray from the ocean, and frequent beachgoer traffic means properties here require more frequent professional cleaning maintenance. `;
@@ -120,13 +136,20 @@ export default function LocationService() {
       `Whether you're a long-time resident or new to the area, our team understands the specific cleaning challenges your location presents and delivers results that keep your property looking its best.`;
   };
 
-  // Localised "why choose us" points
+  // Localised "why choose us" points.
+  // The first point uses the per-suburb environmentalNote so that each location
+  // page has a genuinely different bullet — keeps this section from being
+  // copy-paste across 82 suburbs.
   const getLocalizedWhyChooseUs = () => {
+    const localExpertiseDescription = suburb.environmentalNote
+      ? `Local knowledge of ${suburb.name}: ${suburb.environmentalNote}`
+      : `We understand ${suburb.name}'s unique environment and what it takes to keep properties clean in this area.`;
+
     const basePoints = [
       {
         icon: <CheckCircle className="w-6 h-6 text-green-500" />,
         title: "Local Expertise",
-        description: `We understand ${suburb.name}'s unique environment and what it takes to keep properties clean in this area.`
+        description: localExpertiseDescription
       },
       {
         icon: <CheckCircle className="w-6 h-6 text-green-500" />,
@@ -140,7 +163,7 @@ export default function LocationService() {
       }
     ];
 
-    // Add region-specific point
+    // Add region-specific point (runs in addition to the per-suburb copy above).
     if (suburb.region === "south_coast" || suburb.region === "central_coast") {
       basePoints.push({
         icon: <CheckCircle className="w-6 h-6 text-green-500" />,
