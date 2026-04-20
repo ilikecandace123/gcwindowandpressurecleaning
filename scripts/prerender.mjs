@@ -298,7 +298,7 @@ async function main() {
   // Google treats the lastmod signal as reliable rather than ignoring it.
   // Using the build date (today) for every URL causes Google to discount
   // lastmod entirely because it never signals real content change.
-  const CONTENT_DATE = "2026-04-15";
+  const CONTENT_DATE = "2026-04-20";
 
   // Categorize routes
   const staticRoutes = routes.filter(

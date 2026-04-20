@@ -69,25 +69,25 @@ export default function Layout({ children, currentPageName }) {
 
                 {servicesDropdownOpen && (
                   <div className="absolute top-full left-0 mt-0 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
-                    <Link to="/window-cleaning" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/window-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Window Cleaning
                     </Link>
-                    <Link to="/roof-cleaning" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/roof-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Roof Cleaning
                     </Link>
-                    <Link to="/pressure-cleaning" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/pressure-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Pressure Cleaning
                     </Link>
-                    <Link to="/house-softwash" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/house-softwash/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       House Softwash
                     </Link>
-                    <Link to="/gutter-cleaning" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/gutter-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Gutter Cleaning
                     </Link>
-                    <Link to="/solar-panel-cleaning" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/solar-panel-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Solar Panel Cleaning
                     </Link>
-                    <Link to="/bird-proofing" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/bird-proofing/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Solar Panel Bird Proofing
                     </Link>
                   </div>
@@ -107,33 +107,33 @@ export default function Layout({ children, currentPageName }) {
 
                 {commercialDropdownOpen && (
                   <div className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
-                    <Link to="/commercial/window-cleaning" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/window-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Commercial Window Cleaning
                     </Link>
-                    <Link to="/commercial/roof-cleaning" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/roof-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Commercial Roof Cleaning
                     </Link>
-                    <Link to="/commercial/pressure-cleaning" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/pressure-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Commercial Pressure Cleaning
                     </Link>
-                    <Link to="/commercial/house-softwash" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/house-softwash/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Commercial Building Softwash
                     </Link>
-                    <Link to="/commercial/gutter-cleaning" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/gutter-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Commercial Gutter Cleaning
                     </Link>
-                    <Link to="/commercial/solar-panel-cleaning" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/solar-panel-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Commercial Solar Panel Cleaning
                     </Link>
-                    <Link to="/commercial/bird-proofing" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/bird-proofing/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Commercial Solar Bird Proofing
                     </Link>
                   </div>
                 )}
               </div>
 
-              <Link to="/about" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">About</Link>
-              <Link to="/contact" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Contact</Link>
+              <Link to="/about/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">About</Link>
+              <Link to="/contact/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Contact</Link>
 
             </nav>
 
@@ -170,54 +170,54 @@ export default function Layout({ children, currentPageName }) {
           <div className="lg:hidden border-t border-gray-100 bg-white">
             <nav className="max-w-7xl mx-auto px-4 py-3 space-y-1">
               <div className="px-3 pt-3 pb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">Residential</div>
-              <Link to="/window-cleaning" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Window Cleaning
               </Link>
-              <Link to="/roof-cleaning" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/roof-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Roof Cleaning
               </Link>
-              <Link to="/pressure-cleaning" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/pressure-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Pressure Cleaning
               </Link>
-              <Link to="/house-softwash" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/house-softwash/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 House Softwash
               </Link>
-              <Link to="/gutter-cleaning" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/gutter-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Gutter Cleaning
               </Link>
-              <Link to="/solar-panel-cleaning" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/solar-panel-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Solar Panel Cleaning
               </Link>
-              <Link to="/bird-proofing" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/bird-proofing/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Solar Panel Bird Proofing
               </Link>
 
               <div className="px-3 pt-3 pb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">Commercial & Strata</div>
-              <Link to="/commercial/window-cleaning" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Commercial Window Cleaning
               </Link>
-              <Link to="/commercial/roof-cleaning" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/roof-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Commercial Roof Cleaning
               </Link>
-              <Link to="/commercial/pressure-cleaning" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/pressure-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Commercial Pressure Cleaning
               </Link>
-              <Link to="/commercial/house-softwash" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/house-softwash/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Commercial Building Softwash
               </Link>
-              <Link to="/commercial/gutter-cleaning" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/gutter-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Commercial Gutter Cleaning
               </Link>
-              <Link to="/commercial/solar-panel-cleaning" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/solar-panel-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Commercial Solar Panel Cleaning
               </Link>
-              <Link to="/commercial/bird-proofing" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/bird-proofing/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Commercial Solar Bird Proofing
               </Link>
 
               <div className="border-t border-gray-100 mt-2 pt-2">
-                <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">About Us</Link>
-                <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Contact</Link>
+                <Link to="/about/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">About Us</Link>
+                <Link to="/contact/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Contact</Link>
               </div>
 
               <div className="border-t border-gray-100 mt-2 pt-2 flex items-center gap-4 px-3 py-2 text-xs text-gray-500">
@@ -310,7 +310,7 @@ export default function Layout({ children, currentPageName }) {
           <div className="border-t border-gray-800 mt-8 pt-8">
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-1">
-                <Link to="/service-areas" className="block hover:text-blue-400 transition-colors">
+                <Link to="/service-areas/" className="block hover:text-blue-400 transition-colors">
                   <h4 className="font-semibold mb-4">Service Areas — View All Suburbs</h4>
                 </Link>
                 <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-300">
@@ -319,7 +319,7 @@ export default function Layout({ children, currentPageName }) {
                     "Coolangatta", "Hope Island", "Mermaid Beach", "Tweed Heads", "Kingscliff"].map(suburb => {
                     const slug = suburb.toLowerCase().replace(/ /g, '-');
                     return (
-                      <Link key={slug} to={`/window-cleaning/${slug}`} className="hover:text-white transition-colors">
+                      <Link key={slug} to={`/window-cleaning/${slug}/`} className="hover:text-white transition-colors">
                         {suburb}
                       </Link>
                     );

@@ -109,7 +109,7 @@ export default function RoofCleaning() {
       <PageSEO
         title="Roof Cleaning Gold Coast | Tile, Metal & Concrete Specialists"
         description="Professional roof cleaning across the Gold Coast. Tile, metal & concrete roof specialists — Surfers Paradise, Robina, Burleigh Heads & more. Fully insured. Free quotes — call (07) 5651 2386."
-        canonical="https://gcwindowandpressurecleaning.com.au/roof-cleaning"
+        canonical="https://gcwindowandpressurecleaning.com.au/roof-cleaning/"
         jsonLd={seoJsonLd}
       />
       <section className="relative bg-white text-gray-800 overflow-hidden">
@@ -452,19 +452,19 @@ export default function RoofCleaning() {
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Gold Coast Roof Cleaning — Areas We Service</h2>
           <p className="text-gray-600 leading-relaxed text-lg">
             We provide professional roof cleaning across the entire Gold Coast region including{" "}
-            <Link to="/roof-cleaning/surfers-paradise" className="text-blue-600 hover:underline">Surfers Paradise</Link>,{" "}
-            <Link to="/roof-cleaning/broadbeach" className="text-blue-600 hover:underline">Broadbeach</Link>,{" "}
-            <Link to="/roof-cleaning/robina" className="text-blue-600 hover:underline">Robina</Link>,{" "}
-            <Link to="/roof-cleaning/burleigh-heads" className="text-blue-600 hover:underline">Burleigh Heads</Link>,{" "}
-            <Link to="/roof-cleaning/palm-beach" className="text-blue-600 hover:underline">Palm Beach</Link>,{" "}
-            <Link to="/roof-cleaning/currumbin" className="text-blue-600 hover:underline">Currumbin</Link>,{" "}
-            <Link to="/roof-cleaning/coolangatta" className="text-blue-600 hover:underline">Coolangatta</Link>,{" "}
-            <Link to="/roof-cleaning/southport" className="text-blue-600 hover:underline">Southport</Link>,{" "}
-            <Link to="/roof-cleaning/nerang" className="text-blue-600 hover:underline">Nerang</Link>,{" "}
-            <Link to="/roof-cleaning/mudgeeraba" className="text-blue-600 hover:underline">Mudgeeraba</Link>,{" "}
-            <Link to="/roof-cleaning/elanora" className="text-blue-600 hover:underline">Elanora</Link>,{" "}
-            <Link to="/roof-cleaning/tugun" className="text-blue-600 hover:underline">Tugun</Link>, and{" "}
-            <Link to="/roof-cleaning/mermaid-waters" className="text-blue-600 hover:underline">Mermaid Waters</Link>.{" "}
+            <Link to="/roof-cleaning/surfers-paradise/" className="text-blue-600 hover:underline">Surfers Paradise</Link>,{" "}
+            <Link to="/roof-cleaning/broadbeach/" className="text-blue-600 hover:underline">Broadbeach</Link>,{" "}
+            <Link to="/roof-cleaning/robina/" className="text-blue-600 hover:underline">Robina</Link>,{" "}
+            <Link to="/roof-cleaning/burleigh-heads/" className="text-blue-600 hover:underline">Burleigh Heads</Link>,{" "}
+            <Link to="/roof-cleaning/palm-beach/" className="text-blue-600 hover:underline">Palm Beach</Link>,{" "}
+            <Link to="/roof-cleaning/currumbin/" className="text-blue-600 hover:underline">Currumbin</Link>,{" "}
+            <Link to="/roof-cleaning/coolangatta/" className="text-blue-600 hover:underline">Coolangatta</Link>,{" "}
+            <Link to="/roof-cleaning/southport/" className="text-blue-600 hover:underline">Southport</Link>,{" "}
+            <Link to="/roof-cleaning/nerang/" className="text-blue-600 hover:underline">Nerang</Link>,{" "}
+            <Link to="/roof-cleaning/mudgeeraba/" className="text-blue-600 hover:underline">Mudgeeraba</Link>,{" "}
+            <Link to="/roof-cleaning/elanora/" className="text-blue-600 hover:underline">Elanora</Link>,{" "}
+            <Link to="/roof-cleaning/tugun/" className="text-blue-600 hover:underline">Tugun</Link>, and{" "}
+            <Link to="/roof-cleaning/mermaid-waters/" className="text-blue-600 hover:underline">Mermaid Waters</Link>.{" "}
             <a href="tel:0756512386" className="text-blue-600 hover:underline">Call us</a> to confirm coverage for your suburb.
           </p>
         </div>
@@ -479,15 +479,15 @@ export default function RoofCleaning() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link to="/gutter-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/gutter-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Gutter Cleaning</h3>
               <p className="text-sm text-gray-600">Keep your gutters flowing freely with professional cleaning and maintenance.</p>
             </Link>
-            <Link to="/solar-panel-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/solar-panel-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Solar Panel Cleaning</h3>
               <p className="text-sm text-gray-600">Maintain solar panel efficiency with regular professional cleaning service.</p>
             </Link>
-            <Link to="/window-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/window-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Window Cleaning</h3>
               <p className="text-sm text-gray-600">Crystal-clear windows inside and out, streak-free results. Residential and commercial window cleaning across the Gold Coast.</p>
             </Link>

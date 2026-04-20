@@ -70,7 +70,7 @@ export default function PatioCleaning() {
       <PageSEO
         title="Patio Cleaning Gold Coast | Professional Pressure Cleaning"
         description="Professional patio cleaning on the Gold Coast. Remove mould, algae and stains from pavers, concrete and tiled patios. Fully insured. Call (07) 5651 2386 for a free quote."
-        canonical="https://gcwindowandpressurecleaning.com.au/patio-cleaning"
+        canonical="https://gcwindowandpressurecleaning.com.au/patio-cleaning/"
         image="/images/patio-unsplash.jpg"
         jsonLd={[
           buildLocalBusinessSchema(),
@@ -345,11 +345,11 @@ export default function PatioCleaning() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/pressure-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/pressure-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Pressure Cleaning</h3>
               <p className="text-sm text-gray-600">Powerful pressure cleaning for driveways, patios, and hard surfaces.</p>
             </Link>
-            <Link to="/house-soft-wash" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/house-softwash/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">House Softwash</h3>
               <p className="text-sm text-gray-600">Gentle, effective cleaning that protects your home's exterior while removing dirt and stains.</p>
             </Link>

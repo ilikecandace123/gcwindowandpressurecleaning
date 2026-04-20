@@ -111,7 +111,7 @@ export default function SolarPanelCleaning() {
       <PageSEO
         title="Solar Panel Cleaning Gold Coast | Boost Output Up to 30%"
         description="Professional solar panel cleaning across the Gold Coast — Surfers Paradise, Robina, Burleigh Heads, Palm Beach & beyond. Boost energy output up to 30%. Fully insured. Call (07) 5651 2386."
-        canonical="https://gcwindowandpressurecleaning.com.au/solar-panel-cleaning"
+        canonical="https://gcwindowandpressurecleaning.com.au/solar-panel-cleaning/"
         jsonLd={seoJsonLd}
       />
       <section className="relative bg-white text-gray-800 overflow-hidden">
@@ -421,19 +421,19 @@ export default function SolarPanelCleaning() {
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Gold Coast Solar Panel Cleaning — Areas We Service</h2>
           <p className="text-gray-600 leading-relaxed text-lg">
             We clean solar panels across the entire Gold Coast region including{" "}
-            <Link to="/solar-panel-cleaning/surfers-paradise" className="text-blue-600 hover:underline">Surfers Paradise</Link>,{" "}
-            <Link to="/solar-panel-cleaning/broadbeach" className="text-blue-600 hover:underline">Broadbeach</Link>,{" "}
-            <Link to="/solar-panel-cleaning/robina" className="text-blue-600 hover:underline">Robina</Link>,{" "}
-            <Link to="/solar-panel-cleaning/burleigh-heads" className="text-blue-600 hover:underline">Burleigh Heads</Link>,{" "}
-            <Link to="/solar-panel-cleaning/palm-beach" className="text-blue-600 hover:underline">Palm Beach</Link>,{" "}
-            <Link to="/solar-panel-cleaning/currumbin" className="text-blue-600 hover:underline">Currumbin</Link>,{" "}
-            <Link to="/solar-panel-cleaning/coolangatta" className="text-blue-600 hover:underline">Coolangatta</Link>,{" "}
-            <Link to="/solar-panel-cleaning/southport" className="text-blue-600 hover:underline">Southport</Link>,{" "}
-            <Link to="/solar-panel-cleaning/nerang" className="text-blue-600 hover:underline">Nerang</Link>,{" "}
-            <Link to="/solar-panel-cleaning/mudgeeraba" className="text-blue-600 hover:underline">Mudgeeraba</Link>,{" "}
-            <Link to="/solar-panel-cleaning/elanora" className="text-blue-600 hover:underline">Elanora</Link>,{" "}
-            <Link to="/solar-panel-cleaning/tugun" className="text-blue-600 hover:underline">Tugun</Link>, and{" "}
-            <Link to="/solar-panel-cleaning/mermaid-waters" className="text-blue-600 hover:underline">Mermaid Waters</Link>.{" "}
+            <Link to="/solar-panel-cleaning/surfers-paradise/" className="text-blue-600 hover:underline">Surfers Paradise</Link>,{" "}
+            <Link to="/solar-panel-cleaning/broadbeach/" className="text-blue-600 hover:underline">Broadbeach</Link>,{" "}
+            <Link to="/solar-panel-cleaning/robina/" className="text-blue-600 hover:underline">Robina</Link>,{" "}
+            <Link to="/solar-panel-cleaning/burleigh-heads/" className="text-blue-600 hover:underline">Burleigh Heads</Link>,{" "}
+            <Link to="/solar-panel-cleaning/palm-beach/" className="text-blue-600 hover:underline">Palm Beach</Link>,{" "}
+            <Link to="/solar-panel-cleaning/currumbin/" className="text-blue-600 hover:underline">Currumbin</Link>,{" "}
+            <Link to="/solar-panel-cleaning/coolangatta/" className="text-blue-600 hover:underline">Coolangatta</Link>,{" "}
+            <Link to="/solar-panel-cleaning/southport/" className="text-blue-600 hover:underline">Southport</Link>,{" "}
+            <Link to="/solar-panel-cleaning/nerang/" className="text-blue-600 hover:underline">Nerang</Link>,{" "}
+            <Link to="/solar-panel-cleaning/mudgeeraba/" className="text-blue-600 hover:underline">Mudgeeraba</Link>,{" "}
+            <Link to="/solar-panel-cleaning/elanora/" className="text-blue-600 hover:underline">Elanora</Link>,{" "}
+            <Link to="/solar-panel-cleaning/tugun/" className="text-blue-600 hover:underline">Tugun</Link>, and{" "}
+            <Link to="/solar-panel-cleaning/mermaid-waters/" className="text-blue-600 hover:underline">Mermaid Waters</Link>.{" "}
             Not sure if we cover your suburb? <a href="tel:0756512386" className="text-blue-600 hover:underline">Give us a call</a>.
           </p>
         </div>
@@ -448,15 +448,15 @@ export default function SolarPanelCleaning() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link to="/gutter-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/gutter-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Gutter Cleaning</h3>
               <p className="text-sm text-gray-600">Bird droppings and roof debris block gutters fast. Keep water flowing with professional gutter cleaning.</p>
             </Link>
-            <Link to="/bird-proofing" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/bird-proofing/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Bird Proofing</h3>
               <p className="text-sm text-gray-600">Protect your solar panels and roof from bird damage with professional bird proofing mesh and deterrents.</p>
             </Link>
-            <Link to="/roof-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/roof-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Roof Cleaning</h3>
               <p className="text-sm text-gray-600">Professional roof cleaning to remove moss, lichen, and algae — extending your roof's life and boosting curb appeal.</p>
             </Link>

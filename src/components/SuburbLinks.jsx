@@ -34,7 +34,7 @@ export default function SuburbLinks({ serviceSlug, serviceName, basePath = "" })
           {FEATURED_SUBURBS.map(suburb => (
             <Link
               key={suburb.slug}
-              to={`${basePath}/${serviceSlug}/${suburb.slug}`}
+              to={`${basePath}/${serviceSlug}/${suburb.slug}/`}
               className="flex items-center justify-between p-3.5 bg-white rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors group"
             >
               <span className="text-sm font-medium text-gray-800 group-hover:text-blue-700">{serviceName} in {suburb.name}</span>
@@ -45,7 +45,7 @@ export default function SuburbLinks({ serviceSlug, serviceName, basePath = "" })
 
         <div className="text-center mt-8">
           <Link
-            to="/service-areas"
+            to="/service-areas/"
             className="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-800 transition-colors"
           >
             View all service areas

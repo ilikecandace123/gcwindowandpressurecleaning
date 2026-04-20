@@ -80,7 +80,7 @@ export default function CommercialService() {
       <PageSEO
         title={`${service.name} Gold Coast | Commercial & Strata Specialists`}
         description={`${service.shortDesc}. Fully insured with $20M public liability, SWMS supplied, after-hours scheduling. Call (07) 5651 2386.`}
-        canonical={`https://gcwindowandpressurecleaning.com.au/commercial/${service.slug}`}
+        canonical={`https://gcwindowandpressurecleaning.com.au/commercial/${service.slug}/`}
         jsonLd={seoJsonLd}
       />
 

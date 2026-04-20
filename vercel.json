@@ -24,15 +24,29 @@
     }
   ],
   "redirects": [
-    { "source": "/RoofCleaning", "destination": "/roof-cleaning", "permanent": true },
-    { "source": "/WindowCleaning", "destination": "/window-cleaning", "permanent": true },
-    { "source": "/HouseSoftWash", "destination": "/house-softwash", "permanent": true },
-    { "source": "/PressureCleaning", "destination": "/pressure-cleaning", "permanent": true },
-    { "source": "/GutterCleaning", "destination": "/gutter-cleaning", "permanent": true },
-    { "source": "/SolarPanelCleaning", "destination": "/solar-panel-cleaning", "permanent": true },
-    { "source": "/BirdProofing", "destination": "/bird-proofing", "permanent": true },
-    { "source": "/ServiceAreas", "destination": "/service-areas", "permanent": true },
+    { "source": "/RoofCleaning", "destination": "/roof-cleaning/", "permanent": true },
+    { "source": "/RoofCleaning/", "destination": "/roof-cleaning/", "permanent": true },
+    { "source": "/WindowCleaning", "destination": "/window-cleaning/", "permanent": true },
+    { "source": "/WindowCleaning/", "destination": "/window-cleaning/", "permanent": true },
+    { "source": "/HouseSoftWash", "destination": "/house-softwash/", "permanent": true },
+    { "source": "/HouseSoftWash/", "destination": "/house-softwash/", "permanent": true },
+    { "source": "/PressureCleaning", "destination": "/pressure-cleaning/", "permanent": true },
+    { "source": "/PressureCleaning/", "destination": "/pressure-cleaning/", "permanent": true },
+    { "source": "/GutterCleaning", "destination": "/gutter-cleaning/", "permanent": true },
+    { "source": "/GutterCleaning/", "destination": "/gutter-cleaning/", "permanent": true },
+    { "source": "/SolarPanelCleaning", "destination": "/solar-panel-cleaning/", "permanent": true },
+    { "source": "/SolarPanelCleaning/", "destination": "/solar-panel-cleaning/", "permanent": true },
+    { "source": "/BirdProofing", "destination": "/bird-proofing/", "permanent": true },
+    { "source": "/BirdProofing/", "destination": "/bird-proofing/", "permanent": true },
+    { "source": "/ServiceAreas", "destination": "/service-areas/", "permanent": true },
+    { "source": "/ServiceAreas/", "destination": "/service-areas/", "permanent": true },
     { "source": "/Services", "destination": "/", "permanent": true },
-    { "source": "/PatioCleaning", "destination": "/patio-cleaning", "permanent": true }
+    { "source": "/Services/", "destination": "/", "permanent": true },
+    { "source": "/PatioCleaning", "destination": "/patio-cleaning/", "permanent": true },
+    { "source": "/PatioCleaning/", "destination": "/patio-cleaning/", "permanent": true },
+    { "source": "/commercial", "destination": "/commercial/window-cleaning/", "permanent": true },
+    { "source": "/commercial/", "destination": "/commercial/window-cleaning/", "permanent": true },
+    { "source": "/house-soft-wash", "destination": "/house-softwash/", "permanent": true },
+    { "source": "/house-soft-wash/", "destination": "/house-softwash/", "permanent": true }
   ]
 }

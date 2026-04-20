@@ -44,7 +44,7 @@ export default function ServiceAreas() {
       <PageSEO
         title="Service Areas | Gold Coast Window and Pressure Cleaning"
         description="We service all Gold Coast suburbs and Northern NSW. Find professional window cleaning, pressure cleaning, roof cleaning and more in your suburb. Call (07) 5651 2386."
-        canonical="https://gcwindowandpressurecleaning.com.au/service-areas"
+        canonical="https://gcwindowandpressurecleaning.com.au/service-areas/"
         jsonLd={[
           buildLocalBusinessSchema(),
           buildBreadcrumbSchema([
@@ -98,7 +98,7 @@ export default function ServiceAreas() {
             {SERVICES.map(service => (
               <Link
                 key={service.slug}
-                to={`/${service.parentPage}`}
+                to={`/${service.parentPage}/`}
                 className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors"
               >
                 {service.name}
@@ -143,7 +143,7 @@ export default function ServiceAreas() {
                         {SERVICES.slice(0, 4).map(service => (
                           <Link
                             key={service.slug}
-                            to={`/${service.slug}/${suburb.slug}`}
+                            to={`/${service.slug}/${suburb.slug}/`}
                             className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded hover:bg-blue-50 hover:text-blue-700 transition-colors"
                           >
                             {service.name}
@@ -154,7 +154,7 @@ export default function ServiceAreas() {
                         {SERVICES.slice(4).map(service => (
                           <Link
                             key={service.slug}
-                            to={`/${service.slug}/${suburb.slug}`}
+                            to={`/${service.slug}/${suburb.slug}/`}
                             className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded hover:bg-blue-50 hover:text-blue-700 transition-colors"
                           >
                             {service.name}

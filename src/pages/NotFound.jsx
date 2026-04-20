@@ -9,7 +9,7 @@ export default function NotFound() {
       <PageSEO
         title="Page Not Found | Gold Coast Window and Pressure Cleaning"
         description="The page you're looking for doesn't exist. Browse our services or contact us on (07) 5651 2386 for professional exterior cleaning on the Gold Coast."
-        canonical="https://gcwindowandpressurecleaning.com.au/404"
+        canonical="https://gcwindowandpressurecleaning.com.au/404/"
         noindex
       />
       <div className="max-w-2xl text-center">
@@ -33,13 +33,13 @@ export default function NotFound() {
             <Home className="w-5 h-5" /> Home
           </Link>
           <Link
-            to="/services"
+            to="/services/"
             className="inline-flex items-center justify-center gap-2 bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold border border-gray-300 hover:bg-gray-50 transition-colors"
           >
             View services
           </Link>
           <Link
-            to="/service-areas"
+            to="/service-areas/"
             className="inline-flex items-center justify-center gap-2 bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold border border-gray-300 hover:bg-gray-50 transition-colors"
           >
             <MapPin className="w-5 h-5" /> Service areas

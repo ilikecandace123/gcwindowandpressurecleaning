@@ -101,7 +101,7 @@ export default function BirdProofing() {
       <PageSEO
         title="Solar Panel Bird Proofing Gold Coast | Pigeon Mesh Installation"
         description="Professional solar panel bird proofing mesh on the Gold Coast. Stops pigeons and mynas nesting under your panels. Warranty-safe installation. Fully insured. Call (07) 5651 2386."
-        canonical="https://gcwindowandpressurecleaning.com.au/bird-proofing"
+        canonical="https://gcwindowandpressurecleaning.com.au/bird-proofing/"
         jsonLd={seoJsonLd}
       />
 
@@ -357,11 +357,11 @@ export default function BirdProofing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/solar-panel-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/solar-panel-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Solar Panel Cleaning</h3>
               <p className="text-sm text-gray-600">Maintain solar panel efficiency with regular professional cleaning service.</p>
             </Link>
-            <Link to="/roof-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/roof-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Roof Cleaning</h3>
               <p className="text-sm text-gray-600">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
             </Link>

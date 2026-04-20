@@ -26,7 +26,18 @@ export default function PageSEO({ title, description, canonical, image, noindex,
       return SITE + (url.startsWith("/") ? url : "/" + url);
     };
 
-    const canonicalUrl = absolute(canonical);
+    // Mirrors scripts/prerender.mjs — Cloudflare Pages serves URLs with
+    // trailing slashes as canonical. The client-rendered canonical MUST match
+    // the prerendered canonical and the sitemap, otherwise Google sees
+    // conflicting signals between SSR HTML and hydrated DOM.
+    const withSlash = (url) => {
+      if (!url || url.endsWith("/")) return url;
+      const last = url.split("/").pop();
+      if (last.includes(".")) return url; // don't slash file-like URLs
+      return url + "/";
+    };
+
+    const canonicalUrl = withSlash(absolute(canonical));
     const imageUrl = absolute(image || DEFAULT_IMAGE);
 
     const upsertMeta = (selector, attrs) => {

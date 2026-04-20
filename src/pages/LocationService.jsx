@@ -188,7 +188,7 @@ export default function LocationService() {
       <PageSEO
         title={`${service.name} in ${suburb.name} | Gold Coast Window and Pressure Cleaning`}
         description={`Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}). Fully insured, police-checked staff. Serving ${suburb.name} and surrounding Gold Coast suburbs. Call (07) 5651 2386 for a free quote.`}
-        canonical={`https://gcwindowandpressurecleaning.com.au/${serviceSlug}/${suburbSlug}`}
+        canonical={`https://gcwindowandpressurecleaning.com.au/${serviceSlug}/${suburbSlug}/`}
         image={heroImage.src}
         jsonLd={[localBusinessSchema, serviceSchema, breadcrumbData, faqSchema]}
       />
@@ -613,7 +613,7 @@ export default function LocationService() {
             {SERVICES.filter(s => s.slug !== serviceSlug).map((otherService, idx) => (
               <Link
                 key={idx}
-                to={`/${otherService.slug}/${suburbSlug}`}
+                to={`/${otherService.slug}/${suburbSlug}/`}
                 className="group flex items-center justify-between p-4 bg-white rounded-lg hover:bg-blue-50 transition-colors border border-gray-100 hover:border-blue-200 shadow-sm"
               >
                 <span className="font-medium text-gray-900 group-hover:text-blue-700">
@@ -643,7 +643,7 @@ export default function LocationService() {
                 return (
                   <Link
                     key={idx}
-                    to={`/${serviceSlug}/${nearbySuburbData.slug}`}
+                    to={`/${serviceSlug}/${nearbySuburbData.slug}/`}
                     className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors border border-gray-100 hover:border-blue-200"
                   >
                     <span className="font-medium text-gray-900">{nearbySuburbName}</span>

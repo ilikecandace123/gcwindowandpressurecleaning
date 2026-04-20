@@ -93,7 +93,7 @@ export default function WindowCleaning() {
       <PageSEO
         title="Window Cleaning Gold Coast | Streak-Free Interior & Exterior"
         description="Window cleaning Gold Coast — streak-free interior & exterior up to 4 storeys, including tracks & flyscreens. 5★ rated, fully insured. Free quote: (07) 5651 2386."
-        canonical="https://gcwindowandpressurecleaning.com.au/window-cleaning"
+        canonical="https://gcwindowandpressurecleaning.com.au/window-cleaning/"
         jsonLd={seoJsonLd}
       />
       <section className="relative bg-white text-gray-800 overflow-hidden">
@@ -366,11 +366,11 @@ export default function WindowCleaning() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/roof-cleaning" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/roof-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Roof Cleaning</h3>
               <p className="text-sm text-gray-600">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
             </Link>
-            <Link to="/house-soft-wash" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+            <Link to="/house-softwash/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">House Softwash</h3>
               <p className="text-sm text-gray-600">Gentle, effective cleaning that protects your home's exterior while removing dirt and stains.</p>
             </Link>

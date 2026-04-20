@@ -100,7 +100,7 @@ export default function CommercialLocationService() {
       <PageSEO
         title={`${service.name} in ${suburb.name} | Commercial & Strata Gold Coast`}
         description={`Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}) for commercial, strata and body corporate buildings. $20M public liability, SWMS supplied, after-hours service. Call (07) 5651 2386.`}
-        canonical={`https://gcwindowandpressurecleaning.com.au/commercial/${serviceSlug}/${suburbSlug}`}
+        canonical={`https://gcwindowandpressurecleaning.com.au/commercial/${serviceSlug}/${suburbSlug}/`}
         image={heroImage}
         jsonLd={[localBusinessSchema, serviceSchema, breadcrumbData]}
       />
@@ -406,7 +406,7 @@ export default function CommercialLocationService() {
             {COMMERCIAL_SERVICES.filter(s => s.slug !== serviceSlug).map((otherService, idx) => (
               <a
                 key={idx}
-                href={`/commercial/${otherService.slug}/${suburbSlug}`}
+                href={`/commercial/${otherService.slug}/${suburbSlug}/`}
                 className="group flex items-center justify-between p-4 bg-white rounded-lg hover:bg-blue-50 transition-colors border border-gray-100 hover:border-blue-200 shadow-sm"
               >
                 <span className="font-medium text-gray-900 group-hover:text-blue-700">
@@ -432,7 +432,7 @@ export default function CommercialLocationService() {
                 const nearbySuburbData = SUBURBS.find(s => s.name === nearbySuburbName);
                 if (!nearbySuburbData) return null;
                 return (
-                  <a key={idx} href={`/commercial/${serviceSlug}/${nearbySuburbData.slug}`}
+                  <a key={idx} href={`/commercial/${serviceSlug}/${nearbySuburbData.slug}/`}
                     className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors border border-gray-100 hover:border-blue-200">
                     <span className="font-medium text-gray-900">{nearbySuburbName}</span>
                     <ArrowRight className="w-4 h-4 text-blue-600" />
