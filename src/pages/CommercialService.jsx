@@ -59,12 +59,12 @@ export default function CommercialService() {
       name: `Commercial ${service.name}`,
       description: service.shortDesc,
       serviceType: `Commercial ${service.name}`,
-      url: `https://gcwindowandpressurecleaning.com.au/commercial/${service.slug}`
+      url: `https://gcwindowandpressurecleaning.com.au/commercial/${service.slug}/`
     }),
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "Commercial & Strata", url: "/commercial" },
-      { name: service.name, url: `/commercial/${service.slug}` }
+      { name: "Commercial & Strata", url: "/commercial/" },
+      { name: service.name, url: `/commercial/${service.slug}/` }
     ])
   ];
 

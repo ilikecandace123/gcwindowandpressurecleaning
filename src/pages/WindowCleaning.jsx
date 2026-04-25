@@ -82,7 +82,7 @@ export default function WindowCleaning() {
     },
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "Window Cleaning", url: "/window-cleaning" }
+      { name: "Window Cleaning", url: "/window-cleaning/" }
     ]),
     buildFAQSchema(faqs)
   ];

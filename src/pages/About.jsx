@@ -16,12 +16,12 @@ export default function About() {
           buildLocalBusinessSchema(),
           buildBreadcrumbSchema([
             { name: "Home", url: "/" },
-            { name: "About Us", url: "/about" }
+            { name: "About Us", url: "/about/" }
           ])
         ]}
       />
 
-      <Breadcrumbs items={[{ name: "About Us", url: "/about" }]} />
+      <Breadcrumbs items={[{ name: "About Us", url: "/about/" }]} />
 
       {/* Hero */}
       <section className="hero-gradient text-white py-16 md:py-24">
@@ -122,13 +122,13 @@ export default function About() {
           <p className="text-lg text-gray-600 text-center mb-10">We provide a complete range of exterior cleaning services for residential, commercial, and strata properties.</p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              { name: "Window Cleaning", url: "/window-cleaning", desc: "Interior and exterior, up to 4 stories" },
-              { name: "Roof Cleaning", url: "/roof-cleaning", desc: "Manufacturer-recommended process" },
-              { name: "Pressure Cleaning", url: "/pressure-cleaning", desc: "Driveways, paths, patios, pool areas" },
-              { name: "House & Building Softwash", url: "/house-softwash", desc: "Gentle mould and grime removal" },
-              { name: "Gutter Cleaning", url: "/gutter-cleaning", desc: "Includes downpipe checks" },
-              { name: "Solar Panel Cleaning", url: "/solar-panel-cleaning", desc: "Warranty-safe methods" },
-              { name: "Solar Panel Bird Proofing", url: "/bird-proofing", desc: "Marine-grade mesh installation" },
+              { name: "Window Cleaning", url: "/window-cleaning/", desc: "Interior and exterior, up to 4 stories" },
+              { name: "Roof Cleaning", url: "/roof-cleaning/", desc: "Manufacturer-recommended process" },
+              { name: "Pressure Cleaning", url: "/pressure-cleaning/", desc: "Driveways, paths, patios, pool areas" },
+              { name: "House & Building Softwash", url: "/house-softwash/", desc: "Gentle mould and grime removal" },
+              { name: "Gutter Cleaning", url: "/gutter-cleaning/", desc: "Includes downpipe checks" },
+              { name: "Solar Panel Cleaning", url: "/solar-panel-cleaning/", desc: "Warranty-safe methods" },
+              { name: "Solar Panel Bird Proofing", url: "/bird-proofing/", desc: "Marine-grade mesh installation" },
             ].map((s) => (
               <Link key={s.url} to={s.url} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg hover:bg-blue-50 border border-gray-100 hover:border-blue-200 transition-colors">
                 <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />

@@ -15,12 +15,12 @@ export default function Contact() {
           buildLocalBusinessSchema(),
           buildBreadcrumbSchema([
             { name: "Home", url: "/" },
-            { name: "Contact", url: "/contact" }
+            { name: "Contact", url: "/contact/" }
           ])
         ]}
       />
 
-      <Breadcrumbs items={[{ name: "Contact Us", url: "/contact" }]} />
+      <Breadcrumbs items={[{ name: "Contact Us", url: "/contact/" }]} />
 
       {/* Hero */}
       <section className="hero-gradient text-white py-16 md:py-20">

@@ -84,7 +84,7 @@ export default function PressureCleaning() {
     },
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "Pressure Cleaning", url: "/pressure-cleaning" }
+      { name: "Pressure Cleaning", url: "/pressure-cleaning/" }
     ]),
     buildFAQSchema(faqs)
   ];

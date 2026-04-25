@@ -91,7 +91,7 @@ export default function BirdProofing() {
     },
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "Bird Proofing", url: "/bird-proofing" }
+      { name: "Bird Proofing", url: "/bird-proofing/" }
     ]),
     buildFAQSchema(faqs)
   ];

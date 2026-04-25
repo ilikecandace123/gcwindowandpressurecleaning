@@ -78,7 +78,7 @@ export default function GutterCleaning() {
     },
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "Gutter Cleaning", url: "/gutter-cleaning" }
+      { name: "Gutter Cleaning", url: "/gutter-cleaning/" }
     ]),
     buildFAQSchema(faqs)
   ];

@@ -101,7 +101,7 @@ export default function SolarPanelCleaning() {
     },
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "Solar Panel Cleaning", url: "/solar-panel-cleaning" }
+      { name: "Solar Panel Cleaning", url: "/solar-panel-cleaning/" }
     ]),
     buildFAQSchema(faqs)
   ];

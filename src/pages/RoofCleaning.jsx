@@ -99,7 +99,7 @@ export default function RoofCleaning() {
     },
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "Roof Cleaning", url: "/roof-cleaning" }
+      { name: "Roof Cleaning", url: "/roof-cleaning/" }
     ]),
     buildFAQSchema(faqs)
   ];

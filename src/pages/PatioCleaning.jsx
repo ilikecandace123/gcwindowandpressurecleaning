@@ -79,11 +79,11 @@ export default function PatioCleaning() {
             description: "Professional patio cleaning removes mould, algae and stains from pavers, concrete and tiled patios.",
             image: "/images/patio-unsplash.jpg",
             serviceType: "Patio Cleaning",
-            url: "https://gcwindowandpressurecleaning.com.au/patio-cleaning"
+            url: "https://gcwindowandpressurecleaning.com.au/patio-cleaning/"
           }),
           buildBreadcrumbSchema([
             { name: "Home", url: "/" },
-            { name: "Patio Cleaning", url: "/patio-cleaning" }
+            { name: "Patio Cleaning", url: "/patio-cleaning/" }
           ]),
           buildFAQSchema(faqs)
         ]}

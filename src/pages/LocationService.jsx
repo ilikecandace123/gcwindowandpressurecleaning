@@ -190,12 +190,12 @@ export default function LocationService() {
     image: heroImage.src,
     serviceType: service.name,
     areaName: suburb.name,
-    url: `https://gcwindowandpressurecleaning.com.au/${serviceSlug}/${suburbSlug}`
+    url: `https://gcwindowandpressurecleaning.com.au/${serviceSlug}/${suburbSlug}/`
   });
   const breadcrumbData = buildBreadcrumbSchema([
     { name: "Home", url: "/" },
-    { name: service.name, url: `/${service.parentPage}` },
-    { name: `${service.name} in ${suburb.name}`, url: `/${serviceSlug}/${suburbSlug}` }
+    { name: service.name, url: `/${serviceSlug}/` },
+    { name: `${service.name} in ${suburb.name}`, url: `/${serviceSlug}/${suburbSlug}/` }
   ]);
   const allFaqs = [
     ...(service.pricingGuide ? [{

@@ -106,13 +106,13 @@ export default function CommercialLocationService() {
     image: heroImage,
     serviceType: `Commercial ${service.name}`,
     areaName: suburb.name,
-    url: `https://gcwindowandpressurecleaning.com.au/commercial/${serviceSlug}/${suburbSlug}`
+    url: `https://gcwindowandpressurecleaning.com.au/commercial/${serviceSlug}/${suburbSlug}/`
   });
   const breadcrumbData = buildBreadcrumbSchema([
     { name: "Home", url: "/" },
-    { name: "Commercial & Strata", url: "/commercial" },
-    { name: service.name, url: `/commercial/${serviceSlug}` },
-    { name: `${service.name} in ${suburb.name}`, url: `/commercial/${serviceSlug}/${suburbSlug}` }
+    { name: "Commercial & Strata", url: "/commercial/" },
+    { name: service.name, url: `/commercial/${serviceSlug}/` },
+    { name: `${service.name} in ${suburb.name}`, url: `/commercial/${serviceSlug}/${suburbSlug}/` }
   ]);
 
   return (

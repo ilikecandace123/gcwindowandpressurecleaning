@@ -49,7 +49,7 @@ export default function ServiceAreas() {
           buildLocalBusinessSchema(),
           buildBreadcrumbSchema([
             { name: "Home", url: "/" },
-            { name: "Service Areas", url: "/service-areas" }
+            { name: "Service Areas", url: "/service-areas/" }
           ])
         ]}
       />
@@ -98,7 +98,7 @@ export default function ServiceAreas() {
             {SERVICES.map(service => (
               <Link
                 key={service.slug}
-                to={`/${service.parentPage}/`}
+                to={`/${service.slug}/`}
                 className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors"
               >
                 {service.name}

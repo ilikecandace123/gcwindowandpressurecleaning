@@ -82,7 +82,7 @@ export default function HouseSoftWash() {
     },
     buildBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "House Softwash", url: "/house-softwash" }
+      { name: "House Softwash", url: "/house-softwash/" }
     ]),
     buildFAQSchema(faqs)
   ];
