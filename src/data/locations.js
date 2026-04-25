@@ -1589,6 +1589,92 @@ export const SERVICES = [
         answer: "Absolutely. Our mesh is exclusion only — we don't harm birds. It simply stops them getting under your panels so they move on and nest elsewhere."
       }
     ]
+  },
+  {
+    name: "Patio Cleaning",
+    slug: "patio-cleaning",
+    parentPage: "PatioCleaning",
+    shortDesc: "Professional patio pressure cleaning to remove mould, algae and stains from pavers, concrete and tiled patios",
+    benefits: [
+      {
+        title: "Restores Surface Beauty",
+        description: "Professional cleaning removes years of dirt, stains, and organic growth to reveal the original beauty of your patio surfaces."
+      },
+      {
+        title: "Improves Outdoor Safety",
+        description: "Eliminate slippery mould, algae, and moss that create dangerous slip hazards on patio surfaces, making outdoor areas safe for family."
+      },
+      {
+        title: "Makes Patios Inviting Again",
+        description: "Transform neglected outdoor spaces into welcoming entertainment areas where you'll actually want to spend time."
+      },
+      {
+        title: "Increases Property Value",
+        description: "Clean, well-maintained outdoor spaces significantly boost curb appeal and add value to your property investment."
+      },
+      {
+        title: "Extends Surface Life",
+        description: "Regular professional cleaning prevents permanent staining and deterioration, protecting your patio investment long-term."
+      },
+      {
+        title: "Prepares for Entertainment",
+        description: "Create the perfect backdrop for outdoor dining, BBQs, and gatherings with clean, attractive patio surfaces."
+      }
+    ],
+    process: [
+      {
+        step: 1,
+        title: "Surface Assessment",
+        description: "Identify the patio surface type — concrete, pavers, natural stone, brick, tile, or composite — and adjust pressure and chemistry accordingly."
+      },
+      {
+        step: 2,
+        title: "Pre-Treatment",
+        description: "Apply pH-appropriate softwash solution to break down mould, algae, and embedded organic stains before pressure cleaning."
+      },
+      {
+        step: 3,
+        title: "Pressure Clean",
+        description: "Surface clean with a calibrated rotary head for an even, streak-free finish — no zebra striping, no etching."
+      },
+      {
+        step: 4,
+        title: "Detail & Edge Work",
+        description: "Hand-wand the perimeters, garden edges, drains, and corners that the rotary cleaner can't reach for a fully finished result."
+      },
+      {
+        step: 5,
+        title: "Sand Refill (optional)",
+        description: "For pavers, replace lost joint sand with kiln-dried polymeric sand to prevent weed growth and stabilise the patio surface."
+      }
+    ],
+    pricingGuide: "Patio cleaning in [suburb] is typically included in our full-home exterior package (around $660 covering driveway, pathways, patio and pool surrounds). Patio-only jobs are quoted by area — most suburban patios fall in the $180–$380 range. These are guide prices — every property is individual, so contact us for a free quote.",
+    faqs: [
+      {
+        question: "How much does patio cleaning cost on the Gold Coast?",
+        answer: "Patio pressure cleaning on the Gold Coast is typically included in our full home package of around $660, which covers the driveway, pathways, patio, and pool area. For patio-only jobs, pricing depends on the size of the area. These are guide prices — every property is individual, so contact us for a free, no-obligation quote."
+      },
+      {
+        question: "What types of patio surfaces can you clean?",
+        answer: "We clean all types of patio surfaces including concrete, pavers, natural stone, brick, tile, and composite decking. Our techniques are adapted for each specific material."
+      },
+      {
+        question: "How do you handle delicate patio surfaces?",
+        answer: "For delicate surfaces like natural stone or aged pavers, we use lower pressure settings and specialised cleaning solutions to achieve excellent results without damage."
+      },
+      {
+        question: "Can you remove stains from patio furniture areas?",
+        answer: "Yes, we can remove most stains including rust marks from furniture, food and drink spills, and organic stains. We use specialised treatments for different stain types."
+      },
+      {
+        question: "Will you clean around plants and garden areas?",
+        answer: "Absolutely. We take special care around landscaping, pre-wetting plants and using plant-safe cleaning solutions. We protect your garden while cleaning effectively."
+      },
+      {
+        question: "How long before I can use my patio after cleaning?",
+        answer: "Most patios are ready to use immediately after cleaning and drying. For treatments that require curing time, we'll let you know the recommended wait period."
+      }
+    ]
   }
 ];
 
