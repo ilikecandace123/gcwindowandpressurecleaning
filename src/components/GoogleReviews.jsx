@@ -1,9 +1,52 @@
 import React, { useEffect, useState } from "react";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
-// Gold Coast Window and Pressure Cleaning — Google Business Profile
-const PLACE_ID = "ChIJpTMe2iOAqU0RqA5p7p-4Aog";
-const API_KEY = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
+// Reviews are fetched from our own server-side proxy at /api/reviews
+// (a Cloudflare Pages Function — see site/functions/api/reviews.js).
+// The Places API key lives ONLY on the server; it is no longer bundled
+// into the client. The proxy caches upstream calls at the edge for 24h,
+// dropping monthly call volume from ~19,000 (one per page mount) to <100.
+const REVIEWS_ENDPOINT = "/api/reviews";
+
+// Per-tab cache so a visitor browsing multiple pages only triggers ONE
+// /api/reviews call per session (and the edge cache will already have
+// warmed for everyone else). Belt-and-braces with the edge cache.
+const SESSION_CACHE_KEY = "gcw_reviews_v1";
+const SESSION_CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6h
+
+function readSessionCache() {
+  try {
+    if (typeof sessionStorage === "undefined") return null;
+    const raw = sessionStorage.getItem(SESSION_CACHE_KEY);
+    if (!raw) return null;
+    const { ts, data } = JSON.parse(raw);
+    if (!ts || Date.now() - ts > SESSION_CACHE_TTL_MS) return null;
+    return data;
+  } catch {
+    return null;
+  }
+}
+
+function writeSessionCache(data) {
+  try {
+    if (typeof sessionStorage === "undefined") return;
+    sessionStorage.setItem(
+      SESSION_CACHE_KEY,
+      JSON.stringify({ ts: Date.now(), data })
+    );
+  } catch {
+    // sessionStorage may be disabled (private mode, quota, etc.) — ignore.
+  }
+}
+
+// Don't fire the network call during build-time prerender (the
+// scripts/prerender-content.mjs headless browser would otherwise mount
+// this component on all 1,235 pages and trigger 1,235 paid calls per
+// build). Real visitors don't have navigator.webdriver set.
+function isHeadlessPrerender() {
+  if (typeof navigator === "undefined") return true;
+  return Boolean(navigator.webdriver);
+}
 
 // Fallback testimonials shown if the API key is missing or the request fails
 const FALLBACK_REVIEWS = [
@@ -58,37 +101,45 @@ export default function GoogleReviews() {
   const [itemsPerView, setItemsPerView] = useState(3);
 
   useEffect(() => {
+    // Skip API call during build-time headless prerender — saves 1,235
+    // paid calls per build.
+    if (isHeadlessPrerender()) return;
+
     let cancelled = false;
 
+    function applyData(data) {
+      if (cancelled || !data) return;
+      const fetched = data.reviews || [];
+      const combined = fetched.length >= 5
+        ? fetched
+        : [...fetched, ...FALLBACK_REVIEWS].slice(0, Math.max(6, fetched.length + 3));
+      setReviews(combined);
+      if (data.rating) setRating(data.rating);
+      if (data.userRatingCount) setTotalRatings(data.userRatingCount);
+    }
+
+    // 1. Per-session cache hit → no network call at all.
+    const cached = readSessionCache();
+    if (cached) {
+      applyData(cached);
+      return () => { cancelled = true; };
+    }
+
+    // 2. Cache miss → call our server-side proxy. Edge cache handles
+    //    the upstream rate-limiting; no API key is sent from here.
     async function fetchReviews() {
-      // No API key — keep showing fallback reviews (already set as initial state)
-      if (!API_KEY) return;
-
       try {
-        const res = await fetch(
-          `https://places.googleapis.com/v1/places/${PLACE_ID}`,
-          {
-            headers: {
-              "X-Goog-Api-Key": API_KEY,
-              "X-Goog-FieldMask": "reviews,rating,userRatingCount,displayName"
-            }
-          }
-        );
-
-        if (!res.ok) throw new Error(`Places API ${res.status}`);
+        const res = await fetch(REVIEWS_ENDPOINT, {
+          headers: { Accept: "application/json" },
+        });
+        if (!res.ok) throw new Error(`/api/reviews ${res.status}`);
         const data = await res.json();
         if (cancelled) return;
-
-        const fetched = data.reviews || [];
-        const combined = fetched.length >= 5
-          ? fetched
-          : [...fetched, ...FALLBACK_REVIEWS].slice(0, Math.max(6, fetched.length + 3));
-        setReviews(combined);
-        if (data.rating) setRating(data.rating);
-        if (data.userRatingCount) setTotalRatings(data.userRatingCount);
+        writeSessionCache(data);
+        applyData(data);
       } catch (err) {
         console.warn("GoogleReviews fetch failed:", err);
-        // Keep fallback reviews (already showing)
+        // Keep fallback reviews (already showing as initial state)
       }
     }
 
