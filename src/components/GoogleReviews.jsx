@@ -8,6 +8,11 @@ import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 // dropping monthly call volume from ~19,000 (one per page mount) to <100.
 const REVIEWS_ENDPOINT = "/api/reviews";
 
+// Public Google Business Profile identifier — used only to build the
+// "Read all reviews on Google →" deep link. Not sensitive (visible in
+// any Google Maps URL for the business).
+const PLACE_ID = "ChIJpTMe2iOAqU0RqA5p7p-4Aog";
+
 // Per-tab cache so a visitor browsing multiple pages only triggers ONE
 // /api/reviews call per session (and the edge cache will already have
 // warmed for everyone else). Belt-and-braces with the edge cache.
@@ -39,13 +44,24 @@ function writeSessionCache(data) {
   }
 }
 
-// Don't fire the network call during build-time prerender (the
-// scripts/prerender-content.mjs headless browser would otherwise mount
-// this component on all 1,235 pages and trigger 1,235 paid calls per
-// build). Real visitors don't have navigator.webdriver set.
+// Don't fire the network call during build-time prerender or local dev.
+// Three independent signals — any one is enough:
+//   1) Build-time prerender always runs against http://127.0.0.1:PORT/...
+//      (see scripts/prerender-content.mjs) — hostname check is foolproof.
+//   2) Local Vite dev (localhost) — also skip; reviews aren\'t critical for dev.
+//   3) navigator.webdriver — true in puppeteer/playwright; backstop.
+// Real visitors hit gcwindowandpressurecleaning.com.au — none of the above
+// match, so the fetch fires normally in production.
 function isHeadlessPrerender() {
-  if (typeof navigator === "undefined") return true;
-  return Boolean(navigator.webdriver);
+  if (typeof window === "undefined" || typeof navigator === "undefined") return true;
+  const host = window.location && window.location.hostname;
+  if (host === "127.0.0.1" || host === "localhost" || host === "0.0.0.0") return true;
+  if (navigator.webdriver) return true;
+  // Belt-and-braces UA check for HeadlessChrome (some puppeteer configs
+  // hide webdriver but still ship "HeadlessChrome" in the UA string).
+  const ua = navigator.userAgent || "";
+  if (/HeadlessChrome|Puppeteer|Playwright/i.test(ua)) return true;
+  return false;
 }
 
 // Fallback testimonials shown if the API key is missing or the request fails
