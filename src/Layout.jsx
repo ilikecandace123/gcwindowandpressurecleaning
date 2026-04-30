@@ -269,15 +269,15 @@ export default function Layout({ children, currentPageName }) {
                 <h4 className="font-semibold mb-4">Our Services</h4>
                 <div className="flex gap-16">
                   <div className="space-y-2 text-sm text-gray-300">
-                    <Link to={"/roof-cleaning"} className="block hover:text-white transition-colors">Roof Cleaning</Link>
-                    <Link to={"/window-cleaning"} className="block hover:text-white transition-colors">Window Cleaning</Link>
-                    <Link to={"/house-softwash"} className="block hover:text-white transition-colors">House &amp; Building Softwash</Link>
-                    <Link to={"/pressure-cleaning"} className="block hover:text-white transition-colors">Pressure Cleaning</Link>
+                    <Link to="/roof-cleaning/" className="block hover:text-white transition-colors">Roof Cleaning</Link>
+                    <Link to="/window-cleaning/" className="block hover:text-white transition-colors">Window Cleaning</Link>
+                    <Link to="/house-softwash/" className="block hover:text-white transition-colors">House &amp; Building Softwash</Link>
+                    <Link to="/pressure-cleaning/" className="block hover:text-white transition-colors">Pressure Cleaning</Link>
                   </div>
                   <div className="space-y-2 text-sm text-gray-300">
-                    <Link to={"/gutter-cleaning"} className="block hover:text-white transition-colors">Gutter Cleaning</Link>
-                    <Link to={"/solar-panel-cleaning"} className="block hover:text-white transition-colors">Solar Panel Cleaning</Link>
-                    <Link to={"/bird-proofing"} className="block hover:text-white transition-colors">Solar Panel Bird Proofing</Link>
+                    <Link to="/gutter-cleaning/" className="block hover:text-white transition-colors">Gutter Cleaning</Link>
+                    <Link to="/solar-panel-cleaning/" className="block hover:text-white transition-colors">Solar Panel Cleaning</Link>
+                    <Link to="/bird-proofing/" className="block hover:text-white transition-colors">Solar Panel Bird Proofing</Link>
                   </div>
                 </div>
               </div>
