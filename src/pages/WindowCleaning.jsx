@@ -91,8 +91,8 @@ export default function WindowCleaning() {
   return (
     <div>
       <PageSEO
-        title="Window Cleaning Gold Coast | Streak-Free Interior & Exterior"
-        description="Window cleaning Gold Coast — streak-free interior & exterior up to 4 storeys, including tracks & flyscreens. 5★ rated, fully insured. Free quote: (07) 5651 2386."
+        title="Window Cleaning Gold Coast | Streak-Free Results"
+        description="Streak-free window cleaning across the Gold Coast — interior & exterior up to 4 storeys, including tracks & flyscreens. Fully insured, police-checked."
         canonical="https://gcwindowandpressurecleaning.com.au/window-cleaning/"
         jsonLd={seoJsonLd}
       />
@@ -130,9 +130,9 @@ export default function WindowCleaning() {
               </div>
             </div>
 
-            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <p className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Professional Window Cleaning on the Gold Coast
-            </h1>
+            </p>
             
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Locally Owned & Operated | Fully Insured | Police Checked Staff

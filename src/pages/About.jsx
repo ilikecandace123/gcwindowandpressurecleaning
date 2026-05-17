@@ -10,7 +10,7 @@ export default function About() {
     <div className="min-h-screen bg-gray-50">
       <PageSEO
         title="About Us | Gold Coast Window and Pressure Cleaning"
-        description="Gold Coast's trusted exterior cleaning company. Locally owned, fully insured with police-checked staff. Learn about our team, qualifications, and commitment to quality service."
+        description="Gold Coast's trusted exterior cleaning company — locally owned, fully insured, with police-checked staff. Learn about our team and commitment to quality."
         canonical="https://gcwindowandpressurecleaning.com.au/about/"
         jsonLd={[
           buildLocalBusinessSchema(),

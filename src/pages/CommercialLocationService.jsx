@@ -118,8 +118,8 @@ export default function CommercialLocationService() {
   return (
     <div>
       <PageSEO
-        title={`${service.name} in ${suburb.name} | Commercial & Strata Gold Coast`}
-        description={`Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}) for commercial, strata and body corporate buildings. $20M public liability, SWMS supplied, after-hours service. Call (07) 5651 2386.`}
+        title={`${service.name} in ${suburb.name}`}
+        description={`${service.name} in ${suburb.name} (${suburb.postcode}) for strata & body corporate buildings. $20M liability, SWMS supplied. Call (07) 5651 2386.`}
         canonical={`https://gcwindowandpressurecleaning.com.au/commercial/${serviceSlug}/${suburbSlug}/`}
         image={heroImage}
         jsonLd={[localBusinessSchema, serviceSchema, breadcrumbData]}

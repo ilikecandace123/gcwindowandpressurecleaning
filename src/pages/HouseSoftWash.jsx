@@ -91,8 +91,8 @@ export default function HouseSoftWash() {
   return (
     <div>
       <PageSEO
-        title="House Softwash Gold Coast | Gentle Mould & Grime Removal"
-        description="Gold Coast house washing experts. Safe softwash removes mould, dirt & grime without damaging render, Colorbond or timber. Fully insured, police-checked. Free quote: (07) 5651 2386."
+        title="House Softwash Gold Coast | Gentle Mould Removal"
+        description="Gold Coast house softwash — safely removes mould, dirt and grime without damaging render, Colorbond or timber. Fully insured. Free quote: (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/house-softwash/"
         jsonLd={seoJsonLd}
       />
@@ -131,9 +131,9 @@ export default function HouseSoftWash() {
               </div>
             </div>
 
-            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <p className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Professional House & Building Washing on the Gold Coast
-            </h1>
+            </p>
             
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Locally Owned & Operated | Fully Insured | Police Checked Staff

@@ -93,8 +93,8 @@ export default function PressureCleaning() {
   return (
     <div>
       <PageSEO
-        title="Pressure Cleaning Gold Coast | Driveways, Paths & Concrete"
-        description="Gold Coast pressure cleaning specialists. Industrial-grade equipment for driveways, concrete, paths & patios — results that last. 5★ rated, fully insured. Free quote: (07) 5651 2386."
+        title="Pressure Cleaning Gold Coast | Driveways & Paths"
+        description="Gold Coast pressure cleaning specialists — industrial-grade cleaning for driveways, concrete, paths and patios. Fully insured. Free quote: (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/pressure-cleaning/"
         jsonLd={seoJsonLd}
       />
@@ -133,9 +133,9 @@ export default function PressureCleaning() {
               </div>
             </div>
 
-            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <p className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Professional Pressure Cleaning on the Gold Coast
-            </h1>
+            </p>
             
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Locally Owned & Operated | Fully Insured | Police Checked Staff

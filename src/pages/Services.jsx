@@ -103,8 +103,8 @@ export default function Services() {
   return (
     <div className="min-h-screen bg-gray-50">
       <PageSEO
-        title="Gold Coast Window & Pressure Cleaning | Exterior Cleaning Services"
-        description="Gold Coast's trusted exterior cleaning service. Window cleaning, roof cleaning, pressure cleaning, softwash, gutter cleaning and solar panel cleaning. Fully insured, police-checked staff. Call (07) 5651 2386."
+        title="Gold Coast Window and Pressure Cleaning | Free Quote"
+        description="Gold Coast's trusted window, pressure, roof, gutter and solar panel cleaning. Fully insured, police-checked staff. Free quote — call (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/"
         image="/images/services-banner.jpg"
         jsonLd={[

@@ -109,8 +109,8 @@ export default function SolarPanelCleaning() {
   return (
     <div>
       <PageSEO
-        title="Solar Panel Cleaning Gold Coast | Boost Output Up to 30%"
-        description="Professional solar panel cleaning across the Gold Coast — Surfers Paradise, Robina, Burleigh Heads, Palm Beach & beyond. Boost energy output up to 30%. Fully insured. Call (07) 5651 2386."
+        title="Solar Panel Cleaning Gold Coast | Boost Output"
+        description="Professional solar panel cleaning across the Gold Coast — restore lost generation and boost output by up to 30%. Fully insured. Call (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/solar-panel-cleaning/"
         jsonLd={seoJsonLd}
       />
@@ -148,9 +148,9 @@ export default function SolarPanelCleaning() {
               </div>
             </div>
 
-            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <p className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Gold Coast Solar Panel Cleaning — Restore Lost Energy Output
-            </h1>
+            </p>
 
             <p className="text-base mb-4 text-gray-600">
               Gold Coast's salt air, birds, and humidity reduce panel output by up to 30%. We restore full efficiency with our eco-friendly cleaning process.

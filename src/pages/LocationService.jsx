@@ -209,8 +209,8 @@ export default function LocationService() {
   return (
     <div>
       <PageSEO
-        title={`${service.name} in ${suburb.name} | Gold Coast Window and Pressure Cleaning`}
-        description={`Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}). Fully insured, police-checked staff. Serving ${suburb.name} and surrounding Gold Coast suburbs. Call (07) 5651 2386 for a free quote.`}
+        title={`${service.name} ${suburb.name} | Gold Coast`}
+        description={`Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}). Fully insured & police-checked staff. Get a free quote — call (07) 5651 2386 today.`}
         canonical={`https://gcwindowandpressurecleaning.com.au/${serviceSlug}/${suburbSlug}/`}
         image={heroImage.src}
         jsonLd={[localBusinessSchema, serviceSchema, breadcrumbData, faqSchema]}
@@ -249,9 +249,9 @@ export default function LocationService() {
               </div>
             </div>
 
-            <h1 className="text-2xl font-bold leading-tight mb-3 text-gray-900">
+            <p className="text-2xl font-bold leading-tight mb-3 text-gray-900">
               {service.name} in {suburb.name}
-            </h1>
+            </p>
 
             <p className="text-sm mb-3 text-blue-700 font-medium">
               Gold Coast Service

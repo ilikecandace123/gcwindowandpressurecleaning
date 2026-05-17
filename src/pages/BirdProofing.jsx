@@ -99,8 +99,8 @@ export default function BirdProofing() {
   return (
     <div>
       <PageSEO
-        title="Solar Panel Bird Proofing Gold Coast | Pigeon Mesh Installation"
-        description="Professional solar panel bird proofing mesh on the Gold Coast. Stops pigeons and mynas nesting under your panels. Warranty-safe installation. Fully insured. Call (07) 5651 2386."
+        title="Solar Panel Bird Proofing Gold Coast | Pigeon Mesh"
+        description="Solar panel bird proofing on the Gold Coast — warranty-safe mesh that stops pigeons and mynas nesting under your panels. Fully insured. Call (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/bird-proofing/"
         jsonLd={seoJsonLd}
       />
@@ -139,9 +139,9 @@ export default function BirdProofing() {
               </div>
             </div>
 
-            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <p className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Solar Panel Bird Proofing on the Gold Coast
-            </h1>
+            </p>
 
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Solar Panel Mesh • Warranty Safe • Marine Grade

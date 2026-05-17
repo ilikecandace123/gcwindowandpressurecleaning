@@ -107,8 +107,8 @@ export default function RoofCleaning() {
   return (
     <div>
       <PageSEO
-        title="Roof Cleaning Gold Coast | Tile, Metal & Concrete Specialists"
-        description="Professional roof cleaning across the Gold Coast. Tile, metal & concrete roof specialists — Surfers Paradise, Robina, Burleigh Heads & more. Fully insured. Free quotes — call (07) 5651 2386."
+        title="Roof Cleaning Gold Coast | Tile, Metal & Concrete"
+        description="Professional roof cleaning across the Gold Coast — tile, metal and concrete roof specialists. Soft-wash safe. Fully insured. Free quote: (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/roof-cleaning/"
         jsonLd={seoJsonLd}
       />
@@ -146,9 +146,9 @@ export default function RoofCleaning() {
               </div>
             </div>
 
-            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <p className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Roof Cleaning Gold Coast — Tile, Metal & Concrete Roofs
-            </h1>
+            </p>
             
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Locally Owned & Operated | Fully Insured | Police Checked Staff

@@ -68,8 +68,8 @@ export default function PatioCleaning() {
   return (
     <div>
       <PageSEO
-        title="Patio Cleaning Gold Coast | Professional Pressure Cleaning"
-        description="Professional patio cleaning on the Gold Coast. Remove mould, algae and stains from pavers, concrete and tiled patios. Fully insured. Call (07) 5651 2386 for a free quote."
+        title="Patio Cleaning Gold Coast | Pressure Cleaning Pros"
+        description="Patio cleaning on the Gold Coast — removes mould, algae and stains from pavers, concrete and tiled patios. Fully insured. Free quote: (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/patio-cleaning/"
         image="/images/patio-unsplash.jpg"
         jsonLd={[
@@ -113,9 +113,9 @@ export default function PatioCleaning() {
               </div>
             </div>
 
-            <h1 className="text-3xl font-bold leading-tight mb-4 text-gray-900">
+            <p className="text-3xl font-bold leading-tight mb-4 text-gray-900">
               Professional Patio Cleaning on the Gold Coast
-            </h1>
+            </p>
             
             <p className="text-lg mb-4 text-blue-700 font-medium">
               Locally Owned & Operated | Fully Insured | Police Checked Staff

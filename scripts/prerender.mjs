@@ -110,9 +110,9 @@ async function main() {
   // Home
   routes.push({
     path: "/",
-    title: "Gold Coast Window and Pressure Cleaning | Professional Exterior Cleaning",
+    title: "Gold Coast Window and Pressure Cleaning | Free Quote",
     description:
-      "Gold Coast's trusted window cleaning, pressure cleaning, roof cleaning, and house softwash service. Fully insured, police-checked staff. Call (07) 5651 2386 for a free quote.",
+      "Gold Coast's trusted window, pressure, roof, gutter and solar panel cleaning. Fully insured, police-checked staff. Free quote — call (07) 5651 2386.",
     canonical: `${SITE}/`,
     image: "/images/window.jpg",
     jsonLd: [
@@ -126,9 +126,11 @@ async function main() {
   // Hub pages (kebab-case canonical URLs)
   routes.push({
     path: "/services",
-    title: "Gold Coast Window and Pressure Cleaning | Professional Exterior Cleaning Services",
+    title: "Exterior Cleaning Services | Gold Coast",
     description:
       "Gold Coast's trusted exterior cleaning service. Window, roof, pressure, softwash, gutter and solar panel cleaning. Fully insured. Call (07) 5651 2386.",
+    // /services renders the same component as the homepage and canonicalises
+    // to "/" — kept out of the sitemap below to avoid duplicate-content signals.
     canonical: `${SITE}/`,
     image: "/images/services-banner.jpg",
     jsonLd: [
@@ -140,7 +142,7 @@ async function main() {
     path: "/service-areas",
     title: "Service Areas | Gold Coast Window and Pressure Cleaning",
     description:
-      "We service all Gold Coast suburbs and Northern NSW. Find professional window, pressure, roof cleaning and more in your suburb. Call (07) 5651 2386.",
+      "We service all Gold Coast suburbs and Northern NSW — window, pressure, roof, gutter and solar cleaning in your suburb. Call (07) 5651 2386 for a quote.",
     canonical: `${SITE}/service-areas`,
     jsonLd: [
       buildLocalBusinessSchema(),
@@ -150,7 +152,7 @@ async function main() {
   routes.push({
     path: "/about",
     title: "About Us | Gold Coast Window and Pressure Cleaning",
-    description: "Gold Coast's trusted exterior cleaning company. Locally owned, fully insured with police-checked staff. Learn about our team and commitment to quality.",
+    description: "Gold Coast's trusted exterior cleaning company — locally owned, fully insured, with police-checked staff. Learn about our team and commitment to quality.",
     canonical: `${SITE}/about`,
     jsonLd: [
       buildLocalBusinessSchema(),
@@ -169,21 +171,39 @@ async function main() {
   });
 
   // Main service pages (kebab-case)
+  // [slug, name, image, title, description] — title/description must stay in
+  // sync with the matching page component's <PageSEO> props (see src/pages/).
   const mainPages = [
-    ["window-cleaning", "Window Cleaning", "/images/window-hero.jpg"],
-    ["roof-cleaning", "Roof Cleaning", "/images/roof-hero.jpg"],
-    ["house-softwash", "House & Building Softwash", "/images/softwash-1.jpg"],
-    ["pressure-cleaning", "Pressure Cleaning", "/images/pressure-hero.jpg"],
-    ["gutter-cleaning", "Gutter Cleaning", "/images/gutter-1.jpg"],
-    ["solar-panel-cleaning", "Solar Panel Cleaning", "/images/solar-panel-hero.jpg"],
-    ["bird-proofing", "Solar Panel Bird Proofing", "/images/bird-proofing-hero.jpg"],
-    ["patio-cleaning", "Patio Cleaning", "/images/patio-unsplash.jpg"],
+    ["window-cleaning", "Window Cleaning", "/images/window-hero.jpg",
+      "Window Cleaning Gold Coast | Streak-Free Results",
+      "Streak-free window cleaning across the Gold Coast — interior & exterior up to 4 storeys, including tracks & flyscreens. Fully insured, police-checked."],
+    ["roof-cleaning", "Roof Cleaning", "/images/roof-hero.jpg",
+      "Roof Cleaning Gold Coast | Tile, Metal & Concrete",
+      "Professional roof cleaning across the Gold Coast — tile, metal and concrete roof specialists. Soft-wash safe. Fully insured. Free quote: (07) 5651 2386."],
+    ["house-softwash", "House & Building Softwash", "/images/softwash-1.jpg",
+      "House Softwash Gold Coast | Gentle Mould Removal",
+      "Gold Coast house softwash — safely removes mould, dirt and grime without damaging render, Colorbond or timber. Fully insured. Free quote: (07) 5651 2386."],
+    ["pressure-cleaning", "Pressure Cleaning", "/images/pressure-hero.jpg",
+      "Pressure Cleaning Gold Coast | Driveways & Paths",
+      "Gold Coast pressure cleaning specialists — industrial-grade cleaning for driveways, concrete, paths and patios. Fully insured. Free quote: (07) 5651 2386."],
+    ["gutter-cleaning", "Gutter Cleaning", "/images/gutter-1.jpg",
+      "Gutter Cleaning Gold Coast | Storm-Ready Maintenance",
+      "Gutter cleaning on the Gold Coast — full gutter and downpipe clearing with inspection and written report. Fully insured. Free quote: (07) 5651 2386."],
+    ["solar-panel-cleaning", "Solar Panel Cleaning", "/images/solar-panel-hero.jpg",
+      "Solar Panel Cleaning Gold Coast | Boost Output",
+      "Professional solar panel cleaning across the Gold Coast — restore lost generation and boost output by up to 30%. Fully insured. Call (07) 5651 2386."],
+    ["bird-proofing", "Solar Panel Bird Proofing", "/images/bird-proofing-hero.jpg",
+      "Solar Panel Bird Proofing Gold Coast | Pigeon Mesh",
+      "Solar panel bird proofing on the Gold Coast — warranty-safe mesh that stops pigeons and mynas nesting under your panels. Fully insured. Call (07) 5651 2386."],
+    ["patio-cleaning", "Patio Cleaning", "/images/patio-unsplash.jpg",
+      "Patio Cleaning Gold Coast | Pressure Cleaning Pros",
+      "Patio cleaning on the Gold Coast — removes mould, algae and stains from pavers, concrete and tiled patios. Fully insured. Free quote: (07) 5651 2386."],
   ];
-  for (const [slug, name, img] of mainPages) {
+  for (const [slug, name, img, title, description] of mainPages) {
     routes.push({
       path: `/${slug}`,
-      title: `${name} Gold Coast | Professional ${name} Services`,
-      description: `Professional ${name.toLowerCase()} on the Gold Coast. Fully insured, police-checked staff. Call (07) 5651 2386 for a free quote.`,
+      title,
+      description,
       canonical: `${SITE}/${slug}`,
       image: img,
       jsonLd: [
@@ -208,8 +228,8 @@ async function main() {
     for (const suburb of SUBURBS) {
       routes.push({
         path: `/${service.slug}/${suburb.slug}`,
-        title: `${service.name} in ${suburb.name} | Gold Coast Window and Pressure Cleaning`,
-        description: `Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}). Fully insured, police-checked staff. Serving ${suburb.name} and surrounding Gold Coast suburbs. Call (07) 5651 2386.`,
+        title: `${service.name} ${suburb.name} | Gold Coast`,
+        description: `Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}). Fully insured & police-checked staff. Get a free quote — call (07) 5651 2386 today.`,
         canonical: `${SITE}/${service.slug}/${suburb.slug}`,
         image: "/images/window.jpg",
         jsonLd: [
@@ -236,8 +256,8 @@ async function main() {
   for (const service of COMMERCIAL_SERVICES) {
     routes.push({
       path: `/commercial/${service.slug}`,
-      title: `${service.name} Gold Coast | Commercial & Strata Specialists`,
-      description: `${service.shortDesc}. Fully insured with $20M public liability, SWMS supplied, after-hours scheduling. Call (07) 5651 2386.`,
+      title: `${service.name} Gold Coast`,
+      description: `${service.name} on the Gold Coast for offices & strata. $20M public liability, SWMS supplied, after-hours service. Call (07) 5651 2386.`,
       canonical: `${SITE}/commercial/${service.slug}`,
       jsonLd: [
         buildLocalBusinessSchema(),
@@ -258,8 +278,8 @@ async function main() {
     for (const suburb of SUBURBS) {
       routes.push({
         path: `/commercial/${service.slug}/${suburb.slug}`,
-        title: `${service.name} in ${suburb.name} | Commercial & Strata Gold Coast`,
-        description: `Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}) for commercial, strata and body corporate buildings. $20M public liability, SWMS supplied, after-hours service. Call (07) 5651 2386.`,
+        title: `${service.name} in ${suburb.name}`,
+        description: `${service.name} in ${suburb.name} (${suburb.postcode}) for strata & body corporate buildings. $20M liability, SWMS supplied. Call (07) 5651 2386.`,
         canonical: `${SITE}/commercial/${service.slug}/${suburb.slug}`,
         jsonLd: [
           buildLocalBusinessSchema(),
@@ -302,7 +322,7 @@ async function main() {
 
   // Categorize routes
   const staticRoutes = routes.filter(
-    (r) => r.path === "/" || (r.path.split("/").filter(Boolean).length === 1 && !r.path.startsWith("/commercial/"))
+    (r) => r.path === "/" || (r.path.split("/").filter(Boolean).length === 1 && !r.path.startsWith("/commercial/") && r.path !== "/services")
   );
   const residentialRoutes = routes.filter(
     (r) => r.path.split("/").filter(Boolean).length === 2 && !r.path.startsWith("/commercial/")
