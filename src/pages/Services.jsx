@@ -38,7 +38,7 @@ const HOME_FAQS = [
   },
   {
     question: "How do I get a quote or book a job?",
-    answer: "Call us on (07) 5651 2386, email info@gcwindowandpressurecleaning.com.au, or book online via our website. We offer free, no-obligation quotes for all jobs."
+    answer: "Call us on (07) 5651 2386, email gcwindowandpressure@gmail.com, or book online via our website. We offer free, no-obligation quotes for all jobs."
   },
   {
     question: "How often should I have my property professionally cleaned?",

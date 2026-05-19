@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, Clock, MapPin } from "lucide-react";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import PageSEO from "../components/PageSEO";
 import Breadcrumbs from "../components/Breadcrumbs";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
@@ -9,7 +9,7 @@ export default function Contact() {
     <div className="min-h-screen bg-gray-50">
       <PageSEO
         title="Contact Us | Gold Coast Window and Pressure Cleaning"
-        description="Get in touch with Gold Coast Window and Pressure Cleaning. Call (07) 5651 2386 for a free quote. Serving all Gold Coast suburbs and Northern NSW."
+        description="Get in touch with Gold Coast Window and Pressure Cleaning. Call (07) 5651 2386 or email gcwindowandpressure@gmail.com for a free quote. Serving all Gold Coast suburbs and Northern NSW."
         canonical="https://gcwindowandpressurecleaning.com.au/contact/"
         jsonLd={[
           buildLocalBusinessSchema(),
@@ -47,6 +47,17 @@ export default function Contact() {
                     <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
                     <a href="tel:0756512386" className="text-blue-600 text-lg font-medium hover:underline">(07) 5651 2386</a>
                     <p className="text-sm text-gray-500 mt-1">We actually answer our phones!</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
+                    <a href="mailto:gcwindowandpressure@gmail.com" className="text-blue-600 text-lg font-medium hover:underline break-all">gcwindowandpressure@gmail.com</a>
+                    <p className="text-sm text-gray-500 mt-1">We respond to enquiries quickly during business hours.</p>
                   </div>
                 </div>
 
