@@ -122,7 +122,7 @@ export default function Services() {
           <img
             src="/images/services-banner.jpg"
             alt="Professional exterior cleaning team working on a Gold Coast residential property"
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1024" height="768" />
+            className="w-full h-full object-cover object-bottom" loading="eager" decoding="async" fetchPriority="high" width="1024" height="768" />
 
         </div>
 
