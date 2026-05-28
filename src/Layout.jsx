@@ -1,6 +1,7 @@
 
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { trackedBookingClick } from "./lib/trackedBookingClick";
 const createPageUrl = (pageName) => "/" + pageName.replace(/ /g, "-") + "/";
 import { Phone, Star, Shield, Users, Home, MapPin, Menu, X, ChevronDown } from "lucide-react";
 
@@ -144,6 +145,7 @@ export default function Layout({ children, currentPageName }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors"
+                onClick={trackedBookingClick}
               >
                 <span className="hidden sm:inline">Get Free Quote</span>
                 <span className="sm:hidden">Quote</span>

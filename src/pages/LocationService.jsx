@@ -8,6 +8,7 @@ import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 const SERVICE_SECONDARY_IMAGES = {
   "window-cleaning": {
@@ -274,6 +275,7 @@ export default function LocationService() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-semibold text-sm text-center transition-all"
+                onClick={trackedBookingClick}
               >
                 Get Free Quote
               </a>
@@ -328,6 +330,7 @@ export default function LocationService() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
+                onClick={trackedBookingClick}
               >
                 Get Free Quote
               </a>
@@ -697,6 +700,7 @@ export default function LocationService() {
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all"
+              onClick={trackedBookingClick}
             >
               Get Free Quote
             </a>

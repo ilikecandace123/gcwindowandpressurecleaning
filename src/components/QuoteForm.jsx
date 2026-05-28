@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Phone, Calendar, Star } from "lucide-react"; // Removed Mail import
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function QuoteForm({ serviceName }) {
   return (
@@ -69,7 +70,9 @@ export default function QuoteForm({ serviceName }) {
               href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full h-12 bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white font-semibold text-lg rounded-lg flex items-center justify-center transition-all transform hover:scale-105 shadow-lg">
+              className="w-full h-12 bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white font-semibold text-lg rounded-lg flex items-center justify-center transition-all transform hover:scale-105 shadow-lg"
+              onClick={trackedBookingClick}
+            >
 
               Get My Free Quote Now
             </a>

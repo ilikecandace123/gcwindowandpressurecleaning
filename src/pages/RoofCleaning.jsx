@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import PageSEO from "../components/PageSEO";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function RoofCleaning() {
   const benefits = [
@@ -172,6 +173,7 @@ export default function RoofCleaning() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
+                onClick={trackedBookingClick}
               >
                 Get Free Quote
               </a>
@@ -230,6 +232,7 @@ export default function RoofCleaning() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
+                onClick={trackedBookingClick}
               >
                 Get Free Quote
               </a>

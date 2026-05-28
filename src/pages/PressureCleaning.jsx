@@ -12,6 +12,7 @@ import SuburbLinks from "../components/SuburbLinks";
 
 // Import icons needed for the new hero section (assuming lucide-react or similar)
 import { Shield, Users, Star, Phone } from 'lucide-react';
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function PressureCleaning() {
   const benefits = [
@@ -159,6 +160,7 @@ export default function PressureCleaning() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
+                onClick={trackedBookingClick}
               >
                 Get Free Pressure Cleaning Quote
               </a>
@@ -217,6 +219,7 @@ export default function PressureCleaning() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
+                onClick={trackedBookingClick}
               >
                 Get Free Pressure Cleaning Quote
               </a>

@@ -10,6 +10,7 @@ import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
 import GoogleReviews from "../components/GoogleReviews";
 import { Shield, Users, Star, Phone } from 'lucide-react'; // Import necessary icons
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function HouseSoftWash() {
   const benefits = [
@@ -157,6 +158,7 @@ export default function HouseSoftWash() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
+                onClick={trackedBookingClick}
               >
                 Get Free Quote
               </a>
@@ -215,6 +217,7 @@ export default function HouseSoftWash() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
+                onClick={trackedBookingClick}
               >
                 Get Free Quote
               </a>

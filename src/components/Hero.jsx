@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Phone, Star, Shield, Users } from "lucide-react";
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function Hero({ 
   headline, 
@@ -78,6 +79,7 @@ export default function Hero({
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
+              onClick={trackedBookingClick}
             >
               {primaryCTA}
             </a>

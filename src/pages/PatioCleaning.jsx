@@ -9,6 +9,7 @@ import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
 import SuburbLinks from "../components/SuburbLinks";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function PatioCleaning() {
   const benefits = [
@@ -139,6 +140,7 @@ export default function PatioCleaning() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
+                onClick={trackedBookingClick}
               >
                 Get Free Patio Quote
               </a>
@@ -208,6 +210,7 @@ export default function PatioCleaning() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
+                  onClick={trackedBookingClick}
                 >
                   Get Free Patio Quote
                 </a>

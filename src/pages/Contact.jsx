@@ -3,6 +3,7 @@ import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import PageSEO from "../components/PageSEO";
 import Breadcrumbs from "../components/Breadcrumbs";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function Contact() {
   return (
@@ -106,6 +107,7 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block w-full bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
+                  onClick={trackedBookingClick}
                 >
                   Get My Free Quote
                 </a>

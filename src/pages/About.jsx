@@ -4,6 +4,7 @@ import { Shield, Users, Star, Phone, Award, Clock, MapPin, CheckCircle } from "l
 import PageSEO from "../components/PageSEO";
 import Breadcrumbs from "../components/Breadcrumbs";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function About() {
   return (
@@ -152,7 +153,9 @@ export default function About() {
               <Phone className="w-5 h-5 mr-2" />
               (07) 5651 2386
             </a>
-            <a href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b" target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            <a href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b" target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
+  onClick={trackedBookingClick}
+>
               Get Free Quote
             </a>
           </div>

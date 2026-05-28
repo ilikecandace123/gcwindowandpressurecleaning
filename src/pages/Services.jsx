@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 // Convert PascalCase page name to kebab-case URL with trailing slash
 // (trailing slash matches sitemap + canonical — avoids GSC redirect warnings)
 const createPageUrl = (pageName) =>
@@ -279,7 +280,9 @@ We are fully insured and all staff are police-checked for your peace of mind.
               href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
+              onClick={trackedBookingClick}
+            >
 
               Get Free Quote
             </a>

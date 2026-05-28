@@ -12,6 +12,7 @@ import SuburbLinks from "../components/SuburbLinks";
 
 // Importing icons from lucide-react for the new hero section
 import { Shield, Users, Star, Phone } from "lucide-react";
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function SolarPanelCleaning() {
   const benefits = [
@@ -174,6 +175,7 @@ export default function SolarPanelCleaning() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
+                onClick={trackedBookingClick}
               >
                 Get Free Solar Quote
               </a>
@@ -228,6 +230,7 @@ export default function SolarPanelCleaning() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
+                onClick={trackedBookingClick}
               >
                 Get Free Solar Quote
               </a>

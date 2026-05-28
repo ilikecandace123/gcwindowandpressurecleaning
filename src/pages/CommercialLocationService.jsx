@@ -7,6 +7,7 @@ import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
+import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 const HERO_IMAGES = {
   "window-cleaning": "/images/commercial-window-hero.jpg",
@@ -150,7 +151,9 @@ export default function CommercialLocationService() {
               </div>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <a href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b" target="_blank" rel="noopener noreferrer"
-                  className="bg-green-500 hover:bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg text-center transition-all transform hover:scale-105 shadow-lg">
+                  className="bg-green-500 hover:bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg text-center transition-all transform hover:scale-105 shadow-lg"
+  onClick={trackedBookingClick}
+>
                   Request Commercial Quote
                 </a>
                 <a href="tel:0756512386"
@@ -478,7 +481,9 @@ export default function CommercialLocationService() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b" target="_blank" rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
+              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all"
+  onClick={trackedBookingClick}
+>
               Request Quote
             </a>
             <a href="tel:0756512386"
