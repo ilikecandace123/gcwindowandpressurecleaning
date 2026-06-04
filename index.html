@@ -11,6 +11,19 @@
     </script>
     <!-- End Google tag (gtag.js) -->
 
+    <!-- Google Ads: report clicks on any phone link as 'Click to call' conversion -->
+    <script>
+      document.addEventListener('click', function (e) {
+        var link = e.target && e.target.closest && e.target.closest('a[href^="tel:"]');
+        if (link && typeof gtag === 'function') {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-18190004003/xUmlCK2cwLQcEKPe1eFD',
+            'transport_type': 'beacon'
+          });
+        }
+      }, true);
+    </script>
+
     <meta charset="UTF-8" />
     <link rel="icon" type="image/avif" href="/images/logo.avif" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
