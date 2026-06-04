@@ -9,6 +9,7 @@ const createPageUrl = (pageName) =>
 import { useState, useEffect } from "react";
 import { ArrowRight, Star, Shield, Users, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import GoogleReviews from "../components/GoogleReviews";
+import QuoteHero from "../components/QuoteHero";
 import PageSEO from "../components/PageSEO";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema, buildFAQSchema } from "../data/schema";
 
@@ -116,52 +117,14 @@ export default function Services() {
           buildFAQSchema(HOME_FAQS)
         ]}
       />
-      {/* Hero Section */}
-      <section className="relative text-white py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-black/40 z-10"></div>
-        <div className="absolute inset-0 opacity-30 z-0">
-          <img
-            src="/images/services-banner.jpg"
-            alt="Professional exterior cleaning team working on a Gold Coast residential property"
-            className="w-full h-full object-cover" style={{ objectPosition: '48% 33%' }} loading="eager" decoding="async" fetchPriority="high" width="1024" height="768" />
-
-        </div>
-
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-8">
-            <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-              <Shield className="w-5 h-5 mr-2" />
-              Fully Insured
-            </div>
-            <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-              <Users className="w-5 h-5 mr-2" />
-              Police Checked Staff
-            </div>
-          </div>
-
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Professional Window and Exterior Cleaning
-          </h1>
-          <p className="text-xl md:text-2xl mb-4 text-blue-100">• Local • Quality • Trustworthy
-
-          </p>
-          <p className="text-lg mb-8 text-blue-50 max-w-3xl mx-auto">Serving the Gold Coast and surrounding areas. 
-We are fully insured and all staff are police-checked for your peace of mind.
-
-          </p>
-
-          <div className="flex items-center justify-center mb-8">
-            <div className="flex items-center text-yellow-400 mr-3">
-              <Star className="w-6 h-6 fill-current" />
-              <Star className="w-6 h-6 fill-current" />
-              <Star className="w-6 h-6 fill-current" />
-              <Star className="w-6 h-6 fill-current" />
-              <Star className="w-6 h-6 fill-current" />
-            </div>
-            <span className="text-white font-medium text-lg">5.0 Stars • 2500+ Happy Customers</span>
-          </div>
-        </div>
-      </section>
+      {/* Hero with Quote Form */}
+      <QuoteHero
+        headline="Professional Window & Exterior Cleaning on the Gold Coast"
+        subheading="Local • Quality • Trustworthy"
+        description="Serving the Gold Coast and surrounding areas — fully insured, police-checked staff for your peace of mind."
+        backgroundImage="/images/services-banner.jpg"
+        imagePosition="48% 33%"
+      />
 
       {/* Services Grid */}
       <section className="py-20">
@@ -276,13 +239,7 @@ We are fully insured and all staff are police-checked for your peace of mind.
 
               <span>Call (07) 5651 2386</span>
             </a>
-            <a
-              href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
-              onClick={trackedBookingClick}
-            >
+            <a href="#quote" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
 
               Get Free Quote
             </a>

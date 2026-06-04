@@ -1,5 +1,6 @@
 
 import React from "react";
+import QuoteHero from "../components/QuoteHero";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Benefits from "../components/Benefits";
@@ -115,136 +116,11 @@ export default function SolarPanelCleaning() {
         canonical="https://gcwindowandpressurecleaning.com.au/solar-panel-cleaning/"
         jsonLd={seoJsonLd}
       />
-      <section className="relative bg-white text-gray-800 overflow-hidden">
-        <div className="absolute inset-0 opacity-100 hidden md:block">
-          <picture>
-            <source srcSet="/images/solar-panel-hero.webp" type="image/webp" />
-            <img
-              src="/images/solar-panel-hero.jpg"
-              alt="Solar panels on residential roof being cleaned by professionals"
-              className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width="1920" height="1920" />
-          </picture>
-        </div>
-
-        {/* Mobile: Image first, then text below */}
-        <div className="block md:hidden">
-          <div className="h-64">
-            <picture>
-              <source srcSet="/images/solar-panel-hero.webp" type="image/webp" />
-              <img
-                src="/images/solar-panel-hero.jpg"
-                alt="Solar panels on residential roof being cleaned by professionals"
-                className="w-full h-full object-cover" loading="lazy" decoding="async" width="1920" height="1920" />
-            </picture>
-          </div>
-          <div className="bg-white px-4 py-8">
-            <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
-              <div className="flex items-center bg-gray-100 rounded-full px-3 py-1">
-                <Shield className="w-4 h-4 mr-2 text-blue-600" />
-                Fully Insured
-              </div>
-              <div className="flex items-center bg-gray-100 rounded-full px-3 py-1">
-                <Users className="w-4 h-4 mr-2 text-blue-600" />
-                Police Checked Staff
-              </div>
-            </div>
-
-            <p className="text-3xl font-bold leading-tight mb-4 text-gray-900">
-              Gold Coast Solar Panel Cleaning — Restore Lost Energy Output
-            </p>
-
-            <p className="text-base mb-4 text-gray-600">
-              Gold Coast's salt air, birds, and humidity reduce panel output by up to 30%. We restore full efficiency with our eco-friendly cleaning process.
-            </p>
-
-            <div className="flex items-center mb-6">
-              <div className="flex items-center text-yellow-400 mr-3">
-                <Star className="w-4 h-4 fill-current" />
-                <Star className="w-4 h-4 fill-current" />
-                <Star className="w-4 h-4 fill-current" />
-                <Star className="w-4 h-4 fill-current" />
-                <Star className="w-4 h-4 fill-current" />
-              </div>
-              <span className="text-gray-800 font-medium text-sm">5.0 Stars</span>
-              <span className="text-gray-600 ml-2 text-sm">• 2500+ Happy Customers</span>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <a
-                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
-                onClick={trackedBookingClick}
-              >
-                Get Free Solar Quote
-              </a>
-              <a
-                href="tel:0756512386"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center transition-all"
-              >
-                <Phone className="w-4 h-4 mr-2" />
-                Call Now
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Desktop: Overlay design */}
-        <div className="hidden md:block relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="max-w-4xl bg-white/50 backdrop-blur-sm rounded-lg p-8">
-            <div className="flex flex-wrap items-center gap-6 mb-8 text-sm">
-              <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
-                <Shield className="w-4 h-4 mr-2 text-blue-600" />
-                Fully Insured
-              </div>
-              <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
-                <Users className="w-4 h-4 mr-2 text-blue-600" />
-                Police Checked Staff
-              </div>
-            </div>
-
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-gray-900">
-              Gold Coast Solar Panel Cleaning — Restore Lost Energy Output
-            </h1>
-
-            <p className="text-lg mb-8 text-gray-600 max-w-3xl leading-relaxed">
-              Gold Coast's subtropical climate, coastal salt air, and abundant wildlife make solar panels dirtier faster than almost anywhere else in Australia. Dirty panels lose up to 30% of their rated output (Source: Clean Energy Council) — on a typical 6.6kW system, that's $300–$600 in lost savings every year. Our professional cleaning service restores full efficiency using purified water and manufacturer-approved techniques. Trusted by 2,500+ Gold Coast households.
-            </p>
-
-            <div className="flex items-center mb-8">
-              <div className="flex items-center text-yellow-400 mr-3">
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-              </div>
-              <span className="text-gray-800 font-medium">5.0 Stars</span>
-              <span className="text-gray-600 ml-2">• 2500+ Happy Customers</span>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
-                onClick={trackedBookingClick}
-              >
-                Get Free Solar Quote
-              </a>
-              <a
-                href="tel:0756512386"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all flex items-center justify-center border border-white/20"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                Call Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <QuoteHero
+        headline={'Gold Coast Solar Panel Cleaning — Restore Lost Output'}
+        subheading={"Safe, pure-water cleaning that won't void your warranty."}
+        backgroundImage={'/images/solar-panel-hero.jpg'}
+      />
 
       {/* About Section */}
       <section className="py-16 bg-white">

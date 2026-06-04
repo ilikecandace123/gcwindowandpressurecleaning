@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import QuoteHero from "../components/QuoteHero";
 import { Link } from "react-router-dom";
 import { MapPin, Phone, ArrowRight, Shield, Users } from "lucide-react";
 import { SUBURBS, SERVICES, getSuburbsByRegion } from "../data/locations";
@@ -55,42 +56,11 @@ export default function ServiceAreas() {
         ]}
       />
       {/* Hero */}
-      <section className="relative hero-gradient text-white py-16 md:py-24 overflow-hidden">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex flex-wrap justify-center gap-4 mb-6 text-sm">
-            <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-              <Shield className="w-4 h-4 mr-2" />
-              Fully Insured
-            </div>
-            <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-              <Users className="w-4 h-4 mr-2" />
-              Police Checked Staff
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Service Areas</h1>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-6">
-            Professional exterior cleaning across {SUBURBS.length} suburbs on the Gold Coast and Northern NSW
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all"
-              onClick={trackedBookingClick}
-            >
-              Get Free Quote
-            </a>
-            <a
-              href="tel:0756512386"
-              className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all flex items-center justify-center"
-            >
-              <Phone className="w-5 h-5 mr-2" />
-              (07) 5651 2386
-            </a>
-          </div>
-        </div>
-      </section>
+      <QuoteHero
+        headline={'Our Service Areas'}
+        subheading={'Servicing all 81 Gold Coast suburbs and Northern NSW.'}
+        backgroundImage={'/images/services-banner.jpg'}
+      />
 
       {/* Quick-jump service selector */}
       <section className="py-8 bg-white border-b border-gray-200">
@@ -182,13 +152,7 @@ export default function ServiceAreas() {
             We cover the entire Gold Coast region and Northern NSW. Get in touch for a free quote — we'll come to you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all"
-              onClick={trackedBookingClick}
-            >
+            <a href="#quote" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
               Get Free Quote
             </a>
             <a

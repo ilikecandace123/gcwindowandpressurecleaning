@@ -1,7 +1,7 @@
 
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { trackedBookingClick } from "./lib/trackedBookingClick";
+import BookingEmbed from "./components/BookingEmbed";
 const createPageUrl = (pageName) => "/" + pageName.replace(/ /g, "-") + "/";
 import { Phone, Star, Shield, Users, Home, MapPin, Menu, X, ChevronDown } from "lucide-react";
 
@@ -17,6 +17,14 @@ export default function Layout({ children, currentPageName }) {
     setServicesDropdownOpen(false);
     setCommercialDropdownOpen(false);
   }, [location.pathname]);
+
+  const scrollToQuote = (e) => {
+    const el = document.getElementById("quote");
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
 
   return (
@@ -141,13 +149,11 @@ export default function Layout({ children, currentPageName }) {
             {/* CTA Buttons + Mobile Menu Toggle */}
             <div className="flex items-center gap-2 flex-shrink-0">
               <a
-                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#quote"
+                onClick={scrollToQuote}
                 className="bg-green-500 hover:bg-green-600 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors"
-                onClick={trackedBookingClick}
               >
-                <span className="hidden sm:inline">Get Free Quote</span>
+                <span className="hidden sm:inline">Get a Quote</span>
                 <span className="sm:hidden">Quote</span>
               </a>
               <a href="tel:0756512386" aria-label="Call (07) 5651 2386" className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors flex items-center">
@@ -241,6 +247,9 @@ export default function Layout({ children, currentPageName }) {
       <main>
         {children}
       </main>
+
+      {/* Booking form at the bottom of every page */}
+      <BookingEmbed variant="section" />
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import QuoteHero from "../components/QuoteHero";
 import { useParams, Link } from "react-router-dom";
 import { Shield, Users, Star, Phone, CheckCircle, ChevronDown, ChevronUp, MapPin, ArrowRight, Building2, FileCheck, Clock, HardHat } from "lucide-react";
 import { getSuburbBySlug, getCommercialServiceBySlug, SUBURBS, COMMERCIAL_SERVICES } from "../data/locations";
@@ -127,58 +128,11 @@ export default function CommercialLocationService() {
       />
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 text-gray-800 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 lg:py-20">
-          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-            {/* Text column */}
-            <div className="lg:col-span-2 order-2 lg:order-1">
-              <div className="inline-flex items-center bg-blue-50 text-blue-700 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
-                <Building2 className="w-4 h-4 mr-2" />
-                Commercial & Strata Specialists
-              </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-gray-900">
-                {service.name} in {suburb.name}
-              </h1>
-              <p className="text-base sm:text-lg lg:text-xl mb-4 text-blue-700 font-medium">
-                Fully Insured • SWMS Supplied • After-Hours Service • Gold Coast Based
-              </p>
-              <div className="flex items-center mb-6">
-                <div className="flex items-center text-yellow-400 mr-3">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
-                </div>
-                <span className="text-gray-800 font-medium">5.0 Stars</span>
-                <span className="text-gray-600 ml-2">• 2500+ Happy Customers</span>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <a href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b" target="_blank" rel="noopener noreferrer"
-                  className="bg-green-500 hover:bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg text-center transition-all transform hover:scale-105 shadow-lg"
-  onClick={trackedBookingClick}
->
-                  Request Commercial Quote
-                </a>
-                <a href="tel:0756512386"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all flex items-center justify-center">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call (07) 5651 2386
-                </a>
-              </div>
-            </div>
-
-            {/* Image column */}
-            <div className="lg:col-span-3 order-1 lg:order-2">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white">
-                <picture>
-                  <source srcSet={heroImage.endsWith('.webp') ? heroImage : heroImage.replace('.jpg', '.webp')} type="image/webp" />
-                  <img
-                    src={heroImage}
-                    alt={`${service.name} in ${suburb.name}`}
-                    className="w-full h-auto block" loading="eager" decoding="async" fetchPriority="high" width="1024" height="768" />
-                </picture>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <QuoteHero
+        headline={`Commercial ${service.name} in ${suburb.name}`}
+        subheading={`Scheduled commercial & strata ${service.name.toLowerCase()} for ${suburb.name} and the Gold Coast.`}
+        backgroundImage={heroImage}
+      />
 
       {/* Trust Strip */}
       <section className="py-8 bg-blue-600 text-white">
@@ -480,10 +434,7 @@ export default function CommercialLocationService() {
             Commercial and strata specialists on the Gold Coast. Fixed-price quotes, SWMS included.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b" target="_blank" rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all"
-  onClick={trackedBookingClick}
->
+            <a href="#quote" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
               Request Quote
             </a>
             <a href="tel:0756512386"

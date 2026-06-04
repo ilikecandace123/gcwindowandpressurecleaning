@@ -1,4 +1,5 @@
 import React from "react";
+import QuoteHero from "../components/QuoteHero";
 import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import PageSEO from "../components/PageSEO";
 import Breadcrumbs from "../components/Breadcrumbs";
@@ -24,12 +25,11 @@ export default function Contact() {
       <Breadcrumbs items={[{ name: "Contact Us", url: "/contact/" }]} />
 
       {/* Hero */}
-      <section className="hero-gradient text-white py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl text-blue-100">We'd love to hear from you. Get in touch for a free, no-obligation quote.</p>
-        </div>
-      </section>
+      <QuoteHero
+        headline={'Contact Us'}
+        subheading={"Get in touch — we'll get back to you fast."}
+        backgroundImage={'/images/services-banner.jpg'}
+      />
 
       {/* Contact Details */}
       <section className="py-16 bg-white">
@@ -102,13 +102,7 @@ export default function Contact() {
               <div className="bg-blue-50 rounded-2xl p-8 text-center">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Request a Free Quote</h3>
                 <p className="text-gray-600 mb-6">Click below to fill out our quick online form and we'll get back to you fast.</p>
-                <a
-                  href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block w-full bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
-                  onClick={trackedBookingClick}
-                >
+                <a href="#quote" className="inline-block w-full bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
                   Get My Free Quote
                 </a>
                 <p className="text-sm text-gray-500 mt-3">You'll be redirected to our trusted booking partner.</p>

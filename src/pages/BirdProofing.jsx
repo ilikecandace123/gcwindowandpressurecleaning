@@ -1,5 +1,6 @@
 
 import React from "react";
+import QuoteHero from "../components/QuoteHero";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Benefits from "../components/Benefits";
@@ -106,140 +107,11 @@ export default function BirdProofing() {
         jsonLd={seoJsonLd}
       />
 
-      <section className="relative bg-white text-gray-800 overflow-hidden">
-        <div className="absolute inset-0 opacity-100 hidden md:block">
-          <picture>
-            <source srcSet="/images/bird-proofing-hero.webp" type="image/webp" />
-            <img
-              src={HERO_IMAGE}
-              alt="Professional bird proofing mesh installed around rooftop solar panels"
-              className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
-          </picture>
-        </div>
-
-        {/* Mobile: Image first, then text below */}
-        <div className="block md:hidden">
-          <div className="h-64">
-            <picture>
-              <source srcSet="/images/bird-proofing-hero.webp" type="image/webp" />
-              <img
-                src={HERO_IMAGE}
-                alt="Professional bird proofing mesh installed around rooftop solar panels"
-                className="w-full h-full object-cover" loading="lazy" decoding="async" width="1536" height="1024" />
-            </picture>
-          </div>
-          <div className="bg-white px-4 py-8">
-            <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
-              <div className="flex items-center bg-gray-100 rounded-full px-3 py-1">
-                <Shield className="w-4 h-4 mr-2 text-blue-600" />
-                Fully Insured
-              </div>
-              <div className="flex items-center bg-gray-100 rounded-full px-3 py-1">
-                <Users className="w-4 h-4 mr-2 text-blue-600" />
-                Police Checked Staff
-              </div>
-            </div>
-
-            <p className="text-3xl font-bold leading-tight mb-4 text-gray-900">
-              Solar Panel Bird Proofing on the Gold Coast
-            </p>
-
-            <p className="text-lg mb-4 text-blue-700 font-medium">
-              Solar Panel Mesh • Warranty Safe • Marine Grade
-            </p>
-
-            <div className="flex items-center mb-6">
-              <div className="flex items-center text-yellow-400 mr-3">
-                <Star className="w-4 h-4 fill-current" />
-                <Star className="w-4 h-4 fill-current" />
-                <Star className="w-4 h-4 fill-current" />
-                <Star className="w-4 h-4 fill-current" />
-                <Star className="w-4 h-4 fill-current" />
-              </div>
-              <span className="text-gray-800 font-medium text-sm">5.0 Stars</span>
-              <span className="text-gray-600 ml-2 text-sm">• 2500+ Happy Customers</span>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <a
-                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
-                onClick={trackedBookingClick}
-              >
-                Get Free Bird Proofing Quote
-              </a>
-              <a
-                href="tel:0756512386"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center transition-all"
-              >
-                <Phone className="w-4 h-4 mr-2" />
-                Call Now
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Desktop: Overlay design */}
-        <div className="hidden md:block relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="max-w-4xl bg-white/60 backdrop-blur-sm rounded-lg p-8">
-            <div className="flex flex-wrap items-center gap-6 mb-8 text-sm">
-              <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
-                <Shield className="w-4 h-4 mr-2 text-blue-600" />
-                Fully Insured
-              </div>
-              <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
-                <Users className="w-4 h-4 mr-2 text-blue-600" />
-                Police Checked Staff
-              </div>
-            </div>
-
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-gray-900">
-              Solar Panel Bird Proofing on the Gold Coast
-            </h1>
-
-            <p className="text-xl md:text-2xl mb-4 text-blue-700 font-medium">
-              Solar Panel Mesh • Warranty Safe • Marine Grade Installation
-            </p>
-
-            <p className="text-lg mb-8 text-gray-600 max-w-3xl leading-relaxed">
-              Pigeons and mynas love nesting under solar panels — and the mess, damage and lost energy output that follows costs Gold Coast homeowners thousands every year (Source: Australian Solar Council). Our marine-grade bird proof mesh stops the problem permanently, without voiding your solar warranty. Trusted by 2500+ happy customers.
-            </p>
-
-            <div className="flex items-center mb-8">
-              <div className="flex items-center text-yellow-400 mr-3">
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-              </div>
-              <span className="text-gray-800 font-medium">5.0 Stars</span>
-              <span className="text-gray-600 ml-2">• 2500+ Happy Customers</span>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
-                onClick={trackedBookingClick}
-              >
-                Get Free Bird Proofing Quote
-              </a>
-              <a
-                href="tel:0756512386"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all flex items-center justify-center border border-white/20"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                Call Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <QuoteHero
+        headline={'Solar Panel Bird Proofing on the Gold Coast'}
+        subheading={'Keep pigeons out from under your panels — for good.'}
+        backgroundImage={'/images/services-banner.jpg'}
+      />
 
       {/* About Section */}
       <section className="py-16 bg-white">

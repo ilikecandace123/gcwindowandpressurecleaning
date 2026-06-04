@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import QuoteHero from "../components/QuoteHero";
 import { useParams, Link } from "react-router-dom";
 import { Shield, Users, Star, Phone, CheckCircle, ChevronDown, ChevronUp, MapPin, ArrowRight } from 'lucide-react';
 import { getSuburbBySlug, getServiceBySlug, SUBURBS, SERVICES } from "../data/locations";
@@ -217,134 +218,12 @@ export default function LocationService() {
         jsonLd={[localBusinessSchema, serviceSchema, breadcrumbData, faqSchema]}
       />
 
-      {/* Hero Section */}
-      <section className="relative bg-white text-gray-800 overflow-hidden">
-        <div className="absolute inset-0 opacity-40 hidden md:block">
-          <img
-            src={heroImage.src}
-            alt={`Professional ${service.name} in ${suburb.name}`}
-            width={1024}
-            height={682}
-            className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
-        </div>
-
-        {/* Mobile Layout */}
-        <div className="block md:hidden">
-          <div className="h-48">
-            <img
-              src={heroImage.src}
-              alt={`Professional ${service.name} in ${suburb.name}`}
-              width={1024}
-              height={682}
-              className="w-full h-full object-cover" loading="lazy" decoding="async" />
-          </div>
-          <div className="bg-white px-4 py-8">
-            <div className="flex flex-wrap items-center gap-2 mb-4 text-xs">
-              <div className="flex items-center bg-gray-100 rounded-full px-2 py-1">
-                <Shield className="w-3 h-3 mr-1 text-blue-600" />
-                Fully Insured
-              </div>
-              <div className="flex items-center bg-gray-100 rounded-full px-2 py-1">
-                <Users className="w-3 h-3 mr-1 text-blue-600" />
-                Police Checked
-              </div>
-            </div>
-
-            <p className="text-2xl font-bold leading-tight mb-3 text-gray-900">
-              {service.name} in {suburb.name}
-            </p>
-
-            <p className="text-sm mb-3 text-blue-700 font-medium">
-              Gold Coast Service
-            </p>
-
-            <div className="flex items-center mb-4">
-              <div className="flex items-center text-yellow-400 mr-2">
-                <Star className="w-3 h-3 fill-current" />
-                <Star className="w-3 h-3 fill-current" />
-                <Star className="w-3 h-3 fill-current" />
-                <Star className="w-3 h-3 fill-current" />
-                <Star className="w-3 h-3 fill-current" />
-              </div>
-              <span className="text-gray-800 font-medium text-xs">5.0 Stars</span>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <a
-                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-semibold text-sm text-center transition-all"
-                onClick={trackedBookingClick}
-              >
-                Get Free Quote
-              </a>
-              <a
-                href="tel:0756512386"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold flex items-center justify-center transition-all text-sm"
-              >
-                <Phone className="w-3 h-3 mr-1" />
-                Call Now
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Desktop Layout */}
-        <div className="hidden md:block relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="max-w-4xl bg-white/50 backdrop-blur-sm rounded-lg p-8">
-            <div className="flex flex-wrap items-center gap-6 mb-8 text-sm">
-              <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
-                <Shield className="w-4 h-4 mr-2 text-blue-600" />
-                Fully Insured
-              </div>
-              <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
-                <Users className="w-4 h-4 mr-2 text-blue-600" />
-                Police Checked Staff
-              </div>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4 text-gray-900">
-              {service.name} in {suburb.name}
-            </h1>
-
-            <p className="text-lg md:text-xl mb-3 text-blue-700 font-medium">
-              Professional Service • Locally Owned • Gold Coast Based
-            </p>
-
-            <div className="flex items-center mb-6">
-              <div className="flex items-center text-yellow-400 mr-3">
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-              </div>
-              <span className="text-gray-800 font-medium">5.0 Stars</span>
-              <span className="text-gray-600 ml-2">• 2500+ Happy Customers</span>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
-                onClick={trackedBookingClick}
-              >
-                Get Free Quote
-              </a>
-              <a
-                href="tel:0756512386"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all flex items-center justify-center border border-white/20"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                Call Now: (07) 5651 2386
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero with Quote Form */}
+      <QuoteHero
+        headline={`${service.name} in ${suburb.name}`}
+        subheading={`Professional ${service.name.toLowerCase()} for ${suburb.name} and across the Gold Coast.`}
+        backgroundImage={heroImage.src}
+      />
 
       {/* Location-Aware Introduction */}
       <section className="py-16 bg-white">
@@ -695,13 +574,7 @@ export default function LocationService() {
             Contact Gold Coast Window and Pressure Cleaning today for a free quote.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all"
-              onClick={trackedBookingClick}
-            >
+            <a href="#quote" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
               Get Free Quote
             </a>
             <a

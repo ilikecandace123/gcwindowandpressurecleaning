@@ -1,4 +1,5 @@
 import React from "react";
+import QuoteHero from "../components/QuoteHero";
 import { Link } from "react-router-dom";
 import { Shield, Users, Star, Phone, Award, Clock, MapPin, CheckCircle } from "lucide-react";
 import PageSEO from "../components/PageSEO";
@@ -25,14 +26,11 @@ export default function About() {
       <Breadcrumbs items={[{ name: "About Us", url: "/about/" }]} />
 
       {/* Hero */}
-      <section className="hero-gradient text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">About Gold Coast Window and Pressure Cleaning</h1>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-            Locally owned and operated, we're proud to be the Gold Coast's trusted exterior cleaning professionals. Fully insured with police-checked staff for your complete peace of mind.
-          </p>
-        </div>
-      </section>
+      <QuoteHero
+        headline={'About Gold Coast Window & Pressure Cleaning'}
+        subheading={'Local, insured and trusted across the Gold Coast.'}
+        backgroundImage={'/images/services-banner.jpg'}
+      />
 
       {/* Our Story */}
       <section className="py-16 bg-white">
@@ -153,9 +151,7 @@ export default function About() {
               <Phone className="w-5 h-5 mr-2" />
               (07) 5651 2386
             </a>
-            <a href="https://book.servicem8.com/request_booking?uuid=49a4f311-ef6e-4542-8d7b-206e67cd288b" target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
-  onClick={trackedBookingClick}
->
+            <a href="#quote" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
               Get Free Quote
             </a>
           </div>
