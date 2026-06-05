@@ -70,9 +70,6 @@ export default function QuoteForm({ serviceName }) {
 
               Get My Free Quote Now
             </a>
-             <p className="text-center text-sm text-gray-500 mt-4">
-                You will be redirected to our trusted partner's website.
-              </p>
           </div>
         </div>
       </div>

@@ -388,12 +388,12 @@ export default function BookingEmbed({ variant = "section" }) {
               </>
             ) : (
               <>
-                Continue <ArrowRight className="w-5 h-5 ml-2" />
+                Get My Free Quote <ArrowRight className="w-5 h-5 ml-2" />
               </>
             )}
           </button>
           <p className="text-center text-xs text-gray-400">
-            Free, no-obligation quote. Your details are sent to our team as soon as you press Continue.
+            Free, no-obligation quote. Your details are sent to our team as soon as you press “Get My Free Quote”.
           </p>
         </form>
       )}

@@ -105,7 +105,6 @@ export default function Contact() {
                 <a href="#quote" className="inline-block w-full bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
                   Get My Free Quote
                 </a>
-                <p className="text-sm text-gray-500 mt-3">You'll be redirected to our trusted booking partner.</p>
               </div>
             </div>
           </div>
