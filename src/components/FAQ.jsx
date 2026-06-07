@@ -34,13 +34,14 @@ export default function FAQ({ faqs, title = "Frequently Asked Questions" }) {
                 )}
               </button>
               
-              {openIndex === index && (
-                <div className="px-6 pb-4">
-                  <p className="text-gray-600 leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              )}
+              {/* Answer is always rendered into the DOM (hidden via CSS when
+                  collapsed) so crawlers, AI bots and the markdown mirrors can
+                  read every answer, not just the open one. Visually identical. */}
+              <div className={openIndex === index ? "px-6 pb-4" : "hidden px-6 pb-4"}>
+                <p className="text-gray-600 leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
             </div>
           ))}
         </div>

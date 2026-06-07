@@ -133,11 +133,47 @@ async function renderRoute(page, route) {
     return root ? root.innerHTML : "";
   });
 
-  return rootHtml;
+  // Extract FAQ question/answer pairs from the rendered DOM so we can emit
+  // FAQPage structured data. The FAQ accordion renders every answer into the
+  // DOM (hidden via CSS), so all pairs are available here.
+  const faqs = await page.evaluate(() => {
+    const seen = new Set();
+    const items = [];
+    document.querySelectorAll("button").forEach((btn) => {
+      const h3 = btn.querySelector("h3");
+      if (!h3) return;
+      const item = btn.parentElement;
+      if (!item) return;
+      const ansP = item.querySelector("p");
+      if (!ansP) return;
+      const question = (h3.textContent || "").trim();
+      const answer = (ansP.textContent || "").trim();
+      if (!question || answer.length < 10) return;
+      if (seen.has(question)) return;
+      seen.add(question);
+      items.push({ question, answer });
+    });
+    return items;
+  });
+
+  return { rootHtml, faqs };
+}
+
+// ── Build FAQPage JSON-LD from extracted Q&A pairs ─────────────────────────
+function buildFaqSchema(faqs) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
 }
 
 // ── Inject rendered content into the static HTML file ──────────────────────
-function injectContent(route, renderedHtml) {
+function injectContent(route, renderedHtml, faqs = []) {
   const dir = route === "/"
     ? DIST
     : path.join(DIST, route.replace(/^\/+/, ""));
@@ -159,6 +195,14 @@ function injectContent(route, renderedHtml) {
     /<div id="root">\s*<\/div>/,
     `<div id="root">${renderedHtml}</div>`
   );
+
+  // Inject FAQPage JSON-LD into <head> if the page has FAQs and one isn't
+  // already present, so AI/search crawlers get machine-readable Q&A.
+  if (faqs.length > 0 && !/"@type"\s*:\s*"FAQPage"/.test(html)) {
+    const schema = buildFaqSchema(faqs);
+    const tag = `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+    html = html.replace("</head>", `    ${tag}\n  </head>`);
+  }
 
   fs.writeFileSync(filePath, html, "utf8");
   return true;
@@ -203,9 +247,9 @@ async function processRoutes(browser, routes) {
     while (queue.length > 0) {
       const route = queue.shift();
       try {
-        const html = await renderRoute(page, route);
+        const { rootHtml: html, faqs } = await renderRoute(page, route);
         if (html && html.trim().length > 50) {
-          injectContent(route, html);
+          injectContent(route, html, faqs);
           completed++;
         } else {
           // Rendered but empty — likely an error page or failed render
