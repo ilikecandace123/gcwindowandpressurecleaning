@@ -178,13 +178,16 @@ export default function BookingEmbed({ variant = "section" }) {
   }
 
   // Attach the uploaded photos to the ServiceM8 job (fire-and-forget).
+  // NOTE: do NOT use `keepalive: true` here — the Fetch spec caps keepalive
+  // request bodies at 64KB, and a few base64 photos far exceed that, so the
+  // browser silently rejects the request and no photos ever reach n8n. The
+  // component stays mounted after this call, so a normal fetch completes fine.
   function attachPhotos(jobId) {
     if (!jobId || !photos.length) return;
     try {
       fetch(PHOTOS_URL, {
         method: "POST",
         headers: JSON_HEADERS,
-        keepalive: true,
         body: JSON.stringify({ leadId: jobId, photos: photos.map((p) => ({ name: p.name, dataUrl: p.dataUrl })) }),
       }).catch(() => {});
     } catch {
