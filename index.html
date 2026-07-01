@@ -11,16 +11,27 @@
     </script>
     <!-- End Google tag (gtag.js) -->
 
-    <!-- Google Ads: report clicks on any phone link as 'Click to call' conversion -->
+    <!-- Google Ads: fire the "Phone Click (Website)" conversion on any tel: link click.
+         Uses the conversion image pixel because gtag('event','conversion') is silently
+         dropped on this site (the gtag snippet and the GTM container both claim
+         AW-18190004003 and the event never sends). The pixel is Google's no-script
+         method and reliably returns HTTP 200. gtag is still called best-effort. -->
     <script>
       document.addEventListener('click', function (e) {
         var link = e.target && e.target.closest && e.target.closest('a[href^="tel:"]');
-        if (link && typeof gtag === 'function') {
-          gtag('event', 'conversion', {
-            'send_to': 'AW-18190004003/TGp5COvIu8QcEKPe1eFD',
-            'transport_type': 'beacon'
-          });
-        }
+        if (!link) return;
+        try {
+          var img = new Image();
+          img.src = 'https://www.googleadservices.com/pagead/conversion/18190004003/?label=TGp5COvIu8QcEKPe1eFD&guid=ON&script=0&value=120&currency_code=AUD&_r=' + Date.now();
+        } catch (err) {}
+        try {
+          if (typeof gtag === 'function') {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-18190004003/TGp5COvIu8QcEKPe1eFD',
+              'value': 120, 'currency': 'AUD'
+            });
+          }
+        } catch (err) {}
       }, true);
     </script>
 

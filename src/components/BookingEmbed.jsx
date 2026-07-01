@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Loader2, CheckCircle, ArrowRight, ArrowLeft, Sparkles, Upload, X, MapPin } from "lucide-react";
+import { fireAdsConversion } from "../lib/adsConversion";
 
 // Same-origin API paths. In production these are Cloudflare Pages Functions;
 // in local dev they are handled by the Vite proxy / middleware (vite.config.js).
@@ -10,17 +11,6 @@ const ADDRESS_URL = "/api/address-autocomplete";
 
 const MAX_PHOTOS = 6;
 const JSON_HEADERS = { "Content-Type": "application/json" };
-
-// Fire the Google Ads booking conversion (once, when the lead is captured).
-function fireConversion() {
-  if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    window.gtag("event", "conversion", {
-      send_to: "AW-18190004003/W96tCOG0v7QcEKPe1eFD",
-      value: 200,
-      currency: "AUD",
-    });
-  }
-}
 
 function safeParseQuestions(text) {
   if (!text) return [];
@@ -114,6 +104,17 @@ export default function BookingEmbed({ variant = "section" }) {
     document.addEventListener("mousedown", onDocClick);
     return () => document.removeEventListener("mousedown", onDocClick);
   }, []);
+
+  // Fire the Google Ads "Get Quote Form Submit (Website)" conversion exactly once,
+  // and only when the success/"Thanks" screen actually renders (i.e. the enquiry
+  // was really sent) — never on step advance.
+  const convFired = useRef(false);
+  useEffect(() => {
+    if (step === "done" && !convFired.current) {
+      convFired.current = true;
+      fireAdsConversion("formSubmit");
+    }
+  }, [step]);
 
   function onAddressChange(e) {
     const value = e.target.value;
@@ -235,7 +236,6 @@ export default function BookingEmbed({ variant = "section" }) {
     if (lead !== null) {
       setStarted(true);
       setLeadId(lead);
-      fireConversion();
       attachPhotos(lead);
     }
     setQuestions(qs);
@@ -267,7 +267,6 @@ export default function BookingEmbed({ variant = "section" }) {
         if (!res.ok) throw new Error("bad status");
         const data = await res.json().catch(() => ({}));
         attachPhotos(typeof data.leadId === "string" ? data.leadId : "");
-        fireConversion();
         setStep("done");
       }
     } catch {
