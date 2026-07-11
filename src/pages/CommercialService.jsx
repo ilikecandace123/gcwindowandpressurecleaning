@@ -9,7 +9,6 @@ import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 // Commercial hero and secondary image mapping — reuses residential image library
 const COMMERCIAL_HERO_IMAGES = {

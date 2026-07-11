@@ -11,7 +11,6 @@ import PageSEO from "../components/PageSEO";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
 import { Shield, Users, Star, Phone } from "lucide-react";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function GutterCleaning() {
   const benefits = [
@@ -92,6 +91,7 @@ export default function GutterCleaning() {
         title="Gutter Cleaning Gold Coast | Storm-Ready Maintenance"
         description="Gutter cleaning on the Gold Coast — full gutter and downpipe clearing with inspection and written report. Fully insured. Free quote: (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/gutter-cleaning/"
+        image="/images/gutter-1.jpg"
         jsonLd={seoJsonLd}
       />
       <QuoteHero

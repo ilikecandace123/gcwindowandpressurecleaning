@@ -13,7 +13,6 @@ import SuburbLinks from "../components/SuburbLinks";
 
 // Importing icons from lucide-react for the new hero section
 import { Shield, Users, Star, Phone } from "lucide-react";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function SolarPanelCleaning() {
   const benefits = [
@@ -114,6 +113,7 @@ export default function SolarPanelCleaning() {
         title="Solar Panel Cleaning Gold Coast | Boost Output"
         description="Professional solar panel cleaning across the Gold Coast — restore lost generation and boost output by up to 30%. Fully insured. Call (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/solar-panel-cleaning/"
+        image="/images/solar-panel-hero.jpg"
         jsonLd={seoJsonLd}
       />
       <QuoteHero

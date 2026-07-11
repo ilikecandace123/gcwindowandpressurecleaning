@@ -11,7 +11,6 @@ import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
 import GoogleReviews from "../components/GoogleReviews";
 import { Shield, Users, Star, Phone } from 'lucide-react'; // Import necessary icons
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function HouseSoftWash() {
   const benefits = [
@@ -96,6 +95,7 @@ export default function HouseSoftWash() {
         title="House Softwash Gold Coast | Gentle Mould Removal"
         description="Gold Coast house softwash — safely removes mould, dirt and grime without damaging render, Colorbond or timber. Fully insured. Free quote: (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/house-softwash/"
+        image="/images/softwash-1.jpg"
         jsonLd={seoJsonLd}
       />
       <QuoteHero

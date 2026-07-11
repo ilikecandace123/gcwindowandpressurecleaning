@@ -94,20 +94,15 @@ export function buildServiceSchema({ name, description, image, serviceType, area
       "url": SITE_URL
     },
     "areaServed": areaName
-      ? { "@type": "City", "name": areaName, "addressRegion": "QLD", "addressCountry": "AU" }
-      : { "@type": "AdministrativeArea", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
+      ? { "@type": "City", "name": areaName }
+      : { "@type": "AdministrativeArea", "name": "Gold Coast" },
     "serviceType": serviceType || name,
     "url": url,
     "image": image && (image.startsWith("http") ? image : `${SITE_URL}${image}`),
     "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/InStock",
-      "priceCurrency": "AUD",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "priceCurrency": "AUD",
-        "description": "Free quote on request"
-      }
+      "priceCurrency": "AUD"
     }
   };
 }

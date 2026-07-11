@@ -5,7 +5,6 @@ import { MapPin, Phone, ArrowRight, Shield, Users } from "lucide-react";
 import { SUBURBS, SERVICES, getSuburbsByRegion } from "../data/locations";
 import PageSEO from "../components/PageSEO";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 const REGION_INFO = {
   south_coast: {

@@ -12,7 +12,6 @@ import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from 
 import SuburbLinks from "../components/SuburbLinks";
 
 import { Shield, Users, Star, Phone } from "lucide-react";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 const HERO_IMAGE = "/images/bird-proofing-hero.jpg";
 const SECONDARY_IMAGE = "/images/bird-proofing-secondary.jpg";
@@ -104,6 +103,7 @@ export default function BirdProofing() {
         title="Solar Panel Bird Proofing Gold Coast | Pigeon Mesh"
         description="Solar panel bird proofing on the Gold Coast — warranty-safe mesh that stops pigeons and mynas nesting under your panels. Fully insured. Call (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/bird-proofing/"
+        image="/images/bird-proofing-hero.jpg"
         jsonLd={seoJsonLd}
       />
 

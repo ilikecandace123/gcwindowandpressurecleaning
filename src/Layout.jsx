@@ -1,8 +1,7 @@
 
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import BookingEmbed from "./components/BookingEmbed";
-const createPageUrl = (pageName) => "/" + pageName.replace(/ /g, "-") + "/";
+import QuoteCTA from "./components/QuoteCTA";
 import { Phone, Star, Shield, Users, Home, MapPin, Menu, X, ChevronDown } from "lucide-react";
 
 export default function Layout({ children, currentPageName }) {
@@ -17,15 +16,6 @@ export default function Layout({ children, currentPageName }) {
     setServicesDropdownOpen(false);
     setCommercialDropdownOpen(false);
   }, [location.pathname]);
-
-  const scrollToQuote = (e) => {
-    const el = document.getElementById("quote");
-    if (el) {
-      e.preventDefault();
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
 
   return (
     <div className="min-h-screen bg-white">
@@ -141,6 +131,7 @@ export default function Layout({ children, currentPageName }) {
                 )}
               </div>
 
+              <Link to="/window-cleaning-plans/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Window Cleaning Plans</Link>
               <Link to="/about/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">About</Link>
               <Link to="/contact/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Contact</Link>
 
@@ -148,14 +139,13 @@ export default function Layout({ children, currentPageName }) {
 
             {/* CTA Buttons + Mobile Menu Toggle */}
             <div className="flex items-center gap-2 flex-shrink-0">
-              <a
-                href="#quote"
-                onClick={scrollToQuote}
+              <Link
+                to="/instant-quote/"
                 className="bg-green-500 hover:bg-green-600 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors"
               >
-                <span className="hidden sm:inline">Get a Quote</span>
+                <span className="hidden sm:inline">Get Instant Quote</span>
                 <span className="sm:hidden">Quote</span>
-              </a>
+              </Link>
               <a href="tel:0756512386" aria-label="Call (07) 5651 2386" className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors flex items-center">
                 <Phone className="w-4 h-4 sm:mr-1.5" />
                 <span className="hidden sm:inline">(07) 5651 2386</span>
@@ -224,6 +214,8 @@ export default function Layout({ children, currentPageName }) {
               </Link>
 
               <div className="border-t border-gray-100 mt-2 pt-2">
+                <Link to="/window-cleaning-plans/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Window Cleaning Plans</Link>
+                <Link to="/instant-quote/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Get Instant Quote</Link>
                 <Link to="/about/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">About Us</Link>
                 <Link to="/contact/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Contact</Link>
               </div>
@@ -248,8 +240,9 @@ export default function Layout({ children, currentPageName }) {
         {children}
       </main>
 
-      {/* Booking form at the bottom of every page */}
-      <BookingEmbed variant="section" />
+      {/* Quote chooser at the bottom of every page — except the instant-quote
+          wizard, which has its own lead capture built in */}
+      {currentPageName !== "InstantQuote" && <QuoteCTA variant="section" />}
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white">
@@ -263,12 +256,10 @@ export default function Layout({ children, currentPageName }) {
                  </picture>
                 <div>
                   <h3 className="text-lg font-bold leading-tight">Gold Coast Window and Pressure Cleaning</h3>
-                  {/* 'Professionals' is spelled the same in US and Australian English */}
-                  <p className="text-gray-300 text-xs">Your Trusted Local Cleaning Professionals</p>
+                      <p className="text-gray-300 text-xs">Your Trusted Local Cleaning Professionals</p>
                 </div>
               </div>
               <p className="text-gray-300 text-sm">
-                {/* 'Premier', 'service', 'insured', 'police-checked' are spelled the same in US and Australian English, or are common variations. */}
                 Gold Coast's premier exterior cleaning service. Fully insured and police-checked staff 
                 for your complete peace of mind.
               </p>
@@ -276,12 +267,12 @@ export default function Layout({ children, currentPageName }) {
             
             <div className="md:col-span-3 flex justify-center">
               <div className="text-center">
-                {/* 'Services' is spelled the same in US and Australian English */}
                 <h4 className="font-semibold mb-4">Our Services</h4>
                 <div className="flex gap-16">
                   <div className="space-y-2 text-sm text-gray-300">
                     <Link to="/roof-cleaning/" className="block hover:text-white transition-colors">Roof Cleaning</Link>
                     <Link to="/window-cleaning/" className="block hover:text-white transition-colors">Window Cleaning</Link>
+                    <Link to="/window-cleaning-plans/" className="block hover:text-white transition-colors">Window Cleaning Plans</Link>
                     <Link to="/house-softwash/" className="block hover:text-white transition-colors">House &amp; Building Softwash</Link>
                     <Link to="/pressure-cleaning/" className="block hover:text-white transition-colors">Pressure Cleaning</Link>
                   </div>
@@ -310,7 +301,6 @@ export default function Layout({ children, currentPageName }) {
                   <Star className="w-4 h-4 fill-current mr-1" />
                   <Star className="w-4 h-4 fill-current mr-1" />
                   <Star className="w-4 h-4 fill-current mr-1" />
-                  {/* 'Rating' is spelled the same in US and Australian English */}
                   <span className="text-white text-sm ml-2">5.0 Rating</span>
                 </div>
               </div>
@@ -343,7 +333,7 @@ export default function Layout({ children, currentPageName }) {
                   width="100%"
                   height="200"
                   style={{ border: 0 }}
-                  allowFullScreen=""
+                  allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Gold Coast Window and Pressure Cleaning location on Google Maps"
@@ -356,7 +346,7 @@ export default function Layout({ children, currentPageName }) {
             <div className="text-center text-gray-300 text-sm mb-2">
               <p>© {new Date().getFullYear()} Gold Coast Window and Pressure Cleaning.</p>
             </div>
-            <p className="text-sm text-gray-400 text-center mt-1">Last updated: April 2026</p>
+            <p className="text-sm text-gray-400 text-center mt-1">Last updated: July 2026</p>
           </div>
         </div>
       </footer>

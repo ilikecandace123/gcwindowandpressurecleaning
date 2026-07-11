@@ -4,7 +4,6 @@ import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import PageSEO from "../components/PageSEO";
 import Breadcrumbs from "../components/Breadcrumbs";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function Contact() {
   return (
@@ -92,7 +91,7 @@ export default function Contact() {
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
-                  allowFullScreen=""
+                  allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Gold Coast Window and Pressure Cleaning location on Google Maps"

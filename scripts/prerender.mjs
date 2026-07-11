@@ -114,7 +114,7 @@ async function main() {
     description:
       "Gold Coast's trusted window, pressure, roof, gutter and solar panel cleaning. Fully insured, police-checked staff. Free quote — call (07) 5651 2386.",
     canonical: `${SITE}/`,
-    image: "/images/window.jpg",
+    image: "/images/services-banner.jpg",
     jsonLd: [
       buildOrganizationSchema(),
       buildWebSiteSchema(),
@@ -126,9 +126,9 @@ async function main() {
   // Hub pages (kebab-case canonical URLs)
   routes.push({
     path: "/services",
-    title: "Exterior Cleaning Services | Gold Coast",
+    title: "Gold Coast Window and Pressure Cleaning | Free Quote",
     description:
-      "Gold Coast's trusted exterior cleaning service. Window, roof, pressure, softwash, gutter and solar panel cleaning. Fully insured. Call (07) 5651 2386.",
+      "Gold Coast's trusted window, pressure, roof, gutter and solar panel cleaning. Fully insured, police-checked staff. Free quote — call (07) 5651 2386.",
     // /services renders the same component as the homepage and canonicalises
     // to "/" — kept out of the sitemap below to avoid duplicate-content signals.
     canonical: `${SITE}/`,
@@ -150,6 +150,37 @@ async function main() {
     ],
   });
   routes.push({
+    path: "/window-cleaning-plans",
+    title: "Window Cleaning Plans Gold Coast | Save On Every Visit",
+    description:
+      "Pre-booked window cleaning plans on the Gold Coast — monthly, quarterly or half-yearly with $50–$150 off every visit, free flyscreen deep clean and a 7-day rain guarantee.",
+    canonical: `${SITE}/window-cleaning-plans`,
+    image: "/images/services-banner.jpg",
+    jsonLd: [
+      buildLocalBusinessSchema(),
+      buildServiceSchema({
+        name: "Window Cleaning Plans",
+        description:
+          "Pre-booked, priority-scheduled exterior window and screen cleaning plans on the Gold Coast — monthly, quarterly or half-yearly, with $50–$150 off every visit.",
+        image: "/images/services-banner.jpg",
+        serviceType: "Window Cleaning Maintenance Plan",
+        url: `${SITE}/window-cleaning-plans/`
+      }),
+      buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Window Cleaning Plans", url: "/window-cleaning-plans" }])
+    ],
+  });
+  routes.push({
+    path: "/instant-quote",
+    title: "Instant Quote | Gold Coast Window and Pressure Cleaning",
+    description:
+      "Get an instant online quote for window, pressure, roof, gutter, softwash and solar panel cleaning on the Gold Coast — answer a few quick questions and see your price now.",
+    canonical: `${SITE}/instant-quote`,
+    jsonLd: [
+      buildLocalBusinessSchema(),
+      buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Instant Quote", url: "/instant-quote" }])
+    ],
+  });
+  routes.push({
     path: "/about",
     title: "About Us | Gold Coast Window and Pressure Cleaning",
     description: "Gold Coast's trusted exterior cleaning company — locally owned, fully insured, with police-checked staff. Learn about our team and commitment to quality.",
@@ -162,7 +193,7 @@ async function main() {
   routes.push({
     path: "/contact",
     title: "Contact Us | Gold Coast Window and Pressure Cleaning",
-    description: "Get in touch with Gold Coast Window and Pressure Cleaning. Call (07) 5651 2386 for a free quote. Serving all Gold Coast suburbs and Northern NSW.",
+    description: "Get in touch with Gold Coast Window and Pressure Cleaning. Call (07) 5651 2386 or email gcwindowandpressure@gmail.com for a free quote. Serving all Gold Coast suburbs and Northern NSW.",
     canonical: `${SITE}/contact`,
     jsonLd: [
       buildLocalBusinessSchema(),
@@ -318,7 +349,7 @@ async function main() {
   // Google treats the lastmod signal as reliable rather than ignoring it.
   // Using the build date (today) for every URL causes Google to discount
   // lastmod entirely because it never signals real content change.
-  const CONTENT_DATE = "2026-04-20";
+  const CONTENT_DATE = "2026-07-12";
 
   // Categorize routes
   const staticRoutes = routes.filter(
@@ -332,7 +363,7 @@ async function main() {
   // Assign priority and changefreq based on page type
   const UTILITY_PATHS = new Set(["/about", "/contact", "/service-areas"]);
   const SERVICE_SLUGS = new Set([
-    "/window-cleaning", "/roof-cleaning", "/house-softwash",
+    "/window-cleaning", "/window-cleaning-plans", "/roof-cleaning", "/house-softwash",
     "/pressure-cleaning", "/gutter-cleaning", "/solar-panel-cleaning",
     "/bird-proofing", "/patio-cleaning"
   ]);

@@ -1,11 +1,6 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
-// Convert PascalCase page name to kebab-case URL with trailing slash
-// (trailing slash matches sitemap + canonical — avoids GSC redirect warnings)
-const createPageUrl = (pageName) =>
-  "/" + pageName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase() + "/";
 import { useState, useEffect } from "react";
 import { ArrowRight, Star, Shield, Users, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import GoogleReviews from "../components/GoogleReviews";
@@ -62,8 +57,8 @@ export default function Services() {
   {
     imageUrl: "/images/window-hero.jpg",
     title: "Window Cleaning",
-    description: "Streak-free interior and exterior window cleaning up to 4 stories. Includes tracks and flyscreens.",
-    benefits: ["Streak-free results", "Up to 4 stories", "Includes extras"],
+    description: "Streak-free interior and exterior window cleaning up to 4 storeys. Includes tracks and flyscreens.",
+    benefits: ["Streak-free results", "Up to 4 storeys", "Includes extras"],
     slug: "window-cleaning"
   },
   {

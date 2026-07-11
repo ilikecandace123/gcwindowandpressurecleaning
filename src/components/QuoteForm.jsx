@@ -1,7 +1,7 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 import { Phone, Calendar, Star } from "lucide-react"; // Removed Mail import
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function QuoteForm({ serviceName }) {
   return (
@@ -64,12 +64,11 @@ export default function QuoteForm({ serviceName }) {
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 flex flex-col items-center justify-center text-center">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready for Your Quote?</h3>
             <p className="text-gray-600 mb-6">
-              Click the button below to be directed to our secure online quote form. It's fast, easy, and completely free.
+              Answer a few quick questions and see your price instantly — or just leave your details and we'll call you. Fast, easy, and completely free.
             </p>
-            <a href="#quote" className="w-full h-12 bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white font-semibold text-lg rounded-lg flex items-center justify-center transition-all transform hover:scale-105 shadow-lg">
-
-              Get My Free Quote Now
-            </a>
+            <Link to="/instant-quote/" className="w-full h-12 bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white font-semibold text-lg rounded-lg flex items-center justify-center transition-all transform hover:scale-105 shadow-lg">
+              Get My Instant Quote
+            </Link>
           </div>
         </div>
       </div>

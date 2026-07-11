@@ -9,7 +9,6 @@ import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 const SERVICE_SECONDARY_IMAGES = {
   "window-cleaning": {

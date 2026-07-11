@@ -10,7 +10,6 @@ import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
 import SuburbLinks from "../components/SuburbLinks";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function PatioCleaning() {
   const benefits = [

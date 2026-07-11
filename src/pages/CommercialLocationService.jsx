@@ -8,7 +8,6 @@ import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema } from "../data/schema";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 const HERO_IMAGES = {
   "window-cleaning": "/images/commercial-window-hero.jpg",

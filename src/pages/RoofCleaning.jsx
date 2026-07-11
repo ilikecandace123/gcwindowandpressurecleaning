@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 import PageSEO from "../components/PageSEO";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 import SuburbLinks from "../components/SuburbLinks";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function RoofCleaning() {
   const benefits = [
@@ -112,6 +111,7 @@ export default function RoofCleaning() {
         title="Roof Cleaning Gold Coast | Tile, Metal & Concrete"
         description="Professional roof cleaning across the Gold Coast — tile, metal and concrete roof specialists. Soft-wash safe. Fully insured. Free quote: (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/roof-cleaning/"
+        image="/images/roof-hero.jpg"
         jsonLd={seoJsonLd}
       />
       <QuoteHero

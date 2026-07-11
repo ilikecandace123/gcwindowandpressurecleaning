@@ -154,7 +154,6 @@ export default function GoogleReviews() {
         writeSessionCache(data);
         applyData(data);
       } catch (err) {
-        console.warn("GoogleReviews fetch failed:", err);
         // Keep fallback reviews (already showing as initial state)
       }
     }

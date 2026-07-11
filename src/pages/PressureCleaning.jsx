@@ -13,7 +13,6 @@ import SuburbLinks from "../components/SuburbLinks";
 
 // Import icons needed for the new hero section (assuming lucide-react or similar)
 import { Shield, Users, Star, Phone } from 'lucide-react';
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function PressureCleaning() {
   const benefits = [
@@ -98,6 +97,7 @@ export default function PressureCleaning() {
         title="Pressure Cleaning Gold Coast | Driveways & Paths"
         description="Gold Coast pressure cleaning specialists — industrial-grade cleaning for driveways, concrete, paths and patios. Fully insured. Free quote: (07) 5651 2386."
         canonical="https://gcwindowandpressurecleaning.com.au/pressure-cleaning/"
+        image="/images/pressure-hero.jpg"
         jsonLd={seoJsonLd}
       />
       <QuoteHero

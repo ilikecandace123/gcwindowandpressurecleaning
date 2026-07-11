@@ -999,8 +999,8 @@ export const SERVICES = [
         description: "Complete window cleaning service covers both inside and outside surfaces for maximum clarity and brightness in your home or office."
       },
       {
-        title: "Up to 4 Stories High",
-        description: "Our professional equipment and safety training allow us to safely clean windows up to 4 stories high, reaching areas you can't."
+        title: "Up to 4 Storeys High",
+        description: "Our professional equipment and safety training allow us to safely clean windows up to 4 storeys high, reaching areas you can't."
       },
       {
         title: "Includes Tracks & Flyscreens",

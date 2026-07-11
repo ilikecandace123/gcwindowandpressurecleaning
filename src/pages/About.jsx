@@ -5,7 +5,6 @@ import { Shield, Users, Star, Phone, Award, Clock, MapPin, CheckCircle } from "l
 import PageSEO from "../components/PageSEO";
 import Breadcrumbs from "../components/Breadcrumbs";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema";
-import { trackedBookingClick } from "../lib/trackedBookingClick";
 
 export default function About() {
   return (
@@ -121,7 +120,7 @@ export default function About() {
           <p className="text-lg text-gray-600 text-center mb-10">We provide a complete range of exterior cleaning services for residential, commercial, and strata properties.</p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              { name: "Window Cleaning", url: "/window-cleaning/", desc: "Interior and exterior, up to 4 stories" },
+              { name: "Window Cleaning", url: "/window-cleaning/", desc: "Interior and exterior, up to 4 storeys" },
               { name: "Roof Cleaning", url: "/roof-cleaning/", desc: "Manufacturer-recommended process" },
               { name: "Pressure Cleaning", url: "/pressure-cleaning/", desc: "Driveways, paths, patios, pool areas" },
               { name: "House & Building Softwash", url: "/house-softwash/", desc: "Gentle mould and grime removal" },

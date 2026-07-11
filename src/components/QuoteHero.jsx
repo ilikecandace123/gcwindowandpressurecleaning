@@ -1,6 +1,6 @@
 import React from "react";
 import { Shield, Users, Star, Phone, CheckCircle } from "lucide-react";
-import BookingEmbed from "./BookingEmbed";
+import QuoteCTA from "./QuoteCTA";
 
 // Two-column hero: headline + trust points + call CTA on the left, the booking
 // form card on the right (tappt-style). Used at the top of every page.
@@ -81,7 +81,7 @@ export default function QuoteHero({
 
           {/* Right: booking form card */}
           <div className="lg:pl-4">
-            <BookingEmbed variant="hero" />
+            <QuoteCTA variant="hero" />
           </div>
         </div>
       </div>
