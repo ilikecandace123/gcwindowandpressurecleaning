@@ -15,8 +15,27 @@ export default function QuoteHero({
 }) {
   return (
     <section id="quote" className="relative bg-gray-900 text-white overflow-hidden scroll-mt-24">
-      {/* Background image (fully visible) */}
-      <div className="absolute inset-0">
+      {/* Mobile: photo as a naturally-proportioned banner at the top (no zoom) */}
+      <div className="relative lg:hidden">
+        <picture>
+          <source srcSet={backgroundImage ? backgroundImage.replace(".jpg", ".webp") : ""} type="image/webp" />
+          <img
+            src={backgroundImage}
+            alt=""
+            aria-hidden="true"
+            className="w-full h-auto max-h-72 object-cover"
+            style={{ objectPosition: imagePosition }}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </picture>
+        {/* Fade the bottom of the photo into the dark hero background */}
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-gray-900"></div>
+      </div>
+
+      {/* Desktop: full-bleed background image */}
+      <div className="absolute inset-0 hidden lg:block">
         <picture>
           <source srcSet={backgroundImage ? backgroundImage.replace(".jpg", ".webp") : ""} type="image/webp" />
           <img
@@ -31,8 +50,8 @@ export default function QuoteHero({
           />
         </picture>
       </div>
-      {/* Light scrim — darker on the left (under the text), lets the image show through */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-black/25"></div>
+      {/* Light scrim — darker on the left (under the text), lets the image show through (desktop only) */}
+      <div className="absolute inset-0 hidden lg:block bg-gradient-to-r from-black/70 via-black/45 to-black/25"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">

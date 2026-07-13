@@ -280,7 +280,7 @@ function windowSteps(state) {
   steps.push({
     ...svc,
     id: "w-large-panes",
-    title: "Do you have any window panes that are larger than a standard window or sliding door?",
+    title: "Do you have any window or sliding door panes that are larger than a standard sliding door?",
     question: "Window cleaning — oversized panes",
     type: "select",
     path: ["window", "largePanes"],
@@ -309,7 +309,7 @@ function windowSteps(state) {
   steps.push({
     ...svc,
     id: "w-frequency",
-    title: "How often would you like your windows cleaned?",
+    title: "How often would you like your exterior windows and screens cleaned?",
     question: "Window cleaning — frequency",
     type: "select",
     path: ["window", "frequency"],
@@ -329,10 +329,16 @@ function windowSteps(state) {
   if (isHouse) {
     const band = PANE_BANDS.find((b) => b.value === w.panes);
     const addPrice = band && band.top ? 5 * band.top : null;
+    // Plan customers get a tailored pitch: interior can be added at any visit.
+    const freqDef = WINDOW_FREQUENCIES.find((f) => f.value === w.frequency);
+    const visitsPerYear = { monthly: 12, quarterly: 4, "half-yearly": 2 }[w.frequency];
+    const isPlan = !!(freqDef && freqDef.plan && visitsPerYear);
     steps.push({
       ...svc,
       id: "w-interior",
-      title: "Add interior windows + tracks?",
+      title: isPlan
+        ? `You can add your interior windows and tracks at any of your ${visitsPerYear} exterior visits through the year. Would you like to add them${addPrice ? ` for $${addPrice}` : ""} for your first visit?`
+        : "Add interior windows + tracks?",
       question: "Window cleaning — interior add-on",
       type: "select",
       path: ["window", "interiorAddon"],
