@@ -284,7 +284,6 @@ function windowSteps(state) {
     question: "Window cleaning — screen type",
     type: "select",
     path: ["window", "screens"],
-    hint: "This doesn't change your price — it just helps us bring the right gear.",
     options: [
       { value: "flyscreens", label: "Normal flyscreens" },
       { value: "security", label: "Security screens" },
