@@ -33,11 +33,45 @@ import {
   Brush,
   Sun,
   Bird,
+  Camera,
 } from "lucide-react";
 
 const SUBMIT_URL = "/api/booking-submit";
+const PHOTOS_URL = "/api/booking-photos";
 const ADDRESS_URL = "/api/address-autocomplete";
 const JSON_HEADERS = { "Content-Type": "application/json" };
+
+// Deferred lead sending: how long we wait on the result screen before sending
+// a phone-only partial lead (leaving the page sends it immediately).
+const PARTIAL_SEND_DELAY_MS = 60_000;
+
+const MAX_PHOTOS = 5;
+const MAX_PHOTO_DIM = 1600;
+
+// Read a picked file as a data URL, downscaling large images so the JSON
+// payload stays sane. Photos are POSTed as normal fetch — NEVER with
+// keepalive:true (64KB body cap silently truncates them).
+function fileToResizedDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("read-failed"));
+    reader.onload = () => {
+      const img = new Image();
+      img.onerror = () => resolve(reader.result); // can't draw it — send as-is
+      img.onload = () => {
+        const scale = Math.min(1, MAX_PHOTO_DIM / Math.max(img.width, img.height));
+        if (scale >= 1) return resolve(reader.result);
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL("image/jpeg", 0.82));
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
 const SERVICE_ICONS = { AppWindow, Waves, Home, Droplets, Brush, Sun, Bird };
 
@@ -154,10 +188,28 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
   const [freeTextDraft, setFreeTextDraft] = useState("");
 
   const [contact, setContact] = useState({ firstName: "", lastName: "", email: "", phone: "", address: "", notes: "", quotePref: "" });
-  const [leadId, setLeadId] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [bookingAnswer, setBookingAnswer] = useState(null); // "yes" | "no"
+
+  // Split contact flow (instant mode): screen 1 = name + phone, then the
+  // result screen shows the price with email/address/notes/photos below it.
+  const [photos, setPhotos] = useState([]); // [{ name, dataUrl }]
+  const [detailsSent, setDetailsSent] = useState(false);
+  const [detailsSubmitting, setDetailsSubmitting] = useState(false);
+  const [detailsError, setDetailsError] = useState("");
+
+  // Deferred lead sending. The lead goes out (a) when the email/address form
+  // is completed, (b) PARTIAL_SEND_DELAY_MS after the price is revealed, or
+  // (c) immediately if they leave the page — whichever comes first. Later
+  // sends reuse the same leadId so n8n UPDATES the existing ServiceM8 job
+  // instead of creating a new one.
+  const leadIdRef = useRef("");
+  const sentRef = useRef("none"); // none | partial | full
+  const partialTimer = useRef(null);
+  const sendRef = useRef(null); // always points at the latest-render sender
+  const sendChain = useRef(Promise.resolve()); // serialises sends so updates carry the leadId
+  const pickerOpenRef = useRef(false); // photo file-picker can fire visibilitychange
 
   // Address autocomplete
   const [suggestions, setSuggestions] = useState([]);
@@ -247,7 +299,7 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
   }
 
   // ── Lead payload ────────────────────────────────────────────────────────
-  function buildDescription(booking) {
+  function buildDescription({ booking, partial } = {}) {
     const lines = [];
     if (mode === "details") {
       lines.push("QUOTE REQUEST (online) — customer chose to leave details only.");
@@ -255,6 +307,11 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
       else if (contact.quotePref === "phone") lines.push("QUOTE PREFERENCE: happy with a price over the PHONE.");
       if (contact.notes.trim()) lines.push(`Message: ${contact.notes.trim()}`);
       return lines.join("\n");
+    }
+    if (partial) {
+      lines.push("⚠️ PARTIAL LEAD — customer entered name & phone and saw their price, but didn't finish the email/address screen. Worth a call!");
+    } else if (sentRef.current === "partial") {
+      lines.push("UPDATE — customer has now completed their full details (same job as the earlier partial lead).");
     }
     const svcNames = (state.services || []).map((s) => SERVICE_META[s]?.label || s).join(", ");
     lines.push(`INSTANT QUOTE (online) — ${svcNames}`);
@@ -276,7 +333,7 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
     return lines.join("\n");
   }
 
-  function buildPayload(extra) {
+  function buildPayload(extra = {}) {
     const qa = mode === "details" ? [] : collectAnswers(expanded);
     return {
       firstName: contact.firstName,
@@ -285,17 +342,129 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
       email: contact.email,
       phone: contact.phone,
       address: contact.address,
-      description: buildDescription(extra && extra.booking),
-      photoCount: 0,
+      description: buildDescription(extra),
+      photoCount: photos.length,
       qa,
-      leadId: (extra && extra.leadId) || "",
+      leadId: extra.leadId || "",
       source: "instant-quote",
     };
   }
 
   const contactValid =
     contact.firstName.trim() && contact.lastName.trim() && contact.email.trim() && contact.phone.trim();
+  const basicValid = contact.firstName.trim() && contact.lastName.trim() && contact.phone.trim();
 
+  // ── Instant-mode lead sending ───────────────────────────────────────────
+  // All sends run through a promise chain so a follow-up send always carries
+  // the leadId returned by the first one (n8n updates the same ServiceM8 job
+  // instead of creating a duplicate).
+  function sendLeadNow(opts = {}) {
+    const run = () => doSendLead(opts);
+    sendChain.current = sendChain.current.then(run, run);
+    return sendChain.current;
+  }
+
+  async function doSendLead({ keepalive = false, once = false, booking = bookingAnswer } = {}) {
+    if (mode !== "instant") return;
+    if (once && sentRef.current !== "none") return; // auto-fire only happens once
+    const partial = !(contact.email.trim() && contact.address.trim());
+    const payload = buildPayload({ booking, leadId: leadIdRef.current, partial });
+    if (!partial) sentRef.current = "full";
+    else if (sentRef.current === "none") sentRef.current = "partial";
+    try {
+      const res = await fetch(SUBMIT_URL, {
+        method: "POST",
+        headers: JSON_HEADERS,
+        body: JSON.stringify(payload),
+        keepalive, // JSON only — photos must never use keepalive (64KB cap)
+      });
+      if (res.ok) {
+        const data = await res.json().catch(() => ({}));
+        if (typeof data.leadId === "string" && data.leadId) leadIdRef.current = data.leadId;
+      }
+    } catch {
+      /* never surface network errors once the price is on screen */
+    }
+  }
+
+  // Keep a ref pointing at a latest-render sender so timers and page-leave
+  // handlers never fire with stale contact/quote state.
+  sendRef.current = ({ once = false, keepalive = false, booking } = {}) => {
+    if (phase !== "result" || mode !== "instant") return;
+    if (detailsSent) return;
+    if (!basicValid) return;
+    return sendLeadNow({ once, keepalive, booking });
+  };
+
+  // Send the partial lead if they leave the page (or navigate away in-app)
+  // before finishing the email/address form.
+  useEffect(() => {
+    const flush = () => sendRef.current && sendRef.current({ once: true, keepalive: true });
+    const onVis = () => {
+      // Opening the photo file-picker can fire visibilitychange — not a leave.
+      if (document.visibilityState === "hidden" && !pickerOpenRef.current) flush();
+    };
+    const onFocus = () => {
+      pickerOpenRef.current = false;
+    };
+    window.addEventListener("pagehide", flush);
+    window.addEventListener("focus", onFocus);
+    document.addEventListener("visibilitychange", onVis);
+    return () => {
+      window.removeEventListener("pagehide", flush);
+      window.removeEventListener("focus", onFocus);
+      document.removeEventListener("visibilitychange", onVis);
+      if (partialTimer.current) clearTimeout(partialTimer.current);
+      flush(); // SPA navigation unmounts the wizard — capture the lead
+    };
+  }, []);
+
+  // Screen 1 (instant): first name, last name, phone → reveal the price and
+  // arm the partial-lead timer. Nothing is sent yet.
+  function submitContactBasic(e) {
+    e.preventDefault();
+    if (!basicValid) {
+      setError("Please pop in your first name, last name and phone number.");
+      return;
+    }
+    setError("");
+    fireConversionOnce();
+    setPhase("result");
+    if (partialTimer.current) clearTimeout(partialTimer.current);
+    partialTimer.current = setTimeout(
+      () => sendRef.current && sendRef.current({ once: true }),
+      PARTIAL_SEND_DELAY_MS
+    );
+  }
+
+  // Screen 2 (on the result page): email + address (+ notes/photos) → full send.
+  async function submitDetails(e) {
+    e.preventDefault();
+    if (!contact.email.trim() || !contact.address.trim()) {
+      setDetailsError("Please add your email and address so we can send your quote through.");
+      return;
+    }
+    setDetailsError("");
+    setDetailsSubmitting(true);
+    if (partialTimer.current) clearTimeout(partialTimer.current);
+    try {
+      await sendLeadNow({});
+      if (photos.length && leadIdRef.current) {
+        // Plain fetch on purpose — keepalive:true truncates photo bodies at 64KB.
+        await fetch(PHOTOS_URL, {
+          method: "POST",
+          headers: JSON_HEADERS,
+          body: JSON.stringify({ leadId: leadIdRef.current, photos }),
+        }).catch(() => {});
+      }
+    } catch {
+      /* the lead attempt already happened — never block the customer */
+    }
+    setDetailsSubmitting(false);
+    setDetailsSent(true);
+  }
+
+  // "Put in your details" mode — unchanged single screen, sends immediately.
   async function submitLead(e) {
     e.preventDefault();
     if (!contactValid) {
@@ -310,40 +479,38 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
         headers: JSON_HEADERS,
         body: JSON.stringify(buildPayload({})),
       });
-      let id = "";
-      if (res.ok) {
-        const data = await res.json().catch(() => ({}));
-        if (typeof data.leadId === "string") id = data.leadId;
-      } else if (mode === "details") {
-        throw new Error("bad status");
-      }
-      setLeadId(id);
+      if (!res.ok) throw new Error("bad status");
       fireConversionOnce();
-      setPhase(mode === "details" ? "done-details" : "result");
+      setPhase("done-details");
     } catch {
-      if (mode === "details") {
-        setError("Sorry — something went wrong sending your details. Please call us on (07) 5651 2386 and we'll sort it out.");
-      } else {
-        // Never block the price reveal — the lead attempt already happened.
-        fireConversionOnce();
-        setPhase("result");
-      }
+      setError("Sorry — something went wrong sending your details. Please call us on (07) 5651 2386 and we'll sort it out.");
     } finally {
       setSubmitting(false);
     }
   }
 
-  async function answerBooking(answer) {
+  function answerBooking(answer) {
     setBookingAnswer(answer);
-    try {
-      fetch(SUBMIT_URL, {
-        method: "POST",
-        headers: JSON_HEADERS,
-        body: JSON.stringify(buildPayload({ booking: answer, leadId })),
-      }).catch(() => {});
-    } catch {
-      /* lead is already captured — never surface an error here */
+    // If the lead already went out (timer or page-leave), push the booking
+    // answer through as an update to the same job. Otherwise it simply rides
+    // along with whichever send happens next.
+    if (sentRef.current !== "none") sendLeadNow({ booking: answer });
+  }
+
+  async function onPhotosChange(e) {
+    const files = Array.from(e.target.files || []);
+    e.target.value = "";
+    pickerOpenRef.current = false;
+    const room = Math.max(0, MAX_PHOTOS - photos.length);
+    const added = [];
+    for (const f of files.slice(0, room)) {
+      try {
+        added.push({ name: f.name, dataUrl: await fileToResizedDataUrl(f) });
+      } catch {
+        /* unreadable file — skip it */
+      }
     }
+    if (added.length) setPhotos((p) => [...p, ...added].slice(0, MAX_PHOTOS));
   }
 
   // ── Address autocomplete (same endpoint as the booking form) ───────────
@@ -698,21 +865,89 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
     );
   }
 
+  function renderAddressField(required) {
+    return (
+      <div ref={addrBox} className="relative">
+        <label className="block text-sm font-medium text-gray-700 mb-1">Address{required ? " *" : ""}</label>
+        <div className="relative">
+          <MapPin className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <input
+            className={inputClass + " pl-10"}
+            value={contact.address}
+            onChange={onAddressChange}
+            onFocus={() => suggestions.length && setShowSuggestions(true)}
+            placeholder="Start typing your address…"
+            autoComplete="off"
+          />
+        </div>
+        {showSuggestions && suggestions.length > 0 && (
+          <div className="absolute z-20 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden">
+            {suggestions.map((s, i) => (
+              <button
+                type="button"
+                key={i}
+                onClick={() => {
+                  setContact((c) => ({ ...c, address: s.text }));
+                  setSuggestions([]);
+                  setShowSuggestions(false);
+                }}
+                className="w-full text-left px-4 py-2.5 hover:bg-green-50 text-gray-700 text-sm flex items-start gap-2"
+              >
+                <MapPin className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <span>{s.text}</span>
+              </button>
+            ))}
+            <div className="px-4 py-1.5 text-[11px] text-gray-400 text-right border-t border-gray-100">powered by Google</div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
   function renderContact() {
     const setField = (k) => (e) => setContact((c) => ({ ...c, [k]: e.target.value }));
+
+    // Instant mode: just name + phone — the price is one tap away.
+    if (mode === "instant") {
+      return (
+        <div className="quote-step-enter">
+          <div className="text-xs font-semibold uppercase tracking-wider text-blue-600 mb-2">Almost there</div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Pop in your details to see your price</h2>
+
+          <form onSubmit={submitContactBasic} className="space-y-4">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">First name *</label>
+                <input className={inputClass} value={contact.firstName} onChange={setField("firstName")} placeholder="First name" autoComplete="given-name" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Last name *</label>
+                <input className={inputClass} value={contact.lastName} onChange={setField("lastName")} placeholder="Last name" autoComplete="family-name" />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+              <input className={inputClass} value={contact.phone} onChange={setField("phone")} placeholder="04xx xxx xxx" inputMode="tel" autoComplete="tel" />
+            </div>
+
+            {error && <p className="text-red-600 text-sm">{error}</p>}
+
+            <button
+              type="submit"
+              className="w-full inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg"
+            >
+              Show My Quote <ArrowRight className="w-5 h-5 ml-2" />
+            </button>
+            <p className="text-center text-xs text-gray-400">Free, no-obligation quote — takes 10 seconds.</p>
+          </form>
+        </div>
+      );
+    }
+
     return (
       <div className="quote-step-enter">
-        {mode === "instant" ? (
-          <>
-            <div className="text-xs font-semibold uppercase tracking-wider text-blue-600 mb-2">Almost there</div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Pop in your details to reveal your price</h2>
-          </>
-        ) : (
-          <>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1.5">Leave your details</h2>
-            <p className="text-gray-500 mb-6">We&rsquo;ll be in touch quickly with your free quote — no obligation.</p>
-          </>
-        )}
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1.5">Leave your details</h2>
+        <p className="text-gray-500 mb-6">We&rsquo;ll be in touch quickly with your free quote — no obligation.</p>
 
         <form onSubmit={submitLead} className="space-y-4">
           <div className="grid sm:grid-cols-2 gap-4">
@@ -734,40 +969,7 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
             </div>
           </div>
 
-          <div ref={addrBox} className="relative">
-            <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
-            <div className="relative">
-              <MapPin className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input
-                className={inputClass + " pl-10"}
-                value={contact.address}
-                onChange={onAddressChange}
-                onFocus={() => suggestions.length && setShowSuggestions(true)}
-                placeholder="Start typing your address…"
-                autoComplete="off"
-              />
-            </div>
-            {showSuggestions && suggestions.length > 0 && (
-              <div className="absolute z-20 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden">
-                {suggestions.map((s, i) => (
-                  <button
-                    type="button"
-                    key={i}
-                    onClick={() => {
-                      setContact((c) => ({ ...c, address: s.text }));
-                      setSuggestions([]);
-                      setShowSuggestions(false);
-                    }}
-                    className="w-full text-left px-4 py-2.5 hover:bg-green-50 text-gray-700 text-sm flex items-start gap-2"
-                  >
-                    <MapPin className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span>{s.text}</span>
-                  </button>
-                ))}
-                <div className="px-4 py-1.5 text-[11px] text-gray-400 text-right border-t border-gray-100">powered by Google</div>
-              </div>
-            )}
-          </div>
+          {renderAddressField(false)}
 
           {mode === "details" && (
             <div>
@@ -805,18 +1007,13 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              {mode === "details" ? "How can we help you?" : "Anything else we should know?"}{" "}
-              <span className="text-gray-400 font-normal">(optional)</span>
+              How can we help you? <span className="text-gray-400 font-normal">(optional)</span>
             </label>
             <textarea
               className={inputClass + " min-h-[90px] resize-y"}
               value={contact.notes}
               onChange={setField("notes")}
-              placeholder={
-                mode === "details"
-                  ? "e.g. Two storey house, want the windows cleaned inside and out."
-                  : "Gate codes, dogs, parking, anything at all…"
-              }
+              placeholder="e.g. Two storey house, want the windows cleaned inside and out."
             />
           </div>
 
@@ -830,10 +1027,6 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
             {submitting ? (
               <>
                 <Loader2 className="w-5 h-5 mr-2 animate-spin" /> Saving your details…
-              </>
-            ) : mode === "instant" ? (
-              <>
-                Show My Quote <ArrowRight className="w-5 h-5 ml-2" />
               </>
             ) : (
               <>
@@ -849,29 +1042,158 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
     );
   }
 
-  function renderResult() {
-    if (quote.custom) {
+  // Email/address/notes/photos capture card shown under the price (or the
+  // custom-quote message). Completing it sends the full lead — updating the
+  // partial one if the timer/page-leave already fired.
+  function renderDetailsCapture() {
+    const setField = (k) => (e) => setContact((c) => ({ ...c, [k]: e.target.value }));
+
+    if (detailsSent) {
       return (
-        <div className="quote-step-enter text-center py-4">
-          <div className="flex justify-center mb-5">
-            <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
-              <Sparkles className="w-9 h-9 text-blue-600" />
-            </div>
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-            Thanks, {contact.firstName || "there"} — your job&rsquo;s a little unique!
-          </h2>
-          <p className="text-lg text-gray-600 max-w-lg mx-auto mb-6">
-            Based on your answers, your job needs a custom quote. We&rsquo;ll put together a tailored price and be in
-            touch ASAP.
+        <div className="text-center bg-green-50 border border-green-100 rounded-2xl px-6 py-7">
+          <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-3" />
+          <p className="text-lg font-semibold text-gray-900 mb-1">All done, {contact.firstName || "legend"}!</p>
+          <p className="text-sm text-gray-500">
+            {quote.custom
+              ? "We've got everything we need to put your custom quote together — we'll be in touch ASAP."
+              : bookingAnswer === "yes"
+                ? "We've got everything we need — we'll be in touch shortly to lock in a time."
+                : "We've sent your quote through and we'll follow up soon."}
           </p>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-400 mt-3">
             Need us sooner? Call{" "}
             <a href="tel:0756512386" className="text-green-600 font-medium">
               (07) 5651 2386
             </a>
             .
           </p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="bg-white border border-gray-200 rounded-2xl shadow-sm px-5 sm:px-7 py-6">
+        <h3 className="text-lg font-bold text-gray-900 mb-1">
+          {quote.custom
+            ? "Help us get your custom quote right"
+            : bookingAnswer === "yes"
+              ? "Last step — where are we headed?"
+              : "Where should we send your quote?"}
+        </h3>
+        <p className="text-sm text-gray-500 mb-4">
+          {quote.custom
+            ? "Pop in your email and address and we'll put your tailored price together."
+            : "Pop in your email and address and we'll send this quote straight through to you."}
+        </p>
+
+        <form onSubmit={submitDetails} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+            <input className={inputClass} value={contact.email} onChange={setField("email")} placeholder="you@email.com" type="email" autoComplete="email" />
+          </div>
+
+          {renderAddressField(true)}
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Anything else we should know? <span className="text-gray-400 font-normal">(optional)</span>
+            </label>
+            <textarea
+              className={inputClass + " min-h-[80px] resize-y"}
+              value={contact.notes}
+              onChange={setField("notes")}
+              placeholder="Gate codes, dogs, parking, anything at all…"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Add photos <span className="text-gray-400 font-normal">(optional — helps us get it right)</span>
+            </label>
+            <label
+              onClick={() => {
+                pickerOpenRef.current = true;
+              }}
+              className="flex items-center justify-center border-2 border-dashed border-gray-300 hover:border-blue-400 rounded-lg px-4 py-4 cursor-pointer text-sm text-gray-500 transition-colors"
+            >
+              <Camera className="w-5 h-5 mr-2 text-gray-400" />
+              {photos.length ? `Add more photos (${photos.length}/${MAX_PHOTOS})` : "Tap to add photos of the job"}
+              <input
+                type="file"
+                accept="image/*"
+                multiple
+                className="hidden"
+                onChange={onPhotosChange}
+                disabled={photos.length >= MAX_PHOTOS}
+              />
+            </label>
+            {photos.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-2">
+                {photos.map((p, i) => (
+                  <div key={i} className="relative">
+                    <img src={p.dataUrl} alt="" className="w-16 h-16 object-cover rounded-lg border border-gray-200" />
+                    <button
+                      type="button"
+                      onClick={() => setPhotos((ph) => ph.filter((_, j) => j !== i))}
+                      className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-gray-800 text-white text-xs leading-none flex items-center justify-center"
+                      aria-label="Remove photo"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {detailsError && <p className="text-red-600 text-sm">{detailsError}</p>}
+
+          <button
+            type="submit"
+            disabled={detailsSubmitting}
+            className="w-full inline-flex items-center justify-center bg-green-500 hover:bg-green-600 disabled:opacity-60 text-white px-8 py-3.5 rounded-lg font-semibold text-lg transition-all shadow-lg"
+          >
+            {detailsSubmitting ? (
+              <>
+                <Loader2 className="w-5 h-5 mr-2 animate-spin" /> Sending…
+              </>
+            ) : (
+              <>
+                Send my details <ArrowRight className="w-5 h-5 ml-2" />
+              </>
+            )}
+          </button>
+        </form>
+      </div>
+    );
+  }
+
+  function renderResult() {
+    if (quote.custom) {
+      return (
+        <div className="quote-step-enter">
+          <div className="text-center py-4">
+            <div className="flex justify-center mb-5">
+              <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
+                <Sparkles className="w-9 h-9 text-blue-600" />
+              </div>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+              Thanks, {contact.firstName || "there"} — your job&rsquo;s a little unique!
+            </h2>
+            <p className="text-lg text-gray-600 max-w-lg mx-auto mb-4">
+              Based on your answers, your job needs a custom quote. We&rsquo;ll put together a tailored price and be in
+              touch ASAP.
+            </p>
+            <p className="text-sm text-gray-400 mb-6">
+              Need us sooner? Call{" "}
+              <a href="tel:0756512386" className="text-green-600 font-medium">
+                (07) 5651 2386
+              </a>
+              .
+            </p>
+          </div>
+          {renderDetailsCapture()}
         </div>
       );
     }
@@ -990,7 +1312,7 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
         )}
 
         {!bookingAnswer ? (
-          <div className="text-center">
+          <div className="text-center mb-8">
             <h3 className="text-xl font-bold text-gray-900 mb-4">Would you like to book this in?</h3>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
@@ -1010,20 +1332,18 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
             </div>
           </div>
         ) : (
-          <div className="text-center bg-green-50 border border-green-100 rounded-2xl px-6 py-7">
-            <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-3" />
-            <p className="text-lg font-semibold text-gray-900 mb-1">
-              {bookingAnswer === "yes" ? "Great — we'll be in touch shortly to lock in a time!" : "No worries — we've sent your quote through and we'll follow up."}
-            </p>
-            <p className="text-sm text-gray-500">
-              Need us sooner? Call{" "}
-              <a href="tel:0756512386" className="text-green-600 font-medium">
-                (07) 5651 2386
-              </a>
-              .
-            </p>
-          </div>
+          !detailsSent && (
+            <div className="text-center bg-green-50 border border-green-100 rounded-xl px-5 py-4 mb-8">
+              <p className="font-semibold text-gray-900">
+                {bookingAnswer === "yes"
+                  ? "Great — we'll be in touch shortly to lock in a time!"
+                  : "No worries — we'll send your quote through and follow up."}
+              </p>
+            </div>
+          )
         )}
+
+        {renderDetailsCapture()}
       </div>
     );
   }

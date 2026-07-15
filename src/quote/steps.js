@@ -279,6 +279,22 @@ function windowSteps(state) {
 
   steps.push({
     ...svc,
+    id: "w-screens",
+    title: "What kind of screens do you have?",
+    question: "Window cleaning — screen type",
+    type: "select",
+    path: ["window", "screens"],
+    hint: "This doesn't change your price — it just helps us bring the right gear.",
+    options: [
+      { value: "flyscreens", label: "Normal flyscreens" },
+      { value: "security", label: "Security screens" },
+      { value: "mix", label: "A mix of both" },
+      { value: "none", label: "No screens" },
+    ],
+  });
+
+  steps.push({
+    ...svc,
     id: "w-large-panes",
     title: "Do you have any window or sliding door panes that are larger than a standard sliding door?",
     question: "Window cleaning — oversized panes",
