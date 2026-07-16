@@ -64,7 +64,13 @@ export default function WindowCleaningPlansLocation() {
   }
 
   const recommendation = getRegionRecommendation(suburb);
-  const landmark = suburb.landmarks && suburb.landmarks.length > 0 ? suburb.landmarks[0] : null;
+  // Pick the first landmark that isn't just the suburb's own name — avoids
+  // awkward copy like "near Burleigh Heads or anywhere else in Burleigh Heads".
+  const landmark = (suburb.landmarks || []).find(
+    (l) =>
+      !l.toLowerCase().includes(suburb.name.toLowerCase()) &&
+      !suburb.name.toLowerCase().includes(l.toLowerCase())
+  ) || null;
 
   const faqs = [
     {
@@ -219,13 +225,16 @@ export default function WindowCleaningPlansLocation() {
       {/* Tiers */}
       <section className="py-16 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose your plan</h2>
           </div>
-          <div className="text-gray-900 pt-4 mb-10">
+          {/* What plans cover — crucial for sign-ups, so it sits above the tiers */}
+          <div className="mb-10">
+            <PlanNote />
+          </div>
+          <div className="text-gray-900 pt-4">
             <PlanTierCards />
           </div>
-          <PlanNote />
         </div>
       </section>
 

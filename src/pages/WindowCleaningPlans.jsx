@@ -6,6 +6,7 @@ import FAQ from "../components/FAQ";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 import { PlanTierCards, PlanInclusions, PlanNote } from "../components/WellnessPlanSection";
 import { PLAN_STEPS, PLAN_BENEFITS } from "../data/plans";
+import SuburbLinks from "../components/SuburbLinks";
 import { Shield, Star, ArrowRight, CalendarCheck, PiggyBank, Home, Sparkles, CheckCircle } from "lucide-react";
 
 const BENEFIT_ICONS = [CalendarCheck, PiggyBank, Home];
@@ -145,13 +146,16 @@ export default function WindowCleaningPlans() {
       {/* Tiers */}
       <section className="py-16 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose your plan</h2>
           </div>
-          <div className="text-gray-900 pt-4 mb-10">
+          {/* What plans cover — crucial for sign-ups, so it sits above the tiers */}
+          <div className="mb-10">
+            <PlanNote />
+          </div>
+          <div className="text-gray-900 pt-4">
             <PlanTierCards />
           </div>
-          <PlanNote />
         </div>
       </section>
 
@@ -192,6 +196,9 @@ export default function WindowCleaningPlans() {
       <GoogleReviews />
 
       <FAQ faqs={faqs} title="Window Cleaning Plans FAQ" />
+
+      {/* Suburb plan pages — every suburb linked so the pages are browsable */}
+      <SuburbLinks serviceSlug="window-cleaning-plans" serviceName="Window Cleaning Plans" showAll />
 
       {/* Final CTA */}
       <section className="py-16 bg-blue-900 text-white">

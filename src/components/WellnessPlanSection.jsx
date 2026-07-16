@@ -77,11 +77,17 @@ export function PlanInclusions({ dark = false }) {
   );
 }
 
+// Prominent "what the plans cover" callout. This is the single most important
+// thing for someone signing up to understand, so it sits at the TOP of every
+// plans presentation (plans page, suburb plan pages, and the focal section on
+// the window cleaning pages) — styled as a white card so it pops on any background.
 export function PlanNote() {
   return (
-    <div className="max-w-3xl mx-auto bg-blue-50 border border-blue-100 rounded-xl px-5 py-4 flex items-start text-left">
-      <Info className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
-      <p className="text-sm text-gray-700 leading-relaxed">
+    <div className="max-w-3xl mx-auto bg-white border-l-4 border-blue-600 rounded-xl shadow-lg px-6 py-5 text-left">
+      <p className="flex items-center text-sm font-bold uppercase tracking-wide text-blue-700 mb-2">
+        <Info className="w-5 h-5 mr-2 flex-shrink-0" /> Good to know — what plans cover
+      </p>
+      <p className="text-gray-800 leading-relaxed">
         Our Window Cleaning Plans cover <strong>exterior window &amp; screen cleaning</strong> (this is what gets
         dirtier, faster). We&rsquo;ll also give you a quote for your <strong>interior windows &amp; tracks</strong> —
         you can add these on at any of your exterior cleaning visits as needed.
@@ -109,6 +115,11 @@ export default function WellnessPlanSection() {
           </p>
         </div>
 
+        {/* What plans cover — crucial for sign-ups, so it leads the section */}
+        <div className="mb-12">
+          <PlanNote />
+        </div>
+
         {/* How it works */}
         <div className="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12">
           {PLAN_STEPS.map((step, i) => (
@@ -127,13 +138,10 @@ export default function WellnessPlanSection() {
           <PlanTierCards />
         </div>
 
-        {/* Note + inclusions */}
-        <div className="space-y-8 mb-12">
-          <PlanNote />
-          <div>
-            <h3 className="text-center text-lg font-semibold text-blue-100 mb-4">Every plan also includes</h3>
-            <PlanInclusions dark />
-          </div>
+        {/* Inclusions */}
+        <div className="mb-12">
+          <h3 className="text-center text-lg font-semibold text-blue-100 mb-4">Every plan also includes</h3>
+          <PlanInclusions dark />
         </div>
 
         {/* Why homeowners join */}

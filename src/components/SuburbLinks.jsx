@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MapPin, ArrowRight } from "lucide-react";
+import { SUBURBS } from "../data/locations";
 
 // Top suburbs to feature on service pages — spread across regions for good coverage
 const FEATURED_SUBURBS = [
@@ -18,7 +19,10 @@ const FEATURED_SUBURBS = [
   { name: "Tweed Heads", slug: "tweed-heads" },
 ];
 
-export default function SuburbLinks({ serviceSlug, serviceName, basePath = "" }) {
+// showAll=true lists every suburb (used on the Window Cleaning Plans hub so
+// all 81 suburb plan pages are reachable by clicking around, not just via SEO).
+export default function SuburbLinks({ serviceSlug, serviceName, basePath = "", showAll = false }) {
+  const suburbs = showAll ? SUBURBS : FEATURED_SUBURBS;
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,7 +35,7 @@ export default function SuburbLinks({ serviceSlug, serviceName, basePath = "" })
         </div>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {FEATURED_SUBURBS.map(suburb => (
+          {suburbs.map(suburb => (
             <Link
               key={suburb.slug}
               to={`${basePath}/${serviceSlug}/${suburb.slug}/`}
