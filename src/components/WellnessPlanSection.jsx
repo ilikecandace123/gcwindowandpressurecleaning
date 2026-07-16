@@ -7,6 +7,7 @@ import { PLAN_TIERS, PLAN_STEPS, PLAN_INCLUSIONS, PLAN_BENEFITS } from "../data/
 // page (focal section) and the standalone /window-cleaning-plans page.
 export function PlanTierCards() {
   return (
+    <>
     <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch">
       {PLAN_TIERS.map((tier) => (
         <div
@@ -52,6 +53,14 @@ export function PlanTierCards() {
         </div>
       ))}
     </div>
+    <div className="max-w-3xl mx-auto mt-6 bg-blue-50 border border-blue-100 rounded-xl px-5 py-4 flex items-start text-left">
+      <Info className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
+      <p className="text-sm text-gray-700 leading-relaxed">
+        We can do discounts for any regular cleaning interval. Just ask, e.g., four monthly, $75 off per visit, or
+        two monthly, $125 off per visit.
+      </p>
+    </div>
+    </>
   );
 }
 
@@ -144,9 +153,6 @@ export default function WellnessPlanSection() {
           >
             Build My Plan — Get an Instant Quote <ArrowRight className="w-5 h-5 ml-2" />
           </Link>
-          <p className="text-sm text-blue-200 mt-4">
-            Want the full story? <Link to="/window-cleaning-plans/" className="underline hover:text-white">See the Window Cleaning Plans page</Link>.
-          </p>
         </div>
       </div>
     </section>

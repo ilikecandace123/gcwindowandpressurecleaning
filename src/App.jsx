@@ -19,6 +19,7 @@ const CommercialService = lazy(() => import('./pages/CommercialService'));
 const CommercialLocationService = lazy(() => import('./pages/CommercialLocationService'));
 const PatioCleaning = lazy(() => import('./pages/PatioCleaning'));
 const WindowCleaningPlans = lazy(() => import('./pages/WindowCleaningPlans'));
+const WindowCleaningPlansLocation = lazy(() => import('./pages/WindowCleaningPlansLocation'));
 const InstantQuote = lazy(() => import('./pages/InstantQuote'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -46,6 +47,7 @@ function App() {
           <Route path="/service-areas" element={<Layout currentPageName="ServiceAreas"><ServiceAreas /></Layout>} />
           <Route path="/window-cleaning" element={<Layout currentPageName="WindowCleaning"><WindowCleaning /></Layout>} />
           <Route path="/window-cleaning-plans" element={<Layout currentPageName="WindowCleaningPlans"><WindowCleaningPlans /></Layout>} />
+          <Route path="/window-cleaning-plans/:suburb" element={<Layout currentPageName="WindowCleaningPlansLocation"><WindowCleaningPlansLocation /></Layout>} />
           <Route path="/instant-quote" element={<Layout currentPageName="InstantQuote"><InstantQuote /></Layout>} />
           <Route path="/roof-cleaning" element={<Layout currentPageName="RoofCleaning"><RoofCleaning /></Layout>} />
           <Route path="/house-softwash" element={<Layout currentPageName="HouseSoftWash"><HouseSoftWash /></Layout>} />

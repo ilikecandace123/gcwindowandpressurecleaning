@@ -207,11 +207,11 @@ export default function Services() {
                     ? <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" />
                     : <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />}
                 </button>
-                {openFaqIndex === index && (
-                  <div className="px-6 pb-4">
-                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                  </div>
-                )}
+                {/* Answer always in the DOM (hidden via CSS when collapsed) so
+                    crawlers, AI bots and markdown mirrors can read every answer. */}
+                <div className={openFaqIndex === index ? "px-6 pb-4" : "hidden px-6 pb-4"}>
+                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                </div>
               </div>
             ))}
           </div>

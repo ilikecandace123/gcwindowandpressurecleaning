@@ -9,6 +9,7 @@ import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
+import WellnessPlanSection from "../components/WellnessPlanSection";
 
 const SERVICE_SECONDARY_IMAGES = {
   "window-cleaning": {
@@ -238,6 +239,9 @@ export default function LocationService() {
           </div>
         </div>
       </section>
+
+      {/* Window Cleaning Plans — focal section on window cleaning suburb pages */}
+      {serviceSlug === 'window-cleaning' && <WellnessPlanSection />}
 
       {/* Secondary Service Image */}
       <section className="py-12 bg-gray-50">
@@ -491,13 +495,13 @@ export default function LocationService() {
                   )}
                 </button>
 
-                {openFaqIndex === index && (
-                  <div className="px-6 pb-4">
-                    <p className="text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
-                )}
+                {/* Answer always in the DOM (hidden via CSS when collapsed) so
+                    crawlers, AI bots and markdown mirrors can read every answer. */}
+                <div className={openFaqIndex === index ? "px-6 pb-4" : "hidden px-6 pb-4"}>
+                  <p className="text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -514,6 +518,15 @@ export default function LocationService() {
             We provide a full range of exterior cleaning services in {suburb.name}:
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link
+              to={`/window-cleaning-plans/${suburbSlug}/`}
+              className="group flex items-center justify-between p-4 bg-white rounded-lg hover:bg-blue-50 transition-colors border border-gray-100 hover:border-blue-200 shadow-sm"
+            >
+              <span className="font-medium text-gray-900 group-hover:text-blue-700">
+                Window Cleaning Plans in {suburb.name}
+              </span>
+              <ArrowRight className="w-4 h-4 text-blue-600 flex-shrink-0 ml-2" />
+            </Link>
             {SERVICES.filter(s => s.slug !== serviceSlug).map((otherService, idx) => (
               <Link
                 key={idx}

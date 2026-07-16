@@ -254,6 +254,34 @@ async function main() {
     });
   }
 
+  // Window Cleaning Plans suburb pages
+  // title/description must stay in sync with src/pages/WindowCleaningPlansLocation.jsx <PageSEO>.
+  for (const suburb of SUBURBS) {
+    routes.push({
+      path: `/window-cleaning-plans/${suburb.slug}`,
+      title: `Window Cleaning Plans ${suburb.name} | Gold Coast`,
+      description: `Pre-booked window cleaning plans in ${suburb.name} (${suburb.postcode}) — monthly, quarterly or half-yearly with $50–$150 off every visit. Call (07) 5651 2386.`,
+      canonical: `${SITE}/window-cleaning-plans/${suburb.slug}`,
+      image: "/images/services-banner.jpg",
+      jsonLd: [
+        buildLocalBusinessSchema(),
+        buildServiceSchema({
+          name: `Window Cleaning Plans in ${suburb.name}`,
+          description: `Pre-booked, priority-scheduled exterior window and screen cleaning plans in ${suburb.name} (${suburb.postcode}) — monthly, quarterly or half-yearly, with $50–$150 off every visit.`,
+          image: "/images/services-banner.jpg",
+          serviceType: "Window Cleaning Maintenance Plan",
+          areaName: suburb.name,
+          url: `${SITE}/window-cleaning-plans/${suburb.slug}/`
+        }),
+        buildBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Window Cleaning Plans", url: "/window-cleaning-plans" },
+          { name: suburb.name, url: `/window-cleaning-plans/${suburb.slug}` }
+        ])
+      ],
+    });
+  }
+
   // Residential service + suburb pages
   for (const service of SERVICES) {
     for (const suburb of SUBURBS) {
@@ -349,7 +377,7 @@ async function main() {
   // Google treats the lastmod signal as reliable rather than ignoring it.
   // Using the build date (today) for every URL causes Google to discount
   // lastmod entirely because it never signals real content change.
-  const CONTENT_DATE = "2026-07-12";
+  const CONTENT_DATE = "2026-07-16";
 
   // Categorize routes
   const staticRoutes = routes.filter(
