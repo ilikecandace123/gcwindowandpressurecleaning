@@ -1156,7 +1156,7 @@ export const SERVICES = [
       },
       {
         question: "What does roof cleaning cost on the Gold Coast?",
-        answer: "Most residential roof cleans on the Gold Coast range from $350–$800 depending on roof size, pitch, access difficulty, and the level of moss or lichen buildup. We provide free on-site or photo quotes so you know the exact price before we start."
+        answer: "Roof cleaning starts at $700 for a flatter single-storey roof and is typically $900–$1,600 for a steeper or larger double-storey, depending on roof size, pitch, access and the level of moss or lichen buildup. We provide free on-site or photo quotes so you know the exact price before we start."
       },
       {
         question: "Is soft washing or pressure washing better for Gold Coast tile roofs?",

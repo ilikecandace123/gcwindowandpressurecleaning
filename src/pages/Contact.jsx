@@ -10,7 +10,7 @@ export default function Contact() {
     <div className="min-h-screen bg-gray-50">
       <PageSEO
         title="Contact Us | Gold Coast Window and Pressure Cleaning"
-        description="Get in touch with Gold Coast Window and Pressure Cleaning. Call (07) 5651 2386 or email gcwindowandpressure@gmail.com for a free quote. Serving all Gold Coast suburbs and Northern NSW."
+        description="Contact Gold Coast Window and Pressure Cleaning — call (07) 5651 2386 or email us for a free quote. Serving all Gold Coast suburbs and Northern NSW."
         canonical="https://gcwindowandpressurecleaning.com.au/contact/"
         jsonLd={[
           buildLocalBusinessSchema(),

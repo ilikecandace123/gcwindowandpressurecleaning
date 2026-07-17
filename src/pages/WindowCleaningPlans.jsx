@@ -73,7 +73,7 @@ export default function WindowCleaningPlans() {
     <div>
       <PageSEO
         title="Window Cleaning Plans Gold Coast | Save On Every Visit"
-        description="Pre-booked window cleaning plans on the Gold Coast — monthly, quarterly or half-yearly with $50–$150 off every visit, free flyscreen deep clean and a 7-day rain guarantee."
+        description="Pre-booked window cleaning plans on the Gold Coast — monthly, quarterly or half-yearly with $50–$150 off every visit and a 7-day rain guarantee."
         canonical="https://gcwindowandpressurecleaning.com.au/window-cleaning-plans/"
         image="/images/services-banner.jpg"
         jsonLd={seoJsonLd}

@@ -102,7 +102,8 @@ function writeRoute(routePath, html) {
 
 async function main() {
   const { SUBURBS, SERVICES, COMMERCIAL_SERVICES } = await loadData();
-  const { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema } = await loadSchemaBuilders();
+  const { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema, buildFAQSchema, buildArticleSchema } = await loadSchemaBuilders();
+  const { GUIDES } = await import(pathToFileURL(path.join(ROOT, "src/data/guides.js")).href);
   const indexHtml = fs.readFileSync(path.join(DIST, "index.html"), "utf8");
 
   const routes = [];
@@ -153,7 +154,7 @@ async function main() {
     path: "/window-cleaning-plans",
     title: "Window Cleaning Plans Gold Coast | Save On Every Visit",
     description:
-      "Pre-booked window cleaning plans on the Gold Coast — monthly, quarterly or half-yearly with $50–$150 off every visit, free flyscreen deep clean and a 7-day rain guarantee.",
+      "Pre-booked window cleaning plans on the Gold Coast — monthly, quarterly or half-yearly with $50–$150 off every visit and a 7-day rain guarantee.",
     canonical: `${SITE}/window-cleaning-plans`,
     image: "/images/services-banner.jpg",
     jsonLd: [
@@ -173,7 +174,7 @@ async function main() {
     path: "/instant-quote",
     title: "Instant Quote | Gold Coast Window and Pressure Cleaning",
     description:
-      "Get an instant online quote for window, pressure, roof, gutter, softwash and solar panel cleaning on the Gold Coast — answer a few quick questions and see your price now.",
+      "Instant online quote for window, pressure, roof, gutter, softwash and solar panel cleaning on the Gold Coast — see your price in about two minutes.",
     canonical: `${SITE}/instant-quote`,
     jsonLd: [
       buildLocalBusinessSchema(),
@@ -193,13 +194,50 @@ async function main() {
   routes.push({
     path: "/contact",
     title: "Contact Us | Gold Coast Window and Pressure Cleaning",
-    description: "Get in touch with Gold Coast Window and Pressure Cleaning. Call (07) 5651 2386 or email gcwindowandpressure@gmail.com for a free quote. Serving all Gold Coast suburbs and Northern NSW.",
+    description: "Contact Gold Coast Window and Pressure Cleaning — call (07) 5651 2386 or email us for a free quote. Serving all Gold Coast suburbs and Northern NSW.",
     canonical: `${SITE}/contact`,
     jsonLd: [
       buildLocalBusinessSchema(),
       buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Contact", url: "/contact" }])
     ],
   });
+
+  // Expert guides hub + articles (AI-search / AI Overviews content)
+  routes.push({
+    path: "/guides",
+    title: "Exterior Cleaning Guides & Advice | Gold Coast Experts",
+    description:
+      "Straight answers from working Gold Coast cleaners — window, roof, gutter, pressure and solar panel cleaning questions answered with real local prices.",
+    canonical: `${SITE}/guides`,
+    jsonLd: [
+      buildLocalBusinessSchema(),
+      buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Expert Guides", url: "/guides" }])
+    ],
+  });
+  for (const g of GUIDES) {
+    routes.push({
+      path: `/guides/${g.slug}`,
+      title: g.metaTitle,
+      description: g.metaDescription,
+      canonical: `${SITE}/guides/${g.slug}`,
+      jsonLd: [
+        buildLocalBusinessSchema(),
+        buildArticleSchema({
+          title: g.h1,
+          description: g.metaDescription,
+          url: `${SITE}/guides/${g.slug}/`,
+          datePublished: g.updated,
+          dateModified: g.updated
+        }),
+        buildFAQSchema(g.faqs),
+        buildBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Expert Guides", url: "/guides" },
+          { name: g.h1, url: `/guides/${g.slug}` }
+        ])
+      ],
+    });
+  }
 
   // Main service pages (kebab-case)
   // [slug, name, image, title, description] — title/description must stay in
@@ -377,14 +415,14 @@ async function main() {
   // Google treats the lastmod signal as reliable rather than ignoring it.
   // Using the build date (today) for every URL causes Google to discount
   // lastmod entirely because it never signals real content change.
-  const CONTENT_DATE = "2026-07-16";
+  const CONTENT_DATE = "2026-07-17";
 
   // Categorize routes
   const staticRoutes = routes.filter(
-    (r) => r.path === "/" || (r.path.split("/").filter(Boolean).length === 1 && !r.path.startsWith("/commercial/") && r.path !== "/services")
+    (r) => r.path === "/" || r.path.startsWith("/guides") || (r.path.split("/").filter(Boolean).length === 1 && !r.path.startsWith("/commercial/") && r.path !== "/services")
   );
   const residentialRoutes = routes.filter(
-    (r) => r.path.split("/").filter(Boolean).length === 2 && !r.path.startsWith("/commercial/")
+    (r) => r.path.split("/").filter(Boolean).length === 2 && !r.path.startsWith("/commercial/") && !r.path.startsWith("/guides/")
   );
   const commercialRoutes = routes.filter((r) => r.path.startsWith("/commercial/"));
 
@@ -399,6 +437,7 @@ async function main() {
   function getUrlMeta(path) {
     if (path === "/") return { priority: "1.0", changefreq: "weekly" };
     if (SERVICE_SLUGS.has(path)) return { priority: "0.9", changefreq: "monthly" };
+    if (path === "/guides" || path.startsWith("/guides/")) return { priority: "0.8", changefreq: "monthly" };
     if (UTILITY_PATHS.has(path)) return { priority: "0.8", changefreq: "monthly" };
     // Location/service pages and commercial pages
     return { priority: "0.7", changefreq: "monthly" };

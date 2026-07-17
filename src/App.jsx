@@ -21,6 +21,8 @@ const PatioCleaning = lazy(() => import('./pages/PatioCleaning'));
 const WindowCleaningPlans = lazy(() => import('./pages/WindowCleaningPlans'));
 const WindowCleaningPlansLocation = lazy(() => import('./pages/WindowCleaningPlansLocation'));
 const InstantQuote = lazy(() => import('./pages/InstantQuote'));
+const Guides = lazy(() => import('./pages/Guides'));
+const GuideArticle = lazy(() => import('./pages/GuideArticle'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -56,6 +58,8 @@ function App() {
           <Route path="/solar-panel-cleaning" element={<Layout currentPageName="SolarPanelCleaning"><SolarPanelCleaning /></Layout>} />
           <Route path="/bird-proofing" element={<Layout currentPageName="BirdProofing"><BirdProofing /></Layout>} />
           <Route path="/patio-cleaning" element={<Layout currentPageName="PatioCleaning"><PatioCleaning /></Layout>} />
+          <Route path="/guides" element={<Layout currentPageName="Guides"><Guides /></Layout>} />
+          <Route path="/guides/:slug" element={<Layout currentPageName="GuideArticle"><GuideArticle /></Layout>} />
           <Route path="/about" element={<Layout currentPageName="About"><About /></Layout>} />
           <Route path="/contact" element={<Layout currentPageName="Contact"><Contact /></Layout>} />
 

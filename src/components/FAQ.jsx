@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ChevronDown, ChevronUp, BookOpen } from "lucide-react";
 
-export default function FAQ({ faqs, title = "Frequently Asked Questions" }) {
+// `guideLink` (optional): { label, href } — renders a link to the matching
+// expert guide below the FAQ list for internal linking to /guides/ content.
+export default function FAQ({ faqs, title = "Frequently Asked Questions", guideLink }) {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
@@ -45,6 +48,18 @@ export default function FAQ({ faqs, title = "Frequently Asked Questions" }) {
             </div>
           ))}
         </div>
+
+        {guideLink && (
+          <div className="mt-8 text-center">
+            <Link
+              to={guideLink.href}
+              className="inline-flex items-center font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+            >
+              <BookOpen className="w-5 h-5 mr-2" />
+              {guideLink.label}
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

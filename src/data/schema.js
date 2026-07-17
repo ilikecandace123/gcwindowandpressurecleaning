@@ -72,6 +72,16 @@ export function buildLocalBusinessSchema() {
       // Last verified: 62 reviews on Google (2026-04-09)
       "reviewCount": "62"
     },
+    "knowsAbout": [
+      "Window cleaning",
+      "Pressure cleaning",
+      "Soft washing",
+      "Roof cleaning",
+      "Gutter cleaning",
+      "Solar panel cleaning",
+      "Solar panel bird proofing",
+      "Exterior mould and algae removal"
+    ],
     "sameAs": [
       "https://www.facebook.com/goldcoastwindowandpressurecleaning",
       "https://g.page/goldcoastwindowcleaning"
@@ -134,6 +144,34 @@ export function buildFAQSchema(faqs) {
       "name": f.question,
       "acceptedAnswer": { "@type": "Answer", "text": f.answer }
     }))
+  };
+}
+
+// Article schema for expert guides. `datePublished`/`dateModified` in YYYY-MM-DD.
+export function buildArticleSchema({ title, description, url, datePublished, dateModified, image }) {
+  const abs = url.startsWith("http") ? url : `${SITE_URL}${url}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": abs.endsWith("/") ? abs : abs + "/",
+    "image": image ? (image.startsWith("http") ? image : `${SITE_URL}${image}`) : `${SITE_URL}/images/window.jpg`,
+    "datePublished": datePublished,
+    "dateModified": dateModified || datePublished,
+    "inLanguage": "en-AU",
+    "author": {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      "name": BUSINESS_NAME,
+      "url": SITE_URL
+    },
+    "publisher": { "@id": `${SITE_URL}/#organization` },
+    "mainEntityOfPage": abs.endsWith("/") ? abs : abs + "/",
+    "about": {
+      "@type": "Thing",
+      "name": "Exterior cleaning on the Gold Coast, Queensland"
+    }
   };
 }
 

@@ -286,7 +286,7 @@ export default function WindowCleaning() {
 
       <QuoteForm serviceName="Window Cleaning" />
 
-      <FAQ faqs={faqs} title="Window Cleaning FAQ" />
+      <FAQ faqs={faqs} title="Window Cleaning FAQ" guideLink={{ label: "Guide: How often should you clean your windows?", href: "/guides/how-often-should-you-clean-your-windows/" }} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">

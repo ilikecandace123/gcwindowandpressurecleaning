@@ -206,7 +206,7 @@ export default function HouseSoftWash() {
 
       <QuoteForm serviceName="House & Building Softwash" />
 
-      <FAQ faqs={faqs} title="House Softwash FAQ" />
+      <FAQ faqs={faqs} title="House Softwash FAQ" guideLink={{ label: "Guide: Why does my house grow mould outside — and how do I remove it?", href: "/guides/house-washing-mould-gold-coast/" }} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">

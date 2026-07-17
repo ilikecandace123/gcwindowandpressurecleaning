@@ -54,10 +54,6 @@ export default function RoofCleaning() {
       answer: "Soft washing is always the correct method for Gold Coast tile roofs. High-pressure cleaning strips the protective coating from concrete tiles, blasts away terracotta glaze, dislodges ridge capping mortar, and can force water under tiles causing internal water damage. Our low-pressure soft-wash process cleans to the same standard without any of these risks."
     },
     {
-      question: "What does roof cleaning cost on the Gold Coast?",
-      answer: "Pricing depends on roof size, pitch, access difficulty, and the degree of organic growth. Most residential roofs on the Gold Coast range from $350 to $800. We provide free, no-obligation quotes — contact us with your approximate roof size and suburb for a quick estimate."
-    },
-    {
       question: "Will roof cleaning damage my roof or gutters?",
       answer: "Not with our methods. Our low-pressure soft-wash technique is specifically designed to clean without dislodging mortar, cracking tiles, or bending gutters. We also clear gutters of any debris that dislodges during cleaning as standard. Our technicians are trained to work safely on all roof types."
     },
@@ -75,7 +71,7 @@ export default function RoofCleaning() {
     },
     {
       question: "Is roof cleaning worth the investment?",
-      answer: "Absolutely. A professional roof clean costs $400–$800 for most homes. Replacing a damaged roof costs $15,000–$60,000. The maths are clear. A clean roof also adds immediate curb appeal, which Gold Coast real estate agents consistently say matters at sale time."
+      answer: "Absolutely. A professional roof clean costs $700–$1,600 for most Gold Coast homes. Replacing a damaged roof costs $15,000–$60,000. The maths are clear. A clean roof also adds immediate curb appeal, which Gold Coast real estate agents consistently say matters at sale time."
     },
     {
       question: "How do I know if I have lichen vs moss on my roof?",
@@ -347,7 +343,7 @@ export default function RoofCleaning() {
 
       <QuoteForm serviceName="Roof Cleaning" />
 
-      <FAQ faqs={faqs} title="Roof Cleaning FAQ" />
+      <FAQ faqs={faqs} title="Roof Cleaning FAQ" guideLink={{ label: "Guide: Does roof cleaning damage tiles?", href: "/guides/does-roof-cleaning-damage-tiles/" }} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">

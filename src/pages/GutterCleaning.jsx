@@ -204,7 +204,7 @@ export default function GutterCleaning() {
 
       <QuoteForm serviceName="Gutter Cleaning" />
 
-      <FAQ faqs={faqs} title="Gutter Cleaning FAQ" />
+      <FAQ faqs={faqs} title="Gutter Cleaning FAQ" guideLink={{ label: "Guide: How often should gutters be cleaned in South East Queensland?", href: "/guides/how-often-should-gutters-be-cleaned/" }} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">

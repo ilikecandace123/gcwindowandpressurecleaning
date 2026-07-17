@@ -209,7 +209,7 @@ export default function PatioCleaning() {
 
       <QuoteForm serviceName="Patio Cleaning" />
 
-      <FAQ faqs={faqs} title="Patio Cleaning FAQ" />
+      <FAQ faqs={faqs} title="Patio Cleaning FAQ" guideLink={{ label: "Guide: Pressure cleaning vs soft washing — what\u2019s the difference?", href: "/guides/pressure-cleaning-vs-soft-washing/" }} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">

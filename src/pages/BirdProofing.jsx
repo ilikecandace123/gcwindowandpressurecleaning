@@ -225,7 +225,7 @@ export default function BirdProofing() {
 
       <QuoteForm serviceName="Solar Panel Bird Proofing" />
 
-      <FAQ faqs={faqs} title="Solar Panel Bird Proofing FAQ" />
+      <FAQ faqs={faqs} title="Solar Panel Bird Proofing FAQ" guideLink={{ label: "Guide: How do I get rid of birds nesting under my solar panels?", href: "/guides/birds-under-solar-panels/" }} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">

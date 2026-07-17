@@ -320,7 +320,7 @@ export default function SolarPanelCleaning() {
 
       <QuoteForm serviceName="Solar Panel Cleaning" />
 
-      <FAQ faqs={faqs} title="Solar Panel Cleaning FAQ" />
+      <FAQ faqs={faqs} title="Solar Panel Cleaning FAQ" guideLink={{ label: "Guide: Do dirty solar panels reduce output?", href: "/guides/do-dirty-solar-panels-reduce-output/" }} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">

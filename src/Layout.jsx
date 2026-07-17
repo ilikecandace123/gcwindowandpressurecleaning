@@ -132,6 +132,7 @@ export default function Layout({ children, currentPageName }) {
               </div>
 
               <Link to="/window-cleaning-plans/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Window Cleaning Plans</Link>
+              <Link to="/guides/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Guides</Link>
               <Link to="/about/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">About</Link>
               <Link to="/contact/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Contact</Link>
 
@@ -216,6 +217,7 @@ export default function Layout({ children, currentPageName }) {
               <div className="border-t border-gray-100 mt-2 pt-2">
                 <Link to="/window-cleaning-plans/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Window Cleaning Plans</Link>
                 <Link to="/instant-quote/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Get Instant Quote</Link>
+                <Link to="/guides/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Expert Guides</Link>
                 <Link to="/about/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">About Us</Link>
                 <Link to="/contact/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Contact</Link>
               </div>
@@ -280,6 +282,7 @@ export default function Layout({ children, currentPageName }) {
                     <Link to="/gutter-cleaning/" className="block hover:text-white transition-colors">Gutter Cleaning</Link>
                     <Link to="/solar-panel-cleaning/" className="block hover:text-white transition-colors">Solar Panel Cleaning</Link>
                     <Link to="/bird-proofing/" className="block hover:text-white transition-colors">Solar Panel Bird Proofing</Link>
+                    <Link to="/guides/" className="block hover:text-white transition-colors">Expert Guides</Link>
                   </div>
                 </div>
               </div>

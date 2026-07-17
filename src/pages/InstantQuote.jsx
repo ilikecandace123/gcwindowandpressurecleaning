@@ -13,7 +13,7 @@ export default function InstantQuote() {
     <div>
       <PageSEO
         title="Instant Quote | Gold Coast Window and Pressure Cleaning"
-        description="Get an instant online quote for window, pressure, roof, gutter, softwash and solar panel cleaning on the Gold Coast — answer a few quick questions and see your price now."
+        description="Instant online quote for window, pressure, roof, gutter, softwash and solar panel cleaning on the Gold Coast — see your price in about two minutes."
         canonical="https://gcwindowandpressurecleaning.com.au/instant-quote/"
         jsonLd={[
           buildLocalBusinessSchema(),

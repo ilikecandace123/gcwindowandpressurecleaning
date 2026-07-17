@@ -218,7 +218,7 @@ export default function PressureCleaning() {
 
       <QuoteForm serviceName="Pressure Cleaning" />
 
-      <FAQ faqs={faqs} title="Pressure Cleaning FAQ" />
+      <FAQ faqs={faqs} title="Pressure Cleaning FAQ" guideLink={{ label: "Guide: How much does driveway pressure cleaning cost on the Gold Coast?", href: "/guides/driveway-pressure-cleaning-cost/" }} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">
