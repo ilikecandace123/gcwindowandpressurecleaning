@@ -133,8 +133,6 @@ export default function Layout({ children, currentPageName }) {
 
               <Link to="/window-cleaning-plans/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Window Cleaning Plans</Link>
               <Link to="/guides/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Guides</Link>
-              <Link to="/about/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">About</Link>
-              <Link to="/contact/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Contact</Link>
 
             </nav>
 
@@ -218,8 +216,6 @@ export default function Layout({ children, currentPageName }) {
                 <Link to="/window-cleaning-plans/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Window Cleaning Plans</Link>
                 <Link to="/instant-quote/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Get Instant Quote</Link>
                 <Link to="/guides/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Expert Guides</Link>
-                <Link to="/about/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">About Us</Link>
-                <Link to="/contact/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Contact</Link>
               </div>
 
               <div className="border-t border-gray-100 mt-2 pt-2 flex items-center gap-4 px-3 py-2 text-xs text-gray-500">
@@ -295,6 +291,8 @@ export default function Layout({ children, currentPageName }) {
                   <Phone className="w-4 h-4 mr-2" />
                   (07) 5651 2386
                 </div>
+                <Link to="/about/" className="block hover:text-white transition-colors">About Us</Link>
+                <Link to="/contact/" className="block hover:text-white transition-colors">Contact</Link>
               </div>
               
               <div className="mt-4">
