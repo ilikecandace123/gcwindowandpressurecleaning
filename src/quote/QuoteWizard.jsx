@@ -12,6 +12,7 @@ import {
 import PaneCountingGuide from "./PaneCountingGuide";
 import FrenchPaneExamples from "./FrenchPaneExamples";
 import { fireAdsConversion } from "../lib/adsConversion";
+import { trackQuote, flushQuoteTrack } from "./funnelTrack";
 import {
   ArrowLeft,
   ArrowRight,
@@ -250,6 +251,33 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
     return () => document.removeEventListener("mousedown", onDocClick);
   }, []);
 
+  // First-party funnel tracking: record each screen the visitor reaches so
+  // the daily report can show where people drop off. Screens are deduped per
+  // page load inside trackQuote, so back-and-forth navigation doesn't double
+  // count. "entry" is skipped — tracking starts once they actually begin.
+  const stepForTracking = questionSteps[qIndex];
+  useEffect(() => {
+    if (phase === "entry") return;
+    const services = (state.services || []).join(",");
+    if (phase === "questions") {
+      if (stepForTracking) {
+        trackQuote({
+          event: "screen",
+          phase,
+          stepId: stepForTracking.id,
+          stepIndex: qIndex,
+          stepTitle: stepForTracking.title,
+          services,
+          mode,
+        });
+      }
+    } else {
+      trackQuote({ event: "screen", phase, services, mode });
+      if (phase === "result" || phase === "done-details") flushQuoteTrack();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, qIndex, stepForTracking]);
+
   const convFired = useRef(false);
   function fireConversionOnce() {
     if (convFired.current) return;
@@ -462,6 +490,8 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
     }
     setDetailsSubmitting(false);
     setDetailsSent(true);
+    trackQuote({ event: "complete", phase: "result", mode });
+    flushQuoteTrack();
   }
 
   // "Put in your details" mode — unchanged single screen, sends immediately.
@@ -481,6 +511,7 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
       });
       if (!res.ok) throw new Error("bad status");
       fireConversionOnce();
+      trackQuote({ event: "complete", phase: "contact", mode: "details" });
       setPhase("done-details");
     } catch {
       setError("Sorry — something went wrong sending your details. Please call us on (07) 5651 2386 and we'll sort it out.");
@@ -491,6 +522,7 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
 
   function answerBooking(answer) {
     setBookingAnswer(answer);
+    trackQuote({ event: "booking_" + answer, phase: "result", mode });
     // If the lead already went out (timer or page-leave), push the booking
     // answer through as an update to the same job. Otherwise it simply rides
     // along with whichever send happens next.
