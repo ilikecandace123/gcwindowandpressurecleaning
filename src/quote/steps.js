@@ -267,6 +267,14 @@ function windowSteps(state) {
 
   steps.push({
     ...svc,
+    id: "w-balustrades",
+    title: "Do you have glass balustrades e.g., glass pool or balcony fencing that you would like cleaned?",
+    question: "Window cleaning — glass balustrades",
+    type: "balustrade",
+  });
+
+  steps.push({
+    ...svc,
     id: "w-panes",
     title: "Roughly how many panes do you have?",
     question: "Window cleaning — pane count",
@@ -747,6 +755,15 @@ export function collectAnswers(state) {
       qa.push({ question: "Apartment — scope", answer: scopeLabels[a.apartmentScope] || "—" });
       if (a.balcony === "yes") {
         qa.push({ question: "Apartment — tap on balcony?", answer: a.balconyTap === "yes" ? "Yes" : a.balconyTap === "no" ? "No" : "—" });
+      }
+      continue;
+    }
+    if (step.type === "balustrade") {
+      const w = state.window || {};
+      const ans = w.balustrades === "yes" ? "Yes" : w.balustrades === "no" ? "No" : "—";
+      qa.push({ question: "Window cleaning — glass balustrades", answer: ans });
+      if (w.balustrades === "yes" && String(w.balustradeCount || "").trim()) {
+        qa.push({ question: "Window cleaning — glass balustrades (how many)", answer: String(w.balustradeCount).trim() });
       }
       continue;
     }

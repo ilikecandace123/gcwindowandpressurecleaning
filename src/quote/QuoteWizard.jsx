@@ -859,6 +859,57 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
     );
   }
 
+  function renderBalustradeStep() {
+    const w = state.window || {};
+    return (
+      <StepShell step={step}>
+        <div className="space-y-3">
+          <OptionCard
+            selected={w.balustrades === "yes"}
+            onClick={() => setState(setByPath(state, ["window", "balustrades"], "yes"))}
+            label="Yes"
+          />
+          <OptionCard
+            selected={w.balustrades === "no"}
+            onClick={() => {
+              const next = setByPath(
+                setByPath(state, ["window", "balustrades"], "no"),
+                ["window", "balustradeCount"],
+                ""
+              );
+              setState(next);
+              setTimeout(() => goNextQuestionFrom(next), 200);
+            }}
+            label="No"
+          />
+        </div>
+        {w.balustrades === "yes" && (
+          <div className="mt-5">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Roughly how many would you like cleaned?{" "}
+              <span className="text-gray-400 font-normal">(optional)</span>
+            </label>
+            <input
+              className={inputClass}
+              value={w.balustradeCount || ""}
+              onChange={(e) => setState(setByPath(state, ["window", "balustradeCount"], e.target.value))}
+              placeholder="e.g. 3"
+              inputMode="numeric"
+              autoFocus
+            />
+            <button
+              type="button"
+              onClick={() => goNextQuestionFrom(state)}
+              className="mt-4 inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-8 py-3.5 rounded-lg font-semibold transition-colors"
+            >
+              Continue <ArrowRight className="w-4 h-4 ml-2" />
+            </button>
+          </div>
+        )}
+      </StepShell>
+    );
+  }
+
   function renderSoftwashCondStep() {
     const s = state.softwash || {};
     const rows = [
@@ -1337,6 +1388,12 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
           </div>
         </div>
 
+        {quote.lines.some((l) => l.service === "window" && l.balustradesUnspecified) && (
+          <p className="text-sm text-amber-800 bg-amber-50 border border-amber-100 rounded-xl px-4 py-3 text-center mb-7 -mt-3">
+            Glass balustrade cleaning isn&rsquo;t included in this price — you didn&rsquo;t tell us how many you have. Let us know the number and we&rsquo;ll add it to your quote.
+          </p>
+        )}
+
         {quote.lines.some((l) => l.plan) && (
           <p className="text-sm text-gray-500 text-center mb-7 -mt-3">
             Plan prices are per visit at your chosen frequency — including your plan discount.
@@ -1457,6 +1514,7 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
           {phase === "questions" && step && step.type === "select" && renderSelectStep()}
           {phase === "questions" && step && step.type === "multi" && renderMultiStep()}
           {phase === "questions" && step && step.type === "apartment" && renderApartmentStep()}
+          {phase === "questions" && step && step.type === "balustrade" && renderBalustradeStep()}
           {phase === "questions" && step && step.type === "softwash-cond" && renderSoftwashCondStep()}
           {phase === "contact" && renderContact()}
           {phase === "result" && renderResult()}

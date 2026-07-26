@@ -150,6 +150,7 @@ export function calcWindow(w) {
   const panes = paneBand ? paneBand.top : 0;
   const items = [];
   let raw;
+  let balustradesUnspecified = false;
 
   if (isApartment) {
     const perPanel = w.apartmentScope === "interior" ? 6 : 12;
@@ -186,6 +187,19 @@ export function calcWindow(w) {
     items.push({ label: "Oversized panes (1–3 windows)", amount: 40, visible: true });
   }
 
+  if (w.balustrades === "yes") {
+    const n = parseInt(w.balustradeCount, 10);
+    if (Number.isFinite(n) && n > 0) {
+      const add = 11 * n;
+      raw += add;
+      items.push({ label: `Glass balustrades — ${n}`, amount: add, visible: true });
+    } else {
+      // Said yes but gave no quantity — can't price it, so it's excluded and
+      // the result screen tells them why.
+      balustradesUnspecified = true;
+    }
+  }
+
   const freq = WINDOW_FREQUENCIES.find((f) => f.value === w.frequency) || WINDOW_FREQUENCIES[0];
   if (freq.discount) {
     raw -= freq.discount;
@@ -213,6 +227,7 @@ export function calcWindow(w) {
       plan: freq.plan,
       items,
       subtotal,
+      balustradesUnspecified,
     },
   };
 }
