@@ -267,12 +267,13 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
           stepId: stepForTracking.id,
           stepIndex: qIndex,
           stepTitle: stepForTracking.title,
+          totalSteps: questionSteps.length,
           services,
           mode,
         });
       }
     } else {
-      trackQuote({ event: "screen", phase, services, mode });
+      trackQuote({ event: "screen", phase, totalSteps: questionSteps.length, services, mode });
       if (phase === "result" || phase === "done-details") flushQuoteTrack();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
