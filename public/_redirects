@@ -17,8 +17,13 @@
 /ServiceAreas/           /service-areas/            301
 /Services                /                          301
 /Services/               /                          301
-/PatioCleaning           /patio-cleaning/           301
-/PatioCleaning/          /patio-cleaning/           301
+/PatioCleaning           /pressure-cleaning/        301
+/PatioCleaning/          /pressure-cleaning/        301
+
+# Patio cleaning service retired (July 2026) — send old URLs to the closest service
+/patio-cleaning          /pressure-cleaning/        301
+/patio-cleaning/         /pressure-cleaning/        301
+/patio-cleaning/*        /pressure-cleaning/        301
 
 # /commercial landing had no route — point to a real page
 /commercial              /commercial/window-cleaning/  301

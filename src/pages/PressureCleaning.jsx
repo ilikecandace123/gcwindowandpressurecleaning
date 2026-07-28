@@ -229,9 +229,9 @@ export default function PressureCleaning() {
               <h3 className="text-lg font-semibold text-gray-900 mb-2">House Softwash</h3>
               <p className="text-sm text-gray-600">Gentle, effective cleaning that protects your home's exterior while removing dirt and stains.</p>
             </Link>
-            <Link to="/patio-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Patio Cleaning</h3>
-              <p className="text-sm text-gray-600">Professional patio and outdoor space cleaning for entertainment areas.</p>
+            <Link to="/gutter-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Gutter Cleaning</h3>
+              <p className="text-sm text-gray-600">Full gutter and downpipe clearing with inspection and written report.</p>
             </Link>
           </div>
         </div>

@@ -264,9 +264,6 @@ async function main() {
     ["bird-proofing", "Solar Panel Bird Proofing", "/images/bird-proofing-hero.jpg",
       "Solar Panel Bird Proofing Gold Coast | Pigeon Mesh",
       "Solar panel bird proofing on the Gold Coast — warranty-safe mesh that stops pigeons and mynas nesting under your panels. Fully insured. Call (07) 5651 2386."],
-    ["patio-cleaning", "Patio Cleaning", "/images/patio-unsplash.jpg",
-      "Patio Cleaning Gold Coast | Pressure Cleaning Pros",
-      "Patio cleaning on the Gold Coast — removes mould, algae and stains from pavers, concrete and tiled patios. Fully insured. Free quote: (07) 5651 2386."],
   ];
   for (const [slug, name, img, title, description] of mainPages) {
     routes.push({
@@ -431,7 +428,7 @@ async function main() {
   const SERVICE_SLUGS = new Set([
     "/window-cleaning", "/window-cleaning-plans", "/roof-cleaning", "/house-softwash",
     "/pressure-cleaning", "/gutter-cleaning", "/solar-panel-cleaning",
-    "/bird-proofing", "/patio-cleaning"
+    "/bird-proofing"
   ]);
 
   function getUrlMeta(path) {

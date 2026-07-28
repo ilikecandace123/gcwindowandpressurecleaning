@@ -267,7 +267,6 @@ export const GUIDES = [
     ],
     related: [
       { label: "Pressure Cleaning service & prices", href: "/pressure-cleaning/" },
-      { label: "Patio Cleaning service", href: "/patio-cleaning/" },
       { label: "Get an instant quote", href: "/instant-quote/" }
     ]
   },
