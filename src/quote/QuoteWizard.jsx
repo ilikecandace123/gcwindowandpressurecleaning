@@ -81,16 +81,19 @@ const inputClass =
 
 // ── Small building blocks ────────────────────────────────────────────────────
 
-function OptionCard({ selected, onClick, label, sublabel, badge, children }) {
+function OptionCard({ selected, onClick, label, sublabel, badge, muted, children }) {
   return (
     <button
       type="button"
       onClick={onClick}
       className={
-        "relative w-full text-left rounded-xl border-2 px-5 py-4 transition-all duration-150 " +
+        "relative w-full text-left rounded-xl border-2 transition-all duration-150 " +
+        (muted ? "px-4 py-3 " : "px-5 py-4 ") +
         (selected
           ? "border-blue-600 bg-blue-50 shadow-sm"
-          : "border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50/40")
+          : muted
+            ? "border-dashed border-gray-200 bg-gray-50/70 hover:border-blue-300 hover:bg-blue-50/40"
+            : "border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50/40")
       }
     >
       {badge && (
@@ -101,15 +104,18 @@ function OptionCard({ selected, onClick, label, sublabel, badge, children }) {
       <div className="flex items-center">
         <div
           className={
-            "w-5 h-5 rounded-full border-2 mr-3.5 flex-shrink-0 flex items-center justify-center " +
+            (muted ? "w-4 h-4 mr-3 " : "w-5 h-5 mr-3.5 ") +
+            "rounded-full border-2 flex-shrink-0 flex items-center justify-center " +
             (selected ? "border-blue-600 bg-blue-600" : "border-gray-300 bg-white")
           }
         >
-          {selected && <Check className="w-3 h-3 text-white" strokeWidth={3.5} />}
+          {selected && <Check className={(muted ? "w-2.5 h-2.5" : "w-3 h-3") + " text-white"} strokeWidth={3.5} />}
         </div>
         <div className="min-w-0">
-          <div className="font-semibold text-gray-900">{label}</div>
-          {sublabel && <div className="text-sm text-gray-500 mt-0.5">{sublabel}</div>}
+          <div className={muted ? "font-medium text-[15px] text-gray-600" : "font-semibold text-gray-900"}>{label}</div>
+          {sublabel && (
+            <div className={(muted ? "text-[13px] text-gray-500" : "text-sm text-gray-500") + " mt-0.5"}>{sublabel}</div>
+          )}
         </div>
       </div>
       {children}
@@ -718,6 +724,8 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
   function renderSelectStep() {
     const value = getByPath(state, step.path);
     const selectedOpt = step.options.find((o) => o.value === value);
+    const mutedOpts = step.options.filter((o) => o.muted);
+    const mainOpts = step.options.filter((o) => !o.muted);
     const cols = step.columns === 2 ? "grid sm:grid-cols-2 gap-3" : "space-y-3";
     return (
       <StepShell step={step}>
@@ -731,8 +739,23 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
             <FrenchPaneExamples />
           </CollapsibleVisual>
         )}
+        {mutedOpts.length > 0 && (
+          <div className="space-y-2 mb-3">
+            {mutedOpts.map((o) => (
+              <OptionCard
+                key={String(o.value)}
+                muted
+                selected={value === o.value}
+                onClick={() => selectOption(o.value, o)}
+                label={o.label}
+                sublabel={o.sublabel}
+                badge={o.badge}
+              />
+            ))}
+          </div>
+        )}
         <div className={cols}>
-          {step.options.map((o) => (
+          {mainOpts.map((o) => (
             <OptionCard
               key={String(o.value)}
               selected={value === o.value}

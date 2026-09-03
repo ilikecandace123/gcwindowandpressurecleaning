@@ -6,6 +6,18 @@
 
 import { PANE_BANDS, SOLAR_PANEL_BANDS, PRESSURE_AREA_BANDS, WINDOW_FREQUENCIES, SOLAR_FREQUENCIES } from "./engine.js";
 
+// Hoists the "I don't know" band to the top of a count question and renders it as a
+// de-emphasised (muted) full-width card, so it reads as an honest escape hatch rather
+// than a peer of the numeric bands. Selecting it still routes to a custom quote.
+function withUnsureFirst(bands, sublabel) {
+  const unsure = bands.filter((b) => b.value === "unsure");
+  const rest = bands.filter((b) => b.value !== "unsure");
+  return [
+    ...unsure.map((b) => ({ value: b.value, label: b.label, sublabel, muted: true })),
+    ...rest.map((b) => ({ value: b.value, label: b.label })),
+  ];
+}
+
 export const SERVICE_ORDER = ["window", "pressure", "roof", "gutter", "softwash", "solar", "birdproofing"];
 
 export const SERVICE_META = {
@@ -282,7 +294,7 @@ function windowSteps(state) {
     path: ["window", "panes"],
     visual: "panes",
     columns: 2,
-    options: PANE_BANDS.map((b) => ({ value: b.value, label: b.label })),
+    options: withUnsureFirst(PANE_BANDS, "No problem — we'll just need to count them before we quote"),
   });
 
   steps.push({
@@ -642,7 +654,7 @@ function solarSteps() {
       path: ["solar", "panels"],
       supportPoint: "Dirty panels can lose up to 30% output",
       columns: 2,
-      options: SOLAR_PANEL_BANDS.map((b) => ({ value: b.value, label: b.label })),
+      options: withUnsureFirst(SOLAR_PANEL_BANDS, "No problem — we'll just need to count them before we quote"),
     },
     {
       ...svc,

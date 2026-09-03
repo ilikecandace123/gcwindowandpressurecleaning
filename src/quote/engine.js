@@ -22,7 +22,7 @@ export const PANE_BANDS = [
   { value: "81-90", label: "81–90 panes", top: 90 },
   { value: "91-100", label: "91–100 panes", top: 100 },
   { value: "100+", label: "More than 100 panes", top: null, custom: true },
-  { value: "unsure", label: "I'm not sure", top: null, custom: true },
+  { value: "unsure", label: "I don't know", top: null, custom: true },
 ];
 
 export const SOLAR_PANEL_BANDS = [
