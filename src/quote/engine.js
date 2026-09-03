@@ -89,6 +89,15 @@ export const SOFTWASH_PRICES = {
   2: { 3: 880, 4: 1100, 5: 1390 },
 };
 
+// "Steep but manageable" roof pitch: harder and slower, but still workable, so
+// it loads the price instead of forcing a custom quote. "Very steep" stays custom.
+export const STEEP_PITCH_LOADING = 0.1;
+const isSteepManageable = (pitch) => pitch === "steep";
+
+// Heavy spiderwebs and/or heavy grime on a softwash: one flat loading, not one
+// per condition — two heavies cost the same as one. Heavy MOULD stays custom.
+export const SOFTWASH_HEAVY_LOADING = 0.2;
+
 export const ROOF_LINE_FLOOR = 594;
 export const FLOOR_PRESSURE = 275;
 export const FLOOR_ONE_OFF = 220; // windows and/or solar, one-off
@@ -115,6 +124,38 @@ function bandTop(bands, value) {
   return b ? b.top : null;
 }
 
+// ── Silent interior loadings ────────────────────────────────────────────────
+// Coated glass and a long-neglected interior both take materially longer on the
+// INSIDE of the glass. Rather than sending these to a custom quote (which loses
+// the customer), they load the interior price only. Deliberately NOT shown to
+// the customer as their own line: the interior figure they are quoted in the
+// question and on the breakdown already includes them, so everything still adds
+// up. The loading is reported back to us on the lead (see line.interiorLoading).
+export const INTERIOR_LOWE_LOADING = 0.2; // Low-E / Smart glass
+export const INTERIOR_BUILDUP_LOADING = 0.15; // not cleaned in 12+ months
+
+export function interiorLoading(w) {
+  if (!w) return { pct: 0, reasons: [] };
+  const reasons = [];
+  let pct = 0;
+  if (w.tint === "lowe") {
+    pct += INTERIOR_LOWE_LOADING;
+    reasons.push("Low-E / Smart glass +20% interior");
+  }
+  if (w.condition === "significant") {
+    pct += INTERIOR_BUILDUP_LOADING;
+    reasons.push("Significant build-up +15% interior");
+  }
+  return { pct, reasons };
+}
+
+/** House/townhouse/commercial interior + tracks add-on, loadings included. */
+export function interiorAddonPrice(w, paneTop) {
+  if (!paneTop) return null;
+  const base = 5 * paneTop + (w && w.french === "1-3" ? 50 : 0);
+  return round2(base * (1 + interiorLoading(w).pct));
+}
+
 // ── Per-service calculators ─────────────────────────────────────────────────
 // Each returns { customReasons: [], line: {service, label, frequency?, items, subtotal} | null }
 
@@ -123,20 +164,17 @@ export function calcWindow(w) {
   if (!w) return { customReasons: [], line: null };
 
   if (w.propertyType === "storefront") reasons.push("Storefront window cleaning");
-  if (w.propertyType === "commercial") reasons.push("Commercial window cleaning");
+  // Commercial window cleaning is priced exactly like a house (Sep 2026).
 
   const isApartment = w.propertyType === "apartment";
-  const isHouse = w.propertyType === "house" || w.propertyType === "townhouse";
+  const isHouse =
+    w.propertyType === "house" || w.propertyType === "townhouse" || w.propertyType === "commercial";
 
   if (isHouse && ["3", "4", "5+"].includes(w.storeys)) reasons.push("3+ storey property");
-  if (w.tint === "yes") reasons.push("Tinted or Low-E / Smart glass");
-  if (w.tint === "unsure") reasons.push("Possibly tinted or Low-E / Smart glass (unsure)");
-  if (w.condition === "significant") reasons.push("Significant build-up (not cleaned in 12+ months)");
-  if (w.condition === "filthy") reasons.push("Heavy build-up");
+  // Tint / Low-E and significant build-up no longer force a custom quote — they
+  // load the interior price instead (see interiorLoading above).
   if (w.condition === "construction") reasons.push("New construction / renovation clean");
   if (w.french === "4+") reasons.push("4+ windows with French panes");
-  if (w.largePanes === "4+") reasons.push("4+ oversized window panes");
-  if (w.largePanes === "unsure") reasons.push("Unsure about oversized window panes");
   if (w.internalAccess === "yes") reasons.push("Interior windows need ladder / long pole access");
   if (w.internalAccess === "unsure") reasons.push("Unsure about interior window access");
 
@@ -149,12 +187,17 @@ export function calcWindow(w) {
 
   const panes = paneBand ? paneBand.top : 0;
   const items = [];
-  let raw;
+  const loading = interiorLoading(w);
+  // Every apartment scope includes the interior side at $6/pane; loadings apply
+  // to that half only.
+  let loadingAmount = 0;
   let balustradesUnspecified = false;
+  let raw;
 
   if (isApartment) {
     const perPanel = w.apartmentScope === "interior" ? 6 : 12;
-    raw = perPanel * panes;
+    loadingAmount = round2(6 * panes * loading.pct);
+    raw = round2(perPanel * panes + loadingAmount);
     items.push({
       label:
         w.apartmentScope === "interior"
@@ -182,11 +225,6 @@ export function calcWindow(w) {
     items.push({ label: "Regularly cleaned — 10% off", amount: disc });
   }
 
-  if (w.largePanes === "1-3") {
-    raw += 40;
-    items.push({ label: "Oversized panes (1–3 windows)", amount: 40, visible: true });
-  }
-
   if (w.balustrades === "yes") {
     const n = parseInt(w.balustradeCount, 10);
     if (Number.isFinite(n) && n > 0) {
@@ -207,8 +245,12 @@ export function calcWindow(w) {
   }
 
   if (w.interiorAddon && isHouse) {
-    // French panes (1–3) surcharge applies to the interior side only.
-    const add = 5 * panes + (w.french === "1-3" ? 50 : 0);
+    // French panes (1–3) surcharge applies to the interior side only. Any
+    // interior loading is folded into this figure so the number quoted on the
+    // question screen and the number on the breakdown are the same number.
+    const plain = 5 * panes + (w.french === "1-3" ? 50 : 0);
+    const add = interiorAddonPrice(w, panes);
+    loadingAmount = round2(add - plain);
     raw += add;
     items.push({ label: "Interior windows + tracks add-on", amount: add, visible: true });
   }
@@ -228,6 +270,10 @@ export function calcWindow(w) {
       items,
       subtotal,
       balustradesUnspecified,
+      interiorLoading:
+        loading.pct > 0 && loadingAmount > 0
+          ? { pct: loading.pct, amount: loadingAmount, reasons: loading.reasons }
+          : null,
     },
   };
 }
@@ -321,7 +367,7 @@ export function calcRoof(r) {
   if (r.roofType === "other") reasons.push("Non-standard roof type");
   if (r.storeys === "3+") reasons.push("3+ storey roof");
   if (r.bedrooms === "custom") reasons.push("Extra-large roof");
-  if (r.pitch === "steep" || r.pitch === "very-steep") reasons.push("Steep roof pitch");
+  if (r.pitch === "very-steep") reasons.push("Very steep roof pitch");
   if (r.condition === "lichen") reasons.push("Lichen on roof");
   if (reasons.length) return { customReasons: reasons, line: null };
 
@@ -350,6 +396,12 @@ export function calcRoof(r) {
     items.push({ label: "Biocide post-treatment (12-month no-mould guarantee)", amount: bio, visible: true });
   }
 
+  if (isSteepManageable(r.pitch)) {
+    const sur = round2(price * STEEP_PITCH_LOADING);
+    price += sur;
+    items.push({ label: "Steep roof pitch — access loading", amount: sur, visible: true });
+  }
+
   if (price < ROOF_LINE_FLOOR) {
     items.push({ label: "Roof cleaning minimum charge adjustment", amount: round2(ROOF_LINE_FLOOR - price) });
     price = ROOF_LINE_FLOOR;
@@ -375,7 +427,7 @@ export function calcGutter(g) {
   if (g.commercial === "commercial") reasons.push("Commercial gutter cleaning");
   if (g.storeys === "3+") reasons.push("3+ storey gutters");
   if (g.gutterGuard === "yes") reasons.push("Gutter guard installed");
-  if (g.pitch === "steep" || g.pitch === "very-steep") reasons.push("Steep roof pitch");
+  if (g.pitch === "very-steep") reasons.push("Very steep roof pitch");
   if (g.bedrooms === "custom") reasons.push("Extra-large home (gutters)");
   if (reasons.length) return { customReasons: reasons, line: null };
 
@@ -393,6 +445,12 @@ export function calcGutter(g) {
     const sur = round2(base * 0.2);
     price = base * 1.2;
     items.push({ label: "Plants growing in gutters", amount: sur });
+  }
+
+  if (isSteepManageable(g.pitch)) {
+    const sur = round2(price * STEEP_PITCH_LOADING);
+    price += sur;
+    items.push({ label: "Steep roof pitch — access loading", amount: sur, visible: true });
   }
 
   return {
@@ -416,8 +474,7 @@ export function calcSoftwash(s) {
   if (s.storeys === "3+") reasons.push("3+ storey building");
   if (s.bedrooms === "custom") reasons.push("Extra-large home (softwash)");
   if (s.mould === "heavy") reasons.push("Heavy mould / organic growth");
-  if (s.webs === "heavy") reasons.push("Heavy spiderwebs / bug nests");
-  if (s.grime === "heavy") reasons.push("Heavy grime / dust");
+  // Heavy webs and/or heavy grime load the price instead of going custom.
   if (reasons.length) return { customReasons: reasons, line: null };
 
   const storeys = s.storeys === "2" ? 2 : 1;
@@ -426,9 +483,14 @@ export function calcSoftwash(s) {
 
   const items = [{ label: `${storeys === 2 ? "Double" : "Single"}-storey exterior house softwash`, amount: base }];
   let price = base;
+  if (s.webs === "heavy" || s.grime === "heavy") {
+    const add = round2(base * SOFTWASH_HEAVY_LOADING);
+    price += add;
+    items.push({ label: "Heavy build-up loading", amount: add, visible: true });
+  }
   if (s.windowAddon) {
     const add = round2(base * 0.3);
-    price = base * 1.3;
+    price += add;
     items.push({ label: "Exterior window cleaning add-on", amount: add, visible: true });
   }
 
@@ -451,7 +513,7 @@ export function calcSolar(s) {
 
   if (s.commercial === "commercial") reasons.push("Commercial solar cleaning");
   if (s.storeys === "3+") reasons.push("3+ storey roof (solar)");
-  if (s.pitch === "steep" || s.pitch === "very-steep") reasons.push("Steep roof pitch (solar)");
+  if (s.pitch === "very-steep") reasons.push("Very steep roof pitch (solar)");
   if (s.condition === "unsure") reasons.push("Unsure of solar panel condition");
   if (s.condition === "lichen") reasons.push("Lichen on solar panels");
   if (s.condition === "heavy") reasons.push("Heavy mould or dirt on solar panels");
@@ -464,6 +526,11 @@ export function calcSolar(s) {
   const freq = SOLAR_FREQUENCIES.find((f) => f.value === s.frequency) || SOLAR_FREQUENCIES[0];
   const items = [{ label: `Solar panel clean — up to ${band.top} panels`, amount: round2(11 * band.top) }];
   let price = 11 * band.top;
+  if (isSteepManageable(s.pitch)) {
+    const sur = round2(price * STEEP_PITCH_LOADING);
+    price += sur;
+    items.push({ label: "Steep roof pitch — access loading", amount: sur, visible: true });
+  }
   if (freq.discount) {
     price -= freq.discount;
     items.push({ label: `${freq.label} plan discount`, amount: -freq.discount, visible: true });

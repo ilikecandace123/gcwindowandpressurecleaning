@@ -359,6 +359,13 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
         lines.push(
           `• ${l.label}${l.frequencyLabel ? ` (${l.frequencyLabel})` : ""}: ${formatMoney(l.subtotal)}${l.plan ? "/visit" : ""}`
         );
+        // Interior loadings are deliberately not itemised for the customer —
+        // surface them here so the quote can be reconciled.
+        if (l.interiorLoading) {
+          lines.push(
+            `   (internal) interior loading ${formatMoney(l.interiorLoading.amount)} included — ${l.interiorLoading.reasons.join(", ")}`
+          );
+        }
       }
       if (quote.floorApplied) lines.push(`• Minimum charge applied (${quote.floorApplied.label}: ${formatMoney(quote.floorApplied.amount)})`);
       for (const add of quote.postFloorAdds || []) lines.push(`• ${add.label}: ${formatMoney(add.amount)}`);

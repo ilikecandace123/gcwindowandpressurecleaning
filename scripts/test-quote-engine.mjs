@@ -243,9 +243,9 @@ console.log("\nCustom-quote triggers:");
 {
   const q = calculateQuote({
     services: ["window"],
-    window: { ...windowBase, tint: "yes" },
+    window: { ...windowBase, propertyType: "storefront" },
   });
-  eq("Tint → custom", q.custom, true);
+  eq("Storefront → custom", q.custom, true);
 }
 {
   const q = calculateQuote({
@@ -273,9 +273,9 @@ console.log("\nCustom-quote triggers:");
 {
   const q = calculateQuote({
     services: ["roof"],
-    roof: { commercial: "residential", roofType: "tile", storeys: "1", bedrooms: "2", pitch: "steep", condition: "light", biocide: false },
+    roof: { commercial: "residential", roofType: "tile", storeys: "1", bedrooms: "2", pitch: "very-steep", condition: "light", biocide: false },
   });
-  eq("Steep pitch → custom", q.custom, true);
+  eq("Very steep pitch → custom", q.custom, true);
 }
 
 console.log("\nFloor selection (highest applicable wins):");
@@ -312,21 +312,12 @@ console.log("\nFloor selection (highest applicable wins):");
 
 console.log("\nJuly wizard tweaks:");
 
-// Oversized panes 1–3: +$40 exactly (after condition discount, before frequency)
 {
   const q = calculateQuote({
     services: ["window"],
-    window: { ...windowBase, panes: "21-30", largePanes: "1-3", internalAccess: "no" },
-  }); // 7×30=210 +40 = 250
-  eq("Oversized panes 1–3 adds $40 = $250", q.total, 250);
-}
-{
-  const q = calculateQuote({ services: ["window"], window: { ...windowBase, largePanes: "4+" } });
-  eq("Oversized panes 4+ → custom", q.custom, true);
-}
-{
-  const q = calculateQuote({ services: ["window"], window: { ...windowBase, largePanes: "unsure" } });
-  eq("Oversized panes unsure → custom", q.custom, true);
+    window: { ...windowBase, panes: "21-30", internalAccess: "no" },
+  }); // 7×30 = 210 → below the $220 one-off floor
+  eq("Oversized-pane question removed — 30 panes floors to $220", q.total, 220);
 }
 {
   const q = calculateQuote({ services: ["window"], window: { ...windowBase, internalAccess: "yes" } });
@@ -338,7 +329,7 @@ console.log("\nJuly wizard tweaks:");
 }
 {
   const q = calculateQuote({ services: ["window"], window: { ...windowBase, tint: "unsure" } });
-  eq("Tint unsure → custom", q.custom, true);
+  eq("Tint unsure → priced, not custom", q.custom, false);
 }
 {
   const q = calculateQuote({
@@ -369,6 +360,146 @@ console.log("\nJuly wizard tweaks:");
     window: { propertyType: "apartment", apartmentScope: "everything", tint: "no", condition: "moderate", french: "1-3", panes: "21-30", frequency: "one-off" },
   }); // apartments always include interiors: 12×30 + 50 = 410
   eq("Apartment french 1–3 still applies = $410", q.total, 410);
+}
+
+console.log("\nSeptember 2026 trigger reductions:");
+
+// #3 — commercial windows priced exactly like a house
+{
+  const house = calculateQuote({ services: ["window"], window: { ...windowBase, panes: "21-30" } });
+  const comm = calculateQuote({
+    services: ["window"],
+    window: { ...windowBase, propertyType: "commercial", panes: "21-30" },
+  });
+  eq("Commercial windows priced, not custom", comm.custom, false);
+  eq("Commercial windows == house price", comm.total, house.total);
+}
+{
+  const q = calculateQuote({
+    services: ["window"],
+    window: { ...windowBase, propertyType: "commercial", storeys: "3" },
+  });
+  eq("Commercial + 3 storeys still custom", q.custom, true);
+}
+
+// #5/#6 — tint options
+{
+  const q = calculateQuote({ services: ["window"], window: { ...windowBase, panes: "21-30", tint: "tint" } });
+  eq("Tint = no price change (floors to $220)", q.total, 220);
+}
+{
+  const q = calculateQuote({ services: ["window"], window: { ...windowBase, panes: "21-30", tint: "no" } });
+  eq("Tint 'no' = $220 (floor)", q.total, 220);
+}
+{
+  // Exterior only: no interior price to load, so no change.
+  const q = calculateQuote({ services: ["window"], window: { ...windowBase, panes: "21-30", tint: "lowe" } });
+  eq("Low-E exterior-only = unchanged $220 (floor)", q.total, 220);
+}
+{
+  // 7×30=210 exterior + interior 5×30=150 × 1.20 = 180 → 390
+  const q = calculateQuote({
+    services: ["window"],
+    window: { ...windowBase, panes: "21-30", tint: "lowe", interiorAddon: true },
+  });
+  eq("Low-E loads interior 20% → $390", q.total, 390);
+  eq("Low-E loading reported on line", q.lines[0].interiorLoading.amount, 30);
+}
+
+// #7 — significant build-up loads interior 15%
+{
+  const q = calculateQuote({ services: ["window"], window: { ...windowBase, panes: "21-30", condition: "significant" } });
+  eq("Significant build-up exterior-only = unchanged $220 (floor)", q.total, 220);
+  eq("Significant build-up no longer custom", q.custom, false);
+}
+{
+  // interior 150 × 1.15 = 172.50 → 210 + 172.50 = 382.50
+  const q = calculateQuote({
+    services: ["window"],
+    window: { ...windowBase, panes: "21-30", condition: "significant", interiorAddon: true },
+  });
+  eq("Significant build-up loads interior 15% → $382.50", q.total, 382.5);
+}
+{
+  // Both loadings stack: 150 × 1.35 = 202.50 → 412.50
+  const q = calculateQuote({
+    services: ["window"],
+    window: { ...windowBase, panes: "21-30", condition: "significant", tint: "lowe", interiorAddon: true },
+  });
+  eq("Low-E + build-up stack to 35% → $412.50", q.total, 412.5);
+}
+{
+  // Apartment, both sides: 12×30=360 + (6×30 × 0.20 = 36) = 396
+  const q = calculateQuote({
+    services: ["window"],
+    window: {
+      propertyType: "apartment", apartmentScope: "everything", tint: "lowe",
+      condition: "moderate", french: "none", panes: "21-30", frequency: "one-off",
+    },
+  });
+  eq("Apartment Low-E loads interior half only → $396", q.total, 396);
+}
+
+// #37/#43/#54 — steep-but-manageable pitch = +10%
+{
+  const q = calculateQuote({
+    services: ["roof"],
+    roof: { commercial: "residential", roofType: "tile", storeys: "1", bedrooms: "4", pitch: "steep", condition: "heavy", biocide: false },
+  }); // 1100 × 1.1 heavy = 1210 × 1.1 pitch = 1331
+  eq("Roof steep pitch +10% → $1331", q.total, 1331);
+  eq("Roof steep pitch not custom", q.custom, false);
+}
+{
+  const q = calculateQuote({
+    services: ["gutter"],
+    gutter: { commercial: "residential", storeys: "1", gutterGuard: "no", pitch: "steep", bedrooms: "3", condition: "leaves" },
+  }); // 330 × 1.1 = 363
+  eq("Gutter steep pitch +10% → $363", q.total, 363);
+}
+{
+  const q = calculateQuote({
+    services: ["solar"],
+    solar: { commercial: "residential", storeys: "1", pitch: "steep", panels: "31-40", condition: "dust", frequency: "one-off" },
+  }); // 11×40=440 × 1.1 = 484 (clear of the $220 floor)
+  eq("Solar steep pitch +10% → $484", q.total, 484);
+}
+{
+  const q = calculateQuote({
+    services: ["gutter"],
+    gutter: { commercial: "residential", storeys: "1", gutterGuard: "no", pitch: "very-steep", bedrooms: "3", condition: "leaves" },
+  });
+  eq("Gutter very-steep still custom", q.custom, true);
+}
+
+// #50/#51 — heavy webs / grime = one flat 20%, heavy mould still custom
+{
+  const q = calculateQuote({
+    services: ["softwash"],
+    softwash: { commercial: "residential", storeys: "1", bedrooms: "3", mould: "light", webs: "heavy", grime: "light", windowAddon: false },
+  }); // 495 × 1.2 = 594
+  eq("Heavy webs +20% → $594", q.total, 594);
+}
+{
+  const q = calculateQuote({
+    services: ["softwash"],
+    softwash: { commercial: "residential", storeys: "1", bedrooms: "3", mould: "light", webs: "heavy", grime: "heavy", windowAddon: false },
+  });
+  eq("Heavy webs AND grime still only +20% → $594", q.total, 594);
+}
+{
+  const q = calculateQuote({
+    services: ["softwash"],
+    softwash: { commercial: "residential", storeys: "1", bedrooms: "3", mould: "heavy", webs: "heavy", grime: "heavy", windowAddon: false },
+  });
+  eq("Heavy mould still custom", q.custom, true);
+}
+{
+  // 495 base + 20% (99) + window add-on 30% of base (148.50) = 742.50
+  const q = calculateQuote({
+    services: ["softwash"],
+    softwash: { commercial: "residential", storeys: "1", bedrooms: "3", mould: "light", webs: "light", grime: "heavy", windowAddon: true },
+  });
+  eq("Heavy grime + window add-on both off base → $742.50", q.total, 742.5);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

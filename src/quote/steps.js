@@ -4,7 +4,15 @@
 // current answers (one question per screen, per the spec's design section).
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { PANE_BANDS, SOLAR_PANEL_BANDS, PRESSURE_AREA_BANDS, WINDOW_FREQUENCIES, SOLAR_FREQUENCIES } from "./engine.js";
+import {
+  PANE_BANDS,
+  SOLAR_PANEL_BANDS,
+  PRESSURE_AREA_BANDS,
+  WINDOW_FREQUENCIES,
+  SOLAR_FREQUENCIES,
+  interiorAddonPrice,
+  formatMoney,
+} from "./engine.js";
 
 // Hoists the "I don't know" band to the top of a count question and renders it as a
 // de-emphasised (muted) full-width card, so it reads as an honest escape hatch rather
@@ -73,6 +81,10 @@ function bedroomOptions(storeys) {
 
 const PROP = { service: "property", serviceLabel: "Your property" };
 
+// Property types priced on the house window model (Sep 2026: commercial joined
+// house/townhouse — a commercial window clean is quoted the same way).
+export const HOUSE_LIKE = ["house", "townhouse", "commercial"];
+
 function needsRC(services) {
   return ["roof", "gutter", "softwash", "solar", "birdproofing"].some((s) => services.includes(s));
 }
@@ -111,7 +123,7 @@ function propertySteps(state) {
     });
   }
 
-  const windowHouse = hasWindow && (p.propertyType === "house" || p.propertyType === "townhouse");
+  const windowHouse = hasWindow && HOUSE_LIKE.includes(p.propertyType);
   if (windowHouse) {
     steps.push({
       ...PROP,
@@ -241,10 +253,11 @@ function windowSteps(state) {
     path: ["window", "tint"],
     options: [
       { value: "no", label: "No" },
-      { value: "yes", label: "Yes" },
       { value: "unsure", label: "I'm not sure" },
+      { value: "tint", label: "Yes — tint" },
+      { value: "lowe", label: "Yes — Low-E or Smart glass" },
     ],
-    hint: "Tinted and coated glass needs special care, so we quote it individually.",
+    hint: "Tinted and coated glass needs a gentler method and different products.",
   });
 
   steps.push({
@@ -314,21 +327,6 @@ function windowSteps(state) {
 
   steps.push({
     ...svc,
-    id: "w-large-panes",
-    title: "Do you have any window or sliding door panes that are larger than a standard sliding door?",
-    question: "Window cleaning — oversized panes",
-    type: "select",
-    path: ["window", "largePanes"],
-    options: [
-      { value: "none", label: "No" },
-      { value: "unsure", label: "I'm not sure" },
-      { value: "1-3", label: "Yes — 1 to 3" },
-      { value: "4+", label: "Yes — 4 or more" },
-    ],
-  });
-
-  steps.push({
-    ...svc,
     id: "w-internal-access",
     title: "Do you have any windows that would require a ladder or long pole to reach their internal side?",
     question: "Window cleaning — hard-to-reach interior windows",
@@ -360,10 +358,12 @@ function windowSteps(state) {
     hint: "Plans cover exterior windows & screens — the side that gets dirty fastest.",
   });
 
-  const isHouse = w.propertyType === "house" || w.propertyType === "townhouse";
+  const isHouse = HOUSE_LIKE.includes(w.propertyType);
   if (isHouse) {
     const band = PANE_BANDS.find((b) => b.value === w.panes);
-    const addPrice = band && band.top ? 5 * band.top : null;
+    // Same figure the engine charges — includes French panes and any silent
+    // interior loading, so the quoted add-on price is the price they pay.
+    const addPrice = band && band.top ? interiorAddonPrice(w, band.top) : null;
     // Plan customers get a tailored pitch: interior can be added at any visit.
     const freqDef = WINDOW_FREQUENCIES.find((f) => f.value === w.frequency);
     const visitsPerYear = { monthly: 12, quarterly: 4, "half-yearly": 2 }[w.frequency];
@@ -372,7 +372,7 @@ function windowSteps(state) {
       ...svc,
       id: "w-interior",
       title: isPlan
-        ? `You can add your interior windows and tracks at any of your ${visitsPerYear} exterior visits through the year. Would you like to add them${addPrice ? ` for $${addPrice}` : ""} for your first visit?`
+        ? `You can add your interior windows and tracks at any of your ${visitsPerYear} exterior visits through the year. Would you like to add them${addPrice ? ` for ${formatMoney(addPrice)}` : ""} for your first visit?`
         : "Add interior windows + tracks?",
       question: "Window cleaning — interior add-on",
       type: "select",
@@ -380,7 +380,7 @@ function windowSteps(state) {
       options: [
         {
           value: true,
-          label: addPrice ? `Yes please — add interior + tracks (+$${addPrice})` : "Yes please — add interior + tracks",
+          label: addPrice ? `Yes please — add interior + tracks (+${formatMoney(addPrice)})` : "Yes please — add interior + tracks",
           sublabel: "Full inside-and-out sparkle",
         },
         { value: false, label: "No thanks — exterior only" },
