@@ -354,7 +354,16 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
       lines.push(`RESULT: CUSTOM QUOTE required — no price shown to customer.`);
       lines.push(`Triggers: ${quote.customReasons.join("; ")}`);
     } else {
-      lines.push(`RESULT: instant price shown — TOTAL ${formatMoney(quote.total)} inc GST.`);
+      if (quote.partial) {
+        lines.push(
+          `RESULT: PART-PRICED — customer saw ${formatMoney(quote.total)} inc GST for the services below, and was told the rest is quoted separately.`
+        );
+        lines.push(
+          `STILL TO QUOTE: ${(quote.customServices || []).map((c) => `${c.label} (${c.reasons.join(", ")})`).join(" | ")}`
+        );
+      } else {
+        lines.push(`RESULT: instant price shown — TOTAL ${formatMoney(quote.total)} inc GST.`);
+      }
       for (const l of quote.lines) {
         lines.push(
           `• ${l.label}${l.frequencyLabel ? ` (${l.frequencyLabel})` : ""}: ${formatMoney(l.subtotal)}${l.plan ? "/visit" : ""}`
@@ -1283,6 +1292,12 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
   }
 
   function renderResult() {
+    const customNames = (quote.customServices || []).map((c) => c.label);
+    const customServiceNames =
+      customNames.length > 1
+        ? customNames.slice(0, -1).join(", ") + " and " + customNames[customNames.length - 1]
+        : customNames[0];
+
     if (quote.custom) {
       return (
         <div className="quote-step-enter">
@@ -1373,6 +1388,16 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
               const main = rows.filter((r) => !r.plus).sort((a, b) => b.amount - a.amount)[0];
               if (main) main.amount = Math.round((main.amount + floorAdj) * 100) / 100;
             }
+            // Services we couldn't price get their own row rather than taking
+            // the price away from everything else.
+            for (const cs of quote.customServices || []) {
+              rows.push({
+                key: "custom-" + cs.service,
+                label: cs.label,
+                custom: true,
+                note: "We'll put a tailored price together for this one and send it through with your quote.",
+              });
+            }
             return rows.map((r, i) => (
               <div key={r.key} className={"px-5 sm:px-7 py-5 " + (i > 0 ? "border-t border-gray-100" : "")}>
                 <div className="flex justify-between items-baseline gap-3">
@@ -1384,11 +1409,17 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
                       </span>
                     )}
                   </div>
-                  <div className="font-bold text-gray-900 whitespace-nowrap">
-                    {r.plus ? "+" : ""}
-                    {formatMoney(r.amount)}
-                    {r.per && <span className="text-sm font-medium text-gray-500">/visit</span>}
-                  </div>
+                  {r.custom ? (
+                    <div className="text-sm font-bold text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-3 py-1 whitespace-nowrap">
+                      Custom quote
+                    </div>
+                  ) : (
+                    <div className="font-bold text-gray-900 whitespace-nowrap">
+                      {r.plus ? "+" : ""}
+                      {formatMoney(r.amount)}
+                      {r.per && <span className="text-sm font-medium text-gray-500">/visit</span>}
+                    </div>
+                  )}
                 </div>
                 {(r.visibleItems || []).length > 0 && (
                   <div className="mt-2 space-y-1">
@@ -1414,10 +1445,17 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
           })()}
 
           <div className="px-5 sm:px-7 py-5 bg-blue-900 text-white flex justify-between items-center">
-            <span className="font-semibold">Total (inc GST)</span>
+            <span className="font-semibold">{quote.partial ? "Total so far (inc GST)" : "Total (inc GST)"}</span>
             <span className="text-3xl font-extrabold">{formatMoney(quote.total)}</span>
           </div>
         </div>
+
+        {quote.partial && (
+          <p className="text-sm text-blue-900 bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-center mb-7 -mt-3">
+            That total covers everything we can price straight away. {customServiceNames} needs a closer look before we
+            can put a number on it — we&rsquo;ll send that through separately, at no obligation.
+          </p>
+        )}
 
         {quote.lines.some((l) => l.service === "window" && l.balustradesUnspecified) && (
           <p className="text-sm text-amber-800 bg-amber-50 border border-amber-100 rounded-xl px-4 py-3 text-center mb-7 -mt-3">

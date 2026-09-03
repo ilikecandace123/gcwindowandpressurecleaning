@@ -253,7 +253,9 @@ console.log("\nCustom-quote triggers:");
     window: { ...windowBase },
     gutter: { commercial: "residential", storeys: "2", gutterGuard: "yes", pitch: "flat", bedrooms: "3", condition: "leaves" },
   });
-  eq("Any trigger poisons whole quote (gutter guard)", q.custom, true);
+  eq("Gutter trigger no longer poisons the windows price", q.custom, false);
+  eq("...windows still priced", q.total, 220);
+  eq("...gutter listed as custom", q.customServices.map((c) => c.service), ["gutter"]);
 }
 {
   const q = calculateQuote({
@@ -261,7 +263,7 @@ console.log("\nCustom-quote triggers:");
     birdproofing: { commercial: "residential", storeys: "1", birds: "yes" },
     solar: { commercial: "residential", storeys: "1", pitch: "flat", panels: "6-10", condition: "dust", frequency: "one-off" },
   });
-  eq("Bird proofing always custom", q.custom, true);
+  eq("Bird proofing always quoted separately", q.customServices.map((c) => c.service), ["birdproofing"]);
 }
 {
   const q = calculateQuote({
@@ -500,6 +502,103 @@ console.log("\nSeptember 2026 trigger reductions:");
     softwash: { commercial: "residential", storeys: "1", bedrooms: "3", mould: "light", webs: "light", grime: "heavy", windowAddon: true },
   });
   eq("Heavy grime + window add-on both off base → $742.50", q.total, 742.5);
+}
+
+console.log("\nPartial quotes (per-service isolation):");
+
+{
+  // Windows custom (storefront), roof priceable → roof price still shown.
+  const q = calculateQuote({
+    services: ["window", "roof"],
+    window: { ...windowBase, propertyType: "storefront" },
+    roof: { commercial: "residential", roofType: "tile", storeys: "1", bedrooms: "4", pitch: "flat", condition: "heavy", biocide: false },
+  });
+  eq("Windows custom + roof priceable → not a full custom quote", q.custom, false);
+  eq("...partial flag set", q.partial, true);
+  eq("...roof price shown", q.total, 1210);
+  eq("...only the roof line is priced", q.lines.map((l) => l.service), ["roof"]);
+  eq("...window flagged for manual quote", q.customServices.map((c) => c.service), ["window"]);
+}
+{
+  // Every service custom → the original all-custom screen, no price.
+  const q = calculateQuote({
+    services: ["window", "roof"],
+    window: { ...windowBase, propertyType: "storefront" },
+    roof: { commercial: "residential", roofType: "tile", storeys: "3+", bedrooms: "4", pitch: "flat", condition: "heavy", biocide: false },
+  });
+  eq("All services custom → full custom quote", q.custom, true);
+  eq("...no total", q.total, null);
+  eq("...both services listed", q.customServices.map((c) => c.service), ["window", "roof"]);
+}
+{
+  // Bird proofing is always custom but must not take the solar price with it.
+  const q = calculateQuote({
+    services: ["birdproofing", "solar"],
+    solar: { commercial: "residential", storeys: "1", pitch: "flat", panels: "31-40", condition: "dust", frequency: "one-off" },
+  });
+  eq("Bird proofing no longer poisons solar", q.custom, false);
+  eq("...solar priced (11×40)", q.total, 440);
+  eq("...bird proofing quoted separately", q.customServices.map((c) => c.service), ["birdproofing"]);
+}
+{
+  // Floors apply to what was actually priced, not the custom services.
+  const q = calculateQuote({
+    services: ["window", "gutter"],
+    window: { ...windowBase },
+    gutter: { commercial: "residential", storeys: "3+", gutterGuard: "no", pitch: "flat", bedrooms: "3", condition: "leaves" },
+  });
+  eq("Floor applies to the priced lines only", q.total, 220);
+  eq("...floor label", q.floorApplied.amount, 220);
+}
+{
+  const q = calculateQuote({ services: ["window"], window: { ...windowBase, panes: "21-30" } });
+  eq("Single priceable service → partial is false", q.partial, false);
+}
+
+console.log("\nPressure — oil / rust stains:");
+
+const pressureBase = {
+  areas: ["driveway"],
+  details: { driveway: { size: "25-50", surface: "concrete", condition: "moss", biocide: false } },
+};
+{
+  const q = calculateQuote({ services: ["pressure"], pressure: pressureBase });
+  eq("Driveway baseline 3.3×50 → floor $275", q.total, 275);
+}
+{
+  const q = calculateQuote({
+    services: ["pressure"],
+    pressure: {
+      areas: ["driveway"],
+      details: { driveway: { size: "76-100", surface: "concrete", condition: "oil-rust", biocide: false } },
+    },
+  }); // 3.3 × 100 = 330, priced as a normal clean
+  eq("Oil/rust priced, not custom", q.custom, false);
+  eq("Oil/rust charges the base clean = $330", q.total, 330);
+  eq("Oil/rust flagged on the line", q.lines[0].stainAreas, ["driveway"]);
+  eq("Oil/rust adds a customer-facing note", typeof q.lines[0].note, "string");
+}
+{
+  const clean = calculateQuote({
+    services: ["pressure"],
+    pressure: { areas: ["driveway"], details: { driveway: { size: "76-100", surface: "concrete", condition: "moss", biocide: false } } },
+  });
+  const stained = calculateQuote({
+    services: ["pressure"],
+    pressure: { areas: ["driveway"], details: { driveway: { size: "76-100", surface: "concrete", condition: "oil-rust", biocide: false } } },
+  });
+  eq("Oil/rust adds no surcharge — same as a clean driveway", stained.total, clean.total);
+}
+{
+  // A custom AREA still goes custom, and now only takes pressure with it.
+  const q = calculateQuote({
+    services: ["pressure", "gutter"],
+    pressure: { areas: ["driveway", "fences"], details: pressureBase.details },
+    gutter: { commercial: "residential", storeys: "1", gutterGuard: "no", pitch: "flat", bedrooms: "3", condition: "leaves" },
+  });
+  eq("Fences still custom, gutter still priced", q.custom, false);
+  eq("...gutter price stands", q.total, 330);
+  eq("...pressure quoted separately", q.customServices.map((c) => c.service), ["pressure"]);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

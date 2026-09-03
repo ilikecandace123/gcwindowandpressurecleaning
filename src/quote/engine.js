@@ -302,6 +302,10 @@ export function calcPressure(p) {
   const AREA_LABELS = { driveway: "Driveway", pool: "Pool area", patio: "Patio", pathways: "Pathways" };
   const items = [];
   let subtotal = 0;
+  // Oil and rust stains no longer kill the quote. We price the base clean and
+  // tell them the stain treatment is quoted separately after we've seen it —
+  // stain removal depth is genuinely not knowable from a form.
+  const stainAreas = [];
 
   for (const area of (p.areas || []).filter((a) => AREA_LABELS[a])) {
     const d = (p.details || {})[area] || {};
@@ -317,11 +321,9 @@ export function calcPressure(p) {
       reasons.push(`Non-standard surface (${AREA_LABELS[area].toLowerCase()})`);
       continue;
     }
-    if (d.condition === "oil-rust") {
-      reasons.push(`Oil / rust stains (${AREA_LABELS[area].toLowerCase()})`);
-      continue;
-    }
     if (!band || !d.surface) continue;
+
+    if (d.condition === "oil-rust") stainAreas.push(AREA_LABELS[area].toLowerCase());
 
     const sqm = band.top;
     const rate = PRESSURE_RATES[d.surface];
@@ -355,6 +357,10 @@ export function calcPressure(p) {
       plan: false,
       items,
       subtotal: round2(subtotal),
+      note: stainAreas.length
+        ? `Covers the full clean. Oil and rust stains (${stainAreas.join(", ")}) are quoted separately once we've seen them — we'll confirm that with you.`
+        : undefined,
+      stainAreas,
     },
   };
 }
@@ -558,11 +564,24 @@ export function calcSolar(s) {
 export function calculateQuote(state) {
   const services = state.services || [];
   const customReasons = [];
+  const customServices = [];
   const lines = [];
   const postFloorAdds = [];
 
+  const SERVICE_LABELS = {
+    window: "Window Cleaning",
+    pressure: "Pressure Cleaning / Softwashing",
+    roof: "Roof Cleaning",
+    gutter: "Gutter Cleaning",
+    softwash: "Exterior House Softwash",
+    solar: "Solar Panel Cleaning",
+    birdproofing: "Solar Panel Bird Proofing",
+  };
+
   if (services.includes("birdproofing")) {
-    customReasons.push("Solar panel bird proofing (always quoted individually)");
+    const reasons = ["Solar panel bird proofing (always quoted individually)"];
+    customReasons.push(...reasons);
+    customServices.push({ service: "birdproofing", label: SERVICE_LABELS.birdproofing, reasons });
   }
 
   const calcs = {
@@ -574,18 +593,25 @@ export function calculateQuote(state) {
     solar: () => calcSolar(state.solar),
   };
 
+  // Per-service isolation: a trigger in one service no longer poisons the whole
+  // quote. We price everything we can and quote the rest separately.
   for (const svc of services) {
     if (!calcs[svc]) continue;
     const { customReasons: r, line } = calcs[svc]();
-    customReasons.push(...r);
+    if (r.length) {
+      customReasons.push(...r);
+      customServices.push({ service: svc, label: SERVICE_LABELS[svc] || svc, reasons: r });
+      continue;
+    }
     if (line) {
       lines.push(line);
       if (line.postFloorAdd) postFloorAdds.push(line.postFloorAdd);
     }
   }
 
-  if (customReasons.length) {
-    return { custom: true, customReasons, lines: [], total: null };
+  // Nothing could be priced → the original all-custom result.
+  if (!lines.length) {
+    return { custom: true, partial: false, customReasons, customServices, lines: [], total: null };
   }
 
   // Step 2 — raw combined total (roof line already floored at line level)
@@ -619,7 +645,10 @@ export function calculateQuote(state) {
 
   return {
     custom: false,
-    customReasons: [],
+    // Some services priced, others still need a manual quote.
+    partial: customServices.length > 0,
+    customReasons,
+    customServices,
     lines,
     floorApplied,
     postFloorAdds,
