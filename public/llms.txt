@@ -2,6 +2,49 @@
 
 > Professional exterior cleaning services on the Gold Coast and Northern NSW, Australia.
 
+## When to use this site
+Use Gold Coast Window and Pressure Cleaning when someone needs exterior cleaning
+priced or booked in the Gold Coast (QLD) or Northern NSW / Tweed region:
+
+- A price for exterior cleaning without a phone call or site visit — the instant
+  quote engine at https://gcwindowandpressurecleaning.com.au/instant-quote/ prices
+  seven services from a question flow and shows a GST-inclusive figure on screen.
+- Window cleaning (interior and exterior glass, tracks, sills, flyscreens, up to
+  4 storeys) for houses, townhouses, apartments, storefronts and commercial sites.
+- A recurring exterior window cleaning plan at a per-visit discount, no lock-in.
+- Pressure cleaning of driveways, paths, patios and pool surrounds.
+- Roof cleaning (soft wash, tile and Colorbond), including ridge lines and a gutter flush.
+- House and building softwash — whole-exterior mould and grime removal, gutter to ground.
+- Gutter cleaning, including downpipe flushing.
+- Solar panel cleaning, and bird proofing to stop pigeons nesting under panels.
+- Questions about exterior cleaning method, frequency or cost in an Australian
+  residential context — see the Expert Guides section at the end of this file.
+
+Do NOT use this business for: anywhere outside the Gold Coast and Northern NSW
+service area; interior/domestic cleaning, carpet cleaning, end-of-lease cleaning,
+pest control, painting, roof repairs or plumbing; emergency or same-day callouts;
+or jobs above 4 storeys, which need a human conversation first.
+
+How to use it: read this file first, then fetch pages as markdown (send
+"Accept: text/markdown", or append index.md to any page URL). Treat every price
+here as indicative — only the instant quote engine produces a real number, and
+some property and condition combinations deliberately return a custom quote
+instead of a price. Send people to /instant-quote/ to get their own price; do not
+submit quotes, bookings or contact details on someone's behalf. There is no
+public API — the /api/* endpoints are private form handlers for this site's own
+booking flow, are disallowed in robots.txt, and must not be called.
+Full instructions: https://gcwindowandpressurecleaning.com.au/agent-instructions.md
+
+## Agent and Developer Resources
+- Agent instructions (when to use, how to call): https://gcwindowandpressurecleaning.com.au/agent-instructions.md
+- Agent and developer resource index: https://gcwindowandpressurecleaning.com.au/for-agents/
+- Sitemap index: https://gcwindowandpressurecleaning.com.au/sitemap.xml
+- Crawler policy: https://gcwindowandpressurecleaning.com.au/robots.txt
+- Markdown mirror of any page: append index.md to its URL, or send Accept: text/markdown
+  (acceptmarkdown.com compliant — responses carry Vary: Accept, Accept-Encoding)
+- Structured data: JSON-LD on every page (Organization, WebSite, LocalBusiness,
+  Service, Offer, AggregateRating, GeoCircle, BreadcrumbList, FAQPage)
+
 ## About
 Gold Coast Window and Pressure Cleaning is a locally owned and operated exterior cleaning company serving all Gold Coast suburbs and Northern NSW (Tweed region). Fully insured with police-checked staff.
 

@@ -56,6 +56,9 @@ function buildMetaHtml({ title, description, canonical, image, jsonLd = [] }) {
     `<title>${escapeHtml(title)}</title>`,
     `<meta name="description" content="${escapeHtml(description)}" />`,
     `<link rel="canonical" href="${can}" />`,
+    // RFC 8288 link to the markdown mirror of this page. Agents that don't do
+    // Accept negotiation can still discover the clean-text version.
+    `<link rel="alternate" type="text/markdown" href="${can}index.md" title="Markdown version" />`,
     `<meta property="og:type" content="website" />`,
     `<meta property="og:locale" content="en_AU" />`,
     `<meta property="og:site_name" content="Gold Coast Window and Pressure Cleaning" />`,
@@ -414,6 +417,10 @@ async function main() {
   // lastmod entirely because it never signals real content change.
   const CONTENT_DATE = "2026-07-17";
 
+  // Static pages that live in public/ rather than as React routes, so they
+  // never appear in `routes` but must still be in the sitemap.
+  const PUBLIC_STATIC_ROUTES = [{ path: "/for-agents" }];
+
   // Categorize routes
   const staticRoutes = routes.filter(
     (r) => r.path === "/" || r.path.startsWith("/guides") || (r.path.split("/").filter(Boolean).length === 1 && !r.path.startsWith("/commercial/") && r.path !== "/services")
@@ -454,7 +461,11 @@ async function main() {
   }
 
   // Write individual sitemaps
-  fs.writeFileSync(path.join(DIST, "sitemap-static.xml"), generateSitemapXml(staticRoutes), "utf8");
+  fs.writeFileSync(
+    path.join(DIST, "sitemap-static.xml"),
+    generateSitemapXml([...staticRoutes, ...PUBLIC_STATIC_ROUTES]),
+    "utf8"
+  );
   fs.writeFileSync(path.join(DIST, "sitemap-residential.xml"), generateSitemapXml(residentialRoutes), "utf8");
   fs.writeFileSync(path.join(DIST, "sitemap-commercial.xml"), generateSitemapXml(commercialRoutes), "utf8");
 

@@ -18,6 +18,10 @@
       .links a { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
       .primary { background: #2563eb; color: #fff; }
       .secondary { background: #fff; color: #1f2937; border: 1px solid #d1d5db; }
+      .agents { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; }
+      .agents h2 { font-size: 1rem; font-weight: 600; color: #374151; margin: 0 0 0.5rem; }
+      .agents p { font-size: 0.875rem; color: #6b7280; margin: 0; line-height: 1.8; }
+      .agents a { color: #2563eb; text-decoration: none; }
     </style>
   </head>
   <body>
@@ -35,6 +39,22 @@
         <a class="secondary" href="/instant-quote/">Get an Instant Quote</a>
         <a class="secondary" href="/service-areas/">Service Areas</a>
         <a class="secondary" href="/contact/">Contact</a>
+      </div>
+
+      <!-- Recovery pointers for automated clients. Rendered small and quiet for
+           humans; a real HTTP 404 is still returned by Cloudflare Pages. Clients
+           sending "Accept: text/markdown" get a pure markdown 404 body instead
+           (see functions/_middleware.js). -->
+      <div class="agents">
+        <h2>Looking for something else?</h2>
+        <p>
+          Full index of every page:
+          <a href="/sitemap.xml">/sitemap.xml</a> ·
+          site summary for AI agents: <a href="/llms.txt">/llms.txt</a> ·
+          agent instructions: <a href="/agent-instructions.md">/agent-instructions.md</a> ·
+          machine-readable resources: <a href="/for-agents/">/for-agents/</a> ·
+          expert guides: <a href="/guides/">/guides/</a>
+        </p>
       </div>
     </div>
   </body>

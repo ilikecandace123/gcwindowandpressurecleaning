@@ -10,7 +10,10 @@
     "prerender": "node scripts/prerender.mjs",
     "prerender:content": "node scripts/prerender-content.mjs",
     "mirrors": "python3 scripts/generate_markdown_mirrors.py",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node scripts/test-quote-engine.mjs && node scripts/test-agent-readiness.mjs",
+    "test:agents": "node scripts/test-agent-readiness.mjs",
+    "test:quote": "node scripts/test-quote-engine.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.475.0",

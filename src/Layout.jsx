@@ -253,7 +253,10 @@ export default function Layout({ children, currentPageName }) {
                    <img src="/images/logo.png" alt="Gold Coast Window and Pressure Cleaning logo" width="48" height="48" className="h-12 w-12 object-contain bg-white rounded-lg p-1" loading="lazy" decoding="async" />
                  </picture>
                 <div>
-                  <h3 className="text-lg font-bold leading-tight">Gold Coast Window and Pressure Cleaning</h3>
+                  {/* h2/h3, not h3/h4: the footer must not skip a heading level on
+                      pages whose body has only an h1 (e.g. /instant-quote/).
+                      Tailwind sizing is explicit, so the design is unchanged. */}
+                  <h2 className="text-lg font-bold leading-tight">Gold Coast Window and Pressure Cleaning</h2>
                       <p className="text-gray-300 text-xs">Your Trusted Local Cleaning Professionals</p>
                 </div>
               </div>
@@ -265,7 +268,7 @@ export default function Layout({ children, currentPageName }) {
             
             <div className="md:col-span-3 flex justify-center">
               <div className="text-center">
-                <h4 className="font-semibold mb-4">Our Services</h4>
+                <h3 className="font-semibold mb-4">Our Services</h3>
                 <div className="flex gap-16">
                   <div className="space-y-2 text-sm text-gray-300">
                     <Link to="/roof-cleaning/" className="block hover:text-white transition-colors">Roof Cleaning</Link>
@@ -285,7 +288,7 @@ export default function Layout({ children, currentPageName }) {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Contact Us</h4>
+              <h3 className="font-semibold mb-4">Contact Us</h3>
               <div className="space-y-2 text-sm text-gray-300">
                 <div className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
@@ -313,7 +316,7 @@ export default function Layout({ children, currentPageName }) {
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-1">
                 <Link to="/service-areas/" className="block hover:text-blue-400 transition-colors">
-                  <h4 className="font-semibold mb-4">Service Areas — View All Suburbs</h4>
+                  <h3 className="font-semibold mb-4">Service Areas — View All Suburbs</h3>
                 </Link>
                 <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-300">
                   {["Burleigh Heads", "Surfers Paradise", "Broadbeach", "Southport", "Robina",

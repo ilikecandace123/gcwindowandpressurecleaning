@@ -12,12 +12,21 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Markdown mirrors. RFC 7763 media type, and Vary: Accept so a CDN never hands
+# the HTML variant to a client that negotiated for markdown (see
+# functions/_middleware.js).
+# A single "*" matches across path segments, so this covers nested mirrors too
+# (/window-cleaning/burleigh-heads/index.md). A "/**/*.md" rule is NOT valid
+# Cloudflare _headers syntax — wrangler rejects it.
 /*.md
-  Content-Type: text/plain; charset=utf-8
+  Content-Type: text/markdown; charset=utf-8
+  Vary: Accept, Accept-Encoding
   Cache-Control: public, max-age=3600
   X-Robots-Tag: index, follow
 
-/**/*.md
-  Content-Type: text/plain; charset=utf-8
-  Cache-Control: public, max-age=3600
-  X-Robots-Tag: index, follow
+# HTML pages are content-negotiable too — same cache-key requirement.
+/
+  Vary: Accept, Accept-Encoding
+
+/*/
+  Vary: Accept, Accept-Encoding

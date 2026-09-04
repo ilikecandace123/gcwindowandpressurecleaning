@@ -75,7 +75,10 @@ export default function QuoteCTA({ variant = "section" }) {
         ) : (
           <>
             <div className="text-center mb-5">
-              <h3 className="text-2xl font-bold text-gray-900">Get Your Free Quote</h3>
+              {/* h2, not h3: this card sits directly under the page h1, so an h3
+                  would skip a heading level for screen readers and agent parsers.
+                  Tailwind sizing is explicit, so the rendered design is unchanged. */}
+              <h2 className="text-2xl font-bold text-gray-900">Get Your Free Quote</h2>
             </div>
             <Choices compact onInstant={() => setActive("instant")} onDetails={() => setActive("details")} />
             <p className="text-center text-xs text-gray-400 mt-4 flex items-center justify-center">

@@ -19,3 +19,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 _to_delete/
+
+# wrangler pages dev local state
+.wrangler/
