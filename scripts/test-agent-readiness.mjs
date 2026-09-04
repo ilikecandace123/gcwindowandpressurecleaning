@@ -192,8 +192,35 @@ function headingLevels(html) {
   return [...body.matchAll(/<h([1-6])[\s>]/gi)].map((m) => Number(m[1]));
 }
 const SAMPLE_PAGES = ["index.html", "window-cleaning/index.html", "instant-quote/index.html", "for-agents/index.html"];
+
+/**
+ * dist/ is a build artefact. If it predates the sources it was built from it
+ * describes an older site, and asserting against it produces failures that say
+ * nothing about the current code. Detect that and skip rather than cry wolf.
+ */
+function distIsStale() {
+  const home = path.join(DIST, "index.html");
+  if (!fs.existsSync(home)) return true;
+  const builtAt = fs.statSync(home).mtimeMs;
+  let newestSource = 0;
+  const walk = (dir) => {
+    if (!fs.existsSync(dir)) return;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name === "node_modules" || entry.name.startsWith(".")) continue;
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else newestSource = Math.max(newestSource, fs.statSync(full).mtimeMs);
+    }
+  };
+  for (const dir of ["src", "scripts", "public"]) walk(path.join(ROOT, dir));
+  return newestSource > builtAt;
+}
+
 if (!fs.existsSync(DIST)) {
   skipped("heading hierarchy over dist/", "run `npm run build` first");
+} else if (distIsStale()) {
+  skipped("heading hierarchy over dist/", "dist/ is older than src/ — rebuild to check it");
+  skipped("markdown alternate link over dist/", "dist/ is older than src/ — rebuild to check it");
 } else {
   for (const rel of SAMPLE_PAGES) {
     const p = path.join(DIST, rel);
