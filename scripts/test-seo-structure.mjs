@@ -165,5 +165,26 @@ console.log("\nSitemap lastmod:");
   }
 }
 
+// ── Favicon ─────────────────────────────────────────────────────────────────
+// Search Console reported /favicon.ico as a 404: browsers and Googlebot request
+// that path regardless of what <link rel="icon"> says, and the only icon the
+// site declared was a non-square AVIF that Safari cannot use as an icon.
+console.log("\nFavicon:");
+{
+  ok("public/favicon.ico exists", exists("public/favicon.ico"));
+  const ico = fs.readFileSync(path.join(ROOT, "public/favicon.ico"));
+  eq("favicon.ico has the ICO header", [ico[0], ico[1], ico[2], ico[3]], [0, 0, 1, 0]);
+  ok("favicon.ico is small", ico.length < 20_000);
+  ok("apple-touch-icon exists", exists("public/images/apple-touch-icon.png"));
+  ok("512px PNG icon exists", exists("public/images/icon-512.png"));
+  for (const f of ["index.html", "public/for-agents/index.html", "public/404.html"]) {
+    const html = read(f);
+    ok(`${f} links /favicon.ico`, html.includes('rel="icon" href="/favicon.ico"'));
+    ok(`${f} links the apple-touch-icon`, html.includes('rel="apple-touch-icon"'));
+    ok(`${f} no longer declares the AVIF logo as its icon`, !html.includes('rel="icon" type="image/avif"'));
+  }
+  ok("_headers caches /favicon.ico", /^\/favicon\.ico\n  Cache-Control: public/m.test(read("public/_headers")));
+}
+
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);
 process.exit(fail ? 1 : 0);

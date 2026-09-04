@@ -12,6 +12,9 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+/favicon.ico
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+
 # Markdown mirrors. RFC 7763 media type, and Vary: Accept so a CDN never hands
 # the HTML variant to a client that negotiated for markdown (see
 # functions/_middleware.js).
