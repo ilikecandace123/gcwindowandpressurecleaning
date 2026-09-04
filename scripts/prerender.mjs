@@ -428,6 +428,27 @@ async function main() {
   // lastmod entirely because it never signals real content change.
   const CONTENT_DATE = "2026-07-17";
 
+  // Per-URL overrides. A brand-new page claiming the site-wide July date is
+  // worse than no date at all: Google uses lastmod to prioritise recrawls, so
+  // "modified in July" on a page born in September says "nothing to see here",
+  // and every other lastmod on the site becomes a little less believable.
+  // Add an entry when a page is created or substantively rewritten.
+  const LASTMOD_OVERRIDES = {
+    "/for-agents": "2026-09-04", // created
+    "/privacy": "2026-09-04", // created
+    "/commercial": "2026-09-04", // created
+  };
+  // Whole sections that changed on a given date. The commercial templates were
+  // corrected on 04/09/2026 (duplicated "Commercial" in every h1 and Service
+  // schema), which is a real content change on all 574 commercial URLs.
+  const SECTION_LASTMOD = [{ prefix: "/commercial/", date: "2026-09-04" }];
+
+  function lastmodFor(path) {
+    if (LASTMOD_OVERRIDES[path]) return LASTMOD_OVERRIDES[path];
+    const section = SECTION_LASTMOD.find((s) => path.startsWith(s.prefix));
+    return section ? section.date : CONTENT_DATE;
+  }
+
   // Static pages that live in public/ rather than as React routes, so they
   // never appear in `routes` but must still be in the sitemap.
   const PUBLIC_STATIC_ROUTES = [{ path: "/for-agents" }];
@@ -465,9 +486,9 @@ async function main() {
       .map((r) => {
         const loc = withSlash(absolute(r.path === "/" ? "/" : r.path));
         const { priority, changefreq } = getUrlMeta(r.path);
-        // Use CONTENT_DATE (not build date) so lastmod reflects real content
-        // changes, not whenever the build pipeline last ran.
-        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${CONTENT_DATE}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+        // Never the build date: lastmod must reflect a real content change,
+        // per URL where one is known, otherwise the site-wide CONTENT_DATE.
+        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmodFor(r.path)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
       })
       .join("\n");
     return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries}\n</urlset>\n`;

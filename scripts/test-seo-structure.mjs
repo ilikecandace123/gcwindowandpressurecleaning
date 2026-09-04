@@ -133,5 +133,31 @@ console.log("\nBuilt output:");
   }
 }
 
+// ── lastmod honesty ──────────────────────────────────────────────────────────
+console.log("\nSitemap lastmod:");
+{
+  const pre = read("scripts/prerender.mjs");
+  ok("prerender has per-URL lastmod overrides", /const LASTMOD_OVERRIDES = \{/.test(pre));
+  ok("prerender has per-section lastmod", /const SECTION_LASTMOD = \[/.test(pre));
+  ok("sitemap entries use lastmodFor(), not the site-wide constant directly", /<lastmod>\$\{lastmodFor\(r\.path\)\}<\/lastmod>/.test(pre) && !/<lastmod>\$\{CONTENT_DATE\}<\/lastmod>/.test(pre));
+  for (const p of ["/for-agents", "/privacy", "/commercial"]) {
+    ok(`${p} carries its own creation date`, new RegExp(`"${p}":\\s*"2026-\\d\\d-\\d\\d"`).test(pre));
+  }
+  // The sitemap INDEX legitimately uses the build date — it describes when the
+  // child sitemap files were regenerated. Only <url> entries must not.
+  const urlTemplate = (pre.match(/return `  <url>[\s\S]*?<\/url>`;/) || [""])[0];
+  ok("no <url> lastmod is the build date", urlTemplate && !/\$\{today\}/.test(urlTemplate));
+  const dist = path.join(ROOT, "dist");
+  if (fs.existsSync(path.join(dist, "sitemap-static.xml"))) {
+    const stat = read("dist/sitemap-static.xml");
+    const dateFor = (u) => (stat.match(new RegExp(`com\\.au${u}</loc>\\s*<lastmod>([^<]+)</lastmod>`)) || [])[1];
+    const site = dateFor("/window-cleaning/");
+    for (const u of ["/for-agents/", "/privacy/", "/commercial/"]) {
+      const d = dateFor(u);
+      ok(`built sitemap: ${u} is not stamped with the older site-wide date (${d} vs ${site})`, d && site && d > site);
+    }
+  }
+}
+
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);
 process.exit(fail ? 1 : 0);

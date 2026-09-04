@@ -366,7 +366,7 @@ export default function Layout({ children, currentPageName }) {
               <span className="mx-2">·</span>
               <a href="/for-agents/" className="hover:text-white transition-colors">For AI Agents</a>
             </p>
-            <p className="text-sm text-gray-400 text-center mt-1">Last updated: July 2026</p>
+            <p className="text-sm text-gray-400 text-center mt-1">Last updated: September 2026</p>
           </div>
         </div>
       </footer>
