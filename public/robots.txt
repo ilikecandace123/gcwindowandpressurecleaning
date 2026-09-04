@@ -30,5 +30,7 @@ Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap.xml
 #   /llms.txt               site summary, services, indicative pricing, FAQs
 #   /agent-instructions.md  when to use this site, when not to, and how
 #   /for-agents/            index of every machine-readable resource
+#   /mcp                    MCP server (Streamable HTTP, read-only)
+#   /.well-known/mcp        MCP manifest
 # Any page can also be fetched as markdown: send "Accept: text/markdown",
 # or append index.md to the page URL.

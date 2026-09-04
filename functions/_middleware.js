@@ -34,6 +34,10 @@ function isPassThrough(pathname) {
   if (pathname.startsWith("/api/")) return true;
   if (pathname.startsWith("/assets/")) return true;
   if (pathname.startsWith("/images/")) return true;
+  // The MCP endpoint speaks JSON-RPC, and /.well-known files are fetched by
+  // exact path — neither has a markdown twin and neither is negotiable.
+  if (pathname === "/mcp" || pathname.startsWith("/mcp/")) return true;
+  if (pathname.startsWith("/.well-known/")) return true;
   // Anything with a file extension is a concrete resource, not a negotiable page.
   const last = pathname.split("/").pop();
   return Boolean(last && last.includes("."));

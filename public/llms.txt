@@ -36,10 +36,16 @@ booking flow, are disallowed in robots.txt, and must not be called.
 Full instructions: https://gcwindowandpressurecleaning.com.au/agent-instructions.md
 
 ## Agent and Developer Resources
+- MCP server (Model Context Protocol, Streamable HTTP, read-only, no auth): https://gcwindowandpressurecleaning.com.au/mcp
+  Tools: list_services, get_service_area, estimate_quote, get_pricing_options, get_page.
+  estimate_quote runs the same pricing engine as the website's instant quote. No tool creates a
+  booking or accepts personal information.
+- MCP manifest: https://gcwindowandpressurecleaning.com.au/.well-known/mcp
 - Agent instructions (when to use, how to call): https://gcwindowandpressurecleaning.com.au/agent-instructions.md
 - Agent and developer resource index: https://gcwindowandpressurecleaning.com.au/for-agents/
 - Sitemap index: https://gcwindowandpressurecleaning.com.au/sitemap.xml
 - Crawler policy: https://gcwindowandpressurecleaning.com.au/robots.txt
+- Privacy policy: https://gcwindowandpressurecleaning.com.au/privacy/
 - Markdown mirror of any page: append index.md to its URL, or send Accept: text/markdown
   (acceptmarkdown.com compliant — responses carry Vary: Accept, Accept-Encoding)
 - Structured data: JSON-LD on every page (Organization, WebSite, LocalBusiness,

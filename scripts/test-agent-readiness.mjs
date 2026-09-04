@@ -12,6 +12,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseAccept, qualityFor, negotiate, mirrorPath } from "../functions/_middleware.js";
+import { buildOrganizationSchema as orgSchema, buildLocalBusinessSchema as localSchema } from "../src/data/schema.js";
+
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const PUBLIC = path.join(ROOT, "public");
@@ -42,6 +44,12 @@ function skipped(name, why) {
 }
 
 const read = (p) => fs.readFileSync(p, "utf8");
+
+// Tool names the MCP server actually implements, read from its source so the
+// manifest and the docs are checked against reality rather than against a copy.
+const serverToolNames = new Set(
+  [...read(path.join(ROOT, "functions", "mcp.js")).matchAll(/^\s{4}name: "([a-z_]+)",$/gm)].map((m) => m[1])
+);
 
 // ── Accept parsing ──────────────────────────────────────────────────────────
 console.log("Accept header parsing (RFC 9110):");
@@ -252,6 +260,109 @@ if (!fs.existsSync(DIST)) {
       /<link rel="alternate" type="text\/markdown"/.test(read(home))
     );
   }
+}
+
+// ── Organization schema completeness ────────────────────────────────────────
+console.log("\nOrganization schema:");
+{
+  const org = orgSchema();
+  ok("has address (PostalAddress)", org.address && org.address["@type"] === "PostalAddress");
+  ok("address is complete", ["streetAddress", "addressLocality", "addressRegion", "postalCode", "addressCountry"].every((k) => org.address[k]));
+  ok("has contactPoint", Array.isArray(org.contactPoint) && org.contactPoint.length > 0);
+  ok("every contactPoint is typed", (org.contactPoint || []).every((c) => c["@type"] === "ContactPoint"));
+  ok("every contactPoint has a contactType", (org.contactPoint || []).every((c) => typeof c.contactType === "string" && c.contactType));
+  ok("every contactPoint has phone AND email", (org.contactPoint || []).every((c) => c.telephone && c.email));
+  ok("declares areaServed", (org.contactPoint || []).every((c) => Array.isArray(c.areaServed) && c.areaServed.length));
+  // (07) 5651 2386 is a normal landline — claiming TollFree would be false.
+  ok("makes no toll-free claim", !JSON.stringify(org).includes("TollFree"));
+  {
+    const local = localSchema();
+    const orgHours = (org.contactPoint || []).find((c) => c.hoursAvailable)?.hoursAvailable;
+    const localHours = (local.openingHoursSpecification || [])[0];
+    eq("contactPoint hours match openingHoursSpecification", [orgHours?.opens, orgHours?.closes], [localHours?.opens, localHours?.closes]);
+  }
+}
+
+// ── Trust anchor pages ──────────────────────────────────────────────────────
+console.log("\nTrust anchor pages:");
+{
+  const p = path.join(ROOT, "src", "pages", "Privacy.jsx");
+  ok("privacy page component exists", fs.existsSync(p));
+  if (fs.existsSync(p)) {
+    const src = read(p);
+    // Strip JSX tags/attributes to approximate the rendered prose length.
+    const prose = src.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ");
+    ok(`privacy prose well over 500 chars (${prose.length})`, prose.length > 2000);
+    for (const topic of [/collect/i, /Australian Privacy Principles/, /ServiceM8/, /cookie/i, /delete/i, /complain/i]) {
+      ok(`privacy covers ${topic}`, topic.test(src));
+    }
+    ok("privacy is canonicalised", src.includes("https://gcwindowandpressurecleaning.com.au/privacy/"));
+    ok("privacy is not noindexed", !/noindex/.test(src));
+  }
+  const app = read(path.join(ROOT, "src", "App.jsx"));
+  ok("privacy route registered", /path="\/privacy"/.test(app));
+  const prerender = read(path.join(ROOT, "scripts", "prerender.mjs"));
+  ok("privacy prerendered", /path:\s*"\/privacy"/.test(prerender));
+  ok("privacy counts as a sitemap utility page", /UTILITY_PATHS[\s\S]{0,120}\/privacy/.test(prerender));
+  const mirrors = read(path.join(ROOT, "scripts", "generate_markdown_mirrors.py"));
+  ok("privacy gets a markdown mirror", !/SKIP_PATH_SEGMENTS = \{[^}]*"privacy"/.test(mirrors));
+  const layout = read(path.join(ROOT, "src", "Layout.jsx"));
+  for (const href of ["/about/", "/contact/", "/privacy/", "/for-agents/"]) {
+    ok(`footer links ${href}`, layout.includes(`"${href}"`));
+  }
+  // /for-agents/ is static, outside the router — a <Link> would 404.
+  ok("for-agents uses a plain anchor, not a router Link", /<a href="\/for-agents\/"/.test(layout));
+}
+
+// ── MCP server ──────────────────────────────────────────────────────────────
+console.log("\nMCP manifest and server:");
+{
+  const manifestPath = path.join(PUBLIC, ".well-known", "mcp");
+  ok("manifest exists at /.well-known/mcp", fs.existsSync(manifestPath));
+  if (fs.existsSync(manifestPath)) {
+    let manifest = null;
+    try {
+      manifest = JSON.parse(read(manifestPath));
+    } catch (e) {
+      ok(`manifest is valid JSON (${e.message})`, false);
+    }
+    if (manifest) {
+      eq("declares streamable-http transport", manifest.servers[0].transport, "streamable-http");
+      eq("endpoint URL", manifest.servers[0].url, "https://gcwindowandpressurecleaning.com.au/mcp");
+      ok("declares the current protocol version", manifest.servers[0].protocolVersions.includes("2025-06-18"));
+      ok("declares tools capability", manifest.capabilities.tools === true);
+      ok("marked read-only", manifest.readOnly === true);
+      ok("names the business", /Gold Coast Window and Pressure Cleaning/.test(JSON.stringify(manifest)));
+      ok("never references the franchise brand", !/jim'?s/i.test(JSON.stringify(manifest)));
+      const manifestTools = manifest.tools.map((t) => t.name).sort();
+      eq("manifest tool list matches the server", manifestTools, [...serverToolNames].sort());
+    }
+  }
+  const src = read(path.join(ROOT, "functions", "mcp.js"));
+  ok("no lead/booking/submit tool is exposed", !/(book|submit|create_job|lead)\s*[:(]/i.test(src.split("const TOOLS")[1].split("];")[0]));
+  ok("refuses to read /api/ through get_page", src.includes('requested.startsWith("/api/")'));
+  const middleware = read(path.join(ROOT, "functions", "_middleware.js"));
+  ok("/mcp bypasses content negotiation", middleware.includes('pathname === "/mcp"'));
+  ok("/.well-known bypasses content negotiation", middleware.includes('pathname.startsWith("/.well-known/")'));
+  const headers = read(path.join(PUBLIC, "_headers"));
+  ok("manifest served as JSON", /\/\.well-known\/mcp[\s\S]{0,120}application\/json/.test(headers));
+}
+
+// ── Discoverability of the new surfaces ─────────────────────────────────────
+console.log("\nDiscoverability:");
+{
+  const llms = read(path.join(PUBLIC, "llms.txt"));
+  ok("llms.txt advertises the MCP server", llms.includes("/mcp"));
+  ok("llms.txt advertises the manifest", llms.includes("/.well-known/mcp"));
+  ok("llms.txt links the privacy policy", llms.includes("/privacy/"));
+  const instructions = read(path.join(PUBLIC, "agent-instructions.md"));
+  ok("agent instructions document the MCP server", /Model Context Protocol server/i.test(instructions));
+  ok("agent instructions list every tool", [...serverToolNames].every((t) => instructions.includes(t)));
+  const agentsPage = read(path.join(PUBLIC, "for-agents", "index.html"));
+  ok("for-agents documents the MCP server", agentsPage.includes('href="/.well-known/mcp"'));
+  ok("for-agents lists every tool", [...serverToolNames].every((t) => agentsPage.includes(t)));
+  const robots = read(path.join(PUBLIC, "robots.txt"));
+  ok("robots.txt points at the MCP endpoint", robots.includes("/.well-known/mcp"));
 }
 
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);

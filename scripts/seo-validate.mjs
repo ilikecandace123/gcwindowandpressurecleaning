@@ -46,11 +46,35 @@ function urlToFile(url) {
 }
 
 // Resolve an internal href to a file that must exist in dist/.
+// Paths served by a Cloudflare Pages Function rather than a file in dist/.
+// functions/mcp.js serves /mcp, functions/api/*.js serve /api/*, and so on —
+// there is nothing on disk to stat, so a file check would report a false break.
+const FUNCTION_ROUTES = (() => {
+  const dir = path.join(path.dirname(DIST), "functions");
+  const routes = new Set();
+  const walk = (d, prefix) => {
+    if (!fs.existsSync(d)) return;
+    for (const entry of fs.readdirSync(d, { withFileTypes: true })) {
+      if (entry.isDirectory()) walk(path.join(d, entry.name), `${prefix}/${entry.name}`);
+      else if (entry.name.endsWith(".js") && !entry.name.startsWith("_")) {
+        routes.add(`${prefix}/${entry.name.replace(/\.js$/, "")}`);
+      }
+    }
+  };
+  walk(dir, "");
+  return routes;
+})();
+
 function internalHrefToFile(href) {
   let p = href.replace(SITE, "").replace(/[#?].*$/, "");
   if (p === "" || p === "/") return path.join(DIST, "index.html");
   if (!p.startsWith("/")) return null; // relative/odd — skip
+  if (FUNCTION_ROUTES.has(p.replace(/\/$/, ""))) return null; // served by a Function
   if (/\.[a-z0-9]+$/i.test(p)) return path.join(DIST, p); // file (image, css…)
+  // Extensionless files that really exist (e.g. /.well-known/mcp) are valid as
+  // they stand — don't rewrite them to <path>/index.html.
+  const asFile = path.join(DIST, p.replace(/\/$/, ""));
+  if (fs.existsSync(asFile) && fs.statSync(asFile).isFile()) return asFile;
   return path.join(DIST, p.replace(/\/$/, ""), "index.html");
 }
 

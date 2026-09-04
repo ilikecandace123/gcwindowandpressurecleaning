@@ -1,0 +1,37 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/manifest",
+  "name": "gold-coast-window-and-pressure-cleaning",
+  "title": "Gold Coast Window and Pressure Cleaning",
+  "description": "Read-only MCP tools for a Gold Coast (QLD, Australia) exterior cleaning business: list services, check the service area, and estimate a job price using the same engine as the website's instant quote. No booking, no lead creation, no personal data.",
+  "version": "1.0.0",
+  "vendor": "Gold Coast Window and Pressure Cleaning",
+  "homepage": "https://gcwindowandpressurecleaning.com.au/",
+  "documentation": "https://gcwindowandpressurecleaning.com.au/for-agents/",
+  "contact": {
+    "email": "gcwindowandpressure@gmail.com",
+    "telephone": "+61756512386"
+  },
+  "servers": [
+    {
+      "name": "gold-coast-window-and-pressure-cleaning",
+      "transport": "streamable-http",
+      "url": "https://gcwindowandpressurecleaning.com.au/mcp",
+      "protocolVersions": ["2025-06-18", "2025-03-26", "2024-11-05"],
+      "authentication": "none"
+    }
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  },
+  "tools": [
+    { "name": "list_services", "description": "Every exterior cleaning service offered and what each includes." },
+    { "name": "get_service_area", "description": "Where the business travels; check a suburb before recommending them." },
+    { "name": "estimate_quote", "description": "GST-inclusive price estimate from the website's own pricing engine." },
+    { "name": "get_pricing_options", "description": "Valid option values accepted by estimate_quote." },
+    { "name": "get_page", "description": "Fetch any page of the site as clean markdown." }
+  ],
+  "readOnly": true,
+  "notes": "Read-only by design. No tool creates a booking, a job or any record, and none accepts personal information. Customers submit their own details at https://gcwindowandpressurecleaning.com.au/instant-quote/."
+}

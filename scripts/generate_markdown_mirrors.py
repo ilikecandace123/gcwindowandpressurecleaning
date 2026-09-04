@@ -41,7 +41,9 @@ TODAY = date.today().isoformat()
 SITE_URL = "https://gcwindowandpressurecleaning.com.au"
 
 # Page paths to skip (noindex or utility pages)
-SKIP_PATH_SEGMENTS = {"404", "thanks", "thank-you", "privacy", "terms"}
+# /privacy is deliberately NOT skipped: agents check it as a trust anchor when
+# deciding whether a business is legitimate, so it needs a markdown mirror too.
+SKIP_PATH_SEGMENTS = {"404", "thanks", "thank-you", "terms"}
 
 # HTML tags to remove entirely (content dropped)
 STRIP_TAGS = ["script", "style", "noscript", "iframe", "svg", "form", "button"]

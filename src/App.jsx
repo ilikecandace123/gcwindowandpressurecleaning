@@ -24,6 +24,7 @@ const Guides = lazy(() => import('./pages/Guides'));
 const GuideArticle = lazy(() => import('./pages/GuideArticle'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
+const Privacy = lazy(() => import('./pages/Privacy'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const RouteFallback = () => (
@@ -60,6 +61,7 @@ function App() {
           <Route path="/guides/:slug" element={<Layout currentPageName="GuideArticle"><GuideArticle /></Layout>} />
           <Route path="/about" element={<Layout currentPageName="About"><About /></Layout>} />
           <Route path="/contact" element={<Layout currentPageName="Contact"><Contact /></Layout>} />
+          <Route path="/privacy" element={<Layout currentPageName="Privacy"><Privacy /></Layout>} />
 
           {/* Commercial service + suburb pages (must come BEFORE the generic /:service/:suburb route) */}
           <Route

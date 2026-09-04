@@ -350,6 +350,18 @@ export default function Layout({ children, currentPageName }) {
             <div className="text-center text-gray-300 text-sm mb-2">
               <p>© {new Date().getFullYear()} Gold Coast Window and Pressure Cleaning.</p>
             </div>
+            {/* Trust-anchor links. Agents check about/contact/privacy before
+                recommending a business, and they need to be reachable from
+                every page, not just the sitemap. */}
+            <p className="text-sm text-gray-400 text-center">
+              <Link to="/about/" className="hover:text-white transition-colors">About</Link>
+              <span className="mx-2">·</span>
+              <Link to="/contact/" className="hover:text-white transition-colors">Contact</Link>
+              <span className="mx-2">·</span>
+              <Link to="/privacy/" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <span className="mx-2">·</span>
+              <a href="/for-agents/" className="hover:text-white transition-colors">For AI Agents</a>
+            </p>
             <p className="text-sm text-gray-400 text-center mt-1">Last updated: July 2026</p>
           </div>
         </div>

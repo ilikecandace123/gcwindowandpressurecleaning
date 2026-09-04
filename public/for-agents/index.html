@@ -89,6 +89,39 @@
         <li><a href="/sitemap.xml">/sitemap.xml</a> — sitemap index covering every page.</li>
       </ul>
 
+      <h2>MCP server</h2>
+      <p>
+        There is a read-only
+        <a href="https://modelcontextprotocol.io" rel="noopener">Model Context Protocol</a>
+        server at <code>/mcp</code>, using the Streamable HTTP transport, no
+        authentication. It lets an assistant query this business directly rather
+        than parsing pages — including a real price from the same engine that
+        powers the website&rsquo;s instant quote.
+      </p>
+      <table>
+        <thead><tr><th>Tool</th><th>What it answers</th></tr></thead>
+        <tbody>
+          <tr><td><code>list_services</code></td><td>Every service offered and what each includes</td></tr>
+          <tr><td><code>get_service_area</code></td><td>Whether a suburb is covered — check this first</td></tr>
+          <tr><td><code>estimate_quote</code></td><td>A GST-inclusive price from the site&rsquo;s own pricing engine</td></tr>
+          <tr><td><code>get_pricing_options</code></td><td>The exact option values <code>estimate_quote</code> accepts</td></tr>
+          <tr><td><code>get_page</code></td><td>Any page of this site as clean markdown</td></tr>
+        </tbody>
+      </table>
+      <p>Manifest: <a href="/.well-known/mcp">/.well-known/mcp</a>. Handshake:</p>
+      <pre><code>curl -sX POST https://gcwindowandpressurecleaning.com.au/mcp \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'</code></pre>
+      <div class="note">
+        <p style="color: inherit; margin: 0">
+          <strong>Read-only by design.</strong> No tool creates a booking, a job
+          or any record, and none accepts personal information. Send customers to
+          <a href="/instant-quote/">/instant-quote/</a> to submit their own
+          details.
+        </p>
+      </div>
+
       <h2>Markdown content negotiation</h2>
       <p>
         This site is
@@ -116,6 +149,9 @@
         <tbody>
           <tr><td>Site summary for LLMs</td><td><a href="/llms.txt">/llms.txt</a></td><td><code>text/plain</code></td></tr>
           <tr><td>Agent instructions</td><td><a href="/agent-instructions.md">/agent-instructions.md</a></td><td><code>text/markdown</code></td></tr>
+          <tr><td>MCP server (Streamable HTTP)</td><td><a href="/mcp">/mcp</a></td><td><code>JSON-RPC 2.0</code></td></tr>
+          <tr><td>MCP manifest</td><td><a href="/.well-known/mcp">/.well-known/mcp</a></td><td><code>application/json</code></td></tr>
+          <tr><td>Privacy policy</td><td><a href="/privacy/">/privacy/</a></td><td><code>text/html</code></td></tr>
           <tr><td>Sitemap index</td><td><a href="/sitemap.xml">/sitemap.xml</a></td><td><code>application/xml</code></td></tr>
           <tr><td>Static pages sitemap</td><td><a href="/sitemap-static.xml">/sitemap-static.xml</a></td><td><code>application/xml</code></td></tr>
           <tr><td>Residential pages sitemap</td><td><a href="/sitemap-residential.xml">/sitemap-residential.xml</a></td><td><code>application/xml</code></td></tr>
@@ -137,10 +173,11 @@
         execute JavaScript still see the full text.
       </p>
 
-      <h2>Is there a public API?</h2>
+      <h2>Is there a public REST API?</h2>
       <div class="note">
         <p style="color: inherit; margin: 0">
-          <strong>No.</strong> The <code>/api/*</code> endpoints on this domain
+          <strong>No — use the MCP server above instead.</strong> The
+          <code>/api/*</code> endpoints on this domain
           are private form handlers for this site's own quote and booking flow.
           They are disallowed in <code>robots.txt</code>, undocumented, and
           unsupported for third-party use — calling them creates real jobs for a

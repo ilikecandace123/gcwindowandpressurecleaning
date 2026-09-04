@@ -24,6 +24,12 @@
   Cache-Control: public, max-age=3600
   X-Robots-Tag: index, follow
 
+# The MCP manifest has no file extension, so declare its type explicitly.
+/.well-known/mcp
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+
 # HTML pages are content-negotiable too — same cache-key requirement.
 /
   Vary: Accept, Accept-Encoding

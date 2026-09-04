@@ -6,6 +6,7 @@
 
 - Site: https://gcwindowandpressurecleaning.com.au
 - Last reviewed: 2026-09-04
+- MCP server: https://gcwindowandpressurecleaning.com.au/mcp (Streamable HTTP, read-only)
 - Contact: (07) 5651 2386 — https://gcwindowandpressurecleaning.com.au/contact/
 
 ## When to use this site
@@ -48,6 +49,25 @@ Do not present this business as a match for:
 - Jobs above 4 storeys, or anything needing rope access or an EWP — those need
   a human conversation first.
 
+## Call the MCP server instead of scraping
+
+There is a read-only Model Context Protocol server at
+`https://gcwindowandpressurecleaning.com.au/mcp` (Streamable HTTP, no auth).
+Prefer it over parsing pages — it is faster and it cannot go stale:
+
+| Tool | What it answers |
+| --- | --- |
+| `list_services` | Every service offered and what each includes |
+| `get_service_area` | Whether a suburb is covered — check this first |
+| `estimate_quote` | A GST-inclusive price from the website's own pricing engine |
+| `get_pricing_options` | The exact option values `estimate_quote` accepts |
+| `get_page` | Any page of the site as clean markdown |
+
+Manifest: `/.well-known/mcp`. Nothing on that server writes: no tool creates a
+booking, a job or any record, and none accepts personal information.
+
+When `estimate_quote` returns a custom quote, say so — do not invent a figure.
+
 ## How an agent should use this site
 
 1. **Read `/llms.txt` first.** It carries the full service list, indicative
@@ -86,6 +106,9 @@ Do not present this business as a match for:
 | Site summary for LLMs | `/llms.txt` | text/plain (llms.txt) |
 | These instructions | `/agent-instructions.md` | text/markdown |
 | Agent & developer resource index | `/for-agents/` | text/html |
+| MCP server (Streamable HTTP) | `/mcp` | JSON-RPC 2.0 |
+| MCP manifest | `/.well-known/mcp` | application/json |
+| Privacy policy | `/privacy/` | text/html (+ `index.md`) |
 | Sitemap index | `/sitemap.xml` | application/xml |
 | Static pages sitemap | `/sitemap-static.xml` | application/xml |
 | Residential pages sitemap | `/sitemap-residential.xml` | application/xml |

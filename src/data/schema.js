@@ -195,6 +195,34 @@ export function buildOrganizationSchema() {
       "postalCode": BUSINESS_ADDRESS.postalCode,
       "addressCountry": BUSINESS_ADDRESS.addressCountry
     },
+    // contactPoint lets an assistant answer "how do I contact them?" without
+    // scraping the page, and is what the Is Agentic audit checks for.
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": BUSINESS_PHONE,
+        "email": BUSINESS_EMAIL,
+        "areaServed": ["AU-QLD", "AU-NSW"],
+        "availableLanguage": ["English"],
+        // Mirrors openingHoursSpecification above — do not let the two drift.
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      },
+      {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "telephone": BUSINESS_PHONE,
+        "email": BUSINESS_EMAIL,
+        "areaServed": ["AU-QLD", "AU-NSW"],
+        "availableLanguage": ["English"],
+        "url": `${SITE_URL}/instant-quote/`
+      }
+    ],
     "sameAs": [
       "https://www.facebook.com/goldcoastwindowandpressurecleaning",
       "https://g.page/goldcoastwindowcleaning"

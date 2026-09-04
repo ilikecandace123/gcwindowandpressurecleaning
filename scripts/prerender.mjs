@@ -205,6 +205,18 @@ async function main() {
     ],
   });
 
+  routes.push({
+    path: "/privacy",
+    title: "Privacy Policy | Gold Coast Window & Pressure",
+    description:
+      "How Gold Coast Window and Pressure Cleaning collects, uses, stores and discloses your personal information when you request a quote or book a clean.",
+    canonical: `${SITE}/privacy`,
+    jsonLd: [
+      buildLocalBusinessSchema(),
+      buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Privacy Policy", url: "/privacy" }])
+    ],
+  });
+
   // Expert guides hub + articles (AI-search / AI Overviews content)
   routes.push({
     path: "/guides",
@@ -431,7 +443,7 @@ async function main() {
   const commercialRoutes = routes.filter((r) => r.path.startsWith("/commercial/"));
 
   // Assign priority and changefreq based on page type
-  const UTILITY_PATHS = new Set(["/about", "/contact", "/service-areas"]);
+  const UTILITY_PATHS = new Set(["/about", "/contact", "/service-areas", "/privacy"]);
   const SERVICE_SLUGS = new Set([
     "/window-cleaning", "/window-cleaning-plans", "/roof-cleaning", "/house-softwash",
     "/pressure-cleaning", "/gutter-cleaning", "/solar-panel-cleaning",
