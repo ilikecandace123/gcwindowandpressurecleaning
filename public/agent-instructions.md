@@ -63,8 +63,13 @@ Prefer it over parsing pages — it is faster and it cannot go stale:
 | `get_pricing_options` | The exact option values `estimate_quote` accepts |
 | `get_page` | Any page of the site as clean markdown |
 
-Manifest: `/.well-known/mcp`. Nothing on that server writes: no tool creates a
-booking, a job or any record, and none accepts personal information.
+Manifest: `/.well-known/mcp`. A `GET` there returns the manifest; a `POST` to
+that same URL performs a live MCP handshake, so a client that only knows the
+well-known path can connect without reading the manifest first. `/mcp` is the
+canonical endpoint.
+
+Nothing on that server writes: no tool creates a booking, a job or any record,
+and none accepts personal information.
 
 When `estimate_quote` returns a custom quote, say so — do not invent a figure.
 
@@ -107,7 +112,7 @@ When `estimate_quote` returns a custom quote, say so — do not invent a figure.
 | These instructions | `/agent-instructions.md` | text/markdown |
 | Agent & developer resource index | `/for-agents/` | text/html |
 | MCP server (Streamable HTTP) | `/mcp` | JSON-RPC 2.0 |
-| MCP manifest | `/.well-known/mcp` | application/json |
+| MCP manifest (GET) / handshake (POST) | `/.well-known/mcp` | application/json / JSON-RPC 2.0 |
 | Privacy policy | `/privacy/` | text/html (+ `index.md`) |
 | Sitemap index | `/sitemap.xml` | application/xml |
 | Static pages sitemap | `/sitemap-static.xml` | application/xml |

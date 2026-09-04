@@ -32,3 +32,16 @@
 # Legacy house-soft-wash (with dash) → house-softwash
 /house-soft-wash         /house-softwash/           301
 /house-soft-wash/        /house-softwash/           301
+
+# Predictable developer-resource URLs. /for-agents/ stays canonical so an
+# already-crawled URL is never churned; these just make the obvious guesses work.
+/developers              /for-agents/               301
+/developers/             /for-agents/               301
+/developer               /for-agents/               301
+/developer/              /for-agents/               301
+/docs                    /for-agents/               301
+/docs/                   /for-agents/               301
+/api-docs                /for-agents/               301
+/api-docs/               /for-agents/               301
+/mcp-server              /for-agents/               301
+/mcp-server/             /for-agents/               301

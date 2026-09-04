@@ -365,5 +365,47 @@ console.log("\nDiscoverability:");
   ok("robots.txt points at the MCP endpoint", robots.includes("/.well-known/mcp"));
 }
 
+// ── Well-known live handshake + predictable dev URLs ────────────────────────
+console.log("\nWell-known handshake and predictable URLs:");
+{
+  const mw = read(path.join(ROOT, "functions", "_middleware.js"));
+  ok("middleware imports the MCP handler", /import \{ onRequest as mcpRequest \} from "\.\/mcp\.js"/.test(mw));
+  ok("POST /.well-known/mcp is delegated to it", /WELL_KNOWN_MCP && request\.method !== "GET"/.test(mw));
+  ok("GET /.well-known/mcp still falls through to the manifest", /request\.method !== "GET" && request\.method !== "HEAD"/.test(mw));
+
+  const manifest = JSON.parse(read(path.join(PUBLIC, ".well-known", "mcp")));
+  const urls = manifest.servers.map((s) => s.url);
+  ok("manifest advertises the canonical endpoint", urls.includes("https://gcwindowandpressurecleaning.com.au/mcp"));
+  ok("manifest advertises the well-known alias", urls.includes("https://gcwindowandpressurecleaning.com.au/.well-known/mcp"));
+  ok("every advertised server declares streamable-http", manifest.servers.every((s) => s.transport === "streamable-http"));
+  ok("every advertised server declares 2025-06-18", manifest.servers.every((s) => s.protocolVersions.includes("2025-06-18")));
+
+  const redirects = read(path.join(PUBLIC, "_redirects"));
+  for (const guess of ["/developers", "/developer", "/docs", "/api-docs", "/mcp-server"]) {
+    ok(`${guess} resolves to the docs page`, new RegExp(`^${guess}\\s+/for-agents/\\s+301`, "m").test(redirects));
+  }
+  // /for-agents/ must stay canonical — redirecting it would churn a crawled URL.
+  ok("/for-agents/ is not itself redirected", !/^\/for-agents\/?\s+\//m.test(redirects));
+}
+
+// ── Name-based discoverability of the docs page ─────────────────────────────
+console.log("\nName-based discoverability:");
+{
+  const html = read(path.join(PUBLIC, "for-agents", "index.html"));
+  const title = ((html.match(/<title>([^<]*)<\/title>/) || [])[1] || "").replace(/&amp;/g, "&");
+  ok(`title carries the business name ("${title}")`, /Gold Coast Window (and|&) Pressure Cleaning/.test(title));
+  ok("title says what the page is for", /Developer|Agent/i.test(title));
+  ok(`title within 30-60 chars (${title.length})`, title.length >= 30 && title.length <= 60);
+  const h1 = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1] || "";
+  ok("h1 carries the full business name", /Gold Coast Window and Pressure Cleaning/.test(h1));
+  ok("h1 names both audiences", /Agent/.test(h1) && /Developer/.test(h1));
+  const lede = html.split('class="lede"')[1] || "";
+  ok("lede names the business and the MCP server", /Gold Coast Window and\s+Pressure Cleaning/.test(lede) && /MCP server/.test(lede));
+  ok("indexable with full snippets", /content="index, follow, max-snippet:-1/.test(html));
+  const llms = read(path.join(PUBLIC, "llms.txt"));
+  ok("llms.txt lists the developer documentation URL", /Developer documentation: https:\/\/gcwindowandpressurecleaning\.com\.au\/for-agents\//.test(llms));
+  ok("llms.txt names the predictable aliases", /\/developers/.test(llms));
+}
+
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);
 process.exit(fail ? 1 : 0);

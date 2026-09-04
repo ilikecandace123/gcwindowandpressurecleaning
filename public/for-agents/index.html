@@ -3,23 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gold Coast Window &amp; Pressure Cleaning — For Agents</title>
+    <title>Gold Coast Window &amp; Pressure Cleaning — Developer Docs</title>
     <meta
       name="description"
       content="Machine-readable resources for Gold Coast Window and Pressure Cleaning: llms.txt, agent instructions, markdown mirrors, sitemaps and JSON-LD structured data."
     />
     <link rel="canonical" href="https://gcwindowandpressurecleaning.com.au/for-agents/" />
     <link rel="alternate" type="text/markdown" href="/agent-instructions.md" title="Agent instructions (markdown)" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_AU" />
     <meta property="og:site_name" content="Gold Coast Window and Pressure Cleaning" />
-    <meta property="og:title" content="Gold Coast Window &amp; Pressure Cleaning — For Agents" />
+    <meta property="og:title" content="Gold Coast Window &amp; Pressure Cleaning — Developer Docs" />
     <meta property="og:description" content="Machine-readable resources for Gold Coast Window and Pressure Cleaning: llms.txt, agent instructions, markdown mirrors, sitemaps and JSON-LD structured data." />
     <meta property="og:url" content="https://gcwindowandpressurecleaning.com.au/for-agents/" />
     <meta property="og:image" content="https://gcwindowandpressurecleaning.com.au/images/logo.avif" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Gold Coast Window &amp; Pressure Cleaning — For Agents" />
+    <meta name="twitter:title" content="Gold Coast Window &amp; Pressure Cleaning — Developer Docs" />
     <meta name="twitter:description" content="Machine-readable resources for Gold Coast Window and Pressure Cleaning: llms.txt, agent instructions, markdown mirrors, sitemaps and JSON-LD structured data." />
     <meta name="twitter:image" content="https://gcwindowandpressurecleaning.com.au/images/logo.avif" />
     <script type="application/ld+json">
@@ -77,9 +77,10 @@
     <div class="wrap">
       <h1>Gold Coast Window and Pressure Cleaning — Agent &amp; Developer Resources</h1>
       <p class="lede">
-        This page is the index of every machine-readable resource published by
-        Gold Coast Window and Pressure Cleaning. It is static HTML and needs no
-        JavaScript.
+        Developer and AI-agent documentation for <strong>Gold Coast Window and
+        Pressure Cleaning</strong> — the MCP server, structured data, and every
+        machine-readable resource this site publishes. Static HTML, no
+        JavaScript required.
       </p>
 
       <h2>Start here</h2>
@@ -108,7 +109,13 @@
           <tr><td><code>get_page</code></td><td>Any page of this site as clean markdown</td></tr>
         </tbody>
       </table>
-      <p>Manifest: <a href="/.well-known/mcp">/.well-known/mcp</a>. Handshake:</p>
+      <p>
+        Manifest: <a href="/.well-known/mcp">/.well-known/mcp</a> — a
+        <code>GET</code> there returns the manifest, and a <code>POST</code> to
+        the same URL performs a live MCP handshake, so a client that only knows
+        the well-known path can connect without reading the manifest first.
+        <code>/mcp</code> is the canonical endpoint. Handshake:
+      </p>
       <pre><code>curl -sX POST https://gcwindowandpressurecleaning.com.au/mcp \
   -H "Content-Type: application/json" \
   -H "Accept: application/json, text/event-stream" \

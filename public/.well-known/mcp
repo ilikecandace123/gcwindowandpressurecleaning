@@ -16,8 +16,25 @@
       "name": "gold-coast-window-and-pressure-cleaning",
       "transport": "streamable-http",
       "url": "https://gcwindowandpressurecleaning.com.au/mcp",
-      "protocolVersions": ["2025-06-18", "2025-03-26", "2024-11-05"],
-      "authentication": "none"
+      "protocolVersions": [
+        "2025-06-18",
+        "2025-03-26",
+        "2024-11-05"
+      ],
+      "authentication": "none",
+      "note": "Canonical endpoint. POSTing a JSON-RPC message to /.well-known/mcp performs the same handshake, for clients that only know the well-known path."
+    },
+    {
+      "name": "gold-coast-window-and-pressure-cleaning",
+      "transport": "streamable-http",
+      "url": "https://gcwindowandpressurecleaning.com.au/.well-known/mcp",
+      "protocolVersions": [
+        "2025-06-18",
+        "2025-03-26",
+        "2024-11-05"
+      ],
+      "authentication": "none",
+      "note": "Discovery alias: GET returns this manifest, POST performs a live MCP handshake."
     }
   ],
   "capabilities": {
@@ -26,11 +43,26 @@
     "prompts": false
   },
   "tools": [
-    { "name": "list_services", "description": "Every exterior cleaning service offered and what each includes." },
-    { "name": "get_service_area", "description": "Where the business travels; check a suburb before recommending them." },
-    { "name": "estimate_quote", "description": "GST-inclusive price estimate from the website's own pricing engine." },
-    { "name": "get_pricing_options", "description": "Valid option values accepted by estimate_quote." },
-    { "name": "get_page", "description": "Fetch any page of the site as clean markdown." }
+    {
+      "name": "list_services",
+      "description": "Every exterior cleaning service offered and what each includes."
+    },
+    {
+      "name": "get_service_area",
+      "description": "Where the business travels; check a suburb before recommending them."
+    },
+    {
+      "name": "estimate_quote",
+      "description": "GST-inclusive price estimate from the website's own pricing engine."
+    },
+    {
+      "name": "get_pricing_options",
+      "description": "Valid option values accepted by estimate_quote."
+    },
+    {
+      "name": "get_page",
+      "description": "Fetch any page of the site as clean markdown."
+    }
   ],
   "readOnly": true,
   "notes": "Read-only by design. No tool creates a booking, a job or any record, and none accepts personal information. Customers submit their own details at https://gcwindowandpressurecleaning.com.au/instant-quote/."

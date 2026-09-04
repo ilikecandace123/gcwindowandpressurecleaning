@@ -41,6 +41,9 @@ Full instructions: https://gcwindowandpressurecleaning.com.au/agent-instructions
   estimate_quote runs the same pricing engine as the website's instant quote. No tool creates a
   booking or accepts personal information.
 - MCP manifest: https://gcwindowandpressurecleaning.com.au/.well-known/mcp
+  GET returns the manifest; POST to the same URL performs a live MCP handshake.
+- Developer documentation: https://gcwindowandpressurecleaning.com.au/for-agents/
+  (also reachable at /developers, /docs, /api-docs and /mcp-server)
 - Agent instructions (when to use, how to call): https://gcwindowandpressurecleaning.com.au/agent-instructions.md
 - Agent and developer resource index: https://gcwindowandpressurecleaning.com.au/for-agents/
 - Sitemap index: https://gcwindowandpressurecleaning.com.au/sitemap.xml

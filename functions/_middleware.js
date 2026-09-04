@@ -24,7 +24,15 @@
  * concrete file (assets, images, .md, .xml, .txt) — those are served as-is.
  */
 
+import { onRequest as mcpRequest } from "./mcp.js";
+
 const MARKDOWN_TYPES = ["text/markdown", "text/x-markdown"];
+
+// Discovery alias. GET /.well-known/mcp returns the static manifest describing
+// the server; POST to the same URL performs a real MCP handshake, so a client
+// that only knows the well-known path can talk to us without reading the
+// manifest first. The canonical endpoint the manifest advertises is /mcp.
+const WELL_KNOWN_MCP = "/.well-known/mcp";
 const HTML_TYPES = ["text/html", "application/xhtml+xml"];
 const MD_CONTENT_TYPE = "text/markdown; charset=utf-8";
 const VARY = "Accept, Accept-Encoding";
@@ -193,6 +201,12 @@ async function fetchAsset(context, url) {
 export async function onRequest(context) {
   const { request } = context;
   const url = new URL(request.url);
+
+  // A live handshake at the well-known path, not just a static descriptor.
+  // GET falls through to the manifest file; everything else is the MCP server.
+  if (url.pathname === WELL_KNOWN_MCP && request.method !== "GET" && request.method !== "HEAD") {
+    return mcpRequest(context);
+  }
 
   if (isPassThrough(url.pathname)) return context.next();
   if (request.method !== "GET" && request.method !== "HEAD") return context.next();
