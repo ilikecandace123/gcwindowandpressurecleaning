@@ -93,28 +93,33 @@ console.log("\nDefect 3 — /services/ duplicate:");
   ok("nothing links to /services/ any more", !/to="\/services\/?"|href="\/services\/?"/.test(read("src/pages/NotFound.jsx") + read("src/Layout.jsx")));
 }
 
+// A dist/ older than the sources describes a previous site; asserting against
+// it says nothing about this code. Every dist/ check below skips in that case
+// rather than crying wolf.
+const DIST = path.join(ROOT, "dist");
+const distBuilt = () => fs.existsSync(path.join(DIST, "sitemap-static.xml"));
+const distIsStale = () => {
+  const builtAt = fs.statSync(path.join(DIST, "sitemap-static.xml")).mtimeMs;
+  let newest = 0;
+  const walk = (d) => {
+    if (!fs.existsSync(d)) return;
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      if (e.name === "node_modules" || e.name.startsWith(".")) continue;
+      const full = path.join(d, e.name);
+      if (e.isDirectory()) walk(full);
+      else newest = Math.max(newest, fs.statSync(full).mtimeMs);
+    }
+  };
+  for (const d of ["src", "scripts", "public"]) walk(path.join(ROOT, d));
+  return newest > builtAt;
+};
+const distUsable = () => distBuilt() && !distIsStale();
+
 // ── Built output (when a fresh build exists) ────────────────────────────────
 console.log("\nBuilt output:");
 {
-  const dist = path.join(ROOT, "dist");
-  const built = fs.existsSync(path.join(dist, "sitemap-static.xml"));
-  // A dist/ older than the sources describes a previous site; asserting
-  // against it says nothing about this code. Skip rather than cry wolf.
-  const distIsStale = () => {
-    const builtAt = fs.statSync(path.join(dist, "sitemap-static.xml")).mtimeMs;
-    let newest = 0;
-    const walk = (d) => {
-      if (!fs.existsSync(d)) return;
-      for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-        if (e.name === "node_modules" || e.name.startsWith(".")) continue;
-        const full = path.join(d, e.name);
-        if (e.isDirectory()) walk(full);
-        else newest = Math.max(newest, fs.statSync(full).mtimeMs);
-      }
-    };
-    for (const d of ["src", "scripts", "public"]) walk(path.join(ROOT, d));
-    return newest > builtAt;
-  };
+  const dist = DIST;
+  const built = distBuilt();
   if (!built) {
     skipped("built-output assertions", "run `npm run build:meta-only` first");
   } else if (distIsStale()) {
@@ -147,8 +152,9 @@ console.log("\nSitemap lastmod:");
   // child sitemap files were regenerated. Only <url> entries must not.
   const urlTemplate = (pre.match(/return `  <url>[\s\S]*?<\/url>`;/) || [""])[0];
   ok("no <url> lastmod is the build date", urlTemplate && !/\$\{today\}/.test(urlTemplate));
-  const dist = path.join(ROOT, "dist");
-  if (fs.existsSync(path.join(dist, "sitemap-static.xml"))) {
+  if (!distUsable()) {
+    skipped("built sitemap lastmod assertions", distBuilt() ? "dist/ is older than src/ — rebuild to check it" : "run `npm run build:meta-only` first");
+  } else {
     const stat = read("dist/sitemap-static.xml");
     const dateFor = (u) => (stat.match(new RegExp(`com\\.au${u}</loc>\\s*<lastmod>([^<]+)</lastmod>`)) || [])[1];
     const site = dateFor("/window-cleaning/");
