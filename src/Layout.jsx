@@ -66,8 +66,10 @@ export default function Layout({ children, currentPageName }) {
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
 
-                {servicesDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-0 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                {/* Always rendered, toggled with a class. A `{open && ...}` dropdown
+                    never reaches the prerendered HTML, so crawlers never saw these
+                    links — the same trap the FAQ accordion had. */}
+                <div className={`absolute top-full left-0 mt-0 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 ${servicesDropdownOpen ? "block" : "hidden"}`}>
                     <Link to="/window-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Window Cleaning
                     </Link>
@@ -90,7 +92,6 @@ export default function Layout({ children, currentPageName }) {
                       Solar Panel Bird Proofing
                     </Link>
                   </div>
-                )}
               </div>
 
               {/* Commercial & Strata Dropdown */}
@@ -104,8 +105,10 @@ export default function Layout({ children, currentPageName }) {
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${commercialDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
 
-                {commercialDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                <div className={`absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 ${commercialDropdownOpen ? "block" : "hidden"}`}>
+                    <Link to="/commercial/" className="block px-4 py-2.5 text-sm font-semibold text-blue-700 hover:bg-blue-50 transition-colors border-b border-gray-100 mb-1">
+                      All Commercial &amp; Strata Services
+                    </Link>
                     <Link to="/commercial/window-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                       Commercial Window Cleaning
                     </Link>
@@ -128,7 +131,6 @@ export default function Layout({ children, currentPageName }) {
                       Commercial Solar Bird Proofing
                     </Link>
                   </div>
-                )}
               </div>
 
               <Link to="/window-cleaning-plans/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Window Cleaning Plans</Link>
@@ -213,6 +215,7 @@ export default function Layout({ children, currentPageName }) {
               </Link>
 
               <div className="border-t border-gray-100 mt-2 pt-2">
+                <Link to="/commercial/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Commercial &amp; Strata</Link>
                 <Link to="/window-cleaning-plans/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Window Cleaning Plans</Link>
                 <Link to="/instant-quote/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Get Instant Quote</Link>
                 <Link to="/guides/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Expert Guides</Link>
@@ -281,6 +284,7 @@ export default function Layout({ children, currentPageName }) {
                     <Link to="/gutter-cleaning/" className="block hover:text-white transition-colors">Gutter Cleaning</Link>
                     <Link to="/solar-panel-cleaning/" className="block hover:text-white transition-colors">Solar Panel Cleaning</Link>
                     <Link to="/bird-proofing/" className="block hover:text-white transition-colors">Solar Panel Bird Proofing</Link>
+                    <Link to="/commercial/" className="block hover:text-white transition-colors">Commercial &amp; Strata</Link>
                     <Link to="/guides/" className="block hover:text-white transition-colors">Expert Guides</Link>
                   </div>
                 </div>

@@ -25,6 +25,7 @@ const GuideArticle = lazy(() => import('./pages/GuideArticle'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Privacy = lazy(() => import('./pages/Privacy'));
+const Commercial = lazy(() => import('./pages/Commercial'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const RouteFallback = () => (
@@ -45,7 +46,6 @@ function App() {
           <Route path="/" element={<Layout currentPageName="Services"><Services /></Layout>} />
 
           {/* Kebab-case routes for URL normalization */}
-          <Route path="/services" element={<Layout currentPageName="Services"><Services /></Layout>} />
           <Route path="/service-areas" element={<Layout currentPageName="ServiceAreas"><ServiceAreas /></Layout>} />
           <Route path="/window-cleaning" element={<Layout currentPageName="WindowCleaning"><WindowCleaning /></Layout>} />
           <Route path="/window-cleaning-plans" element={<Layout currentPageName="WindowCleaningPlans"><WindowCleaningPlans /></Layout>} />
@@ -64,6 +64,7 @@ function App() {
           <Route path="/privacy" element={<Layout currentPageName="Privacy"><Privacy /></Layout>} />
 
           {/* Commercial service + suburb pages (must come BEFORE the generic /:service/:suburb route) */}
+          <Route path="/commercial" element={<Layout currentPageName="Commercial"><Commercial /></Layout>} />
           <Route
             path="/commercial/:serviceSlug/:suburb"
             element={

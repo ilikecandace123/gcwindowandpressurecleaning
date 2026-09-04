@@ -156,6 +156,7 @@ and in Northern NSW.
 - [Gutter cleaning](/gutter-cleaning/)
 - [Solar panel cleaning](/solar-panel-cleaning/)
 - [Solar panel bird proofing](/bird-proofing/)
+- [Commercial & strata](/commercial/)
 - [Instant quote](/instant-quote/)
 - [Service areas](/service-areas/)
 - [Contact](/contact/)

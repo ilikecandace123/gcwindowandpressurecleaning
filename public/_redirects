@@ -17,6 +17,11 @@
 /ServiceAreas/           /service-areas/            301
 /Services                /                          301
 /Services/               /                          301
+# /services used to render the homepage under a second URL with a cross-canonical.
+# GSC flagged it ("alternative page with proper canonical tag"). A redirect is the
+# honest answer: one homepage, one URL.
+/services                /                          301
+/services/               /                          301
 /PatioCleaning           /pressure-cleaning/        301
 /PatioCleaning/          /pressure-cleaning/        301
 
@@ -25,9 +30,7 @@
 /patio-cleaning/         /pressure-cleaning/        301
 /patio-cleaning/*        /pressure-cleaning/        301
 
-# /commercial landing had no route — point to a real page
-/commercial              /commercial/window-cleaning/  301
-/commercial/             /commercial/window-cleaning/  301
+# /commercial is a real section index now (src/pages/Commercial.jsx) — no redirect.
 
 # Legacy house-soft-wash (with dash) → house-softwash
 /house-soft-wash         /house-softwash/           301

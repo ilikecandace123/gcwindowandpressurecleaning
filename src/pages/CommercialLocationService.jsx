@@ -102,10 +102,10 @@ export default function CommercialLocationService() {
 
   const localBusinessSchema = buildLocalBusinessSchema();
   const serviceSchema = buildServiceSchema({
-    name: `Commercial ${service.name} in ${suburb.name}`,
+    name: `${service.name} in ${suburb.name}`,
     description: `Commercial & strata ${service.name.toLowerCase()} in ${suburb.name}, postcode ${suburb.postcode}. $20M public liability, SWMS supplied, after-hours service.`,
     image: heroImage,
-    serviceType: `Commercial ${service.name}`,
+    serviceType: `${service.name}`,
     areaName: suburb.name,
     url: `https://gcwindowandpressurecleaning.com.au/commercial/${serviceSlug}/${suburbSlug}/`
   });
@@ -128,7 +128,7 @@ export default function CommercialLocationService() {
 
       {/* Hero */}
       <QuoteHero
-        headline={`Commercial ${service.name} in ${suburb.name}`}
+        headline={`${service.name} in ${suburb.name}`}
         subheading={`Scheduled commercial & strata ${service.name.toLowerCase()} for ${suburb.name} and the Gold Coast.`}
         backgroundImage={heroImage}
       />

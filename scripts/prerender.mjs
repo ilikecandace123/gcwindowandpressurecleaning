@@ -128,20 +128,7 @@ async function main() {
   });
 
   // Hub pages (kebab-case canonical URLs)
-  routes.push({
-    path: "/services",
-    title: "Gold Coast Window and Pressure Cleaning | Free Quote",
-    description:
-      "Gold Coast's trusted window, pressure, roof, gutter and solar panel cleaning. Fully insured, police-checked staff. Free quote — call (07) 5651 2386.",
-    // /services renders the same component as the homepage and canonicalises
-    // to "/" — kept out of the sitemap below to avoid duplicate-content signals.
-    canonical: `${SITE}/`,
-    image: "/images/services-banner.jpg",
-    jsonLd: [
-      buildLocalBusinessSchema(),
-      buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Services", url: "/services" }])
-    ],
-  });
+  // (/services is a 301 to "/" in public/_redirects — not prerendered, not in the sitemap.)
   routes.push({
     path: "/service-areas",
     title: "Service Areas | Gold Coast Window and Pressure Cleaning",
@@ -205,6 +192,18 @@ async function main() {
     ],
   });
 
+  routes.push({
+    path: "/commercial",
+    title: "Commercial & Strata Cleaning Gold Coast | All Services",
+    description:
+      "Commercial and strata exterior cleaning on the Gold Coast: windows, roofs, pressure cleaning, softwash, gutters, solar and bird proofing. $20M insured.",
+    canonical: `${SITE}/commercial`,
+    image: "/images/commercial-window-hero.jpg",
+    jsonLd: [
+      buildLocalBusinessSchema(),
+      buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Commercial & Strata", url: "/commercial" }])
+    ],
+  });
   routes.push({
     path: "/privacy",
     title: "Privacy Policy | Gold Coast Window & Pressure",
@@ -444,6 +443,7 @@ async function main() {
 
   // Assign priority and changefreq based on page type
   const UTILITY_PATHS = new Set(["/about", "/contact", "/service-areas", "/privacy"]);
+  const SECTION_HUBS = new Set(["/commercial"]);
   const SERVICE_SLUGS = new Set([
     "/window-cleaning", "/window-cleaning-plans", "/roof-cleaning", "/house-softwash",
     "/pressure-cleaning", "/gutter-cleaning", "/solar-panel-cleaning",
@@ -453,6 +453,7 @@ async function main() {
   function getUrlMeta(path) {
     if (path === "/") return { priority: "1.0", changefreq: "weekly" };
     if (SERVICE_SLUGS.has(path)) return { priority: "0.9", changefreq: "monthly" };
+    if (SECTION_HUBS.has(path)) return { priority: "0.9", changefreq: "monthly" };
     if (path === "/guides" || path.startsWith("/guides/")) return { priority: "0.8", changefreq: "monthly" };
     if (UTILITY_PATHS.has(path)) return { priority: "0.8", changefreq: "monthly" };
     // Location/service pages and commercial pages

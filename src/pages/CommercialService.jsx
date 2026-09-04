@@ -57,9 +57,9 @@ export default function CommercialService() {
   const seoJsonLd = [
     buildLocalBusinessSchema(),
     buildServiceSchema({
-      name: `Commercial ${service.name}`,
+      name: `${service.name}`,
       description: service.shortDesc,
-      serviceType: `Commercial ${service.name}`,
+      serviceType: `${service.name}`,
       url: `https://gcwindowandpressurecleaning.com.au/commercial/${service.slug}/`
     }),
     buildBreadcrumbSchema([
@@ -87,7 +87,7 @@ export default function CommercialService() {
 
       {/* Hero */}
       <QuoteHero
-        headline={`Commercial ${service.name} on the Gold Coast`}
+        headline={`${service.name} on the Gold Coast`}
         subheading={"Offices, strata & body corporate — $20M public liability, SWMS supplied, after-hours service."}
         backgroundImage={heroImage}
       />

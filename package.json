@@ -11,9 +11,10 @@
     "prerender:content": "node scripts/prerender-content.mjs",
     "mirrors": "python3 scripts/generate_markdown_mirrors.py",
     "preview": "vite preview",
-    "test": "node scripts/test-quote-engine.mjs && node scripts/test-agent-readiness.mjs",
+    "test": "node scripts/test-quote-engine.mjs && node scripts/test-agent-readiness.mjs && node scripts/test-seo-structure.mjs",
     "test:agents": "node scripts/test-agent-readiness.mjs",
-    "test:quote": "node scripts/test-quote-engine.mjs"
+    "test:quote": "node scripts/test-quote-engine.mjs",
+    "test:seo": "node scripts/test-seo-structure.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.475.0",
