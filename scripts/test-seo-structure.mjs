@@ -98,8 +98,27 @@ console.log("\nBuilt output:");
 {
   const dist = path.join(ROOT, "dist");
   const built = fs.existsSync(path.join(dist, "sitemap-static.xml"));
+  // A dist/ older than the sources describes a previous site; asserting
+  // against it says nothing about this code. Skip rather than cry wolf.
+  const distIsStale = () => {
+    const builtAt = fs.statSync(path.join(dist, "sitemap-static.xml")).mtimeMs;
+    let newest = 0;
+    const walk = (d) => {
+      if (!fs.existsSync(d)) return;
+      for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+        if (e.name === "node_modules" || e.name.startsWith(".")) continue;
+        const full = path.join(d, e.name);
+        if (e.isDirectory()) walk(full);
+        else newest = Math.max(newest, fs.statSync(full).mtimeMs);
+      }
+    };
+    for (const d of ["src", "scripts", "public"]) walk(path.join(ROOT, d));
+    return newest > builtAt;
+  };
   if (!built) {
-    skipped("sitemap assertions", "run `npm run build:meta-only` first");
+    skipped("built-output assertions", "run `npm run build:meta-only` first");
+  } else if (distIsStale()) {
+    skipped("built-output assertions", "dist/ is older than src/ — rebuild to check it");
   } else {
     const stat = read("dist/sitemap-static.xml");
     ok("sitemap-static lists /commercial/", stat.includes("gcwindowandpressurecleaning.com.au/commercial/</loc>"));
