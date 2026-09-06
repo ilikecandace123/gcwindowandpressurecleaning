@@ -20,7 +20,7 @@
 
 import { callTool, TOOLS, SERVER_NAME, SERVER_VERSION } from "../../mcp.js";
 import { buildOpenApi } from "../../../src/publicApi/openapi.js";
-import { jsonResponse, problem, preflight, API_BASE, API_DOCS, SITE } from "../../../src/publicApi/http.js";
+import { jsonResponse, problem, preflight, API_BASE, API_DOCS, SITE, LIFECYCLE } from "../../../src/publicApi/http.js";
 
 // route -> { method, tool, operationId, summary }
 const ENDPOINTS = [
@@ -51,6 +51,8 @@ function apiIndex() {
     mcp: `${SITE}/mcp`,
     readOnly: true,
     authentication: "none",
+    // Published policy, not a promise made up per response — see LIFECYCLE.
+    lifecycle: LIFECYCLE,
     endpoints: ENDPOINTS.map((e) => ({
       method: e.method,
       path: `${API_BASE}${e.path === "/" ? "/" : e.path}`,

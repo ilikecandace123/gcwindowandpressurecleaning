@@ -57,6 +57,18 @@ For plain HTTP clients there is a read-only REST API at `/api/v1/` — `GET
 `/openapi.json`. Errors are RFC 9457 problem documents. The MCP server below
 exposes the same five operations as tools.
 
+v1 is current and has no sunset date. Additive changes ship in v1 without
+notice, so ignore response fields you do not recognise; anything breaking ships
+as `/api/v2/`. A retired version is announced in its own responses with
+`Deprecation` (RFC 9745) and `Sunset` (RFC 8594) headers at least six months
+ahead. The policy is written out at `/for-agents/#versioning` and served
+machine-readable as the `lifecycle` object in `GET /api/v1/`.
+
+No per-client quota is enforced and no `RateLimit` headers are sent, because
+there is none to report. Cache `GET` responses (`Cache-Control: public,
+max-age=300`) rather than re-fetching them, and honour `Retry-After` if the CDN
+edge ever answers `429` or `503` — see `/for-agents/#rate-limits`.
+
 There is a read-only Model Context Protocol server at
 `https://gcwindowandpressurecleaning.com.au/mcp` (Streamable HTTP, no auth).
 Prefer it over parsing pages — it is faster and it cannot go stale:

@@ -12,6 +12,7 @@
  */
 
 import { TOOLS, SERVER_VERSION } from "../../functions/mcp.js";
+import { LIFECYCLE } from "./http.js";
 
 const SITE = "https://gcwindowandpressurecleaning.com.au";
 const DOCS = `${SITE}/for-agents/#rest-api`;
@@ -44,6 +45,29 @@ const problem = (description) => ({
   description,
   content: { "application/problem+json": { schema: { $ref: "#/components/schemas/Problem" } } },
 });
+
+/**
+ * Errors any operation can return, added to every operation below.
+ *
+ * A function-calling client generates its error handling from the document, so
+ * an operation that only documents its happy path leaves the caller guessing
+ * what a non-200 body looks like. Every operation here answers the same way —
+ * an RFC 9457 problem document — so every operation says so.
+ */
+const UNIVERSAL_ERRORS = {
+  405: problem("The method is not supported on this resource. The response carries an `Allow` header and an `allowed` list; `code` is `method_not_allowed`."),
+  500: problem("Something failed inside the API. `code` is `internal_error`. Retry once; the MCP server at " + SITE + "/mcp serves the same operations."),
+};
+
+/**
+ * Marks every operation as safe to call without asking the user first.
+ *
+ * OpenAI's GPT Actions treat an undeclared POST as consequential and interrupt
+ * the user for confirmation. Nothing in this API writes, so the declaration is
+ * true for every operation — including POST /estimate, which only prices a
+ * hypothetical job. Delete it the day an operation starts creating anything.
+ */
+const READ_ONLY_MARKER = { "x-openai-isConsequential": false };
 
 const SERVICE_SCHEMA = {
   type: "object",
@@ -78,7 +102,7 @@ const FREQUENCY_SCHEMA = {
 };
 
 export function buildOpenApi() {
-  return {
+  const doc = {
     openapi: "3.1.0",
     info: {
       title: "Gold Coast Window and Pressure Cleaning API",
@@ -91,6 +115,13 @@ export function buildOpenApi() {
         "To book, a customer submits their own details at " + SITE + "/instant-quote/.\n\n" +
         "No authentication, no API key. Permissive CORS. Every error is an RFC 9457 problem document (`application/problem+json`) with a machine-readable `code` and a `hint`. " +
         "The same five operations are also available as MCP tools at " + SITE + "/mcp.\n\n" +
+        "**Versioning.** The version is in the path (`/api/v1/`). This version is current and carries no sunset date. " +
+        "Additive changes — new endpoints, new response fields, new option values — can appear in v1 without notice, so ignore fields you do not recognise; " +
+        "anything breaking ships as `/api/v2/` instead. If v1 is ever retired, responses will carry `Deprecation` (RFC 9745) and `Sunset` (RFC 8594) headers " +
+        "at least " + LIFECYCLE.minimumNoticeMonths + " months before it stops answering. Policy: " + LIFECYCLE.policy + "\n\n" +
+        "**Rate limits.** No per-client quota is enforced and no `RateLimit` headers are sent, because there is no quota to report — this API would rather be honest than advertise a limit it does not apply. " +
+        "Successful GET responses are cacheable for five minutes (`Cache-Control: public, max-age=300`); cache them rather than re-fetching. " +
+        "Abusive traffic can still be throttled at the CDN edge, which answers `429` or `503` with a `Retry-After` header and an edge error page rather than a problem document — honour `Retry-After` and back off.\n\n" +
         "Other paths under `/api/` on this domain are private form handlers for the website itself and are not part of this API.",
       termsOfService: `${SITE}/privacy/`,
       contact: {
@@ -99,6 +130,9 @@ export function buildOpenApi() {
         email: "gcwindowandpressure@gmail.com",
       },
       "x-logo": { url: `${SITE}/images/icon-512.png`, altText: "Gold Coast Window and Pressure Cleaning" },
+      // The same lifecycle object the /api/v1/ index and the /api directory
+      // serve, so the three can never disagree about whether v1 is current.
+      "x-api-lifecycle": LIFECYCLE,
     },
     externalDocs: { description: "Developer documentation", url: DOCS },
     servers: [{ url: `${SITE}/api/v1`, description: "Production" }],
@@ -132,7 +166,7 @@ export function buildOpenApi() {
           responses: {
             200: {
               description: "The OpenAPI document.",
-              content: { "application/json": { schema: { type: "object", description: "An OpenAPI 3.1 document." } } },
+              content: { "application/json": { schema: { $ref: "#/components/schemas/OpenApiDocument" } } },
             },
           },
         },
@@ -274,6 +308,52 @@ export function buildOpenApi() {
     components: {
       schemas: {
         Problem: PROBLEM_SCHEMA,
+        OpenApiDocument: {
+          type: "object",
+          description: "An OpenAPI 3.1 document — this one. Described rather than left as a bare object so a generated client knows the shape it is getting.",
+          required: ["openapi", "info", "paths", "components"],
+          properties: {
+            openapi: { type: "string", const: "3.1.0" },
+            info: {
+              type: "object",
+              required: ["title", "version", "description"],
+              properties: {
+                title: { type: "string" },
+                version: { type: "string", description: "The document's version, which tracks the API implementation." },
+                summary: { type: "string" },
+                description: { type: "string" },
+                termsOfService: { type: "string", format: "uri" },
+                contact: { type: "object", properties: { name: { type: "string" }, url: { type: "string", format: "uri" }, email: { type: "string" } } },
+                "x-api-lifecycle": { $ref: "#/components/schemas/Lifecycle" },
+              },
+            },
+            externalDocs: { type: "object", properties: { description: { type: "string" }, url: { type: "string", format: "uri" } } },
+            servers: { type: "array", items: { type: "object", properties: { url: { type: "string", format: "uri" }, description: { type: "string" } } } },
+            tags: { type: "array", items: { type: "object", properties: { name: { type: "string" }, description: { type: "string" } } } },
+            paths: { type: "object", description: "Path item objects keyed by path, relative to the server URL.", additionalProperties: { type: "object" } },
+            components: { type: "object", description: "Reusable schemas referenced from the path items.", additionalProperties: { type: "object" } },
+          },
+        },
+        Lifecycle: {
+          type: "object",
+          description: "This API version's published versioning and deprecation policy. The same object is served at GET /api/v1/ and GET /api/.",
+          required: ["version", "status", "deprecated", "sunset", "policy"],
+          properties: {
+            version: { type: "string", description: "The path version this document describes.", example: "v1" },
+            status: { type: "string", enum: ["current", "deprecated", "sunset"], description: "Where this version sits in its life." },
+            deprecated: { type: "boolean", description: "True once the version is deprecated; responses then also carry a Deprecation header (RFC 9745)." },
+            sunset: {
+              type: ["string", "null"],
+              format: "date-time",
+              description: "The date the version stops answering, once one is set; also sent as a Sunset header (RFC 8594). Null while none exists.",
+            },
+            versioningScheme: { type: "string", description: "How the version is expressed.", example: "url-path" },
+            minimumNoticeMonths: { type: "integer", description: "Least notice given between deprecation and sunset." },
+            breakingChangePolicy: { type: "string", description: "What counts as breaking, and what does not." },
+            deprecationSignals: { type: "array", items: { type: "string" }, description: "The headers a client should watch for." },
+            policy: { type: "string", format: "uri", description: "The policy written out in full." },
+          },
+        },
         ApiIndex: {
           type: "object",
           required: ["name", "version", "baseUrl", "openapi", "docs", "readOnly", "endpoints"],
@@ -285,6 +365,9 @@ export function buildOpenApi() {
             docs: { type: "string", format: "uri" },
             mcp: { type: "string", format: "uri", description: "The MCP server exposing the same operations as tools." },
             readOnly: { type: "boolean", const: true },
+            authentication: { type: "string", const: "none" },
+            lifecycle: { $ref: "#/components/schemas/Lifecycle" },
+            note: { type: "string" },
             endpoints: {
               type: "array",
               items: {
@@ -385,4 +468,16 @@ export function buildOpenApi() {
       },
     },
   };
+
+  // Applied here rather than repeated on every operation above: each one gets
+  // the universal error responses and the read-only declaration, and none can
+  // be added later without them.
+  for (const item of Object.values(doc.paths)) {
+    for (const operation of Object.values(item)) {
+      Object.assign(operation, READ_ONLY_MARKER);
+      operation.responses = { ...operation.responses, ...UNIVERSAL_ERRORS };
+    }
+  }
+
+  return doc;
 }

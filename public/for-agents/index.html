@@ -139,8 +139,102 @@ curl -sX POST https://gcwindowandpressurecleaning.com.au/api/v1/estimate \
           <strong>Read-only by design.</strong> No operation creates a booking,
           a job, a lead or any record, and none accepts personal information.
           Customers book at <a href="/instant-quote/">/instant-quote/</a>.
+          Every operation is declared
+          <code>x-openai-isConsequential: false</code> in the spec, so a
+          function-calling client need not stop and ask before calling one.
         </p>
       </div>
+      <p>
+        Every API response carries an RFC 8631 <code>Link</code> header pointing
+        at the spec (<code>rel="service-desc"</code>), these docs
+        (<code>rel="service-doc"</code>) and the catalog
+        (<code>rel="api-catalog"</code>), so a client that has only a response in
+        hand can still find its way here.
+      </p>
+
+      <h2 id="versioning">Versioning and deprecation policy</h2>
+      <p>
+        The version is in the path: <code>/api/v1/</code>.
+        <strong>v1 is current and has no sunset date.</strong> The same policy
+        governs the MCP tool set below.
+      </p>
+      <ul>
+        <li>
+          <strong>Additive changes ship without notice.</strong> New endpoints,
+          new fields in a response, new accepted option values — these can
+          appear in v1 at any time. Ignore fields you do not recognise, and do
+          not treat an unexpected field as an error.
+        </li>
+        <li>
+          <strong>Breaking changes get a new version.</strong> Removing a field,
+          renaming one, changing its type or tightening validation happens in
+          <code>/api/v2/</code>, never in place.
+        </li>
+        <li>
+          <strong>Retirement is signalled in the response.</strong> If a version
+          is ever deprecated, its responses carry
+          <a href="https://www.rfc-editor.org/rfc/rfc9745" rel="noopener">Deprecation</a>
+          (RFC 9745) and
+          <a href="https://www.rfc-editor.org/rfc/rfc8594" rel="noopener">Sunset</a>
+          (RFC 8594) headers plus a <code>Link</code> with
+          <code>rel="deprecation"</code> back to this section — and it keeps
+          answering for at least six months after that. No headers today means
+          nothing is deprecated today.
+        </li>
+      </ul>
+      <p>
+        The machine-readable form of all of this is the
+        <code>lifecycle</code> object in
+        <a href="/api/v1/">GET /api/v1/</a> and <a href="/api/">GET /api/</a>,
+        and <code>info.x-api-lifecycle</code> in the
+        <a href="/openapi.json">OpenAPI document</a> — one object, three places,
+        so they cannot disagree.
+      </p>
+      <pre><code>curl -s https://gcwindowandpressurecleaning.com.au/api/v1/ | jq .lifecycle
+{
+  "version": "v1",
+  "status": "current",
+  "deprecated": false,
+  "sunset": null,
+  "versioningScheme": "url-path",
+  "minimumNoticeMonths": 6,
+  "...": "..."
+}</code></pre>
+
+      <h2 id="rate-limits">Rate limits and caching</h2>
+      <p>
+        <strong>There is no per-client quota, and no
+        <code>RateLimit</code> headers are sent</strong> — there is no quota to
+        report, and advertising a limit that is not applied would be worse than
+        sending nothing. What is asked instead is that clients be reasonable:
+      </p>
+      <ul>
+        <li>
+          <strong>Cache.</strong> Successful <code>GET</code> responses carry
+          <code>Cache-Control: public, max-age=300</code>, and the OpenAPI
+          document <code>max-age=3600</code>. The service list, service area and
+          pricing options change rarely — re-fetching them per request is waste.
+          <code>POST /estimate</code> is <code>no-store</code>: price the job
+          once and keep the answer for the length of the conversation.
+        </li>
+        <li>
+          <strong>Serialise, don&rsquo;t flood.</strong> A handful of requests a
+          second from one client is fine; a burst of hundreds is not, and this
+          site sits behind a CDN that will act on it independently of anything
+          documented here.
+        </li>
+        <li>
+          <strong>Honour <code>Retry-After</code>.</strong> If the edge ever
+          answers <code>429</code> or <code>503</code>, that header says how long
+          to wait. That response comes from the CDN, not this API, so expect an
+          edge error page rather than a problem document — back off and retry
+          once rather than parsing it.
+        </li>
+      </ul>
+      <p>
+        If a legitimate integration needs more than this allows, say so at
+        <a href="/contact/">/contact/</a> before working around it.
+      </p>
 
       <h2>MCP server</h2>
       <p>

@@ -90,6 +90,27 @@ const spec = buildOpenApi();
   eq("routing table operationIds match the document", PUBLIC_API_ENDPOINTS.map((e) => e.operationId).sort(), ops.map((o) => o.op.operationId).sort());
   eq("REST mirrors every MCP tool", MIRRORED_TOOLS.sort(), TOOLS.map((t) => t.name).sort());
   ok("every tool-backed endpoint names a real tool", PUBLIC_API_ENDPOINTS.filter((e) => e.tool).every((e) => TOOLS.some((t) => t.name === e.tool)));
+
+  // Universal error contract: an operation that documents only its happy path
+  // leaves a generated client guessing what a non-200 body looks like.
+  ok("every operation documents 405 and 500", ops.every((o) => o.op.responses[405] && o.op.responses[500]));
+  ok("every operation is declared non-consequential (nothing here writes)", ops.every((o) => o.op["x-openai-isConsequential"] === false));
+  ok("the OpenAPI-document response is typed, not a bare object", spec.paths["/openapi.json"].get.responses[200].content["application/json"].schema.$ref === "#/components/schemas/OpenApiDocument");
+  ok("OpenApiDocument schema names the parts of a 3.1 document", ["openapi", "info", "paths", "components"].every((k) => spec.components.schemas.OpenApiDocument.properties[k]));
+
+  // Versioning and deprecation policy — one object, three places.
+  const life = spec.info["x-api-lifecycle"];
+  ok("info carries the lifecycle policy", life && life.version === "v1" && life.status === "current");
+  eq("v1 is not deprecated and has no sunset date", [life.deprecated, life.sunset], [false, null]);
+  eq("policy links the written-out section", life.policy, `${SITE}/for-agents/#versioning`);
+  ok("deprecation signals name RFC 9745 and RFC 8594", /9745/.test(JSON.stringify(life.deprecationSignals)) && /8594/.test(JSON.stringify(life.deprecationSignals)));
+  ok("notice period is at least six months", life.minimumNoticeMonths >= 6);
+  ok("description states the versioning and rate-limit policy", /Versioning/.test(spec.info.description) && /Rate limits/.test(spec.info.description));
+  eq("Lifecycle schema is referenced from the index schema", spec.components.schemas.ApiIndex.properties.lifecycle.$ref, "#/components/schemas/Lifecycle");
+  ok("Lifecycle status enum covers the whole life", ["current", "deprecated", "sunset"].every((s) => spec.components.schemas.Lifecycle.properties.status.enum.includes(s)));
+  // Honesty guard: no RateLimit headers are sent, so the document must not
+  // claim a quota. If a real quota is ever enforced, change this test first.
+  ok("no fabricated RateLimit quota in the document", !/RateLimit-Limit|RateLimit-Remaining|"RateLimit"/.test(JSON.stringify(spec)));
 }
 
 // ── Endpoints ───────────────────────────────────────────────────────────────
@@ -103,6 +124,17 @@ console.log("\nEndpoints:");
   eq("index lists every endpoint", r.body.endpoints.length, PUBLIC_API_ENDPOINTS.length);
   eq("CORS open", r.headers.get("Access-Control-Allow-Origin"), "*");
   eq("API responses are not indexed as pages", r.headers.get("X-Robots-Tag"), "noindex");
+  // RFC 8631: a client holding only a response can still find the spec, the
+  // docs and the catalog. Exposed through CORS or a browser client can't read it.
+  {
+    const link = r.headers.get("Link") || "";
+    ok("Link header points at the spec", link.includes(`<${SITE}/openapi.json>; rel="service-desc"`));
+    ok("Link header points at the docs", link.includes(`rel="service-doc"`) && link.includes(`${SITE}/for-agents/#rest-api`));
+    ok("Link header points at the catalog", link.includes(`<${SITE}/.well-known/api-catalog>; rel="api-catalog"`));
+    eq("Link is exposed to cross-origin readers", r.headers.get("Access-Control-Expose-Headers"), "Link");
+  }
+  ok("index carries the lifecycle policy", r.body.lifecycle && r.body.lifecycle.status === "current" && r.body.lifecycle.deprecated === false);
+  eq("index lifecycle equals the document's", r.body.lifecycle, spec.info["x-api-lifecycle"]);
 
   r = await asJson(await call("GET", "/api/v1"));
   eq("GET /api/v1 (no slash) → 200", r.status, 200);
@@ -202,6 +234,7 @@ console.log("\nMiddleware:");
   let r = await asJson(await mw("GET", "/api"));
   eq("GET /api → 200 JSON directory", [r.status, r.ct.startsWith("application/json")], [200, true]);
   ok("directory names v1, the spec and the private note", r.body.apis[0].baseUrl === `${SITE}/api/v1` && r.body.apis[0].openapi === `${SITE}/openapi.json` && /private/.test(r.body.note));
+  eq("directory carries the same lifecycle policy", r.body.apis[0].lifecycle, spec.info["x-api-lifecycle"]);
   r = await asJson(await mw("GET", "/api/"));
   eq("GET /api/ → 200 too", r.status, 200);
   r = await asJson(await mw("POST", "/api"));
@@ -244,6 +277,14 @@ console.log("\nDiscovery:");
   const page = read("public/for-agents/index.html");
   ok("for-agents has a #rest-api section listing every operationId", page.includes('id="rest-api"') && PUBLIC_API_ENDPOINTS.every((e) => page.includes(`<code>${e.operationId}</code>`)));
   ok("for-agents has the #errors anchor the problem types point at", page.includes('id="errors"'));
+  // The policy links in the API responses must land on real anchors.
+  ok("for-agents has the #versioning anchor the lifecycle policy points at", page.includes('id="versioning"'));
+  ok("for-agents has a #rate-limits section", page.includes('id="rate-limits"'));
+  ok("versioning section names the deprecation RFCs", /rfc9745/.test(page) && /rfc8594/.test(page));
+  ok("versioning section says v1 is current with no sunset", /v1 is current/i.test(page) && /no sunset date/i.test(page));
+  ok("rate-limits section is honest about there being no quota", /no per-client quota/i.test(page) && /Retry-After/.test(page));
+  ok("llms.txt publishes the versioning and rate-limit policy", llms.includes("/for-agents/#versioning") && llms.includes("/for-agents/#rate-limits"));
+  ok("agent instructions publish the same policy", instr.includes("/for-agents/#versioning") && /Deprecation/.test(instr) && /Retry-After/.test(instr));
   ok("footer links the API docs", /href="\/for-agents\/#rest-api"/.test(read("src/Layout.jsx")));
   ok("package.json builds write the static document", /"build": "vite build && node scripts\/write-openapi\.mjs/.test(read("package.json")) && /"build:meta-only": "vite build && node scripts\/write-openapi\.mjs/.test(read("package.json")));
   const built = path.join(DIST, "openapi.json");

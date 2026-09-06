@@ -8,6 +8,8 @@ export const SITE = "https://gcwindowandpressurecleaning.com.au";
 export const API_BASE = `${SITE}/api/v1`;
 export const API_DOCS = `${SITE}/for-agents/#rest-api`;
 export const PROBLEM_TYPE_BASE = `${SITE}/for-agents/#errors`;
+export const OPENAPI_URL = `${SITE}/openapi.json`;
+export const VERSIONING_DOCS = `${SITE}/for-agents/#versioning`;
 
 // Read-only, unauthenticated, no cookies: nothing for a cross-origin caller to
 // steal, so CORS can be open. Revisit the moment any operation writes.
@@ -16,11 +18,29 @@ export const CORS = {
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Accept",
   "Access-Control-Max-Age": "86400",
+  // A cross-origin client can only read a response header it is told about.
+  // Without this, `Link` is invisible to browser-based agents.
+  "Access-Control-Expose-Headers": "Link",
 };
+
+/**
+ * RFC 8631 service-desc / service-doc links, on every API response.
+ *
+ * A client that arrives at one endpoint — from a bookmark, a log line, a
+ * half-remembered URL — can find the machine-readable description and the
+ * human documentation from the response alone, without already knowing the
+ * discovery files exist. Registered relation types, absolute URLs.
+ */
+export const API_LINK_HEADER = [
+  `<${OPENAPI_URL}>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1"`,
+  `<${SITE}/for-agents/#rest-api>; rel="service-doc"; type="text/html"`,
+  `<${SITE}/.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"`,
+].join(", ");
 
 const BASE_HEADERS = {
   "X-Content-Type-Options": "nosniff",
   "X-Robots-Tag": "noindex",
+  Link: API_LINK_HEADER,
   ...CORS,
 };
 
@@ -78,6 +98,29 @@ export function preflight() {
   return new Response(null, { status: 204, headers: CORS });
 }
 
+/**
+ * Published versioning and deprecation policy, in one object.
+ *
+ * Served in the /api/v1/ index, the /api directory and the OpenAPI document so
+ * a client can read it wherever it lands. `deprecated` and `sunset` are the
+ * honest current state: v1 is the only version, it is current, and no sunset
+ * date exists. If v1 is ever retired, this object changes and the responses
+ * start carrying the Deprecation (RFC 9745) and Sunset (RFC 8594) headers
+ * described at `policy` — a client that watches either will see it coming.
+ */
+export const LIFECYCLE = {
+  version: "v1",
+  status: "current",
+  deprecated: false,
+  sunset: null,
+  versioningScheme: "url-path",
+  minimumNoticeMonths: 6,
+  breakingChangePolicy:
+    "Breaking changes ship as a new path version (/api/v2/); this version keeps its contract. Additive changes — new endpoints, new response fields, new option values — can appear in v1 at any time, so ignore fields you do not recognise.",
+  deprecationSignals: ["Deprecation (RFC 9745)", "Sunset (RFC 8594)", 'Link rel="deprecation"'],
+  policy: VERSIONING_DOCS,
+};
+
 /** The /api directory: which APIs exist here and which paths are private. */
 export function apiDirectory() {
   return {
@@ -92,6 +135,7 @@ export function apiDirectory() {
         docs: API_DOCS,
         readOnly: true,
         authentication: "none",
+        lifecycle: LIFECYCLE,
       },
     ],
     mcp: `${SITE}/mcp`,

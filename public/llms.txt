@@ -42,6 +42,15 @@ Full instructions: https://gcwindowandpressurecleaning.com.au/agent-instructions
   Errors are RFC 9457 problem documents (application/problem+json) with a machine-readable code and a hint.
 - OpenAPI 3.1 document for that API: https://gcwindowandpressurecleaning.com.au/openapi.json
   (unique operationIds, descriptions, typed request and response schemas — suitable for LLM function calling)
+- Versioning and deprecation policy: https://gcwindowandpressurecleaning.com.au/for-agents/#versioning
+  v1 is current with no sunset date. Additive changes ship in v1 without notice (ignore fields you do
+  not recognise); breaking changes ship as /api/v2/. A retired version is announced with Deprecation
+  (RFC 9745) and Sunset (RFC 8594) headers at least 6 months ahead. Machine-readable as the
+  `lifecycle` object in /api/v1/ and info.x-api-lifecycle in the OpenAPI document.
+- Rate limits: https://gcwindowandpressurecleaning.com.au/for-agents/#rate-limits
+  No per-client quota is enforced and no RateLimit headers are sent, because there is none to report.
+  Cache GET responses instead of re-fetching (Cache-Control: public, max-age=300) and honour
+  Retry-After if the CDN edge ever answers 429 or 503.
 - API catalog (RFC 9727 linkset of every API on this host): https://gcwindowandpressurecleaning.com.au/.well-known/api-catalog
 - API directory: https://gcwindowandpressurecleaning.com.au/api/
 - MCP server (Model Context Protocol, Streamable HTTP, read-only, no auth): https://gcwindowandpressurecleaning.com.au/mcp
