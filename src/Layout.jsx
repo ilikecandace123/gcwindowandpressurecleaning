@@ -365,6 +365,8 @@ export default function Layout({ children, currentPageName }) {
               <Link to="/privacy/" className="hover:text-white transition-colors">Privacy Policy</Link>
               <span className="mx-2">·</span>
               <a href="/for-agents/" className="hover:text-white transition-colors">For AI Agents</a>
+              <span className="mx-2">·</span>
+              <a href="/for-agents/#rest-api" className="hover:text-white transition-colors">API</a>
             </p>
             <p className="text-sm text-gray-400 text-center mt-1">Last updated: September 2026</p>
           </div>

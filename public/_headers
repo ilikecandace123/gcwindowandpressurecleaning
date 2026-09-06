@@ -27,6 +27,19 @@
   Cache-Control: public, max-age=3600
   X-Robots-Tag: index, follow
 
+# OpenAPI document (also served live at /api/v1/openapi.json). Open CORS so a
+# browser-based client or a spec viewer can load it.
+/openapi.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+
+# RFC 9727 API catalog — a Linkset (RFC 9264) naming every API on this host.
+/.well-known/api-catalog
+  Content-Type: application/linkset+json; charset=utf-8
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+
 # The MCP manifest has no file extension, so declare its type explicitly.
 /.well-known/mcp
   Content-Type: application/json; charset=utf-8

@@ -52,17 +52,23 @@ function urlToFile(url) {
 const FUNCTION_ROUTES = (() => {
   const dir = path.join(path.dirname(DIST), "functions");
   const routes = new Set();
+  const prefixes = [];
   const walk = (d, prefix) => {
     if (!fs.existsSync(d)) return;
     for (const entry of fs.readdirSync(d, { withFileTypes: true })) {
       if (entry.isDirectory()) walk(path.join(d, entry.name), `${prefix}/${entry.name}`);
       else if (entry.name.endsWith(".js") && !entry.name.startsWith("_")) {
-        routes.add(`${prefix}/${entry.name.replace(/\.js$/, "")}`);
+        const name = entry.name.replace(/\.js$/, "");
+        // functions/api/v1/[[route]].js is a catch-all: every /api/v1/* path.
+        if (/^\[\[.+\]\]$/.test(name)) prefixes.push(prefix);
+        else routes.add(`${prefix}/${name}`);
       }
     }
   };
   walk(dir, "");
-  return routes;
+  // Served by functions/_middleware.js rather than a route file.
+  routes.add("/api");
+  return { has: (p) => routes.has(p) || prefixes.some((pre) => p === pre || p.startsWith(pre + "/")) };
 })();
 
 function internalHrefToFile(href) {

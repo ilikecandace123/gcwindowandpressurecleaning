@@ -5,16 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender.mjs && node scripts/prerender-content.mjs && pip3 install beautifulsoup4 markdownify --quiet 2>/dev/null || pip3 install beautifulsoup4 markdownify --break-system-packages --quiet && python3 scripts/generate_markdown_mirrors.py",
-    "build:meta-only": "vite build && node scripts/prerender.mjs",
+    "build": "vite build && node scripts/write-openapi.mjs && node scripts/prerender.mjs && node scripts/prerender-content.mjs && pip3 install beautifulsoup4 markdownify --quiet 2>/dev/null || pip3 install beautifulsoup4 markdownify --break-system-packages --quiet && python3 scripts/generate_markdown_mirrors.py",
+    "build:meta-only": "vite build && node scripts/write-openapi.mjs && node scripts/prerender.mjs",
     "prerender": "node scripts/prerender.mjs",
     "prerender:content": "node scripts/prerender-content.mjs",
     "mirrors": "python3 scripts/generate_markdown_mirrors.py",
     "preview": "vite preview",
-    "test": "node scripts/test-quote-engine.mjs && node scripts/test-agent-readiness.mjs && node scripts/test-seo-structure.mjs",
+    "test": "node scripts/test-quote-engine.mjs && node scripts/test-agent-readiness.mjs && node scripts/test-seo-structure.mjs && node scripts/test-public-api.mjs",
     "test:agents": "node scripts/test-agent-readiness.mjs",
     "test:quote": "node scripts/test-quote-engine.mjs",
-    "test:seo": "node scripts/test-seo-structure.mjs"
+    "test:seo": "node scripts/test-seo-structure.mjs",
+    "test:api": "node scripts/test-public-api.mjs",
+    "openapi": "node scripts/write-openapi.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.475.0",

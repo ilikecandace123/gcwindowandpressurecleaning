@@ -65,5 +65,11 @@
     }
   ],
   "readOnly": true,
-  "notes": "Read-only by design. No tool creates a booking, a job or any record, and none accepts personal information. Customers submit their own details at https://gcwindowandpressurecleaning.com.au/instant-quote/."
+  "notes": "Read-only by design. No tool creates a booking, a job or any record, and none accepts personal information. Customers submit their own details at https://gcwindowandpressurecleaning.com.au/instant-quote/.",
+  "relatedApis": {
+    "rest": "https://gcwindowandpressurecleaning.com.au/api/v1/",
+    "openapi": "https://gcwindowandpressurecleaning.com.au/openapi.json",
+    "apiCatalog": "https://gcwindowandpressurecleaning.com.au/.well-known/api-catalog",
+    "note": "The same five operations as a plain read-only REST API."
+  }
 }

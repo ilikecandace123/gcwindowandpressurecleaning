@@ -20,11 +20,16 @@
  *   - Every negotiable response carries `Vary: Accept, Accept-Encoding` so a
  *     CDN can never hand the HTML variant to a client that asked for markdown.
  *
- * Deliberately untouched: /api/* (private form handlers), and any request for a
- * concrete file (assets, images, .md, .xml, .txt) — those are served as-is.
+ * Deliberately untouched: /api/* (private form handlers and the public v1 API),
+ * and any request for a concrete file (assets, images, .md, .xml, .txt) —
+ * those are served as-is. Two small exceptions under /api: "/api" itself
+ * answers with a JSON directory of the APIs on this host, and an /api/* path
+ * that nothing handles gets an RFC 9457 problem document instead of the
+ * site's HTML 404 — an agent that called an API expects JSON back.
  */
 
 import { onRequest as mcpRequest } from "./mcp.js";
+import { jsonResponse, problem, preflight, apiDirectory, API_BASE, SITE as API_SITE } from "../src/publicApi/http.js";
 
 const MARKDOWN_TYPES = ["text/markdown", "text/x-markdown"];
 
@@ -207,6 +212,33 @@ export async function onRequest(context) {
   // GET falls through to the manifest file; everything else is the MCP server.
   if (url.pathname === WELL_KNOWN_MCP && request.method !== "GET" && request.method !== "HEAD") {
     return mcpRequest(context);
+  }
+
+  // The API root is a directory, not a page. /api/v1/ is its own Function.
+  if (url.pathname === "/api" || url.pathname === "/api/") {
+    if (request.method === "OPTIONS") return preflight();
+    if (request.method !== "GET" && request.method !== "HEAD") {
+      return problem(405, "method_not_allowed", `${request.method} is not supported on ${url.pathname}.`, {
+        instance: url.pathname,
+        hint: `GET ${API_BASE}/ for the endpoint index.`,
+        extra: { allowed: ["GET", "HEAD", "OPTIONS"] },
+        headers: { Allow: "GET, HEAD, OPTIONS" },
+      });
+    }
+    return jsonResponse(apiDirectory());
+  }
+
+  if (url.pathname.startsWith("/api/")) {
+    const res = await context.next();
+    // Nothing served this /api path: Pages fell through to the SPA's 404 page.
+    // Answer in JSON — clients of an API cannot do anything with HTML.
+    if (res.status === 404 && /text\/html/i.test(res.headers.get("Content-Type") || "")) {
+      return problem(404, "not_found", `No API endpoint at ${url.pathname}.`, {
+        instance: url.pathname,
+        hint: `The public API lives under ${API_BASE}/ — GET ${API_BASE}/ lists every endpoint, and ${API_SITE}/openapi.json describes them. Other /api paths are private to this website.`,
+      });
+    }
+    return res;
   }
 
   if (isPassThrough(url.pathname)) return context.next();

@@ -6,7 +6,7 @@
     <title>Gold Coast Window &amp; Pressure Cleaning — Developer Docs</title>
     <meta
       name="description"
-      content="Machine-readable resources for Gold Coast Window and Pressure Cleaning: llms.txt, agent instructions, markdown mirrors, sitemaps and JSON-LD structured data."
+      content="Gold Coast Window and Pressure Cleaning developer docs: read-only REST API with OpenAPI spec, MCP server, llms.txt, agent instructions and markdown mirrors."
     />
     <link rel="canonical" href="https://gcwindowandpressurecleaning.com.au/for-agents/" />
     <link rel="alternate" type="text/markdown" href="/agent-instructions.md" title="Agent instructions (markdown)" />
@@ -15,12 +15,12 @@
     <meta property="og:locale" content="en_AU" />
     <meta property="og:site_name" content="Gold Coast Window and Pressure Cleaning" />
     <meta property="og:title" content="Gold Coast Window &amp; Pressure Cleaning — Developer Docs" />
-    <meta property="og:description" content="Machine-readable resources for Gold Coast Window and Pressure Cleaning: llms.txt, agent instructions, markdown mirrors, sitemaps and JSON-LD structured data." />
+    <meta property="og:description" content="Gold Coast Window and Pressure Cleaning developer docs: read-only REST API with OpenAPI spec, MCP server, llms.txt, agent instructions and markdown mirrors." />
     <meta property="og:url" content="https://gcwindowandpressurecleaning.com.au/for-agents/" />
     <meta property="og:image" content="https://gcwindowandpressurecleaning.com.au/images/logo.avif" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Gold Coast Window &amp; Pressure Cleaning — Developer Docs" />
-    <meta name="twitter:description" content="Machine-readable resources for Gold Coast Window and Pressure Cleaning: llms.txt, agent instructions, markdown mirrors, sitemaps and JSON-LD structured data." />
+    <meta name="twitter:description" content="Gold Coast Window and Pressure Cleaning developer docs: read-only REST API with OpenAPI spec, MCP server, llms.txt, agent instructions and markdown mirrors." />
     <meta name="twitter:image" content="https://gcwindowandpressurecleaning.com.au/images/logo.avif" />
     <script type="application/ld+json">
       {
@@ -28,7 +28,7 @@
         "@type": "WebPage",
         "name": "Gold Coast Window and Pressure Cleaning \u2014 Agent & Developer Resources",
         "url": "https://gcwindowandpressurecleaning.com.au/for-agents/",
-        "description": "Machine-readable resources for Gold Coast Window and Pressure Cleaning: llms.txt, agent instructions, markdown mirrors, sitemaps and JSON-LD structured data.",
+        "description": "Gold Coast Window and Pressure Cleaning developer docs: read-only REST API with OpenAPI spec, MCP server, llms.txt, agent instructions and markdown mirrors.",
         "inLanguage": "en-AU",
         "isPartOf": {
           "@type": "WebSite",
@@ -51,6 +51,9 @@
         }
       }
     </script>
+    <link rel="service-desc" href="/openapi.json" type="application/vnd.oai.openapi+json;version=3.1" title="Public read-only API (OpenAPI 3.1)" />
+    <link rel="service-doc" href="/for-agents/" type="text/html" title="Developer and agent documentation" />
+    <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" sizes="512x512" href="/images/icon-512.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
@@ -80,9 +83,9 @@
       <h1>Gold Coast Window and Pressure Cleaning — Agent &amp; Developer Resources</h1>
       <p class="lede">
         Developer and AI-agent documentation for <strong>Gold Coast Window and
-        Pressure Cleaning</strong> — the MCP server, structured data, and every
-        machine-readable resource this site publishes. Static HTML, no
-        JavaScript required.
+        Pressure Cleaning</strong> — the public REST API and its OpenAPI
+        document, the MCP server, structured data, and every machine-readable
+        resource this site publishes. Static HTML, no JavaScript required.
       </p>
 
       <h2>Start here</h2>
@@ -90,7 +93,54 @@
         <li><a href="/llms.txt">/llms.txt</a> — full site summary, services, indicative pricing, suburbs, hours and FAQs in one file.</li>
         <li><a href="/agent-instructions.md">/agent-instructions.md</a> — when to use this site, when not to, and how to call it.</li>
         <li><a href="/sitemap.xml">/sitemap.xml</a> — sitemap index covering every page.</li>
+        <li><a href="/openapi.json">/openapi.json</a> — OpenAPI 3.1 description of the <a href="#rest-api">REST API</a>.</li>
+        <li><a href="/.well-known/api-catalog">/.well-known/api-catalog</a> — RFC 9727 catalog of every API on this host.</li>
       </ul>
+
+      <h2 id="rest-api">REST API (v1, read-only)</h2>
+      <p>
+        A public, unauthenticated, read-only JSON API at
+        <code>https://gcwindowandpressurecleaning.com.au/api/v1/</code>. It is
+        the same five operations as the MCP server below, for clients that speak
+        plain HTTP — including function-calling LLMs working from the
+        <a href="/openapi.json">OpenAPI document</a>. Every operation has a
+        unique <code>operationId</code>, a description, typed parameters and
+        typed response schemas. Permissive CORS; no API key.
+      </p>
+      <table>
+        <thead><tr><th>Operation</th><th>Endpoint</th><th>What it answers</th></tr></thead>
+        <tbody>
+          <tr><td><code>getApiIndex</code></td><td><code>GET /api/v1/</code></td><td>Every endpoint, with links to this page and the spec</td></tr>
+          <tr><td><code>listServices</code></td><td><code>GET /api/v1/services</code></td><td>Every service offered and what each includes</td></tr>
+          <tr><td><code>getServiceArea</code></td><td><code>GET /api/v1/service-area?suburb=</code></td><td>Where the business travels; optional suburb check</td></tr>
+          <tr><td><code>getPricingOptions</code></td><td><code>GET /api/v1/pricing-options</code></td><td>The exact option values an estimate accepts</td></tr>
+          <tr><td><code>estimateQuote</code></td><td><code>POST /api/v1/estimate</code></td><td>A GST-inclusive price from the site&rsquo;s own pricing engine</td></tr>
+          <tr><td><code>getPageMarkdown</code></td><td><code>GET /api/v1/pages?path=</code></td><td>Any page of this site as clean markdown</td></tr>
+          <tr><td><code>getOpenApiDocument</code></td><td><code>GET /api/v1/openapi.json</code></td><td>The OpenAPI document (also at <a href="/openapi.json">/openapi.json</a>)</td></tr>
+        </tbody>
+      </table>
+      <pre><code>curl https://gcwindowandpressurecleaning.com.au/api/v1/services
+
+curl -sX POST https://gcwindowandpressurecleaning.com.au/api/v1/estimate \
+  -H "Content-Type: application/json" \
+  -d '{"services":["window"],"propertyType":"house","storeys":"2",
+       "window":{"panes":"21-30","tint":"no","condition":"regular","french":"none","frequency":"once"}}'</code></pre>
+      <p>
+        An estimate answers with <code>custom: false</code> and a
+        <code>total</code> in AUD, or <code>custom: true</code> when the job
+        deliberately needs a human quote &mdash; say so rather than inventing a
+        figure. <code>GET /api/v1/pricing-options</code> lists every accepted
+        value. Also on this host: <a href="/api/">/api/</a> is a JSON directory
+        of the APIs here; every <em>other</em> path under <code>/api/</code> is a
+        private form handler for this website and not part of the public API.
+      </p>
+      <div class="note">
+        <p style="color: inherit; margin: 0">
+          <strong>Read-only by design.</strong> No operation creates a booking,
+          a job, a lead or any record, and none accepts personal information.
+          Customers book at <a href="/instant-quote/">/instant-quote/</a>.
+        </p>
+      </div>
 
       <h2>MCP server</h2>
       <p>
@@ -158,6 +208,10 @@
         <tbody>
           <tr><td>Site summary for LLMs</td><td><a href="/llms.txt">/llms.txt</a></td><td><code>text/plain</code></td></tr>
           <tr><td>Agent instructions</td><td><a href="/agent-instructions.md">/agent-instructions.md</a></td><td><code>text/markdown</code></td></tr>
+          <tr><td>REST API v1 — endpoint index</td><td><a href="/api/v1/">/api/v1/</a></td><td><code>application/json</code></td></tr>
+          <tr><td>OpenAPI 3.1 document</td><td><a href="/openapi.json">/openapi.json</a></td><td><code>application/json</code></td></tr>
+          <tr><td>API catalog (RFC 9727)</td><td><a href="/.well-known/api-catalog">/.well-known/api-catalog</a></td><td><code>application/linkset+json</code></td></tr>
+          <tr><td>API directory</td><td><a href="/api/">/api/</a></td><td><code>application/json</code></td></tr>
           <tr><td>MCP server (Streamable HTTP)</td><td><a href="/mcp">/mcp</a></td><td><code>JSON-RPC 2.0</code></td></tr>
           <tr><td>MCP manifest</td><td><a href="/.well-known/mcp">/.well-known/mcp</a></td><td><code>application/json</code></td></tr>
           <tr><td>Privacy policy</td><td><a href="/privacy/">/privacy/</a></td><td><code>text/html</code></td></tr>
@@ -182,24 +236,36 @@
         execute JavaScript still see the full text.
       </p>
 
-      <h2>Is there a public REST API?</h2>
-      <div class="note">
-        <p style="color: inherit; margin: 0">
-          <strong>No — use the MCP server above instead.</strong> The
-          <code>/api/*</code> endpoints on this domain
-          are private form handlers for this site's own quote and booking flow.
-          They are disallowed in <code>robots.txt</code>, undocumented, and
-          unsupported for third-party use — calling them creates real jobs for a
-          real business. Agents should send people to
-          <a href="/instant-quote/">/instant-quote/</a> rather than posting on
-          their behalf.
-        </p>
-      </div>
-
-      <h2>Error handling</h2>
+      <h2 id="errors">Error handling</h2>
       <p>
-        Nonexistent paths return a genuine HTTP <code>404</code>, never a
-        <code>200</code> with an app shell. The 404 body lists recovery links,
+        API errors are <a href="https://www.rfc-editor.org/rfc/rfc9457" rel="noopener">RFC 9457</a>
+        problem documents (<code>application/problem+json</code>), never HTML:
+        <code>type</code>, <code>title</code>, <code>status</code> and
+        <code>detail</code>, plus a machine-readable <code>code</code>
+        (<code>not_found</code>, <code>method_not_allowed</code>,
+        <code>invalid_json</code>, <code>invalid_request</code>,
+        <code>unsupported_media_type</code>, <code>unpriceable</code>,
+        <code>internal_error</code>), a <code>hint</code> saying what to do
+        instead, and a <code>docs</code> link back here. A 405 carries an
+        <code>Allow</code> header and an <code>allowed</code> list; a 404 inside
+        <code>/api/v1/</code> lists <code>availableEndpoints</code>. Unknown
+        paths anywhere under <code>/api/</code> get the same treatment.
+      </p>
+      <pre><code>curl -s https://gcwindowandpressurecleaning.com.au/api/v1/no-such-thing
+{
+  "type": "https://gcwindowandpressurecleaning.com.au/for-agents/#errors-not-found",
+  "title": "Not Found",
+  "status": 404,
+  "detail": "No endpoint at /api/v1/no-such-thing.",
+  "instance": "/api/v1/no-such-thing",
+  "code": "not_found",
+  "hint": "GET https://gcwindowandpressurecleaning.com.au/api/v1/ lists every endpoint; ...",
+  "docs": "https://gcwindowandpressurecleaning.com.au/for-agents/#rest-api",
+  "availableEndpoints": ["GET https://gcwindowandpressurecleaning.com.au/api/v1/", "..."]
+}</code></pre>
+      <p>
+        Nonexistent <em>pages</em> return a genuine HTTP <code>404</code>, never
+        a <code>200</code> with an app shell. The 404 body lists recovery links,
         and clients that asked for markdown get a markdown recovery body.
       </p>
       <pre><code>curl -s -o /dev/null -w "%{http_code}" https://gcwindowandpressurecleaning.com.au/no-such-page

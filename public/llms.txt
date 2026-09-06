@@ -30,12 +30,20 @@ How to use it: read this file first, then fetch pages as markdown (send
 here as indicative — only the instant quote engine produces a real number, and
 some property and condition combinations deliberately return a custom quote
 instead of a price. Send people to /instant-quote/ to get their own price; do not
-submit quotes, bookings or contact details on someone's behalf. There is no
-public API — the /api/* endpoints are private form handlers for this site's own
-booking flow, are disallowed in robots.txt, and must not be called.
+submit quotes, bookings or contact details on someone's behalf. For programmatic
+access use the read-only REST API at /api/v1/ (OpenAPI at /openapi.json) or the
+MCP server at /mcp — every OTHER path under /api/ is a private form handler for
+this site's own booking flow, is disallowed in robots.txt, and must not be called.
 Full instructions: https://gcwindowandpressurecleaning.com.au/agent-instructions.md
 
 ## Agent and Developer Resources
+- REST API v1 (read-only, no auth, JSON, permissive CORS): https://gcwindowandpressurecleaning.com.au/api/v1/
+  GET /services, GET /service-area?suburb=, GET /pricing-options, POST /estimate, GET /pages?path=.
+  Errors are RFC 9457 problem documents (application/problem+json) with a machine-readable code and a hint.
+- OpenAPI 3.1 document for that API: https://gcwindowandpressurecleaning.com.au/openapi.json
+  (unique operationIds, descriptions, typed request and response schemas — suitable for LLM function calling)
+- API catalog (RFC 9727 linkset of every API on this host): https://gcwindowandpressurecleaning.com.au/.well-known/api-catalog
+- API directory: https://gcwindowandpressurecleaning.com.au/api/
 - MCP server (Model Context Protocol, Streamable HTTP, read-only, no auth): https://gcwindowandpressurecleaning.com.au/mcp
   Tools: list_services, get_service_area, estimate_quote, get_pricing_options, get_page.
   estimate_quote runs the same pricing engine as the website's instant quote. No tool creates a

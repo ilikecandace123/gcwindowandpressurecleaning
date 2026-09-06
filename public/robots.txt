@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /api/v1/
 Disallow: /admin
 Disallow: /api
 
@@ -32,5 +33,9 @@ Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap.xml
 #   /for-agents/            index of every machine-readable resource
 #   /mcp                    MCP server (Streamable HTTP, read-only)
 #   /.well-known/mcp        MCP manifest
+#   /api/v1/                public read-only REST API (index of endpoints)
+#   /openapi.json           OpenAPI 3.1 description of that API
+#   /.well-known/api-catalog  RFC 9727 catalog of every API on this host
+# Everything else under /api/ is private to this website — do not crawl or call it.
 # Any page can also be fetched as markdown: send "Accept: text/markdown",
 # or append index.md to the page URL.

@@ -18,6 +18,9 @@
  * Stateless: no Mcp-Session-Id is issued, so clients never need to send one
  * (the spec makes session IDs optional). GET and DELETE return 405, which the
  * spec explicitly permits for servers that offer no server-initiated stream.
+ *
+ * The same tools are exposed as a plain read-only REST API under /api/v1/
+ * (functions/api/v1/[[route]].js) — one implementation, two transports.
  */
 
 import { calculateQuote, formatMoney, PANE_BANDS, SOLAR_PANEL_BANDS, PRESSURE_AREA_BANDS, WINDOW_FREQUENCIES, SOLAR_FREQUENCIES } from "../src/quote/engine.js";
@@ -26,6 +29,7 @@ import { expandState, SERVICE_META, SERVICE_ORDER } from "../src/quote/steps.js"
 const SITE = "https://gcwindowandpressurecleaning.com.au";
 const SERVER_NAME = "gold-coast-window-and-pressure-cleaning";
 const SERVER_VERSION = "1.0.0";
+export { SERVER_NAME, SERVER_VERSION };
 
 // Versions of the MCP spec this server understands. The newest is preferred.
 const SUPPORTED_PROTOCOL_VERSIONS = ["2025-06-18", "2025-03-26", "2024-11-05"];
@@ -108,7 +112,7 @@ const SERVICE_PAGE = {
   birdproofing: "/bird-proofing/",
 };
 
-const SERVICE_AREA = {
+export const SERVICE_AREA = {
   region: "Gold Coast, Queensland and Northern New South Wales (Tweed region), Australia",
   base: "Mermaid Waters, QLD 4218",
   radiusKm: 45,
@@ -125,7 +129,7 @@ const enumOf = (bands) => bands.map((b) => b.value);
 
 // ── Tools ───────────────────────────────────────────────────────────────────
 
-const TOOLS = [
+export const TOOLS = [
   {
     name: "list_services",
     title: "List cleaning services",
@@ -447,7 +451,7 @@ async function toolGetPage(args, context) {
   }
 }
 
-async function callTool(name, args, context) {
+export async function callTool(name, args, context) {
   switch (name) {
     case "list_services":
       return toolListServices();

@@ -49,7 +49,13 @@ Do not present this business as a match for:
 - Jobs above 4 storeys, or anything needing rope access or an EWP — those need
   a human conversation first.
 
-## Call the MCP server instead of scraping
+## Call the API or the MCP server instead of scraping
+
+For plain HTTP clients there is a read-only REST API at `/api/v1/` — `GET
+/services`, `GET /service-area?suburb=`, `GET /pricing-options`, `POST
+/estimate`, `GET /pages?path=` — described by the OpenAPI 3.1 document at
+`/openapi.json`. Errors are RFC 9457 problem documents. The MCP server below
+exposes the same five operations as tools.
 
 There is a read-only Model Context Protocol server at
 `https://gcwindowandpressurecleaning.com.au/mcp` (Streamable HTTP, no auth).
@@ -95,11 +101,13 @@ When `estimate_quote` returns a custom quote, say so — do not invent a figure.
 
 ## What agents must not do
 
-- **There is no public API.** The `/api/*` endpoints on this domain are private
-  form handlers for the site's own quote and booking flow. They are disallowed
-  in `/robots.txt`, they are not documented, they are not supported for third
-  party use, and calling them creates real jobs for a real business. Do not
-  call them, and do not infer their shape from the site's JavaScript.
+- **Only `/api/v1/` is public.** The read-only REST API at `/api/v1/`
+  (described by `/openapi.json`) and the MCP server at `/mcp` are the supported
+  programmatic surfaces. Every *other* `/api/*` path on this domain is a private
+  form handler for the site's own quote and booking flow: disallowed in
+  `/robots.txt`, undocumented, unsupported for third-party use, and calling one
+  creates real jobs for a real business. Do not call them, and do not infer
+  their shape from the site's JavaScript.
 - Do not submit contact details, addresses, photos or booking requests on
   behalf of a user. A person enters those themselves at `/instant-quote/`.
 - Do not scrape the Google reviews proxy at `/api/reviews`.
@@ -111,6 +119,10 @@ When `estimate_quote` returns a custom quote, say so — do not invent a figure.
 | Site summary for LLMs | `/llms.txt` | text/plain (llms.txt) |
 | These instructions | `/agent-instructions.md` | text/markdown |
 | Agent & developer resource index | `/for-agents/` | text/html |
+| REST API v1 (read-only) — endpoint index | `/api/v1/` | application/json |
+| OpenAPI 3.1 document | `/openapi.json` | application/json |
+| API catalog (RFC 9727) | `/.well-known/api-catalog` | application/linkset+json |
+| API directory | `/api/` | application/json |
 | MCP server (Streamable HTTP) | `/mcp` | JSON-RPC 2.0 |
 | MCP manifest (GET) / handshake (POST) | `/.well-known/mcp` | application/json / JSON-RPC 2.0 |
 | Privacy policy | `/privacy/` | text/html (+ `index.md`) |
@@ -129,6 +141,6 @@ Structured data is embedded as JSON-LD on every page: `Organization`,
 
 All major AI crawlers are explicitly allowed in `/robots.txt` (GPTBot,
 OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot, Google-Extended, CCBot).
-`/admin` and `/api` are disallowed. There is no rate limit beyond ordinary
+`/admin` and `/api` are disallowed, with `/api/v1/` explicitly allowed. There is no rate limit beyond ordinary
 Cloudflare protection; please prefer the markdown mirrors, which are far
 cheaper to fetch than the rendered pages.

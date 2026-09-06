@@ -1,0 +1,45 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://gcwindowandpressurecleaning.com.au/",
+      "service-desc": [
+        {
+          "href": "https://gcwindowandpressurecleaning.com.au/openapi.json",
+          "type": "application/vnd.oai.openapi+json;version=3.1",
+          "title": "Gold Coast Window and Pressure Cleaning API — OpenAPI 3.1"
+        },
+        {
+          "href": "https://gcwindowandpressurecleaning.com.au/.well-known/mcp",
+          "type": "application/json",
+          "title": "Model Context Protocol server manifest"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://gcwindowandpressurecleaning.com.au/for-agents/",
+          "type": "text/html",
+          "title": "Developer and agent documentation"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://gcwindowandpressurecleaning.com.au/agent-instructions.md",
+          "type": "text/markdown",
+          "title": "Agent instructions — when and how to use this business"
+        },
+        {
+          "href": "https://gcwindowandpressurecleaning.com.au/llms.txt",
+          "type": "text/plain",
+          "title": "llms.txt site summary"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://gcwindowandpressurecleaning.com.au/api/v1/",
+          "type": "application/json",
+          "title": "Public read-only API v1 — endpoint index"
+        }
+      ]
+    }
+  ]
+}

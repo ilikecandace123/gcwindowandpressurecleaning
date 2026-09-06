@@ -118,7 +118,7 @@ console.log("\nAgent instruction and resource files:");
     ok("has a when-to-use section", /##\s*When to use this site/i.test(md));
     ok("has a when-NOT-to-use section", /##\s*When NOT to use this site/i.test(md));
     ok("says how an agent should call it", /##\s*How an agent should use this site/i.test(md));
-    ok("states there is no public API", /no public API/i.test(md));
+    ok("states that only /api/v1/ is public and the rest of /api is private", /Only `\/api\/v1\/` is public/.test(md) && /private\s+form handler/.test(md));
     ok("names the business", /Gold Coast Window and Pressure Cleaning/.test(md));
     ok("never references the franchise brand", !/jim'?s/i.test(md));
     ok("substantial enough to be guidance", md.length > 1500);
