@@ -17,6 +17,21 @@ export default function Layout({ children, currentPageName }) {
     setCommercialDropdownOpen(false);
   }, [location.pathname]);
 
+  // The mobile menu is a viewport-height panel with its own scroll. While it
+  // is open the page behind it must not scroll — otherwise a swipe inside the
+  // menu drags the whole document (and the sticky header) instead.
+  useEffect(() => {
+    if (!mobileMenuOpen) return undefined;
+    const { documentElement: html, body } = document;
+    const prev = [html.style.overflow, body.style.overflow];
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    return () => {
+      html.style.overflow = prev[0];
+      body.style.overflow = prev[1];
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Trust Bar */}
@@ -165,9 +180,13 @@ export default function Layout({ children, currentPageName }) {
         </div>
 
         {/* Mobile Navigation */}
+        {/* Anchored below the header bar, capped to the viewport, scrolls on its
+            own (overscroll-contain stops the swipe leaking to the page). Kept
+            out of the document flow so a long menu can never make the sticky
+            header taller than the screen. */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-100 bg-white">
-            <nav className="max-w-7xl mx-auto px-4 py-3 space-y-1">
+          <div className="mobile-menu-panel lg:hidden absolute inset-x-0 top-full overflow-y-auto overscroll-contain border-t border-gray-100 bg-white shadow-lg">
+            <nav className="max-w-7xl mx-auto px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] space-y-1">
               <div className="px-3 pt-3 pb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">Residential</div>
               <Link to="/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
                 Window Cleaning

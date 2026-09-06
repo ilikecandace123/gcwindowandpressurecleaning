@@ -17,3 +17,11 @@
 }
 
 html { scroll-behavior: smooth; }
+
+/* Mobile nav panel: never taller than the space under the 4rem header bar.
+   dvh tracks Safari's collapsing toolbar; vh is the fallback for older WebKit. */
+.mobile-menu-panel {
+  max-height: calc(100vh - 4rem);
+  max-height: calc(100dvh - 4rem);
+  -webkit-overflow-scrolling: touch;
+}
