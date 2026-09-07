@@ -236,7 +236,7 @@ curl -sX POST https://gcwindowandpressurecleaning.com.au/api/v1/estimate \
         <a href="/contact/">/contact/</a> before working around it.
       </p>
 
-      <h2>MCP server</h2>
+      <h2 id="mcp">MCP server</h2>
       <p>
         There is a read-only
         <a href="https://modelcontextprotocol.io" rel="noopener">Model Context Protocol</a>
@@ -288,11 +288,27 @@ curl -sX POST https://gcwindowandpressurecleaning.com.au/api/v1/estimate \
       </p>
       <pre><code>curl -H "Accept: text/markdown" https://gcwindowandpressurecleaning.com.au/window-cleaning/</code></pre>
       <p>
-        Markdown mirrors are also addressable directly — append
-        <code>index.md</code> to any page URL. Every page advertises its mirror
-        with <code>&lt;link rel="alternate" type="text/markdown"&gt;</code>.
+        Markdown mirrors are also addressable directly — append <code>.md</code>
+        to any page URL, or append <code>index.md</code>. Both resolve to the
+        same file.
       </p>
-      <pre><code>curl https://gcwindowandpressurecleaning.com.au/window-cleaning/index.md</code></pre>
+      <pre><code>curl https://gcwindowandpressurecleaning.com.au/window-cleaning.md
+curl https://gcwindowandpressurecleaning.com.au/window-cleaning/index.md</code></pre>
+      <p>
+        Every page advertises its mirror twice: in the document head as
+        <code>&lt;link rel="alternate" type="text/markdown"&gt;</code>, and in an
+        <a href="https://www.rfc-editor.org/rfc/rfc8288" rel="noopener">RFC 8288</a>
+        <code>Link</code> response header, so a <code>HEAD</code> request finds it
+        without parsing any HTML. The same header carries
+        <code>rel="service-desc"</code> (the OpenAPI document),
+        <code>rel="service-doc"</code> (this page) and
+        <code>rel="api-catalog"</code>.
+      </p>
+      <pre><code>curl -I https://gcwindowandpressurecleaning.com.au/window-cleaning/</code></pre>
+      <p>
+        <a href="/llms-full.txt">/llms-full.txt</a> lists the markdown URL for
+        every page on the site in one file.
+      </p>
 
       <h2>Resource index</h2>
       <table>
@@ -301,6 +317,7 @@ curl -sX POST https://gcwindowandpressurecleaning.com.au/api/v1/estimate \
         </thead>
         <tbody>
           <tr><td>Site summary for LLMs</td><td><a href="/llms.txt">/llms.txt</a></td><td><code>text/plain</code></td></tr>
+          <tr><td>Markdown mirror index (every page)</td><td><a href="/llms-full.txt">/llms-full.txt</a></td><td><code>text/plain</code></td></tr>
           <tr><td>Agent instructions</td><td><a href="/agent-instructions.md">/agent-instructions.md</a></td><td><code>text/markdown</code></td></tr>
           <tr><td>REST API v1 — endpoint index</td><td><a href="/api/v1/">/api/v1/</a></td><td><code>application/json</code></td></tr>
           <tr><td>OpenAPI 3.1 document</td><td><a href="/openapi.json">/openapi.json</a></td><td><code>application/json</code></td></tr>
@@ -315,7 +332,7 @@ curl -sX POST https://gcwindowandpressurecleaning.com.au/api/v1/estimate \
           <tr><td>Commercial pages sitemap</td><td><a href="/sitemap-commercial.xml">/sitemap-commercial.xml</a></td><td><code>application/xml</code></td></tr>
           <tr><td>Crawler policy</td><td><a href="/robots.txt">/robots.txt</a></td><td><code>text/plain</code></td></tr>
           <tr><td>Expert guides index</td><td><a href="/guides/">/guides/</a></td><td><code>text/html</code></td></tr>
-          <tr><td>Markdown mirror of any page</td><td><code>&lt;page&gt;/index.md</code></td><td><code>text/markdown</code></td></tr>
+          <tr><td>Markdown mirror of any page</td><td><code>&lt;page&gt;.md</code> or <code>&lt;page&gt;/index.md</code></td><td><code>text/markdown</code></td></tr>
         </tbody>
       </table>
 

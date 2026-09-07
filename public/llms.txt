@@ -26,7 +26,7 @@ pest control, painting, roof repairs or plumbing; emergency or same-day callouts
 or jobs above 4 storeys, which need a human conversation first.
 
 How to use it: read this file first, then fetch pages as markdown (send
-"Accept: text/markdown", or append index.md to any page URL). Treat every price
+"Accept: text/markdown", or append .md to any page URL). Treat every price
 here as indicative — only the instant quote engine produces a real number, and
 some property and condition combinations deliberately return a custom quote
 instead of a price. Send people to /instant-quote/ to get their own price; do not
@@ -37,37 +37,43 @@ this site's own booking flow, is disallowed in robots.txt, and must not be calle
 Full instructions: https://gcwindowandpressurecleaning.com.au/agent-instructions.md
 
 ## Agent and Developer Resources
-- REST API v1 (read-only, no auth, JSON, permissive CORS): https://gcwindowandpressurecleaning.com.au/api/v1/
+- [REST API v1](https://gcwindowandpressurecleaning.com.au/api/v1/): read-only, no auth, JSON, permissive CORS.
   GET /services, GET /service-area?suburb=, GET /pricing-options, POST /estimate, GET /pages?path=.
   Errors are RFC 9457 problem documents (application/problem+json) with a machine-readable code and a hint.
-- OpenAPI 3.1 document for that API: https://gcwindowandpressurecleaning.com.au/openapi.json
-  (unique operationIds, descriptions, typed request and response schemas — suitable for LLM function calling)
-- Versioning and deprecation policy: https://gcwindowandpressurecleaning.com.au/for-agents/#versioning
+- [OpenAPI 3.1 document](https://gcwindowandpressurecleaning.com.au/openapi.json): the machine-readable
+  description of that API — unique operationIds, descriptions, typed request and response schemas,
+  suitable for LLM function calling.
+- [Versioning and deprecation policy](https://gcwindowandpressurecleaning.com.au/for-agents/#versioning):
   v1 is current with no sunset date. Additive changes ship in v1 without notice (ignore fields you do
   not recognise); breaking changes ship as /api/v2/. A retired version is announced with Deprecation
   (RFC 9745) and Sunset (RFC 8594) headers at least 6 months ahead. Machine-readable as the
   `lifecycle` object in /api/v1/ and info.x-api-lifecycle in the OpenAPI document.
-- Rate limits: https://gcwindowandpressurecleaning.com.au/for-agents/#rate-limits
+- [Rate limits](https://gcwindowandpressurecleaning.com.au/for-agents/#rate-limits):
   No per-client quota is enforced and no RateLimit headers are sent, because there is none to report.
   Cache GET responses instead of re-fetching (Cache-Control: public, max-age=300) and honour
   Retry-After if the CDN edge ever answers 429 or 503.
-- API catalog (RFC 9727 linkset of every API on this host): https://gcwindowandpressurecleaning.com.au/.well-known/api-catalog
-- API directory: https://gcwindowandpressurecleaning.com.au/api/
-- MCP server (Model Context Protocol, Streamable HTTP, read-only, no auth): https://gcwindowandpressurecleaning.com.au/mcp
-  Tools: list_services, get_service_area, estimate_quote, get_pricing_options, get_page.
-  estimate_quote runs the same pricing engine as the website's instant quote. No tool creates a
-  booking or accepts personal information.
-- MCP manifest: https://gcwindowandpressurecleaning.com.au/.well-known/mcp
+- [API catalog](https://gcwindowandpressurecleaning.com.au/.well-known/api-catalog): RFC 9727 linkset of
+  every API on this host.
+- [API directory](https://gcwindowandpressurecleaning.com.au/api/): which APIs are public and which paths are private.
+- [MCP server](https://gcwindowandpressurecleaning.com.au/mcp): Model Context Protocol, Streamable HTTP,
+  read-only, no auth. Tools: list_services, get_service_area, estimate_quote, get_pricing_options, get_page.
+  Every tool is annotated readOnlyHint: true. estimate_quote runs the same pricing engine as the website's
+  instant quote. No tool creates a booking or accepts personal information.
+- [MCP manifest](https://gcwindowandpressurecleaning.com.au/.well-known/mcp):
   GET returns the manifest; POST to the same URL performs a live MCP handshake.
-- Developer documentation: https://gcwindowandpressurecleaning.com.au/for-agents/
-  (also reachable at /developers, /docs, /api-docs and /mcp-server)
-- Agent instructions (when to use, how to call): https://gcwindowandpressurecleaning.com.au/agent-instructions.md
-- Agent and developer resource index: https://gcwindowandpressurecleaning.com.au/for-agents/
-- Sitemap index: https://gcwindowandpressurecleaning.com.au/sitemap.xml
-- Crawler policy: https://gcwindowandpressurecleaning.com.au/robots.txt
-- Privacy policy: https://gcwindowandpressurecleaning.com.au/privacy/
-- Markdown mirror of any page: append index.md to its URL, or send Accept: text/markdown
-  (acceptmarkdown.com compliant — responses carry Vary: Accept, Accept-Encoding)
+- Developer documentation: [https://gcwindowandpressurecleaning.com.au/for-agents/](https://gcwindowandpressurecleaning.com.au/for-agents/)
+  — the index of every machine-readable resource here (also reachable at /developers, /docs, /api-docs and /mcp-server).
+- [Agent instructions](https://gcwindowandpressurecleaning.com.au/agent-instructions.md): when to use this
+  business, when not to, and how to call it.
+- [Sitemap index](https://gcwindowandpressurecleaning.com.au/sitemap.xml): every page on this site.
+- [Markdown mirror index](https://gcwindowandpressurecleaning.com.au/llms-full.txt): the markdown URL for
+  every page, listed in one file.
+- [Crawler policy](https://gcwindowandpressurecleaning.com.au/robots.txt)
+- [Privacy policy](https://gcwindowandpressurecleaning.com.au/privacy/)
+- Markdown mirror of any page: append `.md` to the page URL (/window-cleaning.md), or append `index.md`
+  (/window-cleaning/index.md), or send `Accept: text/markdown`
+  (acceptmarkdown.com compliant — responses carry Vary: Accept, Accept-Encoding).
+  Every HTML page also advertises its markdown twin in an RFC 8288 `Link: …; rel="alternate"` header.
 - Structured data: JSON-LD on every page (Organization, WebSite, LocalBusiness,
   Service, Offer, AggregateRating, GeoCircle, BreadcrumbList, FAQPage)
 
@@ -214,13 +220,13 @@ A: Most residential properties benefit from window cleaning every 3–6 months, 
 ## Expert Guides
 In-depth answers to the questions Gold Coast homeowners ask most, written from our own field experience. Each guide opens with a direct answer and includes current local guide prices.
 
-- How often should you clean your windows? https://gcwindowandpressurecleaning.com.au/guides/how-often-should-you-clean-your-windows/
-- Pressure cleaning vs soft washing — what's the difference? https://gcwindowandpressurecleaning.com.au/guides/pressure-cleaning-vs-soft-washing/
-- Does roof cleaning damage tiles? https://gcwindowandpressurecleaning.com.au/guides/does-roof-cleaning-damage-tiles/
-- How much does driveway pressure cleaning cost on the Gold Coast? https://gcwindowandpressurecleaning.com.au/guides/driveway-pressure-cleaning-cost/
-- Do dirty solar panels reduce output? https://gcwindowandpressurecleaning.com.au/guides/do-dirty-solar-panels-reduce-output/
-- How do I get rid of birds nesting under my solar panels? https://gcwindowandpressurecleaning.com.au/guides/birds-under-solar-panels/
-- How often should gutters be cleaned in South East Queensland? https://gcwindowandpressurecleaning.com.au/guides/how-often-should-gutters-be-cleaned/
-- Why does my house grow mould outside — and how do I remove it? https://gcwindowandpressurecleaning.com.au/guides/house-washing-mould-gold-coast/
+- [How often should you clean your windows?](https://gcwindowandpressurecleaning.com.au/guides/how-often-should-you-clean-your-windows/)
+- [Pressure cleaning vs soft washing — what's the difference?](https://gcwindowandpressurecleaning.com.au/guides/pressure-cleaning-vs-soft-washing/)
+- [Does roof cleaning damage tiles?](https://gcwindowandpressurecleaning.com.au/guides/does-roof-cleaning-damage-tiles/)
+- [How much does driveway pressure cleaning cost on the Gold Coast?](https://gcwindowandpressurecleaning.com.au/guides/driveway-pressure-cleaning-cost/)
+- [Do dirty solar panels reduce output?](https://gcwindowandpressurecleaning.com.au/guides/do-dirty-solar-panels-reduce-output/)
+- [How do I get rid of birds nesting under my solar panels?](https://gcwindowandpressurecleaning.com.au/guides/birds-under-solar-panels/)
+- [How often should gutters be cleaned in South East Queensland?](https://gcwindowandpressurecleaning.com.au/guides/how-often-should-gutters-be-cleaned/)
+- [Why does my house grow mould outside — and how do I remove it?](https://gcwindowandpressurecleaning.com.au/guides/house-washing-mould-gold-coast/)
 
-All guides index: https://gcwindowandpressurecleaning.com.au/guides/
+All guides index: [https://gcwindowandpressurecleaning.com.au/guides/](https://gcwindowandpressurecleaning.com.au/guides/)

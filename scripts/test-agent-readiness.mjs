@@ -11,7 +11,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseAccept, qualityFor, negotiate, mirrorPath } from "../functions/_middleware.js";
+import { parseAccept, qualityFor, negotiate, mirrorPath, mdTwinPath, pageLinkHeader } from "../functions/_middleware.js";
+import { TOOLS, READ_ONLY_ANNOTATIONS } from "../functions/mcp.js";
 import { buildOrganizationSchema as orgSchema, buildLocalBusinessSchema as localSchema } from "../src/data/schema.js";
 
 
@@ -403,8 +404,127 @@ console.log("\nName-based discoverability:");
   ok("lede names the business and the MCP server", /Gold Coast Window and\s+Pressure Cleaning/.test(lede) && /MCP server/.test(lede));
   ok("indexable with full snippets", /content="index, follow, max-snippet:-1/.test(html));
   const llms = read(path.join(PUBLIC, "llms.txt"));
-  ok("llms.txt lists the developer documentation URL", /Developer documentation: https:\/\/gcwindowandpressurecleaning\.com\.au\/for-agents\//.test(llms));
+  ok("llms.txt lists the developer documentation URL", /Developer documentation: \[?https:\/\/gcwindowandpressurecleaning\.com\.au\/for-agents\//.test(llms));
   ok("llms.txt names the predictable aliases", /\/developers/.test(llms));
+}
+
+// ── MCP tool behaviour annotations (spec 2025-06-18) ────────────────────────
+// The point of these is that a client can tell, from the protocol alone, that
+// calling any tool here is safe. If a tool that writes is ever added, it must
+// not inherit the claim — so the assertion is on every tool, not on a constant.
+console.log("\nMCP tool annotations:");
+{
+  const expected = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
+  for (const tool of TOOLS) {
+    eq(`${tool.name} is annotated read-only`, tool.annotations, expected);
+  }
+  eq("every tool carries annotations", TOOLS.filter((t) => t.annotations).length, TOOLS.length);
+
+  const manifest = JSON.parse(read(path.join(PUBLIC, ".well-known", "mcp")));
+  for (const tool of manifest.tools) {
+    eq(`manifest agrees for ${tool.name}`, tool.annotations, expected);
+  }
+  // The manifest is a preview of the server; a client must not learn one thing
+  // from it and another from tools/list.
+  const serverByName = new Map(TOOLS.map((t) => [t.name, t.annotations]));
+  ok(
+    "manifest annotations match the server tool-for-tool",
+    manifest.tools.every((t) => JSON.stringify(t.annotations) === JSON.stringify(serverByName.get(t.name)))
+  );
+  ok("the read-only claim is frozen in source", Object.isFrozen(READ_ONLY_ANNOTATIONS));
+}
+
+// ── RFC 9727 API catalog shape ──────────────────────────────────────────────
+console.log("\nAPI catalog (RFC 9727):");
+{
+  const catalog = JSON.parse(read(path.join(PUBLIC, ".well-known", "api-catalog")));
+  const SITE = "https://gcwindowandpressurecleaning.com.au";
+  ok("is a linkset", Array.isArray(catalog.linkset) && catalog.linkset.length > 0);
+
+  const root = catalog.linkset[0];
+  eq("first context is anchored at the catalog itself", root.anchor, `${SITE}/.well-known/api-catalog`);
+  ok("the catalog lists its APIs with rel=item", Array.isArray(root.item) && root.item.length >= 2);
+  const items = root.item.map((i) => i.href);
+  ok("the REST API is an item", items.includes(`${SITE}/api/v1/`));
+  ok("the MCP server is an item", items.includes(`${SITE}/mcp`));
+  ok("every item is titled", root.item.every((i) => typeof i.title === "string" && i.title.length > 0));
+
+  // RFC 9727 §3: each API gets its own context, anchored at the API itself,
+  // carrying its description and documentation. An item with no context behind
+  // it is a dead end for a client that follows it.
+  const anchors = new Set(catalog.linkset.map((c) => c.anchor));
+  for (const href of items) {
+    ok(`${href} has its own linkset context`, anchors.has(href));
+    const ctx = catalog.linkset.find((c) => c.anchor === href);
+    ok(`${href} declares a service-desc`, Array.isArray(ctx["service-desc"]) && ctx["service-desc"].length > 0);
+    ok(`${href} declares a service-doc`, Array.isArray(ctx["service-doc"]) && ctx["service-doc"].length > 0);
+  }
+
+  // Only registered relation types; a bare unregistered token is not valid
+  // RFC 8288 (§2.1.2 requires extension relations to be URIs).
+  const REGISTERED = new Set(["item", "service-desc", "service-doc", "service-meta", "status"]);
+  const rels = catalog.linkset.flatMap((c) => Object.keys(c).filter((k) => k !== "anchor"));
+  ok(`only registered relation types (${[...new Set(rels)].join(", ")})`, rels.every((r) => REGISTERED.has(r)));
+
+  const hrefs = catalog.linkset.flatMap((c) =>
+    Object.entries(c).filter(([k]) => k !== "anchor").flatMap(([, v]) => v.map((l) => l.href))
+  );
+  ok("every href is an absolute URL on this site", hrefs.every((h) => h.startsWith(SITE)));
+  ok("never references the franchise brand", !/jim'?s/i.test(JSON.stringify(catalog)));
+
+  // The documentation anchors the catalog points at have to exist on the page.
+  const agentsPage = read(path.join(PUBLIC, "for-agents", "index.html"));
+  for (const fragment of ["rest-api", "versioning", "mcp"]) {
+    ok(`/for-agents/#${fragment} exists`, agentsPage.includes(`id="${fragment}"`));
+  }
+}
+
+// ── RFC 8288 Link header on pages, and .md twin URLs ────────────────────────
+console.log("\nPage Link header and .md twins:");
+{
+  const SITE = "https://gcwindowandpressurecleaning.com.au";
+  const header = pageLinkHeader("/window-cleaning/");
+  ok("advertises this page's markdown twin", header.includes('</window-cleaning/index.md>; rel="alternate"; type="text/markdown"'));
+  ok("advertises the OpenAPI document", header.includes(`<${SITE}/openapi.json>; rel="service-desc"`));
+  ok("advertises the developer docs", header.includes(`<${SITE}/for-agents/>; rel="service-doc"`));
+  ok("advertises the API catalog", header.includes(`<${SITE}/.well-known/api-catalog>; rel="api-catalog"`));
+  // rel="sitemap" is not a registered relation type and RFC 8288 §2.1.2 requires
+  // extension relations to be URIs — the sitemap is advertised in robots.txt.
+  ok("claims no unregistered relation types", !/rel="sitemap"/.test(header));
+  ok("the twin is per-page, not hard-coded", pageLinkHeader("/guides/").includes("</guides/index.md>"));
+  eq("home page twin", pageLinkHeader("/").split(";")[0], "</index.md>");
+
+  eq("/window-cleaning.md → the mirror", mdTwinPath("/window-cleaning.md"), "/window-cleaning/index.md");
+  eq("nested twin", mdTwinPath("/window-cleaning/burleigh-heads.md"), "/window-cleaning/burleigh-heads/index.md");
+  eq("an existing mirror is not re-mapped", mdTwinPath("/window-cleaning/index.md"), null);
+  eq("non-markdown paths are untouched", mdTwinPath("/window-cleaning/"), null);
+  eq("the private API is never twinned", mdTwinPath("/api/booking-submit.md"), null);
+  eq("well-known files are never twinned", mdTwinPath("/.well-known/mcp.md"), null);
+
+  const mw = read(path.join(ROOT, "functions", "_middleware.js"));
+  ok("a real file wins over a twin lookup", /const direct = await context\.next\(\);[\s\S]{0,80}status !== 404/.test(mw));
+  ok("the Link header is only set on a rendered page", /response\.status === 200 && \/text\\\/html\//.test(mw));
+}
+
+// ── llms.txt as an index (llmstxt.org) ──────────────────────────────────────
+console.log("\nllms.txt formatting:");
+{
+  const llms = read(path.join(PUBLIC, "llms.txt"));
+  const links = llms.match(/\[[^\]]+\]\(https?:\/\/[^)]+\)/g) || [];
+  ok(`is a linked index, not a wall of bare URLs (${links.length} markdown links)`, links.length >= 15);
+  ok(`stays under 30,000 characters (${llms.length})`, llms.length < 30000);
+  ok("points at the full mirror index", llms.includes("/llms-full.txt"));
+  ok("documents the .md suffix", /append `?\.md`? to/i.test(llms));
+
+  const full = read(path.join(PUBLIC, "llms-full.txt"));
+  ok("llms-full.txt starts with a heading", full.startsWith("# Gold Coast Window and Pressure Cleaning"));
+  ok("llms-full.txt never references the franchise brand", !/jim'?s/i.test(full));
+
+  // The build overwrites llms-full.txt with every mirror URL and leaves llms.txt
+  // as a pointer. If that ever flipped back, llms.txt would grow to ~120 KB again.
+  const mirrors = read(path.join(ROOT, "scripts", "generate_markdown_mirrors.py"));
+  ok("the build writes llms-full.txt", /full_file\s*=\s*DIST_DIR\s*\/\s*"llms-full\.txt"/.test(mirrors));
+  ok("the build keeps the URL list out of llms.txt", !/url_list.*\n.*llms_file/.test(mirrors) && mirrors.includes("Full mirror index"));
 }
 
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);

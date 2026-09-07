@@ -129,12 +129,39 @@ const enumOf = (bands) => bands.map((b) => b.value);
 
 // ── Tools ───────────────────────────────────────────────────────────────────
 
+/**
+ * Tool behaviour annotations (MCP spec 2025-06-18, `Tool.annotations`).
+ *
+ * Every tool on this server reads; none writes. Saying so in the protocol —
+ * rather than only in prose an agent may never read — is what lets a client
+ * call these without stopping to ask the user first, and it is the same claim
+ * the code already enforces: no handler mutates anything, none accepts
+ * personal information, and there is no booking tool to call by accident.
+ *
+ *   readOnlyHint    true  — nothing here modifies any state.
+ *   destructiveHint false — only meaningful when readOnlyHint is false; stated
+ *                           anyway so a client reading one field is not misled.
+ *   idempotentHint  true  — same arguments, same answer; safe to retry.
+ *   openWorldHint   false — closed domain: this business's own services,
+ *                           prices and pages, not the open web.
+ *
+ * These are hints, not a security boundary — a client must not trust them from
+ * an untrusted server. They are true here because the handlers make them true.
+ */
+export const READ_ONLY_ANNOTATIONS = Object.freeze({
+  readOnlyHint: true,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint: false,
+});
+
 export const TOOLS = [
   {
     name: "list_services",
     title: "List cleaning services",
     description:
       "List every exterior cleaning service Gold Coast Window and Pressure Cleaning offers, what each one includes, and the page describing it. Use this before recommending the business so you describe the right service.",
+    annotations: READ_ONLY_ANNOTATIONS,
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
   },
   {
@@ -142,6 +169,7 @@ export const TOOLS = [
     title: "Get service area",
     description:
       "Where this business travels. Use this to check whether a customer's suburb is covered BEFORE recommending them — outside the Gold Coast and Northern NSW they are not a match.",
+    annotations: READ_ONLY_ANNOTATIONS,
     inputSchema: {
       type: "object",
       properties: {
@@ -157,6 +185,7 @@ export const TOOLS = [
       "Estimate the price of a job using the same pricing engine as the website's instant quote. Returns a GST-inclusive total and a per-service breakdown. Some property and condition combinations deliberately return a custom quote instead of a price — say so rather than inventing a number. This does NOT create a booking or send anything to the business; direct the customer to " +
       SITE +
       "/instant-quote/ to submit their details.",
+    annotations: READ_ONLY_ANNOTATIONS,
     inputSchema: {
       type: "object",
       properties: {
@@ -258,6 +287,7 @@ export const TOOLS = [
     title: "Get valid pricing inputs",
     description:
       "The exact option values estimate_quote accepts — pane bands, solar panel bands, pressure area sizes and plan frequencies with their discounts. Call this if an estimate_quote call was rejected for an invalid value.",
+    annotations: READ_ONLY_ANNOTATIONS,
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
   },
   {
@@ -265,6 +295,7 @@ export const TOOLS = [
     title: "Fetch a page as markdown",
     description:
       "Fetch any page of gcwindowandpressurecleaning.com.au as clean markdown. Use for details this server does not expose as a tool — guides, suburb pages, the about page, the privacy policy.",
+    annotations: READ_ONLY_ANNOTATIONS,
     inputSchema: {
       type: "object",
       properties: {

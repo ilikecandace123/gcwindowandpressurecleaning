@@ -29,6 +29,7 @@ Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap.xml
 
 # Resources for AI agents and automated clients:
 #   /llms.txt               site summary, services, indicative pricing, FAQs
+#   /llms-full.txt          the markdown URL for every page, in one file
 #   /agent-instructions.md  when to use this site, when not to, and how
 #   /for-agents/            index of every machine-readable resource
 #   /mcp                    MCP server (Streamable HTTP, read-only)
@@ -38,4 +39,6 @@ Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap.xml
 #   /.well-known/api-catalog  RFC 9727 catalog of every API on this host
 # Everything else under /api/ is private to this website — do not crawl or call it.
 # Any page can also be fetched as markdown: send "Accept: text/markdown",
-# or append index.md to the page URL.
+# append .md to the page URL (/window-cleaning.md), or append index.md
+# (/window-cleaning/index.md). Every HTML page advertises its markdown twin in
+# an RFC 8288 Link header (rel="alternate"; type="text/markdown").

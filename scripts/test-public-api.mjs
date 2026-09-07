@@ -256,10 +256,16 @@ console.log("\nMiddleware:");
 // ── Discovery files ─────────────────────────────────────────────────────────
 console.log("\nDiscovery:");
 {
+  // RFC 9727 shape: the catalog anchors itself and lists each API with rel=item,
+  // then each API gets its own context. (Shape conformance is asserted in
+  // test-agent-readiness.mjs; here we only care that the REST API is in it and
+  // still points at this spec.)
   const catalog = JSON.parse(read("public/.well-known/api-catalog"));
-  ok("api-catalog is a linkset with one anchor", Array.isArray(catalog.linkset) && catalog.linkset.length === 1 && catalog.linkset[0].anchor === `${SITE}/`);
-  ok("api-catalog service-desc names the OpenAPI document", catalog.linkset[0]["service-desc"].some((l) => l.href === `${SITE}/openapi.json` && /openapi/.test(l.type)));
-  ok("api-catalog service-doc names /for-agents/", catalog.linkset[0]["service-doc"].some((l) => l.href === `${SITE}/for-agents/`));
+  const catalogAnchor = catalog.linkset.find((c) => c.anchor === `${SITE}/.well-known/api-catalog`);
+  ok("api-catalog anchors itself and lists items", Boolean(catalogAnchor) && catalogAnchor.item.some((i) => i.href === `${SITE}/api/v1/`));
+  const restApi = catalog.linkset.find((c) => c.anchor === `${SITE}/api/v1/`);
+  ok("api-catalog service-desc names the OpenAPI document", restApi["service-desc"].some((l) => l.href === `${SITE}/openapi.json` && /openapi/.test(l.type)));
+  ok("api-catalog service-doc names the REST API docs", restApi["service-doc"].some((l) => l.href.startsWith(`${SITE}/for-agents/`)));
   const headers = read("public/_headers");
   ok("_headers types the catalog as application/linkset+json", /\/\.well-known\/api-catalog\n\s+Content-Type: application\/linkset\+json/.test(headers));
   ok("_headers opens CORS on /openapi.json", /\/openapi\.json\n(?:.*\n){0,3}?\s+Access-Control-Allow-Origin: \*/.test(headers));

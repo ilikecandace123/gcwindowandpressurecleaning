@@ -99,8 +99,8 @@ When `estimate_quote` returns a custom quote, say so — do not invent a figure.
    Two ways to get it:
    - Send `Accept: text/markdown` to any page URL. The server negotiates and
      returns `Content-Type: text/markdown` with `Vary: Accept, Accept-Encoding`.
-   - Or append `index.md` to any page URL
-     (`/window-cleaning/` → `/window-cleaning/index.md`). Every page also
+   - Or append `.md` to any page URL (`/window-cleaning/` → `/window-cleaning.md`),
+     or append `index.md` (`/window-cleaning/index.md`). Every page also
      advertises this with `<link rel="alternate" type="text/markdown">`.
 3. **Quote prices as indicative, never as a contract.** Figures on the site and
    in `/llms.txt` are guides. Only the instant quote engine produces a real
@@ -143,7 +143,8 @@ When `estimate_quote` returns a custom quote, say so — do not invent a figure.
 | Residential pages sitemap | `/sitemap-residential.xml` | application/xml |
 | Commercial pages sitemap | `/sitemap-commercial.xml` | application/xml |
 | Crawler policy | `/robots.txt` | text/plain |
-| Markdown mirror of any page | `<page>/index.md` | text/markdown |
+| Markdown mirror of any page | `<page>.md` or `<page>/index.md` | text/markdown |
+| Markdown mirror index (every page) | `/llms-full.txt` | text/plain |
 
 Structured data is embedded as JSON-LD on every page: `Organization`,
 `WebSite`, `LocalBusiness`, `Service`, `Offer`, `AggregateRating`, `GeoCircle`,

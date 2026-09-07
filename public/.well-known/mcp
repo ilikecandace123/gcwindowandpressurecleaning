@@ -45,23 +45,53 @@
   "tools": [
     {
       "name": "list_services",
-      "description": "Every exterior cleaning service offered and what each includes."
+      "description": "Every exterior cleaning service offered and what each includes.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_service_area",
-      "description": "Where the business travels; check a suburb before recommending them."
+      "description": "Where the business travels; check a suburb before recommending them.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "estimate_quote",
-      "description": "GST-inclusive price estimate from the website's own pricing engine."
+      "description": "GST-inclusive price estimate from the website's own pricing engine.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_pricing_options",
-      "description": "Valid option values accepted by estimate_quote."
+      "description": "Valid option values accepted by estimate_quote.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_page",
-      "description": "Fetch any page of the site as clean markdown."
+      "description": "Fetch any page of the site as clean markdown.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     }
   ],
   "readOnly": true,

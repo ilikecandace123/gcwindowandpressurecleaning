@@ -42,6 +42,27 @@ const HTML_TYPES = ["text/html", "application/xhtml+xml"];
 const MD_CONTENT_TYPE = "text/markdown; charset=utf-8";
 const VARY = "Accept, Accept-Encoding";
 
+/**
+ * RFC 8288 Link relations advertised on every HTML page.
+ *
+ * The API responses already carry these (src/publicApi/http.js). Pages did not,
+ * so a client that landed on the site the ordinary way — a search result, a
+ * link, a URL someone pasted — had to already know the discovery files existed
+ * before it could find them. A Link header is readable from a HEAD request,
+ * before any HTML is parsed or any JavaScript runs.
+ *
+ * Only IANA-registered relation types are used: `alternate` (RFC 8288),
+ * `service-desc` and `service-doc` (RFC 8631), and `api-catalog` (RFC 9727).
+ * There is deliberately no `rel="sitemap"` link — that token is not registered,
+ * and RFC 8288 §2.1.2 requires extension relations to be URIs. The sitemap is
+ * advertised in robots.txt, where it belongs.
+ */
+const SITE_LINKS = [
+  `<${API_SITE}/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1"`,
+  `<${API_SITE}/for-agents/>; rel="service-doc"; type="text/html"`,
+  `<${API_SITE}/.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"`,
+];
+
 /** Paths this middleware never touches. */
 function isPassThrough(pathname) {
   if (pathname.startsWith("/api/")) return true;
@@ -122,6 +143,29 @@ export function mirrorPath(pathname) {
   return pathname.endsWith("/") ? `${pathname}index.md` : `${pathname}/index.md`;
 }
 
+/**
+ * The `.md` suffix convention: `/window-cleaning.md` is the markdown twin of
+ * `/window-cleaning/`, without having to know the mirror is called index.md.
+ *
+ * Returns the mirror this URL is asking for, or null when the path is not a
+ * `.md` twin request. `/index.md` and any other real file are excluded, so a
+ * file that genuinely exists is always served ahead of a twin lookup.
+ */
+export function mdTwinPath(pathname) {
+  if (!pathname.endsWith(".md")) return null;
+  if (pathname.endsWith("/index.md")) return null;
+  if (pathname.startsWith("/api/") || pathname.startsWith("/.well-known/")) return null;
+  const base = pathname.slice(0, -".md".length);
+  if (!base || base === "/" || base.endsWith("/")) return null;
+  return `${base}/index.md`;
+}
+
+/** The Link header for an HTML page, including its own markdown twin. */
+export function pageLinkHeader(pathname) {
+  const twin = mirrorPath(pathname);
+  return [`<${twin}>; rel="alternate"; type="text/markdown"`, ...SITE_LINKS].join(", ");
+}
+
 function markdownResponse(body, status) {
   return new Response(body, {
     status,
@@ -185,10 +229,17 @@ Retry with one of:
 `;
 }
 
-/** Add Vary so caches key HTML and markdown variants separately. */
-function withVary(response) {
+/**
+ * Add Vary so caches key HTML and markdown variants separately, and — on a page
+ * that actually rendered — the RFC 8288 Link header. Only a 200 gets the links:
+ * the markdown alternate must not be advertised on a 404, where no twin exists.
+ */
+function withPageHeaders(response, pathname) {
   const headers = new Headers(response.headers);
   headers.set("Vary", VARY);
+  if (response.status === 200 && /text\/html/i.test(headers.get("Content-Type") || "")) {
+    headers.set("Link", pageLinkHeader(pathname));
+  }
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
@@ -241,8 +292,30 @@ export async function onRequest(context) {
     return res;
   }
 
+  const isRead = request.method === "GET" || request.method === "HEAD";
+
+  // The `.md` suffix convention: /window-cleaning.md serves the markdown twin
+  // of /window-cleaning/. Real files win — the path is tried as-is first, and
+  // only a 404 falls back to the mirror, so /agent-instructions.md and every
+  // existing /…/index.md keep serving themselves.
+  if (isRead) {
+    const twin = mdTwinPath(url.pathname);
+    if (twin) {
+      const direct = await context.next();
+      if (direct.status !== 404) return direct;
+      let mirror = null;
+      try {
+        mirror = await fetchAsset(context, new URL(twin, url.origin));
+      } catch {
+        mirror = null;
+      }
+      if (mirror && mirror.ok) return markdownResponse(await mirror.text(), 200);
+      return markdownResponse(notFoundMarkdown(url.pathname), 404);
+    }
+  }
+
   if (isPassThrough(url.pathname)) return context.next();
-  if (request.method !== "GET" && request.method !== "HEAD") return context.next();
+  if (!isRead) return context.next();
 
   const wants = negotiate(request.headers.get("Accept"));
 
@@ -273,8 +346,8 @@ export async function onRequest(context) {
     if (page.status === 404) {
       return markdownResponse(notFoundMarkdown(url.pathname), 404);
     }
-    return withVary(page);
+    return withPageHeaders(page, url.pathname);
   }
 
-  return withVary(await context.next());
+  return withPageHeaders(await context.next(), url.pathname);
 }

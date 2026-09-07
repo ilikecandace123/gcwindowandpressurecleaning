@@ -1,27 +1,42 @@
 {
   "linkset": [
     {
-      "anchor": "https://gcwindowandpressurecleaning.com.au/",
+      "anchor": "https://gcwindowandpressurecleaning.com.au/.well-known/api-catalog",
+      "item": [
+        {
+          "href": "https://gcwindowandpressurecleaning.com.au/api/v1/",
+          "type": "application/json",
+          "title": "Public read-only REST API v1"
+        },
+        {
+          "href": "https://gcwindowandpressurecleaning.com.au/mcp",
+          "type": "application/json",
+          "title": "Model Context Protocol server (Streamable HTTP, read-only)"
+        }
+      ]
+    },
+    {
+      "anchor": "https://gcwindowandpressurecleaning.com.au/api/v1/",
       "service-desc": [
         {
           "href": "https://gcwindowandpressurecleaning.com.au/openapi.json",
           "type": "application/vnd.oai.openapi+json;version=3.1",
           "title": "Gold Coast Window and Pressure Cleaning API — OpenAPI 3.1"
-        },
-        {
-          "href": "https://gcwindowandpressurecleaning.com.au/.well-known/mcp",
-          "type": "application/json",
-          "title": "Model Context Protocol server manifest"
         }
       ],
       "service-doc": [
         {
-          "href": "https://gcwindowandpressurecleaning.com.au/for-agents/",
+          "href": "https://gcwindowandpressurecleaning.com.au/for-agents/#rest-api",
           "type": "text/html",
-          "title": "Developer and agent documentation"
+          "title": "REST API documentation"
         }
       ],
       "service-meta": [
+        {
+          "href": "https://gcwindowandpressurecleaning.com.au/for-agents/#versioning",
+          "type": "text/html",
+          "title": "Versioning and deprecation policy"
+        },
         {
           "href": "https://gcwindowandpressurecleaning.com.au/agent-instructions.md",
           "type": "text/markdown",
@@ -32,12 +47,22 @@
           "type": "text/plain",
           "title": "llms.txt site summary"
         }
-      ],
-      "status": [
+      ]
+    },
+    {
+      "anchor": "https://gcwindowandpressurecleaning.com.au/mcp",
+      "service-desc": [
         {
-          "href": "https://gcwindowandpressurecleaning.com.au/api/v1/",
+          "href": "https://gcwindowandpressurecleaning.com.au/.well-known/mcp",
           "type": "application/json",
-          "title": "Public read-only API v1 — endpoint index"
+          "title": "MCP server manifest"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://gcwindowandpressurecleaning.com.au/for-agents/#mcp",
+          "type": "text/html",
+          "title": "MCP server documentation"
         }
       ]
     }

@@ -165,30 +165,51 @@ def clean_markdown(md: str) -> str:
 
 
 def update_llms_txt(mirror_urls: list[str]) -> None:
-    """Append/replace the Markdown Mirrors section in dist/llms.txt."""
+    """Write dist/llms-full.txt, and point dist/llms.txt at it.
+
+    llmstxt.org describes llms.txt as a short navigation index: a heading, a
+    summary, and markdown links to the detail. Inlining ~1,200 mirror URLs made
+    it a 120 KB wall of text an agent had to read past to find anything, and
+    duplicated the sitemap. The list still ships in full — it just lives in
+    llms-full.txt, which is the spec's own name for the long companion file.
+    """
     llms_file = DIST_DIR / "llms.txt"
     if not llms_file.exists():
         print("  WARN: dist/llms.txt not found — skipping llms.txt update")
         return
 
+    url_list = "\n".join(f"- {url}" for url in sorted(mirror_urls))
+    full_file = DIST_DIR / "llms-full.txt"
+    full_file.write_text(
+        "# Gold Coast Window and Pressure Cleaning — markdown mirror index\n\n"
+        "> Every page on this site has a plain markdown mirror: the content without "
+        "navigation, scripts or layout chrome.\n\n"
+        "Fetch any page as markdown by appending `.md` to its URL "
+        "(/window-cleaning.md), by appending `index.md` (/window-cleaning/index.md), "
+        "or by sending `Accept: text/markdown`. Every mirror below is a live URL.\n\n"
+        f"## Markdown Mirrors ({len(mirror_urls)} page{'' if len(mirror_urls) == 1 else 's'})\n\n"
+        f"{url_list}\n",
+        encoding="utf-8",
+    )
+    print(f"  ✓ llms-full.txt written with {len(mirror_urls)} mirror URLs")
+
     existing = llms_file.read_text(encoding="utf-8")
 
-    # Build the new Markdown Mirrors section
-    url_list = "\n".join(f"- {url}" for url in sorted(mirror_urls))
     mirrors_section = (
-        f"## Markdown Mirrors (Clean AI-Readable Versions)\n"
-        f"Every page on this site has a plain markdown mirror. "
-        f"Add /index.md to any URL to get the clean content without navigation, scripts, or layout chrome.\n\n"
-        f"{url_list}\n"
+        "## Markdown Mirrors\n"
+        "Every page on this site has a plain markdown mirror. Append `.md` to a page URL "
+        "(/window-cleaning.md), append `index.md` (/window-cleaning/index.md), or send "
+        "`Accept: text/markdown`.\n\n"
+        f"- [Full mirror index ({len(mirror_urls)} page{'' if len(mirror_urls) == 1 else 's'})]({SITE_URL}/llms-full.txt)\n"
+        f"- [Sitemap index]({SITE_URL}/sitemap.xml)\n"
     )
 
-    # Replace existing section if present, otherwise append
+    # Replace an existing section if present, otherwise append.
     marker = "## Markdown Mirrors"
     if marker in existing:
-        # Replace from marker to end of file (or next ## section)
         before = existing[:existing.index(marker)]
         after_raw = existing[existing.index(marker):]
-        # Find next top-level section after the mirrors block
+        # Find the next top-level section after the mirrors block
         next_section = re.search(r'\n## ', after_raw[3:])  # skip past current ##
         if next_section:
             after = after_raw[next_section.start() + 1:]
@@ -199,7 +220,7 @@ def update_llms_txt(mirror_urls: list[str]) -> None:
         new_content = existing.rstrip() + "\n\n" + mirrors_section
 
     llms_file.write_text(new_content, encoding="utf-8")
-    print(f"  ✓ llms.txt updated with {len(mirror_urls)} mirror URLs")
+    print(f"  ✓ llms.txt now points at llms-full.txt ({len(new_content)} chars)")
 
 
 def process_page(html_file: Path) -> bool:

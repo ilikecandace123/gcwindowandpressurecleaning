@@ -1,0 +1,18 @@
+# Gold Coast Window and Pressure Cleaning — markdown mirror index
+
+> Every page on this site has a plain markdown mirror: the content without
+> navigation, scripts or layout chrome.
+
+Fetch any page as markdown by appending `.md` to its URL
+(/window-cleaning.md), by appending `index.md` (/window-cleaning/index.md),
+or by sending `Accept: text/markdown`.
+
+The full list of mirror URLs is written into this file at build time by
+scripts/generate_markdown_mirrors.py, which walks the built site. This
+checked-in copy is the fallback: it exists so the URL is never a 404 on a
+build that skipped the mirror step.
+
+## Markdown Mirrors
+
+- [Sitemap index](https://gcwindowandpressurecleaning.com.au/sitemap.xml) — every page on this site
+- [llms.txt](https://gcwindowandpressurecleaning.com.au/llms.txt) — services, pricing, suburbs, hours, FAQs
