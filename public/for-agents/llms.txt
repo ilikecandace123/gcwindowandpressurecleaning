@@ -1,0 +1,45 @@
+# Gold Coast Window and Pressure Cleaning — Agent and Developer Resources
+
+> Scoped llms.txt for the machine-readable surface of
+> gcwindowandpressurecleaning.com.au: the read-only REST API, the MCP server,
+> the published Agent Skill, and the discovery files that point at them. For
+> the business itself — services, indicative pricing, suburbs, hours, FAQs —
+> read [/llms.txt](https://gcwindowandpressurecleaning.com.au/llms.txt) instead.
+
+Everything listed here is read-only and needs no authentication, no API key and
+no account. Nothing on this surface creates a booking, a job or a lead, and
+nothing accepts personal information: send people to
+[/instant-quote/](https://gcwindowandpressurecleaning.com.au/instant-quote/) to
+enter their own details.
+
+## Start here
+- [Developer documentation](https://gcwindowandpressurecleaning.com.au/for-agents/): every resource below, written out. Also at /developers, /docs, /api-docs and /mcp-server.
+- [Agent instructions](https://gcwindowandpressurecleaning.com.au/agent-instructions.md): when to use this business, when not to, and how to call it.
+- [Agent Skill](https://gcwindowandpressurecleaning.com.au/.well-known/agent-skills/gold-coast-window-and-pressure-cleaning/SKILL.md): the same instructions in the Agent Skills format (agentskills.io).
+
+## API
+- [REST API v1](https://gcwindowandpressurecleaning.com.au/api/v1/): index of every endpoint. GET /services, GET /service-area?suburb=, GET /pricing-options, POST /estimate, GET /pages?path=.
+- [OpenAPI 3.1 document](https://gcwindowandpressurecleaning.com.au/openapi.json): unique operationIds, typed request and response schemas, suitable for LLM function calling.
+- [Error model](https://gcwindowandpressurecleaning.com.au/for-agents/#errors): RFC 9457 problem documents (application/problem+json) with a machine-readable code and a hint.
+- [Versioning and deprecation policy](https://gcwindowandpressurecleaning.com.au/for-agents/#versioning): v1 is current, no sunset date; breaking changes ship as /api/v2/; a retirement is announced with Deprecation (RFC 9745) and Sunset (RFC 8594) headers at least 6 months ahead.
+- [Rate limits and caching](https://gcwindowandpressurecleaning.com.au/for-agents/#rate-limits): no quota is enforced and no RateLimit headers are sent; cache GET responses (max-age=300) and honour Retry-After if the edge answers 429 or 503.
+- [API directory](https://gcwindowandpressurecleaning.com.au/api/): which APIs here are public and which paths are private.
+
+## MCP
+- [MCP server](https://gcwindowandpressurecleaning.com.au/mcp): Streamable HTTP, read-only. Tools: list_services, get_service_area, estimate_quote, get_pricing_options, get_page — each annotated readOnlyHint: true.
+- [MCP manifest](https://gcwindowandpressurecleaning.com.au/.well-known/mcp): GET returns the manifest; POST performs a live handshake.
+
+## Discovery
+- [Agent Skills index](https://gcwindowandpressurecleaning.com.au/.well-known/agent-skills/index.json): the skills this site publishes, with a SHA-256 digest for each.
+- [API catalog](https://gcwindowandpressurecleaning.com.au/.well-known/api-catalog): RFC 9727 linkset of every API on this host.
+- [Crawler policy](https://gcwindowandpressurecleaning.com.au/robots.txt)
+- [Sitemap index](https://gcwindowandpressurecleaning.com.au/sitemap.xml)
+- [Markdown mirror index](https://gcwindowandpressurecleaning.com.au/llms-full.txt): the markdown URL for every page.
+
+## Optional
+- Markdown mirror of any page: append `.md` to the page URL, append `index.md`, or send `Accept: text/markdown` (acceptmarkdown.com compliant). Every HTML page advertises its twin in an RFC 8288 `Link: …; rel="alternate"` header.
+- [Privacy policy](https://gcwindowandpressurecleaning.com.au/privacy/)
+
+Every path under /api/ other than /api/v1/ is a private form handler for this
+website's own booking flow. It is disallowed in robots.txt and must not be
+called.

@@ -37,6 +37,8 @@ Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap.xml
 #   /api/v1/                public read-only REST API (index of endpoints)
 #   /openapi.json           OpenAPI 3.1 description of that API
 #   /.well-known/api-catalog  RFC 9727 catalog of every API on this host
+#   /.well-known/agent-skills/index.json  Agent Skills discovery index
+#   /for-agents/llms.txt    scoped llms.txt for the machine-readable surface
 # Everything else under /api/ is private to this website — do not crawl or call it.
 # Any page can also be fetched as markdown: send "Accept: text/markdown",
 # append .md to the page URL (/window-cleaning.md), or append index.md

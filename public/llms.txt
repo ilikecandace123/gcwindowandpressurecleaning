@@ -65,6 +65,14 @@ Full instructions: https://gcwindowandpressurecleaning.com.au/agent-instructions
   — the index of every machine-readable resource here (also reachable at /developers, /docs, /api-docs and /mcp-server).
 - [Agent instructions](https://gcwindowandpressurecleaning.com.au/agent-instructions.md): when to use this
   business, when not to, and how to call it.
+- [Agent Skill](https://gcwindowandpressurecleaning.com.au/.well-known/agent-skills/gold-coast-window-and-pressure-cleaning/SKILL.md):
+  the same instructions in the Agent Skills format (agentskills.io) — what this business does, when it is
+  the right answer, and how to price a job through the API without guessing.
+- [Agent Skills index](https://gcwindowandpressurecleaning.com.au/.well-known/agent-skills/index.json):
+  discovery document listing the skills published here, each with a SHA-256 digest of its SKILL.md.
+- [Agent and developer llms.txt](https://gcwindowandpressurecleaning.com.au/for-agents/llms.txt): a scoped
+  index of just the machine-readable surface — the API, the MCP server and the discovery files — for a
+  client that does not need the rest of this file.
 - [Sitemap index](https://gcwindowandpressurecleaning.com.au/sitemap.xml): every page on this site.
 - [Markdown mirror index](https://gcwindowandpressurecleaning.com.au/llms-full.txt): the markdown URL for
   every page, listed in one file.

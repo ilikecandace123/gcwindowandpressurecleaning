@@ -13,6 +13,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseAccept, qualityFor, negotiate, mirrorPath, mdTwinPath, pageLinkHeader } from "../functions/_middleware.js";
 import { TOOLS, READ_ONLY_ANNOTATIONS } from "../functions/mcp.js";
+import { SKILLS_DIR, SCHEMA_URL, SKILL_NAME_PATTERN, buildSkillsIndex, parseFrontmatter, skillDirectories, sha256 } from "./agent-skills.mjs";
 import { buildOrganizationSchema as orgSchema, buildLocalBusinessSchema as localSchema } from "../src/data/schema.js";
 
 
@@ -526,6 +527,135 @@ console.log("\nllms.txt formatting:");
   ok("the build writes llms-full.txt", /full_file\s*=\s*DIST_DIR\s*\/\s*"llms-full\.txt"/.test(mirrors));
   ok("the build keeps the URL list out of llms.txt", !/url_list.*\n.*llms_file/.test(mirrors) && mirrors.includes("Full mirror index"));
 }
+
+
+// ── Agent Skills discovery (agentskills.io 0.2.0) ───────────────────────────
+console.log("\nAgent Skills discovery:");
+{
+  const dirs = skillDirectories();
+  ok(`at least one skill is published (${dirs.length})`, dirs.length >= 1);
+
+  const index = buildSkillsIndex();
+  eq("declares the 0.2.0 discovery schema", index.$schema, SCHEMA_URL);
+  eq("the index lists exactly the published skill directories", index.skills.map((s) => s.name), dirs);
+
+  for (const entry of index.skills) {
+    const dir = path.join(SKILLS_DIR, entry.name);
+    const bytes = fs.readFileSync(path.join(dir, "SKILL.md"));
+    const front = parseFrontmatter(bytes.toString("utf8"));
+
+    // Required entry fields, per the discovery specification.
+    eq(`${entry.name}: type is skill-md`, entry.type, "skill-md");
+    eq(`${entry.name}: url points at the SKILL.md`, entry.url, `/.well-known/agent-skills/${entry.name}/SKILL.md`);
+    ok(`${entry.name}: digest is sha256:<64 hex>`, /^sha256:[0-9a-f]{64}$/.test(entry.digest));
+    // The whole point of the digest: it is the file, not a copy of a claim.
+    eq(`${entry.name}: digest matches the published bytes`, entry.digest, sha256(bytes));
+    eq(`${entry.name}: description is the frontmatter description`, entry.description, front.description);
+
+    // SKILL.md format rules (agentskills.io specification).
+    eq(`${entry.name}: frontmatter name matches the directory`, front.name, entry.name);
+    ok(`${entry.name}: name is lowercase, hyphen-separated, <= 64 chars`, SKILL_NAME_PATTERN.test(front.name) && front.name.length <= 64);
+    ok(`${entry.name}: description is non-empty and <= 1024 chars`, front.description.length > 0 && front.description.length <= 1024);
+    ok(`${entry.name}: compatibility (if set) is <= 500 chars`, !front.compatibility || front.compatibility.length <= 500);
+    const body = bytes.toString("utf8").split(/^---\r?\n/m).slice(2).join("---\n");
+    ok(`${entry.name}: body leads with a top-level heading`, /^\s*# \S/.test(body));
+
+    // Read-only is the claim the rest of this site makes; the skill must not
+    // quietly tell an agent something different.
+    ok(`${entry.name}: tells agents not to book on someone's behalf`, /do \*\*not\*\* submit|never .{0,40}booking|not to book/i.test(body));
+    ok(`${entry.name}: warns off the private /api paths`, /private form handler/i.test(body));
+    ok(`${entry.name}: never references the franchise brand`, !/jim'?s/i.test(bytes.toString("utf8")));
+  }
+}
+
+console.log("\nAgent Skills wiring:");
+{
+  const pkg = JSON.parse(read(path.join(ROOT, "package.json")));
+  // Generated, never hand-written — a checked-in index would drift the moment a
+  // SKILL.md changed, and the digest would stop meaning anything.
+  ok("the full build writes the index", pkg.scripts.build.includes("scripts/write-agent-skills.mjs"));
+  ok("the meta-only build writes it too", pkg.scripts["build:meta-only"].includes("scripts/write-agent-skills.mjs"));
+  ok("no index is checked in under public/", !fs.existsSync(path.join(SKILLS_DIR, "index.json")));
+
+  const headers = read(path.join(PUBLIC, "_headers"));
+  ok("_headers types the index as JSON", /\/\.well-known\/agent-skills\/index\.json[\s\S]{0,160}application\/json/.test(headers));
+  ok("_headers opens CORS on the skills directory", /\/\.well-known\/agent-skills\/\*\n\s+Access-Control-Allow-Origin: \*/.test(headers));
+  // Two matching rules both setting the header emit "…: *, *", which no browser
+  // accepts. The wildcard rule carries it for every file under the directory.
+  const skillRuleCors = headers
+    .split(/\n(?=\/)/)
+    .filter((rule) => rule.startsWith("/.well-known/agent-skills"))
+    .filter((rule) => /Access-Control-Allow-Origin/.test(rule));
+  eq("CORS is declared on exactly one skills rule", skillRuleCors.length, 1);
+
+  const llms = read(path.join(PUBLIC, "llms.txt"));
+  ok("llms.txt lists the skill", llms.includes("/.well-known/agent-skills/gold-coast-window-and-pressure-cleaning/SKILL.md"));
+  ok("llms.txt lists the discovery index", llms.includes("/.well-known/agent-skills/index.json"));
+
+  const robots = read(path.join(PUBLIC, "robots.txt"));
+  ok("robots.txt points at the discovery index", robots.includes("/.well-known/agent-skills/index.json"));
+
+  const agentsPage = read(path.join(PUBLIC, "for-agents", "index.html"));
+  ok("the docs page has an #agent-skills section", agentsPage.includes('id="agent-skills"'));
+  ok("the docs page links the index", agentsPage.includes('href="/.well-known/agent-skills/index.json"'));
+}
+
+// ── Scoped llms.txt for the agent/developer surface ─────────────────────────
+console.log("\nScoped /for-agents/llms.txt:");
+{
+  const scoped = read(path.join(PUBLIC, "for-agents", "llms.txt"));
+  ok("starts with an H1 (llms.txt format)", scoped.startsWith("# Gold Coast Window and Pressure Cleaning"));
+  ok("keeps a blockquote summary", /\n>\s+\S/.test(scoped.slice(0, 500)));
+  const links = scoped.match(/\[[^\]]+\]\(https?:\/\/[^)]+\)/g) || [];
+  ok(`is a linked index (${links.length} markdown links)`, links.length >= 12);
+  ok(`stays well under 30,000 characters (${scoped.length})`, scoped.length < 30000);
+  ok("hands the whole-site view back to /llms.txt", scoped.includes("/llms.txt"));
+  ok("never references the franchise brand", !/jim'?s/i.test(scoped));
+
+  // Every fragment it points at has to exist on the page it points at.
+  const agentsPage = read(path.join(PUBLIC, "for-agents", "index.html"));
+  for (const fragment of [...scoped.matchAll(/\/for-agents\/#([a-z-]+)\)/g)].map((m) => m[1])) {
+    ok(`/for-agents/#${fragment} exists`, agentsPage.includes(`id="${fragment}"`));
+  }
+  // And every static file it names is actually published.
+  for (const rel of ["llms.txt", "agent-instructions.md", "llms-full.txt", "robots.txt", "sitemap.xml", ".well-known/api-catalog", ".well-known/mcp"]) {
+    ok(`${rel} exists to be linked`, !scoped.includes(`/${rel}`) || fs.existsSync(path.join(PUBLIC, rel)));
+  }
+
+  const main = read(path.join(PUBLIC, "llms.txt"));
+  ok("the main llms.txt points at the scoped one", main.includes("/for-agents/llms.txt"));
+  ok("robots.txt points at the scoped one", read(path.join(PUBLIC, "robots.txt")).includes("/for-agents/llms.txt"));
+
+  // The docs page answers to /docs and /developers; its llms.txt should too.
+  const redirects = read(path.join(PUBLIC, "_redirects"));
+  for (const alias of ["/docs/llms.txt", "/developers/llms.txt"]) {
+    ok(`${alias} resolves to the scoped file`, new RegExp(`^${alias.replace(/\//g, "\\/")}\\s+/for-agents/llms\\.txt\\s+301`, "m").test(redirects));
+  }
+}
+
+// ── Built output: the index ships and describes what shipped ────────────────
+{
+  const builtIndex = path.join(DIST, ".well-known", "agent-skills", "index.json");
+  if (!fs.existsSync(DIST)) {
+    skipped("agent-skills index over dist/", "run `npm run build` first");
+  } else if (!fs.existsSync(builtIndex)) {
+    skipped("agent-skills index over dist/", "not in this build — rebuild to check it");
+  } else {
+    console.log("\nAgent Skills index in dist/:");
+    const built = JSON.parse(read(builtIndex));
+    eq("built index declares the 0.2.0 schema", built.$schema, SCHEMA_URL);
+    for (const entry of built.skills) {
+      const shipped = path.join(DIST, entry.url.replace(/^\//, ""));
+      ok(`${entry.name}: the SKILL.md it points at shipped`, fs.existsSync(shipped));
+      if (fs.existsSync(shipped)) {
+        // Self-consistency within the build: the digest describes the bytes a
+        // client will actually download, not the ones on someone's laptop.
+        eq(`${entry.name}: digest matches the shipped bytes`, entry.digest, sha256(fs.readFileSync(shipped)));
+      }
+    }
+  }
+}
+
 
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);
 process.exit(fail ? 1 : 0);

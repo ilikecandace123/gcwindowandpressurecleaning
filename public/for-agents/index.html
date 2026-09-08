@@ -95,6 +95,8 @@
         <li><a href="/sitemap.xml">/sitemap.xml</a> — sitemap index covering every page.</li>
         <li><a href="/openapi.json">/openapi.json</a> — OpenAPI 3.1 description of the <a href="#rest-api">REST API</a>.</li>
         <li><a href="/.well-known/api-catalog">/.well-known/api-catalog</a> — RFC 9727 catalog of every API on this host.</li>
+        <li><a href="/.well-known/agent-skills/index.json">/.well-known/agent-skills/index.json</a> — <a href="#agent-skills">Agent Skills</a> discovery index.</li>
+        <li><a href="/for-agents/llms.txt">/for-agents/llms.txt</a> — a scoped llms.txt covering just this page&rsquo;s resources.</li>
       </ul>
 
       <h2 id="rest-api">REST API (v1, read-only)</h2>
@@ -335,6 +337,36 @@ curl https://gcwindowandpressurecleaning.com.au/window-cleaning/index.md</code><
           <tr><td>Markdown mirror of any page</td><td><code>&lt;page&gt;.md</code> or <code>&lt;page&gt;/index.md</code></td><td><code>text/markdown</code></td></tr>
         </tbody>
       </table>
+
+      <h2 id="agent-skills">Agent Skill</h2>
+      <p>
+        The instructions above are also published as an
+        <a href="https://agentskills.io" rel="noopener">Agent Skill</a> — the
+        open <code>SKILL.md</code> format many agent runtimes load on demand —
+        so a skills-aware client can pick this business up without being pointed
+        at the docs first.
+      </p>
+      <table>
+        <thead><tr><th>Resource</th><th>What it is</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><a href="/.well-known/agent-skills/index.json"><code>/.well-known/agent-skills/index.json</code></a></td>
+            <td>Discovery index, per the <a href="https://github.com/cloudflare/agent-skills-discovery-rfc" rel="noopener">Agent Skills discovery specification</a> (schema <code>0.2.0</code>). Every entry carries a <code>sha256:</code> digest of its artefact, so a client can verify what it fetched.</td>
+          </tr>
+          <tr>
+            <td><a href="/.well-known/agent-skills/gold-coast-window-and-pressure-cleaning/SKILL.md"><code>&hellip;/gold-coast-window-and-pressure-cleaning/SKILL.md</code></a></td>
+            <td>The skill itself: what this business covers, when it is <em>not</em> the right answer, how to price a job through the API or MCP, and how to read a custom-quote result.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        The index is generated at build time from the <code>SKILL.md</code>
+        files themselves, so the digests and descriptions cannot drift from what
+        is served. The skill is read-only, like everything else here — it
+        instructs an agent to hand a person off to
+        <a href="/instant-quote/">/instant-quote/</a> rather than book anything
+        on their behalf.
+      </p>
 
       <h2>Structured data</h2>
       <p>

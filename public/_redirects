@@ -48,3 +48,8 @@
 /api-docs/               /for-agents/               301
 /mcp-server              /for-agents/               301
 /mcp-server/             /for-agents/               301
+
+# The scoped llms.txt lives with the docs it indexes. /docs and /developers
+# already 301 to /for-agents/, so their llms.txt does too — one file, not three.
+/docs/llms.txt           /for-agents/llms.txt       301
+/developers/llms.txt     /for-agents/llms.txt       301
