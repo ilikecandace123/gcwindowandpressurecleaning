@@ -2,6 +2,131 @@
 <html lang="en-AU">
   <head>
     <!-- claude-auto-deploy-test 2026-09-03: verifying git push -> Cloudflare Pages auto-deploy -->
+    <!-- Google Ads website-call conversions: forwarding-number swap that survives React.
+         Google's tag can only edit the DOM once. This is a React app mounted with
+         createRoot(), which throws away the pre-rendered markup (and any number Google
+         has already swapped into it) and re-renders the phone number on every route
+         change. So instead of Google's auto-replace, gtag hands the forwarding number
+         to phone_conversion_callback below; this script stores it and re-applies it to
+         every text node and tel: link that React creates, via a MutationObserver.
+         Google's tag verification, its 3-hour refresh and its revert-to-real-number
+         call all arrive through the same callback and are handled the same way. -->
+    <script>
+      (function () {
+        var REAL_DISPLAY = '(07) 5651 2386';
+        var REAL_DIGITS = '0756512386';
+        var SKIP = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, TEXTAREA: 1, TITLE: 1 };
+        var digits = function (s) {
+          s = String(s || '').replace(/[^0-9+]/g, '');
+          if (s.indexOf('+61') === 0) s = '0' + s.slice(3);
+          return s;
+        };
+        // Same matcher Google uses: the digits in order, up to 3 non-digits between them.
+        var matcher = function (d) { return new RegExp('\\(?' + d.split('').join('[^0-9]{0,3}'), 'g'); };
+        var patterns = [matcher(REAL_DIGITS)];
+        var knownTels = [];
+        var current = null; // { display, tel } while a forwarding number is live
+        var applying = false;
+
+        function anchorOf(node) {
+          for (var a = node; a; a = a.parentNode) {
+            if (a.nodeType === 1 && a.nodeName === 'A') {
+              var href = a.getAttribute('href') || '';
+              return href.slice(0, 4).toLowerCase() === 'tel:' ? a : null;
+            }
+          }
+          return null;
+        }
+        function fixHref(a) {
+          var href = a.getAttribute('href') || '';
+          var d = digits(href.slice(4));
+          if (d !== REAL_DIGITS && knownTels.indexOf(d) < 0) return; // not our number
+          if (!a.hasAttribute('data-gfn-tel')) a.setAttribute('data-gfn-tel', href);
+          var want = current ? 'tel:' + current.tel : a.getAttribute('data-gfn-tel');
+          if (href !== want) a.setAttribute('href', want);
+        }
+        function fixText(t) {
+          var s = t.data;
+          if (!s || SKIP[t.parentNode && t.parentNode.nodeName]) return;
+          var hit = false;
+          for (var i = 0; i < patterns.length; i++) { patterns[i].lastIndex = 0; if (patterns[i].test(s)) { hit = true; break; } }
+          if (!hit) return;
+          var want = current ? current.display : REAL_DISPLAY;
+          var out = s;
+          for (var j = 0; j < patterns.length; j++) { patterns[j].lastIndex = 0; out = out.replace(patterns[j], want); }
+          if (out !== s) t.data = out;
+          var a = anchorOf(t);
+          if (a) fixHref(a);
+        }
+        function walk(root) {
+          if (!root) return;
+          if (root.nodeType === 3) { fixText(root); return; }
+          if (root.nodeType !== 1 && root.nodeType !== 9 && root.nodeType !== 11) return;
+          if (root.nodeType === 1 && SKIP[root.nodeName]) return;
+          var it = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+          var texts = [];
+          for (var n = it.nextNode(); n; n = it.nextNode()) texts.push(n);
+          for (var i = 0; i < texts.length; i++) fixText(texts[i]);
+          if (root.nodeType === 1 && root.nodeName === 'A') fixHref(root);
+          if (root.querySelectorAll) {
+            var links = root.querySelectorAll('a[href^="tel:"], a[href^="TEL:"]');
+            for (var k = 0; k < links.length; k++) fixHref(links[k]);
+          }
+        }
+        function apply(root) {
+          applying = true;
+          try { walk(root); } finally { applying = false; }
+        }
+        function setNumber(display, tel) {
+          var telDigits = digits(tel || display);
+          var isReal = telDigits === REAL_DIGITS || digits(display) === REAL_DIGITS;
+          if (isReal) {
+            current = null;
+          } else {
+            if (knownTels.indexOf(telDigits) < 0) { knownTels.push(telDigits); patterns.push(matcher(telDigits)); }
+            var dd = digits(display);
+            if (dd && dd !== telDigits && knownTels.indexOf(dd) < 0) { knownTels.push(dd); patterns.push(matcher(dd)); }
+            current = { display: String(display), tel: String(tel || display).replace(/[^0-9+]/g, '') };
+          }
+          window.google_wcc_applied = current ? current.display : 'reverted';
+          if (document.body) apply(document.body);
+        }
+
+        var queue = [];
+        var scheduled = false;
+        function flush() {
+          scheduled = false;
+          var nodes = queue; queue = [];
+          if (!current) return;
+          applying = true;
+          try {
+            for (var i = 0; i < nodes.length; i++) {
+              var n = nodes[i];
+              if (!n.isConnected) continue;
+              if (n.nodeType === 3) fixText(n);
+              else if (n.nodeType === 1) { if (n.nodeName === 'A') fixHref(n); walk(n); }
+            }
+          } finally { applying = false; }
+        }
+        var observer = new MutationObserver(function (muts) {
+          if (applying || !current) return;
+          for (var i = 0; i < muts.length; i++) {
+            var m = muts[i];
+            if (m.type === 'childList') { for (var j = 0; j < m.addedNodes.length; j++) queue.push(m.addedNodes[j]); }
+            else queue.push(m.target);
+          }
+          if (queue.length && !scheduled) { scheduled = true; setTimeout(flush, 0); }
+        });
+        observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['href'] });
+
+        window.__gcwpCallTracking = {
+          setNumber: setNumber,
+          current: function () { return current; },
+          realNumber: REAL_DISPLAY
+        };
+      })();
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18190004003"></script>
     <script>
@@ -9,9 +134,13 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'AW-18190004003');
-      // Google Ads phone-call conversion (Google Forwarding Number number-swap)
+      // Google Ads phone-call conversion (Google Forwarding Number). The callback
+      // receives (display number, dial number) from Google — see the script above.
       gtag('config', 'AW-18190004003/UMSTCJDpjNYcEKPe1eFD', {
-        'phone_conversion_number': '(07) 5651 2386'
+        'phone_conversion_number': '(07) 5651 2386',
+        'phone_conversion_callback': function (formattedNumber, mobileNumber) {
+          window.__gcwpCallTracking.setNumber(formattedNumber, mobileNumber);
+        }
       });
     </script>
     <!-- End Google tag (gtag.js) -->
