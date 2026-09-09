@@ -12,6 +12,7 @@ import {
 import PaneCountingGuide from "./PaneCountingGuide";
 import FrenchPaneExamples from "./FrenchPaneExamples";
 import { fireAdsConversion } from "../lib/adsConversion";
+import { adsAttributionFields } from "../lib/adsAttribution.js";
 import { trackQuote, flushQuoteTrack } from "./funnelTrack";
 import {
   ArrowLeft,
@@ -398,6 +399,9 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
       qa,
       leadId: extra.leadId || "",
       source: "instant-quote",
+      // Google Ads click attribution (gclid / gbraid / wbraid, click time,
+      // landing page, utm_*) — empty strings when the visit wasn't from an ad.
+      ...adsAttributionFields(),
     };
   }
 
