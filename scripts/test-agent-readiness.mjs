@@ -15,6 +15,17 @@ import { parseAccept, qualityFor, negotiate, mirrorPath, mdTwinPath, pageLinkHea
 import { TOOLS, READ_ONLY_ANNOTATIONS } from "../functions/mcp.js";
 import { SKILLS_DIR, SCHEMA_URL, SKILL_NAME_PATTERN, buildSkillsIndex, parseFrontmatter, skillDirectories, sha256 } from "./agent-skills.mjs";
 import { buildOrganizationSchema as orgSchema, buildLocalBusinessSchema as localSchema } from "../src/data/schema.js";
+import {
+  buildServerCard,
+  buildArdCatalog,
+  SERVER_CARD_PATH,
+  SERVER_CARD_ALIAS_PATH,
+  SERVER_CARD_SCHEMA_URL,
+  ARD_PATH,
+  AI_CATALOG_PATH,
+  PUBLISHER_DOMAIN,
+  TRUST_MANIFEST,
+} from "../src/publicApi/agentCatalog.js";
 
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
@@ -656,6 +667,147 @@ console.log("\nScoped /for-agents/llms.txt:");
   }
 }
 
+
+// ── MCP server card (SEP-2127 / ext-server-card v1) ─────────────────────────
+{
+  console.log("\nMCP server card:");
+  const card = buildServerCard();
+
+  // The four members the v1 schema marks required, and the two it pins.
+  for (const field of ["$schema", "name", "description", "version"]) {
+    ok(`required member: ${field}`, typeof card[field] === "string" && card[field].length > 0);
+  }
+  eq("$schema is the pinned v1 Server Card schema URL", card.$schema, SERVER_CARD_SCHEMA_URL);
+  ok("name matches the schema's reverse-DNS pattern", /^[a-zA-Z0-9.-]+\/[a-zA-Z0-9._-]+$/.test(card.name));
+  ok("name is anchored on this domain", card.name.startsWith(`${PUBLISHER_DOMAIN}/`));
+  ok("version is not a range", !/[\^~><*x]/.test(card.version));
+  // The v1 schema caps these two; a longer string makes the card invalid, so
+  // the full statement belongs in _meta, not in `description`.
+  ok("description is within the schema's 100-character cap", card.description.length <= 100);
+  ok("title is within the schema's 100-character cap", card.title.length <= 100);
+  ok("the full read-only statement is kept in _meta", /read-only/i.test(JSON.stringify(card._meta)));
+
+  // Transport metadata has to describe endpoints that exist.
+  ok("declares at least one remote", Array.isArray(card.remotes) && card.remotes.length > 0);
+  for (const remote of card.remotes) {
+    ok(`remote ${remote.url} uses an allowed transport`, ["sse", "streamable-http"].includes(remote.type));
+    ok(`remote ${remote.url} is an https URL on this site`, remote.url.startsWith(`https://${PUBLISHER_DOMAIN}/`));
+    ok(`remote ${remote.url} lists protocol versions`, remote.supportedProtocolVersions.includes("2025-06-18"));
+  }
+  eq("serverUrl is the canonical endpoint", card.serverUrl, `https://${PUBLISHER_DOMAIN}/mcp`);
+  eq("declares no authentication", card.authentication, "none");
+  eq("declares itself read-only", card.readOnly, true);
+
+  // The card is generated from TOOLS, so it cannot drift from the server. This
+  // is the assertion that matters: a card naming a tool the server does not
+  // implement is worse than no card.
+  eq(
+    "card tools are exactly the server's tools",
+    card.tools.map((t) => t.name).sort(),
+    [...serverToolNames].sort()
+  );
+  for (const tool of card.tools) {
+    ok(`${tool.name}: card carries its input schema`, tool.inputSchema && tool.inputSchema.type === "object");
+    eq(`${tool.name}: card repeats the read-only annotations`, tool.annotations, READ_ONLY_ANNOTATIONS);
+  }
+
+  // Every tool declares a `required` array, even when it is empty: a
+  // function-calling client should not have to infer "no required arguments".
+  for (const tool of TOOLS) {
+    ok(`${tool.name}: inputSchema declares required`, Array.isArray(tool.inputSchema.required));
+    for (const name of tool.inputSchema.required) {
+      ok(`${tool.name}: required arg ${name} is a declared property`, Boolean(tool.inputSchema.properties[name]));
+    }
+  }
+
+  // Routing: both reserved paths, checked ahead of the pass-through list.
+  const mw = read(path.join(ROOT, "functions", "_middleware.js"));
+  ok("middleware serves the server card", /SERVER_CARD_PATHS\.has\(url\.pathname\)/.test(mw));
+  ok(
+    "the card is routed before the pass-through check",
+    mw.indexOf("SERVER_CARD_PATHS.has(url.pathname)") < mw.indexOf("if (isPassThrough(url.pathname))")
+  );
+  eq("card path is the well-known one", SERVER_CARD_PATH, "/.well-known/mcp/server-card.json");
+  eq("card alias is the SEP's recommended location", SERVER_CARD_ALIAS_PATH, "/mcp/server-card");
+
+  // It cannot be a static file: /.well-known/mcp is a file, not a directory.
+  ok("/.well-known/mcp is still a file, not a directory", fs.statSync(path.join(PUBLIC, ".well-known", "mcp")).isFile());
+
+  ok("for-agents documents the card", read(path.join(PUBLIC, "for-agents", "index.html")).includes(SERVER_CARD_PATH));
+  ok("llms.txt advertises the card", read(path.join(PUBLIC, "llms.txt")).includes(SERVER_CARD_PATH));
+  ok("robots.txt advertises the card", read(path.join(PUBLIC, "robots.txt")).includes(SERVER_CARD_PATH));
+  const apiCatalog = read(path.join(PUBLIC, ".well-known", "api-catalog"));
+  ok("the API catalog links the card as service-desc for /mcp", apiCatalog.includes(SERVER_CARD_PATH));
+}
+
+// ── ARD catalog (agenticresourcediscovery.org §4–§5) ────────────────────────
+{
+  console.log("\nARD catalog:");
+  const catalog = buildArdCatalog({ skills: buildSkillsIndex().skills });
+
+  ok("manifest is an entries array", Array.isArray(catalog.entries) && catalog.entries.length >= 3);
+
+  const URN = /^urn:air:[a-zA-Z0-9.-]+(:[a-zA-Z0-9._-]+)+$/;
+  const seen = new Set();
+  for (const entry of catalog.entries) {
+    const label = entry.identifier;
+    // §4.2 required terms.
+    ok(`${label}: identifier matches the urn:air grammar`, URN.test(entry.identifier));
+    ok(`${label}: publisher segment is this domain`, entry.identifier.startsWith(`urn:air:${PUBLISHER_DOMAIN}:`));
+    ok(`${label}: has a displayName`, typeof entry.displayName === "string" && entry.displayName.length > 0);
+    ok(`${label}: declares a media type`, typeof entry.type === "string" && entry.type.includes("/"));
+    // §4.3 value-or-reference: exactly one of url / data.
+    ok(`${label}: carries exactly one of url/data`, ("url" in entry) !== ("data" in entry));
+    ok(`${label}: url is on this domain`, entry.url.startsWith(`https://${PUBLISHER_DOMAIN}/`));
+    // §D.2 conformance: representativeQueries present, 2–5 of them.
+    ok(
+      `${label}: has 2-5 representative queries`,
+      Array.isArray(entry.representativeQueries) && entry.representativeQueries.length >= 2 && entry.representativeQueries.length <= 5
+    );
+    // §4.5.1 publisher-authority binding.
+    eq(`${label}: trust manifest identity binds to the publisher domain`, entry.trustManifest.identity, `https://${PUBLISHER_DOMAIN}`);
+    ok(`${label}: identifier is unique`, !seen.has(entry.identifier));
+    seen.add(entry.identifier);
+  }
+  ok("the trust manifest claims no unverifiable attestations", !("attestations" in TRUST_MANIFEST) && !("signature" in TRUST_MANIFEST));
+
+  // The entries describe resources this site actually serves.
+  const byType = Object.fromEntries(catalog.entries.map((e) => [e.type, e]));
+  ok("an entry points at the MCP server card", byType["application/mcp-server-card+json"]?.url.endsWith(SERVER_CARD_PATH));
+  ok("an entry points at the OpenAPI document", byType["application/vnd.oai.openapi+json;version=3.1"]?.url.endsWith("/openapi.json"));
+  const skillEntry = byType["application/ai-skill+md"];
+  ok("an entry points at the published Agent Skill", Boolean(skillEntry));
+  if (skillEntry) {
+    ok("the skill it names is actually published", fs.existsSync(path.join(PUBLIC, skillEntry.url.replace(`https://${PUBLISHER_DOMAIN}/`, ""))));
+  }
+  eq(
+    "the MCP entry's capabilities are the server's tool names",
+    byType["application/mcp-server-card+json"].capabilities.slice().sort(),
+    [...serverToolNames].sort()
+  );
+
+  // Published and discoverable.
+  const headers = read(path.join(PUBLIC, "_headers"));
+  ok("_headers types the catalog as JSON", new RegExp(`${ARD_PATH.replace(/\./g, "\\.")}[\\s\\S]{0,160}application/json`).test(headers));
+  ok("_headers opens CORS on the catalog", new RegExp(`${ARD_PATH.replace(/\./g, "\\.")}[\\s\\S]{0,200}Access-Control-Allow-Origin: \\*`).test(headers));
+  ok("_headers covers the predecessor path too", headers.includes(AI_CATALOG_PATH));
+  ok("index.html carries rel=\"ard\"", /rel="ard"[^>]*href="\/\.well-known\/ard\.json"/.test(read(path.join(ROOT, "index.html"))));
+  ok("for-agents carries rel=\"ard\"", /rel="ard"/.test(read(path.join(PUBLIC, "for-agents", "index.html"))));
+  ok("llms.txt advertises the catalog", read(path.join(PUBLIC, "llms.txt")).includes(ARD_PATH));
+  ok("robots.txt advertises the catalog", read(path.join(PUBLIC, "robots.txt")).includes(ARD_PATH));
+
+  // Built output, when there is one.
+  const builtArd = path.join(DIST, ARD_PATH.replace(/^\//, ""));
+  const builtAlias = path.join(DIST, AI_CATALOG_PATH.replace(/^\//, ""));
+  if (!fs.existsSync(DIST)) {
+    skipped("ARD catalog over dist/", "run `npm run build` first");
+  } else if (!fs.existsSync(builtArd)) {
+    skipped("ARD catalog over dist/", "not in this build — rebuild to check it");
+  } else {
+    eq("built catalog matches the builder", JSON.parse(read(builtArd)), catalog);
+    ok("the predecessor path ships the identical document", fs.existsSync(builtAlias) && read(builtAlias) === read(builtArd));
+  }
+}
 
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);
 process.exit(fail ? 1 : 0);

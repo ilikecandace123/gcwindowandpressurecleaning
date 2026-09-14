@@ -70,6 +70,14 @@ Full instructions: https://gcwindowandpressurecleaning.com.au/agent-instructions
   the right answer, and how to price a job through the API without guessing.
 - [Agent Skills index](https://gcwindowandpressurecleaning.com.au/.well-known/agent-skills/index.json):
   discovery document listing the skills published here, each with a SHA-256 digest of its SKILL.md.
+- [ARD catalog](https://gcwindowandpressurecleaning.com.au/.well-known/ard.json): Agentic Resource
+  Discovery manifest — one entry for the MCP server, the REST API and the Agent Skill, each with a
+  domain-anchored urn:air identifier. Also served at /.well-known/ai-catalog.json for consumers on the
+  predecessor path.
+- [MCP server card](https://gcwindowandpressurecleaning.com.au/.well-known/mcp/server-card.json):
+  static description of the MCP server — name, version, transport endpoints and every tool with its
+  input schema — so a client can decide whether to connect before opening a transport. The same
+  document is served at /mcp/server-card.
 - [Agent and developer llms.txt](https://gcwindowandpressurecleaning.com.au/for-agents/llms.txt): a scoped
   index of just the machine-readable surface — the API, the MCP server and the discovery files — for a
   client that does not need the rest of this file.

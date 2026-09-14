@@ -28,10 +28,12 @@ enter their own details.
 ## MCP
 - [MCP server](https://gcwindowandpressurecleaning.com.au/mcp): Streamable HTTP, read-only. Tools: list_services, get_service_area, estimate_quote, get_pricing_options, get_page — each annotated readOnlyHint: true.
 - [MCP manifest](https://gcwindowandpressurecleaning.com.au/.well-known/mcp): GET returns the manifest; POST performs a live handshake.
+- [MCP server card](https://gcwindowandpressurecleaning.com.au/.well-known/mcp/server-card.json): static card (SEP-2127) naming the server, its transports and every tool with its input schema. Also at /mcp/server-card.
 
 ## Discovery
 - [Agent Skills index](https://gcwindowandpressurecleaning.com.au/.well-known/agent-skills/index.json): the skills this site publishes, with a SHA-256 digest for each.
 - [API catalog](https://gcwindowandpressurecleaning.com.au/.well-known/api-catalog): RFC 9727 linkset of every API on this host.
+- [ARD catalog](https://gcwindowandpressurecleaning.com.au/.well-known/ard.json): Agentic Resource Discovery manifest of every agentic resource here. Also at /.well-known/ai-catalog.json.
 - [Crawler policy](https://gcwindowandpressurecleaning.com.au/robots.txt)
 - [Sitemap index](https://gcwindowandpressurecleaning.com.au/sitemap.xml)
 - [Markdown mirror index](https://gcwindowandpressurecleaning.com.au/llms-full.txt): the markdown URL for every page.

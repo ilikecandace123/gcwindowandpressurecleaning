@@ -52,6 +52,20 @@
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=3600
 
+# Agentic Resource Discovery catalog (ARD §5.1) and the predecessor path a
+# consumer MAY still consult. Same document, same reasoning on CORS as the API
+# catalog above: a discovery document a browser-based agent cannot read is not
+# discoverable.
+/.well-known/ard.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+
+/.well-known/ai-catalog.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+
 # The MCP manifest has no file extension, so declare its type explicitly.
 /.well-known/mcp
   Content-Type: application/json; charset=utf-8

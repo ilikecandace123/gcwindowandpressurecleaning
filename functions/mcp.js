@@ -162,7 +162,7 @@ export const TOOLS = [
     description:
       "List every exterior cleaning service Gold Coast Window and Pressure Cleaning offers, what each one includes, and the page describing it. Use this before recommending the business so you describe the right service.",
     annotations: READ_ONLY_ANNOTATIONS,
-    inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    inputSchema: { type: "object", properties: {}, required: [], additionalProperties: false },
   },
   {
     name: "get_service_area",
@@ -175,6 +175,7 @@ export const TOOLS = [
       properties: {
         suburb: { type: "string", description: "Optional suburb to sanity-check against the service area." },
       },
+      required: [],
       additionalProperties: false,
     },
   },
@@ -288,7 +289,7 @@ export const TOOLS = [
     description:
       "The exact option values estimate_quote accepts — pane bands, solar panel bands, pressure area sizes and plan frequencies with their discounts. Call this if an estimate_quote call was rejected for an invalid value.",
     annotations: READ_ONLY_ANNOTATIONS,
-    inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    inputSchema: { type: "object", properties: {}, required: [], additionalProperties: false },
   },
   {
     name: "get_page",
@@ -301,6 +302,7 @@ export const TOOLS = [
       properties: {
         path: { type: "string", description: "Site path, e.g. '/window-cleaning/' or '/guides/'. Defaults to the home page." },
       },
+      required: [],
       additionalProperties: false,
     },
   },

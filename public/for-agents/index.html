@@ -54,6 +54,7 @@
     <link rel="service-desc" href="/openapi.json" type="application/vnd.oai.openapi+json;version=3.1" title="Public read-only API (OpenAPI 3.1)" />
     <link rel="service-doc" href="/for-agents/" type="text/html" title="Developer and agent documentation" />
     <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" />
+    <link rel="ard" href="/.well-known/ard.json" type="application/json" title="Agentic Resource Discovery catalog" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" sizes="512x512" href="/images/icon-512.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
@@ -96,6 +97,8 @@
         <li><a href="/openapi.json">/openapi.json</a> — OpenAPI 3.1 description of the <a href="#rest-api">REST API</a>.</li>
         <li><a href="/.well-known/api-catalog">/.well-known/api-catalog</a> — RFC 9727 catalog of every API on this host.</li>
         <li><a href="/.well-known/agent-skills/index.json">/.well-known/agent-skills/index.json</a> — <a href="#agent-skills">Agent Skills</a> discovery index.</li>
+        <li><a href="/.well-known/ard.json">/.well-known/ard.json</a> — <a href="#ard">Agentic Resource Discovery</a> catalog of every agentic resource here.</li>
+        <li><a href="/.well-known/mcp/server-card.json">/.well-known/mcp/server-card.json</a> — <a href="#mcp">MCP server card</a>: what the server is and what it offers, before you connect.</li>
         <li><a href="/for-agents/llms.txt">/for-agents/llms.txt</a> — a scoped llms.txt covering just this page&rsquo;s resources.</li>
       </ul>
 
@@ -327,6 +330,10 @@ curl https://gcwindowandpressurecleaning.com.au/window-cleaning/index.md</code><
           <tr><td>API directory</td><td><a href="/api/">/api/</a></td><td><code>application/json</code></td></tr>
           <tr><td>MCP server (Streamable HTTP)</td><td><a href="/mcp">/mcp</a></td><td><code>JSON-RPC 2.0</code></td></tr>
           <tr><td>MCP manifest</td><td><a href="/.well-known/mcp">/.well-known/mcp</a></td><td><code>application/json</code></td></tr>
+          <tr><td>MCP server card (SEP-2127)</td><td><a href="/.well-known/mcp/server-card.json">/.well-known/mcp/server-card.json</a></td><td><code>application/json</code></td></tr>
+          <tr><td>MCP server card (SEP-2127 alias)</td><td><a href="/mcp/server-card">/mcp/server-card</a></td><td><code>application/json</code></td></tr>
+          <tr><td>ARD catalog</td><td><a href="/.well-known/ard.json">/.well-known/ard.json</a></td><td><code>application/json</code></td></tr>
+          <tr><td>ARD catalog (predecessor path)</td><td><a href="/.well-known/ai-catalog.json">/.well-known/ai-catalog.json</a></td><td><code>application/json</code></td></tr>
           <tr><td>Privacy policy</td><td><a href="/privacy/">/privacy/</a></td><td><code>text/html</code></td></tr>
           <tr><td>Sitemap index</td><td><a href="/sitemap.xml">/sitemap.xml</a></td><td><code>application/xml</code></td></tr>
           <tr><td>Static pages sitemap</td><td><a href="/sitemap-static.xml">/sitemap-static.xml</a></td><td><code>application/xml</code></td></tr>
@@ -368,7 +375,36 @@ curl https://gcwindowandpressurecleaning.com.au/window-cleaning/index.md</code><
         on their behalf.
       </p>
 
-      <h2>Structured data</h2>
+      <h2 id="ard">Discovery catalog (ARD)</h2>
+      <p>
+        Every agentic resource on this host is listed in an
+        <a href="https://agenticresourcediscovery.org/" rel="noopener">Agentic Resource Discovery</a>
+        catalog at <a href="/.well-known/ard.json"><code>/.well-known/ard.json</code></a> —
+        one entry each for the <a href="#mcp">MCP server</a>, the
+        <a href="#rest-api">REST API</a> and the <a href="#agent-skills">Agent Skill</a>.
+        Each entry carries a domain-anchored <code>urn:air:</code> identifier, the
+        media type of the artifact it points at, sample queries the resource can
+        answer, and a trust manifest binding it to this domain. The identical
+        document is served at
+        <a href="/.well-known/ai-catalog.json"><code>/.well-known/ai-catalog.json</code></a>
+        for consumers that still resolve the predecessor path, and every page
+        advertises the catalog with <code>&lt;link rel="ard"&gt;</code>.
+      </p>
+      <p>
+        The MCP entry points at a
+        <a href="https://github.com/modelcontextprotocol/ext-server-card" rel="noopener">server card</a>
+        (SEP-2127) at
+        <a href="/.well-known/mcp/server-card.json"><code>/.well-known/mcp/server-card.json</code></a>,
+        also served at the SEP&rsquo;s own recommended location
+        <a href="/mcp/server-card"><code>/mcp/server-card</code></a>. It names the
+        server, its version, both transport endpoints, the protocol versions they
+        speak, and every tool with its full input schema &mdash; enough to decide
+        whether to open a connection at all. It is generated from the same tool
+        definitions the server answers <code>tools/list</code> with, so it cannot
+        describe a tool that does not exist.
+      </p>
+
+            <h2>Structured data</h2>
       <p>
         Every page carries JSON-LD in the document head:
         <code>Organization</code>, <code>WebSite</code>,

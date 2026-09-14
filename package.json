@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/write-openapi.mjs && node scripts/write-agent-skills.mjs && node scripts/prerender.mjs && node scripts/prerender-content.mjs && pip3 install beautifulsoup4 markdownify --quiet 2>/dev/null || pip3 install beautifulsoup4 markdownify --break-system-packages --quiet && python3 scripts/generate_markdown_mirrors.py",
-    "build:meta-only": "vite build && node scripts/write-openapi.mjs && node scripts/write-agent-skills.mjs && node scripts/prerender.mjs",
+    "build": "vite build && node scripts/write-openapi.mjs && node scripts/write-agent-skills.mjs && node scripts/write-agent-catalog.mjs && node scripts/prerender.mjs && node scripts/prerender-content.mjs && pip3 install beautifulsoup4 markdownify --quiet 2>/dev/null || pip3 install beautifulsoup4 markdownify --break-system-packages --quiet && python3 scripts/generate_markdown_mirrors.py",
+    "build:meta-only": "vite build && node scripts/write-openapi.mjs && node scripts/write-agent-skills.mjs && node scripts/write-agent-catalog.mjs && node scripts/prerender.mjs",
     "prerender": "node scripts/prerender.mjs",
     "prerender:content": "node scripts/prerender-content.mjs",
     "mirrors": "python3 scripts/generate_markdown_mirrors.py",
@@ -20,7 +20,8 @@
     "test:attribution": "node scripts/test-ads-attribution.mjs",
     "test:calls": "node scripts/test-call-tracking.mjs",
     "openapi": "node scripts/write-openapi.mjs",
-    "agent-skills": "node scripts/write-agent-skills.mjs"
+    "agent-skills": "node scripts/write-agent-skills.mjs",
+    "agent-catalog": "node scripts/write-agent-catalog.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.475.0",

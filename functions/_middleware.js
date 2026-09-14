@@ -30,6 +30,7 @@
 
 import { onRequest as mcpRequest } from "./mcp.js";
 import { jsonResponse, problem, preflight, apiDirectory, API_BASE, SITE as API_SITE } from "../src/publicApi/http.js";
+import { buildServerCard, SERVER_CARD_PATH, SERVER_CARD_ALIAS_PATH } from "../src/publicApi/agentCatalog.js";
 
 const MARKDOWN_TYPES = ["text/markdown", "text/x-markdown"];
 
@@ -38,6 +39,34 @@ const MARKDOWN_TYPES = ["text/markdown", "text/x-markdown"];
 // that only knows the well-known path can talk to us without reading the
 // manifest first. The canonical endpoint the manifest advertises is /mcp.
 const WELL_KNOWN_MCP = "/.well-known/mcp";
+
+// The MCP Server Card (SEP-2127). /.well-known/mcp is already a static FILE, so
+// /.well-known/mcp/server-card.json cannot also be a directory in dist/ — it is
+// served from here instead, built from the same TOOLS array the server answers
+// tools/list with. The SEP's own recommended location, <mcp-url>/server-card,
+// returns the identical document.
+const SERVER_CARD_PATHS = new Set([SERVER_CARD_PATH, SERVER_CARD_ALIAS_PATH]);
+
+function serverCardResponse(method) {
+  if (method === "OPTIONS") return preflight();
+  if (method !== "GET" && method !== "HEAD") {
+    return problem(405, "method_not_allowed", `${method} is not supported on the MCP server card.`, {
+      hint: "GET it, or POST JSON-RPC to /mcp to talk to the server itself.",
+      extra: { allowed: ["GET", "HEAD", "OPTIONS"] },
+      headers: { Allow: "GET, HEAD, OPTIONS" },
+    });
+  }
+  return new Response(JSON.stringify(buildServerCard(), null, 2) + "\n", {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "public, max-age=3600",
+      "X-Content-Type-Options": "nosniff",
+      "Access-Control-Allow-Origin": "*",
+      Link: `<${API_SITE}/mcp>; rel="service-desc"; type="application/json"`,
+    },
+  });
+}
 const HTML_TYPES = ["text/html", "application/xhtml+xml"];
 const MD_CONTENT_TYPE = "text/markdown; charset=utf-8";
 const VARY = "Accept, Accept-Encoding";
@@ -258,6 +287,10 @@ async function fetchAsset(context, url) {
 export async function onRequest(context) {
   const { request } = context;
   const url = new URL(request.url);
+
+  // Static description of the MCP server, at both reserved paths. Checked
+  // before anything else because /mcp/* and /.well-known/* are pass-through.
+  if (SERVER_CARD_PATHS.has(url.pathname)) return serverCardResponse(request.method);
 
   // A live handshake at the well-known path, not just a static descriptor.
   // GET falls through to the manifest file; everything else is the MCP server.

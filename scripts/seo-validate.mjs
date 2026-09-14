@@ -10,6 +10,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { SERVER_CARD_PATH, SERVER_CARD_ALIAS_PATH } from "../src/publicApi/agentCatalog.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -66,8 +67,11 @@ const FUNCTION_ROUTES = (() => {
     }
   };
   walk(dir, "");
-  // Served by functions/_middleware.js rather than a route file.
+  // Served by functions/_middleware.js rather than a route file. Imported
+  // rather than retyped, so renaming a path in one place renames it here.
   routes.add("/api");
+  routes.add(SERVER_CARD_PATH);
+  routes.add(SERVER_CARD_ALIAS_PATH);
   return { has: (p) => routes.has(p) || prefixes.some((pre) => p === pre || p.startsWith(pre + "/")) };
 })();
 

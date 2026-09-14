@@ -38,6 +38,8 @@ Sitemap: https://gcwindowandpressurecleaning.com.au/sitemap.xml
 #   /openapi.json           OpenAPI 3.1 description of that API
 #   /.well-known/api-catalog  RFC 9727 catalog of every API on this host
 #   /.well-known/agent-skills/index.json  Agent Skills discovery index
+#   /.well-known/ard.json   Agentic Resource Discovery catalog of the above
+#   /.well-known/mcp/server-card.json  MCP server card (also at /mcp/server-card)
 #   /for-agents/llms.txt    scoped llms.txt for the machine-readable surface
 # Everything else under /api/ is private to this website — do not crawl or call it.
 # Any page can also be fetched as markdown: send "Accept: text/markdown",

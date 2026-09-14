@@ -21,7 +21,7 @@
         {
           "href": "https://gcwindowandpressurecleaning.com.au/openapi.json",
           "type": "application/vnd.oai.openapi+json;version=3.1",
-          "title": "Gold Coast Window and Pressure Cleaning API — OpenAPI 3.1"
+          "title": "Gold Coast Window and Pressure Cleaning API \u2014 OpenAPI 3.1"
         }
       ],
       "service-doc": [
@@ -40,7 +40,7 @@
         {
           "href": "https://gcwindowandpressurecleaning.com.au/agent-instructions.md",
           "type": "text/markdown",
-          "title": "Agent instructions — when and how to use this business"
+          "title": "Agent instructions \u2014 when and how to use this business"
         },
         {
           "href": "https://gcwindowandpressurecleaning.com.au/llms.txt",
@@ -56,6 +56,11 @@
           "href": "https://gcwindowandpressurecleaning.com.au/.well-known/mcp",
           "type": "application/json",
           "title": "MCP server manifest"
+        },
+        {
+          "href": "https://gcwindowandpressurecleaning.com.au/.well-known/mcp/server-card.json",
+          "type": "application/mcp-server-card+json",
+          "title": "MCP server card (SEP-2127)"
         }
       ],
       "service-doc": [
