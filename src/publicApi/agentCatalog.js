@@ -12,7 +12,7 @@
  * exists, at the paths the specs reserve for them:
  *
  *   /.well-known/ard.json              Agentic Resource Discovery §5.1
- *   /.well-known/ai-catalog.json       ARD's predecessor path, same document
+ *   /.well-known/ai-catalog.json       AI Catalog 1.0, ARD's predecessor path
  *   /.well-known/mcp/server-card.json  MCP Server Card (SEP-2127, experimental)
  *   /mcp/server-card                   the SEP's own recommended location
  *
@@ -33,6 +33,20 @@ export const MCP_PROTOCOL_VERSIONS = ["2025-06-18", "2025-03-26", "2024-11-05"];
 
 export const ARD_PATH = "/.well-known/ard.json";
 export const AI_CATALOG_PATH = "/.well-known/ai-catalog.json";
+
+/**
+ * The AI Catalog spec version the catalog document conforms to (ai-catalog.io,
+ * "Major.Minor").
+ *
+ * AI Catalog 1.0 REQUIRES `specVersion` at the top level of
+ * /.well-known/ai-catalog.json; without it the document is invalid and a
+ * consumer is entitled to reject the whole catalog. ARD, which is served the
+ * identical document at /.well-known/ard.json, requires only `entries` and
+ * explicitly ignores any other top-level member (ARD §5.1, and
+ * `additionalProperties: true` on ArdManifest), so declaring it satisfies one
+ * spec without breaking the other.
+ */
+export const AI_CATALOG_SPEC_VERSION = "1.0";
 export const SERVER_CARD_PATH = "/.well-known/mcp/server-card.json";
 // SEP-2127 reserves `GET <streamable-http-url>/server-card` as the recommended
 // location for a card describing that endpoint. Serving both costs nothing and
@@ -64,6 +78,24 @@ export const ARD_TYPES = {
 export const TRUST_MANIFEST = Object.freeze({
   identity: `https://${PUBLISHER_DOMAIN}`,
   identityType: "https",
+});
+
+/**
+ * AI Catalog Host Info — who publishes this catalog.
+ *
+ * `displayName` is the only required member; `documentationUrl`, `logoUrl` and
+ * `trustManifest` are optional and every one of them points at something this
+ * site actually serves. `identifier` is deliberately absent: the format's own
+ * example uses a `did:web:` identifier, and this host publishes no
+ * /.well-known/did.json to resolve one, so claiming a DID would be an
+ * unverifiable assertion — the same reason the trust manifest above declares
+ * identity and nothing else.
+ */
+export const CATALOG_HOST = Object.freeze({
+  displayName: BUSINESS_NAME,
+  documentationUrl: `${SITE}/for-agents/`,
+  logoUrl: `${SITE}/images/icon-512.png`,
+  trustManifest: TRUST_MANIFEST,
 });
 
 /** ARD §4.2 / Appendix C: urn:air:<publisher>:<namespace>:<name>. */
@@ -135,7 +167,10 @@ export function buildServerCard() {
 }
 
 /**
- * The ARD manifest published at /.well-known/ard.json (ARD §5.1).
+ * The ARD manifest published at /.well-known/ard.json (ARD §5.1), and the same
+ * document at /.well-known/ai-catalog.json (AI Catalog 1.0 §Catalog Document).
+ *
+ * Top level: `specVersion` and `host` for AI Catalog, `entries` for both.
  *
  * One entry per agentic resource actually served here. `skills` comes from the
  * build script, which reads the SKILL.md files off disk; passing it in keeps
@@ -193,5 +228,5 @@ export function buildArdCatalog({ skills = [] } = {}) {
     })),
   ];
 
-  return { entries };
+  return { specVersion: AI_CATALOG_SPEC_VERSION, host: CATALOG_HOST, entries };
 }

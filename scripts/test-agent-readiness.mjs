@@ -22,6 +22,8 @@ import {
   SERVER_CARD_ALIAS_PATH,
   SERVER_CARD_SCHEMA_URL,
   ARD_PATH,
+  AI_CATALOG_SPEC_VERSION,
+  CATALOG_HOST,
   AI_CATALOG_PATH,
   PUBLISHER_DOMAIN,
   TRUST_MANIFEST,
@@ -746,6 +748,25 @@ console.log("\nScoped /for-agents/llms.txt:");
   const catalog = buildArdCatalog({ skills: buildSkillsIndex().skills });
 
   ok("manifest is an entries array", Array.isArray(catalog.entries) && catalog.entries.length >= 3);
+
+  // AI Catalog 1.0 REQUIRES specVersion at the top level; ARD requires only
+  // `entries` and ignores anything else (§5.1), so the one document satisfies
+  // both. Without specVersion the ai-catalog.json half is invalid outright.
+  eq("declares the AI Catalog spec version", catalog.specVersion, AI_CATALOG_SPEC_VERSION);
+  ok("specVersion is in Major.Minor form", /^\d+\.\d+$/.test(catalog.specVersion));
+  ok("ARD's own required member is still the entries array", Array.isArray(catalog.entries));
+
+  // Host Info (optional in AI Catalog 1.0): displayName is the only required
+  // member, and every optional one present must point at something real.
+  eq("host block is the published host info", catalog.host, CATALOG_HOST);
+  ok("host declares a displayName", typeof CATALOG_HOST.displayName === "string" && CATALOG_HOST.displayName.length > 0);
+  for (const member of ["documentationUrl", "logoUrl"]) {
+    ok(`host ${member} is on this domain`, CATALOG_HOST[member].startsWith(`https://${PUBLISHER_DOMAIN}/`));
+  }
+  eq("host trust manifest binds to the publisher domain", CATALOG_HOST.trustManifest.identity, `https://${PUBLISHER_DOMAIN}`);
+  // A did:web identifier would have to resolve at /.well-known/did.json, which
+  // this host does not publish. Absent beats unverifiable.
+  ok("host claims no DID it cannot back", !("identifier" in CATALOG_HOST));
 
   const URN = /^urn:air:[a-zA-Z0-9.-]+(:[a-zA-Z0-9._-]+)+$/;
   const seen = new Set();
