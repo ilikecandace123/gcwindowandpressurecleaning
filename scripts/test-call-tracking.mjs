@@ -222,5 +222,44 @@ if (!built) {
   }
 }
 
+// ── Content-Security-Policy ─────────────────────────────────────────────────
+// Oct 2026: the swap above never ran in production because the CSP blocked
+// gtag's call-tracking scripts — gtag.js injects www.gstatic.com/wcm/loader.js,
+// which injects www.gstatic.com/call-tracking/call-tracking_9.js, which talks
+// to www.googleadservices.com. None were allowed, so the browser refused them
+// (securitypolicyviolation, script-src-elem) and the call conversion stayed
+// at zero. These assertions keep the hosts in and keep the policy tight.
+console.log("\nContent-Security-Policy:");
+{
+  const headers = read("public/_headers");
+  const line = (headers.match(/^\s*Content-Security-Policy: (.+)$/m) || [])[1] || "";
+  ok("a CSP is set in public/_headers", line);
+  const dirs = Object.fromEntries(
+    line.split(";").map((d) => d.trim()).filter(Boolean).map((d) => {
+      const [name, ...srcs] = d.split(/\s+/);
+      return [name, srcs];
+    })
+  );
+  const has = (dir, src) => (dirs[dir] || []).includes(src);
+  for (const src of ["https://www.gstatic.com", "https://www.googleadservices.com", "https://googleads.g.doubleclick.net"]) {
+    ok(`script-src allows ${src}`, has("script-src", src));
+  }
+  for (const src of ["https://www.google.com", "https://www.googleadservices.com", "https://googleads.g.doubleclick.net", "https://www.googletagmanager.com"]) {
+    ok(`connect-src allows ${src}`, has("connect-src", src));
+  }
+  // Nothing that was there before has gone.
+  for (const [dir, src] of [
+    ["default-src", "'self'"], ["script-src", "'self'"], ["script-src", "'unsafe-inline'"], ["script-src", "'unsafe-eval'"],
+    ["script-src", "https://www.googletagmanager.com"], ["script-src", "https://www.google-analytics.com"], ["script-src", "https://static.cloudflareinsights.com"],
+    ["style-src", "https://fonts.googleapis.com"], ["img-src", "https:"], ["font-src", "https://fonts.gstatic.com"],
+    ["connect-src", "https://www.google-analytics.com"], ["connect-src", "https://static.cloudflareinsights.com"],
+    ["frame-src", "https://www.google.com"], ["frame-src", "https://maps.google.com"],
+  ]) ok(`${dir} still allows ${src}`, has(dir, src));
+  // Tight: no wildcard hosts, no bare scheme sources in script/connect.
+  ok("no wildcard host anywhere", !/\*/.test(line));
+  ok("script-src and connect-src have no bare https: source", !has("script-src", "https:") && !has("connect-src", "https:"));
+  eq("only one CSP header line", (headers.match(/Content-Security-Policy:/g) || []).length, 1);
+}
+
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);
 process.exit(fail ? 1 : 0);
