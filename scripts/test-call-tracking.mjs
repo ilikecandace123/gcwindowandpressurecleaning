@@ -247,6 +247,12 @@ console.log("\nContent-Security-Policy:");
   for (const src of ["https://www.google.com", "https://www.googleadservices.com", "https://googleads.g.doubleclick.net", "https://www.googletagmanager.com"]) {
     ok(`connect-src allows ${src}`, has("connect-src", src));
   }
+  // Oct 2026, found on a real ad click: call-tracking_9.js XHRs
+  // googleadservices.com/pagead/conversion/<id>/wcm, which redirects to the
+  // visitor's country Google domain — www.google.com.au/pagead/attribution/wcm
+  // for Australian traffic. CSP checks the redirect target, so without this the
+  // forwarding number never comes back and phone_conversion_callback never fires.
+  ok("connect-src allows https://www.google.com.au (wcm redirect target)", has("connect-src", "https://www.google.com.au"));
   // Nothing that was there before has gone.
   for (const [dir, src] of [
     ["default-src", "'self'"], ["script-src", "'self'"], ["script-src", "'unsafe-inline'"], ["script-src", "'unsafe-eval'"],
