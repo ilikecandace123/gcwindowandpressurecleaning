@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, ChevronUp, BookOpen } from "lucide-react";
 
-// `guideLink` (optional): { label, href } — renders a link to the matching
-// expert guide below the FAQ list for internal linking to /guides/ content.
+// `guideLink` (optional): { label, href } or an array of them — renders links
+// to the matching expert guides below the FAQ list for internal linking to
+// /guides/ content.
 export default function FAQ({ faqs, title = "Frequently Asked Questions", guideLink }) {
   const [openIndex, setOpenIndex] = useState(0);
+  const guideLinks = (Array.isArray(guideLink) ? guideLink : guideLink ? [guideLink] : []).filter(
+    (g) => g && g.href && g.label
+  );
 
   return (
     <section className="py-16 bg-gray-50">
@@ -49,15 +53,18 @@ export default function FAQ({ faqs, title = "Frequently Asked Questions", guideL
           ))}
         </div>
 
-        {guideLink && (
-          <div className="mt-8 text-center">
-            <Link
-              to={guideLink.href}
-              className="inline-flex items-center font-semibold text-blue-600 hover:text-blue-700 transition-colors"
-            >
-              <BookOpen className="w-5 h-5 mr-2" />
-              {guideLink.label}
-            </Link>
+        {guideLinks.length > 0 && (
+          <div className="mt-8 flex flex-col items-center gap-3 text-center">
+            {guideLinks.map((g) => (
+              <Link
+                key={g.href}
+                to={g.href}
+                className="inline-flex items-center font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+              >
+                <BookOpen className="w-5 h-5 mr-2" />
+                {g.label}
+              </Link>
+            ))}
           </div>
         )}
       </div>

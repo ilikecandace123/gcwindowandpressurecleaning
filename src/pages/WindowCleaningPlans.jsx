@@ -14,9 +14,19 @@ const BENEFIT_ICONS = [CalendarCheck, PiggyBank, Home];
 export default function WindowCleaningPlans() {
   const faqs = [
     {
-      question: "What are the Window Cleaning Plans?",
+      question: "What is a window cleaning plan, and is it worth it?",
       answer:
-        "They're our pre-booked window cleaning maintenance plans. Choose a frequency — monthly, quarterly or half-yearly — and we schedule your exterior window and screen cleans automatically, with priority scheduling and $50–$150 off every single visit. You never have to think about your windows again.",
+        "A window cleaning plan is a pre-booked schedule of exterior window and screen cleans — monthly, quarterly or half-yearly — at a discounted per-visit price. For most Gold Coast homes cleaned at least twice a year it is worth it: you save $50–$150 on every visit, get priority scheduling and a 7-day rain guarantee, and the glass never builds up the salt and grime that makes a one-off clean slower and dearer.",
+    },
+    {
+      question: "How often should I get my windows cleaned on the Gold Coast?",
+      answer:
+        "Every 3 months suits most Gold Coast homes. Beachfront glass facing the ocean needs cleaning every 4–6 weeks and homes within about 2 km of the beach every 2–3 months, because salt spray builds up fast and can etch glass if left; hinterland homes away from the salt can usually go 4–6 months. Homes near main roads, construction or heavy pollen-shedding trees need more frequent cleans than the suburb average.",
+    },
+    {
+      question: "How does a window cleaning subscription work?",
+      answer:
+        "You choose a frequency and we lock your cleans into the schedule automatically. Before each visit we send a reminder, clean the exterior glass, frames, sills and screens, and you pay per visit at the discounted plan rate — no upfront fee and no lock-in contract. If it rains within 7 days of a clean, we come back and touch up affected windows free.",
     },
     {
       question: "Which plan frequency is right for my home?",
@@ -195,7 +205,7 @@ export default function WindowCleaningPlans() {
 
       <GoogleReviews />
 
-      <FAQ faqs={faqs} title="Window Cleaning Plans FAQ" />
+      <FAQ faqs={faqs} title="Window Cleaning Plans FAQ" guideLink={[{ label: "Guide: Is a window cleaning plan worth it?", href: "/guides/is-a-window-cleaning-plan-worth-it/" }, { label: "Guide: How salt air and humidity damage Gold Coast windows", href: "/guides/salt-air-mould-windows-gold-coast/" }]} />
 
       {/* Suburb plan pages — every suburb linked so the pages are browsable */}
       <SuburbLinks serviceSlug="window-cleaning-plans" serviceName="Window Cleaning Plans" showAll />

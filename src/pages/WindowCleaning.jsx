@@ -12,6 +12,7 @@ import FAQ from "../components/FAQ";
 import GoogleReviews from "../components/GoogleReviews";
 import { Shield, Users, Star, Phone, ArrowRight, Home, Camera, HardHat } from 'lucide-react';
 import WellnessPlanSection from "../components/WellnessPlanSection";
+import PreSaleSection from "../components/PreSaleSection";
 
 export default function WindowCleaning() {
   const benefits = [
@@ -44,11 +45,19 @@ export default function WindowCleaning() {
   const faqs = [
   {
     question: "How much does window cleaning cost on the Gold Coast?",
-    answer: "Window cleaning on the Gold Coast starts at $220–$440 for most apartments and small offices (inside and out). Single-storey homes and medium businesses are typically $385–$550, including deep track and screen cleaning. Double-storey homes and larger businesses are usually $500–$800, including tracks and screens. Large commercial properties, car dealerships, and homes with extensive glazing are $800+ and require a site visit. These are guide prices — every property is individual, so contact us for a free, no-obligation quote."
+    answer: "Most Gold Coast homes pay $220–$800 for a professional window clean, inside and out with tracks and screens: around $220–$440 for apartments, $385–$550 for single-storey homes and $500–$800 for double-storey homes, with large or heavily glazed properties $800+. Exterior-only cleans cost less — a single-storey home with 41–50 panes is $350 outside only. The price is set by how many panes you have, whether it's one or two storeys (and how hard the glass is to reach), inside and out or exterior only, whether tracks and screens are included, how much salt and grime has built up, and whether you book a one-off or a plan, which takes $50–$150 off each visit. Our instant quote prices your exact home in about two minutes at /instant-quote/."
   },
   {
-    question: "How often should windows be professionally cleaned?",
-    answer: "Most residential properties benefit from window cleaning every 3-6 months, while commercial properties may need monthly or quarterly service depending on location and environmental factors."
+    question: "How often should windows be professionally cleaned on the Gold Coast?",
+    answer: "Every 3 months suits most Gold Coast homes. Beachfront glass facing the ocean needs cleaning every 4–6 weeks and homes within about 2 km of the beach every 2–3 months, because salt spray builds up and can etch glass if left; hinterland homes usually only need cleaning every 4–6 months. Businesses with shopfront glass are usually cleaned weekly to monthly."
+  },
+  {
+    question: "Is it worth paying for professional window cleaning instead of doing it myself?",
+    answer: "For ground-floor glass you can reach safely, DIY is fine if you have the time. Professionals are worth it for second-storey and hard-to-reach windows (ladder falls are a leading cause of home injuries), for salt-coated coastal glass that smears with household cleaners, and when you want tracks, screens and frames done too. We use purified water and professional squeegee technique, which leaves glass streak-free and slows how fast dirt reattaches — a typical home takes us 2–3 hours, versus most of a weekend DIY."
+  },
+  {
+    question: "Do you clean commercial and strata buildings?",
+    answer: "Yes — we clean shopfronts, offices and low-rise strata complexes across the Gold Coast, on a one-off or regular schedule, with the insurance and safety documentation body corporates and property managers ask for. Commercial and strata work is quoted per site; call (07) 5651 2386 or request a quote."
   },
   {
     question: "Do you clean windows in all weather conditions?",
@@ -73,6 +82,7 @@ export default function WindowCleaning() {
       "@context": "https://schema.org",
       "@type": "Service",
       "serviceType": "Window Cleaning",
+      "name": "Window Cleaning Gold Coast",
       "provider": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Gold Coast Window and Pressure Cleaning",
@@ -284,9 +294,11 @@ export default function WindowCleaning() {
 
       <GoogleReviews />
 
+      <PreSaleSection variant="window" />
+
       <QuoteForm serviceName="Window Cleaning" />
 
-      <FAQ faqs={faqs} title="Window Cleaning FAQ" guideLink={{ label: "Guide: How often should you clean your windows?", href: "/guides/how-often-should-you-clean-your-windows/" }} />
+      <FAQ faqs={faqs} title="Window Cleaning FAQ" guideLink={[{ label: "Guide: How often should you clean your windows?", href: "/guides/how-often-should-you-clean-your-windows/" }, { label: "Guide: Is a window cleaning plan worth it?", href: "/guides/is-a-window-cleaning-plan-worth-it/" }]} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">

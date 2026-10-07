@@ -9,6 +9,9 @@
 // - metaTitle 31–59 chars, metaDescription 126–157 chars (seo-validate rules).
 // - Voice: practical, first-person-plural tradie expertise. Gold Coast
 //   specifics (salt air, storm season, humidity) in every guide.
+// - Never name another company, brand or franchise anywhere in guide copy.
+
+import { NEW_GUIDES_2026_10 } from "./guides-2026-10.js";
 
 export const GUIDES = [
   {
@@ -63,7 +66,7 @@ export const GUIDES = [
         answer: "No — rain makes them worse. Rain picks up dust and pollen on the way down and dries in dirty spots, and on the Gold Coast it often carries salt as well. Rain on recently professionally cleaned glass sheets off with minimal spotting (clean glass has nothing for droplets to grab), which is why we offer a 7-day rain guarantee on our plans."
       },
       {
-        question: "Can I clean coastal windows myself with vinegar or Windex?",
+        question: "Can I clean coastal windows myself with vinegar or spray glass cleaner?",
         answer: "You can, and for inside glass it works fine. Exterior coastal glass is harder: household products smear the salt film around rather than dissolving it, and you'll struggle above ground level. If you DIY, use plenty of fresh water first to flush the salt off, then a squeegee — not a dry cloth, which grinds salt crystals across the glass."
       },
       {
@@ -79,14 +82,37 @@ export const GUIDES = [
   },
   {
     slug: "pressure-cleaning-vs-soft-washing",
-    metaTitle: "Pressure Cleaning vs Soft Washing: The Difference",
+    metaTitle: "Pressure Cleaning vs Soft Washing: Which Is Better?",
     metaDescription:
-      "What's the difference between pressure cleaning and soft washing? A Gold Coast exterior cleaner explains which method suits every surface.",
-    h1: "Pressure Cleaning vs Soft Washing: What's the Difference?",
-    updated: "2026-07-17",
+      "Pressure cleaning or soft washing? A Gold Coast exterior cleaner explains which is better, when to use each, and which is right for your roof tiles.",
+    h1: "Pressure Cleaning vs Soft Washing: Which Is Better?",
+    updated: "2026-10-07",
     directAnswer:
-      "Pressure cleaning uses high-pressure water (roughly 2,000–4,000 PSI) to physically blast grime off hard surfaces like concrete driveways and pavers. Soft washing uses low pressure (under 500 PSI — about a garden hose) with biodegradable cleaning solutions that kill mould, algae and lichen at the root. Hard, ground-level surfaces get pressure cleaned; roofs, render, cladding and painted surfaces should only ever be soft washed.",
+      "Neither is better overall — each is right for different surfaces. Pressure cleaning uses high-pressure water (roughly 2,000–4,000 PSI) to blast grime off hard, ground-level surfaces like concrete driveways and pavers. Soft washing uses low pressure (under 500 PSI) with biodegradable solutions that kill mould, algae and lichen at the root, and it is the only safe method for roofs, render, cladding and painted surfaces — including roof tiles.",
     sections: [
+      {
+        heading: "Which is better, pressure cleaning or soft washing?",
+        paragraphs: [
+          "The better method is the one matched to the surface. Pressure cleaning is better for hard, unpainted surfaces where the dirt is sitting on top — tyre marks, ground-in grime and mould on concrete. Soft washing is better for anything painted, coated, rendered or up off the ground, because on those surfaces the dirt is mostly living growth and the surface itself is easily damaged by high pressure.",
+          "Using the wrong one costs you either way: soft washing a heavily stained driveway won't lift the ground-in dirt, and pressure cleaning a rendered wall or a tiled roof strips the coating and leaves the mould roots alive to grow back within months."
+        ]
+      },
+      {
+        heading: "When to use each",
+        list: [
+          "Use pressure cleaning for: concrete driveways, paths and pool surrounds, exposed aggregate, pavers, stone and brick paving, and bin areas.",
+          "Use soft washing for: house walls (render, brick, cladding, weatherboard), roofs, eaves, gutter faces, painted fences and anything coated.",
+          "Use both on one property: the usual Gold Coast pre-sale or maintenance clean is a soft wash on the house and roof, then pressure cleaning on the driveway and paths.",
+          "Use neither on solar panels or glass: those need pure-water or dedicated glass cleaning."
+        ]
+      },
+      {
+        heading: "Which is right for roof tiles?",
+        paragraphs: [
+          "Soft washing is the right method for roof tiles — concrete and terracotta alike. Concrete tiles have a factory surface coating, and high pressure erodes it and exposes the porous concrete underneath, which then absorbs water and grows algae faster than before. Terracotta is more durable but older tiles can crack or spall under pressure, and high-pressure water can be driven up under the tile laps and into the roof space.",
+          "Soft washing kills the black algae streaks, moss and lichen with a low-pressure treatment and a gentle rinse, so the tiles come up clean without mechanical wear. On metal roofs, soft washing is also the method roofing-sheet manufacturers recommend — high pressure can damage the painted finish."
+        ]
+      },
       {
         heading: "The rule of thumb: pressure for hard ground, soft wash for everything above it",
         paragraphs: [
@@ -121,7 +147,7 @@ export const GUIDES = [
     ],
     faqs: [
       {
-        question: "Can't I just hire a pressure washer from Bunnings and do it myself?",
+        question: "Can't I just hire a pressure washer and do it myself?",
         answer: "For a small concrete path, sure. For driveways, the rental units usually lack a surface cleaner attachment, so you get zebra striping that only shows up once it dries. For houses and roofs, please don't — every year we get called to fix DIY damage: stripped paint, fretted mortar, water forced into wall cavities, and cracked tiles from walking a roof without the right gear."
       },
       {
@@ -140,6 +166,7 @@ export const GUIDES = [
     related: [
       { label: "Pressure Cleaning service & prices", href: "/pressure-cleaning/" },
       { label: "House Softwash service & prices", href: "/house-softwash/" },
+      { label: "Roof Cleaning service & prices", href: "/roof-cleaning/" },
       { label: "Get an instant quote", href: "/instant-quote/" }
     ]
   },
@@ -193,7 +220,7 @@ export const GUIDES = [
       },
       {
         question: "Can you clean a Colorbond roof?",
-        answer: "Yes — soft washing is safe for Colorbond and is the method BlueScope's care guidelines align with. High pressure, wire brushing or harsh solvents can damage the paint system and affect warranty. Soft washing removes the grime and salt film without touching the coating."
+        answer: "Yes — soft washing is safe for Colorbond and is the method the steel manufacturer's care guidelines align with. High pressure, wire brushing or harsh solvents can damage the paint system and affect warranty. Soft washing removes the grime and salt film without touching the coating."
       },
       {
         question: "My roof is being cleaned before solar installation — is that worth doing?",
@@ -523,7 +550,8 @@ export const GUIDES = [
       { label: "Roof Cleaning service & prices", href: "/roof-cleaning/" },
       { label: "Get an instant quote", href: "/instant-quote/" }
     ]
-  }
+  },
+  ...NEW_GUIDES_2026_10,
 ];
 
 export function getGuide(slug) {

@@ -229,11 +229,13 @@ async function main() {
     ],
   });
   for (const g of GUIDES) {
+    const leadImage = g.sections.find((sec) => sec.image)?.image;
     routes.push({
       path: `/guides/${g.slug}`,
       title: g.metaTitle,
       description: g.metaDescription,
       canonical: `${SITE}/guides/${g.slug}`,
+      ...(leadImage ? { image: leadImage.src } : {}),
       jsonLd: [
         buildLocalBusinessSchema(),
         buildArticleSchema({
@@ -241,7 +243,8 @@ async function main() {
           description: g.metaDescription,
           url: `${SITE}/guides/${g.slug}/`,
           datePublished: g.updated,
-          dateModified: g.updated
+          dateModified: g.updated,
+          image: leadImage?.src
         }),
         buildFAQSchema(g.faqs),
         buildBreadcrumbSchema([

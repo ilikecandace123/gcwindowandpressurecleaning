@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
 import FAQ from "../components/FAQ";
+import PreSaleSection from "../components/PreSaleSection";
 import GoogleReviews from "../components/GoogleReviews";
 import PageSEO from "../components/PageSEO";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
@@ -74,6 +75,7 @@ export default function PressureCleaning() {
       "@context": "https://schema.org",
       "@type": "Service",
       "serviceType": "Pressure Cleaning",
+      "name": "Pressure Cleaning Gold Coast",
       "provider": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Gold Coast Window and Pressure Cleaning",
@@ -216,9 +218,11 @@ export default function PressureCleaning() {
 
       <GoogleReviews />
 
+      <PreSaleSection variant="pressure" />
+
       <QuoteForm serviceName="Pressure Cleaning" />
 
-      <FAQ faqs={faqs} title="Pressure Cleaning FAQ" guideLink={{ label: "Guide: How much does driveway pressure cleaning cost on the Gold Coast?", href: "/guides/driveway-pressure-cleaning-cost/" }} />
+      <FAQ faqs={faqs} title="Pressure Cleaning FAQ" guideLink={[{ label: "Guide: How much does driveway pressure cleaning cost on the Gold Coast?", href: "/guides/driveway-pressure-cleaning-cost/" }, { label: "Guide: Pressure cleaning vs soft washing — which is better?", href: "/guides/pressure-cleaning-vs-soft-washing/" }]} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">

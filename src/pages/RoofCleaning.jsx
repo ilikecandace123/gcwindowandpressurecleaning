@@ -42,6 +42,22 @@ export default function RoofCleaning() {
 
   const faqs = [
     {
+      question: "What does roof cleaning on the Gold Coast involve?",
+      answer: "A professional Gold Coast roof clean is a low-pressure soft wash: we apply a biodegradable treatment that kills the algae, moss and lichen, let it work, then rinse at low pressure so the tiles and coating aren't damaged. We pre-wet and rinse gardens, disconnect downpipes to rainwater tanks, clear the debris the clean dislodges from the gutters, and note any cracked tiles or lifted ridge capping we see while we're up there. Most homes take half a day to a day."
+    },
+    {
+      question: "What causes the black streaks and algae on roof tiles?",
+      answer: "The black streaks on Gold Coast roofs are mostly algae — a hardy, dark-pigmented type that feeds on the minerals in concrete tiles and thrives in our heat, humidity and summer rain. It spreads by airborne spores, so it starts on the shaded, slow-drying side of the roof and runs down the slope in streaks. Green patches are moss, and flat grey, orange or yellow crusts are lichen. All three are living growth, which is why they need a treatment that kills them rather than just blasting the surface."
+    },
+    {
+      question: "Does roof cleaning extend the life of roof tiles?",
+      answer: "Regular soft-wash cleaning helps tiles last as long as they should, rather than adding years beyond that. Moss and lichen hold moisture against the tile, their roots work into the surface and break down the coating, and growth in the laps and valleys blocks water flow. Removing it before it takes hold slows that wear and helps prevent leaks. High-pressure cleaning does the opposite — it strips the coating — so the method matters as much as the clean."
+    },
+    {
+      question: "Why do roofs need regular cleaning in Queensland?",
+      answer: "Queensland's subtropical climate grows roof algae, moss and lichen far faster than cooler states: warm temperatures all year, high humidity and a wet summer storm season give it ideal conditions, and on the Gold Coast salt air adds a film that holds moisture and dirt. Left alone, a clean roof can be visibly streaked again within a few years. Cleaning every 2–3 years (every 1–2 years near the beach or under trees) keeps growth from getting established."
+    },
+    {
       question: "How much does roof cleaning cost on the Gold Coast?",
       answer: "Roof cleaning on the Gold Coast starts at $700 for a flatter single-storey roof and goes up to around $1,600 for a steeper double-storey roof. How dirty the roof is also affects the final price. Large commercial properties or three storeys and above start at $1,600+ and require a site visit for an accurate quote. These are guide prices — every property is individual, so contact us for a free, no-obligation quote."
     },
@@ -85,6 +101,7 @@ export default function RoofCleaning() {
       "@context": "https://schema.org",
       "@type": "Service",
       "serviceType": "Roof Cleaning",
+      "name": "Roof Cleaning Gold Coast",
       "provider": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Gold Coast Window and Pressure Cleaning",
@@ -343,7 +360,7 @@ export default function RoofCleaning() {
 
       <QuoteForm serviceName="Roof Cleaning" />
 
-      <FAQ faqs={faqs} title="Roof Cleaning FAQ" guideLink={{ label: "Guide: Does roof cleaning damage tiles?", href: "/guides/does-roof-cleaning-damage-tiles/" }} />
+      <FAQ faqs={faqs} title="Roof Cleaning FAQ" guideLink={[{ label: "Guide: Does roof cleaning damage tiles?", href: "/guides/does-roof-cleaning-damage-tiles/" }, { label: "Guide: Pressure cleaning vs soft washing — which is right for roof tiles?", href: "/guides/pressure-cleaning-vs-soft-washing/" }]} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">

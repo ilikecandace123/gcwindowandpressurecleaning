@@ -72,6 +72,7 @@ export default function HouseSoftWash() {
       "@context": "https://schema.org",
       "@type": "Service",
       "serviceType": "House Softwash",
+      "name": "House Softwash Gold Coast",
       "provider": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Gold Coast Window and Pressure Cleaning",
@@ -206,7 +207,7 @@ export default function HouseSoftWash() {
 
       <QuoteForm serviceName="House & Building Softwash" />
 
-      <FAQ faqs={faqs} title="House Softwash FAQ" guideLink={{ label: "Guide: Why does my house grow mould outside — and how do I remove it?", href: "/guides/house-washing-mould-gold-coast/" }} />
+      <FAQ faqs={faqs} title="House Softwash FAQ" guideLink={[{ label: "Guide: Why does my house grow mould outside — and how do I remove it?", href: "/guides/house-washing-mould-gold-coast/" }, { label: "Guide: Pressure cleaning vs soft washing — which is better?", href: "/guides/pressure-cleaning-vs-soft-washing/" }]} />
 
       {/* Related Services */}
       <section className="py-12 bg-white">

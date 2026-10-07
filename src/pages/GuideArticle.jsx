@@ -27,6 +27,7 @@ export default function GuideArticle() {
   if (!guide) return <NotFound />;
 
   const url = `${SITE_URL}/guides/${guide.slug}/`;
+  const leadImage = guide.sections.find((sec) => sec.image)?.image;
   const jsonLd = [
     buildLocalBusinessSchema(),
     buildArticleSchema({
@@ -34,7 +35,8 @@ export default function GuideArticle() {
       description: guide.metaDescription,
       url,
       datePublished: guide.updated,
-      dateModified: guide.updated
+      dateModified: guide.updated,
+      image: leadImage?.src
     }),
     buildFAQSchema(guide.faqs),
     buildBreadcrumbSchema([
@@ -50,6 +52,7 @@ export default function GuideArticle() {
         title={guide.metaTitle}
         description={guide.metaDescription}
         canonical={url}
+        image={leadImage?.src}
         jsonLd={jsonLd}
       />
       <Breadcrumbs
@@ -95,6 +98,25 @@ export default function GuideArticle() {
                     {p}
                   </p>
                 ))}
+              {section.image && (
+                <figure className="mb-6">
+                  <picture>
+                    <source srcSet={section.image.src.replace(/\.jpg$/, ".webp")} type="image/webp" />
+                    <img
+                      src={section.image.src}
+                      alt={section.image.alt}
+                      width={section.image.width}
+                      height={section.image.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto rounded-xl shadow-sm"
+                    />
+                  </picture>
+                  {section.image.caption && (
+                    <figcaption className="mt-2 text-sm text-gray-500">{section.image.caption}</figcaption>
+                  )}
+                </figure>
+              )}
               {section.list && (
                 <ul className="space-y-3 mb-5">
                   {section.list.map((item, j) => (
