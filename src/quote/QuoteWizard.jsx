@@ -421,7 +421,6 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
       photoCount: photos.length,
       qa,
       leadId: extra.leadId || "",
-      source: "instant-quote",
       // INTERNAL ONLY: structured quote for n8n (job template, line-item prices,
       // lead note). Never rendered on screen.
       quoteData: (() => {
@@ -432,6 +431,7 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
         d.wantsToBook = extra.booking || "";
         return d;
       })(),
+      source: "instant-quote",
       // Google Ads click attribution (gclid / gbraid / wbraid, click time,
       // landing page, utm_*) — empty strings when the visit wasn't from an ad.
       ...adsAttributionFields(),
