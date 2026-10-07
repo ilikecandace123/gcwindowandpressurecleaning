@@ -95,7 +95,7 @@ function toolError(text) {
 const SERVICE_DETAIL = {
   window: "Interior and exterior glass, tracks, sills and flyscreens, up to 4 storeys. Houses, townhouses, apartments, storefronts and commercial buildings. Recurring plans available at a per-visit discount.",
   pressure: "Driveways, paths, patios and pool surrounds on concrete, tiles, pavers, sandstone or brick. Optional biocide post-treatment keeps the surface clear for 12+ months.",
-  roof: "Soft wash for tile and Colorbond roofs, including ridge lines and a gutter flush. Optional biocide with a 12-month no-mould guarantee on tile.",
+  roof: "Soft wash for tile and Colorbond roofs, including ridge lines and a gutter flush.",
   gutter: "Debris clearing plus downpipe flushing.",
   softwash: "Whole-exterior mould, grime and cobweb removal, gutter to ground. Gentle on render, Colorbond and timber.",
   solar: "Panel cleaning to restore lost generation. Recurring intervals available.",
@@ -247,7 +247,6 @@ export const TOOLS = [
           properties: {
             roofType: { type: "string", enum: ["tile", "colorbond", "other"] },
             condition: { type: "string", enum: ["light", "heavy", "lichen"] },
-            biocide: { type: "boolean" },
           },
           additionalProperties: false,
         },

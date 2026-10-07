@@ -260,7 +260,7 @@ export function buildOpenApi() {
                       storeys: "1",
                       bedrooms: "4",
                       roofPitch: "moderate",
-                      roof: { roofType: "tile", condition: "light", biocide: false },
+                      roof: { roofType: "tile", condition: "light" },
                       gutter: { gutterGuard: "no", condition: "leaves" },
                     },
                   },

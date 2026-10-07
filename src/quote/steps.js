@@ -531,27 +531,6 @@ function roofSteps(state) {
     ],
   });
 
-  if (r.roofType === "tile") {
-    steps.push({
-      ...svc,
-      id: "r-biocide",
-      title: "Add biocide post-treatment to your roof?",
-      question: "Roof cleaning — biocide add-on",
-      type: "select",
-      path: ["roof", "biocide"],
-      supportPoint: "12-month no-mould-growth guarantee",
-      options: [
-        {
-          value: true,
-          label: "Yes please (+40%)",
-          sublabel: "12-month no-mould-growth guarantee",
-          badge: "Highly recommended",
-        },
-        { value: false, label: "No thanks" },
-      ],
-    });
-  }
-
   return steps;
 }
 

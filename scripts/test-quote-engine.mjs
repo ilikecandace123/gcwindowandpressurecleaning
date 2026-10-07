@@ -164,24 +164,25 @@ console.log("\nWindow pricing rules:");
   eq("Apartment int+ext 30 panes regular = $324", q.total, 324);
 }
 
-console.log("\nRoof biocide interaction:");
+console.log("\nRoof biocide removed (08/10/2026) — a biocide flag is ignored:");
 
-// Light + biocide: 660×0.85=561 ×1.4=785.40 (light discount is 15%)
+// Light + stray biocide flag: 660×0.85 = 561 → roof minimum $594, no biocide item
 {
   const q = calculateQuote({
     services: ["roof"],
     roof: { commercial: "residential", roofType: "tile", storeys: "1", bedrooms: "2", pitch: "moderate", condition: "light", biocide: true },
   });
-  eq("Roof light (15%) + biocide = $785.40", q.total, 785.4);
+  eq("Roof light, biocide flag ignored = $594 (roof minimum)", q.total, 594);
+  eq("Roof has no biocide item", q.lines[0].items.some((i) => /biocide/i.test(i.label)), false);
 }
 
-// Heavy + biocide: surcharge cancelled → 660×1.4 = 924
+// Heavy + stray biocide flag: surcharge still applies → 660×1.1 = 726
 {
   const q = calculateQuote({
     services: ["roof"],
     roof: { commercial: "residential", roofType: "tile", storeys: "1", bedrooms: "2", pitch: "moderate", condition: "heavy", biocide: true },
   });
-  eq("Roof heavy + biocide (surcharge cancelled) = $924", q.total, 924);
+  eq("Roof heavy, biocide flag ignored = $726", q.total, 726);
 }
 
 // Heavy, no biocide: 660×1.1 = 726

@@ -383,23 +383,17 @@ export function calcRoof(r) {
 
   const items = [{ label: `${storeys === 2 ? "Double" : "Single"}-storey ${r.roofType === "colorbond" ? "Colorbond" : "tile"} roof — soft wash`, amount: base }];
   let price = base;
-  const biocide = !!r.biocide && r.roofType === "tile";
+  // No roof biocide option in the instant quote (Skagen 08/10/2026) — any
+  // roof.biocide flag sent by an old client or API caller is ignored.
 
   if (r.condition === "light") {
     const disc = round2(base * -0.15);
     price = base * 0.85;
     items.push({ label: "Light build-up discount", amount: disc });
-  } else if (r.condition === "heavy" && !biocide) {
+  } else if (r.condition === "heavy") {
     const sur = round2(base * 0.1);
     price = base * 1.1;
     items.push({ label: "Heavy growth & build-up", amount: sur });
-  }
-  // heavy + biocide: surcharge cancelled — biocide replaces it.
-
-  if (biocide) {
-    const bio = round2(price * 0.4);
-    price = price * 1.4;
-    items.push({ label: "Biocide post-treatment (12-month no-mould guarantee)", amount: bio, visible: true });
   }
 
   if (isSteepManageable(r.pitch)) {
@@ -810,7 +804,6 @@ export function leadQuoteData(state) {
         : null,
       roof: state.roof ? { roofType: state.roof.roofType || "" } : null,
       pressureBiocide,
-      roofBiocide: !!(state.roof && state.roof.biocide && state.roof.roofType === "tile"),
     },
     custom: quote.custom,
     partialPriced: !!quote.partial,
