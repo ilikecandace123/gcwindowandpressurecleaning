@@ -667,3 +667,112 @@ export function formatMoney(n) {
     })
   );
 }
+
+// ── Internal "tracking price" for custom quotes ─────────────────────────────
+// NEVER shown to the customer. When a trigger sends a service to a custom quote,
+// this works out what the quote was tracking to be with the trigger set aside
+// (closest standard answer substituted), so the lead in ServiceM8 carries a base
+// figure to build on. Used only by the lead description (QuoteWizard
+// buildDescription). Each assumption is listed so it's clear what's NOT in it.
+
+const clone = (o) => (o == null ? o : JSON.parse(JSON.stringify(o)));
+
+function neutraliseWindow(w) {
+  const s = clone(w) || {};
+  const assumed = [];
+  let unpriceable = null;
+  if (s.propertyType === "storefront") { s.propertyType = "commercial"; assumed.push("storefront priced as a standard commercial clean"); }
+  const isHouse = ["house", "townhouse", "commercial"].includes(s.propertyType);
+  if (isHouse && ["3", "4", "5+"].includes(s.storeys)) { s.storeys = "2"; assumed.push(`${w.storeys === "5+" ? "5+" : w.storeys}-storey priced as 2-storey — extra height NOT included`); }
+  if (s.condition === "construction") { s.condition = "significant"; assumed.push("construction/reno clean priced as significant build-up — paint & residue removal NOT included"); }
+  if (s.french === "4+") { s.french = "1-3"; assumed.push("4+ French-pane windows priced at the 1–3 rate — extra French panes NOT included"); }
+  if (s.internalAccess === "yes") { s.internalAccess = "no"; assumed.push("ladder / long-pole interior windows NOT included"); }
+  if (s.internalAccess === "unsure") { s.internalAccess = "no"; assumed.push("interior access unknown — any ladder / long-pole windows NOT included"); }
+  if (s.panes === "100+") { s.panes = "91-100"; assumed.push("100+ panes priced at 100 panes — panes over 100 NOT included"); }
+  if (s.panes === "unsure") unpriceable = "customer didn't know the pane count";
+  return { state: s, assumed, unpriceable };
+}
+
+function neutralisePressure(p) {
+  const s = clone(p) || {};
+  const assumed = [];
+  const MAX = { driveway: "76-100", pool: "31-40", patio: "31-40" };
+  const STANDARD = ["driveway", "pool", "patio", "pathways"];
+  const extras = (s.areas || []).filter((a) => !STANDARD.includes(a));
+  if (extras.length) assumed.push(`other areas NOT included: ${extras.join(", ")}`);
+  s.areas = (s.areas || []).filter((a) => STANDARD.includes(a));
+  for (const area of s.areas.slice()) {
+    const d = (s.details || {})[area] || {};
+    if (d.size === "unsure") { s.areas = s.areas.filter((a) => a !== area); assumed.push(`${area}: size unknown — NOT included`); continue; }
+    if (d.size === "100+" || d.size === "40+") { d.size = MAX[area]; assumed.push(`${area}: oversize priced at the largest standard size — extra area NOT included`); }
+    if (d.surface === "other") { d.surface = "pavers"; assumed.push(`${area}: non-standard surface priced as pavers`); }
+  }
+  return { state: s, assumed, unpriceable: s.areas.length ? null : "nothing in the standard areas could be priced" };
+}
+
+function neutraliseBedroomJob(r, kind) {
+  const s = clone(r) || {};
+  const assumed = [];
+  if (s.commercial === "commercial") { s.commercial = "residential"; assumed.push("commercial priced as residential"); }
+  if (s.storeys === "3+") { s.storeys = "2"; assumed.push("3+ storey priced as 2-storey — extra height NOT included"); }
+  if (s.bedrooms === "custom") { s.bedrooms = s.storeys === "2" ? "5" : "4"; assumed.push("extra-large home priced at the largest standard size — extra size NOT included"); }
+  if (s.pitch === "very-steep") { s.pitch = "steep"; assumed.push("very steep pitch priced as steep (+10%) — extra access NOT included"); }
+  if (kind === "roof") {
+    if (s.roofType === "other") { s.roofType = "tile"; assumed.push("non-standard roof priced as tile"); }
+    if (s.condition === "lichen") { s.condition = "heavy"; assumed.push("lichen priced as heavy growth — lichen treatment NOT included"); }
+  }
+  if (kind === "gutter" && s.gutterGuard === "yes") { s.gutterGuard = "no"; assumed.push("gutter guard removal / refit NOT included"); }
+  if (kind === "softwash" && s.mould === "heavy") { s.mould = "light"; s.grime = "heavy"; assumed.push("heavy mould priced with the standard heavy build-up loading (+20%) — extra mould treatment NOT included"); }
+  if (kind === "solar") {
+    if (["unsure", "lichen", "heavy"].includes(s.condition)) { assumed.push(`solar condition "${s.condition}" priced as a standard clean — extra treatment NOT included`); s.condition = "dust"; }
+    if (s.panels === "40+") { s.panels = "31-40"; assumed.push("40+ panels priced at 40 — extra panels NOT included"); }
+  }
+  const unpriceable = kind === "solar" && s.panels === "unsure" ? "customer didn't know the panel count" : null;
+  return { state: s, assumed, unpriceable };
+}
+
+/**
+ * For a quote with custom services: the price each custom service was tracking
+ * to before its trigger(s), plus a tracking total for the whole job.
+ * Returns null when nothing needed a custom quote.
+ */
+export function trackingEstimate(state) {
+  const actual = calculateQuote(state);
+  if (!actual.customServices || !actual.customServices.length) return null;
+  const neutral = clone(state);
+  const services = [];
+  const NEUTRALISE = {
+    window: (x) => neutraliseWindow(x),
+    pressure: (x) => neutralisePressure(x),
+    roof: (x) => neutraliseBedroomJob(x, "roof"),
+    gutter: (x) => neutraliseBedroomJob(x, "gutter"),
+    softwash: (x) => neutraliseBedroomJob(x, "softwash"),
+    solar: (x) => neutraliseBedroomJob(x, "solar"),
+  };
+  const notEstimable = [];
+  const assumptions = {};
+  for (const cs of actual.customServices) {
+    if (!NEUTRALISE[cs.service]) { notEstimable.push({ label: cs.label, why: "always quoted individually" }); continue; }
+    const n = NEUTRALISE[cs.service](state[cs.service]);
+    if (n.unpriceable) { notEstimable.push({ label: cs.label, why: n.unpriceable }); continue; }
+    neutral[cs.service] = n.state;
+    assumptions[cs.service] = n.assumed;
+    services.push(cs.service);
+  }
+  // Drop services we can't estimate so they don't count in the tracking total.
+  const skip = new Set(actual.customServices.map((c) => c.service).filter((s) => !services.includes(s)));
+  neutral.services = (state.services || []).filter((s) => !skip.has(s));
+  const est = neutral.services.length ? calculateQuote(neutral) : null;
+  const lines = [];
+  for (const svc of services) {
+    const line = est && est.lines.find((l) => l.service === svc);
+    if (line) lines.push({ service: svc, label: line.label, subtotal: line.subtotal, plan: !!line.plan, frequencyLabel: line.frequencyLabel || null, assumed: assumptions[svc] || [] });
+    else notEstimable.push({ label: svc, why: "could not be priced even with the trigger set aside" });
+  }
+  return {
+    lines,
+    notEstimable,
+    total: est && !est.custom && lines.length ? est.total : null,
+    totalIsPartial: notEstimable.length > 0,
+  };
+}

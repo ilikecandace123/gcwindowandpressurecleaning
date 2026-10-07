@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import { calculateQuote, formatMoney } from "./engine";
+import { calculateQuote, formatMoney, trackingEstimate } from "./engine";
 import {
   buildQuestionSteps,
   collectAnswers,
@@ -335,6 +335,27 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
   }
 
   // ── Lead payload ────────────────────────────────────────────────────────
+  // INTERNAL ONLY (goes to ServiceM8, never on screen): what the custom-quote
+  // services were tracking to before the trigger that stopped the price.
+  function trackingLines() {
+    let t = null;
+    try { t = trackingEstimate(expanded); } catch (e) { t = null; }
+    if (!t) return [];
+    const out = [];
+    if (t.lines.length) {
+      const head = quote.custom && t.total != null
+        ? `(internal) TRACKING PRICE before the custom trigger: ${formatMoney(t.total)} inc GST${t.totalIsPartial ? " (excludes the services listed below)" : ""} — NOT shown to the customer.`
+        : `(internal) TRACKING PRICE for the still-to-quote services, before their triggers — NOT shown to the customer${t.total != null ? ` (whole job would have been ${formatMoney(t.total)} inc GST${t.totalIsPartial ? ", excluding the services listed below" : ""})` : ""}:`;
+      out.push(head);
+      for (const l of t.lines) {
+        out.push(`   • ${l.label}${l.frequencyLabel ? ` (${l.frequencyLabel})` : ""}: ${formatMoney(l.subtotal)}${l.plan ? "/visit" : ""}`);
+        for (const a of l.assumed) out.push(`      – ${a}`);
+      }
+    }
+    for (const n of t.notEstimable) out.push(`(internal) No tracking price for ${n.label}: ${n.why}.`);
+    return out;
+  }
+
   function buildDescription({ booking, partial } = {}) {
     const lines = [];
     if (mode === "details") {
@@ -354,6 +375,7 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
     if (quote.custom) {
       lines.push(`RESULT: CUSTOM QUOTE required — no price shown to customer.`);
       lines.push(`Triggers: ${quote.customReasons.join("; ")}`);
+      lines.push(...trackingLines());
     } else {
       if (quote.partial) {
         lines.push(
@@ -362,6 +384,7 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
         lines.push(
           `STILL TO QUOTE: ${(quote.customServices || []).map((c) => `${c.label} (${c.reasons.join(", ")})`).join(" | ")}`
         );
+        lines.push(...trackingLines());
       } else {
         lines.push(`RESULT: instant price shown — TOTAL ${formatMoney(quote.total)} inc GST.`);
       }
