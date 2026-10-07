@@ -766,7 +766,7 @@ export function trackingEstimate(state) {
   const lines = [];
   for (const svc of services) {
     const line = est && est.lines.find((l) => l.service === svc);
-    if (line) lines.push({ service: svc, label: line.label, subtotal: line.subtotal, plan: !!line.plan, frequencyLabel: line.frequencyLabel || null, assumed: assumptions[svc] || [] });
+    if (line) lines.push({ service: svc, label: line.label, subtotal: line.subtotal, plan: !!line.plan, frequencyLabel: line.frequencyLabel || null, assumed: assumptions[svc] || [], items: line.items || [] });
     else notEstimable.push({ label: svc, why: "could not be priced even with the trigger set aside" });
   }
   return {
@@ -775,4 +775,72 @@ export function trackingEstimate(state) {
     total: est && !est.custom && lines.length ? est.total : null,
     totalIsPartial: notEstimable.length > 0,
   };
+}
+
+
+// ── Structured quote data for the lead (n8n → ServiceM8 job setup) ─────────
+// INTERNAL ONLY — sent with the lead so n8n can pick the job template, fill line
+// item prices and write the lead note. Never shown to the customer.
+const sumItems = (items, re) => round2((items || []).filter((i) => re.test(i.label || "")).reduce((a, i) => a + (Number(i.amount) || 0), 0));
+
+function lineSummary(l) {
+  const out = {
+    service: l.service,
+    label: l.label,
+    subtotal: l.subtotal,
+    plan: !!l.plan,
+    frequencyLabel: l.frequencyLabel || null,
+  };
+  if (l.service === "window") out.interiorAddon = sumItems(l.items, /^Interior windows \+ tracks add-on/i);
+  if (l.service === "pressure" || l.service === "roof") out.biocide = sumItems(l.items, /biocide/i);
+  if (l.interiorLoading) out.interiorLoading = l.interiorLoading;
+  if (l.assumed) out.assumed = l.assumed;
+  return out;
+}
+
+export function leadQuoteData(state) {
+  const quote = calculateQuote(state);
+  const w = state.window || {};
+  const pressureBiocide = !!Object.values((state.pressure || {}).details || {}).some((d) => d && d.biocide && d.surface !== "tiles");
+  const data = {
+    services: state.services || [],
+    selections: {
+      window: state.window
+        ? { propertyType: w.propertyType || "", apartmentScope: w.apartmentScope || "", interiorAddon: !!w.interiorAddon, panes: w.panes || "" }
+        : null,
+      roof: state.roof ? { roofType: state.roof.roofType || "" } : null,
+      pressureBiocide,
+      roofBiocide: !!(state.roof && state.roof.biocide && state.roof.roofType === "tile"),
+    },
+    custom: quote.custom,
+    partialPriced: !!quote.partial,
+    total: quote.total,
+    lines: (quote.lines || []).map(lineSummary),
+    floorApplied: quote.floorApplied || null,
+    postFloorAdds: quote.postFloorAdds || [],
+    customServices: quote.customServices || [],
+    tracking: null,
+    paneBands: null,
+  };
+  const t = trackingEstimate(state);
+  if (t) data.tracking = { total: t.total, totalIsPartial: t.totalIsPartial, lines: t.lines.map(lineSummary), notEstimable: t.notEstimable };
+  // Pane count unknown: what the windows would cost at each pane band.
+  if (state.window && w.panes === "unsure" && (state.services || []).includes("window")) {
+    data.paneBands = [];
+    for (const band of PANE_BANDS.filter((b) => !b.custom)) {
+      const s2 = clone(state);
+      s2.services = ["window"];
+      s2.window = { ...s2.window, panes: band.value };
+      const direct = calculateQuote(s2);
+      let price = null;
+      if (!direct.custom && direct.lines.length) price = direct.lines[0].subtotal;
+      else {
+        const tt = trackingEstimate(s2);
+        const l = tt && tt.lines.find((x) => x.service === "window");
+        price = l ? l.subtotal : null;
+      }
+      data.paneBands.push({ band: band.value, label: band.label, price });
+    }
+  }
+  return data;
 }

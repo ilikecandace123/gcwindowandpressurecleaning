@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import { calculateQuote, formatMoney, trackingEstimate } from "./engine";
+import { calculateQuote, formatMoney, trackingEstimate, leadQuoteData } from "./engine";
 import {
   buildQuestionSteps,
   collectAnswers,
@@ -422,6 +422,16 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
       qa,
       leadId: extra.leadId || "",
       source: "instant-quote",
+      // INTERNAL ONLY: structured quote for n8n (job template, line-item prices,
+      // lead note). Never rendered on screen.
+      quoteData: (() => {
+        if (mode === "details") return { mode: "details", services: state.services || [] };
+        let d = null;
+        try { d = leadQuoteData(expanded); } catch (e) { d = { error: String(e && e.message) }; }
+        d.mode = extra.partial ? "partial" : "full";
+        d.wantsToBook = extra.booking || "";
+        return d;
+      })(),
       // Google Ads click attribution (gclid / gbraid / wbraid, click time,
       // landing page, utm_*) — empty strings when the visit wasn't from an ad.
       ...adsAttributionFields(),
