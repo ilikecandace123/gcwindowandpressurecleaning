@@ -32,6 +32,12 @@ const PORT = 4173;           // Local dev server port (Vite preview default)
 const CONCURRENCY = 6;       // Number of parallel browser tabs
 const NAV_TIMEOUT = 15000;   // Per-page navigation timeout (ms)
 const SETTLE_DELAY = 800;    // Wait for async state (reviews carousel, etc.)
+const LAUNCH_TIMEOUT = 120000; // Chrome start-up budget per attempt (Puppeteer's default is 30 s)
+const LAUNCH_ATTEMPTS = 3;     // A slow build machine once timed out at 30 s on the first try
+// Fail the build when fewer than this share of routes render. A build that
+// finishes with empty pages would otherwise deploy as a "success" and ship
+// blank HTML to crawlers; failing keeps the previous good deployment live.
+const MIN_RENDERED_SHARE = 0.9;
 
 // ── Static file server ─────────────────────────────────────────────────────
 function startServer() {
@@ -278,6 +284,35 @@ async function processRoutes(browser, routes) {
   return { completed, failed };
 }
 
+// ── Browser launch (with retries) ─────────────────────────────────────────
+const LAUNCH_ARGS = [
+  "--no-sandbox",
+  "--disable-setuid-sandbox",
+  "--disable-dev-shm-usage",
+  "--disable-gpu",
+  "--disable-extensions",
+  "--disable-background-networking",
+  "--disable-default-apps",
+  "--disable-sync",
+  "--disable-translate",
+  "--metrics-recording-only",
+  "--mute-audio",
+  "--no-first-run",
+];
+
+async function launchBrowser() {
+  let lastErr;
+  for (let attempt = 1; attempt <= LAUNCH_ATTEMPTS; attempt++) {
+    try {
+      return await puppeteer.launch({ headless: "new", timeout: LAUNCH_TIMEOUT, args: LAUNCH_ARGS });
+    } catch (err) {
+      lastErr = err;
+      console.error(`  Browser launch attempt ${attempt}/${LAUNCH_ATTEMPTS} failed: ${err.message}`);
+    }
+  }
+  throw lastErr;
+}
+
 // ── Main ───────────────────────────────────────────────────────────────────
 async function main() {
   console.log("Content pre-renderer starting...");
@@ -298,23 +333,7 @@ async function main() {
 
   // 3. Launch browser
   console.log(`  Launching headless browser (${CONCURRENCY} concurrent tabs)...`);
-  const browser = await puppeteer.launch({
-    headless: "new",
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-gpu",
-      "--disable-extensions",
-      "--disable-background-networking",
-      "--disable-default-apps",
-      "--disable-sync",
-      "--disable-translate",
-      "--metrics-recording-only",
-      "--mute-audio",
-      "--no-first-run",
-    ],
-  });
+  const browser = await launchBrowser();
 
   try {
     // 4. Render all routes
@@ -327,6 +346,10 @@ async function main() {
     console.log(`  ${completed} pages rendered successfully`);
     if (failed > 0) console.log(`  ${failed} pages failed (will use client-side rendering)`);
     console.log(`  Total time: ${elapsed}s (~${(elapsed / routes.length * 1000).toFixed(0)}ms/page)`);
+    if (completed < routes.length * MIN_RENDERED_SHARE) {
+      console.error(`Content pre-renderer: only ${completed}/${routes.length} pages rendered (minimum ${Math.ceil(routes.length * MIN_RENDERED_SHARE)}) — failing the build so blank pages are not deployed.`);
+      process.exitCode = 1;
+    }
   } finally {
     await browser.close();
     server.close();

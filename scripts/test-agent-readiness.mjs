@@ -830,5 +830,22 @@ console.log("\nScoped /for-agents/llms.txt:");
   }
 }
 
+console.log("\nBuild guard (no blank deploys):");
+{
+  // On 08/10/2026 headless Chrome timed out on Cloudflare's build machine, the
+  // content prerender produced nothing, and the build still "succeeded" — every
+  // page shipped as an empty shell with no markdown mirrors. These pin the fix.
+  const build = JSON.parse(read(path.join(ROOT, "package.json"))).scripts.build;
+  ok("content prerender is chained with && to the mirror step", build.includes("node scripts/prerender-content.mjs && (pip3 install"));
+  ok("pip fallback is grouped so a prerender failure cannot fall through to it", /&& \(pip3 install [^)]*\|\| pip3 install [^)]*\) && python3 scripts\/generate_markdown_mirrors\.py$/.test(build));
+  ok("no bare || left in the build chain", !/\|\|/.test(build.replace(/\([^)]*\)/g, "")));
+  const pre = read(path.join(ROOT, "scripts", "prerender-content.mjs"));
+  ok("prerender raises Chrome's launch timeout above 30 s", /LAUNCH_TIMEOUT = (\d+)/.test(pre) && Number(pre.match(/LAUNCH_TIMEOUT = (\d+)/)[1]) > 30000);
+  ok("prerender retries the browser launch", /LAUNCH_ATTEMPTS = ([2-9])/.test(pre) && pre.includes("timeout: LAUNCH_TIMEOUT"));
+  ok("prerender fails the build when too few pages render", /MIN_RENDERED_SHARE = 0\.\d+/.test(pre) && /process\.exitCode = 1/.test(pre));
+  const mirrors = read(path.join(ROOT, "scripts", "generate_markdown_mirrors.py"));
+  ok("mirror generator fails the build when most pages yield no mirror", /generated < total \* 0\.9[\s\S]{0,160}sys\.exit\(1\)/.test(mirrors));
+}
+
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);
 process.exit(fail ? 1 : 0);

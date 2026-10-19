@@ -335,6 +335,13 @@ def main():
     print(f"  📁 Output   : dist/**/index.md")
     print(f"  🌐 Example  : {SITE_URL}/window-cleaning/burleigh-heads/index.md")
 
+    # Guard: if the HTML had no rendered content, every page is skipped and the
+    # build would still "succeed" with no mirrors. Fail instead so the previous
+    # good deployment stays live.
+    if total and generated < total * 0.9:
+        print(f"ERROR: only {generated}/{total} mirrors generated — failing the build.")
+        sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
