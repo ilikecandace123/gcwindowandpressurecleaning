@@ -10,7 +10,7 @@ export default function Contact() {
     <div className="min-h-screen bg-gray-50">
       <PageSEO
         title="Contact Us | Gold Coast Window and Pressure Cleaning"
-        description="Contact Gold Coast Window and Pressure Cleaning — call (07) 5651 2386 or email us for a free quote. Serving all Gold Coast suburbs and Northern NSW."
+        description="Contact Gold Coast Window and Pressure Cleaning — call (07) 5230 8293 or email us for a free quote. Serving all Gold Coast suburbs and Northern NSW."
         canonical="https://gcwindowandpressurecleaning.com.au/contact/"
         jsonLd={[
           buildLocalBusinessSchema(),
@@ -45,7 +45,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <a href="tel:0756512386" className="text-blue-600 text-lg font-medium hover:underline">(07) 5651 2386</a>
+                    <a href="tel:0752308293" className="text-blue-600 text-lg font-medium hover:underline">(07) 5230 8293</a>
                     <p className="text-sm text-gray-500 mt-1">We actually answer our phones!</p>
                   </div>
                 </div>

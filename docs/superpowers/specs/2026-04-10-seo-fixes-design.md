@@ -59,7 +59,7 @@ Note: Cloudflare Pages processes `_redirects` before serving content, so these r
 
 **Meta title:** `"Solar Panel Cleaning Gold Coast | Boost Output Up to 30%"` — moves "Gold Coast" earlier for keyword proximity.
 
-**Meta description:** Expand to include suburb names: `"Professional solar panel cleaning across the Gold Coast — Surfers Paradise, Robina, Burleigh Heads, Palm Beach & beyond. Boost energy output up to 30%. Fully insured. Call (07) 5651 2386."`
+**Meta description:** Expand to include suburb names: `"Professional solar panel cleaning across the Gold Coast — Surfers Paradise, Robina, Burleigh Heads, Palm Beach & beyond. Boost energy output up to 30%. Fully insured. Call (07) 5230 8293."`
 
 **H1:** Change to `"Gold Coast Solar Panel Cleaning — Restore Lost Energy Output"` — leads with the target keyword phrase.
 
@@ -116,7 +116,7 @@ Each point is 1–2 sentences. Presented as a 2-column grid of icon + text cards
 
 **Meta title:** `"Roof Cleaning Gold Coast | Tile, Metal & Concrete Specialists"` — targets primary keyword directly, adds surface type keywords.
 
-**Meta description:** Expand with suburb names and roof types: `"Professional roof cleaning across the Gold Coast. Tile, metal & concrete roof specialists — Surfers Paradise, Robina, Burleigh Heads & more. Fully insured. Free quotes — call (07) 5651 2386."`
+**Meta description:** Expand with suburb names and roof types: `"Professional roof cleaning across the Gold Coast. Tile, metal & concrete roof specialists — Surfers Paradise, Robina, Burleigh Heads & more. Fully insured. Free quotes — call (07) 5230 8293."`
 
 **H1:** Change to `"Roof Cleaning Gold Coast — Tile, Metal & Concrete Roofs"` — leads with target keyword, adds surface modifiers.
 

@@ -116,7 +116,7 @@ async function main() {
     path: "/",
     title: "Gold Coast Window and Pressure Cleaning | Free Quote",
     description:
-      "Gold Coast's trusted window, pressure, roof, gutter and solar panel cleaning. Fully insured, police-checked staff. Free quote — call (07) 5651 2386.",
+      "Gold Coast's trusted window, pressure, roof, gutter and solar panel cleaning. Fully insured, police-checked staff. Free quote — call (07) 5230 8293.",
     canonical: `${SITE}/`,
     image: "/images/services-banner.jpg",
     jsonLd: [
@@ -133,7 +133,7 @@ async function main() {
     path: "/service-areas",
     title: "Service Areas | Gold Coast Window and Pressure Cleaning",
     description:
-      "We service all Gold Coast suburbs and Northern NSW — window, pressure, roof, gutter and solar cleaning in your suburb. Call (07) 5651 2386 for a quote.",
+      "We service all Gold Coast suburbs and Northern NSW — window, pressure, roof, gutter and solar cleaning in your suburb. Call (07) 5230 8293 for a quote.",
     canonical: `${SITE}/service-areas`,
     jsonLd: [
       buildLocalBusinessSchema(),
@@ -184,7 +184,7 @@ async function main() {
   routes.push({
     path: "/contact",
     title: "Contact Us | Gold Coast Window and Pressure Cleaning",
-    description: "Contact Gold Coast Window and Pressure Cleaning — call (07) 5651 2386 or email us for a free quote. Serving all Gold Coast suburbs and Northern NSW.",
+    description: "Contact Gold Coast Window and Pressure Cleaning — call (07) 5230 8293 or email us for a free quote. Serving all Gold Coast suburbs and Northern NSW.",
     canonical: `${SITE}/contact`,
     jsonLd: [
       buildLocalBusinessSchema(),
@@ -265,22 +265,22 @@ async function main() {
       "Streak-free window cleaning across the Gold Coast — interior & exterior up to 4 storeys, including tracks & flyscreens. Fully insured, police-checked."],
     ["roof-cleaning", "Roof Cleaning", "/images/roof-hero.jpg",
       "Roof Cleaning Gold Coast | Tile, Metal & Concrete",
-      "Professional roof cleaning across the Gold Coast — tile, metal and concrete roof specialists. Soft-wash safe. Fully insured. Free quote: (07) 5651 2386."],
+      "Professional roof cleaning across the Gold Coast — tile, metal and concrete roof specialists. Soft-wash safe. Fully insured. Free quote: (07) 5230 8293."],
     ["house-softwash", "House & Building Softwash", "/images/softwash-1.jpg",
       "House Softwash Gold Coast | Gentle Mould Removal",
-      "Gold Coast house softwash — safely removes mould, dirt and grime without damaging render, Colorbond or timber. Fully insured. Free quote: (07) 5651 2386."],
+      "Gold Coast house softwash — safely removes mould, dirt and grime without damaging render, Colorbond or timber. Fully insured. Free quote: (07) 5230 8293."],
     ["pressure-cleaning", "Pressure Cleaning", "/images/pressure-hero.jpg",
       "Pressure Cleaning Gold Coast | Driveways & Paths",
-      "Gold Coast pressure cleaning specialists — industrial-grade cleaning for driveways, concrete, paths and patios. Fully insured. Free quote: (07) 5651 2386."],
+      "Gold Coast pressure cleaning specialists — industrial-grade cleaning for driveways, concrete, paths and patios. Fully insured. Free quote: (07) 5230 8293."],
     ["gutter-cleaning", "Gutter Cleaning", "/images/gutter-1.jpg",
       "Gutter Cleaning Gold Coast | Storm-Ready Maintenance",
-      "Gutter cleaning on the Gold Coast — full gutter and downpipe clearing with inspection and written report. Fully insured. Free quote: (07) 5651 2386."],
+      "Gutter cleaning on the Gold Coast — full gutter and downpipe clearing with inspection and written report. Fully insured. Free quote: (07) 5230 8293."],
     ["solar-panel-cleaning", "Solar Panel Cleaning", "/images/solar-panel-hero.jpg",
       "Solar Panel Cleaning Gold Coast | Boost Output",
-      "Professional solar panel cleaning across the Gold Coast — restore lost generation and boost output by up to 30%. Fully insured. Call (07) 5651 2386."],
+      "Professional solar panel cleaning across the Gold Coast — restore lost generation and boost output by up to 30%. Fully insured. Call (07) 5230 8293."],
     ["bird-proofing", "Solar Panel Bird Proofing", "/images/bird-proofing-hero.jpg",
       "Solar Panel Bird Proofing Gold Coast | Pigeon Mesh",
-      "Solar panel bird proofing on the Gold Coast — warranty-safe mesh that stops pigeons and mynas nesting under your panels. Fully insured. Call (07) 5651 2386."],
+      "Solar panel bird proofing on the Gold Coast — warranty-safe mesh that stops pigeons and mynas nesting under your panels. Fully insured. Call (07) 5230 8293."],
   ];
   for (const [slug, name, img, title, description] of mainPages) {
     routes.push({
@@ -293,7 +293,7 @@ async function main() {
         buildLocalBusinessSchema(),
         buildServiceSchema({
           name: name,
-          description: `Professional ${name.toLowerCase()} on the Gold Coast. Fully insured, police-checked staff. Call (07) 5651 2386 for a free quote.`,
+          description: `Professional ${name.toLowerCase()} on the Gold Coast. Fully insured, police-checked staff. Call (07) 5230 8293 for a free quote.`,
           image: img,
           serviceType: name,
           url: `${SITE}/${slug}/`
@@ -312,7 +312,7 @@ async function main() {
     routes.push({
       path: `/window-cleaning-plans/${suburb.slug}`,
       title: `Window Cleaning Plans ${suburb.name} | Gold Coast`,
-      description: `Pre-booked window cleaning plans in ${suburb.name} (${suburb.postcode}) — monthly, quarterly or half-yearly with $50–$150 off every visit. Call (07) 5651 2386.`,
+      description: `Pre-booked window cleaning plans in ${suburb.name} (${suburb.postcode}) — monthly, quarterly or half-yearly with $50–$150 off every visit. Call (07) 5230 8293.`,
       canonical: `${SITE}/window-cleaning-plans/${suburb.slug}`,
       image: "/images/services-banner.jpg",
       jsonLd: [
@@ -340,7 +340,7 @@ async function main() {
       routes.push({
         path: `/${service.slug}/${suburb.slug}`,
         title: `${service.name} ${suburb.name} | Gold Coast`,
-        description: `Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}). Fully insured & police-checked staff. Get a free quote — call (07) 5651 2386 today.`,
+        description: `Professional ${service.name.toLowerCase()} in ${suburb.name} (${suburb.postcode}). Fully insured & police-checked staff. Get a free quote — call (07) 5230 8293 today.`,
         canonical: `${SITE}/${service.slug}/${suburb.slug}`,
         image: "/images/window.jpg",
         jsonLd: [
@@ -368,7 +368,7 @@ async function main() {
     routes.push({
       path: `/commercial/${service.slug}`,
       title: `${service.name} Gold Coast`,
-      description: `${service.name} on the Gold Coast for offices & strata. $20M public liability, SWMS supplied, after-hours service. Call (07) 5651 2386.`,
+      description: `${service.name} on the Gold Coast for offices & strata. $20M public liability, SWMS supplied, after-hours service. Call (07) 5230 8293.`,
       canonical: `${SITE}/commercial/${service.slug}`,
       jsonLd: [
         buildLocalBusinessSchema(),
@@ -390,7 +390,7 @@ async function main() {
       routes.push({
         path: `/commercial/${service.slug}/${suburb.slug}`,
         title: `${service.name} in ${suburb.name}`,
-        description: `${service.name} in ${suburb.name} (${suburb.postcode}) for strata & body corporate buildings. $20M liability, SWMS supplied. Call (07) 5651 2386.`,
+        description: `${service.name} in ${suburb.name} (${suburb.postcode}) for strata & body corporate buildings. $20M liability, SWMS supplied. Call (07) 5230 8293.`,
         canonical: `${SITE}/commercial/${service.slug}/${suburb.slug}`,
         jsonLd: [
           buildLocalBusinessSchema(),

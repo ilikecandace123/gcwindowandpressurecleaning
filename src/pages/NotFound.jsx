@@ -8,7 +8,7 @@ export default function NotFound() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4">
       <PageSEO
         title="Page Not Found | Gold Coast Window and Pressure Cleaning"
-        description="The page you're looking for doesn't exist. Browse our services or contact us on (07) 5651 2386 for professional exterior cleaning on the Gold Coast."
+        description="The page you're looking for doesn't exist. Browse our services or contact us on (07) 5230 8293 for professional exterior cleaning on the Gold Coast."
         canonical="https://gcwindowandpressurecleaning.com.au/404/"
         noindex
       />
@@ -20,8 +20,8 @@ export default function NotFound() {
         <p className="text-lg text-gray-600 mb-8">
           The page you're looking for doesn't exist or has been moved. Try one
           of the links below, or give us a call on{" "}
-          <a href="tel:0756512386" className="text-blue-600 font-semibold hover:underline">
-            (07) 5651 2386
+          <a href="tel:0752308293" className="text-blue-600 font-semibold hover:underline">
+            (07) 5230 8293
           </a>
           .
         </p>

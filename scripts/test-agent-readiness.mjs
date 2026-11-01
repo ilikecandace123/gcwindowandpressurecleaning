@@ -288,7 +288,7 @@ console.log("\nOrganization schema:");
   ok("every contactPoint has a contactType", (org.contactPoint || []).every((c) => typeof c.contactType === "string" && c.contactType));
   ok("every contactPoint has phone AND email", (org.contactPoint || []).every((c) => c.telephone && c.email));
   ok("declares areaServed", (org.contactPoint || []).every((c) => Array.isArray(c.areaServed) && c.areaServed.length));
-  // (07) 5651 2386 is a normal landline — claiming TollFree would be false.
+  // (07) 5230 8293 is a normal landline — claiming TollFree would be false.
   ok("makes no toll-free claim", !JSON.stringify(org).includes("TollFree"));
   {
     const local = localSchema();

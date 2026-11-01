@@ -71,7 +71,7 @@ export default function GutterCleaning() {
       "provider": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Gold Coast Window and Pressure Cleaning",
-        "telephone": "(07) 5651 2386",
+        "telephone": "(07) 5230 8293",
         "url": "https://gcwindowandpressurecleaning.com.au"
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
@@ -89,7 +89,7 @@ export default function GutterCleaning() {
     <div>
       <PageSEO
         title="Gutter Cleaning Gold Coast | Storm-Ready Maintenance"
-        description="Gutter cleaning on the Gold Coast — full gutter and downpipe clearing with inspection and written report. Fully insured. Free quote: (07) 5651 2386."
+        description="Gutter cleaning on the Gold Coast — full gutter and downpipe clearing with inspection and written report. Fully insured. Free quote: (07) 5230 8293."
         canonical="https://gcwindowandpressurecleaning.com.au/gutter-cleaning/"
         image="/images/gutter-1.jpg"
         jsonLd={seoJsonLd}

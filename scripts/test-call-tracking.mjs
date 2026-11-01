@@ -1,6 +1,6 @@
 // Google Ads website-call conversion (forwarding-number swap) regression test.
 //
-// Problem (Sept 2026): the Google Ads phone conversion "Call ((07) 5651 2386)"
+// Problem (Sept 2026): the Google Ads website call conversion ("Call (...)")
 // recorded zero calls for 45+ days while the site-side tel: click event kept
 // firing. Google's tag swaps the number by editing the DOM once; this app is
 // mounted with createRoot(), which discards the pre-rendered markup — and any
@@ -42,15 +42,15 @@ const skipped = (name, why) => {
   console.log(`  ⚠ ${name} — skipped (${why})`);
 };
 
-const REAL = "(07) 5651 2386";
-const REAL_TEL = "tel:0756512386";
+const REAL = "(07) 5230 8293";
+const REAL_TEL = "tel:0752308293";
 const LABEL = "AW-18190004003/UMSTCJDpjNYcEKPe1eFD";
 
 // ── Static: the source has the fix ──────────────────────────────────────────
 console.log("Call tracking (source):");
 {
   const html = read("index.html");
-  ok("gtag config for the call conversion still carries the real number", new RegExp(`'${LABEL.replace("/", "\\/")}',\\s*\\{\\s*'phone_conversion_number':\\s*'\\(07\\) 5651 2386'`).test(html));
+  ok("gtag config for the call conversion still carries the real number", new RegExp(`'${LABEL.replace("/", "\\/")}',\\s*\\{\\s*'phone_conversion_number':\\s*'\\(07\\) 5230 8293'`).test(html));
   ok("gtag config registers phone_conversion_callback (no one-shot auto-replace)", /'phone_conversion_callback':\s*function \(formattedNumber, mobileNumber\)/.test(html));
   ok("callback hands the number to the site-side replacer", /window\.__gcwpCallTracking\.setNumber\(formattedNumber, mobileNumber\)/.test(html));
   ok("replacer is defined before the gtag snippet", html.indexOf("window.__gcwpCallTracking = {") < html.indexOf("gtag/js?id=AW-18190004003"));
@@ -60,7 +60,7 @@ console.log("Call tracking (source):");
   const schema = read("src/data/schema.js");
   ok("real number in the replacer matches BUSINESS_PHONE", schema.includes(`BUSINESS_PHONE = "${REAL}"`) && html.includes(`var REAL_DISPLAY = '${REAL}';`));
   const layout = read("src/Layout.jsx");
-  ok("header and footer still render the real number (default state)", (layout.match(/\(07\) 5651 2386/g) || []).length >= 2 && layout.includes(`href="${REAL_TEL}"`));
+  ok("header and footer still render the real number (default state)", (layout.match(/\(07\) 5230 8293/g) || []).length >= 2 && layout.includes(`href="${REAL_TEL}"`));
 }
 
 // ── Browser: the swap survives React ────────────────────────────────────────
@@ -131,13 +131,13 @@ if (!built) {
           const hrefs = [...document.querySelectorAll('a[href^="tel:"]')].map((a) => a.getAttribute("href"));
           const ld = [...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => s.textContent).join("");
           return {
-            real: count(/5651\s?2386/),
+            real: count(/5230\s?8293/),
             fwd1: count(/5999\s?1234/),
             fwd2: count(/5888\s?0000/),
             hrefs: [...new Set(hrefs)],
             telCount: hrefs.length,
             path: location.pathname,
-            ldHasReal: ld.includes("5651 2386"),
+            ldHasReal: ld.includes("5230 8293"),
             applied: window.google_wcc_applied || null,
           };
         });
@@ -177,7 +177,7 @@ if (!built) {
         await page.evaluate(() => {
           const d = document.createElement("div");
           d.id = "wipe-test";
-          d.innerHTML = '<a href="tel:0756512386">Call (07) 5651 2386</a><p>Ring us on 07 5651 2386 today</p><a href="tel:0400000000">other</a>';
+          d.innerHTML = '<a href="tel:0752308293">Call (07) 5230 8293</a><p>Ring us on 07 5230 8293 today</p><a href="tel:0400000000">other</a>';
           document.getElementById("root").appendChild(d);
         });
         await new Promise((r) => setTimeout(r, 100));
@@ -198,7 +198,7 @@ if (!built) {
         eq("refresh: tel: links follow (other number untouched)", s.hrefs.sort(), ["tel:+61758880000", "tel:0400000000"]);
 
         // 5. After 3 hours Google sends the real number back.
-        await page.evaluate(() => window.__gtagStub.fire("(07) 5651 2386", undefined));
+        await page.evaluate(() => window.__gtagStub.fire("(07) 5230 8293", undefined));
         s = await inspect();
         eq("revert: no forwarding number left in text", [s.fwd1, s.fwd2], [0, 0]);
         ok("revert: real number shown again", s.real >= 3);
@@ -209,11 +209,11 @@ if (!built) {
         await page.evaluate(() => {
           const p = document.createElement("p");
           p.id = "after-revert";
-          p.textContent = "Call (07) 5651 2386";
+          p.textContent = "Call (07) 5230 8293";
           document.getElementById("root").appendChild(p);
         });
         await new Promise((r) => setTimeout(r, 100));
-        eq("after revert, new nodes are not rewritten", await page.evaluate(() => document.getElementById("after-revert").textContent), "Call (07) 5651 2386");
+        eq("after revert, new nodes are not rewritten", await page.evaluate(() => document.getElementById("after-revert").textContent), "Call (07) 5230 8293");
       } finally {
         await browser.close();
       }

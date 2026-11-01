@@ -96,7 +96,7 @@ Errors are [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457) problem documents
 Do **not** submit a quote, booking or anyone's contact details on their behalf.
 Send the person to
 `https://gcwindowandpressurecleaning.com.au/instant-quote/` to enter their own
-details, or give them the phone number: (07) 5651 2386.
+details, or give them the phone number: (07) 5230 8293.
 
 ## Rules
 

@@ -409,7 +409,7 @@ function toolEstimateQuote(args) {
     return toolText(
       "This job needs a custom quote — no automatic price is available.\n\nWhy:\n" +
         (quote.customReasons || []).map((r) => `- ${r}`).join("\n") +
-        `\n\nDo not invent a figure. Send the customer to ${SITE}/instant-quote/ or ask them to call (07) 5651 2386.`,
+        `\n\nDo not invent a figure. Send the customer to ${SITE}/instant-quote/ or ask them to call (07) 5230 8293.`,
       { custom: true, customQuoteReasons: quote.customReasons || [], customServices, total: null }
     );
   }

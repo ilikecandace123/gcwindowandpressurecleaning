@@ -147,7 +147,7 @@ export default function Privacy() {
               {BUSINESS_EMAIL}
             </a>{" "}
             or call{" "}
-            <a href="tel:0756512386" className="text-blue-600 font-medium hover:underline">
+            <a href="tel:0752308293" className="text-blue-600 font-medium hover:underline">
               {BUSINESS_PHONE}
             </a>
             . We will respond within 30 days. There is no charge. If we cannot delete something because we are required
@@ -171,7 +171,7 @@ export default function Privacy() {
           <p className="text-gray-700 mb-2">Gold Coast Window and Pressure Cleaning</p>
           <p className="text-gray-700 mb-2">
             Phone:{" "}
-            <a href="tel:0756512386" className="text-blue-600 font-medium hover:underline">
+            <a href="tel:0752308293" className="text-blue-600 font-medium hover:underline">
               {BUSINESS_PHONE}
             </a>
           </p>

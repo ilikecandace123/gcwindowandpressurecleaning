@@ -7,7 +7,7 @@
 - Site: https://gcwindowandpressurecleaning.com.au
 - Last reviewed: 2026-09-04
 - MCP server: https://gcwindowandpressurecleaning.com.au/mcp (Streamable HTTP, read-only)
-- Contact: (07) 5651 2386 — https://gcwindowandpressurecleaning.com.au/contact/
+- Contact: (07) 5230 8293 — https://gcwindowandpressurecleaning.com.au/contact/
 
 ## When to use this site
 

@@ -51,7 +51,7 @@ export default function WindowCleaningPlans() {
     {
       question: "How do I get started?",
       answer:
-        "Use our instant quote tool to get your price in about two minutes — pick your pane count, choose a frequency and see your per-visit price with the plan discount applied. Or call (07) 5651 2386 and we'll sort it out on the spot.",
+        "Use our instant quote tool to get your price in about two minutes — pick your pane count, choose a frequency and see your per-visit price with the plan discount applied. Or call (07) 5230 8293 and we'll sort it out on the spot.",
     },
   ];
 
@@ -65,7 +65,7 @@ export default function WindowCleaningPlans() {
       provider: {
         "@type": "HomeAndConstructionBusiness",
         name: "Gold Coast Window and Pressure Cleaning",
-        telephone: "(07) 5651 2386",
+        telephone: "(07) 5230 8293",
         url: "https://gcwindowandpressurecleaning.com.au",
       },
       areaServed: { "@type": "City", name: "Gold Coast", addressRegion: "QLD", addressCountry: "AU" },

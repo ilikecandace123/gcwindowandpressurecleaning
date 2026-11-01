@@ -75,7 +75,7 @@ export default function WindowCleaningPlansLocation() {
   const faqs = [
     {
       question: `How much do the Window Cleaning Plans cost in ${suburb.name}?`,
-      answer: `Plan pricing in ${suburb.name} depends on your home's window count — but every plan takes $50–$150 off each visit compared to a one-off clean, depending on the frequency you choose. Use our instant quote tool to see your exact per-visit price in about two minutes, or call (07) 5651 2386.`,
+      answer: `Plan pricing in ${suburb.name} depends on your home's window count — but every plan takes $50–$150 off each visit compared to a one-off clean, depending on the frequency you choose. Use our instant quote tool to see your exact per-visit price in about two minutes, or call (07) 5230 8293.`,
     },
     {
       question: `Which plan frequency is right for homes in ${suburb.name}?`,
@@ -123,7 +123,7 @@ export default function WindowCleaningPlansLocation() {
     <div>
       <PageSEO
         title={`Window Cleaning Plans ${suburb.name} | Gold Coast`}
-        description={`Pre-booked window cleaning plans in ${suburb.name} (${suburb.postcode}) — monthly, quarterly or half-yearly with $50–$150 off every visit. Call (07) 5651 2386.`}
+        description={`Pre-booked window cleaning plans in ${suburb.name} (${suburb.postcode}) — monthly, quarterly or half-yearly with $50–$150 off every visit. Call (07) 5230 8293.`}
         canonical={`${SITE}/window-cleaning-plans/${suburb.slug}/`}
         image="/images/services-banner.jpg"
         jsonLd={seoJsonLd}

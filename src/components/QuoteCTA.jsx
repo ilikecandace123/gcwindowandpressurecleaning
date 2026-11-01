@@ -109,8 +109,8 @@ export default function QuoteCTA({ variant = "section" }) {
             <Choices onInstant={() => setActive("instant")} onDetails={() => setActive("details")} />
             <p className="text-center text-sm text-gray-400 mt-6">
               Prefer to talk?{" "}
-              <a href="tel:0756512386" className="text-blue-600 font-medium hover:underline">
-                Call (07) 5651 2386
+              <a href="tel:0752308293" className="text-blue-600 font-medium hover:underline">
+                Call (07) 5230 8293
               </a>{" "}
               — we actually answer.
             </p>
