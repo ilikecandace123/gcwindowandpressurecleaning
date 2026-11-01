@@ -24,8 +24,8 @@ export default function QuoteForm({ serviceName }) {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900">Call Direct</h3>
-                  <a href="tel:0756512386" className="text-blue-600 font-medium hover:underline">
-                    (07) 5651 2386
+                  <a href="tel:0752308293" className="text-blue-600 font-medium hover:underline">
+                    (07) 5230 8293
                   </a>
                 </div>
               </div>

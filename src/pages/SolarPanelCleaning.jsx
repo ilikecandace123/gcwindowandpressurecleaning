@@ -94,7 +94,7 @@ export default function SolarPanelCleaning() {
       "provider": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Gold Coast Window and Pressure Cleaning",
-        "telephone": "(07) 5651 2386",
+        "telephone": "(07) 5230 8293",
         "url": "https://gcwindowandpressurecleaning.com.au"
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
@@ -111,7 +111,7 @@ export default function SolarPanelCleaning() {
     <div>
       <PageSEO
         title="Solar Panel Cleaning Gold Coast | Boost Output"
-        description="Professional solar panel cleaning across the Gold Coast — restore lost generation and boost output by up to 30%. Fully insured. Call (07) 5651 2386."
+        description="Professional solar panel cleaning across the Gold Coast — restore lost generation and boost output by up to 30%. Fully insured. Call (07) 5230 8293."
         canonical="https://gcwindowandpressurecleaning.com.au/solar-panel-cleaning/"
         image="/images/solar-panel-hero.jpg"
         jsonLd={seoJsonLd}
@@ -313,7 +313,7 @@ export default function SolarPanelCleaning() {
             <Link to="/solar-panel-cleaning/elanora/" className="text-blue-600 hover:underline">Elanora</Link>,{" "}
             <Link to="/solar-panel-cleaning/tugun/" className="text-blue-600 hover:underline">Tugun</Link>, and{" "}
             <Link to="/solar-panel-cleaning/mermaid-waters/" className="text-blue-600 hover:underline">Mermaid Waters</Link>.{" "}
-            Not sure if we cover your suburb? <a href="tel:0756512386" className="text-blue-600 hover:underline">Give us a call</a>.
+            Not sure if we cover your suburb? <a href="tel:0752308293" className="text-blue-600 hover:underline">Give us a call</a>.
           </p>
         </div>
       </section>

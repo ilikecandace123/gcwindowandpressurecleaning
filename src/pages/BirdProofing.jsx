@@ -84,7 +84,7 @@ export default function BirdProofing() {
       "provider": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Gold Coast Window and Pressure Cleaning",
-        "telephone": "(07) 5651 2386",
+        "telephone": "(07) 5230 8293",
         "url": "https://gcwindowandpressurecleaning.com.au"
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
@@ -101,7 +101,7 @@ export default function BirdProofing() {
     <div>
       <PageSEO
         title="Solar Panel Bird Proofing Gold Coast | Pigeon Mesh"
-        description="Solar panel bird proofing on the Gold Coast — warranty-safe mesh that stops pigeons and mynas nesting under your panels. Fully insured. Call (07) 5651 2386."
+        description="Solar panel bird proofing on the Gold Coast — warranty-safe mesh that stops pigeons and mynas nesting under your panels. Fully insured. Call (07) 5230 8293."
         canonical="https://gcwindowandpressurecleaning.com.au/bird-proofing/"
         image="/images/bird-proofing-hero.jpg"
         jsonLd={seoJsonLd}

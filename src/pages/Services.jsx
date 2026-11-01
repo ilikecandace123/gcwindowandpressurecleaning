@@ -35,7 +35,7 @@ const HOME_FAQS = [
   },
   {
     question: "How do I get a quote or book a job?",
-    answer: "Call us on (07) 5651 2386, email gcwindowandpressure@gmail.com, or book online via our website. We offer free, no-obligation quotes for all jobs."
+    answer: "Call us on (07) 5230 8293, email gcwindowandpressure@gmail.com, or book online via our website. We offer free, no-obligation quotes for all jobs."
   },
   {
     question: "How often should I have my property professionally cleaned?",
@@ -101,7 +101,7 @@ export default function Services() {
     <div className="min-h-screen bg-gray-50">
       <PageSEO
         title="Gold Coast Window and Pressure Cleaning | Free Quote"
-        description="Gold Coast's trusted window, pressure, roof, gutter and solar panel cleaning. Fully insured, police-checked staff. Free quote — call (07) 5651 2386."
+        description="Gold Coast's trusted window, pressure, roof, gutter and solar panel cleaning. Fully insured, police-checked staff. Free quote — call (07) 5230 8293."
         canonical="https://gcwindowandpressurecleaning.com.au/"
         image="/images/services-banner.jpg"
         jsonLd={[
@@ -229,10 +229,10 @@ export default function Services() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:0756512386"
+              href="tel:0752308293"
               className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center">
 
-              <span>Call (07) 5651 2386</span>
+              <span>Call (07) 5230 8293</span>
             </a>
             <a href="#quote" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
 

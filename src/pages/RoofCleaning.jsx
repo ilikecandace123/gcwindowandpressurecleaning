@@ -105,7 +105,7 @@ export default function RoofCleaning() {
       "provider": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Gold Coast Window and Pressure Cleaning",
-        "telephone": "(07) 5651 2386",
+        "telephone": "(07) 5230 8293",
         "url": "https://gcwindowandpressurecleaning.com.au"
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
@@ -122,7 +122,7 @@ export default function RoofCleaning() {
     <div>
       <PageSEO
         title="Roof Cleaning Gold Coast | Tile, Metal & Concrete"
-        description="Professional roof cleaning across the Gold Coast — tile, metal and concrete roof specialists. Soft-wash safe. Fully insured. Free quote: (07) 5651 2386."
+        description="Professional roof cleaning across the Gold Coast — tile, metal and concrete roof specialists. Soft-wash safe. Fully insured. Free quote: (07) 5230 8293."
         canonical="https://gcwindowandpressurecleaning.com.au/roof-cleaning/"
         image="/images/roof-hero.jpg"
         jsonLd={seoJsonLd}
@@ -353,7 +353,7 @@ export default function RoofCleaning() {
             <Link to="/roof-cleaning/elanora/" className="text-blue-600 hover:underline">Elanora</Link>,{" "}
             <Link to="/roof-cleaning/tugun/" className="text-blue-600 hover:underline">Tugun</Link>, and{" "}
             <Link to="/roof-cleaning/mermaid-waters/" className="text-blue-600 hover:underline">Mermaid Waters</Link>.{" "}
-            <a href="tel:0756512386" className="text-blue-600 hover:underline">Call us</a> to confirm coverage for your suburb.
+            <a href="tel:0752308293" className="text-blue-600 hover:underline">Call us</a> to confirm coverage for your suburb.
           </p>
         </div>
       </section>

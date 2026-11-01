@@ -3,7 +3,7 @@
 
 export const SITE_URL = "https://gcwindowandpressurecleaning.com.au";
 export const BUSINESS_NAME = "Gold Coast Window and Pressure Cleaning";
-export const BUSINESS_PHONE = "(07) 5651 2386";
+export const BUSINESS_PHONE = "(07) 5230 8293";
 export const BUSINESS_EMAIL = "gcwindowandpressure@gmail.com";
 
 // Business address (must match GBP exactly for NAP consistency)

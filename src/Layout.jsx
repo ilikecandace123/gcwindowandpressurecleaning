@@ -162,9 +162,9 @@ export default function Layout({ children, currentPageName }) {
                 <span className="hidden sm:inline">Get Instant Quote</span>
                 <span className="sm:hidden">Quote</span>
               </Link>
-              <a href="tel:0756512386" aria-label="Call (07) 5651 2386" className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors flex items-center">
+              <a href="tel:0752308293" aria-label="Call (07) 5230 8293" className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors flex items-center">
                 <Phone className="w-4 h-4 sm:mr-1.5" />
-                <span className="hidden sm:inline">(07) 5651 2386</span>
+                <span className="hidden sm:inline">(07) 5230 8293</span>
               </a>
 
               {/* Mobile menu button */}
@@ -315,7 +315,7 @@ export default function Layout({ children, currentPageName }) {
               <div className="space-y-2 text-sm text-gray-300">
                 <div className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
-                  (07) 5651 2386
+                  (07) 5230 8293
                 </div>
                 <Link to="/about/" className="block hover:text-white transition-colors">About Us</Link>
                 <Link to="/contact/" className="block hover:text-white transition-colors">Contact</Link>

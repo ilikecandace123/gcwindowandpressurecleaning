@@ -146,9 +146,9 @@ export default function About() {
           <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
           <p className="text-xl text-blue-100 mb-8">Get in touch for a free, no-obligation quote.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:0756512386" className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center">
+            <a href="tel:0752308293" className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center">
               <Phone className="w-5 h-5 mr-2" />
-              (07) 5651 2386
+              (07) 5230 8293
             </a>
             <a href="#quote" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
               Get Free Quote

@@ -574,7 +574,7 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
       trackQuote({ event: "complete", phase: "contact", mode: "details" });
       setPhase("done-details");
     } catch {
-      setError("Sorry — something went wrong sending your details. Please call us on (07) 5651 2386 and we'll sort it out.");
+      setError("Sorry — something went wrong sending your details. Please call us on (07) 5230 8293 and we'll sort it out.");
     } finally {
       setSubmitting(false);
     }
@@ -1222,8 +1222,8 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
           </p>
           <p className="text-sm text-gray-400 mt-3">
             Need us sooner? Call{" "}
-            <a href="tel:0756512386" className="text-green-600 font-medium">
-              (07) 5651 2386
+            <a href="tel:0752308293" className="text-green-600 font-medium">
+              (07) 5230 8293
             </a>
             .
           </p>
@@ -1353,8 +1353,8 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
             </p>
             <p className="text-sm text-gray-400 mb-6">
               Need us sooner? Call{" "}
-              <a href="tel:0756512386" className="text-green-600 font-medium">
-                (07) 5651 2386
+              <a href="tel:0752308293" className="text-green-600 font-medium">
+                (07) 5230 8293
               </a>
               .
             </p>
@@ -1557,8 +1557,8 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
         </p>
         <p className="text-sm text-gray-400 mt-4">
           Need us sooner? Call{" "}
-          <a href="tel:0756512386" className="text-green-600 font-medium">
-            (07) 5651 2386
+          <a href="tel:0752308293" className="text-green-600 font-medium">
+            (07) 5230 8293
           </a>
           .
         </p>
@@ -1630,8 +1630,8 @@ export default function QuoteWizard({ embedded = false, initialMode = "instant",
         {phase === "entry" && !embedded && (
           <p className="text-center text-sm text-gray-400 mt-6">
             Prefer to talk?{" "}
-            <a href="tel:0756512386" className="text-blue-600 font-medium hover:underline">
-              Call (07) 5651 2386
+            <a href="tel:0752308293" className="text-blue-600 font-medium hover:underline">
+              Call (07) 5230 8293
             </a>{" "}
             — we actually answer.
           </p>

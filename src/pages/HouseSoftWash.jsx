@@ -76,7 +76,7 @@ export default function HouseSoftWash() {
       "provider": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Gold Coast Window and Pressure Cleaning",
-        "telephone": "(07) 5651 2386",
+        "telephone": "(07) 5230 8293",
         "url": "https://gcwindowandpressurecleaning.com.au"
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },
@@ -94,7 +94,7 @@ export default function HouseSoftWash() {
     <div>
       <PageSEO
         title="House Softwash Gold Coast | Gentle Mould Removal"
-        description="Gold Coast house softwash — safely removes mould, dirt and grime without damaging render, Colorbond or timber. Fully insured. Free quote: (07) 5651 2386."
+        description="Gold Coast house softwash — safely removes mould, dirt and grime without damaging render, Colorbond or timber. Fully insured. Free quote: (07) 5230 8293."
         canonical="https://gcwindowandpressurecleaning.com.au/house-softwash/"
         image="/images/softwash-1.jpg"
         jsonLd={seoJsonLd}

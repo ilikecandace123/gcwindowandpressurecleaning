@@ -91,10 +91,10 @@ export default function QuoteHero({
             </div>
 
             <a
-              href="tel:0756512386"
+              href="tel:0752308293"
               className="inline-flex items-center bg-white/15 backdrop-blur-sm hover:bg-white/25 text-white px-6 py-3 rounded-lg font-semibold transition-all border border-white/25"
             >
-              <Phone className="w-5 h-5 mr-2" /> (07) 5651 2386
+              <Phone className="w-5 h-5 mr-2" /> (07) 5230 8293
             </a>
           </div>
 

@@ -57,7 +57,7 @@ export default function WindowCleaning() {
   },
   {
     question: "Do you clean commercial and strata buildings?",
-    answer: "Yes — we clean shopfronts, offices and low-rise strata complexes across the Gold Coast, on a one-off or regular schedule, with the insurance and safety documentation body corporates and property managers ask for. Commercial and strata work is quoted per site; call (07) 5651 2386 or request a quote."
+    answer: "Yes — we clean shopfronts, offices and low-rise strata complexes across the Gold Coast, on a one-off or regular schedule, with the insurance and safety documentation body corporates and property managers ask for. Commercial and strata work is quoted per site; call (07) 5230 8293 or request a quote."
   },
   {
     question: "Do you clean windows in all weather conditions?",
@@ -86,7 +86,7 @@ export default function WindowCleaning() {
       "provider": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Gold Coast Window and Pressure Cleaning",
-        "telephone": "(07) 5651 2386",
+        "telephone": "(07) 5230 8293",
         "url": "https://gcwindowandpressurecleaning.com.au"
       },
       "areaServed": { "@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU" },

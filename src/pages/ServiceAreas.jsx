@@ -44,7 +44,7 @@ export default function ServiceAreas() {
     <div className="min-h-screen bg-gray-50">
       <PageSEO
         title="Service Areas | Gold Coast Window and Pressure Cleaning"
-        description="We service all Gold Coast suburbs and Northern NSW — window, pressure, roof, gutter and solar cleaning in your suburb. Call (07) 5651 2386 for a quote."
+        description="We service all Gold Coast suburbs and Northern NSW — window, pressure, roof, gutter and solar cleaning in your suburb. Call (07) 5230 8293 for a quote."
         canonical="https://gcwindowandpressurecleaning.com.au/service-areas/"
         jsonLd={[
           buildLocalBusinessSchema(),
@@ -155,11 +155,11 @@ export default function ServiceAreas() {
               Get Free Quote
             </a>
             <a
-              href="tel:0756512386"
+              href="tel:0752308293"
               className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all flex items-center justify-center"
             >
               <Phone className="w-5 h-5 mr-2" />
-              (07) 5651 2386
+              (07) 5230 8293
             </a>
           </div>
         </div>
