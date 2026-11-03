@@ -178,6 +178,28 @@ for (const g of GUIDES) {
 }
 ok("salt-air guide has the etching and track photos", (GUIDES.find((g) => g.slug === "salt-air-mould-windows-gold-coast").sections.filter((x) => x.image).length === 2));
 
+// ── Recent jobs (added by the n8n content engine) ──────────────────────────
+console.log("\nRecent jobs:");
+{
+  const { SUBURBS, SERVICES } = await import("../src/data/locations.js");
+  const slugs = new Set(SUBURBS.map((x) => x.slug));
+  const services = new Set(SERVICES.map((x) => x.slug));
+  const dir = path.join(ROOT, "src/data/recent-jobs");
+  const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith(".json")) : [];
+  ok("recent-jobs folder exists", fs.existsSync(dir));
+  for (const f of files) {
+    let j = null;
+    try { j = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")); } catch (e) { /* reported below */ }
+    ok(`${f}: valid JSON`, !!j);
+    if (!j) continue;
+    ok(`${f}: known suburb`, slugs.has(j.suburb), j.suburb);
+    ok(`${f}: known services`, (j.services || []).every((x) => services.has(x)), JSON.stringify(j.services));
+    ok(`${f}: photo exists`, typeof j.photo === "string" && fs.existsSync(path.join(ROOT, "public", j.photo)), j.photo);
+    ok(`${f}: no other brand, price or street address`, !/jim|\$|\b\d+\s+[A-Z][a-z]+\s+(St|Street|Rd|Road|Ave|Avenue|Dr|Drive|Ct|Court|Cres|Pde|Parade)\b/i.test(`${j.text} ${j.alt || ""}`));
+  }
+  console.log(`  (${files.length} job file${files.length === 1 ? "" : "s"})`);
+}
+
 // ── Built output ────────────────────────────────────────────────────────────
 console.log("\nBuilt guides:");
 const dist = path.join(ROOT, "dist", "guides");

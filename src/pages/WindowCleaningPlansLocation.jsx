@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";
 import FAQ from "../components/FAQ";
+import RecentJobs from "../components/RecentJobs";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 import { PlanTierCards, PlanInclusions, PlanNote } from "../components/WellnessPlanSection";
 import { PLAN_STEPS, PLAN_BENEFITS } from "../data/plans";
@@ -198,6 +199,8 @@ export default function WindowCleaningPlansLocation() {
           </div>
         </div>
       </section>
+
+      <RecentJobs suburbSlug={suburbSlug} suburbName={suburb.name} serviceSlug="window-cleaning" />
 
       {/* How it works */}
       <section className="py-16 bg-gray-50">

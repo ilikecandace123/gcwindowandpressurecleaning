@@ -10,6 +10,7 @@ import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
 import WellnessPlanSection from "../components/WellnessPlanSection";
+import RecentJobs from "../components/RecentJobs";
 
 const SERVICE_SECONDARY_IMAGES = {
   "window-cleaning": {
@@ -239,6 +240,9 @@ export default function LocationService() {
           </div>
         </div>
       </section>
+
+      {/* Real recent jobs in this suburb (added by the content engine after approval) */}
+      <RecentJobs suburbSlug={suburbSlug} suburbName={suburb.name} serviceSlug={serviceSlug} />
 
       {/* Window Cleaning Plans — focal section on window cleaning suburb pages */}
       {serviceSlug === 'window-cleaning' && <WellnessPlanSection />}
