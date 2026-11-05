@@ -14,8 +14,8 @@ export const RECENT_JOBS = Object.values(files)
   .filter((j) => j && j.suburb && j.text && j.photo)
   .sort((a, b) => String(b.date).localeCompare(String(a.date)));
 
-// Jobs for one suburb, newest first. Jobs that match the page's service go first.
-export function getRecentJobs(suburbSlug, serviceSlug, limit = 3) {
+// Up to 4 jobs for one suburb, newest first. Jobs that match the page's service go first.
+export function getRecentJobs(suburbSlug, serviceSlug, limit = 4) {
   const list = RECENT_JOBS.filter((j) => j.suburb === suburbSlug);
   if (serviceSlug) {
     list.sort((a, b) => {
