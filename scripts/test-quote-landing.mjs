@@ -98,7 +98,7 @@ console.log("\nWiring:");
   const page = read("src/pages/InstantQuoteLanding.jsx");
   ok("landing page opens the wizard at the first question with the service ticked", /initialPhase="questions"/.test(page) && /initialServices=\{\[landing\.service\]\}/.test(page));
   ok("landing page renders NotFound for unknown slugs", /if \(!landing\) return <NotFound \/>/.test(page));
-  ok("landing page has FAQ, reviews, recent jobs and example prices", ["<FAQ ", "<GoogleReviews />", "<RecentJobs ", "landingExamples("].every((k) => page.includes(k)));
+  ok("landing page has FAQ, reviews, recent jobs and example prices", ["<LandingFaq ", "<GoogleReviews />", "getRecentJobsByService(", "landingExamples("].every((k) => page.includes(k)));
   ok("landing page links back to the full service page", /landing\.servicePage/.test(page));
   const pre = read("scripts/prerender.mjs");
   ok("prerender writes a route per landing with FAQ schema", /for \(const landing of QUOTE_LANDINGS\)/.test(pre) && /buildFAQSchema\(landingFaqs\(landing\)\)/.test(pre));
