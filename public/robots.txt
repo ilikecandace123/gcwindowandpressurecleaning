@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Allow: /api/v1/
+# /api/ itself is the public JSON directory (sends noindex); let Google read it
+Allow: /api/$
 Disallow: /admin
 Disallow: /api
 
