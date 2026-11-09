@@ -261,8 +261,9 @@ export default function Layout({ children, currentPageName }) {
       </main>
 
       {/* Quote chooser at the bottom of every page — except the instant-quote
-          wizard, which has its own lead capture built in */}
-      {currentPageName !== "InstantQuote" && <QuoteCTA variant="section" />}
+          wizard and the per-service quote landing pages, which have their own
+          lead capture built in */}
+      {currentPageName !== "InstantQuote" && currentPageName !== "InstantQuoteLanding" && <QuoteCTA variant="section" />}
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white">

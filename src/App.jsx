@@ -20,6 +20,7 @@ const CommercialLocationService = lazy(() => import('./pages/CommercialLocationS
 const WindowCleaningPlans = lazy(() => import('./pages/WindowCleaningPlans'));
 const WindowCleaningPlansLocation = lazy(() => import('./pages/WindowCleaningPlansLocation'));
 const InstantQuote = lazy(() => import('./pages/InstantQuote'));
+const InstantQuoteLanding = lazy(() => import('./pages/InstantQuoteLanding'));
 const Guides = lazy(() => import('./pages/Guides'));
 const GuideArticle = lazy(() => import('./pages/GuideArticle'));
 const About = lazy(() => import('./pages/About'));
@@ -51,6 +52,9 @@ function App() {
           <Route path="/window-cleaning-plans" element={<Layout currentPageName="WindowCleaningPlans"><WindowCleaningPlans /></Layout>} />
           <Route path="/window-cleaning-plans/:suburb" element={<Layout currentPageName="WindowCleaningPlansLocation"><WindowCleaningPlansLocation /></Layout>} />
           <Route path="/instant-quote" element={<Layout currentPageName="InstantQuote"><InstantQuote /></Layout>} />
+          {/* Google Ads landing pages, one per service (src/data/quoteLanding.js).
+              Static first segment, so this outranks the generic /:service/:suburb route. */}
+          <Route path="/instant-quote/:service" element={<Layout currentPageName="InstantQuoteLanding"><InstantQuoteLanding /></Layout>} />
           <Route path="/roof-cleaning" element={<Layout currentPageName="RoofCleaning"><RoofCleaning /></Layout>} />
           <Route path="/house-softwash" element={<Layout currentPageName="HouseSoftWash"><HouseSoftWash /></Layout>} />
           <Route path="/pressure-cleaning" element={<Layout currentPageName="PressureCleaning"><PressureCleaning /></Layout>} />
