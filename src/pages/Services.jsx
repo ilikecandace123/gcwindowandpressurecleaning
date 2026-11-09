@@ -31,7 +31,7 @@ const HOME_FAQS = [
   },
   {
     question: "What's included in the full home pressure cleaning package?",
-    answer: "Our full home package covers the driveway, pathways, patio, and pool area for around $660. It's the best value way to get the whole exterior done in one visit."
+    answer: "Our full outdoor clean covers the driveway, pathways, patio and pool area and is typically $580–$760 depending on the size of each area. It's the best value way to get the whole exterior done in one visit, and the instant quote prices it exactly."
   },
   {
     question: "How do I get a quote or book a job?",

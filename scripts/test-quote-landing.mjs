@@ -17,6 +17,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { QUOTE_LANDINGS, landingExamples, landingFaqs, landingFromPrice, landingPath, getQuoteLanding } from "../src/data/quoteLanding.js";
 import { SERVICE_ORDER } from "../src/quote/steps.js";
+import { GUTTER_PRICES, SOFTWASH_PRICES, ROOF_LINE_FLOOR, FLOOR_PRESSURE, FLOOR_ONE_OFF } from "../src/quote/engine.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const read = (p) => fs.readFileSync(path.join(ROOT, p), "utf8");
@@ -105,6 +106,41 @@ console.log("\nWiring:");
   ok("prerender gives landing pages their creation date as lastmod", /LASTMOD_OVERRIDES\[landingPath\(landing\)/.test(pre));
   const jobs = read("src/data/recentJobs.js");
   ok("recent jobs can be listed by service", /export function getRecentJobsByService/.test(jobs));
+}
+
+// The old service-page FAQs, suburb pricing guides, guides and llms.txt quoted
+// prices that had drifted from the engine (gutters "from $220", roof "from
+// $700"...). Since 09/11/2026 they carry the engine's own numbers; this keeps
+// them from drifting again.
+console.log("\nSite copy matches the engine:");
+{
+  const money = (n) => "$" + Math.round(n).toLocaleString("en-AU");
+  const expect = {
+    gutter: [GUTTER_PRICES[1][2], GUTTER_PRICES[1][4], GUTTER_PRICES[2][3], GUTTER_PRICES[2][5]].map(money), // $275 $385 $440 $660
+    roof: [ROOF_LINE_FLOOR].map(money), // $594
+    softwash: [SOFTWASH_PRICES[1][2], SOFTWASH_PRICES[1][3], SOFTWASH_PRICES[1][4], SOFTWASH_PRICES[2][3], SOFTWASH_PRICES[2][4], SOFTWASH_PRICES[2][5]].map(money),
+    pressure: [FLOOR_PRESSURE].map(money), // $275
+    solar: [FLOOR_ONE_OFF].map(money), // $220
+  };
+  const stale = /\$220–\$550|\$330–\$770|\$700 for a flatter|\$700–\$1,600|\$4–\$10 per additional|\$440 for a medium|\$660\+ for an XL|from \$495 for a small single-storey/;
+  const files = {
+    "src/pages/GutterCleaning.jsx": expect.gutter,
+    "src/pages/RoofCleaning.jsx": expect.roof,
+    "src/pages/HouseSoftWash.jsx": expect.softwash,
+    "src/pages/PressureCleaning.jsx": expect.pressure,
+    "src/pages/SolarPanelCleaning.jsx": expect.solar,
+    "src/data/locations.js": [...expect.gutter, ...expect.roof, ...expect.softwash, ...expect.pressure],
+    "public/llms.txt": [...expect.gutter, ...expect.roof, ...expect.softwash, ...expect.pressure],
+    "src/data/guides.js": [...expect.roof, ...expect.pressure],
+    "src/data/guides-2026-10.js": [...expect.roof, ...expect.pressure],
+  };
+  for (const [f, nums] of Object.entries(files)) {
+    const text = read(f);
+    const missing = nums.filter((n) => !text.includes(n));
+    ok(`${f}: carries the engine prices`, missing.length === 0, "missing " + missing.join(", "));
+    const m = text.match(stale);
+    ok(`${f}: no pre-09/11/2026 price copy`, !m, m && m[0]);
+  }
 }
 
 console.log("\nBuilt output:");
