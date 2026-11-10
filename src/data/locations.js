@@ -36,7 +36,7 @@ export const SUBURBS = [
     landmarks: ["Kirra Beach", "Kirra Reef", "Tallebudgera Valley"],
     propertyMix: "Kirra is defined by its beachfront high-rises along Marine Parade and a tight grid of post-war cottages on the hill behind them.",
     environmentalNote: "Strong onshore winds drive fine beach sand under eaves, into window tracks, and across pool decks — leaving abrasive deposits that scratch glass if wiped dry.",
-    localHook: "Window cleaning on the Kirra high-rises typically needs rope-access or water-fed pole work; we also clean the surf club and several cafés around the Kirra Point headland.",
+    localHook: "Window cleaning around Kirra is mostly water-fed pole work from the ground; we also clean the surf club and several cafés around the Kirra Point headland.",
     nearbySuburbs: ["Coolangatta", "Tugun", "Tallebudgera"]
   },
   {
@@ -60,7 +60,7 @@ export const SUBURBS = [
     landmarks: ["Currumbin Beach", "Currumbin Rock Pools", "Currumbin Wildlife Sanctuary"],
     propertyMix: "Currumbin stretches from the famous Alley surf break to Currumbin Hill; properties range from classic beachfront Queenslanders to cliff-top contemporary homes with floor-to-ceiling glass.",
     environmentalNote: "Cliff-top homes face extreme wind-driven salt spray — windows on the ocean side can visibly haze within a fortnight without a hydrophobic surface treatment.",
-    localHook: "Much of our Currumbin work is on the hill streets above The Alley and around Currumbin Rock — elevated homes where pole-reach and rope-access are the practical options.",
+    localHook: "Much of our Currumbin work is on the hill streets above The Alley and around Currumbin Rock — elevated homes where pole-reach from the ground is the practical option.",
     nearbySuburbs: ["Tugun", "Currumbin Waters", "Palm Beach"]
   },
   {
@@ -144,7 +144,7 @@ export const SUBURBS = [
     landmarks: ["Burleigh Heads", "Headland Park", "Burleigh Beach"],
     propertyMix: "Burleigh Heads has become one of the Gold Coast's premium addresses — heritage cottages near James Street, luxury beachfront apartments along Goodwin Terrace, and tightly-held homes up Burleigh Hill.",
     environmentalNote: "The famous Burleigh Point headland funnels onshore winds directly across the suburb, coating ocean-facing glass and balcony glass balustrades with a visible salt haze within days.",
-    localHook: "We clean several Goodwin Terrace high-rises, plus heritage render on many of the protected homes along James Street and Connor Street — where soft-wash is mandatory to protect original paintwork.",
+    localHook: "We clean heritage render on many of the protected homes along James Street and Connor Street — where soft-wash is mandatory to protect original paintwork.",
     nearbySuburbs: ["Tallebudgera", "Burleigh Waters", "Miami"]
   },
   {
@@ -1599,14 +1599,14 @@ export const COMMERCIAL_SERVICES = [
   {
     name: "Commercial Window Cleaning",
     slug: "window-cleaning",
-    shortDesc: "Scheduled commercial and strata window cleaning for offices, retail, hospitality and high-rise buildings on the Gold Coast",
+    shortDesc: "Scheduled commercial and strata window cleaning for offices, retail, hospitality and low-rise buildings on the Gold Coast",
     hero: "Commercial & Strata Window Cleaning",
     subhead: "Offices • Retail • Hospitality • Strata & Body Corporate",
     intro: "A clean, streak-free glass facade is the first impression your customers, tenants and residents see. We deliver professional commercial window cleaning across the Gold Coast on schedules that suit your trading hours and minimise disruption to staff, customers and residents. Fully insured, SWMS-documented, and experienced with everything from ground-floor shopfronts through to multi-storey strata towers.",
     benefits: [
       { title: "Fixed Scheduled Maintenance", description: "Weekly, fortnightly, monthly or quarterly cleaning programs with a fixed cost per visit so you can budget confidently and never miss a clean." },
       { title: "After-Hours and Weekend Service", description: "We work around your trading hours — early mornings, evenings or weekends — so customers and staff are never interrupted." },
-      { title: "High-Rise and Reach-and-Wash Systems", description: "Pure-water reach poles up to 4+ storeys and traditional rope access partners for taller facades, covering almost any commercial or strata building." },
+      { title: "Reach-and-Wash Systems", description: "Pure-water reach poles clean up to 4+ storeys from the ground, covering most low-rise commercial and strata buildings." },
       { title: "Strata and Body Corporate Specialists", description: "Detailed quotes, invoices and reports designed for body corporate committees, building managers and strata managers." },
       { title: "$20 Million Public Liability", description: "Fully insured with $20 million public liability and workers compensation. Certificates of currency provided on request for tenders and compliance." },
       { title: "SWMS and Site Safety", description: "Site-specific Safe Work Method Statements, JSA documentation, WHS inductions and police-checked technicians for every commercial job." }
@@ -1622,7 +1622,7 @@ export const COMMERCIAL_SERVICES = [
       { question: "How often should a commercial building have windows cleaned?", answer: "Most Gold Coast commercial properties benefit from monthly or fortnightly external window cleaning, with retail and hospitality venues often opting for weekly programs. Strata buildings typically schedule quarterly or bi-annual full cleans. We'll recommend a frequency based on your facade, location and exposure to salt air, traffic and pollution." },
       { question: "Do you service strata and body corporate buildings?", answer: "Yes — strata and body corporate work is a large part of what we do. We provide detailed quotes, itemised invoices, certificates of currency and incident reporting that strata managers and committees need for their records." },
       { question: "Can you work outside of trading hours?", answer: "Absolutely. Early mornings, late evenings and weekends are standard for our commercial clients. We plan cleans around trading hours so customers and tenants are never disrupted." },
-      { question: "How high can you clean?", answer: "Our pure-water reach-and-wash systems safely reach up to 4+ storeys from the ground. For taller facades we partner with licensed rope access technicians and use boom lifts or swing stages where required. We'll identify the safest, most cost-effective access method during the site inspection." },
+      { question: "How high can you clean?", answer: "Our pure-water reach-and-wash systems safely reach up to 4+ storeys from the ground, which covers most low-rise commercial and strata buildings. We'll confirm the safest access method during the site inspection." },
       { question: "Are you fully insured and compliant?", answer: "Yes. We carry $20 million public liability, workers compensation, and supply site-specific SWMS, JSA and certificates of currency on request. All technicians are police-checked, uniformed and WHS-inducted." },
       { question: "Do you offer contract pricing?", answer: "Yes. We offer fixed-price monthly, quarterly and annual contracts with locked-in visit rates, which lets facility managers and strata committees budget accurately and avoid surprise invoices." }
     ]
@@ -1687,7 +1687,7 @@ export const COMMERCIAL_SERVICES = [
       { question: "Can you clean multi-unit strata buildings?", answer: "Yes — strata facades are a core part of our commercial work. We coordinate with building managers and residents, provide the documentation strata committees need, and work in staged visits if required to avoid disrupting any single tenant." },
       { question: "How long do the results last?", answer: "Because our treatments kill mould and algae at the spore level, a professional soft wash typically lasts 12-24 months on Gold Coast buildings — significantly longer than a plain pressure clean." },
       { question: "Will the cleaning solution harm plants or run into drains?", answer: "We use biodegradable solutions, pre-wet surrounding landscaping and manage run-off carefully. Our techniques are designed to protect gardens, drains and adjacent tenancies." },
-      { question: "Do you clean high-level facades?", answer: "Yes — we use extension soft wash systems, boom lifts and rope access partners to safely reach multi-storey facades up to high-rise height." },
+      { question: "Do you clean high-level facades?", answer: "Yes — we use extension soft wash systems and boom lifts to safely reach multi-storey facades." },
       { question: "Can cleaning delay or replace a repaint?", answer: "Absolutely. A professional soft wash often delays a facade repaint by several years, which is a significant saving for commercial owners and strata sinking funds." }
     ]
   },
@@ -1746,7 +1746,7 @@ export const COMMERCIAL_SERVICES = [
     faqs: [
       { question: "How much does commercial gutter cleaning cost on the Gold Coast?", answer: "Commercial gutter cleaning on the Gold Coast is quoted per site after a look, because access, roof height and gutter length vary so much. As a guide, a building the size of a single-storey home is $275–$385 and a double-storey $440–$660, including downpipe flushing. Large industrial, strata or multi-building sites are quoted on inspection. All prices are a guide — every property is individual, so contact us for a free, no-obligation quote." },
       { question: "How often should commercial gutters be cleaned?", answer: "Most Gold Coast commercial buildings benefit from cleaning at least twice a year — typically pre-storm season and again mid-year. Sites with heavy tree cover should consider quarterly cleaning to prevent overflow and fire risk." },
-      { question: "Do you service large industrial or strata buildings?", answer: "Yes. We regularly clean gutters and box gutters on warehouses, industrial sheds, strata towers and multi-unit complexes using commercial-grade vacuum systems and rope access where needed." },
+      { question: "Do you service large industrial or strata buildings?", answer: "Yes. We regularly clean gutters and box gutters on warehouses, industrial sheds, strata blocks and multi-unit complexes using commercial-grade vacuum systems." },
       { question: "Do you flush downpipes?", answer: "Yes — downpipes are flushed as part of every commercial service, and we flag any blockages or damage in the photo report." },
       { question: "Will you provide documentation for strata records?", answer: "Yes. We provide invoices, certificates of currency, SWMS and photographic reports suitable for strata committees, building managers and insurance records." },
       { question: "Is this service covered by insurance?", answer: "We carry $20 million public liability and full workers compensation. All height work is performed under a site-specific SWMS with appropriate fall arrest and harness systems." },
