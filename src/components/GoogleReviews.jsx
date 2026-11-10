@@ -255,7 +255,7 @@ export default function GoogleReviews() {
   const activeDot = startIndex === total ? 0 : startIndex;
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-paper-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
@@ -265,22 +265,22 @@ export default function GoogleReviews() {
               <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
               <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
             </svg>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h2 className="text-3xl md:text-[40px] font-bold text-ink leading-tight">
               Google Reviews
             </h2>
           </div>
           <div className="flex items-center justify-center mb-2">
-            <div className="flex items-center text-yellow-400 mr-3">
+            <div className="flex items-center text-ochre mr-3">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-6 h-6 fill-current" />
               ))}
             </div>
-            <span className="text-2xl font-bold text-gray-900">{rating.toFixed(1)}</span>
+            <span className="text-2xl font-bold text-ink">{rating.toFixed(1)}</span>
           </div>
-          <p className="text-gray-600">
+          <p className="text-ink-2">
             Based on {totalRatings}+ verified Google reviews
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-green-500 mx-auto rounded-full mt-4"></div>
+          <div className="heading-rule mx-auto mt-4"></div>
         </div>
 
         {/* Carousel */}
@@ -294,7 +294,7 @@ export default function GoogleReviews() {
             <button
               onClick={prev}
               aria-label="Previous reviews"
-              className="hidden md:flex absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 items-center justify-center bg-white border border-gray-200 rounded-full shadow-md hover:bg-blue-50 hover:border-blue-300 hover:text-blue-600 text-gray-600 transition-colors"
+              className="hidden md:flex absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 items-center justify-center bg-paper-white border-2 border-ink rounded-full hover:bg-ink hover:text-paper text-ink transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -305,7 +305,7 @@ export default function GoogleReviews() {
             <button
               onClick={next}
               aria-label="Next reviews"
-              className="hidden md:flex absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 items-center justify-center bg-white border border-gray-200 rounded-full shadow-md hover:bg-blue-50 hover:border-blue-300 hover:text-blue-600 text-gray-600 transition-colors"
+              className="hidden md:flex absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 items-center justify-center bg-paper-white border-2 border-ink rounded-full hover:bg-ink hover:text-paper text-ink transition-colors"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -329,20 +329,20 @@ export default function GoogleReviews() {
                       className="flex-shrink-0 px-4"
                       style={{ width: `${100 / itemsPerView}%` }}
                     >
-                      <div className="bg-gray-50 rounded-xl p-6 relative border border-gray-100 h-full">
-                        <Quote className="w-8 h-8 text-blue-200 mb-4" />
+                      <div className="card p-6 relative h-full">
+                        <Quote className="w-8 h-8 text-ochre/50 mb-4" />
 
-                        <div className="flex items-center text-yellow-400 mb-4">
+                        <div className="flex items-center text-ochre mb-4">
                           {[...Array(stars)].map((_, i) => (
                             <Star key={i} className="w-4 h-4 fill-current" />
                           ))}
                         </div>
 
-                        <p className="text-gray-700 mb-6 leading-relaxed line-clamp-6">
+                        <p className="text-ink text-[17px] mb-6 leading-relaxed line-clamp-6">
                           "{text}"
                         </p>
 
-                        <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
+                        <div className="border-t border-rule pt-4 flex items-center justify-between">
                           <div className="flex items-center">
                             {photo ? (
                               <img
@@ -351,13 +351,13 @@ export default function GoogleReviews() {
                                 className="w-10 h-10 rounded-full mr-3"
                                 referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                             ) : (
-                              <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 font-semibold flex items-center justify-center mr-3">
+                              <div className="w-10 h-10 rounded-full bg-ochre-100 border-2 border-ink text-ink font-display font-bold flex items-center justify-center mr-3">
                                 {name.charAt(0)}
                               </div>
                             )}
                             <div>
-                              <p className="font-semibold text-gray-900 text-sm">{name}</p>
-                              {when && <p className="text-xs text-gray-500">{when}</p>}
+                              <p className="font-semibold text-ink text-sm">{name}</p>
+                              {when && <p className="text-xs text-ink-3">{when}</p>}
                             </div>
                           </div>
                         </div>
@@ -379,8 +379,8 @@ export default function GoogleReviews() {
                     aria-label={`Go to review ${i + 1}`}
                     className={`h-2 rounded-full transition-all ${
                       i === activeDot
-                        ? "w-8 bg-blue-600"
-                        : "w-2 bg-gray-300 hover:bg-gray-400"
+                        ? "w-8 bg-ink"
+                        : "w-2 bg-rule hover:bg-ink-3"
                     }`}
                   />
                 </div>
@@ -394,7 +394,7 @@ export default function GoogleReviews() {
             href={`https://search.google.com/local/reviews?placeid=${PLACE_ID}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold"
+            className="link inline-flex items-center"
           >
             Read all reviews on Google →
           </a>

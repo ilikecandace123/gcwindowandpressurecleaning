@@ -10,20 +10,22 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/images/icon-512.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
     <style>
-      body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: linear-gradient(135deg, #f8fafc, #eff6ff); color: #111827; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+      @font-face { font-family: "Fraunces"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("/fonts/fraunces-latin.woff2") format("woff2"); }
+      @font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 200 900; font-display: swap; src: url("/fonts/source-sans-3-latin.woff2") format("woff2"); }
+      body { margin: 0; font-family: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif; background: #f6f1e7; color: #17233b; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; }
       .box { max-width: 42rem; text-align: center; }
-      .code { font-size: 4.5rem; font-weight: 700; color: #2563eb; margin: 0 0 1rem; }
-      h1 { font-size: 2rem; margin: 0 0 1rem; }
-      p { font-size: 1.125rem; color: #4b5563; line-height: 1.6; margin: 0 0 2rem; }
-      a.phone { color: #2563eb; font-weight: 600; text-decoration: none; }
+      .code { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 4.5rem; font-weight: 700; color: #b86d0f; margin: 0 0 1rem; }
+      h1 { font-family: "Fraunces", Georgia, serif; font-size: 2.25rem; letter-spacing: -0.01em; margin: 0 0 1rem; }
+      p { font-size: 1.125rem; color: #4a5468; line-height: 1.6; margin: 0 0 2rem; }
+      a.phone { color: #17233b; font-weight: 700; text-decoration: underline; text-decoration-color: #d9861c; text-decoration-thickness: 2px; text-underline-offset: 4px; }
       .links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-      .links a { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
-      .primary { background: #2563eb; color: #fff; }
-      .secondary { background: #fff; color: #1f2937; border: 1px solid #d1d5db; }
-      .agents { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; }
-      .agents h2 { font-size: 1rem; font-weight: 600; color: #374151; margin: 0 0 0.5rem; }
-      .agents p { font-size: 0.875rem; color: #6b7280; margin: 0; line-height: 1.8; }
-      .agents a { color: #2563eb; text-decoration: none; }
+      .links a { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 999px; border: 2px solid #17233b; font-weight: 700; text-decoration: none; }
+      .primary { background: #d9861c; color: #17233b; box-shadow: 3px 3px 0 #17233b; }
+      .secondary { background: transparent; color: #17233b; }
+      .agents { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 2px solid #17233b; }
+      .agents h2 { font-size: 1rem; font-weight: 700; color: #17233b; margin: 0 0 0.5rem; }
+      .agents p { font-size: 0.875rem; color: #636a7a; margin: 0; line-height: 1.8; }
+      .agents a { color: #96580a; text-decoration: none; }
     </style>
   </head>
   <body>

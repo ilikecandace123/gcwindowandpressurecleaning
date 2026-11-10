@@ -7,7 +7,7 @@ import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema"
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-paper">
       <PageSEO
         title="Contact Us | Gold Coast Window and Pressure Cleaning"
         description="Contact Gold Coast Window and Pressure Cleaning — call (07) 5230 8293 or email us for a free quote. Serving all Gold Coast suburbs and Northern NSW."
@@ -31,53 +31,53 @@ export default function Contact() {
       />
 
       {/* Contact Details */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Left - Contact Info */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">Get in Touch</h2>
+              <h2 className="text-2xl font-bold text-ink mb-8">Get in Touch</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-6 h-6 text-ochre-3" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <a href="tel:0752308293" className="text-blue-600 text-lg font-medium hover:underline">(07) 5230 8293</a>
-                    <p className="text-sm text-gray-500 mt-1">We actually answer our phones!</p>
+                    <h3 className="font-semibold text-ink mb-1">Phone</h3>
+                    <a href="tel:0752308293" className="text-ochre-3 text-lg font-medium hover:underline">(07) 5230 8293</a>
+                    <p className="text-sm text-ink-3 mt-1">We actually answer our phones!</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-ochre-3" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <a href="mailto:gcwindowandpressure@gmail.com" className="text-blue-600 text-lg font-medium hover:underline break-all">gcwindowandpressure@gmail.com</a>
-                    <p className="text-sm text-gray-500 mt-1">We respond to enquiries quickly during business hours.</p>
+                    <h3 className="font-semibold text-ink mb-1">Email</h3>
+                    <a href="mailto:gcwindowandpressure@gmail.com" className="text-ochre-3 text-lg font-medium hover:underline break-all">gcwindowandpressure@gmail.com</a>
+                    <p className="text-sm text-ink-3 mt-1">We respond to enquiries quickly during business hours.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-6 h-6 text-ochre-3" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Business Hours</h3>
-                    <p className="text-gray-600">Open 24 Hours</p>
+                    <h3 className="font-semibold text-ink mb-1">Business Hours</h3>
+                    <p className="text-ink-2">Open 24 Hours</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-ochre-3" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Service Area</h3>
-                    <p className="text-gray-600">All Gold Coast suburbs (Coolangatta to Ormeau), Gold Coast Hinterland, and Northern NSW (Tweed Heads, Kingscliff and surrounds).</p>
+                    <h3 className="font-semibold text-ink mb-1">Service Area</h3>
+                    <p className="text-ink-2">All Gold Coast suburbs (Coolangatta to Ormeau), Gold Coast Hinterland, and Northern NSW (Tweed Heads, Kingscliff and surrounds).</p>
                   </div>
                 </div>
               </div>
@@ -85,7 +85,7 @@ export default function Contact() {
 
             {/* Right - Map + CTA */}
             <div>
-              <div className="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden mb-6">
+              <div className="bg-paper rounded-2xl border border-rule overflow-hidden mb-6">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14083.42582439664!2d153.41225468715817!3d-28.059407199999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4da98023da1e33a5%3A0x8802b89fee690ea8!2sGold%20Coast%20Window%20and%20Pressure%20Cleaning!5e0!3m2!1sen!2sau!4v1775596752940!5m2!1sen!2sau"
                   width="100%"
@@ -98,10 +98,10 @@ export default function Contact() {
                 />
               </div>
 
-              <div className="bg-blue-50 rounded-2xl p-8 text-center">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Request a Free Quote</h3>
-                <p className="text-gray-600 mb-6">Click below to fill out our quick online form and we'll get back to you fast.</p>
-                <a href="#quote" className="inline-block w-full bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+              <div className="bg-paper-2 rounded-2xl p-8 text-center">
+                <h3 className="text-xl font-bold text-ink mb-3">Request a Free Quote</h3>
+                <p className="text-ink-2 mb-6">Click below to fill out our quick online form and we'll get back to you fast.</p>
+                <a href="#quote" className="btn btn-lg btn-primary w-full">
                   Get My Free Quote
                 </a>
               </div>

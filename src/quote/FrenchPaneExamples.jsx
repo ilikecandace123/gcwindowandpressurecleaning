@@ -33,26 +33,26 @@ function FrenchWindow({ cols, rows, frame = "#e8e3da", glass = "#b8d4e8", w = 15
 export default function FrenchPaneExamples({ className = "" }) {
   return (
     <div className={className}>
-      <div className="flex items-start bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 mb-4">
-        <Info className="w-5 h-5 text-blue-600 mr-2.5 mt-0.5 flex-shrink-0" />
-        <p className="text-sm text-gray-700">
+      <div className="flex items-start bg-paper-2 border border-rule rounded-xl px-4 py-3 mb-4">
+        <Info className="w-5 h-5 text-ochre-3 mr-2.5 mt-0.5 flex-shrink-0" />
+        <p className="text-sm text-ink-2">
           <strong>Info:</strong> French pane windows require additional cleaning time due to their grid patterns and
           multiple glass sections.
         </p>
       </div>
-      <p className="text-sm font-semibold text-gray-800 mb-3">See how French pane windows look</p>
+      <p className="text-sm font-semibold text-ink mb-3">See how French pane windows look</p>
       <div
         className="grid grid-cols-3 gap-3"
         role="img"
         aria-label="Three examples of French pane windows — glass divided by grid bars into many small sections"
       >
-        <div className="rounded-lg overflow-hidden border border-gray-200 bg-gradient-to-b from-sky-100 to-gray-100 p-3">
+        <div className="rounded-lg overflow-hidden border border-rule bg-gradient-to-b from-sky-100 to-paper-2 p-3">
           <FrenchWindow cols={3} rows={4} />
         </div>
-        <div className="rounded-lg overflow-hidden border border-gray-200 bg-gradient-to-b from-amber-50 to-gray-100 p-3">
+        <div className="rounded-lg overflow-hidden border border-rule bg-gradient-to-b from-amber-50 to-paper-2 p-3">
           <FrenchWindow cols={4} rows={5} frame="#ded8cc" />
         </div>
-        <div className="rounded-lg overflow-hidden border border-gray-200 bg-gradient-to-b from-stone-100 to-stone-200 p-3">
+        <div className="rounded-lg overflow-hidden border border-rule bg-gradient-to-b from-stone-100 to-stone-200 p-3">
           <FrenchWindow cols={2} rows={3} frame="#b09a7a" glass="#a9c9de" />
         </div>
       </div>

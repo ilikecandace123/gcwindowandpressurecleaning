@@ -101,37 +101,37 @@ export default function GutterCleaning() {
       />
 
       {/* About Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
                 Your Trusted Local Gutter Maintenance Experts
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-6 leading-relaxed">
                 We're a locally owned and operated business committed to keeping your property protected. All our staff 
                 are police-checked for your peace of mind, and we're fully insured for complete protection.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-8 leading-relaxed">
                 As registered NDIS & Aged Care providers, we understand the importance of clear communication and reliable service. 
                 We keep you informed throughout the process and ensure your property is storm-ready.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Complete blockage removal and drainage check</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Complete blockage removal and drainage check</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Heights trained staff</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Heights trained staff</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Storm preparation and weather protection</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Storm preparation and weather protection</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Safe, professional ladder work</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Safe, professional ladder work</span>
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function GutterCleaning() {
                 <img
                   src="/images/gutter-secondary.jpg"
                   alt="Clean residential gutters with proper drainage system installed"
-                  className="rounded-2xl shadow-lg"
+                  className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre"
                   loading="lazy" decoding="async" width="1024" height="682" />
               </picture>
 
@@ -151,43 +151,43 @@ export default function GutterCleaning() {
       </section>
 
       {/* Service Description */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
               Comprehensive Gutter Cleaning & Maintenance
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-ink-2 max-w-3xl">
               Our thorough gutter cleaning service removes all debris, clears downpipes, checks for damage, 
               and ensures proper water flow to keep your property protected.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <span className="text-xl font-bold text-blue-600">1</span>
+            <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+              <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="font-display text-xl font-bold text-ochre-3">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Complete Debris Removal</h3>
-              <p className="text-gray-600">
+              <p className="text-ink-2">
                 We remove all leaves, twigs, dirt, and debris from gutters and downpipes, ensuring complete blockage clearance.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <span className="text-xl font-bold text-green-600">2</span>
+            <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+              <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="font-display text-xl font-bold text-ochre-3">2</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Drainage Testing</h3>
-              <p className="text-gray-600">
+              <p className="text-ink-2">
                 We test water flow through the entire system, ensuring proper drainage and identifying any issues.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <span className="text-xl font-bold text-purple-600">3</span>
+            <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+              <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="font-display text-xl font-bold text-ochre-3">3</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Inspection</h3>
-              <p className="text-gray-600">We inspect for damage, loose brackets, or wear, and let you know if we find anything
+              <p className="text-ink-2">We inspect for damage, loose brackets, or wear, and let you know if we find anything
 
               </p>
             </div>
@@ -207,17 +207,17 @@ export default function GutterCleaning() {
       <FAQ faqs={faqs} title="Gutter Cleaning FAQ" guideLink={{ label: "Guide: How often should gutters be cleaned in South East Queensland?", href: "/guides/how-often-should-gutters-be-cleaned/" }} />
 
       {/* Related Services */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Related Services</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/roof-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Roof Cleaning</h3>
-              <p className="text-sm text-gray-600">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
+            <Link to="/roof-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Roof Cleaning</h3>
+              <p className="text-sm text-ink-2">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
             </Link>
-            <Link to="/solar-panel-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Solar Panel Cleaning</h3>
-              <p className="text-sm text-gray-600">Maintain solar panel efficiency with regular professional cleaning service.</p>
+            <Link to="/solar-panel-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Solar Panel Cleaning</h3>
+              <p className="text-sm text-ink-2">Maintain solar panel efficiency with regular professional cleaning service.</p>
             </Link>
           </div>
         </div>

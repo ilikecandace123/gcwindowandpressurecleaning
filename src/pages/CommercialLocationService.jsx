@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import FactIcon from "../components/FactIcon";
 import QuoteHero from "../components/QuoteHero";
 import { useParams, Link } from "react-router-dom";
-import { Shield, Users, Star, Phone, CheckCircle, ChevronDown, ChevronUp, MapPin, ArrowRight, Building2, FileCheck, Clock, HardHat } from "lucide-react";
+import { Shield, Users, Star, Phone, CheckCircle, MapPin, ArrowRight, Building2, FileCheck, Clock, HardHat } from "lucide-react";
 import { getSuburbBySlug, getCommercialServiceBySlug, SUBURBS, COMMERCIAL_SERVICES } from "../data/locations";
 import Benefits from "../components/Benefits";
+import FAQ from "../components/FAQ";
 import QuoteForm from "../components/QuoteForm";
 import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";
@@ -31,7 +33,6 @@ const SECONDARY_IMAGES = {
 
 export default function CommercialLocationService() {
   const { serviceSlug, suburb: suburbSlug } = useParams();
-  const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
   const suburb = getSuburbBySlug(suburbSlug);
   const service = getCommercialServiceBySlug(serviceSlug);
@@ -44,9 +45,9 @@ export default function CommercialLocationService() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Page Not Found</h1>
-          <p className="text-gray-600 text-lg mb-6">The commercial service area you're looking for doesn't exist.</p>
-          <Link to="/" className="text-blue-600 hover:text-blue-700 font-semibold">← Back to home</Link>
+          <h1 className="text-4xl font-bold text-ink mb-4">Page Not Found</h1>
+          <p className="text-ink-2 text-lg mb-6">The commercial service area you're looking for doesn't exist.</p>
+          <Link to="/" className="text-ochre-3 hover:text-ink font-semibold">← Back to home</Link>
         </div>
       </div>
     );
@@ -94,10 +95,10 @@ export default function CommercialLocationService() {
     : `We understand the specific commercial, retail, hospitality and strata buildings in ${suburb.name} and service them to the standards their operators expect.`;
 
   const whyChooseUs = [
-    { icon: <Building2 className="w-6 h-6 text-blue-600" />, title: `${suburb.name} Commercial Specialists`, description: commercialSpecialistDescription },
-    { icon: <FileCheck className="w-6 h-6 text-blue-600" />, title: "Full Compliance Documentation", description: "Site-specific SWMS, JSA, certificates of currency, WHS inductions and photographic reporting — everything required for commercial and strata records." },
-    { icon: <Clock className="w-6 h-6 text-blue-600" />, title: "After-Hours Scheduling", description: `Early mornings, evenings and weekends so ${suburb.name} businesses, tenants and customers are never disrupted.` },
-    { icon: <HardHat className="w-6 h-6 text-blue-600" />, title: "Height Safety Trained", description: "All technicians are height safety trained, police-checked and uniformed, with $20M public liability on every job." }
+    { icon: <Building2 className="w-6 h-6 text-ochre-3" />, title: `${suburb.name} Commercial Specialists`, description: commercialSpecialistDescription },
+    { icon: <FileCheck className="w-6 h-6 text-ochre-3" />, title: "Full Compliance Documentation", description: "Site-specific SWMS, JSA, certificates of currency, WHS inductions and photographic reporting — everything required for commercial and strata records." },
+    { icon: <Clock className="w-6 h-6 text-ochre-3" />, title: "After-Hours Scheduling", description: `Early mornings, evenings and weekends so ${suburb.name} businesses, tenants and customers are never disrupted.` },
+    { icon: <HardHat className="w-6 h-6 text-ochre-3" />, title: "Height Safety Trained", description: "All technicians are height safety trained, police-checked and uniformed, with $20M public liability on every job." }
   ];
 
   const localBusinessSchema = buildLocalBusinessSchema();
@@ -134,7 +135,7 @@ export default function CommercialLocationService() {
       />
 
       {/* Trust Strip */}
-      <section className="py-8 bg-blue-600 text-white">
+      <section className="py-8 bg-ink text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div><Shield className="w-7 h-7 mx-auto mb-2" /><p className="text-sm font-semibold">$20M Public Liability</p></div>
           <div><FileCheck className="w-7 h-7 mx-auto mb-2" /><p className="text-sm font-semibold">Site-Specific SWMS</p></div>
@@ -144,20 +145,20 @@ export default function CommercialLocationService() {
       </section>
 
       {/* Location intro */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 text-blue-600 mb-4">
+          <div className="flex items-center gap-2 text-ochre-3 mb-4">
             <MapPin className="w-5 h-5" />
             <span className="font-semibold">{suburb.name}, Postcode {suburb.postcode}</span>
           </div>
-          <p className="text-lg text-gray-700 leading-relaxed">{getLocationIntro()}</p>
+          <p className="text-lg text-ink-2 leading-relaxed">{getLocationIntro()}</p>
         </div>
       </section>
 
       {/* Secondary image */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-paper">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl overflow-hidden shadow-lg bg-gray-50">
+          <div className="photo-frame bg-paper">
             <picture>
               <source srcSet={secondaryImage.endsWith('.webp') ? secondaryImage : secondaryImage.replace('.jpg', '.webp')} type="image/webp" />
               <img src={secondaryImage} alt={`${service.name} in ${suburb.name}`} className="w-full h-auto max-h-[28rem] object-contain" loading="lazy" decoding="async" width="1024" height="768" />
@@ -168,11 +169,11 @@ export default function CommercialLocationService() {
 
       {/* Roof Cleaning — Why Gold Coast Roofs Need Cleaning More Often */}
       {serviceSlug === 'roof-cleaning' && (
-        <section className="py-16 bg-orange-50">
+        <section className="py-16 bg-ochre-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why {suburb.name} Commercial Roofs Need Regular Cleaning</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">Gold Coast's coastal and subtropical conditions accelerate biological growth and roof degradation compared to drier Australian markets.</p>
+            <div className="mb-10 max-w-3xl">
+              <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">Why {suburb.name} Commercial Roofs Need Regular Cleaning</h2>
+              <p className="text-lg text-ink-2 max-w-2xl">Gold Coast's coastal and subtropical conditions accelerate biological growth and roof degradation compared to drier Australian markets.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
@@ -183,10 +184,10 @@ export default function CommercialLocationService() {
                 { icon: "🌧️", title: "High Annual Rainfall", desc: "Over 1,400mm of annual rainfall keeps commercial roof surfaces wetter for longer than inland Queensland, accelerating algae and lichen growth cycles." },
                 { icon: "🌿", title: "Surrounding Vegetation", desc: "Coastal and hinterland vegetation deposits pollen, seeds, and debris that feed biological growth on commercial and strata roof surfaces." }
               ].map((item, i) => (
-                <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-orange-100">
-                  <div className="text-3xl mb-3">{item.icon}</div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                <div key={i} className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+                  <FactIcon icon={item.icon} className="mb-3" />
+                  <h3 className="text-lg font-semibold text-ink mb-2">{item.title}</h3>
+                  <p className="text-ink-2 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -196,16 +197,16 @@ export default function CommercialLocationService() {
 
       {/* Roof Cleaning — Roof Type Guide */}
       {serviceSlug === 'roof-cleaning' && (
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-paper-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Commercial Roof Type Cleaning Guide</h2>
-              <p className="text-lg text-gray-600">Different commercial roof profiles require different cleaning methods. Here's what we recommend for each.</p>
+            <div className="mb-10 max-w-3xl">
+              <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">Commercial Roof Type Cleaning Guide</h2>
+              <p className="text-lg text-ink-2">Different commercial roof profiles require different cleaning methods. Here's what we recommend for each.</p>
             </div>
-            <div className="overflow-x-auto rounded-2xl shadow-sm border border-gray-100">
+            <div className="overflow-x-auto rounded-2xl shadow-sm border border-rule">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-gray-800 text-white">
+                  <tr className="bg-ink text-white">
                     <th className="px-6 py-4 text-left font-semibold">Roof Type</th>
                     <th className="px-6 py-4 text-left font-semibold">Recommended Method</th>
                     <th className="px-6 py-4 text-left font-semibold">Frequency</th>
@@ -218,11 +219,11 @@ export default function CommercialLocationService() {
                     { type: "Metal (Colorbond, Zincalume)", method: "Low-pressure soft wash", freq: "Every 2–3 years", concerns: "Rust stains, sealant integrity" },
                     { type: "Flat Membrane / TPO", method: "Gentle hand wash", freq: "Annually", concerns: "Debris blockage, UV degradation" }
                   ].map((row, i) => (
-                    <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                      <td className="px-6 py-4 font-medium text-gray-900">{row.type}</td>
-                      <td className="px-6 py-4 text-gray-700">{row.method}</td>
-                      <td className="px-6 py-4 text-gray-700">{row.freq}</td>
-                      <td className="px-6 py-4 text-gray-600">{row.concerns}</td>
+                    <tr key={i} className={i % 2 === 0 ? "bg-paper-white" : "bg-paper"}>
+                      <td className="px-6 py-4 font-medium text-ink">{row.type}</td>
+                      <td className="px-6 py-4 text-ink-2">{row.method}</td>
+                      <td className="px-6 py-4 text-ink-2">{row.freq}</td>
+                      <td className="px-6 py-4 text-ink-2">{row.concerns}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -234,11 +235,11 @@ export default function CommercialLocationService() {
 
       {/* Solar Panel Cleaning — Why Gold Coast Solar Panels Get Dirty Faster */}
       {serviceSlug === 'solar-panel-cleaning' && (
-        <section className="py-16 bg-blue-50">
+        <section className="py-16 bg-paper-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why {suburb.name} Commercial Solar Arrays Lose Output Faster</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">Gold Coast's coastal and subtropical environment creates multiple soiling sources that combine to reduce commercial solar output faster than most Australian locations.</p>
+            <div className="mb-10 max-w-3xl">
+              <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">Why {suburb.name} Commercial Solar Arrays Lose Output Faster</h2>
+              <p className="text-lg text-ink-2 max-w-2xl">Gold Coast's coastal and subtropical environment creates multiple soiling sources that combine to reduce commercial solar output faster than most Australian locations.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
@@ -249,10 +250,10 @@ export default function CommercialLocationService() {
                 { icon: "🚗", title: "Industrial & Traffic Pollution", desc: "Fine rubber and bitumen particles from the M1 corridor and nearby industrial areas build up as a dark greasy film on commercial solar panels." },
                 { icon: "☀️", title: "Intense UV Bonding", desc: "Gold Coast's high UV intensity accelerates the bonding of organic matter to panel glass on commercial rooftops, requiring professional-grade techniques to remove safely." }
               ].map((item, i) => (
-                <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-blue-100">
-                  <div className="text-3xl mb-3">{item.icon}</div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                <div key={i} className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+                  <FactIcon icon={item.icon} className="mb-3" />
+                  <h3 className="text-lg font-semibold text-ink mb-2">{item.title}</h3>
+                  <p className="text-ink-2 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -262,19 +263,19 @@ export default function CommercialLocationService() {
 
       {/* Solar Panel Cleaning — Dirty vs Clean Comparison Table */}
       {serviceSlug === 'solar-panel-cleaning' && (
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-paper-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Dirty vs Clean — What Your {suburb.name} Array Is Losing</h2>
-              <p className="text-lg text-gray-600">The real cost of skipping a professional clean on a Gold Coast commercial solar installation.</p>
+            <div className="mb-10 max-w-3xl">
+              <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">Dirty vs Clean — What Your {suburb.name} Array Is Losing</h2>
+              <p className="text-lg text-ink-2">The real cost of skipping a professional clean on a Gold Coast commercial solar installation.</p>
             </div>
-            <div className="overflow-x-auto rounded-2xl shadow-sm border border-gray-100">
+            <div className="overflow-x-auto rounded-2xl shadow-sm border border-rule">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-gray-800 text-white">
+                  <tr className="bg-ink text-white">
                     <th className="px-6 py-4 text-left font-semibold w-1/3"></th>
-                    <th className="px-6 py-4 text-center font-semibold text-red-300">Dirty Array</th>
-                    <th className="px-6 py-4 text-center font-semibold text-green-300">After Professional Clean</th>
+                    <th className="px-6 py-4 text-center font-semibold text-brick-300">Dirty Array</th>
+                    <th className="px-6 py-4 text-center font-semibold text-ochre">After Professional Clean</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -285,10 +286,10 @@ export default function CommercialLocationService() {
                     { label: "Panel warranty status", dirty: "Potentially voided by soiling damage", clean: "Maintained" },
                     { label: "Array lifespan", dirty: "Shortened by UV-bonded deposits", clean: "Protected" }
                   ].map((row, i) => (
-                    <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                      <td className="px-6 py-4 font-semibold text-gray-900">{row.label}</td>
-                      <td className="px-6 py-4 text-center text-red-700">{row.dirty}</td>
-                      <td className="px-6 py-4 text-center text-green-700 font-medium">{row.clean}</td>
+                    <tr key={i} className={i % 2 === 0 ? "bg-paper-white" : "bg-paper"}>
+                      <td className="px-6 py-4 font-semibold text-ink">{row.label}</td>
+                      <td className="px-6 py-4 text-center text-brick">{row.dirty}</td>
+                      <td className="px-6 py-4 text-center text-moss font-medium">{row.clean}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -299,9 +300,9 @@ export default function CommercialLocationService() {
       )}
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+          <h2 className="text-3xl font-bold text-ink mb-12">
             Why {suburb.name} Commercial Clients Choose Us
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -309,8 +310,8 @@ export default function CommercialLocationService() {
               <div key={idx} className="flex gap-4">
                 <div className="flex-shrink-0">{item.icon}</div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <h3 className="text-lg font-semibold text-ink mb-2">{item.title}</h3>
+                  <p className="text-ink-2">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -319,19 +320,19 @@ export default function CommercialLocationService() {
       </section>
 
       {/* Process */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+          <h2 className="text-3xl font-bold text-ink mb-12">
             Our {service.name} Process
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
             {service.process.map(step => (
-              <div key={step.step} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xl font-bold text-blue-600">{step.step}</span>
+              <div key={step.step} className="bg-paper-white rounded-[14px] border-2 border-ink p-6 text-center">
+                <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <span className="text-xl font-bold text-ochre-3">{step.step}</span>
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-900">{step.title}</h3>
-                <p className="text-gray-600 text-sm">{step.description}</p>
+                <h3 className="text-lg font-semibold mb-2 text-ink">{step.title}</h3>
+                <p className="text-ink-2 text-sm">{step.description}</p>
               </div>
             ))}
           </div>
@@ -344,38 +345,15 @@ export default function CommercialLocationService() {
       <GoogleReviews />
 
       {/* FAQs */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{service.name} FAQs</h2>
-            <p className="text-gray-600">Common questions from {suburb.name} commercial and strata clients</p>
-          </div>
-          <div className="space-y-4">
-            {service.faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                <button className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                  onClick={() => setOpenFaqIndex(openFaqIndex === index ? -1 : index)}>
-                  <h3 className="font-semibold text-gray-900 text-lg">{faq.question}</h3>
-                  {openFaqIndex === index ? <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />}
-                </button>
-                {/* Answer always in the DOM (hidden via CSS when collapsed) so
-                    crawlers, AI bots and markdown mirrors can read every answer. */}
-                <div className={openFaqIndex === index ? "px-6 pb-4" : "hidden px-6 pb-4"}>
-                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FAQ faqs={service.faqs} title={`${service.name} FAQs`} subtitle={`Common questions from ${suburb.name} commercial and strata clients`} />
 
       {/* Other Commercial Services in this Suburb */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
+          <h2 className="text-3xl font-bold text-ink mb-4">
             Other Commercial Services in {suburb.name}
           </h2>
-          <p className="text-center text-gray-600 mb-8">
+          <p className="text-ink-2 mb-8">
             Full-service commercial and strata exterior cleaning across {suburb.name}:
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -383,12 +361,12 @@ export default function CommercialLocationService() {
               <a
                 key={idx}
                 href={`/commercial/${otherService.slug}/${suburbSlug}/`}
-                className="group flex items-center justify-between p-4 bg-white rounded-lg hover:bg-blue-50 transition-colors border border-gray-100 hover:border-blue-200 shadow-sm"
+                className="group flex items-center justify-between p-4 bg-paper-white rounded-lg hover:bg-paper-2 transition-colors border border-rule hover:border-rule shadow-sm"
               >
-                <span className="font-medium text-gray-900 group-hover:text-blue-700">
+                <span className="font-medium text-ink group-hover:text-ink">
                   {otherService.name} in {suburb.name}
                 </span>
-                <ArrowRight className="w-4 h-4 text-blue-600 flex-shrink-0 ml-2" />
+                <ArrowRight className="w-4 h-4 text-ochre-3 flex-shrink-0 ml-2" />
               </a>
             ))}
           </div>
@@ -397,10 +375,10 @@ export default function CommercialLocationService() {
 
       {/* Nearby */}
       {suburb.nearbySuburbs && suburb.nearbySuburbs.length > 0 && (
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-paper-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Also Serving Nearby</h2>
-            <p className="text-center text-gray-600 mb-8">
+            <h2 className="text-3xl font-bold text-ink mb-8">Also Serving Nearby</h2>
+            <p className="text-ink-2 mb-8">
               We also provide commercial {service.name.toLowerCase()} in these nearby areas:
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -409,9 +387,9 @@ export default function CommercialLocationService() {
                 if (!nearbySuburbData) return null;
                 return (
                   <a key={idx} href={`/commercial/${serviceSlug}/${nearbySuburbData.slug}/`}
-                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors border border-gray-100 hover:border-blue-200">
-                    <span className="font-medium text-gray-900">{nearbySuburbName}</span>
-                    <ArrowRight className="w-4 h-4 text-blue-600" />
+                    className="flex items-center justify-between p-4 bg-paper rounded-lg hover:bg-paper-2 transition-colors border border-rule hover:border-rule">
+                    <span className="font-medium text-ink">{nearbySuburbName}</span>
+                    <ArrowRight className="w-4 h-4 text-ochre-3" />
                   </a>
                 );
               })}
@@ -424,20 +402,20 @@ export default function CommercialLocationService() {
       <QuoteForm serviceName={service.name} />
 
       {/* CTA Footer */}
-      <section className="py-16 bg-blue-600 text-white">
+      <section className="py-16 bg-ink text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready for Professional {service.name} in {suburb.name}?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-paper-2 mb-8">
             Commercial and strata specialists on the Gold Coast. Fixed-price quotes, SWMS included.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#quote" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
+            <a href="#quote" className="btn btn-lg btn-primary">
               Request Quote
             </a>
             <a href="tel:0752308293"
-              className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all flex items-center justify-center">
+              className="btn btn-lg btn-outline-on-ink">
               <Phone className="w-5 h-5 mr-2" />
               (07) 5230 8293
             </a>

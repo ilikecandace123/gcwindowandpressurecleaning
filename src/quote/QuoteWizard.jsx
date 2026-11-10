@@ -78,7 +78,7 @@ function fileToResizedDataUrl(file) {
 const SERVICE_ICONS = { AppWindow, Waves, Home, Droplets, Brush, Sun, Bird };
 
 const inputClass =
-  "w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-colors";
+  "w-full px-4 py-3 rounded-lg border border-ink/25 bg-paper-white text-ink placeholder-ink-3 focus:border-ink focus:ring-2 focus:ring-ochre-100 outline-none transition-colors";
 
 // ── Small building blocks ────────────────────────────────────────────────────
 
@@ -91,14 +91,14 @@ function OptionCard({ selected, onClick, label, sublabel, badge, muted, children
         "relative w-full text-left rounded-xl border-2 transition-all duration-150 " +
         (muted ? "px-4 py-3 " : "px-5 py-4 ") +
         (selected
-          ? "border-blue-600 bg-blue-50 shadow-sm"
+          ? "border-ink bg-ochre-50 shadow-hard-sm"
           : muted
-            ? "border-dashed border-gray-200 bg-gray-50/70 hover:border-blue-300 hover:bg-blue-50/40"
-            : "border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50/40")
+            ? "border-dashed border-ink/25 bg-paper/70 hover:border-ink"
+            : "border-ink/20 bg-paper-white hover:border-ink")
       }
     >
       {badge && (
-        <span className="absolute -top-2.5 right-4 bg-red-500 text-white text-[11px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full">
+        <span className="absolute -top-2.5 right-4 bg-brick text-white text-[11px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full">
           {badge}
         </span>
       )}
@@ -107,15 +107,15 @@ function OptionCard({ selected, onClick, label, sublabel, badge, muted, children
           className={
             (muted ? "w-4 h-4 mr-3 " : "w-5 h-5 mr-3.5 ") +
             "rounded-full border-2 flex-shrink-0 flex items-center justify-center " +
-            (selected ? "border-blue-600 bg-blue-600" : "border-gray-300 bg-white")
+            (selected ? "border-ink bg-ink" : "border-ink/25 bg-paper-white")
           }
         >
           {selected && <Check className={(muted ? "w-2.5 h-2.5" : "w-3 h-3") + " text-white"} strokeWidth={3.5} />}
         </div>
         <div className="min-w-0">
-          <div className={muted ? "font-medium text-[15px] text-gray-600" : "font-semibold text-gray-900"}>{label}</div>
+          <div className={muted ? "font-medium text-[15px] text-ink-2" : "font-semibold text-ink"}>{label}</div>
           {sublabel && (
-            <div className={(muted ? "text-[13px] text-gray-500" : "text-sm text-gray-500") + " mt-0.5"}>{sublabel}</div>
+            <div className={(muted ? "text-[13px] text-ink-3" : "text-sm text-ink-3") + " mt-0.5"}>{sublabel}</div>
           )}
         </div>
       </div>
@@ -135,8 +135,8 @@ function Pills({ value, onChange, options }) {
           className={
             "px-4 py-2 rounded-full border-2 text-sm font-semibold transition-colors " +
             (value === o.value
-              ? "border-blue-600 bg-blue-600 text-white"
-              : "border-gray-200 bg-white text-gray-700 hover:border-blue-300")
+              ? "border-ink bg-ink text-white"
+              : "border-ink/20 bg-paper-white text-ink-2 hover:border-ink")
           }
         >
           {o.label}
@@ -149,11 +149,11 @@ function Pills({ value, onChange, options }) {
 function CollapsibleVisual({ label, defaultOpen, children }) {
   const [open, setOpen] = useState(!!defaultOpen);
   return (
-    <div className="mb-5 border border-gray-200 rounded-xl overflow-hidden bg-white">
+    <div className="mb-5 border border-rule rounded-xl overflow-hidden bg-paper-white">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-blue-700 bg-blue-50/60 hover:bg-blue-50"
+        className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-ink bg-paper-2/60 hover:bg-paper-2"
       >
         {label}
         {open ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -166,16 +166,16 @@ function CollapsibleVisual({ label, defaultOpen, children }) {
 function StepShell({ step, children }) {
   return (
     <div key={step.id} className="quote-step-enter">
-      <div className="text-xs font-semibold uppercase tracking-wider text-blue-600 mb-2">
+      <div className="text-xs font-semibold uppercase tracking-wider text-ochre-3 mb-2">
         {step.serviceLabel}
       </div>
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1.5">{step.title}</h2>
-      {step.subtitle && <p className="text-gray-500 mb-2">{step.subtitle}</p>}
-      {step.hint && <p className="text-sm text-gray-500 mb-2">{step.hint}</p>}
+      <h2 className="text-2xl md:text-3xl font-bold text-ink mb-1.5">{step.title}</h2>
+      {step.subtitle && <p className="text-ink-3 mb-2">{step.subtitle}</p>}
+      {step.hint && <p className="text-sm text-ink-3 mb-2">{step.hint}</p>}
       <div className="mt-5">{children}</div>
       {step.supportPoint && (
-        <p className="mt-5 text-sm text-gray-400 flex items-center">
-          <CheckCircle className="w-4 h-4 mr-1.5 text-green-500" /> {step.supportPoint}
+        <p className="mt-5 text-sm text-ink-3 flex items-center">
+          <CheckCircle className="w-4 h-4 mr-1.5 text-moss" /> {step.supportPoint}
         </p>
       )}
     </div>
@@ -644,7 +644,7 @@ export default function QuoteWizard({
   function renderEntry() {
     return (
       <div className="quote-step-enter text-center">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Get Your Free Quote</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-ink mb-8">Get Your Free Quote</h1>
 
         <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-6 items-stretch">
           <button
@@ -653,11 +653,11 @@ export default function QuoteWizard({
               setMode("instant");
               setPhase("services");
             }}
-            className="group bg-green-500 hover:bg-green-600 text-white rounded-2xl p-7 text-left shadow-lg transition-colors flex flex-col"
+            className="group bg-ochre text-ink border-2 border-ink rounded-xl p-6 sm:p-7 text-left shadow-hard-sm transition-all duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none flex flex-col"
           >
             <Zap className="w-8 h-8 mb-3" />
-            <span className="text-xl font-bold mb-1.5">Get Instant Quote</span>
-            <span className="text-green-50 text-sm flex-1">
+            <span className="font-display text-xl font-bold mb-1.5">Get Instant Quote</span>
+            <span className="text-ink text-sm flex-1">
               Answer some quick questions and see your price straight away — about 2 minutes.
             </span>
             <span className="mt-4 inline-flex items-center font-semibold text-sm">
@@ -671,22 +671,22 @@ export default function QuoteWizard({
               setMode("details");
               setPhase("contact");
             }}
-            className="group bg-white border-2 border-gray-200 hover:border-blue-400 rounded-2xl p-7 text-left shadow-sm transition-colors flex flex-col"
+            className="group bg-paper-white border-2 border-ink/25 hover:border-ink rounded-xl p-6 sm:p-7 text-left transition-colors flex flex-col"
           >
-            <PhoneCall className="w-8 h-8 mb-3 text-blue-600" />
-            <span className="text-xl font-bold text-gray-900 mb-1.5">Put in your details</span>
-            <span className="text-gray-500 text-sm flex-1">
+            <PhoneCall className="w-8 h-8 mb-3 text-ochre-3" />
+            <span className="font-display text-xl font-bold text-ink mb-1.5">Put in your details</span>
+            <span className="text-ink-3 text-sm flex-1">
               Skip the questions — leave your details and we&rsquo;ll contact you with your quote.
             </span>
-            <span className="mt-4 inline-flex items-center font-semibold text-sm text-blue-600">
+            <span className="mt-4 inline-flex items-center font-bold text-sm text-ink">
               Leave my details <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
             </span>
           </button>
         </div>
 
-        <div className="max-w-2xl mx-auto flex items-start bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-left">
-          <Info className="w-5 h-5 text-blue-600 mr-2.5 mt-0.5 flex-shrink-0" />
-          <p className="text-sm text-gray-600">
+        <div className="max-w-2xl mx-auto flex items-start bg-paper-2 border border-rule rounded-xl px-4 py-3 text-left">
+          <Info className="w-5 h-5 text-ochre-3 mr-2.5 mt-0.5 flex-shrink-0" />
+          <p className="text-sm text-ink-2">
             Please answer as honestly and accurately as possible — major variations from your answers may result in a
             price change when we arrive.
           </p>
@@ -703,8 +703,8 @@ export default function QuoteWizard({
     };
     return (
       <div className="quote-step-enter">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1.5">What can we help you with?</h2>
-        <p className="text-gray-500 mb-6">Select one or more services</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-ink mb-1.5">What can we help you with?</h2>
+        <p className="text-ink-3 mb-6">Select one or more services</p>
         <div className="grid sm:grid-cols-2 gap-3">
           {SERVICE_ORDER.map((svc) => {
             const meta = SERVICE_META[svc];
@@ -717,25 +717,25 @@ export default function QuoteWizard({
                 onClick={() => toggle(svc)}
                 className={
                   "flex items-center rounded-xl border-2 px-4 py-4 text-left transition-all " +
-                  (isSel ? "border-blue-600 bg-blue-50 shadow-sm" : "border-gray-200 bg-white hover:border-blue-300")
+                  (isSel ? "border-ink bg-ochre-50 shadow-hard-sm" : "border-ink/20 bg-paper-white hover:border-ink")
                 }
               >
                 <div
                   className={
                     "w-11 h-11 rounded-lg flex items-center justify-center mr-3.5 flex-shrink-0 " +
-                    (isSel ? "bg-blue-600 text-white" : "bg-blue-50 text-blue-600")
+                    (isSel ? "bg-ink text-white" : "bg-paper-2 text-ochre-3")
                   }
                 >
                   <Icon className="w-6 h-6" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="font-semibold text-gray-900">{meta.label}</div>
-                  <div className="text-xs text-gray-500 mt-0.5">{meta.tagline}</div>
+                  <div className="font-semibold text-ink">{meta.label}</div>
+                  <div className="text-xs text-ink-3 mt-0.5">{meta.tagline}</div>
                 </div>
                 <div
                   className={
                     "w-5 h-5 rounded-full border-2 ml-3 flex-shrink-0 flex items-center justify-center " +
-                    (isSel ? "border-blue-600 bg-blue-600" : "border-gray-300 bg-white")
+                    (isSel ? "border-ink bg-ink" : "border-ink/25 bg-paper-white")
                   }
                 >
                   {isSel && <Check className="w-3 h-3 text-white" strokeWidth={3.5} />}
@@ -751,7 +751,7 @@ export default function QuoteWizard({
             setQIndex(0);
             setPhase("questions");
           }}
-          className="mt-7 w-full sm:w-auto inline-flex items-center justify-center bg-green-500 hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed text-white px-10 py-4 rounded-lg font-semibold text-lg shadow-lg transition-colors"
+          className="mt-7 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed btn btn-primary btn-lg"
         >
           Continue <ArrowRight className="w-5 h-5 ml-2" />
         </button>
@@ -776,7 +776,7 @@ export default function QuoteWizard({
             setState(next);
             goNextQuestionFrom(next);
           }}
-          className="mt-3 inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+          className="mt-3 btn btn-primary"
         >
           Continue <ArrowRight className="w-4 h-4 ml-2" />
         </button>
@@ -874,7 +874,7 @@ export default function QuoteWizard({
             }
             goNextQuestionFrom(next);
           }}
-          className="mt-6 inline-flex items-center bg-green-500 hover:bg-green-600 disabled:opacity-50 text-white px-8 py-3.5 rounded-lg font-semibold transition-colors"
+          className="mt-6 disabled:opacity-50 btn btn-primary btn-lg"
         >
           Continue <ArrowRight className="w-4 h-4 ml-2" />
         </button>
@@ -890,7 +890,7 @@ export default function QuoteWizard({
       <StepShell step={step}>
         <div className="space-y-6">
           <div>
-            <p className="font-semibold text-gray-800 mb-2.5">Do you have a balcony?</p>
+            <p className="font-semibold text-ink mb-2.5">Do you have a balcony?</p>
             <Pills
               value={w.balcony}
               onChange={(v) => setW("balcony", v)}
@@ -901,7 +901,7 @@ export default function QuoteWizard({
             />
           </div>
           <div>
-            <p className="font-semibold text-gray-800 mb-2.5">What would you like cleaned?</p>
+            <p className="font-semibold text-ink mb-2.5">What would you like cleaned?</p>
             <div className="space-y-3">
               <OptionCard
                 selected={w.apartmentScope === "interior"}
@@ -922,7 +922,7 @@ export default function QuoteWizard({
           </div>
           {w.balcony === "yes" && (
             <div>
-              <p className="font-semibold text-gray-800 mb-2.5">Is there a tap on your balcony we can attach a hose to?</p>
+              <p className="font-semibold text-ink mb-2.5">Is there a tap on your balcony we can attach a hose to?</p>
               <Pills
                 value={w.balconyTap}
                 onChange={(v) => setW("balconyTap", v)}
@@ -938,7 +938,7 @@ export default function QuoteWizard({
           type="button"
           disabled={!done}
           onClick={() => goNextQuestionFrom(state)}
-          className="mt-7 inline-flex items-center bg-green-500 hover:bg-green-600 disabled:opacity-50 text-white px-8 py-3.5 rounded-lg font-semibold transition-colors"
+          className="mt-7 disabled:opacity-50 btn btn-primary btn-lg"
         >
           Continue <ArrowRight className="w-4 h-4 ml-2" />
         </button>
@@ -972,9 +972,9 @@ export default function QuoteWizard({
         </div>
         {w.balustrades === "yes" && (
           <div className="mt-5">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-ink-2 mb-1">
               Roughly how many would you like cleaned?{" "}
-              <span className="text-gray-400 font-normal">(optional)</span>
+              <span className="text-ink-3 font-normal">(optional)</span>
             </label>
             <input
               className={inputClass}
@@ -987,7 +987,7 @@ export default function QuoteWizard({
             <button
               type="button"
               onClick={() => goNextQuestionFrom(state)}
-              className="mt-4 inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-8 py-3.5 rounded-lg font-semibold transition-colors"
+              className="mt-4 btn btn-primary btn-lg"
             >
               Continue <ArrowRight className="w-4 h-4 ml-2" />
             </button>
@@ -1010,7 +1010,7 @@ export default function QuoteWizard({
         <div className="space-y-5">
           {rows.map((r) => (
             <div key={r.key}>
-              <p className="font-semibold text-gray-800 mb-2.5">{r.label}</p>
+              <p className="font-semibold text-ink mb-2.5">{r.label}</p>
               <Pills
                 value={s[r.key]}
                 onChange={(v) => setState(setByPath(state, ["softwash", r.key], v))}
@@ -1027,7 +1027,7 @@ export default function QuoteWizard({
           type="button"
           disabled={!done}
           onClick={() => goNextQuestionFrom(state)}
-          className="mt-7 inline-flex items-center bg-green-500 hover:bg-green-600 disabled:opacity-50 text-white px-8 py-3.5 rounded-lg font-semibold transition-colors"
+          className="mt-7 disabled:opacity-50 btn btn-primary btn-lg"
         >
           Continue <ArrowRight className="w-4 h-4 ml-2" />
         </button>
@@ -1038,9 +1038,9 @@ export default function QuoteWizard({
   function renderAddressField(required) {
     return (
       <div ref={addrBox} className="relative">
-        <label className="block text-sm font-medium text-gray-700 mb-1">Address{required ? " *" : ""}</label>
+        <label className="block text-sm font-medium text-ink-2 mb-1">Address{required ? " *" : ""}</label>
         <div className="relative">
-          <MapPin className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <MapPin className="w-5 h-5 text-ink-3 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             className={inputClass + " pl-10"}
             value={contact.address}
@@ -1051,7 +1051,7 @@ export default function QuoteWizard({
           />
         </div>
         {showSuggestions && suggestions.length > 0 && (
-          <div className="absolute z-20 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden">
+          <div className="absolute z-20 left-0 right-0 mt-1 bg-paper-white border border-rule rounded-lg shadow-lg overflow-hidden">
             {suggestions.map((s, i) => (
               <button
                 type="button"
@@ -1061,13 +1061,13 @@ export default function QuoteWizard({
                   setSuggestions([]);
                   setShowSuggestions(false);
                 }}
-                className="w-full text-left px-4 py-2.5 hover:bg-green-50 text-gray-700 text-sm flex items-start gap-2"
+                className="w-full text-left px-4 py-2.5 hover:bg-moss-50 text-ink-2 text-sm flex items-start gap-2"
               >
-                <MapPin className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-moss mt-0.5 flex-shrink-0" />
                 <span>{s.text}</span>
               </button>
             ))}
-            <div className="px-4 py-1.5 text-[11px] text-gray-400 text-right border-t border-gray-100">powered by Google</div>
+            <div className="px-4 py-1.5 text-[11px] text-ink-3 text-right border-t border-rule">powered by Google</div>
           </div>
         )}
       </div>
@@ -1081,34 +1081,34 @@ export default function QuoteWizard({
     if (mode === "instant") {
       return (
         <div className="quote-step-enter">
-          <div className="text-xs font-semibold uppercase tracking-wider text-blue-600 mb-2">Almost there</div>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Pop in your details to see your price</h2>
+          <div className="text-xs font-semibold uppercase tracking-wider text-ochre-3 mb-2">Almost there</div>
+          <h2 className="text-2xl md:text-3xl font-bold text-ink mb-6">Pop in your details to see your price</h2>
 
           <form onSubmit={submitContactBasic} className="space-y-4">
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">First name *</label>
+                <label className="block text-sm font-medium text-ink-2 mb-1">First name *</label>
                 <input className={inputClass} value={contact.firstName} onChange={setField("firstName")} placeholder="First name" autoComplete="given-name" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Last name *</label>
+                <label className="block text-sm font-medium text-ink-2 mb-1">Last name *</label>
                 <input className={inputClass} value={contact.lastName} onChange={setField("lastName")} placeholder="Last name" autoComplete="family-name" />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+              <label className="block text-sm font-medium text-ink-2 mb-1">Phone *</label>
               <input className={inputClass} value={contact.phone} onChange={setField("phone")} placeholder="04xx xxx xxx" inputMode="tel" autoComplete="tel" />
             </div>
 
-            {error && <p className="text-red-600 text-sm">{error}</p>}
+            {error && <p className="text-brick text-sm">{error}</p>}
 
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg"
+              className="w-full btn btn-primary btn-lg"
             >
               Show My Quote <ArrowRight className="w-5 h-5 ml-2" />
             </button>
-            <p className="text-center text-xs text-gray-400">Free, no-obligation quote — takes 10 seconds.</p>
+            <p className="text-center text-xs text-ink-3">Free, no-obligation quote — takes 10 seconds.</p>
           </form>
         </div>
       );
@@ -1116,25 +1116,25 @@ export default function QuoteWizard({
 
     return (
       <div className="quote-step-enter">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1.5">Leave your details</h2>
-        <p className="text-gray-500 mb-6">We&rsquo;ll be in touch quickly with your free quote — no obligation.</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-ink mb-1.5">Leave your details</h2>
+        <p className="text-ink-3 mb-6">We&rsquo;ll be in touch quickly with your free quote — no obligation.</p>
 
         <form onSubmit={submitLead} className="space-y-4">
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">First name *</label>
+              <label className="block text-sm font-medium text-ink-2 mb-1">First name *</label>
               <input className={inputClass} value={contact.firstName} onChange={setField("firstName")} placeholder="First name" autoComplete="given-name" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Last name *</label>
+              <label className="block text-sm font-medium text-ink-2 mb-1">Last name *</label>
               <input className={inputClass} value={contact.lastName} onChange={setField("lastName")} placeholder="Last name" autoComplete="family-name" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+              <label className="block text-sm font-medium text-ink-2 mb-1">Phone *</label>
               <input className={inputClass} value={contact.phone} onChange={setField("phone")} placeholder="04xx xxx xxx" inputMode="tel" autoComplete="tel" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+              <label className="block text-sm font-medium text-ink-2 mb-1">Email *</label>
               <input className={inputClass} value={contact.email} onChange={setField("email")} placeholder="you@email.com" type="email" autoComplete="email" />
             </div>
           </div>
@@ -1143,7 +1143,7 @@ export default function QuoteWizard({
 
           {mode === "details" && (
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">How would you like your quote?</label>
+              <label className="block text-sm font-medium text-ink-2 mb-2">How would you like your quote?</label>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   { value: "visit", label: "Visit my property to quote" },
@@ -1156,14 +1156,14 @@ export default function QuoteWizard({
                     className={
                       "flex items-center rounded-lg border-2 px-4 py-3 text-left text-sm font-medium transition-colors " +
                       (contact.quotePref === o.value
-                        ? "border-blue-600 bg-blue-50 text-gray-900"
-                        : "border-gray-300 bg-white text-gray-700 hover:border-blue-300")
+                        ? "border-ink bg-paper-2 text-ink"
+                        : "border-ink/25 bg-paper-white text-ink-2 hover:border-ink")
                     }
                   >
                     <span
                       className={
                         "w-5 h-5 rounded border-2 mr-3 flex-shrink-0 flex items-center justify-center " +
-                        (contact.quotePref === o.value ? "border-blue-600 bg-blue-600" : "border-gray-300 bg-white")
+                        (contact.quotePref === o.value ? "border-ink bg-ink" : "border-ink/25 bg-paper-white")
                       }
                     >
                       {contact.quotePref === o.value && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3.5} />}
@@ -1176,8 +1176,8 @@ export default function QuoteWizard({
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              How can we help you? <span className="text-gray-400 font-normal">(optional)</span>
+            <label className="block text-sm font-medium text-ink-2 mb-1">
+              How can we help you? <span className="text-ink-3 font-normal">(optional)</span>
             </label>
             <textarea
               className={inputClass + " min-h-[90px] resize-y"}
@@ -1187,12 +1187,12 @@ export default function QuoteWizard({
             />
           </div>
 
-          {error && <p className="text-red-600 text-sm">{error}</p>}
+          {error && <p className="text-brick text-sm">{error}</p>}
 
           <button
             type="submit"
             disabled={submitting}
-            className="w-full inline-flex items-center justify-center bg-green-500 hover:bg-green-600 disabled:opacity-60 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg"
+            className="w-full disabled:opacity-60 btn btn-primary btn-lg"
           >
             {submitting ? (
               <>
@@ -1204,7 +1204,7 @@ export default function QuoteWizard({
               </>
             )}
           </button>
-          <p className="text-center text-xs text-gray-400">
+          <p className="text-center text-xs text-ink-3">
             Free, no-obligation quote. Your details are sent to our team as soon as you press the button.
           </p>
         </form>
@@ -1220,19 +1220,19 @@ export default function QuoteWizard({
 
     if (detailsSent) {
       return (
-        <div className="text-center bg-green-50 border border-green-100 rounded-2xl px-6 py-7">
-          <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-3" />
-          <p className="text-lg font-semibold text-gray-900 mb-1">All done, {contact.firstName || "legend"}!</p>
-          <p className="text-sm text-gray-500">
+        <div className="text-center bg-moss-50 border border-moss/25 rounded-2xl px-6 py-7">
+          <CheckCircle className="w-8 h-8 text-moss mx-auto mb-3" />
+          <p className="text-lg font-semibold text-ink mb-1">All done, {contact.firstName || "legend"}!</p>
+          <p className="text-sm text-ink-3">
             {quote.custom
               ? "We've got everything we need to put your custom quote together — we'll be in touch ASAP."
               : bookingAnswer === "yes"
                 ? "We've got everything we need — we'll be in touch shortly to lock in a time."
                 : "We've sent your quote through and we'll follow up soon."}
           </p>
-          <p className="text-sm text-gray-400 mt-3">
+          <p className="text-sm text-ink-3 mt-3">
             Need us sooner? Call{" "}
-            <a href="tel:0752308293" className="text-green-600 font-medium">
+            <a href="tel:0752308293" className="text-moss font-medium">
               (07) 5230 8293
             </a>
             .
@@ -1242,15 +1242,15 @@ export default function QuoteWizard({
     }
 
     return (
-      <div className="bg-white border border-gray-200 rounded-2xl shadow-sm px-5 sm:px-7 py-6">
-        <h3 className="text-lg font-bold text-gray-900 mb-1">
+      <div className="bg-paper-white border border-rule rounded-2xl shadow-sm px-5 sm:px-7 py-6">
+        <h3 className="text-lg font-bold text-ink mb-1">
           {quote.custom
             ? "Help us get your custom quote right"
             : bookingAnswer === "yes"
               ? "Last step — where are we headed?"
               : "Where should we send your quote?"}
         </h3>
-        <p className="text-sm text-gray-500 mb-4">
+        <p className="text-sm text-ink-3 mb-4">
           {quote.custom
             ? "Pop in your email and address and we'll put your tailored price together."
             : "Pop in your email and address and we'll send this quote straight through to you."}
@@ -1258,15 +1258,15 @@ export default function QuoteWizard({
 
         <form onSubmit={submitDetails} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+            <label className="block text-sm font-medium text-ink-2 mb-1">Email *</label>
             <input className={inputClass} value={contact.email} onChange={setField("email")} placeholder="you@email.com" type="email" autoComplete="email" />
           </div>
 
           {renderAddressField(true)}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Anything else we should know? <span className="text-gray-400 font-normal">(optional)</span>
+            <label className="block text-sm font-medium text-ink-2 mb-1">
+              Anything else we should know? <span className="text-ink-3 font-normal">(optional)</span>
             </label>
             <textarea
               className={inputClass + " min-h-[80px] resize-y"}
@@ -1277,16 +1277,16 @@ export default function QuoteWizard({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Add photos <span className="text-gray-400 font-normal">(optional — helps us get it right)</span>
+            <label className="block text-sm font-medium text-ink-2 mb-1">
+              Add photos <span className="text-ink-3 font-normal">(optional — helps us get it right)</span>
             </label>
             <label
               onClick={() => {
                 pickerOpenRef.current = true;
               }}
-              className="flex items-center justify-center border-2 border-dashed border-gray-300 hover:border-blue-400 rounded-lg px-4 py-4 cursor-pointer text-sm text-gray-500 transition-colors"
+              className="flex items-center justify-center border-2 border-dashed border-ink/25 hover:border-ink rounded-lg px-4 py-4 cursor-pointer text-sm text-ink-3 transition-colors"
             >
-              <Camera className="w-5 h-5 mr-2 text-gray-400" />
+              <Camera className="w-5 h-5 mr-2 text-ink-3" />
               {photos.length ? `Add more photos (${photos.length}/${MAX_PHOTOS})` : "Tap to add photos of the job"}
               <input
                 type="file"
@@ -1301,11 +1301,11 @@ export default function QuoteWizard({
               <div className="flex flex-wrap gap-2 mt-2">
                 {photos.map((p, i) => (
                   <div key={i} className="relative">
-                    <img src={p.dataUrl} alt="" className="w-16 h-16 object-cover rounded-lg border border-gray-200" />
+                    <img src={p.dataUrl} alt="" className="w-16 h-16 object-cover rounded-lg border border-rule" />
                     <button
                       type="button"
                       onClick={() => setPhotos((ph) => ph.filter((_, j) => j !== i))}
-                      className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-gray-800 text-white text-xs leading-none flex items-center justify-center"
+                      className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-ink text-white text-xs leading-none flex items-center justify-center"
                       aria-label="Remove photo"
                     >
                       ×
@@ -1316,12 +1316,12 @@ export default function QuoteWizard({
             )}
           </div>
 
-          {detailsError && <p className="text-red-600 text-sm">{detailsError}</p>}
+          {detailsError && <p className="text-brick text-sm">{detailsError}</p>}
 
           <button
             type="submit"
             disabled={detailsSubmitting}
-            className="w-full inline-flex items-center justify-center bg-green-500 hover:bg-green-600 disabled:opacity-60 text-white px-8 py-3.5 rounded-lg font-semibold text-lg transition-all shadow-lg"
+            className="w-full disabled:opacity-60 btn btn-primary btn-lg"
           >
             {detailsSubmitting ? (
               <>
@@ -1350,20 +1350,20 @@ export default function QuoteWizard({
         <div className="quote-step-enter">
           <div className="text-center py-4">
             <div className="flex justify-center mb-5">
-              <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
-                <Sparkles className="w-9 h-9 text-blue-600" />
+              <div className="w-16 h-16 rounded-full bg-ochre-100 flex items-center justify-center">
+                <Sparkles className="w-9 h-9 text-ochre-3" />
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-ink mb-3">
               Thanks, {contact.firstName || "there"} — your job&rsquo;s a little unique!
             </h2>
-            <p className="text-lg text-gray-600 max-w-lg mx-auto mb-4">
+            <p className="text-lg text-ink-2 max-w-lg mx-auto mb-4">
               Based on your answers, your job needs a custom quote. We&rsquo;ll put together a tailored price and be in
               touch ASAP.
             </p>
-            <p className="text-sm text-gray-400 mb-6">
+            <p className="text-sm text-ink-3 mb-6">
               Need us sooner? Call{" "}
-              <a href="tel:0752308293" className="text-green-600 font-medium">
+              <a href="tel:0752308293" className="text-moss font-medium">
                 (07) 5230 8293
               </a>
               .
@@ -1378,16 +1378,16 @@ export default function QuoteWizard({
       <div className="quote-step-enter">
         <div className="text-center mb-7">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
-              <CheckCircle className="w-9 h-9 text-green-600" />
+            <div className="w-16 h-16 rounded-full bg-moss-50 flex items-center justify-center">
+              <CheckCircle className="w-9 h-9 text-moss" />
             </div>
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+          <h2 className="text-2xl md:text-3xl font-bold text-ink mb-2">
             Here&rsquo;s your quote, {contact.firstName || "there"}!
           </h2>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden mb-7">
+        <div className="bg-paper-white border-2 border-ink rounded-[14px] overflow-hidden mb-7">
           {(() => {
             // Plans cover exteriors only: show the exterior per-visit price with
             // the discount noted in brackets, and split the interior add-on out
@@ -1446,34 +1446,34 @@ export default function QuoteWizard({
               });
             }
             return rows.map((r, i) => (
-              <div key={r.key} className={"px-5 sm:px-7 py-5 " + (i > 0 ? "border-t border-gray-100" : "")}>
+              <div key={r.key} className={"px-5 sm:px-7 py-5 " + (i > 0 ? "border-t border-rule" : "")}>
                 <div className="flex justify-between items-baseline gap-3">
                   <div>
-                    <span className="font-bold text-gray-900">{r.label}</span>
+                    <span className="font-bold text-ink">{r.label}</span>
                     {r.badge && (
-                      <span className="ml-2 text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-2.5 py-0.5">
+                      <span className="ml-2 text-xs font-semibold text-ink bg-paper-2 border border-rule rounded-full px-2.5 py-0.5">
                         {r.badge}
                       </span>
                     )}
                   </div>
                   {r.custom ? (
-                    <div className="text-sm font-bold text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-3 py-1 whitespace-nowrap">
+                    <div className="text-sm font-bold text-ink bg-paper-2 border border-rule rounded-full px-3 py-1 whitespace-nowrap">
                       Custom quote
                     </div>
                   ) : (
-                    <div className="font-bold text-gray-900 whitespace-nowrap">
+                    <div className="font-bold text-ink whitespace-nowrap">
                       {r.plus ? "+" : ""}
                       {formatMoney(r.amount)}
-                      {r.per && <span className="text-sm font-medium text-gray-500">/visit</span>}
+                      {r.per && <span className="text-sm font-medium text-ink-3">/visit</span>}
                     </div>
                   )}
                 </div>
                 {(r.visibleItems || []).length > 0 && (
                   <div className="mt-2 space-y-1">
                     {r.visibleItems.map((it, j) => (
-                      <div key={j} className="flex justify-between text-sm text-gray-500">
+                      <div key={j} className="flex justify-between text-sm text-ink-3">
                         <span>{it.label}</span>
-                        <span className={"whitespace-nowrap ml-3 " + (it.amount < 0 ? "text-green-600 font-medium" : "")}>
+                        <span className={"whitespace-nowrap ml-3 " + (it.amount < 0 ? "text-moss font-medium" : "")}>
                           {it.amount < 0 ? "−" : "+"}
                           {formatMoney(it.amount)}
                         </span>
@@ -1482,55 +1482,55 @@ export default function QuoteWizard({
                   </div>
                 )}
                 {(r.includes || []).map((it, j) => (
-                  <p key={j} className="mt-1.5 text-sm text-gray-500">
+                  <p key={j} className="mt-1.5 text-sm text-ink-3">
                     Includes {it.label.toLowerCase()} (+{formatMoney(it.amount)})
                   </p>
                 ))}
-                {r.note && <p className="mt-1.5 text-xs text-gray-400">{r.note}</p>}
+                {r.note && <p className="mt-1.5 text-xs text-ink-3">{r.note}</p>}
               </div>
             ));
           })()}
 
-          <div className="px-5 sm:px-7 py-5 bg-blue-900 text-white flex justify-between items-center">
+          <div className="px-5 sm:px-7 py-5 bg-ink text-white flex justify-between items-center">
             <span className="font-semibold">{quote.partial ? "Total so far (inc GST)" : "Total (inc GST)"}</span>
             <span className="text-3xl font-extrabold">{formatMoney(quote.total)}</span>
           </div>
         </div>
 
         {quote.partial && (
-          <p className="text-sm text-blue-900 bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-center mb-7 -mt-3">
+          <p className="text-sm text-ink bg-paper-2 border border-rule rounded-xl px-4 py-3 text-center mb-7 -mt-3">
             That total covers everything we can price straight away. {customServiceNames} needs a closer look before we
             can put a number on it — we&rsquo;ll send that through separately, at no obligation.
           </p>
         )}
 
         {quote.lines.some((l) => l.service === "window" && l.balustradesUnspecified) && (
-          <p className="text-sm text-amber-800 bg-amber-50 border border-amber-100 rounded-xl px-4 py-3 text-center mb-7 -mt-3">
+          <p className="text-sm text-ink bg-ochre-50 border border-ochre-100 rounded-xl px-4 py-3 text-center mb-7 -mt-3">
             Glass balustrade cleaning isn&rsquo;t included in this price — you didn&rsquo;t tell us how many you have. Let us know the number and we&rsquo;ll add it to your quote.
           </p>
         )}
 
         {quote.lines.some((l) => l.plan) && (
-          <p className="text-sm text-gray-500 text-center mb-7 -mt-3">
+          <p className="text-sm text-ink-3 text-center mb-7 -mt-3">
             Plan prices are per visit at your chosen frequency — including your plan discount.
           </p>
         )}
 
         {!bookingAnswer ? (
           <div className="text-center mb-8">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Would you like to book this in?</h3>
+            <h3 className="text-xl font-bold text-ink mb-4">Would you like to book this in?</h3>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 type="button"
                 onClick={() => answerBooking("yes")}
-                className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-lg font-semibold text-lg shadow-lg transition-colors"
+                className="btn btn-primary btn-lg"
               >
                 Yes — book me in!
               </button>
               <button
                 type="button"
                 onClick={() => answerBooking("no")}
-                className="inline-flex items-center justify-center bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-700 px-10 py-4 rounded-lg font-semibold text-lg transition-colors"
+                className="btn btn-outline btn-lg"
               >
                 Not yet
               </button>
@@ -1538,8 +1538,8 @@ export default function QuoteWizard({
           </div>
         ) : (
           !detailsSent && (
-            <div className="text-center bg-green-50 border border-green-100 rounded-xl px-5 py-4 mb-8">
-              <p className="font-semibold text-gray-900">
+            <div className="text-center bg-moss-50 border border-moss/25 rounded-xl px-5 py-4 mb-8">
+              <p className="font-semibold text-ink">
                 {bookingAnswer === "yes"
                   ? "Great — we'll be in touch shortly to lock in a time!"
                   : "No worries — we'll send your quote through and follow up."}
@@ -1557,17 +1557,17 @@ export default function QuoteWizard({
     return (
       <div className="quote-step-enter text-center py-6">
         <div className="flex justify-center mb-5">
-          <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
-            <CheckCircle className="w-9 h-9 text-green-600" />
+          <div className="w-16 h-16 rounded-full bg-moss-50 flex items-center justify-center">
+            <CheckCircle className="w-9 h-9 text-moss" />
           </div>
         </div>
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Thanks, {contact.firstName || "there"}!</h2>
-        <p className="text-gray-600 max-w-md mx-auto">
+        <h2 className="text-2xl md:text-3xl font-bold text-ink mb-2">Thanks, {contact.firstName || "there"}!</h2>
+        <p className="text-ink-2 max-w-md mx-auto">
           Your details have been sent straight to our team. We&rsquo;ll be in touch shortly with your free quote.
         </p>
-        <p className="text-sm text-gray-400 mt-4">
+        <p className="text-sm text-ink-3 mt-4">
           Need us sooner? Call{" "}
-          <a href="tel:0752308293" className="text-green-600 font-medium">
+          <a href="tel:0752308293" className="text-moss font-medium">
             (07) 5230 8293
           </a>
           .
@@ -1580,7 +1580,7 @@ export default function QuoteWizard({
   const showBack = phase === "services" || phase === "questions" || phase === "contact";
 
   return (
-    <div className={embedded ? "" : "bg-gray-50 min-h-screen"}>
+    <div className={embedded ? "" : "bg-paper min-h-screen"}>
       <style>{`
         .quote-step-enter { animation: quoteStepIn 0.28s ease both; }
         @keyframes quoteStepIn {
@@ -1596,17 +1596,17 @@ export default function QuoteWizard({
         {/* Progress */}
         {showProgress && (
           <div className="mb-7">
-            <div className="flex justify-between items-center text-xs text-gray-400 mb-2">
+            <div className="flex justify-between items-center text-xs text-ink-3 mb-2">
               <span>
                 Step {Math.min(screenNumber, totalScreens)} of {totalScreens}
               </span>
               <span className="flex items-center">
-                <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400 mr-1" /> 5.0 — 2500+ happy customers
+                <Star className="w-3.5 h-3.5 fill-ochre text-ochre mr-1" /> 5.0 — 2500+ happy customers
               </span>
             </div>
-            <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+            <div className="h-1.5 bg-rule rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-blue-600 to-green-500 rounded-full transition-all duration-300"
+                className="h-full bg-ochre rounded-full transition-all duration-300"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
@@ -1618,13 +1618,13 @@ export default function QuoteWizard({
           <button
             type="button"
             onClick={goBack}
-            className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-800 mb-5 transition-colors"
+            className="inline-flex items-center text-sm font-medium text-ink-3 hover:text-ink mb-5 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-1.5" /> Back
           </button>
         )}
 
-        <div className={embedded ? "" : "bg-white rounded-2xl shadow-sm border border-gray-100 px-5 sm:px-10 py-8 sm:py-10"}>
+        <div className={embedded ? "" : "card shadow-lg px-5 sm:px-10 py-8 sm:py-10"}>
           {phase === "entry" && renderEntry()}
           {phase === "services" && renderServices()}
           {phase === "questions" && step && step.type === "select" && renderSelectStep()}
@@ -1638,9 +1638,9 @@ export default function QuoteWizard({
         </div>
 
         {phase === "entry" && !embedded && (
-          <p className="text-center text-sm text-gray-400 mt-6">
+          <p className="text-center text-sm text-ink-3 mt-6">
             Prefer to talk?{" "}
-            <a href="tel:0752308293" className="text-blue-600 font-medium hover:underline">
+            <a href="tel:0752308293" className="text-ochre-3 font-medium hover:underline">
               Call (07) 5230 8293
             </a>{" "}
             — we actually answer.

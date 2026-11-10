@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen } from "lucide-react";
 import PageSEO from "../components/PageSEO";
 import Breadcrumbs from "../components/Breadcrumbs";
-import QuoteCTA from "../components/QuoteCTA";
 import { GUIDES } from "../data/guides";
 import {
   SITE_URL,
@@ -43,13 +42,14 @@ export default function Guides() {
       />
       <Breadcrumbs items={[{ name: "Expert Guides", url: "/guides/" }]} />
 
-      <section className="bg-white py-14">
+      <section className="no-rule dots py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <p className="eyebrow mb-4">Expert guides</p>
+            <h1 className="text-4xl md:text-[52px] md:leading-[1.05] font-bold text-ink mb-5">
               Expert Cleaning Guides for Gold Coast Homes
             </h1>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-ink-2 leading-relaxed">
               Straight answers to the questions our customers actually ask — written from
               the roofs, driveways and windows we clean every day across the Gold Coast,
               with real local prices and no sales fluff.
@@ -61,16 +61,16 @@ export default function Guides() {
               <Link
                 key={g.slug}
                 to={`/guides/${g.slug}/`}
-                className="group bg-gray-50 hover:bg-blue-50 border border-gray-100 rounded-2xl p-6 transition-colors flex flex-col"
+                className="group card p-6 sm:p-7 flex flex-col transition-all duration-150 hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px]"
               >
-                <BookOpen className="w-7 h-7 text-blue-600 mb-4" />
-                <h2 className="text-xl font-bold text-gray-900 group-hover:text-blue-700 mb-3">
+                <BookOpen className="w-7 h-7 text-ochre-3 mb-4" />
+                <h2 className="text-xl font-bold text-ink group-hover:text-ink mb-3">
                   {g.h1}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-4 flex-1">
+                <p className="text-ink-2 leading-relaxed mb-4 flex-1">
                   {g.directAnswer.split(". ").slice(0, 2).join(". ") + "."}
                 </p>
-                <span className="inline-flex items-center font-semibold text-blue-600">
+                <span className="inline-flex items-center font-bold text-ink underline decoration-ochre decoration-2 underline-offset-4">
                   Read the full guide
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                 </span>
@@ -79,8 +79,6 @@ export default function Guides() {
           </div>
         </div>
       </section>
-
-      <QuoteCTA />
     </>
   );
 }

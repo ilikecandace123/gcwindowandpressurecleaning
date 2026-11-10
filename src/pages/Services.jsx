@@ -1,10 +1,10 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { ArrowRight, Star, Shield, Users, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import GoogleReviews from "../components/GoogleReviews";
 import QuoteHero from "../components/QuoteHero";
+import FAQ from "../components/FAQ";
 import PageSEO from "../components/PageSEO";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema, buildFAQSchema } from "../data/schema";
 
@@ -44,8 +44,6 @@ const HOME_FAQS = [
 ];
 
 export default function Services() {
-  const [openFaqIndex, setOpenFaqIndex] = useState(0);
-
   const services = [
   {
     imageUrl: "/images/roof-cleaning-1.jpg",
@@ -98,7 +96,7 @@ export default function Services() {
   }];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <PageSEO
         title="Gold Coast Window and Pressure Cleaning | Free Quote"
         description="Gold Coast's trusted window, pressure, roof, gutter and solar panel cleaning. Fully insured, police-checked staff. Free quote — call (07) 5230 8293."
@@ -122,63 +120,75 @@ export default function Services() {
       />
 
       {/* Services Grid */}
-      <section className="py-20">
+      <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="mb-10 lg:mb-12 max-w-3xl">
+            <p className="eyebrow">What we do</p>
+            <h2 className="text-3xl md:text-[44px] font-bold text-ink leading-[1.08] mt-3 mb-3">
               Choose Your Service
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-ink-2">
               Professional exterior cleaning services tailored to your needs
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
             {services.map((service, index) =>
             <Link
               key={index}
               to={`/${service.slug}/`}
-              className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 flex flex-col">
+              className="group card overflow-hidden flex flex-col transition-all duration-150 hover:shadow-hard hover:-translate-x-[2px] hover:-translate-y-[2px]">
 
-                <div className="p-8 flex flex-col flex-grow items-center text-center">
-                  {service.imageUrl ?
-                <div className="w-64 h-64 mb-8 flex items-center justify-center overflow-hidden rounded-2xl">
-                      <picture className="flex items-center justify-center max-w-full max-h-full">
-                        <source srcSet={service.imageUrl.replace('.jpg', '.webp')} type="image/webp" />
-                        <img src={service.imageUrl} alt={service.title} loading="lazy" className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform" decoding="async" width="256" height="256" />
-                      </picture>
-                    </div> :
+                <div className="aspect-[4/3] overflow-hidden border-b-2 border-ink bg-paper-2">
+                  <picture>
+                    <source srcSet={service.imageUrl.replace('.jpg', '.webp')} type="image/webp" />
+                    <img src={service.imageUrl} alt={service.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300" decoding="async" width="600" height="400" />
+                  </picture>
+                </div>
 
-                <div className="w-64 h-64 bg-white rounded-2xl flex items-center justify-center mb-8 group-hover:scale-105 transition-transform">
-                      {/* Fallback in case icon is used and imageUrl is not */}
-                      {service.icon && <service.icon className="w-32 h-32 text-gray-400" />}
-                    </div>
-                }
-
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-bold text-ink mb-2">
                     {service.title}
                   </h3>
 
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-ink-2 mb-4 leading-relaxed">
                     {service.description}
                   </p>
 
-                  <div className="space-y-2 mb-6 text-left self-stretch">
+                  <ul className="space-y-1.5 mb-6 text-[15px] font-semibold text-ink-2">
                     {service.benefits.map((benefit, i) =>
-                  <div key={i} className="flex items-center text-sm text-gray-500">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <li key={i} className="flex items-center gap-2 before:content-['✓'] before:text-moss before:font-bold">
                         {benefit}
-                      </div>
+                      </li>
                   )}
-                  </div>
+                  </ul>
 
-                  <div className="mt-auto flex items-center text-blue-600 font-semibold group-hover:text-blue-700">
+                  <div className="mt-auto flex items-center font-bold text-ink underline decoration-ochre decoration-2 underline-offset-4">
                     Learn More
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </Link>
             )}
+
+            {/* Fills the last row beside the seventh service */}
+            <div className="md:col-span-1 lg:col-span-2 rounded-[14px] border-2 border-ink bg-ink text-paper p-7 lg:p-10 flex flex-col justify-center">
+              <p className="eyebrow !text-ochre">More than one job?</p>
+              <h3 className="text-3xl lg:text-[40px] font-bold leading-[1.08] mt-3 mb-3">
+                Price the whole place <em className="italic font-medium text-ochre">in one go</em>
+              </h3>
+              <p className="text-lg text-paper-2/85 max-w-[52ch] mb-7">
+                Tick every service you need and the instant quote prices them together, about two minutes, no phone call required.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link to="/instant-quote/" className="btn btn-lg btn-primary-on-ink">
+                  Get Instant Quote <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+                <a href="tel:0752308293" className="btn btn-lg btn-outline-on-ink">
+                  <Phone className="w-5 h-5 mr-2" /> (07) 5230 8293
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -187,56 +197,27 @@ export default function Services() {
       <GoogleReviews />
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-gray-600">Common questions about our Gold Coast exterior cleaning services</p>
-          </div>
-          <div className="space-y-4">
-            {HOME_FAQS.map((faq, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                <button
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                  onClick={() => setOpenFaqIndex(openFaqIndex === index ? -1 : index)}
-                >
-                  <h3 className="font-semibold text-gray-900 text-lg">{faq.question}</h3>
-                  {openFaqIndex === index
-                    ? <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" />
-                    : <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />}
-                </button>
-                {/* Answer always in the DOM (hidden via CSS when collapsed) so
-                    crawlers, AI bots and markdown mirrors can read every answer. */}
-                <div className={openFaqIndex === index ? "px-6 pb-4" : "hidden px-6 pb-4"}>
-                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FAQ faqs={HOME_FAQS} title="Frequently Asked Questions" subtitle="Common questions about our Gold Coast exterior cleaning services" />
 
       {/* CTA Section */}
-      <section className="py-16 hero-gradient text-white">
+      <section className="no-rule py-16 bg-ink text-paper">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-[40px] font-bold mb-4">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">We can usually have a free quote to you within 15 minutes.
+          <p className="text-xl text-paper-2/85 mb-8">We can usually have a free quote to you within 15 minutes.
 
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:0752308293"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center">
-
-              <span>Call (07) 5230 8293</span>
-            </a>
-            <a href="#quote" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            <a href="#quote" className="btn btn-lg btn-primary-on-ink">
 
               Get Free Quote
+            </a>
+            <a
+              href="tel:0752308293"
+              className="btn btn-lg btn-outline-on-ink">
+
+              <span>Call (07) 5230 8293</span>
             </a>
           </div>
         </div>

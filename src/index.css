@@ -2,21 +2,146 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Layout theme variables and utility classes */
-:root {
-  --primary-blue: #1e40af;
-  --secondary-blue: #3b82f6;
-  --accent-green: #10b981;
-  --light-blue: #eff6ff;
-  --dark-text: #1f2937;
-  --light-text: #6b7280;
+/* Self-hosted fonts (latin subsets of the Google Fonts variable files, OFL).
+   Fraunces = display serif, Source Sans 3 = body. index.html preloads the two
+   upright files so the first paint has them. */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/fraunces-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/fraunces-latin-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/source-sans-3-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/source-sans-3-latin-italic.woff2") format("woff2");
 }
 
-.hero-gradient {
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: theme("fontFamily.display");
+    letter-spacing: -0.012em;
+  }
+  ::selection {
+    background: theme("colors.ochre.100");
+    color: theme("colors.ink.DEFAULT");
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.ochre.DEFAULT");
+    outline-offset: 2px;
+  }
 }
 
-html { scroll-behavior: smooth; }
+@layer components {
+  /* Buttons. Primary = ochre pill with an ink edge and a hard shadow that
+     presses in on hover. Always ink text on ochre (white fails contrast). */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full font-bold leading-tight transition-all duration-150 border-2 px-6 py-3;
+  }
+  .btn-primary {
+    @apply bg-ochre text-ink border-ink shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[3px] active:translate-y-[3px] active:shadow-none;
+  }
+  .btn:disabled {
+    @apply opacity-50 cursor-not-allowed translate-x-0 translate-y-0;
+  }
+  .btn-primary:disabled {
+    @apply shadow-hard-sm;
+  }
+  .btn-ink {
+    @apply bg-ink text-paper border-ink hover:bg-ink-deep;
+  }
+  .btn-outline {
+    @apply bg-transparent text-ink border-ink hover:bg-ink hover:text-paper;
+  }
+  /* On ink bands */
+  .btn-primary-on-ink {
+    @apply bg-ochre text-ink border-ochre hover:bg-paper hover:border-paper;
+  }
+  .btn-outline-on-ink {
+    @apply bg-transparent text-paper border-paper/60 hover:border-paper hover:bg-paper hover:text-ink;
+  }
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+  .btn-lg {
+    @apply px-7 py-3.5 text-[17px];
+  }
+
+  /* Cards. card = ink-edged panel, card-soft = quiet panel with a hairline. */
+  .card {
+    @apply bg-paper-white border-2 border-ink rounded-[14px];
+  }
+  .card-soft {
+    @apply bg-paper-white border border-rule rounded-xl;
+  }
+
+  /* Small-caps label with a short ochre rule in front of it. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[13px] tracking-[.12em] uppercase font-bold text-ochre-3;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply w-7 h-[2px] bg-ochre;
+  }
+  .eyebrow-plain::before {
+    display: none;
+  }
+
+  /* Short ochre rule under a heading (centre it with mx-auto). */
+  .heading-rule {
+    @apply block w-14 h-[3px] bg-ochre;
+  }
+
+  /* Fine dot grain on paper sections. */
+  .dots {
+    background-image: radial-gradient(rgba(23, 35, 59, 0.06) 0.6px, transparent 0.6px);
+    background-size: 14px 14px;
+  }
+
+  /* Photo frame: ink edge + offset ochre block. */
+  .photo-frame {
+    @apply rounded-[14px] overflow-hidden border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre;
+  }
+
+  /* Text link with an ochre underline. */
+  .link {
+    @apply font-semibold text-ink underline decoration-ochre decoration-2 underline-offset-4 hover:text-ochre-3;
+  }
+}
+
+/* Page sections are separated by an ink rule (the "ruled page" look). Dark
+   bands and anything marked .no-rule opt out. */
+main section {
+  border-top: 2px solid theme("colors.ink.DEFAULT");
+}
+main section.no-rule,
+main section section {
+  border-top: 0;
+}
 
 /* Mobile nav panel: never taller than the space under the 4rem header bar.
    dvh tracks Safari's collapsing toolbar; vh is the fallback for older WebKit. */

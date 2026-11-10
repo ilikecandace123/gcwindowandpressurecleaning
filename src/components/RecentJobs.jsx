@@ -16,30 +16,29 @@ export default function RecentJobs({ suburbSlug, suburbName, serviceSlug, jobs: 
   const jobs = jobsProp || getRecentJobs(suburbSlug, serviceSlug);
   if (!jobs.length) return null;
   return (
-    <section className="py-16 bg-white" id="recent-work">
+    <section className="py-16 bg-paper" id="recent-work">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2 text-blue-600 mb-3">
-          <Camera className="w-5 h-5" />
-          <span className="font-semibold">Real jobs, real photos</span>
-        </div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">{title || `Recent work in ${suburbName}`}</h2>
+        <p className="eyebrow eyebrow-plain mb-3">
+          <Camera className="w-4 h-4" /> Real jobs, real photos
+        </p>
+        <h2 className="text-3xl md:text-[38px] font-bold text-ink leading-[1.1] mb-8">{title || `Recent work in ${suburbName}`}</h2>
         <div className={`grid gap-8 ${jobs.length > 1 ? "md:grid-cols-2" : ""}`}>
           {jobs.map((job) => (
-            <figure key={job.photo} className="bg-gray-50 rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+            <figure key={job.photo} className="card overflow-hidden">
               <img
                 src={job.photo}
                 alt={job.alt || `Recent job in ${suburbName || "the Gold Coast"}`}
                 width={1200}
                 height={900}
-                className="w-full h-72 object-cover"
+                className="w-full h-72 object-cover border-b-2 border-ink"
                 loading="lazy"
                 decoding="async"
               />
               <figcaption className="p-6">
                 {monthYear(job.date) && (
-                  <div className="text-sm font-semibold text-blue-600 mb-2">{monthYear(job.date)}</div>
+                  <div className="text-[12px] tracking-[.1em] uppercase font-bold text-ochre-3 mb-2">{monthYear(job.date)}</div>
                 )}
-                <p className="text-gray-700 leading-relaxed">{job.text}</p>
+                <p className="text-ink-2 leading-relaxed">{job.text}</p>
               </figcaption>
             </figure>
           ))}

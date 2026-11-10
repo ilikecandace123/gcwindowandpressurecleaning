@@ -1,5 +1,6 @@
 
 import React from "react";
+import FactIcon from "../components/FactIcon";
 import QuoteHero from "../components/QuoteHero";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -123,33 +124,33 @@ export default function SolarPanelCleaning() {
       />
 
       {/* About Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
                 Your Trusted Local Solar Cleaning Professionals
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-6 leading-relaxed">
                 We're a locally owned and operated business committed to transparent, friendly communication.
                 All our staff are police-checked for your peace of mind, and we're fully insured for liability and damages.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-8 leading-relaxed">
                 We keep you updated every step of the way.
                 Our honest, clear communication means no surprises – just professional service you can trust.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Police-checked, insured professionals</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Police-checked, insured professionals</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Clear communication throughout the process</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Clear communication throughout the process</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Supporting local communities</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Supporting local communities</span>
                 </div>
               </div>
             </div>
@@ -157,7 +158,7 @@ export default function SolarPanelCleaning() {
               <img
                 src="/images/solar-panel-dirty-vs-clean.webp"
                 alt="Professional solar panel cleaning team on roof"
-                className="rounded-2xl shadow-lg"
+                className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre"
                 loading="lazy" decoding="async" width="1936" height="1936" />
             </div>
           </div>
@@ -165,13 +166,13 @@ export default function SolarPanelCleaning() {
       </section>
 
       {/* Gold Coast Climate Section */}
-      <section className="py-16 bg-blue-50">
+      <section className="py-16 bg-paper-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">
               Why Gold Coast Solar Panels Get Dirty Faster
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-ink-2 max-w-3xl">
               Gold Coast's unique coastal environment creates soiling conditions more aggressive than most Australian cities — here's what your panels are up against.
             </p>
           </div>
@@ -208,10 +209,10 @@ export default function SolarPanelCleaning() {
                 desc: "Gold Coast's high UV index (daily UV 11–13 in summer) accelerates the photochemical bonding of organic matter to glass. Contaminants literally bake onto panel surfaces faster than in cooler climates."
               }
             ].map((item, i) => (
-              <div key={i} className="bg-white rounded-xl p-6 shadow-sm">
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+              <div key={i} className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+                <FactIcon icon={item.icon} className="mb-3" />
+                <h3 className="text-lg font-semibold text-ink mb-2">{item.title}</h3>
+                <p className="text-ink-2 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -219,31 +220,29 @@ export default function SolarPanelCleaning() {
       </section>
 
       {/* Service Description */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
               Professional Solar Panel Cleaning Process
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-ink-2 max-w-3xl">
               Our specialised cleaning process is designed to maximise your solar panel efficiency while protecting your investment.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-5 gap-6 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-8 mb-12">
             {[
-              { num: "1", color: "blue", title: "Safety & Access", desc: "We assess roof access, set up fall-arrest anchors, and confirm system isolation before any technician steps onto your roof." },
-              { num: "2", color: "amber", title: "Panel Inspection", desc: "Each panel is inspected for hotspots, micro-cracks, loose frames, bird damage, and shading issues before cleaning begins." },
-              { num: "3", color: "green", title: "Purified Water Pre-Rinse", desc: "We pre-rinse with deionised (purified) water. Tap water leaves calcium scale — purified water is required by most manufacturers to protect the anti-reflective coating." },
-              { num: "4", color: "orange", title: "Soft-Brush Scrub", desc: "Panels are scrubbed with a soft-bristle brush and pH-neutral solution that removes all organic matter, salt deposits, and bird droppings without scratching." },
-              { num: "5", color: "purple", title: "Report & Output Check", desc: "We provide before/after photos, a written condition report, and advise on any panel issues spotted. You'll see the difference — and so will your inverter." }
+              { num: "1", title: "Safety & Access", desc: "We assess roof access, set up fall-arrest anchors, and confirm system isolation before any technician steps onto your roof." },
+              { num: "2", title: "Panel Inspection", desc: "Each panel is inspected for hotspots, micro-cracks, loose frames, bird damage, and shading issues before cleaning begins." },
+              { num: "3", title: "Purified Water Pre-Rinse", desc: "We pre-rinse with deionised (purified) water. Tap water leaves calcium scale — purified water is required by most manufacturers to protect the anti-reflective coating." },
+              { num: "4", title: "Soft-Brush Scrub", desc: "Panels are scrubbed with a soft-bristle brush and pH-neutral solution that removes all organic matter, salt deposits, and bird droppings without scratching." },
+              { num: "5", title: "Report & Output Check", desc: "We provide before/after photos, a written condition report, and advise on any panel issues spotted. You'll see the difference — and so will your inverter." }
             ].map((step, i) => (
-              <div key={i} className="text-center">
-                <div className={`w-14 h-14 bg-${step.color}-100 rounded-full flex items-center justify-center mx-auto mb-3`}>
-                  <span className={`text-xl font-bold text-${step.color}-600`}>{step.num}</span>
-                </div>
+              <div key={i} className="border-t-2 border-ink pt-4">
+                <span className="block font-display italic text-2xl text-ochre-2 mb-2">0{step.num}</span>
                 <h3 className="text-base font-semibold mb-2">{step.title}</h3>
-                <p className="text-gray-600 text-sm">{step.desc}</p>
+                <p className="text-ink-2 text-sm leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -251,19 +250,19 @@ export default function SolarPanelCleaning() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">
+          <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">
             Dirty vs Clean — What You're Losing
           </h2>
-          <p className="text-gray-600 text-center mb-10 text-lg">Based on a typical 6.6kW Gold Coast rooftop solar system.</p>
+          <p className="text-ink-2 mb-10 text-lg max-w-3xl">Based on a typical 6.6kW Gold Coast rooftop solar system.</p>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="text-left p-4 font-semibold text-gray-700 border border-gray-200">Metric</th>
-                  <th className="text-center p-4 font-semibold text-red-700 border border-gray-200 bg-red-50">❌ Dirty Panels</th>
-                  <th className="text-center p-4 font-semibold text-green-700 border border-gray-200 bg-green-50">✅ After Professional Clean</th>
+                <tr className="bg-paper-2">
+                  <th className="text-left p-4 font-semibold text-ink-2 border border-rule">Metric</th>
+                  <th className="text-center p-4 font-semibold text-brick border border-rule bg-brick-50">Dirty panels</th>
+                  <th className="text-center p-4 font-semibold text-moss border border-rule bg-moss-50">After a professional clean</th>
                 </tr>
               </thead>
               <tbody>
@@ -275,10 +274,10 @@ export default function SolarPanelCleaning() {
                   ["Manufacturer warranty", "Potentially at risk", "Fully maintained"],
                   ["Bird nesting risk", "High — soiled panels attract nesting", "Reduced attraction"]
                 ].map(([metric, dirty, clean], i) => (
-                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                    <td className="p-4 font-medium text-gray-900 border border-gray-200">{metric}</td>
-                    <td className="p-4 text-center text-red-700 border border-gray-200 bg-red-50/30">{dirty}</td>
-                    <td className="p-4 text-center text-green-700 border border-gray-200 bg-green-50/30">{clean}</td>
+                  <tr key={i} className={i % 2 === 0 ? "bg-paper-white" : "bg-paper"}>
+                    <td className="p-4 font-medium text-ink border border-rule">{metric}</td>
+                    <td className="p-4 text-center text-brick border border-rule bg-brick-50/30">{dirty}</td>
+                    <td className="p-4 text-center text-moss border border-rule bg-moss-50/30">{clean}</td>
                   </tr>
                 ))}
               </tbody>
@@ -295,25 +294,25 @@ export default function SolarPanelCleaning() {
       <GoogleReviews />
 
       {/* Service Areas */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Gold Coast Solar Panel Cleaning — Areas We Service</h2>
-          <p className="text-gray-600 leading-relaxed text-lg">
+      <section className="py-12 bg-paper">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-ink mb-4">Gold Coast Solar Panel Cleaning — Areas We Service</h2>
+          <p className="text-ink-2 leading-relaxed text-lg">
             We clean solar panels across the entire Gold Coast region including{" "}
-            <Link to="/solar-panel-cleaning/surfers-paradise/" className="text-blue-600 hover:underline">Surfers Paradise</Link>,{" "}
-            <Link to="/solar-panel-cleaning/broadbeach/" className="text-blue-600 hover:underline">Broadbeach</Link>,{" "}
-            <Link to="/solar-panel-cleaning/robina/" className="text-blue-600 hover:underline">Robina</Link>,{" "}
-            <Link to="/solar-panel-cleaning/burleigh-heads/" className="text-blue-600 hover:underline">Burleigh Heads</Link>,{" "}
-            <Link to="/solar-panel-cleaning/palm-beach/" className="text-blue-600 hover:underline">Palm Beach</Link>,{" "}
-            <Link to="/solar-panel-cleaning/currumbin/" className="text-blue-600 hover:underline">Currumbin</Link>,{" "}
-            <Link to="/solar-panel-cleaning/coolangatta/" className="text-blue-600 hover:underline">Coolangatta</Link>,{" "}
-            <Link to="/solar-panel-cleaning/southport/" className="text-blue-600 hover:underline">Southport</Link>,{" "}
-            <Link to="/solar-panel-cleaning/nerang/" className="text-blue-600 hover:underline">Nerang</Link>,{" "}
-            <Link to="/solar-panel-cleaning/mudgeeraba/" className="text-blue-600 hover:underline">Mudgeeraba</Link>,{" "}
-            <Link to="/solar-panel-cleaning/elanora/" className="text-blue-600 hover:underline">Elanora</Link>,{" "}
-            <Link to="/solar-panel-cleaning/tugun/" className="text-blue-600 hover:underline">Tugun</Link>, and{" "}
-            <Link to="/solar-panel-cleaning/mermaid-waters/" className="text-blue-600 hover:underline">Mermaid Waters</Link>.{" "}
-            Not sure if we cover your suburb? <a href="tel:0752308293" className="text-blue-600 hover:underline">Give us a call</a>.
+            <Link to="/solar-panel-cleaning/surfers-paradise/" className="text-ochre-3 hover:underline">Surfers Paradise</Link>,{" "}
+            <Link to="/solar-panel-cleaning/broadbeach/" className="text-ochre-3 hover:underline">Broadbeach</Link>,{" "}
+            <Link to="/solar-panel-cleaning/robina/" className="text-ochre-3 hover:underline">Robina</Link>,{" "}
+            <Link to="/solar-panel-cleaning/burleigh-heads/" className="text-ochre-3 hover:underline">Burleigh Heads</Link>,{" "}
+            <Link to="/solar-panel-cleaning/palm-beach/" className="text-ochre-3 hover:underline">Palm Beach</Link>,{" "}
+            <Link to="/solar-panel-cleaning/currumbin/" className="text-ochre-3 hover:underline">Currumbin</Link>,{" "}
+            <Link to="/solar-panel-cleaning/coolangatta/" className="text-ochre-3 hover:underline">Coolangatta</Link>,{" "}
+            <Link to="/solar-panel-cleaning/southport/" className="text-ochre-3 hover:underline">Southport</Link>,{" "}
+            <Link to="/solar-panel-cleaning/nerang/" className="text-ochre-3 hover:underline">Nerang</Link>,{" "}
+            <Link to="/solar-panel-cleaning/mudgeeraba/" className="text-ochre-3 hover:underline">Mudgeeraba</Link>,{" "}
+            <Link to="/solar-panel-cleaning/elanora/" className="text-ochre-3 hover:underline">Elanora</Link>,{" "}
+            <Link to="/solar-panel-cleaning/tugun/" className="text-ochre-3 hover:underline">Tugun</Link>, and{" "}
+            <Link to="/solar-panel-cleaning/mermaid-waters/" className="text-ochre-3 hover:underline">Mermaid Waters</Link>.{" "}
+            Not sure if we cover your suburb? <a href="tel:0752308293" className="text-ochre-3 hover:underline">Give us a call</a>.
           </p>
         </div>
       </section>
@@ -323,21 +322,21 @@ export default function SolarPanelCleaning() {
       <FAQ faqs={faqs} title="Solar Panel Cleaning FAQ" guideLink={{ label: "Guide: Do dirty solar panels reduce output?", href: "/guides/do-dirty-solar-panels-reduce-output/" }} />
 
       {/* Related Services */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Related Services</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link to="/gutter-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Gutter Cleaning</h3>
-              <p className="text-sm text-gray-600">Bird droppings and roof debris block gutters fast. Keep water flowing with professional gutter cleaning.</p>
+            <Link to="/gutter-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Gutter Cleaning</h3>
+              <p className="text-sm text-ink-2">Bird droppings and roof debris block gutters fast. Keep water flowing with professional gutter cleaning.</p>
             </Link>
-            <Link to="/bird-proofing/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Bird Proofing</h3>
-              <p className="text-sm text-gray-600">Protect your solar panels and roof from bird damage with professional bird proofing mesh and deterrents.</p>
+            <Link to="/bird-proofing/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Bird Proofing</h3>
+              <p className="text-sm text-ink-2">Protect your solar panels and roof from bird damage with professional bird proofing mesh and deterrents.</p>
             </Link>
-            <Link to="/roof-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Roof Cleaning</h3>
-              <p className="text-sm text-gray-600">Professional roof cleaning to remove moss, lichen, and algae — extending your roof's life and boosting curb appeal.</p>
+            <Link to="/roof-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Roof Cleaning</h3>
+              <p className="text-sm text-ink-2">Professional roof cleaning to remove moss, lichen, and algae — extending your roof's life and boosting curb appeal.</p>
             </Link>
           </div>
         </div>

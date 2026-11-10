@@ -30,10 +30,10 @@ const Commercial = lazy(() => import('./pages/Commercial'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const RouteFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gray-50">
+  <div className="min-h-screen flex items-center justify-center bg-paper">
     <div className="flex flex-col items-center">
-      <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
-      <p className="mt-4 text-gray-600 text-sm">Loading…</p>
+      <div className="w-10 h-10 border-4 border-ink border-t-transparent rounded-full animate-spin" />
+      <p className="mt-4 text-ink-2 text-sm">Loading…</p>
     </div>
   </div>
 );

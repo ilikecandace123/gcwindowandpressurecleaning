@@ -2,7 +2,8 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import QuoteCTA from "./components/QuoteCTA";
-import { Phone, Star, Shield, Users, Home, MapPin, Menu, X, ChevronDown } from "lucide-react";
+import { Phone, Star, Shield, Users, Menu, X, ChevronDown } from "lucide-react";
+import Logo from "./components/Logo";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
@@ -33,39 +34,34 @@ export default function Layout({ children, currentPageName }) {
   }, [mobileMenuOpen]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-paper">
       {/* Trust Bar */}
-      <div className="bg-blue-600 text-white text-xs sm:text-sm py-1.5 hidden sm:block">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center gap-6">
+      <div className="bg-ink text-paper text-[13px] tracking-wide py-1.5 hidden sm:block">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center gap-5">
           <div className="flex items-center">
-            <Shield className="w-3.5 h-3.5 mr-1.5" />
-            Fully Insured
+            <Shield className="w-3.5 h-3.5 mr-1.5 text-ochre" />
+            Fully insured
           </div>
+          <span className="w-1 h-1 rounded-full bg-ochre" aria-hidden="true"></span>
           <div className="flex items-center">
-            <Users className="w-3.5 h-3.5 mr-1.5" />
-            Police Checked Staff
+            <Users className="w-3.5 h-3.5 mr-1.5 text-ochre" />
+            Police-checked staff
           </div>
+          <span className="w-1 h-1 rounded-full bg-ochre" aria-hidden="true"></span>
           <div className="flex items-center">
-            <Star className="w-3.5 h-3.5 mr-1.5 fill-yellow-300 text-yellow-300" />
-            5.0 Stars — 2500+ Happy Customers
+            <Star className="w-3.5 h-3.5 mr-1.5 fill-ochre text-ochre" />
+            5.0 stars from 2,500+ happy customers
           </div>
         </div>
       </div>
 
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      <header className="bg-paper shadow-[0_2px_0_#17233b] sticky top-0 z-50">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center gap-4 h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 min-w-0">
-              <picture>
-                <source srcSet="/images/logo.avif" type="image/avif" />
-                <img src="/images/logo.png" alt="Gold Coast Window and Pressure Cleaning logo" width="48" height="48" className="h-10 sm:h-12 object-contain flex-shrink-0" loading="eager" decoding="async" fetchPriority="high" />
-              </picture>
-              <div className="hidden xl:block min-w-0">
-                <span className="text-base font-bold text-gray-900 leading-tight whitespace-nowrap">Gold Coast Window and Pressure Cleaning</span>
-                <p className="text-xs text-gray-500 whitespace-nowrap">Professional Exterior Cleaning Services</p>
-              </div>
+            <Link to="/" aria-label="Gold Coast Window and Pressure Cleaning, home" className="flex items-center flex-shrink-0 min-w-0">
+              <Logo wordmarkClassName="hidden min-[375px]:block lg:hidden xl:block" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -76,7 +72,7 @@ export default function Layout({ children, currentPageName }) {
                 onMouseEnter={() => setServicesDropdownOpen(true)}
                 onMouseLeave={() => setServicesDropdownOpen(false)}
               >
-                <button onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">
+                <button onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 transition-colors whitespace-nowrap">
                   Residential
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -84,26 +80,26 @@ export default function Layout({ children, currentPageName }) {
                 {/* Always rendered, toggled with a class. A `{open && ...}` dropdown
                     never reaches the prerendered HTML, so crawlers never saw these
                     links — the same trap the FAQ accordion had. */}
-                <div className={`absolute top-full left-0 mt-0 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 ${servicesDropdownOpen ? "block" : "hidden"}`}>
-                    <Link to="/window-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                <div className={`absolute top-full left-0 mt-0 w-56 bg-paper-white rounded-xl border-2 border-ink shadow-hard-sm py-2 z-50 ${servicesDropdownOpen ? "block" : "hidden"}`}>
+                    <Link to="/window-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Window Cleaning
                     </Link>
-                    <Link to="/roof-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/roof-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Roof Cleaning
                     </Link>
-                    <Link to="/pressure-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/pressure-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Pressure Cleaning
                     </Link>
-                    <Link to="/house-softwash/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/house-softwash/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       House Softwash
                     </Link>
-                    <Link to="/gutter-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/gutter-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Gutter Cleaning
                     </Link>
-                    <Link to="/solar-panel-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/solar-panel-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Solar Panel Cleaning
                     </Link>
-                    <Link to="/bird-proofing/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/bird-proofing/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Solar Panel Bird Proofing
                     </Link>
                   </div>
@@ -115,41 +111,41 @@ export default function Layout({ children, currentPageName }) {
                 onMouseEnter={() => setCommercialDropdownOpen(true)}
                 onMouseLeave={() => setCommercialDropdownOpen(false)}
               >
-                <button onClick={() => setCommercialDropdownOpen(!commercialDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">
+                <button onClick={() => setCommercialDropdownOpen(!commercialDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 transition-colors whitespace-nowrap">
                   Commercial & Strata
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${commercialDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
 
-                <div className={`absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 ${commercialDropdownOpen ? "block" : "hidden"}`}>
-                    <Link to="/commercial/" className="block px-4 py-2.5 text-sm font-semibold text-blue-700 hover:bg-blue-50 transition-colors border-b border-gray-100 mb-1">
+                <div className={`absolute top-full left-0 mt-0 w-64 bg-paper-white rounded-xl border-2 border-ink shadow-hard-sm py-2 z-50 ${commercialDropdownOpen ? "block" : "hidden"}`}>
+                    <Link to="/commercial/" className="block px-4 py-2.5 text-[15px] font-bold text-ink hover:bg-paper-2 transition-colors border-b border-rule mb-1">
                       All Commercial &amp; Strata Services
                     </Link>
-                    <Link to="/commercial/window-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/window-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Commercial Window Cleaning
                     </Link>
-                    <Link to="/commercial/roof-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/roof-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Commercial Roof Cleaning
                     </Link>
-                    <Link to="/commercial/pressure-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/pressure-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Commercial Pressure Cleaning
                     </Link>
-                    <Link to="/commercial/house-softwash/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/house-softwash/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Commercial Building Softwash
                     </Link>
-                    <Link to="/commercial/gutter-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/gutter-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Commercial Gutter Cleaning
                     </Link>
-                    <Link to="/commercial/solar-panel-cleaning/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/solar-panel-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Commercial Solar Panel Cleaning
                     </Link>
-                    <Link to="/commercial/bird-proofing/" className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                    <Link to="/commercial/bird-proofing/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
                       Commercial Solar Bird Proofing
                     </Link>
                   </div>
               </div>
 
-              <Link to="/window-cleaning-plans/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Window Cleaning Plans</Link>
-              <Link to="/guides/" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors whitespace-nowrap">Guides</Link>
+              <Link to="/window-cleaning-plans/" className="px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 transition-colors whitespace-nowrap">Window Cleaning Plans</Link>
+              <Link to="/guides/" className="px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 transition-colors whitespace-nowrap">Guides</Link>
 
             </nav>
 
@@ -157,12 +153,12 @@ export default function Layout({ children, currentPageName }) {
             <div className="flex items-center gap-2 flex-shrink-0">
               <Link
                 to="/instant-quote/"
-                className="bg-green-500 hover:bg-green-600 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors"
+                className="btn btn-primary btn-sm !px-3.5 sm:!px-5 whitespace-nowrap"
               >
                 <span className="hidden sm:inline">Get Instant Quote</span>
                 <span className="sm:hidden">Quote</span>
               </Link>
-              <a href="tel:0752308293" aria-label="Call (07) 5230 8293" className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold text-sm transition-colors flex items-center">
+              <a href="tel:0752308293" aria-label="Call (07) 5230 8293" className="btn btn-ink btn-sm !px-3 sm:!px-5 whitespace-nowrap">
                 <Phone className="w-4 h-4 sm:mr-1.5" />
                 <span className="hidden sm:inline">(07) 5230 8293</span>
               </a>
@@ -171,7 +167,7 @@ export default function Layout({ children, currentPageName }) {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-                className="lg:hidden ml-1 p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+                className="lg:hidden ml-0.5 p-2 text-ink hover:bg-paper-2 rounded-lg transition-colors"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -185,68 +181,68 @@ export default function Layout({ children, currentPageName }) {
             out of the document flow so a long menu can never make the sticky
             header taller than the screen. */}
         {mobileMenuOpen && (
-          <div className="mobile-menu-panel lg:hidden absolute inset-x-0 top-full overflow-y-auto overscroll-contain border-t border-gray-100 bg-white shadow-lg">
+          <div className="mobile-menu-panel lg:hidden absolute inset-x-0 top-full overflow-y-auto overscroll-contain border-t-2 border-b-2 border-ink bg-paper shadow-lg">
             <nav className="max-w-7xl mx-auto px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] space-y-1">
-              <div className="px-3 pt-3 pb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">Residential</div>
-              <Link to="/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <div className="px-3 pt-3 pb-1 text-xs font-bold text-ochre-3 uppercase tracking-[.12em]">Residential</div>
+              <Link to="/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Window Cleaning
               </Link>
-              <Link to="/roof-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/roof-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Roof Cleaning
               </Link>
-              <Link to="/pressure-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/pressure-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Pressure Cleaning
               </Link>
-              <Link to="/house-softwash/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/house-softwash/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 House Softwash
               </Link>
-              <Link to="/gutter-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/gutter-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Gutter Cleaning
               </Link>
-              <Link to="/solar-panel-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/solar-panel-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Solar Panel Cleaning
               </Link>
-              <Link to="/bird-proofing/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/bird-proofing/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Solar Panel Bird Proofing
               </Link>
 
-              <div className="px-3 pt-3 pb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">Commercial & Strata</div>
-              <Link to="/commercial/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <div className="px-3 pt-3 pb-1 text-xs font-bold text-ochre-3 uppercase tracking-[.12em]">Commercial & Strata</div>
+              <Link to="/commercial/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Window Cleaning
               </Link>
-              <Link to="/commercial/roof-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/roof-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Roof Cleaning
               </Link>
-              <Link to="/commercial/pressure-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/pressure-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Pressure Cleaning
               </Link>
-              <Link to="/commercial/house-softwash/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/house-softwash/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Building Softwash
               </Link>
-              <Link to="/commercial/gutter-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/gutter-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Gutter Cleaning
               </Link>
-              <Link to="/commercial/solar-panel-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/solar-panel-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Solar Panel Cleaning
               </Link>
-              <Link to="/commercial/bird-proofing/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/bird-proofing/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Solar Bird Proofing
               </Link>
 
-              <div className="border-t border-gray-100 mt-2 pt-2">
-                <Link to="/commercial/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Commercial &amp; Strata</Link>
-                <Link to="/window-cleaning-plans/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Window Cleaning Plans</Link>
-                <Link to="/instant-quote/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Get Instant Quote</Link>
-                <Link to="/guides/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Expert Guides</Link>
+              <div className="border-t border-rule mt-2 pt-2">
+                <Link to="/commercial/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors">Commercial &amp; Strata</Link>
+                <Link to="/window-cleaning-plans/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors">Window Cleaning Plans</Link>
+                <Link to="/instant-quote/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors">Get Instant Quote</Link>
+                <Link to="/guides/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors">Expert Guides</Link>
               </div>
 
-              <div className="border-t border-gray-100 mt-2 pt-2 flex items-center gap-4 px-3 py-2 text-xs text-gray-500">
+              <div className="border-t border-rule mt-2 pt-2 flex items-center gap-4 px-3 py-2 text-xs text-ink-3">
                 <div className="flex items-center">
-                  <Shield className="w-3.5 h-3.5 mr-1 text-blue-600" />
+                  <Shield className="w-3.5 h-3.5 mr-1 text-ochre-2" />
                   Fully Insured
                 </div>
                 <div className="flex items-center">
-                  <Users className="w-3.5 h-3.5 mr-1 text-blue-600" />
+                  <Users className="w-3.5 h-3.5 mr-1 text-ochre-2" />
                   Police Checked
                 </div>
               </div>
@@ -266,101 +262,90 @@ export default function Layout({ children, currentPageName }) {
       {currentPageName !== "InstantQuote" && currentPageName !== "InstantQuoteLanding" && <QuoteCTA variant="section" />}
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-5 gap-8">
-            <div>
-              <div className="flex items-center space-x-3 mb-4">
-                 <picture>
-                   <source srcSet="/images/logo.avif" type="image/avif" />
-                   <img src="/images/logo.png" alt="Gold Coast Window and Pressure Cleaning logo" width="48" height="48" className="h-12 w-12 object-contain bg-white rounded-lg p-1" loading="lazy" decoding="async" />
-                 </picture>
-                <div>
-                  {/* h2/h3, not h3/h4: the footer must not skip a heading level on
-                      pages whose body has only an h1 (e.g. /instant-quote/).
-                      Tailwind sizing is explicit, so the design is unchanged. */}
-                  <h2 className="text-lg font-bold leading-tight">Gold Coast Window and Pressure Cleaning</h2>
-                      <p className="text-gray-300 text-xs">Your Trusted Local Cleaning Professionals</p>
-                </div>
+      <footer className="bg-ink text-paper border-t-2 border-ink">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+          <div className="grid gap-10 md:grid-cols-12">
+            <div className="md:col-span-4">
+              <div className="mb-5">
+                <Logo onInk markClassName="w-12 h-12" />
               </div>
-              <p className="text-gray-300 text-sm">
-                Gold Coast's premier exterior cleaning service. Fully insured and police-checked staff 
+              {/* h2/h3, not h3/h4: the footer must not skip a heading level on
+                  pages whose body has only an h1 (e.g. /instant-quote/). */}
+              <h2 className="sr-only">Gold Coast Window and Pressure Cleaning</h2>
+              <p className="text-paper-2/80 text-[15px] leading-relaxed max-w-[38ch]">
+                Gold Coast's premier exterior cleaning service. Fully insured and police-checked staff
                 for your complete peace of mind.
               </p>
+              <div className="flex items-center text-ochre mt-5">
+                <Star className="w-4 h-4 fill-current mr-1" />
+                <Star className="w-4 h-4 fill-current mr-1" />
+                <Star className="w-4 h-4 fill-current mr-1" />
+                <Star className="w-4 h-4 fill-current mr-1" />
+                <Star className="w-4 h-4 fill-current mr-1" />
+                <span className="text-paper text-sm ml-2">5.0 Rating</span>
+              </div>
             </div>
-            
-            <div className="md:col-span-3 flex justify-center">
-              <div className="text-center">
-                <h3 className="font-semibold mb-4">Our Services</h3>
-                <div className="flex gap-16">
-                  <div className="space-y-2 text-sm text-gray-300">
-                    <Link to="/roof-cleaning/" className="block hover:text-white transition-colors">Roof Cleaning</Link>
-                    <Link to="/window-cleaning/" className="block hover:text-white transition-colors">Window Cleaning</Link>
-                    <Link to="/window-cleaning-plans/" className="block hover:text-white transition-colors">Window Cleaning Plans</Link>
-                    <Link to="/house-softwash/" className="block hover:text-white transition-colors">House &amp; Building Softwash</Link>
-                    <Link to="/pressure-cleaning/" className="block hover:text-white transition-colors">Pressure Cleaning</Link>
-                  </div>
-                  <div className="space-y-2 text-sm text-gray-300">
-                    <Link to="/gutter-cleaning/" className="block hover:text-white transition-colors">Gutter Cleaning</Link>
-                    <Link to="/solar-panel-cleaning/" className="block hover:text-white transition-colors">Solar Panel Cleaning</Link>
-                    <Link to="/bird-proofing/" className="block hover:text-white transition-colors">Solar Panel Bird Proofing</Link>
-                    <Link to="/commercial/" className="block hover:text-white transition-colors">Commercial &amp; Strata</Link>
-                    <Link to="/guides/" className="block hover:text-white transition-colors">Expert Guides</Link>
-                  </div>
+
+            <div className="md:col-span-5">
+              <h3 className="font-sans text-xs font-bold uppercase tracking-[.14em] text-ochre mb-4">Our Services</h3>
+              <div className="grid grid-cols-2 gap-x-8">
+                <div className="space-y-2.5 text-[15px] text-paper-2/85">
+                  <Link to="/roof-cleaning/" className="block hover:text-ochre transition-colors">Roof Cleaning</Link>
+                  <Link to="/window-cleaning/" className="block hover:text-ochre transition-colors">Window Cleaning</Link>
+                  <Link to="/window-cleaning-plans/" className="block hover:text-ochre transition-colors">Window Cleaning Plans</Link>
+                  <Link to="/house-softwash/" className="block hover:text-ochre transition-colors">House &amp; Building Softwash</Link>
+                  <Link to="/pressure-cleaning/" className="block hover:text-ochre transition-colors">Pressure Cleaning</Link>
+                </div>
+                <div className="space-y-2.5 text-[15px] text-paper-2/85">
+                  <Link to="/gutter-cleaning/" className="block hover:text-ochre transition-colors">Gutter Cleaning</Link>
+                  <Link to="/solar-panel-cleaning/" className="block hover:text-ochre transition-colors">Solar Panel Cleaning</Link>
+                  <Link to="/bird-proofing/" className="block hover:text-ochre transition-colors">Solar Panel Bird Proofing</Link>
+                  <Link to="/commercial/" className="block hover:text-ochre transition-colors">Commercial &amp; Strata</Link>
+                  <Link to="/guides/" className="block hover:text-ochre transition-colors">Expert Guides</Link>
                 </div>
               </div>
             </div>
 
-            <div>
-              <h3 className="font-semibold mb-4">Contact Us</h3>
-              <div className="space-y-2 text-sm text-gray-300">
-                <div className="flex items-center">
-                  <Phone className="w-4 h-4 mr-2" />
-                  (07) 5230 8293
-                </div>
-                <Link to="/about/" className="block hover:text-white transition-colors">About Us</Link>
-                <Link to="/contact/" className="block hover:text-white transition-colors">Contact</Link>
-              </div>
-              
-              <div className="mt-4">
-                <div className="flex items-center text-yellow-400 mb-2">
-                  <Star className="w-4 h-4 fill-current mr-1" />
-                  <Star className="w-4 h-4 fill-current mr-1" />
-                  <Star className="w-4 h-4 fill-current mr-1" />
-                  <Star className="w-4 h-4 fill-current mr-1" />
-                  <Star className="w-4 h-4 fill-current mr-1" />
-                  <span className="text-white text-sm ml-2">5.0 Rating</span>
-                </div>
+            <div className="md:col-span-3">
+              <h3 className="font-sans text-xs font-bold uppercase tracking-[.14em] text-ochre mb-4">Contact Us</h3>
+              <a href="tel:0752308293" className="inline-flex items-center font-display font-bold text-2xl text-paper hover:text-ochre transition-colors">
+                <Phone className="w-5 h-5 mr-2 text-ochre" />
+                (07) 5230 8293
+              </a>
+              <div className="space-y-2.5 text-[15px] text-paper-2/85 mt-4">
+                <Link to="/instant-quote/" className="block hover:text-ochre transition-colors">Get an instant quote</Link>
+                <Link to="/about/" className="block hover:text-ochre transition-colors">About Us</Link>
+                <Link to="/contact/" className="block hover:text-ochre transition-colors">Contact</Link>
               </div>
             </div>
           </div>
-          
+
           {/* Service Areas + Map */}
-          <div className="border-t border-gray-800 mt-8 pt-8">
+          <div className="border-t border-paper/15 mt-10 pt-10">
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-1">
-                <Link to="/service-areas/" className="block hover:text-blue-400 transition-colors">
-                  <h3 className="font-semibold mb-4">Service Areas — View All Suburbs</h3>
+                <Link to="/service-areas/" className="inline-block group">
+                  <h3 className="font-sans text-xs font-bold uppercase tracking-[.14em] text-ochre mb-4 group-hover:text-paper transition-colors">Service Areas — View All Suburbs</h3>
                 </Link>
-                <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-300">
+                <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[15px] text-paper-2/85">
                   {["Burleigh Heads", "Surfers Paradise", "Broadbeach", "Southport", "Robina",
                     "Palm Beach", "Coomera", "Nerang", "Helensvale", "Currumbin",
                     "Coolangatta", "Hope Island", "Mermaid Beach", "Tweed Heads", "Kingscliff"].map(suburb => {
                     const slug = suburb.toLowerCase().replace(/ /g, '-');
                     return (
-                      <Link key={slug} to={`/window-cleaning/${slug}/`} className="hover:text-white transition-colors">
+                      <Link key={slug} to={`/window-cleaning/${slug}/`} className="hover:text-ochre transition-colors">
                         {suburb}
                       </Link>
                     );
                   })}
                 </div>
               </div>
-              <div className="flex-shrink-0 w-full md:w-72 rounded-lg overflow-hidden">
+              <div className="flex-shrink-0 w-full md:w-72 rounded-xl overflow-hidden border-2 border-paper/25">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14083.42582439664!2d153.41225468715817!3d-28.059407199999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4da98023da1e33a5%3A0x8802b89fee690ea8!2sGold%20Coast%20Window%20and%20Pressure%20Cleaning!5e0!3m2!1sen!2sau!4v1775596752940!5m2!1sen!2sau"
                   width="100%"
                   height="200"
-                  style={{ border: 0 }}
+                  style={{ border: 0, display: "block" }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -370,25 +355,23 @@ export default function Layout({ children, currentPageName }) {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8">
-            <div className="text-center text-gray-300 text-sm mb-2">
-              <p>© {new Date().getFullYear()} Gold Coast Window and Pressure Cleaning.</p>
-            </div>
+          <div className="border-t border-paper/15 mt-10 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-sm text-paper-2/70">
+            <p>© {new Date().getFullYear()} Gold Coast Window and Pressure Cleaning.</p>
             {/* Trust-anchor links. Agents check about/contact/privacy before
                 recommending a business, and they need to be reachable from
                 every page, not just the sitemap. */}
-            <p className="text-sm text-gray-400 text-center">
-              <Link to="/about/" className="hover:text-white transition-colors">About</Link>
+            <p>
+              <Link to="/about/" className="hover:text-paper transition-colors">About</Link>
               <span className="mx-2">·</span>
-              <Link to="/contact/" className="hover:text-white transition-colors">Contact</Link>
+              <Link to="/contact/" className="hover:text-paper transition-colors">Contact</Link>
               <span className="mx-2">·</span>
-              <Link to="/privacy/" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/privacy/" className="hover:text-paper transition-colors">Privacy Policy</Link>
               <span className="mx-2">·</span>
-              <a href="/for-agents/" className="hover:text-white transition-colors">For AI Agents</a>
+              <a href="/for-agents/" className="hover:text-paper transition-colors">For AI Agents</a>
               <span className="mx-2">·</span>
-              <a href="/for-agents/#rest-api" className="hover:text-white transition-colors">API</a>
+              <a href="/for-agents/#rest-api" className="hover:text-paper transition-colors">API</a>
             </p>
-            <p className="text-sm text-gray-400 text-center mt-1">Last updated: September 2026</p>
+            <p>Last updated: September 2026</p>
           </div>
         </div>
       </footer>

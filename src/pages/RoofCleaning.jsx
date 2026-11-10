@@ -1,5 +1,6 @@
 
 import React from "react";
+import FactIcon from "../components/FactIcon";
 import QuoteHero from "../components/QuoteHero";
 import Benefits from "../components/Benefits";
 import QuoteForm from "../components/QuoteForm";
@@ -134,7 +135,7 @@ export default function RoofCleaning() {
       />
 
       {/* About Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -144,33 +145,33 @@ export default function RoofCleaning() {
                   src="/images/roof-secondary.jpg"
                   alt="Before and after roof cleaning showing lichen removal on concrete tiles"
                   loading="lazy"
-                  className="rounded-2xl shadow-lg" decoding="async" width="1024" height="682" />
+                  className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre" decoding="async" width="1024" height="682" />
               </picture>
 
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
                 Your Trusted Local Roof Cleaning Experts
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-6 leading-relaxed">
                 We're a trusted local business committed to transparent, friendly communication. All staff are 
                 police-checked for your complete peace of mind, and we're fully insured for liability and damages.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-8 leading-relaxed">
                 Our honest, clear communication means no hidden costs or surprises.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Manufacturer-approved cleaning methods</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Manufacturer-approved cleaning methods</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">EPA-compliant environmentally safe process</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">EPA-compliant environmentally safe process</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Respectful and well paid staff who take pride in their work</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Respectful and well paid staff who take pride in their work</span>
                 </div>
               </div>
             </div>
@@ -179,33 +180,31 @@ export default function RoofCleaning() {
       </section>
 
       {/* Service Description */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
               Our Comprehensive Roof Cleaning Process
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-ink-2 max-w-3xl">
               Our roof cleaning service includes a full treatment to kill organic growth, gentle scrubbing to remove dirt and grime, 
               and a low-pressure rinse to make your roof shine—all while protecting paint and surface integrity.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 mb-12">
             {[
-              { num: "1", color: "slate", title: "Safety Setup", desc: "Non-slip footwear, harness anchor points, and neighbour notification. Every job starts safe." },
-              { num: "2", color: "blue", title: "Roof Inspection", desc: "We check for cracked tiles, rusted flashings, mortar failure, and blocked valleys before any water is applied." },
-              { num: "3", color: "red", title: "Anti-Microbial Pre-Treatment", desc: "A biodegradable solution kills moss, lichen, and algae at root level — preventing regrowth." },
-              { num: "4", color: "amber", title: "Soft-Brush Agitation", desc: "Gentle scrubbing loosens embedded organic matter and grime without scratching or dislodging tiles." },
-              { num: "5", color: "green", title: "Low-Pressure Rinse", desc: "Controlled low-pressure washing removes all residue and reveals a clean surface — no paint or mortar damage." },
-              { num: "6", color: "purple", title: "Final Inspection + Sealant", desc: "We inspect the result, clear gutters of dislodged debris, and offer optional anti-moss sealant for lasting protection." }
+              { num: "1", title: "Safety Setup", desc: "Non-slip footwear, harness anchor points, and neighbour notification. Every job starts safe." },
+              { num: "2", title: "Roof Inspection", desc: "We check for cracked tiles, rusted flashings, mortar failure, and blocked valleys before any water is applied." },
+              { num: "3", title: "Anti-Microbial Pre-Treatment", desc: "A biodegradable solution kills moss, lichen, and algae at root level — preventing regrowth." },
+              { num: "4", title: "Soft-Brush Agitation", desc: "Gentle scrubbing loosens embedded organic matter and grime without scratching or dislodging tiles." },
+              { num: "5", title: "Low-Pressure Rinse", desc: "Controlled low-pressure washing removes all residue and reveals a clean surface — no paint or mortar damage." },
+              { num: "6", title: "Final Inspection + Sealant", desc: "We inspect the result, clear gutters of dislodged debris, and offer optional anti-moss sealant for lasting protection." }
             ].map((step, i) => (
-              <div key={i} className="text-center">
-                <div className={`w-12 h-12 bg-${step.color}-100 rounded-full flex items-center justify-center mx-auto mb-3`}>
-                  <span className={`text-lg font-bold text-${step.color}-600`}>{step.num}</span>
-                </div>
-                <h3 className="text-sm font-semibold mb-2">{step.title}</h3>
-                <p className="text-gray-600 text-xs leading-relaxed">{step.desc}</p>
+              <div key={i} className="border-t-2 border-ink pt-4">
+                <span className="block font-display italic text-2xl text-ochre-2 mb-2">0{step.num}</span>
+                <h3 className="text-base font-semibold mb-2">{step.title}</h3>
+                <p className="text-ink-2 text-sm leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -213,13 +212,13 @@ export default function RoofCleaning() {
       </section>
 
       {/* Gold Coast Climate Section */}
-      <section className="py-16 bg-orange-50">
+      <section className="py-16 bg-ochre-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">
               Why Gold Coast Roofs Need Cleaning More Often
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-ink-2 max-w-3xl">
               Gold Coast's subtropical coastal environment is one of the most demanding for roof surfaces in Australia.
             </p>
           </div>
@@ -256,10 +255,10 @@ export default function RoofCleaning() {
                 desc: "Subtropical hinterland trees shed year-round. Leaf debris accumulates in valleys and gutters, trapping moisture and providing organic matter that feeds moss, algae, and lichen colonies."
               }
             ].map((item, i) => (
-              <div key={i} className="bg-white rounded-xl p-6 shadow-sm">
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+              <div key={i} className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+                <FactIcon icon={item.icon} className="mb-3" />
+                <h3 className="text-lg font-semibold text-ink mb-2">{item.title}</h3>
+                <p className="text-ink-2 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -267,20 +266,20 @@ export default function RoofCleaning() {
       </section>
 
       {/* Roof Type Guide */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">
+          <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">
             Roof Type Cleaning Guide
           </h2>
-          <p className="text-gray-600 text-center mb-10 text-lg">Different roof materials require different techniques. Here's what we recommend for each.</p>
+          <p className="text-ink-2 mb-10 text-lg max-w-3xl">Different roof materials require different techniques. Here's what we recommend for each.</p>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="text-left p-4 font-semibold text-gray-700 border border-gray-200">Roof Type</th>
-                  <th className="text-left p-4 font-semibold text-gray-700 border border-gray-200">Recommended Method</th>
-                  <th className="text-left p-4 font-semibold text-gray-700 border border-gray-200">Cleaning Frequency</th>
-                  <th className="text-left p-4 font-semibold text-gray-700 border border-gray-200">Key Concerns</th>
+                <tr className="bg-paper-2">
+                  <th className="text-left p-4 font-semibold text-ink-2 border border-rule">Roof Type</th>
+                  <th className="text-left p-4 font-semibold text-ink-2 border border-rule">Recommended Method</th>
+                  <th className="text-left p-4 font-semibold text-ink-2 border border-rule">Cleaning Frequency</th>
+                  <th className="text-left p-4 font-semibold text-ink-2 border border-rule">Key Concerns</th>
                 </tr>
               </thead>
               <tbody>
@@ -289,11 +288,11 @@ export default function RoofCleaning() {
                   ["Metal (Colorbond, Zincalume)", "Low-pressure soft wash", "Every 2–3 years", "Salt corrosion, rust stains, sealant degradation"],
                   ["Flat Membrane / TPO", "Gentle hand wash + soft brush", "Annually", "UV degradation, debris blockage, ponding water"]
                 ].map(([type, method, freq, concerns], i) => (
-                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                    <td className="p-4 font-medium text-gray-900 border border-gray-200">{type}</td>
-                    <td className="p-4 text-gray-700 border border-gray-200">{method}</td>
-                    <td className="p-4 text-gray-700 border border-gray-200">{freq}</td>
-                    <td className="p-4 text-gray-600 text-sm border border-gray-200">{concerns}</td>
+                  <tr key={i} className={i % 2 === 0 ? "bg-paper-white" : "bg-paper"}>
+                    <td className="p-4 font-medium text-ink border border-rule">{type}</td>
+                    <td className="p-4 text-ink-2 border border-rule">{method}</td>
+                    <td className="p-4 text-ink-2 border border-rule">{freq}</td>
+                    <td className="p-4 text-ink-2 text-sm border border-rule">{concerns}</td>
                   </tr>
                 ))}
               </tbody>
@@ -307,10 +306,10 @@ export default function RoofCleaning() {
         title="The Benefits of Professional Roof Cleaning" />
 
       {/* Signs Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Signs Your Roof Needs Cleaning</h2>
-          <p className="text-gray-600 text-center mb-10">If you notice any of the following, book a professional clean before damage sets in.</p>
+          <h2 className="text-3xl font-bold text-ink mb-4">Signs Your Roof Needs Cleaning</h2>
+          <p className="text-ink-2 mb-10 max-w-3xl">If you notice any of the following, book a professional clean before damage sets in.</p>
           <div className="grid md:grid-cols-2 gap-4">
             {[
               { icon: "⬛", sign: "Dark streaks or black staining", detail: "Caused by algae (Gloeocapsa magma) — very common in Gold Coast's humid climate." },
@@ -320,11 +319,11 @@ export default function RoofCleaning() {
               { icon: "👃", sign: "Musty smell in ceiling space", detail: "After rain, a musty odour can indicate biological growth trapping moisture under tiles." },
               { icon: "🎨", sign: "Peeling or chalking paint", detail: "On metal roofs, paint breakdown from salt and UV accelerates without regular cleaning." }
             ].map((item, i) => (
-              <div key={i} className="flex items-start gap-4 bg-white rounded-xl p-5 shadow-sm">
-                <span className="text-2xl flex-shrink-0">{item.icon}</span>
+              <div key={i} className="flex items-start gap-4 bg-paper-white rounded-[14px] border-2 border-ink p-5">
+                <FactIcon icon={item.icon} small />
                 <div>
-                  <p className="font-semibold text-gray-900">{item.sign}</p>
-                  <p className="text-sm text-gray-600 mt-1">{item.detail}</p>
+                  <p className="font-semibold text-ink">{item.sign}</p>
+                  <p className="text-sm text-ink-2 mt-1">{item.detail}</p>
                 </div>
               </div>
             ))}
@@ -335,25 +334,25 @@ export default function RoofCleaning() {
       <GoogleReviews />
 
       {/* Service Areas */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Gold Coast Roof Cleaning — Areas We Service</h2>
-          <p className="text-gray-600 leading-relaxed text-lg">
+      <section className="py-12 bg-paper">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-ink mb-4">Gold Coast Roof Cleaning — Areas We Service</h2>
+          <p className="text-ink-2 leading-relaxed text-lg">
             We provide professional roof cleaning across the entire Gold Coast region including{" "}
-            <Link to="/roof-cleaning/surfers-paradise/" className="text-blue-600 hover:underline">Surfers Paradise</Link>,{" "}
-            <Link to="/roof-cleaning/broadbeach/" className="text-blue-600 hover:underline">Broadbeach</Link>,{" "}
-            <Link to="/roof-cleaning/robina/" className="text-blue-600 hover:underline">Robina</Link>,{" "}
-            <Link to="/roof-cleaning/burleigh-heads/" className="text-blue-600 hover:underline">Burleigh Heads</Link>,{" "}
-            <Link to="/roof-cleaning/palm-beach/" className="text-blue-600 hover:underline">Palm Beach</Link>,{" "}
-            <Link to="/roof-cleaning/currumbin/" className="text-blue-600 hover:underline">Currumbin</Link>,{" "}
-            <Link to="/roof-cleaning/coolangatta/" className="text-blue-600 hover:underline">Coolangatta</Link>,{" "}
-            <Link to="/roof-cleaning/southport/" className="text-blue-600 hover:underline">Southport</Link>,{" "}
-            <Link to="/roof-cleaning/nerang/" className="text-blue-600 hover:underline">Nerang</Link>,{" "}
-            <Link to="/roof-cleaning/mudgeeraba/" className="text-blue-600 hover:underline">Mudgeeraba</Link>,{" "}
-            <Link to="/roof-cleaning/elanora/" className="text-blue-600 hover:underline">Elanora</Link>,{" "}
-            <Link to="/roof-cleaning/tugun/" className="text-blue-600 hover:underline">Tugun</Link>, and{" "}
-            <Link to="/roof-cleaning/mermaid-waters/" className="text-blue-600 hover:underline">Mermaid Waters</Link>.{" "}
-            <a href="tel:0752308293" className="text-blue-600 hover:underline">Call us</a> to confirm coverage for your suburb.
+            <Link to="/roof-cleaning/surfers-paradise/" className="text-ochre-3 hover:underline">Surfers Paradise</Link>,{" "}
+            <Link to="/roof-cleaning/broadbeach/" className="text-ochre-3 hover:underline">Broadbeach</Link>,{" "}
+            <Link to="/roof-cleaning/robina/" className="text-ochre-3 hover:underline">Robina</Link>,{" "}
+            <Link to="/roof-cleaning/burleigh-heads/" className="text-ochre-3 hover:underline">Burleigh Heads</Link>,{" "}
+            <Link to="/roof-cleaning/palm-beach/" className="text-ochre-3 hover:underline">Palm Beach</Link>,{" "}
+            <Link to="/roof-cleaning/currumbin/" className="text-ochre-3 hover:underline">Currumbin</Link>,{" "}
+            <Link to="/roof-cleaning/coolangatta/" className="text-ochre-3 hover:underline">Coolangatta</Link>,{" "}
+            <Link to="/roof-cleaning/southport/" className="text-ochre-3 hover:underline">Southport</Link>,{" "}
+            <Link to="/roof-cleaning/nerang/" className="text-ochre-3 hover:underline">Nerang</Link>,{" "}
+            <Link to="/roof-cleaning/mudgeeraba/" className="text-ochre-3 hover:underline">Mudgeeraba</Link>,{" "}
+            <Link to="/roof-cleaning/elanora/" className="text-ochre-3 hover:underline">Elanora</Link>,{" "}
+            <Link to="/roof-cleaning/tugun/" className="text-ochre-3 hover:underline">Tugun</Link>, and{" "}
+            <Link to="/roof-cleaning/mermaid-waters/" className="text-ochre-3 hover:underline">Mermaid Waters</Link>.{" "}
+            <a href="tel:0752308293" className="text-ochre-3 hover:underline">Call us</a> to confirm coverage for your suburb.
           </p>
         </div>
       </section>
@@ -363,21 +362,21 @@ export default function RoofCleaning() {
       <FAQ faqs={faqs} title="Roof Cleaning FAQ" guideLink={[{ label: "Guide: Does roof cleaning damage tiles?", href: "/guides/does-roof-cleaning-damage-tiles/" }, { label: "Guide: Pressure cleaning vs soft washing — which is right for roof tiles?", href: "/guides/pressure-cleaning-vs-soft-washing/" }]} />
 
       {/* Related Services */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Related Services</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link to="/gutter-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Gutter Cleaning</h3>
-              <p className="text-sm text-gray-600">Keep your gutters flowing freely with professional cleaning and maintenance.</p>
+            <Link to="/gutter-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Gutter Cleaning</h3>
+              <p className="text-sm text-ink-2">Keep your gutters flowing freely with professional cleaning and maintenance.</p>
             </Link>
-            <Link to="/solar-panel-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Solar Panel Cleaning</h3>
-              <p className="text-sm text-gray-600">Maintain solar panel efficiency with regular professional cleaning service.</p>
+            <Link to="/solar-panel-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Solar Panel Cleaning</h3>
+              <p className="text-sm text-ink-2">Maintain solar panel efficiency with regular professional cleaning service.</p>
             </Link>
-            <Link to="/window-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Window Cleaning</h3>
-              <p className="text-sm text-gray-600">Crystal-clear windows inside and out, streak-free results. Residential and commercial window cleaning across the Gold Coast.</p>
+            <Link to="/window-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Window Cleaning</h3>
+              <p className="text-sm text-ink-2">Crystal-clear windows inside and out, streak-free results. Residential and commercial window cleaning across the Gold Coast.</p>
             </Link>
           </div>
         </div>

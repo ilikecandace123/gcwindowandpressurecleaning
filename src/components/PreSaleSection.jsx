@@ -31,19 +31,19 @@ const COPY = {
 export default function PreSaleSection({ variant = "window" }) {
   const c = COPY[variant] || COPY.window;
   return (
-    <section className="py-16 bg-white" aria-labelledby={`presale-${variant}`}>
+    <section className="py-16 bg-paper-white" aria-labelledby={`presale-${variant}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3 mb-4">
-          <Home className="w-7 h-7 text-blue-600" aria-hidden="true" />
-          <h2 id={`presale-${variant}`} className="text-3xl font-bold text-gray-900">
+          <Home className="w-7 h-7 text-ochre-3" aria-hidden="true" />
+          <h2 id={`presale-${variant}`} className="text-3xl font-bold text-ink">
             {c.heading}
           </h2>
         </div>
-        <p className="text-lg text-gray-700 mb-6">{c.answer}</p>
+        <p className="text-lg text-ink-2 mb-6">{c.answer}</p>
         <ul className="space-y-3 mb-8">
           {c.points.map((p) => (
-            <li key={p} className="flex items-start gap-3 text-gray-700">
-              <CalendarCheck className="w-5 h-5 mt-1 text-green-600 shrink-0" aria-hidden="true" />
+            <li key={p} className="flex items-start gap-3 text-ink-2">
+              <CalendarCheck className="w-5 h-5 mt-1 text-moss shrink-0" aria-hidden="true" />
               <span>{p}</span>
             </li>
           ))}
@@ -51,14 +51,14 @@ export default function PreSaleSection({ variant = "window" }) {
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
             to="/guides/cleaning-before-selling-your-house-gold-coast/"
-            className="inline-flex items-center justify-center font-semibold text-blue-600 hover:text-blue-700"
+            className="inline-flex items-center justify-center font-semibold text-ochre-3 hover:text-ink"
           >
             Guide: What cleaning should you do before selling your house?
             <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
           </Link>
           <Link
             to="/instant-quote/"
-            className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+            className="btn btn-ink"
           >
             Get an instant pre-sale quote
           </Link>

@@ -57,8 +57,8 @@ export default function WindowCleaningPlansLocation() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Page Not Found</h1>
-          <p className="text-gray-600 text-lg">The page you're looking for doesn't exist.</p>
+          <h1 className="text-4xl font-bold text-ink mb-4">Page Not Found</h1>
+          <p className="text-ink-2 text-lg">The page you're looking for doesn't exist.</p>
         </div>
       </div>
     );
@@ -131,7 +131,7 @@ export default function WindowCleaningPlansLocation() {
       />
 
       {/* Hero */}
-      <section className="relative bg-gray-900 text-white overflow-hidden">
+      <section className="relative bg-ink text-white overflow-hidden">
         <div className="absolute inset-0">
           <picture>
             <source srcSet="/images/services-banner.webp" type="image/webp" />
@@ -146,28 +146,28 @@ export default function WindowCleaningPlansLocation() {
             />
           </picture>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-950/85 via-blue-900/75 to-blue-950/85" />
+        <div className="absolute inset-0 bg-ink/80" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-center">
-          <span className="inline-flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium text-blue-100 mb-6">
-            <Sparkles className="w-4 h-4 mr-2 text-yellow-300" /> Pre-booked · Priority scheduled · Guaranteed
+          <span className="inline-flex items-center bg-paper-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium text-paper-2 mb-6">
+            <Sparkles className="w-4 h-4 mr-2 text-ochre" /> Pre-booked · Priority scheduled · Guaranteed
           </span>
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5">
             Window Cleaning Plans in {suburb.name}
           </h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto mb-8">
+          <p className="text-xl md:text-2xl text-paper-2 max-w-2xl mx-auto mb-8">
             Pre-booked, priority-scheduled window cleaning for {suburb.name} homes — crystal-clear views, all year
             round.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/instant-quote/"
-              className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-xl transition-colors"
+              className="btn btn-lg btn-primary"
             >
               Get My Plan Quote <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
-            <div className="flex items-center text-sm text-blue-100">
-              <Star className="w-4 h-4 fill-yellow-300 text-yellow-300 mr-1.5" />
+            <div className="flex items-center text-sm text-paper-2">
+              <Star className="w-4 h-4 fill-ochre text-ochre mr-1.5" />
               5.0 stars — 2500+ happy customers
             </div>
           </div>
@@ -175,24 +175,24 @@ export default function WindowCleaningPlansLocation() {
       </section>
 
       {/* Suburb-specific intro */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 text-blue-600 mb-4">
+          <div className="flex items-center gap-2 text-ochre-3 mb-4">
             <MapPin className="w-5 h-5" />
             <span className="font-semibold">{suburb.name}, Postcode {suburb.postcode}</span>
           </div>
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+          <p className="text-lg text-ink-2 leading-relaxed mb-6">
             A Window Cleaning Plan pre-books your exterior window and screen cleans in {suburb.name} at the frequency
             you choose — monthly, quarterly or half-yearly — with priority scheduling and $50–$150 off every single
             visit. {suburb.environmentalNote ? `It matters here more than most places: ${suburb.environmentalNote}` : ""}
           </p>
 
           {/* Local recommendation */}
-          <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-2">
+          <div className="bg-paper-2 border border-rule rounded-2xl p-6">
+            <h2 className="text-xl font-bold text-ink mb-2">
               Our recommendation for {suburb.name}: the {recommendation.plan} plan
             </h2>
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-ink-2 leading-relaxed">
               {recommendation.reason}
               {landmark ? ` Whether you're near ${landmark} or anywhere else in ${suburb.name}, your plan visits are scheduled automatically — you never have to remember to book.` : ""}
             </p>
@@ -203,22 +203,22 @@ export default function WindowCleaningPlansLocation() {
       <RecentJobs suburbSlug={suburbSlug} suburbName={suburb.name} serviceSlug="window-cleaning" />
 
       {/* How it works */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How it works</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">How it works</h2>
+            <p className="text-lg text-ink-2 max-w-2xl">
               Three simple steps, and your {suburb.name} windows stay clean for good.
             </p>
           </div>
           <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {PLAN_STEPS.map((step, i) => (
-              <div key={i} className="bg-white border border-gray-100 rounded-2xl p-7 text-center shadow-sm">
-                <div className="w-12 h-12 rounded-full bg-blue-600 text-white font-bold text-xl flex items-center justify-center mx-auto mb-4">
+              <div key={i} className="bg-paper-white rounded-[14px] border-2 border-ink p-7 text-center">
+                <div className="font-display italic text-3xl text-ochre-2 mb-3">
                   {i + 1}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{step.title}</h3>
-                <p className="text-gray-600 text-sm">{step.description}</p>
+                <h3 className="text-lg font-semibold text-ink mb-2">{step.title}</h3>
+                <p className="text-ink-2 text-sm">{step.description}</p>
               </div>
             ))}
           </div>
@@ -226,37 +226,37 @@ export default function WindowCleaningPlansLocation() {
       </section>
 
       {/* Tiers */}
-      <section className="py-16 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-900 text-white">
+      <section className="py-16 bg-ink text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
+          <div className="mb-10 max-w-3xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose your plan</h2>
           </div>
           {/* What plans cover — crucial for sign-ups, so it sits above the tiers */}
           <div className="mb-10">
             <PlanNote />
           </div>
-          <div className="text-gray-900 pt-4">
+          <div className="text-ink pt-4">
             <PlanTierCards />
           </div>
         </div>
       </section>
 
       {/* Inclusions */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Every plan includes</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-green-500 mx-auto rounded-full mb-10" />
-          <div className="bg-gray-50 border border-gray-100 rounded-2xl p-8 max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">Every plan includes</h2>
+          <div className="heading-rule mx-auto mb-10" />
+          <div className="bg-paper border border-rule rounded-2xl p-8 max-w-4xl mx-auto">
             <PlanInclusions />
           </div>
         </div>
       </section>
 
       {/* Why homeowners join */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">
               Why {suburb.name} homeowners join
             </h2>
           </div>
@@ -264,12 +264,12 @@ export default function WindowCleaningPlansLocation() {
             {PLAN_BENEFITS.map((b, i) => {
               const Icon = BENEFIT_ICONS[i] || CheckCircle;
               return (
-                <div key={i} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center">
-                  <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-5">
-                    <Icon className="w-7 h-7 text-blue-600" />
+                <div key={i} className="bg-paper-white rounded-[14px] border-2 border-ink p-8 text-center">
+                  <div className="w-14 h-14 bg-ochre-100 rounded-xl flex items-center justify-center mx-auto mb-5">
+                    <Icon className="w-7 h-7 text-ochre-3" />
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{b.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{b.description}</p>
+                  <h3 className="text-lg font-bold text-ink mb-2">{b.title}</h3>
+                  <p className="text-ink-2 text-sm leading-relaxed">{b.description}</p>
                 </div>
               );
             })}
@@ -282,11 +282,11 @@ export default function WindowCleaningPlansLocation() {
       <FAQ faqs={faqs} title={`Window Cleaning Plans in ${suburb.name} — FAQ`} />
 
       {/* One-off clean cross-link */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-paper-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-700">
+          <p className="text-ink-2">
             Just after a one-off clean instead?{" "}
-            <Link to={`/window-cleaning/${suburb.slug}/`} className="text-blue-600 font-semibold underline hover:text-blue-800">
+            <Link to={`/window-cleaning/${suburb.slug}/`} className="text-ochre-3 font-semibold underline hover:text-ink">
               See Window Cleaning in {suburb.name}
             </Link>
             .
@@ -296,18 +296,18 @@ export default function WindowCleaningPlansLocation() {
 
       {/* Nearby plan pages */}
       {nearbyWithPages.length > 0 && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-paper">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Plans also available nearby</h2>
+            <h2 className="text-3xl font-bold text-ink mb-8">Plans also available nearby</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {nearbyWithPages.map((nearby, idx) => (
                 <Link
                   key={idx}
                   to={`/window-cleaning-plans/${nearby.slug}/`}
-                  className="flex items-center justify-between p-4 bg-white rounded-lg hover:bg-blue-50 transition-colors border border-gray-100 hover:border-blue-200"
+                  className="flex items-center justify-between p-4 bg-paper-white rounded-lg hover:bg-paper-2 transition-colors border border-rule hover:border-rule"
                 >
-                  <span className="font-medium text-gray-900">Window Cleaning Plans in {nearby.name}</span>
-                  <ArrowRight className="w-4 h-4 text-blue-600 flex-shrink-0 ml-2" />
+                  <span className="font-medium text-ink">Window Cleaning Plans in {nearby.name}</span>
+                  <ArrowRight className="w-4 h-4 text-ochre-3 flex-shrink-0 ml-2" />
                 </Link>
               ))}
             </div>
@@ -316,19 +316,19 @@ export default function WindowCleaningPlansLocation() {
       )}
 
       {/* Final CTA */}
-      <section className="py-16 bg-blue-900 text-white">
+      <section className="py-16 bg-ink text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Shield className="w-10 h-10 mx-auto mb-4 text-green-400" />
+          <Shield className="w-10 h-10 mx-auto mb-4 text-ochre" />
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Never think about your windows again
           </h2>
-          <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-paper-2 mb-8 max-w-2xl mx-auto">
             Get your {suburb.name} plan price in about two minutes — pick your frequency, see your saving, and
             we&rsquo;ll take care of the rest.
           </p>
           <Link
             to="/instant-quote/"
-            className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-lg font-semibold text-lg shadow-xl transition-colors"
+            className="btn btn-lg btn-primary"
           >
             Get My Plan Quote <ArrowRight className="w-5 h-5 ml-2" />
           </Link>

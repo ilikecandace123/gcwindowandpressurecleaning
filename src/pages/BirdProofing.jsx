@@ -114,38 +114,38 @@ export default function BirdProofing() {
       />
 
       {/* About Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
                 Solar Panel Bird Proofing That Lasts
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-6 leading-relaxed">
                 We specialise in permanent, humane solar panel bird proofing for Gold Coast homes and businesses.
                 Pigeons and mynas love the sheltered space under your panels — and the mess, wiring damage and lost energy output
                 that follows is a headache nobody needs. Our marine-grade steel mesh seals that gap for good.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-8 leading-relaxed">
                 Every installation is warranty-safe (no drilling into your panels) and backed by our workmanship guarantee.
                 We also clean and disinfect the area under the panels first, so you're left with a fresh, protected solar system.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Marine-grade galvanised steel mesh</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Marine-grade galvanised steel mesh</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Warranty-safe panel clip installation</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Warranty-safe panel clip installation</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Humane, exclusion-only solutions</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Humane, exclusion-only solutions</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Workmanship guarantee</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Workmanship guarantee</span>
                 </div>
               </div>
             </div>
@@ -155,7 +155,7 @@ export default function BirdProofing() {
                 <img
                   src={SECONDARY_IMAGE}
                   alt="Pigeon nesting beneath rooftop solar panels showing why bird proofing is needed"
-                  className="rounded-2xl shadow-lg"
+                  className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre"
                   loading="lazy" decoding="async" width="980" height="400" />
               </picture>
             </div>
@@ -164,51 +164,51 @@ export default function BirdProofing() {
       </section>
 
       {/* Process */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
               Our Solar Panel Bird Proofing Process
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-ink-2 max-w-3xl">
               A proven four-step process that delivers permanent, humane protection for your solar system.
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-blue-600">1</span>
+              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-ochre-3">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Inspection</h3>
-              <p className="text-gray-600">
+              <p className="text-ink-2">
                 Full solar array assessment. Identify bird activity, entry points and any existing damage under the panels.
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-green-600">2</span>
+              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-ochre-3">2</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Clean & Disinfect</h3>
-              <p className="text-gray-600">
+              <p className="text-ink-2">
                 Remove existing nests, droppings and debris from under the panels. Disinfect the area before mesh goes on.
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-purple-600">3</span>
+              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-ochre-3">3</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Install Mesh</h3>
-              <p className="text-gray-600">
+              <p className="text-ink-2">
                 Fit marine-grade galvanised steel mesh around the entire solar array using warranty-safe panel clips.
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-orange-600">4</span>
+              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-ochre-3">4</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Guarantee</h3>
-              <p className="text-gray-600">
+              <p className="text-ink-2">
                 Final check for full coverage with no gaps. Backed by our long-term workmanship guarantee.
               </p>
             </div>
@@ -228,17 +228,17 @@ export default function BirdProofing() {
       <FAQ faqs={faqs} title="Solar Panel Bird Proofing FAQ" guideLink={{ label: "Guide: How do I get rid of birds nesting under my solar panels?", href: "/guides/birds-under-solar-panels/" }} />
 
       {/* Related Services */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Related Services</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/solar-panel-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Solar Panel Cleaning</h3>
-              <p className="text-sm text-gray-600">Maintain solar panel efficiency with regular professional cleaning service.</p>
+            <Link to="/solar-panel-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Solar Panel Cleaning</h3>
+              <p className="text-sm text-ink-2">Maintain solar panel efficiency with regular professional cleaning service.</p>
             </Link>
-            <Link to="/roof-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Roof Cleaning</h3>
-              <p className="text-sm text-gray-600">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
+            <Link to="/roof-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Roof Cleaning</h3>
+              <p className="text-sm text-ink-2">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
             </Link>
           </div>
         </div>

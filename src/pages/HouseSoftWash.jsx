@@ -106,7 +106,7 @@ export default function HouseSoftWash() {
       />
 
       {/* About Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -114,37 +114,37 @@ export default function HouseSoftWash() {
                 src="/images/softwash-secondary.jpg"
                 alt="Softwash cleaning removing mould and dirt from rendered house walls on the Gold Coast"
                 loading="lazy"
-                className="rounded-2xl shadow-lg" decoding="async" width="1024" height="683" />
+                className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre" decoding="async" width="1024" height="683" />
 
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
                 Your Trusted Local House Washing Specialists
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-6 leading-relaxed">
                 We're a trusted local business committed to transparent, friendly communication. All staff are 
                 police-checked for your complete peace of mind, and we're fully insured for liability and damages.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-8 leading-relaxed">
                 We proudly serve NDIS & Aged Care clients and keep you updated every step of the way. 
                 Our commitment to honest communication means no surprises – just professional results you can trust.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Gentle, surface-safe cleaning technology</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Gentle, surface-safe cleaning technology</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Comprehensive mould and organic stain removal</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Comprehensive mould and organic stain removal</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Spider web and wasp nest removal included</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Spider web and wasp nest removal included</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Eco-friendly solutions</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Eco-friendly solutions</span>
                 </div>
               </div>
             </div>
@@ -153,13 +153,13 @@ export default function HouseSoftWash() {
       </section>
 
       {/* Service Description */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
               Our Advanced Softwash Cleaning Process
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-ink-2 max-w-3xl">
               Unlike high-pressure washing, our softwash system uses specialised cleaning solutions and low pressure 
               to kill mould, mildew, and dirt at their source while protecting your property's surfaces.
             </p>
@@ -167,32 +167,32 @@ export default function HouseSoftWash() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-blue-600">1</span>
+              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-ochre-3">1</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Surface Assessment</h3>
-              <p className="text-sm text-gray-600">Evaluate surfaces and identify specific cleaning needs and delicate areas.</p>
+              <p className="text-sm text-ink-2">Evaluate surfaces and identify specific cleaning needs and delicate areas.</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-green-600">2</span>
+              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-ochre-3">2</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Pre-Treatment</h3>
-              <p className="text-sm text-gray-600">Apply specialised solutions to kill mould, mildew, and organic growth.</p>
+              <p className="text-sm text-ink-2">Apply specialised solutions to kill mould, mildew, and organic growth.</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-purple-600">3</span>
+              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-ochre-3">3</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Gentle Cleaning</h3>
-              <p className="text-sm text-gray-600">Low-pressure cleaning removes dirt and debris without surface damage.</p>
+              <p className="text-sm text-ink-2">Low-pressure cleaning removes dirt and debris without surface damage.</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-orange-600">4</span>
+              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-ochre-3">4</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Final Rinse</h3>
-              <p className="text-sm text-gray-600">Thorough rinse reveals clean surfaces and long-lasting results.</p>
+              <p className="text-sm text-ink-2">Thorough rinse reveals clean surfaces and long-lasting results.</p>
             </div>
           </div>
         </div>
@@ -210,21 +210,21 @@ export default function HouseSoftWash() {
       <FAQ faqs={faqs} title="House Softwash FAQ" guideLink={[{ label: "Guide: Why does my house grow mould outside — and how do I remove it?", href: "/guides/house-washing-mould-gold-coast/" }, { label: "Guide: Pressure cleaning vs soft washing — which is better?", href: "/guides/pressure-cleaning-vs-soft-washing/" }]} />
 
       {/* Related Services */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Related Services</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link to="/pressure-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Pressure Cleaning</h3>
-              <p className="text-sm text-gray-600">Powerful pressure cleaning for driveways, patios, and hard surfaces.</p>
+            <Link to="/pressure-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Pressure Cleaning</h3>
+              <p className="text-sm text-ink-2">Powerful pressure cleaning for driveways, patios, and hard surfaces.</p>
             </Link>
-            <Link to="/window-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Window Cleaning</h3>
-              <p className="text-sm text-gray-600">Streak-free professional window cleaning for crystal clear results.</p>
+            <Link to="/window-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Window Cleaning</h3>
+              <p className="text-sm text-ink-2">Streak-free professional window cleaning for crystal clear results.</p>
             </Link>
-            <Link to="/roof-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Roof Cleaning</h3>
-              <p className="text-sm text-gray-600">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
+            <Link to="/roof-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Roof Cleaning</h3>
+              <p className="text-sm text-ink-2">Professional roof cleaning to extend your roof's life and boost curb appeal.</p>
             </Link>
           </div>
         </div>
