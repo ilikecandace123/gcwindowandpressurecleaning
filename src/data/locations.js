@@ -180,7 +180,7 @@ export const SUBURBS = [
     landmarks: ["Mermaid Beach", "Broadwater", "Beach Promenade"],
     propertyMix: "Mermaid Beach hosts some of the Gold Coast's most expensive beachfront strips — including the famed Hedges Avenue 'Millionaires Row', mid-century beach houses, and tall boutique apartment towers.",
     environmentalNote: "Hedges Avenue and Albatross Avenue homes sit directly behind the primary dune with zero shelter — window cleaning here is functionally a monthly requirement if owners want clear glass.",
-    localHook: "We work several Hedges Avenue and Albatross Avenue properties where rope-access and water-fed pole gear is standard kit for the tall glass frontages.",
+    localHook: "We work several Hedges Avenue and Albatross Avenue properties where water-fed pole gear is standard kit for the tall glass frontages.",
     nearbySuburbs: ["Miami", "Mermaid Waters", "Broadbeach"]
   },
   {
@@ -228,7 +228,7 @@ export const SUBURBS = [
     landmarks: ["Surfers Paradise Beach", "Cavill Avenue", "Q1 Tower"],
     propertyMix: "Surfers Paradise is the Gold Coast's tallest and densest tower precinct — Q1 and the Soul, Circle on Cavill, and Chevron Renaissance cluster dominate a skyline of commercial and residential high-rises.",
     environmentalNote: "Tower glass here absorbs airborne salt, vehicle emissions from Surfers Paradise Boulevard, and holiday-crowd pollution — rostered façade cleaning is a base cost of owning strata here.",
-    localHook: "Our commercial rope-access and traverse-cradle crew handles scheduled façade cleaning on multiple Surfers towers; we also clean the mid-rises along Orchid and Ocean avenues.",
+    localHook: "We clean the low-rise and mid-rise buildings along Orchid and Ocean avenues that we can reach from the ground with water-fed poles.",
     nearbySuburbs: ["Broadbeach", "Main Beach", "Southport"]
   },
   {
@@ -290,7 +290,7 @@ export const SUBURBS = [
     landmarks: ["Reedy Creek", "Parks and Reserves", "Community Centre"],
     propertyMix: "Reedy Creek is a hillside residential suburb — 1990s–2010s architect-designed family homes on sloped blocks, some acreage pockets toward the M1 boundary, and townhouse enclaves near the shops.",
     environmentalNote: "Hillside two-storey homes here catch both morning ocean breeze salt and afternoon westerly dust — producing a layered residue that requires a pre-rinse before pole-and-brush cleaning.",
-    localHook: "We work a lot of Reedy Creek's sloped blocks where three-storey glass frontages on the downhill side need pole or rope-access work.",
+    localHook: "We work a lot of Reedy Creek's sloped blocks where three-storey glass frontages on the downhill side need water-fed pole work.",
     nearbySuburbs: ["Varsity Lakes", "Mudgeeraba", "Bonogin"]
   },
   {
@@ -786,7 +786,7 @@ export const SUBURBS = [
     landmarks: ["Residential Areas", "Parks", "Community Centre"],
     propertyMix: "Terranora is an elevated suburb overlooking the Terranora Inlet — 1990s–2000s architect-designed homes on ridge-line blocks, plus some acreage on the western side.",
     environmentalNote: "Ridge-line position exposes these homes to both morning estuary mist and afternoon westerlies — a two-direction environmental load that shortens cleaning-interval effectiveness.",
-    localHook: "Our Terranora work is dominated by the Fraser Drive ridge homes — two-storey, long glass frontages, and most need pole-access or rope-access.",
+    localHook: "Our Terranora work is dominated by the Fraser Drive ridge homes — two-storey, long glass frontages, and most need water-fed pole access.",
     nearbySuburbs: ["Banora Point", "Bilambil", "Cobaki"]
   },
   {
