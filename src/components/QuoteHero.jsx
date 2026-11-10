@@ -67,7 +67,7 @@ export default function QuoteHero({
                 />
               </picture>
             </div>
-            <div className="relative mt-5 lg:-mt-9 lg:-ml-8 lg:mr-8">
+            <div className="relative mt-6 lg:mt-7 lg:-ml-8 lg:mr-8">
               <QuoteCTA variant="hero" />
             </div>
           </div>

@@ -173,7 +173,7 @@ function Landing({ landing }) {
               <div
                 ref={cardRef}
                 id="quote-form"
-                className="relative mt-5 lg:-mt-9 lg:-ml-8 lg:mr-8 card p-5 sm:p-6 shadow-xl scroll-mt-24"
+                className="relative mt-6 lg:mt-7 lg:-ml-8 lg:mr-8 card p-5 sm:p-6 shadow-xl scroll-mt-24"
               >
                 <h2 className="font-display text-xl font-bold mb-3">Your {lower} price</h2>
                 <QuoteWizard key={landing.slug} embedded initialMode="instant" initialPhase="questions" initialServices={[landing.service]} />

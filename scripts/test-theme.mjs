@@ -100,6 +100,7 @@ console.log("\nHero photo is not covered by the quote card:");
     const src = read(f);
     ok(`${f} frames the photo`, src.includes("photo-frame"));
     ok(`${f} does not pin the quote card over the photo`, !/absolute[^"]*(?:bottom|inset)[^"]*card|card[^"]*absolute/.test(src));
+    ok(`${f} does not pull the quote card up over the photo`, !/-mt-\d[^"]*\bcard\b|lg:-mt-\d/.test(src));
   }
 }
 
