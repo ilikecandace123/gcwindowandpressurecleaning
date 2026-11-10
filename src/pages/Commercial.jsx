@@ -46,7 +46,7 @@ export default function Commercial() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-paper">
       <PageSEO
         title="Commercial & Strata Cleaning Gold Coast | All Services"
         description="Commercial and strata exterior cleaning on the Gold Coast: windows, roofs, pressure cleaning, softwash, gutters, solar and bird proofing. $20M insured."
@@ -65,7 +65,7 @@ export default function Commercial() {
       />
 
       {/* Trust strip — same one the commercial hubs use */}
-      <section className="py-8 bg-blue-600 text-white">
+      <section className="py-8 bg-ink text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div>
             <Shield className="w-7 h-7 mx-auto mb-2" />
@@ -87,11 +87,11 @@ export default function Commercial() {
       </section>
 
       {/* Service index */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Commercial Services</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">Commercial Services</h2>
+            <p className="text-lg text-ink-2 max-w-3xl">
               One contractor for the whole building exterior. Scheduled maintenance programs with a fixed price per
               visit, or one-off works for handovers, tenders and end-of-lease. Certificates of currency and site
               documentation provided on request.
@@ -103,17 +103,17 @@ export default function Commercial() {
               <Link
                 key={service.slug}
                 to={`/commercial/${service.slug}/`}
-                className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 flex flex-col p-7"
+                className="group bg-paper-white rounded-[14px] border-2 border-ink hover:shadow-hard-sm transition-all duration-300 hover:-translate-y-[2px] hover:-translate-x-[2px] flex flex-col p-7"
               >
-                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
+                <div className="w-12 h-12 rounded-xl bg-paper-2 text-ochre-3 flex items-center justify-center mb-5">
                   <Building2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold text-ink mb-2 group-hover:text-ochre-3 transition-colors">
                   {service.name}
                 </h3>
-                <p className="text-sm text-blue-700 font-medium mb-3">{service.subhead}</p>
-                <p className="text-gray-600 text-sm flex-1">{service.shortDesc}</p>
-                <span className="mt-5 inline-flex items-center text-blue-600 font-semibold text-sm">
+                <p className="text-sm text-ink font-medium mb-3">{service.subhead}</p>
+                <p className="text-ink-2 text-sm flex-1">{service.shortDesc}</p>
+                <span className="mt-5 inline-flex items-center text-ochre-3 font-semibold text-sm">
                   View service <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>
@@ -123,33 +123,33 @@ export default function Commercial() {
       </section>
 
       {/* Who we work with */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Who We Work With</h2>
-          <div className="grid sm:grid-cols-2 gap-6 text-gray-700">
-            <div className="bg-white rounded-xl border border-gray-100 p-6">
-              <h3 className="font-semibold text-gray-900 mb-2">Strata &amp; body corporate</h3>
+          <h2 className="text-3xl font-bold text-ink mb-6">Who We Work With</h2>
+          <div className="grid sm:grid-cols-2 gap-6 text-ink-2">
+            <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+              <h3 className="font-semibold text-ink mb-2">Strata and body corporate</h3>
               <p className="text-sm">
                 Detailed quotes, invoices and completion reports written for committees and strata managers. Scheduled
                 programs across the whole scheme, with access arranged around residents.
               </p>
             </div>
-            <div className="bg-white rounded-xl border border-gray-100 p-6">
-              <h3 className="font-semibold text-gray-900 mb-2">Offices, retail &amp; hospitality</h3>
+            <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+              <h3 className="font-semibold text-ink mb-2">Offices, retail and hospitality</h3>
               <p className="text-sm">
                 Early-morning, evening and weekend cleans so trading is never interrupted. Fixed per-visit pricing
                 that budgets cleanly.
               </p>
             </div>
-            <div className="bg-white rounded-xl border border-gray-100 p-6">
-              <h3 className="font-semibold text-gray-900 mb-2">Property &amp; facilities managers</h3>
+            <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+              <h3 className="font-semibold text-ink mb-2">Property and facilities managers</h3>
               <p className="text-sm">
                 One point of contact for every building in a portfolio. Certificates of currency, SWMS and JSA
                 documentation supplied for tenders and compliance.
               </p>
             </div>
-            <div className="bg-white rounded-xl border border-gray-100 p-6">
-              <h3 className="font-semibold text-gray-900 mb-2">Builders &amp; handovers</h3>
+            <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+              <h3 className="font-semibold text-ink mb-2">Builders and handovers</h3>
               <p className="text-sm">
                 Post-construction glass, render and pavement cleans to bring a new building up to handover standard.
               </p>
@@ -161,23 +161,23 @@ export default function Commercial() {
       <GoogleReviews />
 
       {/* CTA */}
-      <section className="py-16 bg-blue-600 text-white">
+      <section className="py-16 bg-ink text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Need a Quote for a Commercial Property?</h2>
-          <p className="text-lg text-blue-100 mb-8">
+          <p className="text-lg text-paper-2 mb-8">
             Tell us about the building and we&rsquo;ll put together a written quote, with site documentation on
             request.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/instant-quote/"
-              className="inline-flex items-center justify-center bg-white text-blue-700 px-8 py-3.5 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+              className="btn btn-lg btn-primary-on-ink"
             >
               Request a Quote
             </Link>
             <a
               href="tel:0752308293"
-              className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-white/10 transition-colors"
+              className="btn btn-lg btn-outline-on-ink"
             >
               Call (07) 5230 8293
             </a>

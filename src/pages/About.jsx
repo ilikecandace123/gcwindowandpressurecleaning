@@ -8,7 +8,7 @@ import { buildLocalBusinessSchema, buildBreadcrumbSchema } from "../data/schema"
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-paper">
       <PageSEO
         title="About Us | Gold Coast Window and Pressure Cleaning"
         description="Gold Coast's trusted exterior cleaning company — locally owned, fully insured, with police-checked staff. Learn about our team and commitment to quality."
@@ -32,15 +32,15 @@ export default function About() {
       />
 
       {/* Our Story */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="md:flex md:gap-10 md:items-start">
             <div className="md:flex-1">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <h2 className="text-3xl font-bold text-ink mb-6">Our Story</h2>
+              <p className="text-lg text-ink-2 mb-6 leading-relaxed">
                 Gold Coast Window and Pressure Cleaning was built on a simple idea: provide honest, professional exterior cleaning services that Gold Coast residents and businesses can rely on. We know that finding trustworthy tradespeople can be stressful, which is why we go above and beyond to earn and keep your trust.
               </p>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-6 leading-relaxed">
                 Based on the Gold Coast, we service all suburbs from Coolangatta to Ormeau, across the hinterland, and into Northern NSW including Tweed Heads and Kingscliff. Our local knowledge means we understand the unique cleaning challenges that coastal and subtropical conditions present — from salt spray and humidity to mould and tree debris.
               </p>
             </div>
@@ -54,7 +54,7 @@ export default function About() {
                   height="512"
                   loading="eager"
                   decoding="async"
-                  className="rounded-lg shadow-md w-full h-auto object-cover"
+                  className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre w-full h-auto object-cover"
                 />
               </picture>
             </div>
@@ -63,50 +63,50 @@ export default function About() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Why Choose Us</h2>
+          <h2 className="text-3xl font-bold text-ink mb-10">Why Choose Us</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="flex gap-4">
-              <Shield className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
+              <Shield className="w-8 h-8 text-ochre-3 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Fully Insured</h3>
-                <p className="text-gray-600">Comprehensive public liability insurance coverage for residential and commercial work. $20M coverage for commercial projects.</p>
+                <h3 className="text-xl font-semibold text-ink mb-2">Fully Insured</h3>
+                <p className="text-ink-2">Comprehensive public liability insurance coverage for residential and commercial work. $20M coverage for commercial projects.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <Users className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
+              <Users className="w-8 h-8 text-ochre-3 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Police-Checked Staff</h3>
-                <p className="text-gray-600">Every team member holds a current police check. Your safety and peace of mind is our top priority.</p>
+                <h3 className="text-xl font-semibold text-ink mb-2">Police-Checked Staff</h3>
+                <p className="text-ink-2">Every team member holds a current police check. Your safety and peace of mind is our top priority.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <Award className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
+              <Award className="w-8 h-8 text-ochre-3 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Professional Standards</h3>
-                <p className="text-gray-600">We use professional-grade equipment and follow manufacturer-recommended processes. Our staff are trained in safety and best-practice techniques.</p>
+                <h3 className="text-xl font-semibold text-ink mb-2">Professional Standards</h3>
+                <p className="text-ink-2">We use professional-grade equipment and follow manufacturer-recommended processes. Our staff are trained in safety and best-practice techniques.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <Star className="w-8 h-8 text-yellow-500 flex-shrink-0 mt-1" />
+              <Star className="w-8 h-8 text-ochre flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">5-Star Reputation</h3>
-                <p className="text-gray-600">Rated 5.0 stars across Google. We let our results and customer feedback speak for themselves.</p>
+                <h3 className="text-xl font-semibold text-ink mb-2">5-Star Reputation</h3>
+                <p className="text-ink-2">Rated 5.0 stars across Google. We let our results and customer feedback speak for themselves.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <Clock className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
+              <Clock className="w-8 h-8 text-ochre-3 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Responsive Communication</h3>
-                <p className="text-gray-600">We actually answer our phones. Fast quotes, clear communication, and reliable scheduling so you're never left wondering.</p>
+                <h3 className="text-xl font-semibold text-ink mb-2">Responsive Communication</h3>
+                <p className="text-ink-2">We actually answer our phones. Fast quotes, clear communication, and reliable scheduling so you're never left wondering.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <MapPin className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
+              <MapPin className="w-8 h-8 text-ochre-3 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Locally Owned</h3>
-                <p className="text-gray-600">We're a Gold Coast local business, not a franchise call centre. When you call, you're speaking with someone who knows the area.</p>
+                <h3 className="text-xl font-semibold text-ink mb-2">Locally Owned</h3>
+                <p className="text-ink-2">We're a Gold Coast local business, not a franchise call centre. When you call, you're speaking with someone who knows the area.</p>
               </div>
             </div>
           </div>
@@ -114,10 +114,10 @@ export default function About() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Our Services</h2>
-          <p className="text-lg text-gray-600 text-center mb-10">We provide a complete range of exterior cleaning services for residential, commercial, and strata properties.</p>
+          <h2 className="text-3xl font-bold text-ink mb-6">Our Services</h2>
+          <p className="text-lg text-ink-2 text-center mb-10">We provide a complete range of exterior cleaning services for residential, commercial, and strata properties.</p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               { name: "Window Cleaning", url: "/window-cleaning/", desc: "Interior and exterior, up to 4 storeys" },
@@ -128,11 +128,11 @@ export default function About() {
               { name: "Solar Panel Cleaning", url: "/solar-panel-cleaning/", desc: "Warranty-safe methods" },
               { name: "Solar Panel Bird Proofing", url: "/bird-proofing/", desc: "Marine-grade mesh installation" },
             ].map((s) => (
-              <Link key={s.url} to={s.url} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg hover:bg-blue-50 border border-gray-100 hover:border-blue-200 transition-colors">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+              <Link key={s.url} to={s.url} className="flex items-start gap-3 p-4 bg-paper rounded-lg hover:bg-paper-2 border border-rule hover:border-rule transition-colors">
+                <CheckCircle className="w-5 h-5 text-moss flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-gray-900">{s.name}</span>
-                  <p className="text-sm text-gray-500">{s.desc}</p>
+                  <span className="font-semibold text-ink">{s.name}</span>
+                  <p className="text-sm text-ink-3">{s.desc}</p>
                 </div>
               </Link>
             ))}
@@ -141,16 +141,16 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 hero-gradient text-white">
+      <section className="py-16 bg-ink text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl text-blue-100 mb-8">Get in touch for a free, no-obligation quote.</p>
+          <p className="text-xl text-paper-2 mb-8">Get in touch for a free, no-obligation quote.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:0752308293" className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center">
+            <a href="tel:0752308293" className="btn btn-lg btn-outline-on-ink">
               <Phone className="w-5 h-5 mr-2" />
               (07) 5230 8293
             </a>
-            <a href="#quote" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            <a href="#quote" className="btn btn-lg btn-primary">
               Get Free Quote
             </a>
           </div>

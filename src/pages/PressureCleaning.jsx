@@ -26,7 +26,7 @@ export default function PressureCleaning() {
     description: "Professional pressure cleaning provides superior results that last significantly longer than DIY attempts or surface-level cleaning."
   },
   {
-    title: "Removes Deep Grime & Mould",
+    title: "Removes Deep Grime and Mould",
     description: "Eliminate stubborn mould, mildew, algae, and organic stains that compromise both appearance and safety of hard surfaces."
   },
   {
@@ -109,37 +109,37 @@ export default function PressureCleaning() {
       />
 
       {/* About Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
                 Your Trusted Local Pressure Cleaning Professionals
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-6 leading-relaxed">
                 We're a locally owned and operated business committed to transparent, friendly communication. 
                 All our staff are police-checked for your peace of mind, and we're fully insured for complete protection.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-ink-2 mb-8 leading-relaxed">
                 As registered NDIS & Aged Care providers, we understand the importance of safety and reliability. 
                 We keep you informed throughout the process and ensure your outdoor spaces are clean and safe.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Industrial-grade commercial equipment</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Industrial-grade commercial equipment</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Specialised treatments for oil and stubborn stains</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Specialised treatments for oil and stubborn stains</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Surface-appropriate pressure settings</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">Surface-appropriate pressure settings</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">No job too big or small</span>
+                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <span className="text-ink-2">No job too big or small</span>
                 </div>
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function PressureCleaning() {
                 <img
                   src="/images/pressure-secondary.jpg"
                   alt="Pressure cleaning service team demonstrating concrete surface restoration"
-                  className="rounded-2xl shadow-lg"
+                  className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre"
                   loading="lazy" decoding="async" width="1024" height="682" />
               </picture>
 
@@ -159,49 +159,49 @@ export default function PressureCleaning() {
       </section>
 
       {/* Service Description */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-paper">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
               Professional Pressure Cleaning Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-ink-2 max-w-3xl">
               Our industrial-grade pressure cleaning removes deep-set grime, oil stains, mould, and organic growth 
               from concrete, pavers, and hard surfaces that regular cleaning simply can't handle.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-              <h3 className="text-xl font-semibold mb-4 text-blue-600">Driveways & Concrete</h3>
-              <p className="text-gray-600 mb-4">
+            <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+              <h3 className="text-xl font-semibold mb-4 text-ochre-3">Driveways and Concrete</h3>
+              <p className="text-ink-2 mb-4">
                 Remove oil stains, tyre marks, and years of built-up grime to restore your driveway's appearance.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1">
+              <ul className="text-sm text-ink-3 space-y-1">
                 <li>• Oil stain removal</li>
                 <li>• Tyre mark elimination</li>
                 <li>• Mould and algae treatment</li>
               </ul>
             </div>
             
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-              <h3 className="text-xl font-semibold mb-4 text-green-600">Walkways & Paths</h3>
-              <p className="text-gray-600 mb-4">
+            <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+              <h3 className="text-xl font-semibold mb-4 text-moss">Walkways and Paths</h3>
+              <p className="text-ink-2 mb-4">
                 Make walkways safe and attractive by removing slip-hazard mould and restoring original appearance.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1">
+              <ul className="text-sm text-ink-3 space-y-1">
                 <li>• Safety hazard removal</li>
                 <li>• Non-slip surface restoration</li>
                 <li>• Weather stain elimination</li>
               </ul>
             </div>
             
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-              <h3 className="text-xl font-semibold mb-4 text-purple-600">Patios & Outdoor Areas</h3>
-              <p className="text-gray-600 mb-4">
+            <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
+              <h3 className="text-xl font-semibold mb-4 text-ochre-3">Patios and Outdoor Areas</h3>
+              <p className="text-ink-2 mb-4">
                 Transform outdoor entertainment areas by removing stains and organic growth for a fresh, clean look.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1">
+              <ul className="text-sm text-ink-3 space-y-1">
                 <li>• Entertainment area cleaning</li>
                 <li>• Paver restoration</li>
                 <li>• Pool area treatment</li>
@@ -225,17 +225,17 @@ export default function PressureCleaning() {
       <FAQ faqs={faqs} title="Pressure Cleaning FAQ" guideLink={[{ label: "Guide: How much does driveway pressure cleaning cost on the Gold Coast?", href: "/guides/driveway-pressure-cleaning-cost/" }, { label: "Guide: Pressure cleaning vs soft washing — which is better?", href: "/guides/pressure-cleaning-vs-soft-washing/" }]} />
 
       {/* Related Services */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-paper-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Services</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Related Services</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/house-softwash/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">House Softwash</h3>
-              <p className="text-sm text-gray-600">Gentle, effective cleaning that protects your home's exterior while removing dirt and stains.</p>
+            <Link to="/house-softwash/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">House Softwash</h3>
+              <p className="text-sm text-ink-2">Gentle, effective cleaning that protects your home's exterior while removing dirt and stains.</p>
             </Link>
-            <Link to="/gutter-cleaning/" className="block p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Gutter Cleaning</h3>
-              <p className="text-sm text-gray-600">Full gutter and downpipe clearing with inspection and written report.</p>
+            <Link to="/gutter-cleaning/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+              <h3 className="text-lg font-semibold text-ink mb-2">Gutter Cleaning</h3>
+              <p className="text-sm text-ink-2">Full gutter and downpipe clearing with inspection and written report.</p>
             </Link>
           </div>
         </div>

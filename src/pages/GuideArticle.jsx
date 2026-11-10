@@ -4,7 +4,6 @@ import { ArrowRight, CheckCircle2, CalendarDays, ShieldCheck } from "lucide-reac
 import PageSEO from "../components/PageSEO";
 import Breadcrumbs from "../components/Breadcrumbs";
 import FAQ from "../components/FAQ";
-import QuoteCTA from "../components/QuoteCTA";
 import NotFound from "./NotFound";
 import { getGuide } from "../data/guides";
 import {
@@ -62,26 +61,26 @@ export default function GuideArticle() {
         ]}
       />
 
-      <article className="bg-white">
+      <article className="bg-paper-white">
         {/* Header + direct answer */}
         <header className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{guide.h1}</h1>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500 mb-8">
+          <h1 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">{guide.h1}</h1>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-3 mb-8">
             <span className="inline-flex items-center">
-              <ShieldCheck className="w-4 h-4 mr-1.5 text-green-600" />
+              <ShieldCheck className="w-4 h-4 mr-1.5 text-moss" />
               By Gold Coast Window and Pressure Cleaning
             </span>
             <span className="inline-flex items-center">
-              <CalendarDays className="w-4 h-4 mr-1.5 text-blue-600" />
+              <CalendarDays className="w-4 h-4 mr-1.5 text-ochre-3" />
               Updated {formatUpdated(guide.updated)}
             </span>
           </div>
 
-          <div className="bg-blue-50 border-l-4 border-blue-600 rounded-r-xl p-6">
-            <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-2">
+          <div className="bg-paper-2 border-l-4 border-ink rounded-r-xl p-6">
+            <p className="text-sm font-semibold uppercase tracking-wide text-ink mb-2">
               Quick answer
             </p>
-            <p className="text-lg text-gray-800 leading-relaxed">{guide.directAnswer}</p>
+            <p className="text-lg text-ink leading-relaxed">{guide.directAnswer}</p>
           </div>
         </header>
 
@@ -89,12 +88,12 @@ export default function GuideArticle() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
           {guide.sections.map((section, i) => (
             <section key={i} className="pt-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-5">
+              <h2 className="text-2xl md:text-3xl font-bold text-ink mb-5">
                 {section.heading}
               </h2>
               {section.paragraphs &&
                 section.paragraphs.map((p, j) => (
-                  <p key={j} className="text-lg text-gray-600 leading-relaxed mb-5">
+                  <p key={j} className="text-lg text-ink-2 leading-relaxed mb-5">
                     {p}
                   </p>
                 ))}
@@ -113,7 +112,7 @@ export default function GuideArticle() {
                     />
                   </picture>
                   {section.image.caption && (
-                    <figcaption className="mt-2 text-sm text-gray-500">{section.image.caption}</figcaption>
+                    <figcaption className="mt-2 text-sm text-ink-3">{section.image.caption}</figcaption>
                   )}
                 </figure>
               )}
@@ -121,8 +120,8 @@ export default function GuideArticle() {
                 <ul className="space-y-3 mb-5">
                   {section.list.map((item, j) => (
                     <li key={j} className="flex items-start">
-                      <CheckCircle2 className="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" />
-                      <span className="text-lg text-gray-600 leading-relaxed">{item}</span>
+                      <CheckCircle2 className="w-5 h-5 text-moss mt-1 mr-3 flex-shrink-0" />
+                      <span className="text-lg text-ink-2 leading-relaxed">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -135,28 +134,26 @@ export default function GuideArticle() {
         <FAQ faqs={guide.faqs} title="Related Questions" />
 
         {/* Related links */}
-        <section className="py-12 bg-white">
+        <section className="py-12 bg-paper-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Keep Reading</h2>
+            <h2 className="text-2xl font-bold text-ink mb-6">Keep Reading</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {guide.related.map((r, i) => (
                 <Link
                   key={i}
                   to={r.href}
-                  className="group flex items-center justify-between bg-gray-50 hover:bg-blue-50 border border-gray-100 rounded-xl px-5 py-4 transition-colors"
+                  className="group flex items-center justify-between bg-paper hover:bg-paper-2 border border-rule rounded-xl px-5 py-4 transition-colors"
                 >
-                  <span className="font-medium text-gray-800 group-hover:text-blue-700">
+                  <span className="font-medium text-ink group-hover:text-ink">
                     {r.label}
                   </span>
-                  <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 flex-shrink-0 ml-3" />
+                  <ArrowRight className="w-4 h-4 text-ink-3 group-hover:text-ochre-3 flex-shrink-0 ml-3" />
                 </Link>
               ))}
             </div>
           </div>
         </section>
       </article>
-
-      <QuoteCTA />
     </>
   );
 }

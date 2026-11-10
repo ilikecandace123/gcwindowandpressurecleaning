@@ -18,6 +18,7 @@ import { fileURLToPath } from "node:url";
 import { QUOTE_LANDINGS, landingExamples, landingFaqs, landingFromPrice, landingPath, getQuoteLanding } from "../src/data/quoteLanding.js";
 import { SERVICE_ORDER } from "../src/quote/steps.js";
 import { GUTTER_PRICES, SOFTWASH_PRICES, ROOF_LINE_FLOOR, FLOOR_PRESSURE, FLOOR_ONE_OFF } from "../src/quote/engine.js";
+import { jobPhotoService } from "../src/data/jobPhotoService.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const read = (p) => fs.readFileSync(path.join(ROOT, p), "utf8");
@@ -33,6 +34,9 @@ function ok(name, cond, detail = "") {
     fail++;
     console.error(`  ✗ ${name}${detail ? `\n      ${detail}` : ""}`);
   }
+}
+function eq(name, actual, expected) {
+  ok(name, actual === expected, `expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`);
 }
 
 const FORBIDDEN = /\b(jim'?s|bunnings|bluescope|windex|karcher|kärcher|gerni|mitre ?10|hipages|airtasker|oneflare)\b/i;
@@ -106,6 +110,40 @@ console.log("\nWiring:");
   ok("prerender gives landing pages their creation date as lastmod", /LASTMOD_OVERRIDES\[landingPath\(landing\)/.test(pre));
   const jobs = read("src/data/recentJobs.js");
   ok("recent jobs can be listed by service", /export function getRecentJobsByService/.test(jobs));
+}
+
+// A job can cover several services but has one photo. The landing pages lead
+// with that photo, so it must show the page's own service (Skagen, 10/11/2026:
+// "you've got a roof clean photo on the gutter clean page").
+console.log("\nPhotos match the page's service:");
+{
+  const job = (services, alt, extra = {}) => ({ services, alt, ...extra });
+  eq(
+    "a roof photo on a roof + gutter job is a roof photo",
+    jobPhotoService(job(["roof-cleaning", "house-softwash", "pressure-cleaning", "gutter-cleaning"], "Before and after of the rear roof hip junction facing red car. Before: Dirty tile roof with a hip ridge junction")),
+    "roof-cleaning"
+  );
+  eq("panels win over the roof they sit on", jobPhotoService(job(["roof-cleaning", "solar-panel-cleaning"], "Before and after of the panel corner at roof edge. Before: Panel covered in bird droppings, with tile ridge beyond")), "solar-panel-cleaning");
+  eq("pavers by a sliding door are pressure cleaning", jobPhotoService(job(["window-cleaning", "pressure-cleaning"], "Before and after of the patio corner by sliding door and step. Before: Dull, weathered travertine pavers")), "pressure-cleaning");
+  eq("mould under a patio roof is a softwash photo", jobPhotoService(job(["roof-cleaning", "house-softwash", "pressure-cleaning"], "Before and after of the patio roof underside, looking along the wall. Before: heavy black mould")), "house-softwash");
+  eq("a gutter in the subject is a gutter photo", jobPhotoService(job(["roof-cleaning", "gutter-cleaning"], "Before and after of the front gutter run. Before: gutter packed with leaves above the roof edge")), "gutter-cleaning");
+  eq("a single-service job is that service", jobPhotoService(job(["window-cleaning"], "Water-fed pole on a tall building")), "window-cleaning");
+  eq("photoService on the job wins", jobPhotoService(job(["roof-cleaning", "gutter-cleaning"], "Dirty tile roof", { photoService: "gutter-cleaning" })), "gutter-cleaning");
+  eq("an unrecognisable photo is not guessed", jobPhotoService(job(["roof-cleaning", "gutter-cleaning"], "A van parked in the street")), null);
+
+  const dir = path.join(ROOT, "src/data/recent-jobs");
+  const jobs = fs.readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
+  const bad = jobs.filter((j) => { const s = jobPhotoService(j); return s && !(j.services || []).includes(s); });
+  ok("every real job photo is filed under a service the job included", bad.length === 0, bad.map((j) => j.photo).join(", "));
+  const tweed = jobs.find((j) => j.photo === "/images/jobs/tweed-heads-south-264.jpg");
+  if (tweed) eq("the Tweed Heads South roof photo is not a gutter photo", jobPhotoService(tweed), "roof-cleaning");
+
+  const recent = read("src/data/recentJobs.js");
+  ok("landing pages pick jobs by what the photo shows", /getRecentJobsByService[\s\S]{0,200}jobPhotoService\(j\) === serviceSlug/.test(recent));
+  for (const f of ["src/pages/GutterCleaning.jsx", "src/pages/LocationService.jsx", "src/pages/CommercialService.jsx", "src/pages/CommercialLocationService.jsx"]) {
+    ok(`${f} does not use the roof-walk photo for gutters`, !read(f).includes("gutter-screenshot"));
+  }
+  ok("house softwash hero is a real job, not the stock pool house", !read("src/pages/HouseSoftWash.jsx").includes("softwash-unsplash") && !read("src/pages/LocationService.jsx").includes("softwash-unsplash"));
 }
 
 // The old service-page FAQs, suburb pricing guides, guides and llms.txt quoted
