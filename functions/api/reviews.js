@@ -42,7 +42,7 @@ export async function onRequestGet(context) {
   const apiKey = env.GOOGLE_PLACES_API_KEY;
   if (!apiKey) {
     // Misconfigured deploy — fall back to stale cache if we have one,
-    // otherwise empty payload so the component shows fallback reviews.
+    // otherwise empty payload so the component keeps its saved real reviews.
     const staleKey = new Request(STALE_CACHE_URL, { method: "GET" });
     const stale = await cache.match(staleKey);
     if (stale) return addCors(stale);

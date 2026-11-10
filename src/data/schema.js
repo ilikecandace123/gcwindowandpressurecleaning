@@ -1,5 +1,6 @@
 // Centralised JSON-LD schema builders for SEO.
 // Reused across PageSEO components on every page.
+import { GOOGLE_REVIEW_COUNT_SEED } from "./googleReviewsSeed.js";
 
 export const SITE_URL = "https://gcwindowandpressurecleaning.com.au";
 export const BUSINESS_NAME = "Gold Coast Window and Pressure Cleaning";
@@ -67,10 +68,9 @@ export function buildLocalBusinessSchema() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
-      // Note: reviewCount is sourced dynamically from GoogleReviews.jsx (data.userRatingCount)
-      // This hardcoded value serves as a fallback and should be updated periodically during content refreshes
-      // Last verified: 62 reviews on Google (2026-04-09)
-      "reviewCount": "62"
+      // The count on the Google profile when the saved reviews were last
+      // copied (src/data/googleReviewsSeed.js). Update both together.
+      "reviewCount": String(GOOGLE_REVIEW_COUNT_SEED)
     },
     "knowsAbout": [
       "Window cleaning",

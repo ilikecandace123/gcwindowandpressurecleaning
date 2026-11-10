@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { hideReview } from "../data/heroReviews";
+import { GOOGLE_REVIEWS_SEED, GOOGLE_RATING_SEED, GOOGLE_REVIEW_COUNT_SEED } from "../data/googleReviewsSeed";
 
 // Reviews are fetched from our own server-side proxy at /api/reviews
 // (a Cloudflare Pages Function — see site/functions/api/reviews.js).
@@ -65,52 +66,15 @@ function isHeadlessPrerender() {
   return false;
 }
 
-// Fallback testimonials shown if the API key is missing or the request fails
-const FALLBACK_REVIEWS = [
-  {
-    authorAttribution: { displayName: "Sarah Johnson" },
-    rating: 5,
-    text: { text: "Absolutely exceptional service! The team was professional, punctual, and the results exceeded our expectations. Our windows have never looked better!" },
-    relativePublishTimeDescription: "Recently"
-  },
-  {
-    authorAttribution: { displayName: "Michael Chen" },
-    rating: 5,
-    text: { text: "Outstanding communication throughout the entire process. They kept us informed every step of the way and left our property spotless. Highly recommended!" },
-    relativePublishTimeDescription: "Recently"
-  },
-  {
-    authorAttribution: { displayName: "Emma Williams" },
-    rating: 5,
-    text: { text: "These guys go above and beyond. We thought the house needed painting but it looks brand new after the house wash treatment." },
-    relativePublishTimeDescription: "Recently"
-  },
-  {
-    authorAttribution: { displayName: "David Thompson" },
-    rating: 5,
-    text: { text: "Best pressure cleaning service on the Gold Coast. Fair pricing, incredible attention to detail and very respectful of our property." },
-    relativePublishTimeDescription: "Recently"
-  },
-  {
-    authorAttribution: { displayName: "Jessica Taylor" },
-    rating: 5,
-    text: { text: "Amazing results on our roof — it looks brand new! The team was friendly, on time and left everything cleaner than they found it." },
-    relativePublishTimeDescription: "Recently"
-  },
-  {
-    authorAttribution: { displayName: "Liam O'Connor" },
-    rating: 5,
-    text: { text: "Booked them for gutter and solar panel cleaning. Prompt quote, turned up on time and the difference afterwards was remarkable. Will absolutely use again." },
-    relativePublishTimeDescription: "Recently"
-  }
-];
-
 const TRANSITION_MS = 700;
 
 export default function GoogleReviews() {
-  const [reviews, setReviews] = useState(FALLBACK_REVIEWS);
-  const [rating, setRating] = useState(5.0);
-  const [totalRatings, setTotalRatings] = useState(62);
+  // Starts with real Google reviews saved in the build (so the first paint,
+  // the prerendered HTML and a failed live call all show real reviews), then
+  // swaps to the live ones.
+  const [reviews, setReviews] = useState(GOOGLE_REVIEWS_SEED);
+  const [rating, setRating] = useState(GOOGLE_RATING_SEED);
+  const [totalRatings, setTotalRatings] = useState(GOOGLE_REVIEW_COUNT_SEED);
   const [loading, setLoading] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
@@ -130,11 +94,12 @@ export default function GoogleReviews() {
       const fetched = (data.reviews || []).filter(
         (r) => !hideReview(r.text?.text || r.originalText?.text)
       );
-      // Three real reviews fill the widest row, so hiding one does not pull
-      // in the stand-in reviews.
+      // Three reviews fill the widest row. If fewer live ones are left after
+      // hiding, top up with the saved real ones (never the same person twice).
+      const names = new Set(fetched.map((r) => r.authorAttribution?.displayName));
       const combined = fetched.length >= 3
         ? fetched
-        : [...fetched, ...FALLBACK_REVIEWS].slice(0, Math.max(6, fetched.length + 3));
+        : [...fetched, ...GOOGLE_REVIEWS_SEED.filter((r) => !names.has(r.authorAttribution.displayName))];
       setReviews(combined);
       if (data.rating) setRating(data.rating);
       if (data.userRatingCount) setTotalRatings(data.userRatingCount);
@@ -160,7 +125,7 @@ export default function GoogleReviews() {
         writeSessionCache(data);
         applyData(data);
       } catch (err) {
-        // Keep fallback reviews (already showing as initial state)
+        // Keep the saved real reviews (already showing as initial state)
       }
     }
 
@@ -182,7 +147,7 @@ export default function GoogleReviews() {
     return () => window.removeEventListener("resize", updateItemsPerView);
   }, []);
 
-  const allReviews = reviews || FALLBACK_REVIEWS;
+  const allReviews = reviews || GOOGLE_REVIEWS_SEED;
   const total = allReviews.length;
 
   // Reset index when the review set or items-per-view changes
