@@ -54,7 +54,7 @@ export default function About() {
                   height="512"
                   loading="eager"
                   decoding="async"
-                  className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre w-full h-auto object-cover"
+                  className="rounded-[14px] border-2 border-ink shadow-hard-accent-sm sm:shadow-hard-accent w-full h-auto object-cover"
                 />
               </picture>
             </div>
@@ -68,42 +68,42 @@ export default function About() {
           <h2 className="text-3xl font-bold text-ink mb-10">Why Choose Us</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="flex gap-4">
-              <Shield className="w-8 h-8 text-ochre-3 flex-shrink-0 mt-1" />
+              <Shield className="w-8 h-8 text-accent-3 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-ink mb-2">Fully Insured</h3>
                 <p className="text-ink-2">Comprehensive public liability insurance coverage for residential and commercial work. $20M coverage for commercial projects.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <Users className="w-8 h-8 text-ochre-3 flex-shrink-0 mt-1" />
+              <Users className="w-8 h-8 text-accent-3 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-ink mb-2">Police-Checked Staff</h3>
                 <p className="text-ink-2">Every team member holds a current police check. Your safety and peace of mind is our top priority.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <Award className="w-8 h-8 text-ochre-3 flex-shrink-0 mt-1" />
+              <Award className="w-8 h-8 text-accent-3 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-ink mb-2">Professional Standards</h3>
                 <p className="text-ink-2">We use professional-grade equipment and follow manufacturer-recommended processes. Our staff are trained in safety and best-practice techniques.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <Star className="w-8 h-8 text-ochre flex-shrink-0 mt-1" />
+              <Star className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-ink mb-2">5-Star Reputation</h3>
                 <p className="text-ink-2">Rated 5.0 stars across Google. We let our results and customer feedback speak for themselves.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <Clock className="w-8 h-8 text-ochre-3 flex-shrink-0 mt-1" />
+              <Clock className="w-8 h-8 text-accent-3 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-ink mb-2">Responsive Communication</h3>
                 <p className="text-ink-2">We actually answer our phones. Fast quotes, clear communication, and reliable scheduling so you're never left wondering.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <MapPin className="w-8 h-8 text-ochre-3 flex-shrink-0 mt-1" />
+              <MapPin className="w-8 h-8 text-accent-3 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-ink mb-2">Locally Owned</h3>
                 <p className="text-ink-2">We're a Gold Coast local business, not a franchise call centre. When you call, you're speaking with someone who knows the area.</p>

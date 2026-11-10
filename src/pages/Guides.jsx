@@ -63,14 +63,14 @@ export default function Guides() {
                 to={`/guides/${g.slug}/`}
                 className="group card p-6 sm:p-7 flex flex-col transition-all duration-150 hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px]"
               >
-                <BookOpen className="w-7 h-7 text-ochre-3 mb-4" />
+                <BookOpen className="w-7 h-7 text-accent-3 mb-4" />
                 <h2 className="text-xl font-bold text-ink group-hover:text-ink mb-3">
                   {g.h1}
                 </h2>
                 <p className="text-ink-2 leading-relaxed mb-4 flex-1">
                   {g.directAnswer.split(". ").slice(0, 2).join(". ") + "."}
                 </p>
-                <span className="inline-flex items-center font-bold text-ink underline decoration-ochre decoration-2 underline-offset-4">
+                <span className="inline-flex items-center font-bold text-ink underline decoration-accent decoration-2 underline-offset-4">
                   Read the full guide
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                 </span>

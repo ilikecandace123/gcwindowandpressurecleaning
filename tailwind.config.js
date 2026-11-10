@@ -6,22 +6,23 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {
-      // Site theme, "Local & honest" (Skagen's pick, 10/11/2026): warm paper,
-      // ink navy, ochre accent, Fraunces display serif + Source Sans 3 body.
+      // Site theme, "Local & honest" in sky blue (Skagen picked the layout and
+      // then the lighter sky colours on 10/11/2026): near-white paper,
+      // ink navy, sky-blue accent, Fraunces display serif + Source Sans 3 body.
       // Mockups: project-files/design/landing-options/. Use these tokens, not
       // Tailwind's blue/green/gray — scripts/test-theme.mjs fails on those.
       colors: {
-        paper: { DEFAULT: "#f6f1e7", 2: "#efe7d8", white: "#fffdf9" },
+        paper: { DEFAULT: "#fbfcfd", 2: "#eff4f8", white: "#ffffff" },
         // ink = headings/body, ink-2 = secondary text, ink-3 = muted text
         // (4.8:1 on paper), deep = hover for ink fills.
         ink: { DEFAULT: "#17233b", 2: "#4a5468", 3: "#636a7a", deep: "#0e1729" },
-        // ochre = fills and large display type, ochre-2 = hover fill and large
-        // italic display, ochre-3 = small accent text on paper (4.9:1).
-        ochre: { DEFAULT: "#d9861c", 2: "#b86d0f", 3: "#96580a", 50: "#fbf2e0", 100: "#f6e2be" },
+        // accent = fills and large display type, accent-2 = hover fill and large
+        // italic display, accent-3 = small accent text on paper (5.6:1).
+        accent: { DEFAULT: "#7cc8f5", 2: "#2b8bd0", 3: "#1c6ba3", 50: "#eaf6fe", 100: "#cde9fb" },
         // moss = ticks and "good" states, brick = errors and "bad" states.
-        moss: { DEFAULT: "#426f35", 50: "#edf2e3" },
+        moss: { DEFAULT: "#426f35", 50: "#e9f3e6" },
         brick: { DEFAULT: "#b3402e", 50: "#f8e9e3", 300: "#eaa898" },
-        rule: "#dfd5c2",
+        rule: "#d7e0e8",
       },
       fontFamily: {
         sans: ['"Source Sans 3"', "system-ui", "-apple-system", '"Segoe UI"', "sans-serif"],
@@ -39,8 +40,8 @@ module.exports = {
         "2xl": "0 30px 50px -28px rgba(23,35,59,.55)",
         hard: "4px 4px 0 #17233b",
         "hard-sm": "3px 3px 0 #17233b",
-        "hard-ochre": "8px 8px 0 #d9861c",
-        "hard-ochre-sm": "5px 5px 0 #d9861c",
+        "hard-accent": "8px 8px 0 #7cc8f5",
+        "hard-accent-sm": "5px 5px 0 #7cc8f5",
       },
     },
   },

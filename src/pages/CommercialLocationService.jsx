@@ -47,7 +47,7 @@ export default function CommercialLocationService() {
         <div className="text-center">
           <h1 className="text-4xl font-bold text-ink mb-4">Page Not Found</h1>
           <p className="text-ink-2 text-lg mb-6">The commercial service area you're looking for doesn't exist.</p>
-          <Link to="/" className="text-ochre-3 hover:text-ink font-semibold">← Back to home</Link>
+          <Link to="/" className="text-accent-3 hover:text-ink font-semibold">← Back to home</Link>
         </div>
       </div>
     );
@@ -95,10 +95,10 @@ export default function CommercialLocationService() {
     : `We understand the specific commercial, retail, hospitality and strata buildings in ${suburb.name} and service them to the standards their operators expect.`;
 
   const whyChooseUs = [
-    { icon: <Building2 className="w-6 h-6 text-ochre-3" />, title: `${suburb.name} Commercial Specialists`, description: commercialSpecialistDescription },
-    { icon: <FileCheck className="w-6 h-6 text-ochre-3" />, title: "Full Compliance Documentation", description: "Site-specific SWMS, JSA, certificates of currency, WHS inductions and photographic reporting — everything required for commercial and strata records." },
-    { icon: <Clock className="w-6 h-6 text-ochre-3" />, title: "After-Hours Scheduling", description: `Early mornings, evenings and weekends so ${suburb.name} businesses, tenants and customers are never disrupted.` },
-    { icon: <HardHat className="w-6 h-6 text-ochre-3" />, title: "Height Safety Trained", description: "All technicians are height safety trained, police-checked and uniformed, with $20M public liability on every job." }
+    { icon: <Building2 className="w-6 h-6 text-accent-3" />, title: `${suburb.name} Commercial Specialists`, description: commercialSpecialistDescription },
+    { icon: <FileCheck className="w-6 h-6 text-accent-3" />, title: "Full Compliance Documentation", description: "Site-specific SWMS, JSA, certificates of currency, WHS inductions and photographic reporting — everything required for commercial and strata records." },
+    { icon: <Clock className="w-6 h-6 text-accent-3" />, title: "After-Hours Scheduling", description: `Early mornings, evenings and weekends so ${suburb.name} businesses, tenants and customers are never disrupted.` },
+    { icon: <HardHat className="w-6 h-6 text-accent-3" />, title: "Height Safety Trained", description: "All technicians are height safety trained, police-checked and uniformed, with $20M public liability on every job." }
   ];
 
   const localBusinessSchema = buildLocalBusinessSchema();
@@ -147,7 +147,7 @@ export default function CommercialLocationService() {
       {/* Location intro */}
       <section className="py-16 bg-paper-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 text-ochre-3 mb-4">
+          <div className="flex items-center gap-2 text-accent-3 mb-4">
             <MapPin className="w-5 h-5" />
             <span className="font-semibold">{suburb.name}, Postcode {suburb.postcode}</span>
           </div>
@@ -169,7 +169,7 @@ export default function CommercialLocationService() {
 
       {/* Roof Cleaning — Why Gold Coast Roofs Need Cleaning More Often */}
       {serviceSlug === 'roof-cleaning' && (
-        <section className="py-16 bg-ochre-50">
+        <section className="py-16 bg-accent-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10 max-w-3xl">
               <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">Why {suburb.name} Commercial Roofs Need Regular Cleaning</h2>
@@ -275,7 +275,7 @@ export default function CommercialLocationService() {
                   <tr className="bg-ink text-white">
                     <th className="px-6 py-4 text-left font-semibold w-1/3"></th>
                     <th className="px-6 py-4 text-center font-semibold text-brick-300">Dirty Array</th>
-                    <th className="px-6 py-4 text-center font-semibold text-ochre">After Professional Clean</th>
+                    <th className="px-6 py-4 text-center font-semibold text-accent">After Professional Clean</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -328,8 +328,8 @@ export default function CommercialLocationService() {
           <div className="grid md:grid-cols-4 gap-6">
             {service.process.map(step => (
               <div key={step.step} className="bg-paper-white rounded-[14px] border-2 border-ink p-6 text-center">
-                <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xl font-bold text-ochre-3">{step.step}</span>
+                <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <span className="text-xl font-bold text-accent-3">{step.step}</span>
                 </div>
                 <h3 className="text-lg font-semibold mb-2 text-ink">{step.title}</h3>
                 <p className="text-ink-2 text-sm">{step.description}</p>
@@ -366,7 +366,7 @@ export default function CommercialLocationService() {
                 <span className="font-medium text-ink group-hover:text-ink">
                   {otherService.name} in {suburb.name}
                 </span>
-                <ArrowRight className="w-4 h-4 text-ochre-3 flex-shrink-0 ml-2" />
+                <ArrowRight className="w-4 h-4 text-accent-3 flex-shrink-0 ml-2" />
               </a>
             ))}
           </div>
@@ -389,7 +389,7 @@ export default function CommercialLocationService() {
                   <a key={idx} href={`/commercial/${serviceSlug}/${nearbySuburbData.slug}/`}
                     className="flex items-center justify-between p-4 bg-paper rounded-lg hover:bg-paper-2 transition-colors border border-rule hover:border-rule">
                     <span className="font-medium text-ink">{nearbySuburbName}</span>
-                    <ArrowRight className="w-4 h-4 text-ochre-3" />
+                    <ArrowRight className="w-4 h-4 text-accent-3" />
                   </a>
                 );
               })}

@@ -17,7 +17,7 @@ export default function Benefits({ benefits, title = "Why Choose Our Service?" }
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-9">
           {benefits.map((benefit, index) => (
             <div key={index} className="border-t-2 border-ink pt-4">
-              <div className="font-display italic font-medium text-2xl text-ochre-2 leading-none mb-2">
+              <div className="font-display italic font-medium text-2xl text-accent-2 leading-none mb-2">
                 {String(index + 1).padStart(2, "0")}
               </div>
               <h3 className="text-xl font-bold text-ink mb-2">

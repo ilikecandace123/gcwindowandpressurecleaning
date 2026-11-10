@@ -115,7 +115,7 @@ export default function HouseSoftWash() {
                 src="/images/commercial-softwash-secondary.jpg"
                 alt="Before and after: black mould softwashed off the eaves and brickwork of a Gold Coast home"
                 loading="lazy"
-                className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre" decoding="async" width="1195" height="896" />
+                className="rounded-[14px] border-2 border-ink shadow-hard-accent-sm sm:shadow-hard-accent" decoding="async" width="1195" height="896" />
 
             </div>
             <div>
@@ -132,19 +132,19 @@ export default function HouseSoftWash() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Gentle, surface-safe cleaning technology</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Comprehensive mould and organic stain removal</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Spider web and wasp nest removal included</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Eco-friendly solutions</span>
                 </div>
               </div>
@@ -168,29 +168,29 @@ export default function HouseSoftWash() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div className="text-center">
-              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-2xl font-bold text-ochre-3">1</span>
+              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-accent-3">1</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Surface Assessment</h3>
               <p className="text-sm text-ink-2">Evaluate surfaces and identify specific cleaning needs and delicate areas.</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-2xl font-bold text-ochre-3">2</span>
+              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-accent-3">2</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Pre-Treatment</h3>
               <p className="text-sm text-ink-2">Apply specialised solutions to kill mould, mildew, and organic growth.</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-2xl font-bold text-ochre-3">3</span>
+              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-accent-3">3</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Gentle Cleaning</h3>
               <p className="text-sm text-ink-2">Low-pressure cleaning removes dirt and debris without surface damage.</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-2xl font-bold text-ochre-3">4</span>
+              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-accent-3">4</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Final Rinse</h3>
               <p className="text-sm text-ink-2">Thorough rinse reveals clean surfaces and long-lasting results.</p>

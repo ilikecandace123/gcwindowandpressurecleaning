@@ -5,7 +5,7 @@ import QuoteCTA from "./QuoteCTA";
 
 // "Roof Cleaning Gold Coast — Tile, Metal & Concrete Roofs" and "Window
 // Cleaning in Burleigh Heads" both read better with the second half set in
-// italic ochre. Splits on an em dash first, then on the place phrase.
+// italic accent. Splits on an em dash first, then on the place phrase.
 export function splitHeadline(headline) {
   const text = spellAnd(String(headline || ""));
   const dash = text.split(" — ");
@@ -43,7 +43,7 @@ export default function QuoteHero({
               {tail && (
                 <>
                   {" "}
-                  <em className="italic font-medium text-ochre-2">{tail}</em>
+                  <em className="italic font-medium text-accent-2">{tail}</em>
                 </>
               )}
             </h1>
@@ -84,7 +84,7 @@ export default function QuoteHero({
             </ul>
 
             <div className="flex items-center mt-6">
-              <div className="flex items-center text-ochre mr-3">
+              <div className="flex items-center text-accent mr-3">
                 <Star className="w-5 h-5 fill-current" />
                 <Star className="w-5 h-5 fill-current" />
                 <Star className="w-5 h-5 fill-current" />

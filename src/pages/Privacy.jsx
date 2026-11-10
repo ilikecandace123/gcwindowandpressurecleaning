@@ -143,11 +143,11 @@ export default function Privacy() {
           <p className="text-ink-2 mb-6">
             You can ask us what personal information we hold about you, ask us to correct it, or ask us to delete it.
             Email{" "}
-            <a href={`mailto:${BUSINESS_EMAIL}`} className="text-ochre-3 font-medium hover:underline">
+            <a href={`mailto:${BUSINESS_EMAIL}`} className="text-accent-3 font-medium hover:underline">
               {BUSINESS_EMAIL}
             </a>{" "}
             or call{" "}
-            <a href="tel:0752308293" className="text-ochre-3 font-medium hover:underline">
+            <a href="tel:0752308293" className="text-accent-3 font-medium hover:underline">
               {BUSINESS_PHONE}
             </a>
             . We will respond within 30 days. There is no charge. If we cannot delete something because we are required
@@ -171,20 +171,20 @@ export default function Privacy() {
           <p className="text-ink-2 mb-2">Gold Coast Window and Pressure Cleaning</p>
           <p className="text-ink-2 mb-2">
             Phone:{" "}
-            <a href="tel:0752308293" className="text-ochre-3 font-medium hover:underline">
+            <a href="tel:0752308293" className="text-accent-3 font-medium hover:underline">
               {BUSINESS_PHONE}
             </a>
           </p>
           <p className="text-ink-2 mb-8">
             Email:{" "}
-            <a href={`mailto:${BUSINESS_EMAIL}`} className="text-ochre-3 font-medium hover:underline">
+            <a href={`mailto:${BUSINESS_EMAIL}`} className="text-accent-3 font-medium hover:underline">
               {BUSINESS_EMAIL}
             </a>
           </p>
 
           <p className="text-ink-2">
-            See also our <Link to="/about/" className="text-ochre-3 font-medium hover:underline">About</Link> and{" "}
-            <Link to="/contact/" className="text-ochre-3 font-medium hover:underline">Contact</Link> pages.
+            See also our <Link to="/about/" className="text-accent-3 font-medium hover:underline">About</Link> and{" "}
+            <Link to="/contact/" className="text-accent-3 font-medium hover:underline">Contact</Link> pages.
           </p>
         </div>
       </section>

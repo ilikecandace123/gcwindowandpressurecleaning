@@ -34,7 +34,7 @@ export default function PreSaleSection({ variant = "window" }) {
     <section className="py-16 bg-paper-white" aria-labelledby={`presale-${variant}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3 mb-4">
-          <Home className="w-7 h-7 text-ochre-3" aria-hidden="true" />
+          <Home className="w-7 h-7 text-accent-3" aria-hidden="true" />
           <h2 id={`presale-${variant}`} className="text-3xl font-bold text-ink">
             {c.heading}
           </h2>
@@ -51,7 +51,7 @@ export default function PreSaleSection({ variant = "window" }) {
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
             to="/guides/cleaning-before-selling-your-house-gold-coast/"
-            className="inline-flex items-center justify-center font-semibold text-ochre-3 hover:text-ink"
+            className="inline-flex items-center justify-center font-semibold text-accent-3 hover:text-ink"
           >
             Guide: What cleaning should you do before selling your house?
             <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />

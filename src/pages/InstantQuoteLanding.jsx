@@ -41,7 +41,7 @@ function scrollToQuote() {
 // Layout.jsx skips the site-wide QuoteCTA on this page (currentPageName
 // "InstantQuoteLanding") because the lead capture is already built in.
 //
-// Look: the site theme ("Local & honest": warm paper, ink, ochre, serif
+// Look: the site theme ("Local & honest": warm paper, ink, accent, serif
 // display) — see tailwind.config.js and src/index.css.
 export default function InstantQuoteLanding() {
   const { service: slug } = useParams();
@@ -66,7 +66,7 @@ function Landing({ landing }) {
   const heroWebp = heroJob ? null : landing.image.replace(".jpg", ".webp");
 
   // "Gutter Cleaning Gold Coast — See Your Price in 2 Minutes": the keyword
-  // part stays upright, the promise after the dash is set in italic ochre.
+  // part stays upright, the promise after the dash is set in italic accent.
   const [h1Lead, h1Tail] = landing.h1.split(" — ");
 
   // Sticky mobile bar: only once the quote card has scrolled out of view.
@@ -116,7 +116,7 @@ function Landing({ landing }) {
                 {h1Tail && (
                   <>
                     {" "}
-                    <em className="italic font-medium text-ochre-2">{h1Tail}</em>
+                    <em className="italic font-medium text-accent-2">{h1Tail}</em>
                   </>
                 )}
               </h1>
@@ -198,7 +198,7 @@ function Landing({ landing }) {
             {examples.map((ex, i) => (
               <div key={ex.label} className="relative bg-paper-white border-2 border-dashed border-ink rounded-[10px] px-5 py-5">
                 {i === 1 && (
-                  <span className="absolute -top-3 right-4 bg-ochre text-ink border-2 border-ink text-[11px] tracking-[.12em] uppercase font-bold px-2.5 py-0.5 rounded-full">Most common</span>
+                  <span className="absolute -top-3 right-4 bg-accent text-ink border-2 border-ink text-[11px] tracking-[.12em] uppercase font-bold px-2.5 py-0.5 rounded-full">Most common</span>
                 )}
                 <div className="font-display font-bold text-[44px] leading-none">{ex.price}</div>
                 <div className="mt-2 text-ink-2 font-semibold">{ex.label}</div>
@@ -219,7 +219,7 @@ function Landing({ landing }) {
             <h2 className="font-display font-bold text-3xl sm:text-[34px] leading-[1.1] mb-5">What&rsquo;s included, every time</h2>
             <ul className="grid gap-3">
               {landing.included.map((item) => (
-                <li key={item} className="flex gap-3 text-[17px] pb-3 border-b border-rule before:content-['—'] before:text-ochre before:font-bold">
+                <li key={item} className="flex gap-3 text-[17px] pb-3 border-b border-rule before:content-['—'] before:text-accent before:font-bold">
                   <span>{item}</span>
                 </li>
               ))}
@@ -234,7 +234,7 @@ function Landing({ landing }) {
                 ["We lock in a time", "Leave your number and we call or text to book a day that suits you."],
               ].map(([t, d], i) => (
                 <li key={t} className="flex gap-4 bg-paper-white border-2 border-ink rounded-xl p-5">
-                  <span className="font-display font-bold text-3xl text-ochre-2 leading-none">{i + 1}</span>
+                  <span className="font-display font-bold text-3xl text-accent-2 leading-none">{i + 1}</span>
                   <div>
                     <div className="font-bold text-lg">{t}</div>
                     <div className="text-ink-2">{d}</div>
@@ -261,7 +261,7 @@ function Landing({ landing }) {
                 <figure key={job.photo} className="bg-paper-white border-2 border-ink rounded-[14px] overflow-hidden">
                   <img src={job.photo} alt={job.alt || `Recent job in ${titleCase(job.suburb)}`} width={1200} height={900} className="w-full h-64 sm:h-72 object-cover border-b-2 border-ink" loading="lazy" decoding="async" />
                   <figcaption className="p-5">
-                    <div className="text-[12px] tracking-[.1em] uppercase font-bold text-ochre-3 mb-2">
+                    <div className="text-[12px] tracking-[.1em] uppercase font-bold text-accent-3 mb-2">
                       {titleCase(job.suburb)} · {monthYear(job.date)}
                     </div>
                     <p className="text-ink-2 leading-relaxed">{job.text}</p>
@@ -327,7 +327,7 @@ function LandingFaq({ faqs, title, moreHref, moreLabel }) {
             <div key={faq.question} className="border-b border-rule py-3.5">
               <button type="button" onClick={() => setOpen(open === i ? -1 : i)} className="w-full flex justify-between items-start gap-4 text-left">
                 <h3 className="font-display font-bold text-lg sm:text-[21px] leading-snug">{faq.question}</h3>
-                {open === i ? <ChevronUp className="w-5 h-5 text-ochre-2 flex-shrink-0 mt-1" /> : <ChevronDown className="w-5 h-5 text-ochre-2 flex-shrink-0 mt-1" />}
+                {open === i ? <ChevronUp className="w-5 h-5 text-accent-2 flex-shrink-0 mt-1" /> : <ChevronDown className="w-5 h-5 text-accent-2 flex-shrink-0 mt-1" />}
               </button>
               <p className={(open === i ? "" : "hidden ") + "mt-2.5 text-ink-2 leading-relaxed max-w-[70ch]"}>{faq.answer}</p>
             </div>
@@ -335,7 +335,7 @@ function LandingFaq({ faqs, title, moreHref, moreLabel }) {
         </div>
         {moreHref && (
           <p className="mt-6">
-            <Link to={moreHref} className="font-bold text-ink underline decoration-ochre decoration-2 underline-offset-4 hover:text-ochre-2">
+            <Link to={moreHref} className="font-bold text-ink underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-3">
               {moreLabel}
             </Link>
           </p>

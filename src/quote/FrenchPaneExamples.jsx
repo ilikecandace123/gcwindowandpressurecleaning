@@ -34,7 +34,7 @@ export default function FrenchPaneExamples({ className = "" }) {
   return (
     <div className={className}>
       <div className="flex items-start bg-paper-2 border border-rule rounded-xl px-4 py-3 mb-4">
-        <Info className="w-5 h-5 text-ochre-3 mr-2.5 mt-0.5 flex-shrink-0" />
+        <Info className="w-5 h-5 text-accent-3 mr-2.5 mt-0.5 flex-shrink-0" />
         <p className="text-sm text-ink-2">
           <strong>Info:</strong> French pane windows require additional cleaning time due to their grid patterns and
           multiple glass sections.

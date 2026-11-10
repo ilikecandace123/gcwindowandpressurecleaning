@@ -270,7 +270,7 @@ export default function GoogleReviews() {
             </h2>
           </div>
           <div className="flex items-center justify-center mb-2">
-            <div className="flex items-center text-ochre mr-3">
+            <div className="flex items-center text-accent mr-3">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-6 h-6 fill-current" />
               ))}
@@ -330,9 +330,9 @@ export default function GoogleReviews() {
                       style={{ width: `${100 / itemsPerView}%` }}
                     >
                       <div className="card p-6 relative h-full">
-                        <Quote className="w-8 h-8 text-ochre/50 mb-4" />
+                        <Quote className="w-8 h-8 text-accent/50 mb-4" />
 
-                        <div className="flex items-center text-ochre mb-4">
+                        <div className="flex items-center text-accent mb-4">
                           {[...Array(stars)].map((_, i) => (
                             <Star key={i} className="w-4 h-4 fill-current" />
                           ))}
@@ -351,7 +351,7 @@ export default function GoogleReviews() {
                                 className="w-10 h-10 rounded-full mr-3"
                                 referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                             ) : (
-                              <div className="w-10 h-10 rounded-full bg-ochre-100 border-2 border-ink text-ink font-display font-bold flex items-center justify-center mr-3">
+                              <div className="w-10 h-10 rounded-full bg-accent-100 border-2 border-ink text-ink font-display font-bold flex items-center justify-center mr-3">
                                 {name.charAt(0)}
                               </div>
                             )}

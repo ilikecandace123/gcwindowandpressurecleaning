@@ -59,23 +59,23 @@
     letter-spacing: -0.012em;
   }
   ::selection {
-    background: theme("colors.ochre.100");
+    background: theme("colors.accent.100");
     color: theme("colors.ink.DEFAULT");
   }
   :focus-visible {
-    outline: 2px solid theme("colors.ochre.DEFAULT");
+    outline: 2px solid theme("colors.accent.DEFAULT");
     outline-offset: 2px;
   }
 }
 
 @layer components {
-  /* Buttons. Primary = ochre pill with an ink edge and a hard shadow that
-     presses in on hover. Always ink text on ochre (white fails contrast). */
+  /* Buttons. Primary = accent pill with an ink edge and a hard shadow that
+     presses in on hover. Always ink text on accent (white fails contrast). */
   .btn {
     @apply inline-flex items-center justify-center rounded-full font-bold leading-tight transition-all duration-150 border-2 px-6 py-3;
   }
   .btn-primary {
-    @apply bg-ochre text-ink border-ink shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[3px] active:translate-y-[3px] active:shadow-none;
+    @apply bg-accent text-ink border-ink shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[3px] active:translate-y-[3px] active:shadow-none;
   }
   .btn:disabled {
     @apply opacity-50 cursor-not-allowed translate-x-0 translate-y-0;
@@ -91,7 +91,7 @@
   }
   /* On ink bands */
   .btn-primary-on-ink {
-    @apply bg-ochre text-ink border-ochre hover:bg-paper hover:border-paper;
+    @apply bg-accent text-ink border-accent hover:bg-paper hover:border-paper;
   }
   .btn-outline-on-ink {
     @apply bg-transparent text-paper border-paper/60 hover:border-paper hover:bg-paper hover:text-ink;
@@ -111,21 +111,21 @@
     @apply bg-paper-white border border-rule rounded-xl;
   }
 
-  /* Small-caps label with a short ochre rule in front of it. */
+  /* Small-caps label with a short accent rule in front of it. */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-[13px] tracking-[.12em] uppercase font-bold text-ochre-3;
+    @apply inline-flex items-center gap-2 text-[13px] tracking-[.12em] uppercase font-bold text-accent-3;
   }
   .eyebrow::before {
     content: "";
-    @apply w-7 h-[2px] bg-ochre;
+    @apply w-7 h-[2px] bg-accent;
   }
   .eyebrow-plain::before {
     display: none;
   }
 
-  /* Short ochre rule under a heading (centre it with mx-auto). */
+  /* Short accent rule under a heading (centre it with mx-auto). */
   .heading-rule {
-    @apply block w-14 h-[3px] bg-ochre;
+    @apply block w-14 h-[3px] bg-accent;
   }
 
   /* Fine dot grain on paper sections. */
@@ -134,14 +134,14 @@
     background-size: 14px 14px;
   }
 
-  /* Photo frame: ink edge + offset ochre block. */
+  /* Photo frame: ink edge + offset accent block. */
   .photo-frame {
-    @apply rounded-[14px] overflow-hidden border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre;
+    @apply rounded-[14px] overflow-hidden border-2 border-ink shadow-hard-accent-sm sm:shadow-hard-accent;
   }
 
-  /* Text link with an ochre underline. */
+  /* Text link with an accent underline. */
   .link {
-    @apply font-semibold text-ink underline decoration-ochre decoration-2 underline-offset-4 hover:text-ochre-3;
+    @apply font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-3;
   }
 }
 

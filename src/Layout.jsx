@@ -39,17 +39,17 @@ export default function Layout({ children, currentPageName }) {
       <div className="bg-ink text-paper text-[13px] tracking-wide py-1.5 hidden sm:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center gap-5">
           <div className="flex items-center">
-            <Shield className="w-3.5 h-3.5 mr-1.5 text-ochre" />
+            <Shield className="w-3.5 h-3.5 mr-1.5 text-accent" />
             Fully insured
           </div>
-          <span className="w-1 h-1 rounded-full bg-ochre" aria-hidden="true"></span>
+          <span className="w-1 h-1 rounded-full bg-accent" aria-hidden="true"></span>
           <div className="flex items-center">
-            <Users className="w-3.5 h-3.5 mr-1.5 text-ochre" />
+            <Users className="w-3.5 h-3.5 mr-1.5 text-accent" />
             Police-checked staff
           </div>
-          <span className="w-1 h-1 rounded-full bg-ochre" aria-hidden="true"></span>
+          <span className="w-1 h-1 rounded-full bg-accent" aria-hidden="true"></span>
           <div className="flex items-center">
-            <Star className="w-3.5 h-3.5 mr-1.5 fill-ochre text-ochre" />
+            <Star className="w-3.5 h-3.5 mr-1.5 fill-accent text-accent" />
             5.0 stars from 2,500+ happy customers
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function Layout({ children, currentPageName }) {
                 onMouseEnter={() => setServicesDropdownOpen(true)}
                 onMouseLeave={() => setServicesDropdownOpen(false)}
               >
-                <button onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 transition-colors whitespace-nowrap">
+                <button onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-[15px] font-semibold text-ink hover:text-accent-3 transition-colors whitespace-nowrap">
                   Residential
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -81,25 +81,25 @@ export default function Layout({ children, currentPageName }) {
                     never reaches the prerendered HTML, so crawlers never saw these
                     links — the same trap the FAQ accordion had. */}
                 <div className={`absolute top-full left-0 mt-0 w-56 bg-paper-white rounded-xl border-2 border-ink shadow-hard-sm py-2 z-50 ${servicesDropdownOpen ? "block" : "hidden"}`}>
-                    <Link to="/window-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/window-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Window Cleaning
                     </Link>
-                    <Link to="/roof-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/roof-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Roof Cleaning
                     </Link>
-                    <Link to="/pressure-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/pressure-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Pressure Cleaning
                     </Link>
-                    <Link to="/house-softwash/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/house-softwash/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       House Softwash
                     </Link>
-                    <Link to="/gutter-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/gutter-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Gutter Cleaning
                     </Link>
-                    <Link to="/solar-panel-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/solar-panel-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Solar Panel Cleaning
                     </Link>
-                    <Link to="/bird-proofing/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/bird-proofing/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Solar Panel Bird Proofing
                     </Link>
                   </div>
@@ -111,7 +111,7 @@ export default function Layout({ children, currentPageName }) {
                 onMouseEnter={() => setCommercialDropdownOpen(true)}
                 onMouseLeave={() => setCommercialDropdownOpen(false)}
               >
-                <button onClick={() => setCommercialDropdownOpen(!commercialDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 transition-colors whitespace-nowrap">
+                <button onClick={() => setCommercialDropdownOpen(!commercialDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-[15px] font-semibold text-ink hover:text-accent-3 transition-colors whitespace-nowrap">
                   Commercial & Strata
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${commercialDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -120,32 +120,32 @@ export default function Layout({ children, currentPageName }) {
                     <Link to="/commercial/" className="block px-4 py-2.5 text-[15px] font-bold text-ink hover:bg-paper-2 transition-colors border-b border-rule mb-1">
                       All Commercial &amp; Strata Services
                     </Link>
-                    <Link to="/commercial/window-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/commercial/window-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Commercial Window Cleaning
                     </Link>
-                    <Link to="/commercial/roof-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/commercial/roof-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Commercial Roof Cleaning
                     </Link>
-                    <Link to="/commercial/pressure-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/commercial/pressure-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Commercial Pressure Cleaning
                     </Link>
-                    <Link to="/commercial/house-softwash/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/commercial/house-softwash/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Commercial Building Softwash
                     </Link>
-                    <Link to="/commercial/gutter-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/commercial/gutter-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Commercial Gutter Cleaning
                     </Link>
-                    <Link to="/commercial/solar-panel-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/commercial/solar-panel-cleaning/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Commercial Solar Panel Cleaning
                     </Link>
-                    <Link to="/commercial/bird-proofing/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 transition-colors">
+                    <Link to="/commercial/bird-proofing/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Commercial Solar Bird Proofing
                     </Link>
                   </div>
               </div>
 
-              <Link to="/window-cleaning-plans/" className="px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 transition-colors whitespace-nowrap">Window Cleaning Plans</Link>
-              <Link to="/guides/" className="px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 transition-colors whitespace-nowrap">Guides</Link>
+              <Link to="/window-cleaning-plans/" className="px-3 py-2 text-[15px] font-semibold text-ink hover:text-accent-3 transition-colors whitespace-nowrap">Window Cleaning Plans</Link>
+              <Link to="/guides/" className="px-3 py-2 text-[15px] font-semibold text-ink hover:text-accent-3 transition-colors whitespace-nowrap">Guides</Link>
 
             </nav>
 
@@ -183,66 +183,66 @@ export default function Layout({ children, currentPageName }) {
         {mobileMenuOpen && (
           <div className="mobile-menu-panel lg:hidden absolute inset-x-0 top-full overflow-y-auto overscroll-contain border-t-2 border-b-2 border-ink bg-paper shadow-lg">
             <nav className="max-w-7xl mx-auto px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] space-y-1">
-              <div className="px-3 pt-3 pb-1 text-xs font-bold text-ochre-3 uppercase tracking-[.12em]">Residential</div>
-              <Link to="/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <div className="px-3 pt-3 pb-1 text-xs font-bold text-accent-3 uppercase tracking-[.12em]">Residential</div>
+              <Link to="/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Window Cleaning
               </Link>
-              <Link to="/roof-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/roof-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Roof Cleaning
               </Link>
-              <Link to="/pressure-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/pressure-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Pressure Cleaning
               </Link>
-              <Link to="/house-softwash/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/house-softwash/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 House Softwash
               </Link>
-              <Link to="/gutter-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/gutter-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Gutter Cleaning
               </Link>
-              <Link to="/solar-panel-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/solar-panel-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Solar Panel Cleaning
               </Link>
-              <Link to="/bird-proofing/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/bird-proofing/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Solar Panel Bird Proofing
               </Link>
 
-              <div className="px-3 pt-3 pb-1 text-xs font-bold text-ochre-3 uppercase tracking-[.12em]">Commercial & Strata</div>
-              <Link to="/commercial/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <div className="px-3 pt-3 pb-1 text-xs font-bold text-accent-3 uppercase tracking-[.12em]">Commercial & Strata</div>
+              <Link to="/commercial/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Window Cleaning
               </Link>
-              <Link to="/commercial/roof-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/roof-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Roof Cleaning
               </Link>
-              <Link to="/commercial/pressure-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/pressure-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Pressure Cleaning
               </Link>
-              <Link to="/commercial/house-softwash/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/house-softwash/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Building Softwash
               </Link>
-              <Link to="/commercial/gutter-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/gutter-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Gutter Cleaning
               </Link>
-              <Link to="/commercial/solar-panel-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/solar-panel-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Solar Panel Cleaning
               </Link>
-              <Link to="/commercial/bird-proofing/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+              <Link to="/commercial/bird-proofing/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Commercial Solar Bird Proofing
               </Link>
 
               <div className="border-t border-rule mt-2 pt-2">
-                <Link to="/commercial/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors">Commercial &amp; Strata</Link>
-                <Link to="/window-cleaning-plans/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors">Window Cleaning Plans</Link>
-                <Link to="/instant-quote/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] font-semibold text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors">Get Instant Quote</Link>
-                <Link to="/guides/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-ochre-3 hover:bg-paper-2 rounded-lg transition-colors">Expert Guides</Link>
+                <Link to="/commercial/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] font-semibold text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors">Commercial &amp; Strata</Link>
+                <Link to="/window-cleaning-plans/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] font-semibold text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors">Window Cleaning Plans</Link>
+                <Link to="/instant-quote/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] font-semibold text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors">Get Instant Quote</Link>
+                <Link to="/guides/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors">Expert Guides</Link>
               </div>
 
               <div className="border-t border-rule mt-2 pt-2 flex items-center gap-4 px-3 py-2 text-xs text-ink-3">
                 <div className="flex items-center">
-                  <Shield className="w-3.5 h-3.5 mr-1 text-ochre-2" />
+                  <Shield className="w-3.5 h-3.5 mr-1 text-accent-2" />
                   Fully Insured
                 </div>
                 <div className="flex items-center">
-                  <Users className="w-3.5 h-3.5 mr-1 text-ochre-2" />
+                  <Users className="w-3.5 h-3.5 mr-1 text-accent-2" />
                   Police Checked
                 </div>
               </div>
@@ -276,7 +276,7 @@ export default function Layout({ children, currentPageName }) {
                 Gold Coast's premier exterior cleaning service. Fully insured and police-checked staff
                 for your complete peace of mind.
               </p>
-              <div className="flex items-center text-ochre mt-5">
+              <div className="flex items-center text-accent mt-5">
                 <Star className="w-4 h-4 fill-current mr-1" />
                 <Star className="w-4 h-4 fill-current mr-1" />
                 <Star className="w-4 h-4 fill-current mr-1" />
@@ -287,35 +287,35 @@ export default function Layout({ children, currentPageName }) {
             </div>
 
             <div className="md:col-span-5">
-              <h3 className="font-sans text-xs font-bold uppercase tracking-[.14em] text-ochre mb-4">Our Services</h3>
+              <h3 className="font-sans text-xs font-bold uppercase tracking-[.14em] text-accent mb-4">Our Services</h3>
               <div className="grid grid-cols-2 gap-x-8">
                 <div className="space-y-2.5 text-[15px] text-paper-2/85">
-                  <Link to="/roof-cleaning/" className="block hover:text-ochre transition-colors">Roof Cleaning</Link>
-                  <Link to="/window-cleaning/" className="block hover:text-ochre transition-colors">Window Cleaning</Link>
-                  <Link to="/window-cleaning-plans/" className="block hover:text-ochre transition-colors">Window Cleaning Plans</Link>
-                  <Link to="/house-softwash/" className="block hover:text-ochre transition-colors">House &amp; Building Softwash</Link>
-                  <Link to="/pressure-cleaning/" className="block hover:text-ochre transition-colors">Pressure Cleaning</Link>
+                  <Link to="/roof-cleaning/" className="block hover:text-accent transition-colors">Roof Cleaning</Link>
+                  <Link to="/window-cleaning/" className="block hover:text-accent transition-colors">Window Cleaning</Link>
+                  <Link to="/window-cleaning-plans/" className="block hover:text-accent transition-colors">Window Cleaning Plans</Link>
+                  <Link to="/house-softwash/" className="block hover:text-accent transition-colors">House &amp; Building Softwash</Link>
+                  <Link to="/pressure-cleaning/" className="block hover:text-accent transition-colors">Pressure Cleaning</Link>
                 </div>
                 <div className="space-y-2.5 text-[15px] text-paper-2/85">
-                  <Link to="/gutter-cleaning/" className="block hover:text-ochre transition-colors">Gutter Cleaning</Link>
-                  <Link to="/solar-panel-cleaning/" className="block hover:text-ochre transition-colors">Solar Panel Cleaning</Link>
-                  <Link to="/bird-proofing/" className="block hover:text-ochre transition-colors">Solar Panel Bird Proofing</Link>
-                  <Link to="/commercial/" className="block hover:text-ochre transition-colors">Commercial &amp; Strata</Link>
-                  <Link to="/guides/" className="block hover:text-ochre transition-colors">Expert Guides</Link>
+                  <Link to="/gutter-cleaning/" className="block hover:text-accent transition-colors">Gutter Cleaning</Link>
+                  <Link to="/solar-panel-cleaning/" className="block hover:text-accent transition-colors">Solar Panel Cleaning</Link>
+                  <Link to="/bird-proofing/" className="block hover:text-accent transition-colors">Solar Panel Bird Proofing</Link>
+                  <Link to="/commercial/" className="block hover:text-accent transition-colors">Commercial &amp; Strata</Link>
+                  <Link to="/guides/" className="block hover:text-accent transition-colors">Expert Guides</Link>
                 </div>
               </div>
             </div>
 
             <div className="md:col-span-3">
-              <h3 className="font-sans text-xs font-bold uppercase tracking-[.14em] text-ochre mb-4">Contact Us</h3>
-              <a href="tel:0752308293" className="inline-flex items-center font-display font-bold text-2xl text-paper hover:text-ochre transition-colors">
-                <Phone className="w-5 h-5 mr-2 text-ochre" />
+              <h3 className="font-sans text-xs font-bold uppercase tracking-[.14em] text-accent mb-4">Contact Us</h3>
+              <a href="tel:0752308293" className="inline-flex items-center font-display font-bold text-2xl text-paper hover:text-accent transition-colors">
+                <Phone className="w-5 h-5 mr-2 text-accent" />
                 (07) 5230 8293
               </a>
               <div className="space-y-2.5 text-[15px] text-paper-2/85 mt-4">
-                <Link to="/instant-quote/" className="block hover:text-ochre transition-colors">Get an instant quote</Link>
-                <Link to="/about/" className="block hover:text-ochre transition-colors">About Us</Link>
-                <Link to="/contact/" className="block hover:text-ochre transition-colors">Contact</Link>
+                <Link to="/instant-quote/" className="block hover:text-accent transition-colors">Get an instant quote</Link>
+                <Link to="/about/" className="block hover:text-accent transition-colors">About Us</Link>
+                <Link to="/contact/" className="block hover:text-accent transition-colors">Contact</Link>
               </div>
             </div>
           </div>
@@ -325,7 +325,7 @@ export default function Layout({ children, currentPageName }) {
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-1">
                 <Link to="/service-areas/" className="inline-block group">
-                  <h3 className="font-sans text-xs font-bold uppercase tracking-[.14em] text-ochre mb-4 group-hover:text-paper transition-colors">Service Areas — View All Suburbs</h3>
+                  <h3 className="font-sans text-xs font-bold uppercase tracking-[.14em] text-accent mb-4 group-hover:text-paper transition-colors">Service Areas — View All Suburbs</h3>
                 </Link>
                 <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[15px] text-paper-2/85">
                   {["Burleigh Heads", "Surfers Paradise", "Broadbeach", "Southport", "Robina",
@@ -333,7 +333,7 @@ export default function Layout({ children, currentPageName }) {
                     "Coolangatta", "Hope Island", "Mermaid Beach", "Tweed Heads", "Kingscliff"].map(suburb => {
                     const slug = suburb.toLowerCase().replace(/ /g, '-');
                     return (
-                      <Link key={slug} to={`/window-cleaning/${slug}/`} className="hover:text-ochre transition-colors">
+                      <Link key={slug} to={`/window-cleaning/${slug}/`} className="hover:text-accent transition-colors">
                         {suburb}
                       </Link>
                     );
