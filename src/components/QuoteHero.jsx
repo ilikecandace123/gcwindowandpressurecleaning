@@ -29,8 +29,8 @@ export default function QuoteHero({
   headline,
   subheading,
   description,
-  eyebrow = "Gold Coast · Northern NSW",
-  bullets = ["Fully insured", "Police-checked staff", "5.0 stars from 2500+ customers", "Free, no-obligation quotes"],
+  eyebrow = "Gold Coast · Northern NSW · Brisbane",
+  bullets = ["Fully insured", "Police-checked staff", "5.0 stars from 2500+ customers"],
   backgroundImage = "/images/services-banner.jpg",
   imagePosition = "center",
   imageAlt = "",
@@ -44,7 +44,7 @@ export default function QuoteHero({
         <div className="grid lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-x-14 gap-y-7 items-start">
           {/* Headline block */}
           <div className="lg:col-start-1 lg:row-start-1">
-            {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+            {eyebrow && <p className="eyebrow eyebrow-plain">{eyebrow}</p>}
             <h1 className="font-display font-bold text-[38px] sm:text-5xl xl:text-[58px] leading-[1.04] tracking-tight mt-4">
               {lead}
               {tail && (
