@@ -18,7 +18,9 @@ ok("roof page gets the roof review", pickHeroReview({ pathname: "/roof-cleaning/
 ok("commercial roof page gets the roof review", pickHeroReview({ pathname: "/commercial/roof-cleaning/" }).service === "roof-cleaning");
 ok("pressure page gets the pressure review", pickHeroReview({ pathname: "/pressure-cleaning/" }).service === "pressure-cleaning");
 ok("driveway headline gets the pressure review", pickHeroReview({ pathname: "/x/", headline: "Driveway Cleaning in Robina" }).service === "pressure-cleaning");
-for (const p of ["/window-cleaning/", "/gutter-cleaning/", "/solar-panel-cleaning/", "/house-softwash/", "/", "/about/"]) {
+ok("roof headline gets the roof review", pickHeroReview({ pathname: "/x/", headline: "Tile, Metal and Concrete Roofs" }).service === "roof-cleaning");
+ok("bird proofing page does not get the roof review", pickHeroReview({ pathname: "/bird-proofing/burleigh-heads/", headline: "Solar Panel Bird Proofing in Burleigh Heads" }).service === "general");
+for (const p of ["/window-cleaning/", "/gutter-cleaning/", "/solar-panel-cleaning/", "/house-softwash/", "/bird-proofing/", "/", "/about/"]) {
   ok(`${p} gets the general review`, pickHeroReview({ pathname: p }).service === "general");
 }
 ok("there is a general review", HERO_REVIEWS.some((r) => r.service === "general"));

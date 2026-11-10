@@ -28,8 +28,9 @@ export const HERO_REVIEWS = [
 // Public Google Business Profile id, used only for the "read all reviews" link.
 export const GOOGLE_REVIEWS_URL = "https://search.google.com/local/reviews?placeid=ChIJpTMe2iOAqU0RqA5p7p-4Aog";
 
+// \broof so "bird-proofing" is not read as a roof page.
 const SERVICE_WORDS = [
-  ["roof-cleaning", /roof/i],
+  ["roof-cleaning", /\broof/i],
   ["pressure-cleaning", /pressure|driveway|paver|concrete|patio/i],
 ];
 
