@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { hideReview } from "../data/heroReviews";
 
 // Reviews are fetched from our own server-side proxy at /api/reviews
 // (a Cloudflare Pages Function — see site/functions/api/reviews.js).
@@ -125,8 +126,13 @@ export default function GoogleReviews() {
 
     function applyData(data) {
       if (cancelled || !data) return;
-      const fetched = data.reviews || [];
-      const combined = fetched.length >= 5
+      // Reviews that name another business are never shown.
+      const fetched = (data.reviews || []).filter(
+        (r) => !hideReview(r.text?.text || r.originalText?.text)
+      );
+      // Three real reviews fill the widest row, so hiding one does not pull
+      // in the stand-in reviews.
+      const combined = fetched.length >= 3
         ? fetched
         : [...fetched, ...FALLBACK_REVIEWS].slice(0, Math.max(6, fetched.length + 3));
       setReviews(combined);
