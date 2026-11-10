@@ -54,16 +54,16 @@ const SERVICE_HERO_IMAGES = {
     alt: "Professional roof cleaning removing moss and algae"
   },
   "house-softwash": {
-    src: "/images/softwash-unsplash.jpg",
-    alt: "Professional house softwash cleaning"
+    src: "/images/softwash-secondary.jpg",
+    alt: "Before and after: a rendered two-storey house softwashed clean of mould and grime"
   },
   "pressure-cleaning": {
     src: "/images/pressure-hero.jpg",
     alt: "Professional pressure cleaning on concrete driveway"
   },
   "gutter-cleaning": {
-    src: "/images/gutter-screenshot.jpg",
-    alt: "Professional gutter cleaning removing leaves and debris"
+    src: "/images/gutter-1.jpg",
+    alt: "Before and after: a gutter packed with leaves, then cleared and flowing"
   },
   "solar-panel-cleaning": {
     src: "/images/solar-panel-hero.jpg",
@@ -224,6 +224,7 @@ export default function LocationService() {
         headline={`${service.name} in ${suburb.name}`}
         subheading={`Professional ${service.name.toLowerCase()} for ${suburb.name} and across the Gold Coast.`}
         backgroundImage={heroImage.src}
+        imageAlt={heroImage.alt}
       />
 
       {/* Location-Aware Introduction */}

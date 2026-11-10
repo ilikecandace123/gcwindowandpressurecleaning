@@ -19,6 +19,18 @@
   font-display: swap;
   src: url("/fonts/fraunces-latin-italic.woff2") format("woff2");
 }
+/* Headings set the "&" in the plain body face: the upright Fraunces ampersand
+   is ornate and Skagen did not like it (10/11/2026). Only U+0026 in upright
+   Fraunces is swapped, so every heading on the site follows without markup.
+   The logo's italic "&" is a separate face and is unchanged. */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/source-sans-3-latin.woff2") format("woff2");
+  unicode-range: U+0026;
+}
 @font-face {
   font-family: "Source Sans 3";
   font-style: normal;

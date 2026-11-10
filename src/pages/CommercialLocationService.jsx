@@ -26,7 +26,7 @@ const SECONDARY_IMAGES = {
   "roof-cleaning": "/images/roof-cleaning-1.jpg",
   "house-softwash": "/images/commercial-softwash-secondary.jpg",
   "pressure-cleaning": "/images/commercial-pressure-secondary.jpg",
-  "gutter-cleaning": "/images/gutter-screenshot.jpg",
+  "gutter-cleaning": "/images/gutter-1.jpg",
   "solar-panel-cleaning": "/images/solar-panel-dirty-vs-clean.webp",
   "bird-proofing": "/images/bird-proofing-secondary.jpg"
 };

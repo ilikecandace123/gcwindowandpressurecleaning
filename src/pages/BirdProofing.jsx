@@ -110,7 +110,8 @@ export default function BirdProofing() {
       <QuoteHero
         headline={'Solar Panel Bird Proofing on the Gold Coast'}
         subheading={'Keep pigeons out from under your panels — for good.'}
-        backgroundImage={'/images/services-banner.jpg'}
+        backgroundImage={HERO_IMAGE}
+        imageAlt="Bird proofing mesh fitted around the edge of rooftop solar panels"
       />
 
       {/* About Section */}

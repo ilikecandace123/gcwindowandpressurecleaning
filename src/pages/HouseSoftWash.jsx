@@ -102,7 +102,8 @@ export default function HouseSoftWash() {
       <QuoteHero
         headline={'Professional House & Building Washing on the Gold Coast'}
         subheading={'Gentle low-pressure washing for renders, walls & eaves.'}
-        backgroundImage={'/images/softwash-unsplash.jpg'}
+        backgroundImage={'/images/softwash-secondary.jpg'}
+        imageAlt="Before and after: a rendered two-storey house softwashed clean of mould and grime"
       />
 
       {/* About Section */}
@@ -111,10 +112,10 @@ export default function HouseSoftWash() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="/images/softwash-secondary.jpg"
-                alt="Softwash cleaning removing mould and dirt from rendered house walls on the Gold Coast"
+                src="/images/commercial-softwash-secondary.jpg"
+                alt="Before and after: black mould softwashed off the eaves and brickwork of a Gold Coast home"
                 loading="lazy"
-                className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre" decoding="async" width="1024" height="683" />
+                className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre" decoding="async" width="1195" height="896" />
 
             </div>
             <div>

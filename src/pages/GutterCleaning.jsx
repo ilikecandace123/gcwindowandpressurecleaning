@@ -97,7 +97,8 @@ export default function GutterCleaning() {
       <QuoteHero
         headline={'Expert Gutter Cleaning on the Gold Coast'}
         subheading={'Cleared, flushed and flowing before the next downpour.'}
-        backgroundImage={'/images/gutter-screenshot.jpg'}
+        backgroundImage={'/images/gutter-1.jpg'}
+        imageAlt="Before and after: a gutter packed with leaves, then cleared and flowing"
       />
 
       {/* About Section */}
@@ -137,12 +138,12 @@ export default function GutterCleaning() {
             </div>
             <div>
               <picture>
-                <source srcSet="/images/gutter-secondary.webp" type="image/webp" />
+                <source srcSet="/images/commercial-gutter-hero.webp" type="image/webp" />
                 <img
-                  src="/images/gutter-secondary.jpg"
-                  alt="Clean residential gutters with proper drainage system installed"
+                  src="/images/commercial-gutter-hero.jpg"
+                  alt="Technician in a safety harness clearing a gutter with a vacuum pole from the roof"
                   className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre"
-                  loading="lazy" decoding="async" width="1024" height="682" />
+                  loading="lazy" decoding="async" width="1920" height="1080" />
               </picture>
 
             </div>
