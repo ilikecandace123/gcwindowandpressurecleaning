@@ -108,7 +108,7 @@ function Landing({ landing }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 lg:pt-14 pb-8 lg:pb-12">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-start">
             <div>
-              <p className="eyebrow">
+              <p className="eyebrow eyebrow-plain">
                 {landing.name} · Gold Coast
               </p>
               <h1 className="font-display font-bold text-[40px] sm:text-5xl xl:text-[66px] leading-[1.02] tracking-tight mt-4 mb-5">

@@ -114,7 +114,6 @@ export default function Services() {
       <QuoteHero
         headline="Professional Window & Exterior Cleaning on the Gold Coast"
         subheading="Local • Quality • Trustworthy"
-        description="Serving the Gold Coast and surrounding areas — fully insured, police-checked staff for your peace of mind."
         backgroundImage="/images/services-banner.jpg"
         imagePosition="48% 33%"
       />
