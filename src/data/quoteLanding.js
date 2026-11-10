@@ -92,7 +92,7 @@ export const QUOTE_LANDINGS = [
       },
       {
         question: "How soon can you come?",
-        answer: "Usually within the week. Once your details are in, we call or text to lock in a time that suits you, and we send a reminder the day before.",
+        answer: "Usually within the week. Once your details are in, we get in touch to lock in a time that suits you, and we send a reminder the day before.",
       },
     ],
   },

@@ -98,7 +98,7 @@ export default function QuoteHero({
               <a href="tel:0752308293" className="btn btn-outline">
                 <Phone className="w-4 h-4 mr-2" /> (07) 5230 8293
               </a>
-              <span className="text-sm text-ink-3">Call or text. We actually answer.</span>
+              <span className="text-sm text-ink-3">Call us. We actually answer.</span>
             </div>
           </div>
         </div>
