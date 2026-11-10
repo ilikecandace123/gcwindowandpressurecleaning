@@ -231,7 +231,7 @@ function Landing({ landing }) {
               {[
                 ["Answer a few questions", "Size, storeys and condition, with pictures to help. About two minutes."],
                 ["See your price on screen", "The same price we charge, inc GST. Add extras and watch it update."],
-                ["We lock in a time", "Leave your number and we call or text to book a day that suits you."],
+                ["We lock in a time", "Leave your number and we get in touch to book a day that suits you."],
               ].map(([t, d], i) => (
                 <li key={t} className="flex gap-4 bg-paper-white border-2 border-ink rounded-xl p-5">
                   <span className="font-display font-bold text-3xl text-accent-2 leading-none">{i + 1}</span>
