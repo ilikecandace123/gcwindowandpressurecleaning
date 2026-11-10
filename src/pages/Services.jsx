@@ -163,7 +163,7 @@ export default function Services() {
                   )}
                   </ul>
 
-                  <div className="mt-auto flex items-center font-bold text-ink underline decoration-ochre decoration-2 underline-offset-4">
+                  <div className="mt-auto flex items-center font-bold text-ink underline decoration-accent decoration-2 underline-offset-4">
                     Learn More
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -173,9 +173,9 @@ export default function Services() {
 
             {/* Fills the last row beside the seventh service */}
             <div className="md:col-span-1 lg:col-span-2 rounded-[14px] border-2 border-ink bg-ink text-paper p-7 lg:p-10 flex flex-col justify-center">
-              <p className="eyebrow !text-ochre">More than one job?</p>
+              <p className="eyebrow !text-accent">More than one job?</p>
               <h3 className="text-3xl lg:text-[40px] font-bold leading-[1.08] mt-3 mb-3">
-                Price the whole place <em className="italic font-medium text-ochre">in one go</em>
+                Price the whole place <em className="italic font-medium text-accent">in one go</em>
               </h3>
               <p className="text-lg text-paper-2/85 max-w-[52ch] mb-7">
                 Tick every service you need and the instant quote prices them together, about two minutes, no phone call required.

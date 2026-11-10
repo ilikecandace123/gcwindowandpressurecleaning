@@ -145,7 +145,7 @@ export default function RoofCleaning() {
                   src="/images/roof-secondary.jpg"
                   alt="Before and after roof cleaning showing lichen removal on concrete tiles"
                   loading="lazy"
-                  className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre" decoding="async" width="1024" height="682" />
+                  className="rounded-[14px] border-2 border-ink shadow-hard-accent-sm sm:shadow-hard-accent" decoding="async" width="1024" height="682" />
               </picture>
 
             </div>
@@ -162,15 +162,15 @@ export default function RoofCleaning() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Manufacturer-approved cleaning methods</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">EPA-compliant environmentally safe process</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Respectful and well paid staff who take pride in their work</span>
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function RoofCleaning() {
               { num: "6", title: "Final Inspection + Sealant", desc: "We inspect the result, clear gutters of dislodged debris, and offer optional anti-moss sealant for lasting protection." }
             ].map((step, i) => (
               <div key={i} className="border-t-2 border-ink pt-4">
-                <span className="block font-display italic text-2xl text-ochre-2 mb-2">0{step.num}</span>
+                <span className="block font-display italic text-2xl text-accent-2 mb-2">0{step.num}</span>
                 <h3 className="text-base font-semibold mb-2">{step.title}</h3>
                 <p className="text-ink-2 text-sm leading-relaxed">{step.desc}</p>
               </div>
@@ -212,7 +212,7 @@ export default function RoofCleaning() {
       </section>
 
       {/* Gold Coast Climate Section */}
-      <section className="py-16 bg-ochre-50">
+      <section className="py-16 bg-accent-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
             <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">
@@ -339,20 +339,20 @@ export default function RoofCleaning() {
           <h2 className="text-2xl font-bold text-ink mb-4">Gold Coast Roof Cleaning — Areas We Service</h2>
           <p className="text-ink-2 leading-relaxed text-lg">
             We provide professional roof cleaning across the entire Gold Coast region including{" "}
-            <Link to="/roof-cleaning/surfers-paradise/" className="text-ochre-3 hover:underline">Surfers Paradise</Link>,{" "}
-            <Link to="/roof-cleaning/broadbeach/" className="text-ochre-3 hover:underline">Broadbeach</Link>,{" "}
-            <Link to="/roof-cleaning/robina/" className="text-ochre-3 hover:underline">Robina</Link>,{" "}
-            <Link to="/roof-cleaning/burleigh-heads/" className="text-ochre-3 hover:underline">Burleigh Heads</Link>,{" "}
-            <Link to="/roof-cleaning/palm-beach/" className="text-ochre-3 hover:underline">Palm Beach</Link>,{" "}
-            <Link to="/roof-cleaning/currumbin/" className="text-ochre-3 hover:underline">Currumbin</Link>,{" "}
-            <Link to="/roof-cleaning/coolangatta/" className="text-ochre-3 hover:underline">Coolangatta</Link>,{" "}
-            <Link to="/roof-cleaning/southport/" className="text-ochre-3 hover:underline">Southport</Link>,{" "}
-            <Link to="/roof-cleaning/nerang/" className="text-ochre-3 hover:underline">Nerang</Link>,{" "}
-            <Link to="/roof-cleaning/mudgeeraba/" className="text-ochre-3 hover:underline">Mudgeeraba</Link>,{" "}
-            <Link to="/roof-cleaning/elanora/" className="text-ochre-3 hover:underline">Elanora</Link>,{" "}
-            <Link to="/roof-cleaning/tugun/" className="text-ochre-3 hover:underline">Tugun</Link>, and{" "}
-            <Link to="/roof-cleaning/mermaid-waters/" className="text-ochre-3 hover:underline">Mermaid Waters</Link>.{" "}
-            <a href="tel:0752308293" className="text-ochre-3 hover:underline">Call us</a> to confirm coverage for your suburb.
+            <Link to="/roof-cleaning/surfers-paradise/" className="text-accent-3 hover:underline">Surfers Paradise</Link>,{" "}
+            <Link to="/roof-cleaning/broadbeach/" className="text-accent-3 hover:underline">Broadbeach</Link>,{" "}
+            <Link to="/roof-cleaning/robina/" className="text-accent-3 hover:underline">Robina</Link>,{" "}
+            <Link to="/roof-cleaning/burleigh-heads/" className="text-accent-3 hover:underline">Burleigh Heads</Link>,{" "}
+            <Link to="/roof-cleaning/palm-beach/" className="text-accent-3 hover:underline">Palm Beach</Link>,{" "}
+            <Link to="/roof-cleaning/currumbin/" className="text-accent-3 hover:underline">Currumbin</Link>,{" "}
+            <Link to="/roof-cleaning/coolangatta/" className="text-accent-3 hover:underline">Coolangatta</Link>,{" "}
+            <Link to="/roof-cleaning/southport/" className="text-accent-3 hover:underline">Southport</Link>,{" "}
+            <Link to="/roof-cleaning/nerang/" className="text-accent-3 hover:underline">Nerang</Link>,{" "}
+            <Link to="/roof-cleaning/mudgeeraba/" className="text-accent-3 hover:underline">Mudgeeraba</Link>,{" "}
+            <Link to="/roof-cleaning/elanora/" className="text-accent-3 hover:underline">Elanora</Link>,{" "}
+            <Link to="/roof-cleaning/tugun/" className="text-accent-3 hover:underline">Tugun</Link>, and{" "}
+            <Link to="/roof-cleaning/mermaid-waters/" className="text-accent-3 hover:underline">Mermaid Waters</Link>.{" "}
+            <a href="tel:0752308293" className="text-accent-3 hover:underline">Call us</a> to confirm coverage for your suburb.
           </p>
         </div>
       </section>

@@ -231,7 +231,7 @@ export default function LocationService() {
       <section className="py-16 bg-paper-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <div className="flex items-center gap-2 text-ochre-3 mb-4">
+            <div className="flex items-center gap-2 text-accent-3 mb-4">
               <MapPin className="w-5 h-5" />
               <span className="font-semibold">{suburb.name}, Postcode {suburb.postcode}</span>
             </div>
@@ -265,7 +265,7 @@ export default function LocationService() {
 
       {/* Roof Cleaning — Why Gold Coast Roofs Need Cleaning More Often */}
       {serviceSlug === 'roof-cleaning' && (
-        <section className="py-16 bg-ochre-50">
+        <section className="py-16 bg-accent-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10 max-w-3xl">
               <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">Why Gold Coast Roofs Need Cleaning More Often</h2>
@@ -398,7 +398,7 @@ export default function LocationService() {
                   <tr className="bg-ink text-white">
                     <th className="px-6 py-4 text-left font-semibold w-1/3"></th>
                     <th className="px-6 py-4 text-center font-semibold text-brick-300">Dirty Panels</th>
-                    <th className="px-6 py-4 text-center font-semibold text-ochre">After Professional Clean</th>
+                    <th className="px-6 py-4 text-center font-semibold text-accent">After Professional Clean</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -453,8 +453,8 @@ export default function LocationService() {
           <div className="grid md:grid-cols-4 gap-6">
             {service.process.map((item) => (
               <div key={item.step} className="bg-paper-white rounded-[14px] border-2 border-ink p-6 text-center">
-                <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xl font-bold text-ochre-3">{item.step}</span>
+                <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <span className="text-xl font-bold text-accent-3">{item.step}</span>
                 </div>
                 <h3 className="text-lg font-semibold mb-2 text-ink">{item.title}</h3>
                 <p className="text-ink-2 text-sm">{item.description}</p>
@@ -494,7 +494,7 @@ export default function LocationService() {
               <span className="font-medium text-ink group-hover:text-ink">
                 Window Cleaning Plans in {suburb.name}
               </span>
-              <ArrowRight className="w-4 h-4 text-ochre-3 flex-shrink-0 ml-2" />
+              <ArrowRight className="w-4 h-4 text-accent-3 flex-shrink-0 ml-2" />
             </Link>
             {SERVICES.filter(s => s.slug !== serviceSlug).map((otherService, idx) => (
               <Link
@@ -505,7 +505,7 @@ export default function LocationService() {
                 <span className="font-medium text-ink group-hover:text-ink">
                   {otherService.name} in {suburb.name}
                 </span>
-                <ArrowRight className="w-4 h-4 text-ochre-3 flex-shrink-0 ml-2" />
+                <ArrowRight className="w-4 h-4 text-accent-3 flex-shrink-0 ml-2" />
               </Link>
             ))}
           </div>
@@ -533,7 +533,7 @@ export default function LocationService() {
                     className="flex items-center justify-between p-4 bg-paper rounded-lg hover:bg-paper-2 transition-colors border border-rule hover:border-rule"
                   >
                     <span className="font-medium text-ink">{nearbySuburbName}</span>
-                    <ArrowRight className="w-4 h-4 text-ochre-3" />
+                    <ArrowRight className="w-4 h-4 text-accent-3" />
                   </Link>
                 );
               })}

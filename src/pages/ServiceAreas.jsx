@@ -70,7 +70,7 @@ export default function ServiceAreas() {
               <Link
                 key={service.slug}
                 to={`/${service.slug}/`}
-                className="px-4 py-2 bg-paper-2 text-ink rounded-full text-sm font-medium hover:bg-ochre-100 transition-colors"
+                className="px-4 py-2 bg-paper-2 text-ink rounded-full text-sm font-medium hover:bg-accent-100 transition-colors"
               >
                 {service.name}
               </Link>
@@ -91,7 +91,7 @@ export default function ServiceAreas() {
               <div key={regionKey} className="mb-12">
                 <div className="mb-6">
                   <div className="flex items-center gap-2 mb-2">
-                    <MapPin className="w-5 h-5 text-ochre-3" />
+                    <MapPin className="w-5 h-5 text-accent-3" />
                     <h2 className="text-2xl font-bold text-ink">{info.label}</h2>
                   </div>
                   <p className="text-ink-2">{info.description}</p>

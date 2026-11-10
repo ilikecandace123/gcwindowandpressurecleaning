@@ -40,30 +40,30 @@ export default function Contact() {
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-ochre-3" />
+                  <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-6 h-6 text-accent-3" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-ink mb-1">Phone</h3>
-                    <a href="tel:0752308293" className="text-ochre-3 text-lg font-medium hover:underline">(07) 5230 8293</a>
+                    <a href="tel:0752308293" className="text-accent-3 text-lg font-medium hover:underline">(07) 5230 8293</a>
                     <p className="text-sm text-ink-3 mt-1">We actually answer our phones!</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-ochre-3" />
+                  <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-accent-3" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-ink mb-1">Email</h3>
-                    <a href="mailto:gcwindowandpressure@gmail.com" className="text-ochre-3 text-lg font-medium hover:underline break-all">gcwindowandpressure@gmail.com</a>
+                    <a href="mailto:gcwindowandpressure@gmail.com" className="text-accent-3 text-lg font-medium hover:underline break-all">gcwindowandpressure@gmail.com</a>
                     <p className="text-sm text-ink-3 mt-1">We respond to enquiries quickly during business hours.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-ochre-3" />
+                  <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-6 h-6 text-accent-3" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-ink mb-1">Business Hours</h3>
@@ -72,8 +72,8 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-ochre-3" />
+                  <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-accent-3" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-ink mb-1">Service Area</h3>

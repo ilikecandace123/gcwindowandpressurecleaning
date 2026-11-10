@@ -105,15 +105,15 @@ export default function Commercial() {
                 to={`/commercial/${service.slug}/`}
                 className="group bg-paper-white rounded-[14px] border-2 border-ink hover:shadow-hard-sm transition-all duration-300 hover:-translate-y-[2px] hover:-translate-x-[2px] flex flex-col p-7"
               >
-                <div className="w-12 h-12 rounded-xl bg-paper-2 text-ochre-3 flex items-center justify-center mb-5">
+                <div className="w-12 h-12 rounded-xl bg-paper-2 text-accent-3 flex items-center justify-center mb-5">
                   <Building2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-ink mb-2 group-hover:text-ochre-3 transition-colors">
+                <h3 className="text-xl font-bold text-ink mb-2 group-hover:text-accent-3 transition-colors">
                   {service.name}
                 </h3>
                 <p className="text-sm text-ink font-medium mb-3">{service.subhead}</p>
                 <p className="text-ink-2 text-sm flex-1">{service.shortDesc}</p>
-                <span className="mt-5 inline-flex items-center text-ochre-3 font-semibold text-sm">
+                <span className="mt-5 inline-flex items-center text-accent-3 font-semibold text-sm">
                   View service <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>

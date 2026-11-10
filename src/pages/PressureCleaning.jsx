@@ -126,19 +126,19 @@ export default function PressureCleaning() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Industrial-grade commercial equipment</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Specialised treatments for oil and stubborn stains</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Surface-appropriate pressure settings</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">No job too big or small</span>
                 </div>
               </div>
@@ -149,7 +149,7 @@ export default function PressureCleaning() {
                 <img
                   src="/images/pressure-secondary.jpg"
                   alt="Pressure cleaning service team demonstrating concrete surface restoration"
-                  className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre"
+                  className="rounded-[14px] border-2 border-ink shadow-hard-accent-sm sm:shadow-hard-accent"
                   loading="lazy" decoding="async" width="1024" height="682" />
               </picture>
 
@@ -173,7 +173,7 @@ export default function PressureCleaning() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <h3 className="text-xl font-semibold mb-4 text-ochre-3">Driveways and Concrete</h3>
+              <h3 className="text-xl font-semibold mb-4 text-accent-3">Driveways and Concrete</h3>
               <p className="text-ink-2 mb-4">
                 Remove oil stains, tyre marks, and years of built-up grime to restore your driveway's appearance.
               </p>
@@ -197,7 +197,7 @@ export default function PressureCleaning() {
             </div>
             
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <h3 className="text-xl font-semibold mb-4 text-ochre-3">Patios and Outdoor Areas</h3>
+              <h3 className="text-xl font-semibold mb-4 text-accent-3">Patios and Outdoor Areas</h3>
               <p className="text-ink-2 mb-4">
                 Transform outdoor entertainment areas by removing stains and organic growth for a fresh, clean look.
               </p>

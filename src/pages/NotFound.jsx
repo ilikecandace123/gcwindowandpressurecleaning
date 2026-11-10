@@ -13,14 +13,14 @@ export default function NotFound() {
         noindex
       />
       <div className="max-w-2xl text-center">
-        <p className="text-7xl font-bold text-ochre-3 mb-4">404</p>
+        <p className="text-7xl font-bold text-accent-3 mb-4">404</p>
         <h1 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">
           Page not found
         </h1>
         <p className="text-lg text-ink-2 mb-8">
           The page you're looking for doesn't exist or has been moved. Try one
           of the links below, or give us a call on{" "}
-          <a href="tel:0752308293" className="text-ochre-3 font-semibold hover:underline">
+          <a href="tel:0752308293" className="text-accent-3 font-semibold hover:underline">
             (07) 5230 8293
           </a>
           .

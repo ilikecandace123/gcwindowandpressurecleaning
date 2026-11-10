@@ -150,7 +150,7 @@ export default function WindowCleaningPlansLocation() {
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-center">
           <span className="inline-flex items-center bg-paper-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium text-paper-2 mb-6">
-            <Sparkles className="w-4 h-4 mr-2 text-ochre" /> Pre-booked · Priority scheduled · Guaranteed
+            <Sparkles className="w-4 h-4 mr-2 text-accent" /> Pre-booked · Priority scheduled · Guaranteed
           </span>
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5">
             Window Cleaning Plans in {suburb.name}
@@ -167,7 +167,7 @@ export default function WindowCleaningPlansLocation() {
               Get My Plan Quote <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
             <div className="flex items-center text-sm text-paper-2">
-              <Star className="w-4 h-4 fill-ochre text-ochre mr-1.5" />
+              <Star className="w-4 h-4 fill-accent text-accent mr-1.5" />
               5.0 stars — 2500+ happy customers
             </div>
           </div>
@@ -177,7 +177,7 @@ export default function WindowCleaningPlansLocation() {
       {/* Suburb-specific intro */}
       <section className="py-16 bg-paper-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 text-ochre-3 mb-4">
+          <div className="flex items-center gap-2 text-accent-3 mb-4">
             <MapPin className="w-5 h-5" />
             <span className="font-semibold">{suburb.name}, Postcode {suburb.postcode}</span>
           </div>
@@ -214,7 +214,7 @@ export default function WindowCleaningPlansLocation() {
           <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {PLAN_STEPS.map((step, i) => (
               <div key={i} className="bg-paper-white rounded-[14px] border-2 border-ink p-7 text-center">
-                <div className="font-display italic text-3xl text-ochre-2 mb-3">
+                <div className="font-display italic text-3xl text-accent-2 mb-3">
                   {i + 1}
                 </div>
                 <h3 className="text-lg font-semibold text-ink mb-2">{step.title}</h3>
@@ -265,8 +265,8 @@ export default function WindowCleaningPlansLocation() {
               const Icon = BENEFIT_ICONS[i] || CheckCircle;
               return (
                 <div key={i} className="bg-paper-white rounded-[14px] border-2 border-ink p-8 text-center">
-                  <div className="w-14 h-14 bg-ochre-100 rounded-xl flex items-center justify-center mx-auto mb-5">
-                    <Icon className="w-7 h-7 text-ochre-3" />
+                  <div className="w-14 h-14 bg-accent-100 rounded-xl flex items-center justify-center mx-auto mb-5">
+                    <Icon className="w-7 h-7 text-accent-3" />
                   </div>
                   <h3 className="text-lg font-bold text-ink mb-2">{b.title}</h3>
                   <p className="text-ink-2 text-sm leading-relaxed">{b.description}</p>
@@ -286,7 +286,7 @@ export default function WindowCleaningPlansLocation() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-ink-2">
             Just after a one-off clean instead?{" "}
-            <Link to={`/window-cleaning/${suburb.slug}/`} className="text-ochre-3 font-semibold underline hover:text-ink">
+            <Link to={`/window-cleaning/${suburb.slug}/`} className="text-accent-3 font-semibold underline hover:text-ink">
               See Window Cleaning in {suburb.name}
             </Link>
             .
@@ -307,7 +307,7 @@ export default function WindowCleaningPlansLocation() {
                   className="flex items-center justify-between p-4 bg-paper-white rounded-lg hover:bg-paper-2 transition-colors border border-rule hover:border-rule"
                 >
                   <span className="font-medium text-ink">Window Cleaning Plans in {nearby.name}</span>
-                  <ArrowRight className="w-4 h-4 text-ochre-3 flex-shrink-0 ml-2" />
+                  <ArrowRight className="w-4 h-4 text-accent-3 flex-shrink-0 ml-2" />
                 </Link>
               ))}
             </div>
@@ -318,7 +318,7 @@ export default function WindowCleaningPlansLocation() {
       {/* Final CTA */}
       <section className="py-16 bg-ink text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Shield className="w-10 h-10 mx-auto mb-4 text-ochre" />
+          <Shield className="w-10 h-10 mx-auto mb-4 text-accent" />
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Never think about your windows again
           </h2>

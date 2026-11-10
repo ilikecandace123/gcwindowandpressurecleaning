@@ -141,15 +141,15 @@ export default function SolarPanelCleaning() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Police-checked, insured professionals</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Clear communication throughout the process</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Supporting local communities</span>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function SolarPanelCleaning() {
               <img
                 src="/images/solar-panel-dirty-vs-clean.webp"
                 alt="Professional solar panel cleaning team on roof"
-                className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre"
+                className="rounded-[14px] border-2 border-ink shadow-hard-accent-sm sm:shadow-hard-accent"
                 loading="lazy" decoding="async" width="1936" height="1936" />
             </div>
           </div>
@@ -240,7 +240,7 @@ export default function SolarPanelCleaning() {
               { num: "5", title: "Report and Output Check", desc: "We provide before/after photos, a written condition report, and advise on any panel issues spotted. You'll see the difference — and so will your inverter." }
             ].map((step, i) => (
               <div key={i} className="border-t-2 border-ink pt-4">
-                <span className="block font-display italic text-2xl text-ochre-2 mb-2">0{step.num}</span>
+                <span className="block font-display italic text-2xl text-accent-2 mb-2">0{step.num}</span>
                 <h3 className="text-base font-semibold mb-2">{step.title}</h3>
                 <p className="text-ink-2 text-sm leading-relaxed">{step.desc}</p>
               </div>
@@ -299,20 +299,20 @@ export default function SolarPanelCleaning() {
           <h2 className="text-2xl font-bold text-ink mb-4">Gold Coast Solar Panel Cleaning — Areas We Service</h2>
           <p className="text-ink-2 leading-relaxed text-lg">
             We clean solar panels across the entire Gold Coast region including{" "}
-            <Link to="/solar-panel-cleaning/surfers-paradise/" className="text-ochre-3 hover:underline">Surfers Paradise</Link>,{" "}
-            <Link to="/solar-panel-cleaning/broadbeach/" className="text-ochre-3 hover:underline">Broadbeach</Link>,{" "}
-            <Link to="/solar-panel-cleaning/robina/" className="text-ochre-3 hover:underline">Robina</Link>,{" "}
-            <Link to="/solar-panel-cleaning/burleigh-heads/" className="text-ochre-3 hover:underline">Burleigh Heads</Link>,{" "}
-            <Link to="/solar-panel-cleaning/palm-beach/" className="text-ochre-3 hover:underline">Palm Beach</Link>,{" "}
-            <Link to="/solar-panel-cleaning/currumbin/" className="text-ochre-3 hover:underline">Currumbin</Link>,{" "}
-            <Link to="/solar-panel-cleaning/coolangatta/" className="text-ochre-3 hover:underline">Coolangatta</Link>,{" "}
-            <Link to="/solar-panel-cleaning/southport/" className="text-ochre-3 hover:underline">Southport</Link>,{" "}
-            <Link to="/solar-panel-cleaning/nerang/" className="text-ochre-3 hover:underline">Nerang</Link>,{" "}
-            <Link to="/solar-panel-cleaning/mudgeeraba/" className="text-ochre-3 hover:underline">Mudgeeraba</Link>,{" "}
-            <Link to="/solar-panel-cleaning/elanora/" className="text-ochre-3 hover:underline">Elanora</Link>,{" "}
-            <Link to="/solar-panel-cleaning/tugun/" className="text-ochre-3 hover:underline">Tugun</Link>, and{" "}
-            <Link to="/solar-panel-cleaning/mermaid-waters/" className="text-ochre-3 hover:underline">Mermaid Waters</Link>.{" "}
-            Not sure if we cover your suburb? <a href="tel:0752308293" className="text-ochre-3 hover:underline">Give us a call</a>.
+            <Link to="/solar-panel-cleaning/surfers-paradise/" className="text-accent-3 hover:underline">Surfers Paradise</Link>,{" "}
+            <Link to="/solar-panel-cleaning/broadbeach/" className="text-accent-3 hover:underline">Broadbeach</Link>,{" "}
+            <Link to="/solar-panel-cleaning/robina/" className="text-accent-3 hover:underline">Robina</Link>,{" "}
+            <Link to="/solar-panel-cleaning/burleigh-heads/" className="text-accent-3 hover:underline">Burleigh Heads</Link>,{" "}
+            <Link to="/solar-panel-cleaning/palm-beach/" className="text-accent-3 hover:underline">Palm Beach</Link>,{" "}
+            <Link to="/solar-panel-cleaning/currumbin/" className="text-accent-3 hover:underline">Currumbin</Link>,{" "}
+            <Link to="/solar-panel-cleaning/coolangatta/" className="text-accent-3 hover:underline">Coolangatta</Link>,{" "}
+            <Link to="/solar-panel-cleaning/southport/" className="text-accent-3 hover:underline">Southport</Link>,{" "}
+            <Link to="/solar-panel-cleaning/nerang/" className="text-accent-3 hover:underline">Nerang</Link>,{" "}
+            <Link to="/solar-panel-cleaning/mudgeeraba/" className="text-accent-3 hover:underline">Mudgeeraba</Link>,{" "}
+            <Link to="/solar-panel-cleaning/elanora/" className="text-accent-3 hover:underline">Elanora</Link>,{" "}
+            <Link to="/solar-panel-cleaning/tugun/" className="text-accent-3 hover:underline">Tugun</Link>, and{" "}
+            <Link to="/solar-panel-cleaning/mermaid-waters/" className="text-accent-3 hover:underline">Mermaid Waters</Link>.{" "}
+            Not sure if we cover your suburb? <a href="tel:0752308293" className="text-accent-3 hover:underline">Give us a call</a>.
           </p>
         </div>
       </section>

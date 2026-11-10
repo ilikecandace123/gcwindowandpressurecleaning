@@ -128,37 +128,37 @@ export default function WindowCleaning() {
           <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6 flex flex-col">
               <div className="flex items-center mb-3">
-                <div className="w-10 h-10 bg-ochre-100 rounded-lg flex items-center justify-center mr-3">
-                  <Home className="w-5 h-5 text-ochre-3" />
+                <div className="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center mr-3">
+                  <Home className="w-5 h-5 text-accent-3" />
                 </div>
                 <h3 className="font-semibold text-ink">Once-off window clean</h3>
               </div>
               <p className="text-sm text-ink-2 flex-1">One-time clean, no commitment — inside, outside or both.</p>
-              <Link to="/instant-quote/" className="mt-4 inline-flex items-center text-ochre-3 font-semibold text-sm hover:underline">
+              <Link to="/instant-quote/" className="mt-4 inline-flex items-center text-accent-3 font-semibold text-sm hover:underline">
                 Get an instant quote <ArrowRight className="w-4 h-4 ml-1" />
               </Link>
             </div>
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6 flex flex-col">
               <div className="flex items-center mb-3">
-                <div className="w-10 h-10 bg-ochre-100 rounded-lg flex items-center justify-center mr-3">
-                  <Camera className="w-5 h-5 text-ochre-3" />
+                <div className="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center mr-3">
+                  <Camera className="w-5 h-5 text-accent-3" />
                 </div>
                 <h3 className="font-semibold text-ink">Pre-sale window clean</h3>
               </div>
               <p className="text-sm text-ink-2 flex-1">Get the property photo-ready before it goes to market.</p>
-              <Link to="/instant-quote/" className="mt-4 inline-flex items-center text-ochre-3 font-semibold text-sm hover:underline">
+              <Link to="/instant-quote/" className="mt-4 inline-flex items-center text-accent-3 font-semibold text-sm hover:underline">
                 Get an instant quote <ArrowRight className="w-4 h-4 ml-1" />
               </Link>
             </div>
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6 flex flex-col">
               <div className="flex items-center mb-3">
-                <div className="w-10 h-10 bg-ochre-100 rounded-lg flex items-center justify-center mr-3">
-                  <HardHat className="w-5 h-5 text-ochre-3" />
+                <div className="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center mr-3">
+                  <HardHat className="w-5 h-5 text-accent-3" />
                 </div>
                 <h3 className="font-semibold text-ink">Builders / construction clean</h3>
               </div>
               <p className="text-sm text-ink-2 flex-1">Removing paint, render and building residue after a build or reno.</p>
-              <Link to="/instant-quote/" className="mt-4 inline-flex items-center text-ochre-3 font-semibold text-sm hover:underline">
+              <Link to="/instant-quote/" className="mt-4 inline-flex items-center text-accent-3 font-semibold text-sm hover:underline">
                 Request a quote <ArrowRight className="w-4 h-4 ml-1" />
               </Link>
             </div>
@@ -184,19 +184,19 @@ export default function WindowCleaning() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Professional streak-free cleaning techniques</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Safe cleaning up to 4 storeys - interior and exterior</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Complete service includes tracks and screens</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Ask us about our window cleaning plans</span>
                 </div>
               </div>
@@ -208,7 +208,7 @@ export default function WindowCleaning() {
                   src="/images/window-secondary.jpg"
                   alt="Before and after professional window cleaning"
                   loading="lazy"
-                  className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre" decoding="async" width="682" height="1024" />
+                  className="rounded-[14px] border-2 border-ink shadow-hard-accent-sm sm:shadow-hard-accent" decoding="async" width="682" height="1024" />
               </picture>
 
             </div>
@@ -231,32 +231,32 @@ export default function WindowCleaning() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6 text-center">
-              <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-xl font-bold text-ochre-3">1</span>
+              <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-xl font-bold text-accent-3">1</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Exterior Cleaning</h3>
               <p className="text-ink-2 text-sm">Remove dirt, grime, and weather stains from outside window surfaces.</p>
             </div>
             
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6 text-center">
-              <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-xl font-bold text-ochre-3">2</span>
+              <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-xl font-bold text-accent-3">2</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Interior Cleaning</h3>
               <p className="text-ink-2 text-sm">Clean interior glass surfaces for maximum light transmission and clarity.</p>
             </div>
             
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6 text-center">
-              <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-xl font-bold text-ochre-3">3</span>
+              <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-xl font-bold text-accent-3">3</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Track Cleaning</h3>
               <p className="text-ink-2 text-sm">Clear window tracks of dirt, debris, and buildup for smooth operation.</p>
             </div>
             
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6 text-center">
-              <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-xl font-bold text-ochre-3">4</span>
+              <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-xl font-bold text-accent-3">4</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">Flyscreen Care</h3>
               <p className="text-ink-2 text-sm">Clean and maintain flyscreens for improved airflow and appearance.</p>
@@ -271,15 +271,15 @@ export default function WindowCleaning() {
             </p>
             <div className="grid md:grid-cols-3 gap-6 text-sm">
               <div className="flex items-center justify-center space-x-2">
-                <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                <div className="w-2 h-2 bg-accent rounded-full"></div>
                 <span>Professional safety equipment</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                <div className="w-2 h-2 bg-accent rounded-full"></div>
                 <span>Height safety training</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                <div className="w-2 h-2 bg-accent rounded-full"></div>
                 <span>Comprehensive insurance coverage</span>
               </div>
             </div>

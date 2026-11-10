@@ -1,7 +1,7 @@
-// Theme guard: the whole site uses the paper / ink / ochre tokens in
+// Theme guard: the whole site uses the paper / ink / accent tokens in
 // tailwind.config.js and the component classes in src/index.css. This fails if
 // a stock Tailwind palette colour, a font the theme does not ship, or white
-// text on ochre creeps back in.
+// text on accent creeps back in.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -39,7 +39,7 @@ console.log("\nTheme tokens:");
 {
   const stock = [];
   const dynamic = [];
-  const whiteOnOchre = [];
+  const whiteOnAccent = [];
   for (const f of files) {
     const lines = read(f).split("\n");
     lines.forEach((line, i) => {
@@ -47,21 +47,21 @@ console.log("\nTheme tokens:");
       if (hits) stock.push(`${f}:${i + 1} ${hits.join(" ")}`);
       if (DYNAMIC.test(line)) dynamic.push(`${f}:${i + 1}`);
       for (const m of line.matchAll(/"([^"]*)"/g)) {
-        if (/(^|\s)bg-ochre(\s|$)/.test(m[1]) && /(^|\s)text-(white|paper|paper-white)(\s|$)/.test(m[1])) {
-          whiteOnOchre.push(`${f}:${i + 1}`);
+        if (/(^|\s)bg-accent(\s|$)/.test(m[1]) && /(^|\s)text-(white|paper|paper-white)(\s|$)/.test(m[1])) {
+          whiteOnAccent.push(`${f}:${i + 1}`);
         }
       }
     });
   }
   ok("no stock Tailwind palette colours in src/", stock.length === 0, stock.slice(0, 8).join(" | "));
   ok("no colour classes built from template strings (Tailwind cannot see them)", dynamic.length === 0, dynamic.join(" | "));
-  ok("no light text on an ochre background (fails contrast)", whiteOnOchre.length === 0, whiteOnOchre.join(" | "));
+  ok("no light text on an accent background (fails contrast)", whiteOnAccent.length === 0, whiteOnAccent.join(" | "));
 }
 
 console.log("\nFonts and tokens:");
 {
   const tw = read("tailwind.config.js");
-  for (const token of ["paper", "ink", "ochre", "moss", "brick", "rule"]) {
+  for (const token of ["paper", "ink", "accent", "moss", "brick", "rule"]) {
     ok(`tailwind defines the ${token} colour`, new RegExp(`\\b${token}:\\s*[{"']`).test(tw));
   }
   ok("display font is Fraunces", /display:\s*\[\s*'"Fraunces"'/.test(tw));

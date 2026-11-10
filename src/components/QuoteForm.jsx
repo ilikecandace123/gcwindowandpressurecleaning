@@ -19,7 +19,7 @@ export default function QuoteForm({ serviceName }) {
 
             <div className="space-y-6 mb-8">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-ochre-100 border-2 border-ink rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-accent-100 border-2 border-ink rounded-full flex items-center justify-center">
                   <Phone className="w-6 h-6 text-ink" />
                 </div>
                 <div>
@@ -33,7 +33,7 @@ export default function QuoteForm({ serviceName }) {
               {/* Removed Email Us section */}
 
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-ochre-100 border-2 border-ink rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-accent-100 border-2 border-ink rounded-full flex items-center justify-center">
                   <Calendar className="w-6 h-6 text-ink" />
                 </div>
                 <div>
@@ -43,8 +43,8 @@ export default function QuoteForm({ serviceName }) {
               </div>
             </div>
 
-            <div className="border-l-4 border-ochre bg-paper-2 rounded-r-xl p-6">
-              <div className="flex items-center text-ochre mb-2">
+            <div className="border-l-4 border-accent bg-paper-2 rounded-r-xl p-6">
+              <div className="flex items-center text-accent mb-2">
                 <Star className="w-5 h-5 fill-current mr-1" />
                 <Star className="w-5 h-5 fill-current mr-1" />
                 <Star className="w-5 h-5 fill-current mr-1" />
@@ -61,7 +61,7 @@ export default function QuoteForm({ serviceName }) {
           </div>
 
           {/* Right Column - Link to Quote */}
-          <div className="card shadow-hard-ochre p-8 lg:p-10 flex flex-col items-start justify-center">
+          <div className="card shadow-hard-accent p-8 lg:p-10 flex flex-col items-start justify-center">
             <h3 className="text-3xl font-bold text-ink mb-3">Ready for Your Quote?</h3>
             <p className="text-ink-2 mb-6">
               Answer a few quick questions and see your price instantly — or just leave your details and we'll call you. Fast, easy, and completely free.

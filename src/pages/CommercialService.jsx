@@ -47,7 +47,7 @@ export default function CommercialService() {
         <div className="text-center">
           <h1 className="text-4xl font-bold text-ink mb-4">Commercial Service Not Found</h1>
           <p className="text-ink-2 text-lg mb-6">The commercial service you're looking for doesn't exist.</p>
-          <Link to="/" className="text-ochre-3 hover:text-ink font-semibold">← Back to home</Link>
+          <Link to="/" className="text-accent-3 hover:text-ink font-semibold">← Back to home</Link>
         </div>
       </div>
     );
@@ -72,10 +72,10 @@ export default function CommercialService() {
   ];
 
   const trustBadges = [
-    { icon: <Shield className="w-5 h-5 text-ochre-3" />, label: "$20M Public Liability" },
-    { icon: <HardHat className="w-5 h-5 text-ochre-3" />, label: "SWMS & JSA Supplied" },
-    { icon: <Users className="w-5 h-5 text-ochre-3" />, label: "Police-Checked Staff" },
-    { icon: <FileCheck className="w-5 h-5 text-ochre-3" />, label: "Certificates of Currency" }
+    { icon: <Shield className="w-5 h-5 text-accent-3" />, label: "$20M Public Liability" },
+    { icon: <HardHat className="w-5 h-5 text-accent-3" />, label: "SWMS & JSA Supplied" },
+    { icon: <Users className="w-5 h-5 text-accent-3" />, label: "Police-Checked Staff" },
+    { icon: <FileCheck className="w-5 h-5 text-accent-3" />, label: "Certificates of Currency" }
   ];
 
   return (
@@ -131,19 +131,19 @@ export default function CommercialService() {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full mt-2 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
                   <span className="text-ink-2"><strong>Fixed scheduled pricing</strong> — no surprise invoices, budget with confidence</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full mt-2 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
                   <span className="text-ink-2"><strong>Full compliance documentation</strong> — SWMS, JSA, COI supplied on request</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full mt-2 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
                   <span className="text-ink-2"><strong>After-hours & weekend crews</strong> — zero disruption to trading or tenants</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full mt-2 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
                   <span className="text-ink-2"><strong>Photographic reporting</strong> — every visit documented for your records</span>
                 </li>
               </ul>
@@ -151,7 +151,7 @@ export default function CommercialService() {
             <div>
               <picture>
                 <source srcSet={secondaryImage.endsWith('.webp') ? secondaryImage : secondaryImage.replace('.jpg', '.webp')} type="image/webp" />
-                <img src={secondaryImage} alt={service.name} className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre w-full h-auto max-h-[28rem] object-contain bg-paper" loading="lazy" decoding="async" width="1024" height="768" />
+                <img src={secondaryImage} alt={service.name} className="rounded-[14px] border-2 border-ink shadow-hard-accent-sm sm:shadow-hard-accent w-full h-auto max-h-[28rem] object-contain bg-paper" loading="lazy" decoding="async" width="1024" height="768" />
               </picture>
             </div>
           </div>
@@ -160,7 +160,7 @@ export default function CommercialService() {
 
       {/* Roof Cleaning — Why Gold Coast Roofs Need Cleaning More Often */}
       {serviceSlug === 'roof-cleaning' && (
-        <section className="py-16 bg-ochre-50">
+        <section className="py-16 bg-accent-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10 max-w-3xl">
               <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-4">Why Gold Coast Commercial Roofs Need Cleaning More Often</h2>
@@ -266,7 +266,7 @@ export default function CommercialService() {
                   <tr className="bg-ink text-white">
                     <th className="px-6 py-4 text-left font-semibold w-1/3"></th>
                     <th className="px-6 py-4 text-center font-semibold text-brick-300">Dirty Array</th>
-                    <th className="px-6 py-4 text-center font-semibold text-ochre">After Professional Clean</th>
+                    <th className="px-6 py-4 text-center font-semibold text-accent">After Professional Clean</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -302,8 +302,8 @@ export default function CommercialService() {
           <div className="grid md:grid-cols-4 gap-6">
             {service.process.map(step => (
               <div key={step.step} className="bg-paper-white rounded-[14px] border-2 border-ink p-6 text-center">
-                <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xl font-bold text-ochre-3">{step.step}</span>
+                <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <span className="text-xl font-bold text-accent-3">{step.step}</span>
                 </div>
                 <h3 className="text-lg font-semibold mb-2 text-ink">{step.title}</h3>
                 <p className="text-ink-2 text-sm">{step.description}</p>

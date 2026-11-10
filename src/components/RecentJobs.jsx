@@ -36,7 +36,7 @@ export default function RecentJobs({ suburbSlug, suburbName, serviceSlug, jobs: 
               />
               <figcaption className="p-6">
                 {monthYear(job.date) && (
-                  <div className="text-[12px] tracking-[.1em] uppercase font-bold text-ochre-3 mb-2">{monthYear(job.date)}</div>
+                  <div className="text-[12px] tracking-[.1em] uppercase font-bold text-accent-3 mb-2">{monthYear(job.date)}</div>
                 )}
                 <p className="text-ink-2 leading-relaxed">{job.text}</p>
               </figcaption>

@@ -42,7 +42,7 @@ export default function SuburbLinks({ serviceSlug, serviceName, basePath = "", s
               className="flex items-center justify-between p-3.5 bg-paper-white rounded-lg border border-ink/25 hover:border-ink hover:bg-paper-2 transition-colors group"
             >
               <span className="text-sm font-medium text-ink group-hover:text-ink">{serviceName} in {suburb.name}</span>
-              <ArrowRight className="w-4 h-4 text-ink-3 group-hover:text-ochre-3 flex-shrink-0" />
+              <ArrowRight className="w-4 h-4 text-ink-3 group-hover:text-accent-3 flex-shrink-0" />
             </Link>
           ))}
         </div>

@@ -31,13 +31,13 @@ export default function FAQ({ faqs, title = "Frequently Asked Questions", subtit
                 onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
                 aria-expanded={openIndex === index}
               >
-                <h3 className="font-bold text-ink text-lg sm:text-[21px] leading-snug group-hover:text-ochre-3 transition-colors">
+                <h3 className="font-bold text-ink text-lg sm:text-[21px] leading-snug group-hover:text-accent-3 transition-colors">
                   {faq.question}
                 </h3>
                 {openIndex === index ? (
-                  <ChevronUp className="w-5 h-5 text-ochre-2 flex-shrink-0 mt-1" />
+                  <ChevronUp className="w-5 h-5 text-accent-2 flex-shrink-0 mt-1" />
                 ) : (
-                  <ChevronDown className="w-5 h-5 text-ochre-2 flex-shrink-0 mt-1" />
+                  <ChevronDown className="w-5 h-5 text-accent-2 flex-shrink-0 mt-1" />
                 )}
               </button>
 
@@ -57,7 +57,7 @@ export default function FAQ({ faqs, title = "Frequently Asked Questions", subtit
           <div className="mt-7 flex flex-col items-start gap-3">
             {guideLinks.map((g) => (
               <Link key={g.href} to={g.href} className="link inline-flex items-center">
-                <BookOpen className="w-5 h-5 mr-2 text-ochre-2" />
+                <BookOpen className="w-5 h-5 mr-2 text-accent-2" />
                 {g.label}
               </Link>
             ))}

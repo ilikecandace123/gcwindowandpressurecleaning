@@ -71,7 +71,7 @@ export default function GuideArticle() {
               By Gold Coast Window and Pressure Cleaning
             </span>
             <span className="inline-flex items-center">
-              <CalendarDays className="w-4 h-4 mr-1.5 text-ochre-3" />
+              <CalendarDays className="w-4 h-4 mr-1.5 text-accent-3" />
               Updated {formatUpdated(guide.updated)}
             </span>
           </div>
@@ -147,7 +147,7 @@ export default function GuideArticle() {
                   <span className="font-medium text-ink group-hover:text-ink">
                     {r.label}
                   </span>
-                  <ArrowRight className="w-4 h-4 text-ink-3 group-hover:text-ochre-3 flex-shrink-0 ml-3" />
+                  <ArrowRight className="w-4 h-4 text-ink-3 group-hover:text-accent-3 flex-shrink-0 ml-3" />
                 </Link>
               ))}
             </div>

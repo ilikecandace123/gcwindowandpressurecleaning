@@ -18,10 +18,10 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
 const out = (p) => path.join(ROOT, "public", p);
 
 const INK = "#17233b";
-const PAPER = "#f6f1e7";
-const PANE = "#fffdf9";
-const OCHRE = "#d9861c";
-const OCHRE_2 = "#b86d0f";
+const PAPER = "#fbfcfd";
+const PANE = "#ffffff";
+const ACCENT = "#7cc8f5";
+const ACCENT_2 = "#2b8bd0";
 
 // Same drawing as <LogoMark />. `simple` drops the wave and sparkle and
 // thickens the lines so the 16px favicon stays readable.
@@ -32,13 +32,13 @@ function markSvg({ size, simple = false }) {
   const side = 48 - inset * 2;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="${size}" height="${size}">
   <rect x="${inset}" y="${inset}" width="${side}" height="${side}" rx="7" fill="${PANE}" stroke="${INK}" stroke-width="${frame}"/>
-  <path d="${simple ? "M11 34a13 13 0 0 1 26 0z" : "M13 31.5a11 11 0 0 1 22 0z"}" fill="${OCHRE}"/>
+  <path d="${simple ? "M11 34a13 13 0 0 1 26 0z" : "M13 31.5a11 11 0 0 1 22 0z"}" fill="${ACCENT}"/>
   <path d="M24 ${inset}v${side}M${inset} 24h${side}" stroke="${INK}" stroke-width="${bar}"/>
   ${
     simple
       ? ""
       : `<path d="M8 35.5c2.7-2.6 5.3-2.6 8 0s5.3 2.6 8 0 5.3-2.6 8 0 5.3 2.6 8 0" fill="none" stroke="${INK}" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M33.5 9.5l1.4 3.6 3.6 1.4-3.6 1.4-1.4 3.6-1.4-3.6-3.6-1.4 3.6-1.4z" fill="${OCHRE}"/>`
+  <path d="M33.5 9.5l1.4 3.6 3.6 1.4-3.6 1.4-1.4 3.6-1.4-3.6-3.6-1.4 3.6-1.4z" fill="${ACCENT}"/>`
   }
 </svg>`;
 }
@@ -98,7 +98,7 @@ try {
     ${markSvg({ size: 150 })}
     <div style="font-family:Fraunces,serif;font-weight:700;font-size:52px;line-height:1.05;letter-spacing:-.015em;color:${INK};white-space:nowrap">
       <div>Gold Coast Window</div>
-      <div><span style="font-style:italic;font-weight:500;color:${OCHRE_2}">&amp;</span> Pressure Cleaning</div>
+      <div><span style="font-style:italic;font-weight:500;color:${ACCENT_2}">&amp;</span> Pressure Cleaning</div>
     </div></div>`;
   fs.writeFileSync(out("images/logo.png"), await shot({ width: 750, height: 500, background: PAPER, body: wordmark }));
 

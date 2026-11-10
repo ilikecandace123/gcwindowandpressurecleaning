@@ -34,7 +34,7 @@ export function PlanTierCards() {
             }
           >
             <div className="text-3xl font-extrabold leading-none">${tier.saving} off</div>
-            <div className={(tier.popular ? "text-paper-2" : "text-ochre-3") + " text-sm font-medium mt-1"}>
+            <div className={(tier.popular ? "text-paper-2" : "text-accent-3") + " text-sm font-medium mt-1"}>
               every visit
             </div>
           </div>
@@ -43,8 +43,8 @@ export function PlanTierCards() {
             to="/instant-quote/"
             className={
               (tier.popular
-                ? "bg-ochre hover:bg-ochre-2 text-ink shadow-lg"
-                : "bg-paper-white border-2 border-ink text-ochre-3 hover:bg-paper-2") +
+                ? "bg-accent hover:bg-accent-2 text-ink shadow-lg"
+                : "bg-paper-white border-2 border-ink text-accent-3 hover:bg-paper-2") +
               " mt-6 inline-flex items-center justify-center px-5 py-3 rounded-lg font-semibold transition-colors"
             }
           >
@@ -54,7 +54,7 @@ export function PlanTierCards() {
       ))}
     </div>
     <div className="max-w-3xl mx-auto mt-6 bg-paper-2 border border-rule rounded-xl px-5 py-4 flex items-start text-left">
-      <Info className="w-5 h-5 text-ochre-3 mr-3 mt-0.5 flex-shrink-0" />
+      <Info className="w-5 h-5 text-accent-3 mr-3 mt-0.5 flex-shrink-0" />
       <p className="text-sm text-ink-2 leading-relaxed">
         We can do discounts for any regular cleaning interval. Just ask, e.g., four monthly, $75 off per visit, or
         two monthly, $125 off per visit.
@@ -69,7 +69,7 @@ export function PlanInclusions({ dark = false }) {
     <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3 max-w-3xl mx-auto text-left">
       {PLAN_INCLUSIONS.map((item, i) => (
         <li key={i} className="flex items-start">
-          <CheckCircle className={(dark ? "text-ochre" : "text-moss") + " w-5 h-5 mr-2.5 mt-0.5 flex-shrink-0"} />
+          <CheckCircle className={(dark ? "text-accent" : "text-moss") + " w-5 h-5 mr-2.5 mt-0.5 flex-shrink-0"} />
           <span className={dark ? "text-paper" : "text-ink-2"}>{item}</span>
         </li>
       ))}
@@ -101,13 +101,13 @@ export default function WellnessPlanSection() {
   return (
     <section className="relative py-16 lg:py-20 bg-ink text-white overflow-hidden">
       {/* soft decorative glow */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-ochre/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-ochre/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-accent/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
           <span className="inline-flex items-center bg-paper-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium text-paper-2 mb-4">
-            <Sparkles className="w-4 h-4 mr-2 text-ochre" /> Our most popular way to keep windows clean
+            <Sparkles className="w-4 h-4 mr-2 text-accent" /> Our most popular way to keep windows clean
           </span>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">Window Cleaning Plans</h2>
           <p className="text-xl text-paper-2 max-w-2xl">

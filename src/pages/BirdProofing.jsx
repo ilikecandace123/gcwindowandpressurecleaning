@@ -133,19 +133,19 @@ export default function BirdProofing() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Marine-grade galvanised steel mesh</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Warranty-safe panel clip installation</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Humane, exclusion-only solutions</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Workmanship guarantee</span>
                 </div>
               </div>
@@ -156,7 +156,7 @@ export default function BirdProofing() {
                 <img
                   src={SECONDARY_IMAGE}
                   alt="Pigeon nesting beneath rooftop solar panels showing why bird proofing is needed"
-                  className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre"
+                  className="rounded-[14px] border-2 border-ink shadow-hard-accent-sm sm:shadow-hard-accent"
                   loading="lazy" decoding="async" width="980" height="400" />
               </picture>
             </div>
@@ -178,8 +178,8 @@ export default function BirdProofing() {
 
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div className="text-center">
-              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-2xl font-bold text-ochre-3">1</span>
+              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-accent-3">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Inspection</h3>
               <p className="text-ink-2">
@@ -187,8 +187,8 @@ export default function BirdProofing() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-2xl font-bold text-ochre-3">2</span>
+              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-accent-3">2</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Clean and Disinfect</h3>
               <p className="text-ink-2">
@@ -196,8 +196,8 @@ export default function BirdProofing() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-2xl font-bold text-ochre-3">3</span>
+              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-accent-3">3</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Install Mesh</h3>
               <p className="text-ink-2">
@@ -205,8 +205,8 @@ export default function BirdProofing() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-2xl font-bold text-ochre-3">4</span>
+              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="font-display text-2xl font-bold text-accent-3">4</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Guarantee</h3>
               <p className="text-ink-2">

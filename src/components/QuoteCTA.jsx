@@ -20,7 +20,7 @@ function Choices({ compact = false, onInstant, onDetails }) {
       <button
         type="button"
         onClick={onInstant}
-        className="group w-full flex flex-col bg-ochre text-ink border-2 border-ink rounded-xl p-5 sm:p-6 text-left shadow-hard-sm transition-all duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+        className="group w-full flex flex-col bg-accent text-ink border-2 border-ink rounded-xl p-5 sm:p-6 text-left shadow-hard-sm transition-all duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
       >
         <Zap className="w-7 h-7 mb-2.5" />
         <span className="font-display text-xl font-bold mb-1">Get Instant Quote</span>
@@ -37,7 +37,7 @@ function Choices({ compact = false, onInstant, onDetails }) {
         onClick={onDetails}
         className="group w-full flex flex-col bg-paper-white border-2 border-ink/25 hover:border-ink rounded-xl p-5 sm:p-6 text-left transition-colors"
       >
-        <PhoneCall className="w-7 h-7 mb-2.5 text-ochre-2" />
+        <PhoneCall className="w-7 h-7 mb-2.5 text-accent-2" />
         <span className="font-display text-xl font-bold text-ink mb-1">Put in your details</span>
         <span className="text-ink-2 text-[15px] flex-1">
           Skip the questions — leave your details and we&rsquo;ll contact you with your quote.
@@ -82,7 +82,7 @@ export default function QuoteCTA({ variant = "section" }) {
             </div>
             <Choices compact onInstant={() => setActive("instant")} onDetails={() => setActive("details")} />
             <p className="text-[13px] text-ink-3 mt-4 flex items-center">
-              <Star className="w-3.5 h-3.5 fill-ochre text-ochre mr-1.5" />
+              <Star className="w-3.5 h-3.5 fill-accent text-accent mr-1.5" />
               5.0 stars — 2500+ happy customers · Free, no obligation
             </p>
           </>

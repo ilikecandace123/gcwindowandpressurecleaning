@@ -119,19 +119,19 @@ export default function GutterCleaning() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Complete blockage removal and drainage check</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Heights trained staff</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Storm preparation and weather protection</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-ochre rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span className="text-ink-2">Safe, professional ladder work</span>
                 </div>
               </div>
@@ -142,7 +142,7 @@ export default function GutterCleaning() {
                 <img
                   src="/images/commercial-gutter-hero.jpg"
                   alt="Technician in a safety harness clearing a gutter with a vacuum pole from the roof"
-                  className="rounded-[14px] border-2 border-ink shadow-hard-ochre-sm sm:shadow-hard-ochre"
+                  className="rounded-[14px] border-2 border-ink shadow-hard-accent-sm sm:shadow-hard-accent"
                   loading="lazy" decoding="async" width="1920" height="1080" />
               </picture>
 
@@ -166,8 +166,8 @@ export default function GutterCleaning() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mb-4">
-                <span className="font-display text-xl font-bold text-ochre-3">1</span>
+              <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="font-display text-xl font-bold text-accent-3">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Complete Debris Removal</h3>
               <p className="text-ink-2">
@@ -175,8 +175,8 @@ export default function GutterCleaning() {
               </p>
             </div>
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mb-4">
-                <span className="font-display text-xl font-bold text-ochre-3">2</span>
+              <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="font-display text-xl font-bold text-accent-3">2</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Drainage Testing</h3>
               <p className="text-ink-2">
@@ -184,8 +184,8 @@ export default function GutterCleaning() {
               </p>
             </div>
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <div className="w-12 h-12 bg-ochre-100 rounded-lg flex items-center justify-center mb-4">
-                <span className="font-display text-xl font-bold text-ochre-3">3</span>
+              <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="font-display text-xl font-bold text-accent-3">3</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">Inspection</h3>
               <p className="text-ink-2">We inspect for damage, loose brackets, or wear, and let you know if we find anything

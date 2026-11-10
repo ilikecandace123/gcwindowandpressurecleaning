@@ -78,7 +78,7 @@ function fileToResizedDataUrl(file) {
 const SERVICE_ICONS = { AppWindow, Waves, Home, Droplets, Brush, Sun, Bird };
 
 const inputClass =
-  "w-full px-4 py-3 rounded-lg border border-ink/25 bg-paper-white text-ink placeholder-ink-3 focus:border-ink focus:ring-2 focus:ring-ochre-100 outline-none transition-colors";
+  "w-full px-4 py-3 rounded-lg border border-ink/25 bg-paper-white text-ink placeholder-ink-3 focus:border-ink focus:ring-2 focus:ring-accent-100 outline-none transition-colors";
 
 // ── Small building blocks ────────────────────────────────────────────────────
 
@@ -91,7 +91,7 @@ function OptionCard({ selected, onClick, label, sublabel, badge, muted, children
         "relative w-full text-left rounded-xl border-2 transition-all duration-150 " +
         (muted ? "px-4 py-3 " : "px-5 py-4 ") +
         (selected
-          ? "border-ink bg-ochre-50 shadow-hard-sm"
+          ? "border-ink bg-accent-50 shadow-hard-sm"
           : muted
             ? "border-dashed border-ink/25 bg-paper/70 hover:border-ink"
             : "border-ink/20 bg-paper-white hover:border-ink")
@@ -166,7 +166,7 @@ function CollapsibleVisual({ label, defaultOpen, children }) {
 function StepShell({ step, children }) {
   return (
     <div key={step.id} className="quote-step-enter">
-      <div className="text-xs font-semibold uppercase tracking-wider text-ochre-3 mb-2">
+      <div className="text-xs font-semibold uppercase tracking-wider text-accent-3 mb-2">
         {step.serviceLabel}
       </div>
       <h2 className="text-2xl md:text-3xl font-bold text-ink mb-1.5">{step.title}</h2>
@@ -653,7 +653,7 @@ export default function QuoteWizard({
               setMode("instant");
               setPhase("services");
             }}
-            className="group bg-ochre text-ink border-2 border-ink rounded-xl p-6 sm:p-7 text-left shadow-hard-sm transition-all duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none flex flex-col"
+            className="group bg-accent text-ink border-2 border-ink rounded-xl p-6 sm:p-7 text-left shadow-hard-sm transition-all duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none flex flex-col"
           >
             <Zap className="w-8 h-8 mb-3" />
             <span className="font-display text-xl font-bold mb-1.5">Get Instant Quote</span>
@@ -673,7 +673,7 @@ export default function QuoteWizard({
             }}
             className="group bg-paper-white border-2 border-ink/25 hover:border-ink rounded-xl p-6 sm:p-7 text-left transition-colors flex flex-col"
           >
-            <PhoneCall className="w-8 h-8 mb-3 text-ochre-3" />
+            <PhoneCall className="w-8 h-8 mb-3 text-accent-3" />
             <span className="font-display text-xl font-bold text-ink mb-1.5">Put in your details</span>
             <span className="text-ink-3 text-sm flex-1">
               Skip the questions — leave your details and we&rsquo;ll contact you with your quote.
@@ -685,7 +685,7 @@ export default function QuoteWizard({
         </div>
 
         <div className="max-w-2xl mx-auto flex items-start bg-paper-2 border border-rule rounded-xl px-4 py-3 text-left">
-          <Info className="w-5 h-5 text-ochre-3 mr-2.5 mt-0.5 flex-shrink-0" />
+          <Info className="w-5 h-5 text-accent-3 mr-2.5 mt-0.5 flex-shrink-0" />
           <p className="text-sm text-ink-2">
             Please answer as honestly and accurately as possible — major variations from your answers may result in a
             price change when we arrive.
@@ -717,13 +717,13 @@ export default function QuoteWizard({
                 onClick={() => toggle(svc)}
                 className={
                   "flex items-center rounded-xl border-2 px-4 py-4 text-left transition-all " +
-                  (isSel ? "border-ink bg-ochre-50 shadow-hard-sm" : "border-ink/20 bg-paper-white hover:border-ink")
+                  (isSel ? "border-ink bg-accent-50 shadow-hard-sm" : "border-ink/20 bg-paper-white hover:border-ink")
                 }
               >
                 <div
                   className={
                     "w-11 h-11 rounded-lg flex items-center justify-center mr-3.5 flex-shrink-0 " +
-                    (isSel ? "bg-ink text-white" : "bg-paper-2 text-ochre-3")
+                    (isSel ? "bg-ink text-white" : "bg-paper-2 text-accent-3")
                   }
                 >
                   <Icon className="w-6 h-6" />
@@ -1081,7 +1081,7 @@ export default function QuoteWizard({
     if (mode === "instant") {
       return (
         <div className="quote-step-enter">
-          <div className="text-xs font-semibold uppercase tracking-wider text-ochre-3 mb-2">Almost there</div>
+          <div className="text-xs font-semibold uppercase tracking-wider text-accent-3 mb-2">Almost there</div>
           <h2 className="text-2xl md:text-3xl font-bold text-ink mb-6">Pop in your details to see your price</h2>
 
           <form onSubmit={submitContactBasic} className="space-y-4">
@@ -1350,8 +1350,8 @@ export default function QuoteWizard({
         <div className="quote-step-enter">
           <div className="text-center py-4">
             <div className="flex justify-center mb-5">
-              <div className="w-16 h-16 rounded-full bg-ochre-100 flex items-center justify-center">
-                <Sparkles className="w-9 h-9 text-ochre-3" />
+              <div className="w-16 h-16 rounded-full bg-accent-100 flex items-center justify-center">
+                <Sparkles className="w-9 h-9 text-accent-3" />
               </div>
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-ink mb-3">
@@ -1505,7 +1505,7 @@ export default function QuoteWizard({
         )}
 
         {quote.lines.some((l) => l.service === "window" && l.balustradesUnspecified) && (
-          <p className="text-sm text-ink bg-ochre-50 border border-ochre-100 rounded-xl px-4 py-3 text-center mb-7 -mt-3">
+          <p className="text-sm text-ink bg-accent-50 border border-accent-100 rounded-xl px-4 py-3 text-center mb-7 -mt-3">
             Glass balustrade cleaning isn&rsquo;t included in this price — you didn&rsquo;t tell us how many you have. Let us know the number and we&rsquo;ll add it to your quote.
           </p>
         )}
@@ -1601,12 +1601,12 @@ export default function QuoteWizard({
                 Step {Math.min(screenNumber, totalScreens)} of {totalScreens}
               </span>
               <span className="flex items-center">
-                <Star className="w-3.5 h-3.5 fill-ochre text-ochre mr-1" /> 5.0 — 2500+ happy customers
+                <Star className="w-3.5 h-3.5 fill-accent text-accent mr-1" /> 5.0 — 2500+ happy customers
               </span>
             </div>
             <div className="h-1.5 bg-rule rounded-full overflow-hidden">
               <div
-                className="h-full bg-ochre rounded-full transition-all duration-300"
+                className="h-full bg-accent rounded-full transition-all duration-300"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
@@ -1640,7 +1640,7 @@ export default function QuoteWizard({
         {phase === "entry" && !embedded && (
           <p className="text-center text-sm text-ink-3 mt-6">
             Prefer to talk?{" "}
-            <a href="tel:0752308293" className="text-ochre-3 font-medium hover:underline">
+            <a href="tel:0752308293" className="text-accent-3 font-medium hover:underline">
               Call (07) 5230 8293
             </a>{" "}
             — we actually answer.
