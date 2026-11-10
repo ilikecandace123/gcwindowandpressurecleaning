@@ -160,7 +160,7 @@ export const NEW_GUIDES_2026_10 = [
       {
         heading: "What does pre-sale exterior cleaning cost on the Gold Coast?",
         paragraphs: [
-          "As a guide: windows inside and out are $385–$550 for most single-storey homes and $500–$800 for double-storey homes; an average driveway is around $220 to pressure clean; a house soft wash starts at $495 for a small single-storey home; and roof soft washing starts around $700. You can price your exact combination in the instant quote in about two minutes."
+          "As a guide: windows inside and out are $385–$550 for most single-storey homes and $500–$800 for double-storey homes; a standard driveway is $275 to pressure clean; a house soft wash starts at $385 for a small single-storey home; and roof soft washing starts at $594. You can price your exact combination in the instant quote in about two minutes."
         ]
       }
     ],

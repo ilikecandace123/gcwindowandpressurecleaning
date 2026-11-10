@@ -26,3 +26,9 @@ export function getRecentJobs(suburbSlug, serviceSlug, limit = 4) {
   }
   return list.slice(0, limit);
 }
+
+// Up to `limit` jobs that included one service, newest first, across every
+// suburb. Used by the Google Ads landing pages (/instant-quote/<service>/).
+export function getRecentJobsByService(serviceSlug, limit = 4) {
+  return RECENT_JOBS.filter((j) => (j.services || []).includes(serviceSlug)).slice(0, limit);
+}

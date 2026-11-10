@@ -10,9 +10,10 @@ function monthYear(date) {
 }
 
 // "Recent work in <suburb>": real jobs with a real photo. Renders nothing
-// when the suburb has no approved jobs yet.
-export default function RecentJobs({ suburbSlug, suburbName, serviceSlug }) {
-  const jobs = getRecentJobs(suburbSlug, serviceSlug);
+// when the suburb has no approved jobs yet. Pass `jobs` + `title` to show a
+// different selection (the Google Ads landing pages list jobs by service).
+export default function RecentJobs({ suburbSlug, suburbName, serviceSlug, jobs: jobsProp, title }) {
+  const jobs = jobsProp || getRecentJobs(suburbSlug, serviceSlug);
   if (!jobs.length) return null;
   return (
     <section className="py-16 bg-white" id="recent-work">
@@ -21,13 +22,13 @@ export default function RecentJobs({ suburbSlug, suburbName, serviceSlug }) {
           <Camera className="w-5 h-5" />
           <span className="font-semibold">Real jobs, real photos</span>
         </div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Recent work in {suburbName}</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-8">{title || `Recent work in ${suburbName}`}</h2>
         <div className={`grid gap-8 ${jobs.length > 1 ? "md:grid-cols-2" : ""}`}>
           {jobs.map((job) => (
             <figure key={job.photo} className="bg-gray-50 rounded-2xl overflow-hidden shadow-sm border border-gray-100">
               <img
                 src={job.photo}
-                alt={job.alt || `Recent job in ${suburbName}`}
+                alt={job.alt || `Recent job in ${suburbName || "the Gold Coast"}`}
                 width={1200}
                 height={900}
                 className="w-full h-72 object-cover"

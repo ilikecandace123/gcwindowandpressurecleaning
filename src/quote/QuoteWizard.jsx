@@ -187,11 +187,21 @@ function StepShell({ step, children }) {
 // Reusable quote wizard. Renders as the full page flow on /instant-quote and
 // embeds inline inside QuoteCTA (homepage hero + bottom-of-page section).
 // initialPhase lets callers skip the entry chooser ("services" or "contact").
-export default function QuoteWizard({ embedded = false, initialMode = "instant", initialPhase = "entry", onBackFromStart }) {
+// initialServices pre-selects services so a landing page can open at the first
+// question (initialPhase "questions") with e.g. ["window"] already ticked.
+// Back from the first question still shows the service picker, so a visitor
+// who landed on the wrong service can change it.
+export default function QuoteWizard({
+  embedded = false,
+  initialMode = "instant",
+  initialPhase = "entry",
+  initialServices = [],
+  onBackFromStart,
+}) {
   // phase: entry | services | questions | contact | result | done-details
   const [phase, setPhase] = useState(initialPhase);
   const [mode, setMode] = useState(initialMode); // instant | details
-  const [state, setState] = useState({ services: [] });
+  const [state, setState] = useState({ services: initialServices.filter((s) => SERVICE_ORDER.includes(s)) });
   const [qIndex, setQIndex] = useState(0);
   const [freeTextDraft, setFreeTextDraft] = useState("");
 

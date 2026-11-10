@@ -1128,7 +1128,7 @@ export const SERVICES = [
         description: "Complete inspection confirms roof is clean and damage-free. Optional post-treatment sealant available to slow future growth."
       }
     ],
-    pricingGuide: "Roof cleaning in [suburb] starts at $700 for a flatter single-storey roof and is typically $900–$1,600 for a steeper or larger double-storey. How dirty the roof is also affects the final price. Large commercial roofs or 3+ storeys are priced on application. These are guide prices — every property is different, so contact us for a free quote.",
+    pricingGuide: "Roof cleaning in [suburb] starts at $594 for a flatter single-storey roof with light build-up. Single-storey roofs are typically $594–$1,330 and double-storey roofs $935–$1,860, depending on bedrooms, pitch and build-up (a steep pitch and heavy build-up each add 10%). Lichen, very steep roofs, 3+ storeys and commercial roofs are quoted after a look. Price your roof exactly with our instant quote in about two minutes.",
     faqs: [
       {
         question: "How often should roofs be professionally cleaned?",
@@ -1156,7 +1156,7 @@ export const SERVICES = [
       },
       {
         question: "What does roof cleaning cost on the Gold Coast?",
-        answer: "Roof cleaning starts at $700 for a flatter single-storey roof and is typically $900–$1,600 for a steeper or larger double-storey, depending on roof size, pitch, access and the level of moss or lichen buildup. We provide free on-site or photo quotes so you know the exact price before we start."
+        answer: "Roof cleaning starts at $594 for a flatter single-storey roof with light build-up and is typically $594–$1,330 for single-storey and $935–$1,860 for double-storey homes, depending on the number of bedrooms, the pitch and the level of moss or algae. Lichen is quoted after a look. Our instant quote shows you the exact price before you book."
       },
       {
         question: "Is soft washing or pressure washing better for Gold Coast tile roofs?",
@@ -1221,7 +1221,7 @@ export const SERVICES = [
         description: "Thorough rinsing ensures all cleaning solution is removed and your home looks pristine."
       }
     ],
-    pricingGuide: "House softwash in [suburb] starts at $495 for a small single-storey home or office. Large single-storey or small double-storey homes are typically $770. XL single-storey or large double-storey properties are around $990, and XL double-storey and beyond is $1,200+. These are guide prices — every property is different, so contact us for a free quote.",
+    pricingGuide: "House softwash in [suburb] is $385, $495 or $660 for a single-storey home with up to 2, 3 or 4 bedrooms, and $880, $1,100 or $1,390 for a double-storey home with 3, 4 or 5 bedrooms. Heavy cobwebs or grime add 20%; larger homes, heavy mould and 3+ storeys are quoted after a look. Price your home exactly with our instant quote in about two minutes.",
     faqs: [
       {
         question: "What's the difference between softwashing and pressure cleaning?",
@@ -1302,7 +1302,7 @@ export const SERVICES = [
         description: "Complete rinse removes all debris and cleaning residue, leaving surfaces perfectly clean."
       }
     ],
-    pricingGuide: "Pressure cleaning in [suburb] starts at $220 for an average driveway, $440 for a medium driveway, and $660+ for an XL driveway. A full home package covering driveway, pathways, patio, and pool area is around $660. These are guide prices — every property is different, so contact us for a free quote.",
+    pricingGuide: "Pressure cleaning in [suburb] starts at $275 for a standard or medium concrete driveway (up to about 75 sqm). A large driveway (76–100 sqm) is $330 on concrete or $385 on pavers, sandstone or brick. A full outdoor clean of driveway, pathways, patio and pool area is typically $580–$760. Mould treatment is included. Price your areas exactly with our instant quote in about two minutes.",
     faqs: [
       {
         question: "How often should driveways and patios be pressure cleaned?",
@@ -1383,7 +1383,7 @@ export const SERVICES = [
         description: "Complete inspection confirms gutters are flowing correctly and ready for wet season weather."
       }
     ],
-    pricingGuide: "Gutter cleaning in [suburb] costs $220–$550 for a single-storey home depending on size and how full the gutters are. Double-storey homes are typically $330–$770. XL commercial properties or large homes are $550+. Price includes downpipe checks. These are guide prices — every property is different, so contact us for a free quote.",
+    pricingGuide: "Gutter cleaning in [suburb] is $275–$385 for a single-storey home and $440–$660 for a double-storey home, depending on the number of bedrooms. Packed-full gutters add 10% and plants growing out of them add 20%; downpipe flushing is included. Gutter guard, very steep roofs and commercial buildings are quoted after a look. Price your home exactly with our instant quote in about two minutes.",
     faqs: [
       {
         question: "How often should gutters be cleaned?",
@@ -1469,7 +1469,7 @@ export const SERVICES = [
         description: "Final inspection confirms panels are clean and connections are undisturbed. Before/after photos provided on request to document the clean."
       }
     ],
-    pricingGuide: "Solar panel cleaning in [suburb] starts at $220 for up to 20 panels. Additional panels are $4–$10 each depending on quantity and condition. These are guide prices — every system is different, so contact us for a free quote.",
+    pricingGuide: "Solar panel cleaning in [suburb] starts at $220 for up to 20 panels on a single-storey roof. 21–25 panels is $275, 26–30 panels $330 and 31–40 panels $440; double-storey roofs add $50. Systems over 40 panels or with heavy mould are quoted after a look. Price your system exactly with our instant quote in about two minutes.",
     faqs: [
       {
         question: "How often should solar panels be cleaned?",
@@ -1655,7 +1655,7 @@ export const COMMERCIAL_SERVICES = [
       { question: "How often should a commercial roof be cleaned?", answer: "Most Gold Coast commercial roofs benefit from cleaning every 2-3 years. Coastal or heavily shaded roofs may need annual treatment due to accelerated moss and algae growth in the humid salt air." },
       { question: "Do you provide documentation for strata capital works?", answer: "Yes. We provide detailed written scopes, before/after photos, invoices and certificates of currency suitable for strata committees, building managers and sinking fund or capital works approvals." },
       { question: "Will the run-off damage our landscaping or parking?", answer: "Our treatments are biodegradable and we manage run-off carefully. We pre-wet vegetation and coordinate drainage to protect carparks, entries and landscaping throughout the clean." },
-      { question: "How much does commercial roof cleaning cost on the Gold Coast?", answer: "Commercial roof cleaning on the Gold Coast starts from $700 for small flat single-storey commercial roofs. Larger commercial roofs, warehouses, strata buildings and industrial sheds are priced per square metre based on roof size, pitch, access complexity and contamination level — typically requiring a site inspection for an accurate fixed price. Large commercial jobs of 3 storeys or more start from $1,600+. All prices are a guide — every property is individual, so contact us for a free, no-obligation quote." },
+      { question: "How much does commercial roof cleaning cost on the Gold Coast?", answer: "Commercial roof cleaning on the Gold Coast is quoted per site after an inspection, because roof area, pitch, access and contamination vary so much. As a guide, a small flat single-storey commercial roof the size of a home starts from $594. Larger commercial roofs, warehouses, strata buildings, industrial sheds and anything 3 storeys or more are priced after a site inspection. All prices are a guide — every property is individual, so contact us for a free, no-obligation quote." },
       { question: "Can you clean a commercial roof after a storm?", answer: "Yes. After major storms we prioritise commercial clients with debris-loaded roofs and gutters. We can clear storm debris, flush downpipes, and inspect for damage, then provide a condition report for your insurer or building manager." },
       { question: "Do you apply anti-moss coating after cleaning commercial roofs?", answer: "Yes. For commercial roofs with recurring moss or lichen problems, we can apply a professional-grade biocide coating after cleaning that dramatically slows regrowth — typically extending time between cleans from 2 years to 3–4 years." }
     ]
@@ -1682,7 +1682,7 @@ export const COMMERCIAL_SERVICES = [
       { step: 4, title: "Final Inspection", description: "Walk the finished facade with the client or building manager and provide a completion report." }
     ],
     faqs: [
-      { question: "How much does commercial building softwash cost on the Gold Coast?", answer: "Commercial building softwash on the Gold Coast starts from $495 for small single-storey offices or retail tenancies. Larger single-storey commercial buildings are typically $770–$990, and multi-storey or XL commercial buildings start from $1,200+. Large strata complexes and multi-unit buildings are quoted based on facade area after a site inspection. All prices are a guide — every building is individual, so contact us for a free, no-obligation quote." },
+      { question: "How much does commercial building softwash cost on the Gold Coast?", answer: "Commercial building softwash on the Gold Coast starts from $385 for a small single-storey office or retail tenancy the size of a small home. Single-storey buildings are typically $385–$660 and double-storey buildings $880–$1,390 depending on size; multi-storey and XL commercial buildings are quoted after a site inspection. Large strata complexes and multi-unit buildings are quoted based on facade area after a site inspection. All prices are a guide — every building is individual, so contact us for a free, no-obligation quote." },
       { question: "Is soft washing safe for painted or rendered facades?", answer: "Yes. Soft washing is specifically designed for painted, rendered and coated finishes. Unlike high-pressure cleaning, it will not lift paint, chip render or damage acrylic finishes commonly used on commercial buildings." },
       { question: "Can you clean multi-unit strata buildings?", answer: "Yes — strata facades are a core part of our commercial work. We coordinate with building managers and residents, provide the documentation strata committees need, and work in staged visits if required to avoid disrupting any single tenant." },
       { question: "How long do the results last?", answer: "Because our treatments kill mould and algae at the spore level, a professional soft wash typically lasts 12-24 months on Gold Coast buildings — significantly longer than a plain pressure clean." },
@@ -1713,7 +1713,7 @@ export const COMMERCIAL_SERVICES = [
       { step: 4, title: "Final Detail", description: "Detail edges, corners and high-traffic points, then walk the finished area with the client and issue completion report." }
     ],
     faqs: [
-      { question: "How much does commercial pressure cleaning cost on the Gold Coast?", answer: "Commercial pressure cleaning on the Gold Coast starts from $220 for small areas like a single driveway or entry. Medium carparks and hardstand areas are typically $440–$660. Full-site cleans covering carparks, footpaths, loading docks and common areas are quoted based on square metres after a site inspection. Scheduled maintenance contracts are available at fixed per-visit rates. All prices are a guide — every site is individual, so contact us for a free, no-obligation quote." },
+      { question: "How much does commercial pressure cleaning cost on the Gold Coast?", answer: "Commercial pressure cleaning on the Gold Coast starts from $275 for small areas like a single driveway or entry. Medium carparks and hardstand areas are typically $330–$760 depending on the square metres and the surface. Full-site cleans covering carparks, footpaths, loading docks and common areas are quoted based on square metres after a site inspection. Scheduled maintenance contracts are available at fixed per-visit rates. All prices are a guide — every site is individual, so contact us for a free, no-obligation quote." },
       { question: "Can you clean large carparks and industrial slabs?", answer: "Yes — this is a major part of our commercial work. We use truck-mounted high-flow hot water units and 900mm+ surface cleaners to cover thousands of square metres per visit at consistent quality." },
       { question: "Do you remove chewing gum and oil stains?", answer: "Yes. Gum removal is a standard add-on for retail centres and entrances. For oil and fuel stains we use targeted degreasers and hot water extraction to lift contamination out of the concrete rather than just rinsing the surface." },
       { question: "Can you work overnight or on weekends?", answer: "Yes. Most of our carpark and hardstand cleaning is scheduled overnight or on weekends for retail centres, hospitality venues and office buildings so daily trading is unaffected." },
@@ -1744,7 +1744,7 @@ export const COMMERCIAL_SERVICES = [
       { step: 4, title: "Photo Report & Sign-Off", description: "Photo report of every section cleaned, noting any damage to flag to the building manager or strata committee." }
     ],
     faqs: [
-      { question: "How much does commercial gutter cleaning cost on the Gold Coast?", answer: "Commercial gutter cleaning on the Gold Coast starts from $550 for smaller single-storey commercial buildings, ranging up to $770+ for double-storey properties depending on size and how full the gutters are. Large industrial, strata or multi-building sites are quoted on inspection. All prices are a guide — every property is individual, so contact us for a free, no-obligation quote." },
+      { question: "How much does commercial gutter cleaning cost on the Gold Coast?", answer: "Commercial gutter cleaning on the Gold Coast is quoted per site after a look, because access, roof height and gutter length vary so much. As a guide, a building the size of a single-storey home is $275–$385 and a double-storey $440–$660, including downpipe flushing. Large industrial, strata or multi-building sites are quoted on inspection. All prices are a guide — every property is individual, so contact us for a free, no-obligation quote." },
       { question: "How often should commercial gutters be cleaned?", answer: "Most Gold Coast commercial buildings benefit from cleaning at least twice a year — typically pre-storm season and again mid-year. Sites with heavy tree cover should consider quarterly cleaning to prevent overflow and fire risk." },
       { question: "Do you service large industrial or strata buildings?", answer: "Yes. We regularly clean gutters and box gutters on warehouses, industrial sheds, strata towers and multi-unit complexes using commercial-grade vacuum systems and rope access where needed." },
       { question: "Do you flush downpipes?", answer: "Yes — downpipes are flushed as part of every commercial service, and we flag any blockages or damage in the photo report." },
@@ -1775,7 +1775,7 @@ export const COMMERCIAL_SERVICES = [
       { step: 4, title: "Final Rinse & Report", description: "Final rinse, visual verification, and a photo report highlighting any damage or issues identified on the array." }
     ],
     faqs: [
-      { question: "How much does commercial solar panel cleaning cost on the Gold Coast?", answer: "Commercial solar panel cleaning on the Gold Coast starts from $220, which covers the first 20 panels. After that, it's $4–$10 per additional panel depending on the total number of panels and how dirty they are. Large commercial arrays on warehouses, schools and strata buildings are quoted based on panel count and access requirements. All prices are a guide — every system is different, so contact us for a free, no-obligation quote." },
+      { question: "How much does commercial solar panel cleaning cost on the Gold Coast?", answer: "Commercial solar panel cleaning on the Gold Coast starts from $220, which covers up to 20 panels; 21–25 panels is $275, 26–30 is $330 and 31–40 is $440. Large commercial arrays over 40 panels on warehouses, schools and strata buildings are quoted based on panel count and access requirements. All prices are a guide — every system is different, so contact us for a free, no-obligation quote." },
       { question: "How much generation can a clean recover?", answer: "On dirty commercial arrays in the Gold Coast we commonly see 10-30% recovery in generation after a professional clean, with coastal and industrial sites often at the higher end due to salt and pollution buildup." },
       { question: "Will cleaning void my solar warranty?", answer: "No. Our pure-water, soft-brush methodology aligns with Tier-1 panel manufacturer cleaning guidelines. We never use high pressure or abrasive chemicals. We can supply our methodology in writing for your warranty records." },
       { question: "Can you clean large warehouse or industrial arrays?", answer: "Yes. We regularly service commercial arrays on warehouses, factories, schools, strata towers and retail centres. We're equipped for large-array cleans with the crews, water systems and height safety required." },

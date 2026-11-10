@@ -59,7 +59,7 @@ export default function RoofCleaning() {
     },
     {
       question: "How much does roof cleaning cost on the Gold Coast?",
-      answer: "Roof cleaning on the Gold Coast starts at $700 for a flatter single-storey roof and goes up to around $1,600 for a steeper double-storey roof. How dirty the roof is also affects the final price. Large commercial properties or three storeys and above start at $1,600+ and require a site visit for an accurate quote. These are guide prices — every property is individual, so contact us for a free, no-obligation quote."
+      answer: "Roof cleaning on the Gold Coast starts at $594 for a flatter single-storey roof with light build-up. Most single-storey roofs are $594–$1,330 and most double-storey roofs $935–$1,860, depending on the number of bedrooms, the pitch and how much moss and algae is on the roof (a steep pitch and heavy build-up each add 10%). Lichen, very steep roofs, three storeys and above and commercial roofs are quoted after a look. These are the same prices our instant quote tool uses, so you can see your exact figure online in about two minutes."
     },
     {
       question: "How often should I have my Gold Coast roof cleaned?",
@@ -87,7 +87,7 @@ export default function RoofCleaning() {
     },
     {
       question: "Is roof cleaning worth the investment?",
-      answer: "Absolutely. A professional roof clean costs $700–$1,600 for most Gold Coast homes. Replacing a damaged roof costs $15,000–$60,000. The maths are clear. A clean roof also adds immediate curb appeal, which Gold Coast real estate agents consistently say matters at sale time."
+      answer: "Absolutely. A professional roof clean costs $594–$1,860 for most Gold Coast homes. Replacing a damaged roof costs $15,000–$60,000. The maths are clear. A clean roof also adds immediate curb appeal, which Gold Coast real estate agents consistently say matters at sale time."
     },
     {
       question: "How do I know if I have lichen vs moss on my roof?",

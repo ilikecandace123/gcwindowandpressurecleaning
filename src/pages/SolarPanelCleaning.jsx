@@ -45,7 +45,7 @@ export default function SolarPanelCleaning() {
   const faqs = [
     {
       question: "How much does solar panel cleaning cost on the Gold Coast?",
-      answer: "Solar panel cleaning on the Gold Coast starts at $220, which includes the first 20 panels. After that, it's $4–$10 per additional panel depending on how many panels you have and how dirty they are. These are guide prices — every system is different, so contact us for a free, no-obligation quote."
+      answer: "Solar panel cleaning on the Gold Coast starts at $220, which includes up to 20 panels on a single-storey roof. 21–25 panels is $275, 26–30 panels $330 and 31–40 panels $440 (about $11 per extra panel). Double-storey roofs add $50. Heavy mould and systems over 40 panels are quoted after a look. These are the same prices our instant quote tool uses, so you can see your exact figure online in about two minutes."
     },
     {
       question: "How often should Gold Coast solar panels be cleaned?",

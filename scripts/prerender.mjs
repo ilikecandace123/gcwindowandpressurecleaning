@@ -107,6 +107,7 @@ async function main() {
   const { SUBURBS, SERVICES, COMMERCIAL_SERVICES } = await loadData();
   const { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema, buildFAQSchema, buildArticleSchema } = await loadSchemaBuilders();
   const { GUIDES } = await import(pathToFileURL(path.join(ROOT, "src/data/guides.js")).href);
+  const { QUOTE_LANDINGS, landingFaqs, landingPath } = await import(pathToFileURL(path.join(ROOT, "src/data/quoteLanding.js")).href);
   const indexHtml = fs.readFileSync(path.join(DIST, "index.html"), "utf8");
 
   const routes = [];
@@ -171,6 +172,35 @@ async function main() {
       buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Instant Quote", url: "/instant-quote" }])
     ],
   });
+  // Google Ads landing pages, one per service: /instant-quote/<service>/
+  // (src/data/quoteLanding.js — same titles, descriptions and FAQ schema the
+  // React page renders, so crawlers see the real content before hydration).
+  for (const landing of QUOTE_LANDINGS) {
+    const lp = landingPath(landing).replace(/\/$/, "");
+    routes.push({
+      path: lp,
+      title: landing.title,
+      description: landing.description,
+      canonical: `${SITE}${lp}`,
+      image: landing.image,
+      jsonLd: [
+        buildLocalBusinessSchema(),
+        buildServiceSchema({
+          name: `${landing.name} Gold Coast`,
+          description: landing.description,
+          image: landing.image,
+          serviceType: landing.name,
+          url: `${SITE}${lp}/`,
+        }),
+        buildBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Instant Quote", url: "/instant-quote" },
+          { name: landing.name, url: lp },
+        ]),
+        buildFAQSchema(landingFaqs(landing)),
+      ],
+    });
+  }
   routes.push({
     path: "/about",
     title: "About Us | Gold Coast Window and Pressure Cleaning",
@@ -441,6 +471,8 @@ async function main() {
     "/privacy": "2026-09-04", // created
     "/commercial": "2026-09-04", // created
   };
+  // The per-service quote landing pages were created together on 09/11/2026.
+  for (const landing of QUOTE_LANDINGS) LASTMOD_OVERRIDES[landingPath(landing).replace(/\/$/, "")] = "2026-11-09";
   // Whole sections that changed on a given date. The commercial templates were
   // corrected on 04/09/2026 (duplicated "Commercial" in every h1 and Service
   // schema), which is a real content change on all 574 commercial URLs.
@@ -458,10 +490,18 @@ async function main() {
 
   // Categorize routes
   const staticRoutes = routes.filter(
-    (r) => r.path === "/" || r.path.startsWith("/guides") || (r.path.split("/").filter(Boolean).length === 1 && !r.path.startsWith("/commercial/") && r.path !== "/services")
+    (r) =>
+      r.path === "/" ||
+      r.path.startsWith("/guides") ||
+      r.path.startsWith("/instant-quote/") ||
+      (r.path.split("/").filter(Boolean).length === 1 && !r.path.startsWith("/commercial/") && r.path !== "/services")
   );
   const residentialRoutes = routes.filter(
-    (r) => r.path.split("/").filter(Boolean).length === 2 && !r.path.startsWith("/commercial/") && !r.path.startsWith("/guides/")
+    (r) =>
+      r.path.split("/").filter(Boolean).length === 2 &&
+      !r.path.startsWith("/commercial/") &&
+      !r.path.startsWith("/guides/") &&
+      !r.path.startsWith("/instant-quote/")
   );
   const commercialRoutes = routes.filter((r) => r.path.startsWith("/commercial/"));
 
@@ -477,6 +517,7 @@ async function main() {
   function getUrlMeta(path) {
     if (path === "/") return { priority: "1.0", changefreq: "weekly" };
     if (SERVICE_SLUGS.has(path)) return { priority: "0.9", changefreq: "monthly" };
+    if (path.startsWith("/instant-quote/")) return { priority: "0.8", changefreq: "monthly" };
     if (SECTION_HUBS.has(path)) return { priority: "0.9", changefreq: "monthly" };
     if (path === "/guides" || path.startsWith("/guides/")) return { priority: "0.8", changefreq: "monthly" };
     if (UTILITY_PATHS.has(path)) return { priority: "0.8", changefreq: "monthly" };

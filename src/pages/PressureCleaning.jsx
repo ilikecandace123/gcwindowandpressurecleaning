@@ -46,7 +46,7 @@ export default function PressureCleaning() {
   const faqs = [
   {
     question: "How much does pressure cleaning cost on the Gold Coast?",
-    answer: "Pressure cleaning on the Gold Coast starts at around $220 for an average driveway, $440 for a medium driveway, and $660+ for an XL driveway. A full home clean covering the driveway, pathways, patio, and pool area is typically around $660. These are guide prices — every property is individual, so contact us for a free, no-obligation quote."
+    answer: "Pressure cleaning on the Gold Coast starts at $275, which covers a standard or medium concrete driveway (up to about 75 sqm, or one to three cars). A large driveway (76–100 sqm) is $330 on concrete or $385 on pavers, sandstone or brick. A full outdoor clean of the driveway, paths, patio and pool area is typically $580–$760 depending on the size of each area. Mould treatment is included, and an optional biocide treatment keeps surfaces clean for 12 months or more. These are the same prices our instant quote tool uses, so you can see your exact figure online in about two minutes."
   },
   {
     question: "What surfaces can you pressure clean?",

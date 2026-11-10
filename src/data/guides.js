@@ -140,8 +140,8 @@ export const GUIDES = [
       {
         heading: "What each service costs on the Gold Coast",
         paragraphs: [
-          "Pressure cleaning: an average driveway is around $220, a medium driveway $440, and an extra-large driveway $660+. Our full home package — driveway, pathways, patio and pool area — is around $660.",
-          "House soft washing: from $495 for a small single-storey home, $770 for a large single-storey or small double-storey, $990 for an XL single or large double, and $1,200+ beyond that. Roof soft washing starts at $700. You can price your exact combination in about two minutes with our instant quote tool."
+          "Pressure cleaning: a standard or medium concrete driveway is $275, a large driveway $330 ($385 on pavers). A full outdoor clean — driveway, pathways, patio and pool area — is typically $580–$760.",
+          "House soft washing: $385, $495 or $660 for a single-storey home with up to 2, 3 or 4 bedrooms, and $880–$1,390 for a double-storey. Roof soft washing starts at $594. You can price your exact combination in about two minutes with our instant quote tool."
         ]
       }
     ],
@@ -198,13 +198,13 @@ export const GUIDES = [
         heading: "Why Gold Coast roofs grow moss and lichen so fast",
         paragraphs: [
           "South East Queensland's combination of summer humidity, storm-season rain (November–April) and warm nights is ideal for biological growth. Shaded southern roof faces and anything under trees grow fastest. Coastal salt also feeds a grimy film that darkens tiles. Most Gold Coast roofs benefit from a professional clean every 2–3 years; coastal homes within a couple of kilometres of the beach are closer to every 1–2 years.",
-          "Left untreated, moss and lichen aren't cosmetic. They hold moisture against the tile, block valleys and gutters, and lift tile edges — which is how leaks start. Treating growth early is dramatically cheaper than re-roofing: a professional clean is $700–$1,600 for most homes, while a roof replacement runs $15,000–$60,000."
+          "Left untreated, moss and lichen aren't cosmetic. They hold moisture against the tile, block valleys and gutters, and lift tile edges — which is how leaks start. Treating growth early is dramatically cheaper than re-roofing: a professional clean is $594–$1,860 for most homes, while a roof replacement runs $15,000–$60,000."
         ]
       },
       {
         heading: "What safe roof cleaning costs",
         paragraphs: [
-          "On the Gold Coast, roof soft washing starts at $700 for a flatter single-storey roof and ranges up to about $1,600 for a steeper double-storey. How dirty the roof is affects the price — established lichen takes more product and time than a light algae film. Three storeys and commercial roofs are quoted on inspection. For tile roofs we also offer an optional post-clean biocide/anti-moss treatment that suppresses regrowth for 12–24 months.",
+          "On the Gold Coast, roof soft washing starts at $594 for a flatter single-storey roof with light build-up and ranges up to about $1,860 for a steep double-storey with heavy growth. How dirty the roof is affects the price — established lichen takes more product and time than a light algae film and is quoted after a look. Three storeys and commercial roofs are quoted on inspection. For tile roofs we also offer an optional post-clean biocide/anti-moss treatment that suppresses regrowth for 12–24 months.",
           "Every roof job includes clearing the gutters of debris the clean dislodges, and we check for cracked tiles, lifted ridge capping and blocked valleys while we're up there — most homeowners never see their own roof up close, and catching a cracked tile early is a $20 fix instead of a ceiling repair."
         ]
       }
@@ -237,11 +237,11 @@ export const GUIDES = [
     slug: "driveway-pressure-cleaning-cost",
     metaTitle: "Driveway Pressure Cleaning Cost Gold Coast (2026)",
     metaDescription:
-      "Driveway pressure cleaning on the Gold Coast costs $220-$660 for most homes. Real 2026 prices by driveway size, plus what affects the quote.",
+      "Driveway pressure cleaning on the Gold Coast costs $275-$385 for most homes. Real 2026 prices by driveway size, plus what affects the quote.",
     h1: "How Much Does Driveway Pressure Cleaning Cost on the Gold Coast?",
     updated: "2026-07-17",
     directAnswer:
-      "On the Gold Coast in 2026, professional driveway pressure cleaning costs around $220 for an average single-car driveway, $440 for a medium double driveway, and $660+ for extra-large or steep driveways. A full home exterior package — driveway, pathways, patio and pool surrounds — is around $660. Prices assume standard concrete; heavy oil staining or delicate surfaces like old pavers can add to the job.",
+      "On the Gold Coast in 2026, professional driveway pressure cleaning costs $275 for a standard or medium concrete driveway (up to about 75 sqm, one to three cars), $330 for a large driveway (76–100 sqm) and $385 for a large driveway in pavers, sandstone or brick. A full outdoor package — driveway, pathways, patio and pool surrounds — is typically $580–$760. Prices assume sound surfaces; heavy oil staining or very large areas over 100 sqm are quoted after a look.",
     sections: [
       {
         heading: "What you're actually paying for",
@@ -253,11 +253,11 @@ export const GUIDES = [
       {
         heading: "Gold Coast driveway cleaning prices by size",
         list: [
-          "Average driveway (single car, up to ~2 car spaces): around $220.",
-          "Medium driveway (standard double, most suburban homes): around $440.",
-          "Extra-large driveway (triple garage, long or steep runs): $660+.",
-          "Full home package — driveway, all pathways, patio and pool area: around $660. This is the best value if multiple surfaces need doing, since setup and travel are shared.",
-          "Per-square-metre comparison: Gold Coast market rates generally run $5–$10/m² for straight pressure cleaning. Our fixed pricing usually works out at or below that for typical driveways — and you know the price before we arrive."
+          "Standard driveway (fits 1–2 cars, 25–50 sqm): $275.",
+          "Medium driveway (fits 2–3 cars, 51–75 sqm): $275 on concrete, about $290 on pavers.",
+          "Large driveway (fits 3–4 cars, 76–100 sqm): $330 on concrete, $385 on pavers, sandstone or brick. Bigger than 100 sqm is quoted after a look.",
+          "Full outdoor package — driveway, all pathways, patio and pool area: typically $580–$760 depending on the size of each area. This is the best value if multiple surfaces need doing, since setup and travel are shared.",
+          "Per-square-metre comparison: Gold Coast market rates generally run $5–$10/m² for straight pressure cleaning. Our fixed pricing ($3.30/m² on concrete and tiles, $3.85/m² on pavers, with a $275 minimum) works out below that for typical driveways — and you know the price before we arrive."
         ]
       },
       {
@@ -324,7 +324,7 @@ export const GUIDES = [
         heading: "Why you shouldn't clean panels with a pressure washer (or tap water)",
         paragraphs: [
           "Panel manufacturers void warranties for high-pressure cleaning — it can crack cells, force water into junction boxes and strip the anti-reflective coating. Household tap water on the Gold Coast is also mineral-rich enough to dry with a film that partially defeats the purpose. Professional cleaning uses deionised (pure) water and soft brushes: no residue, no minerals, warranty-safe. There's also the unglamorous fact that panels live on roofs — working next to live DC equipment on a pitched roof is not a ladder-and-squeegee Saturday job.",
-          "Professional solar panel cleaning on the Gold Coast starts at $220, which covers the first 20 panels, then $4–$10 per additional panel depending on quantity and condition. Against $300–$500/year of losses on a soiled system, an annual or biennial clean recovers its cost quickly — and we bundle it with window, roof or gutter cleaning to share the visit cost."
+          "Professional solar panel cleaning on the Gold Coast starts at $220, which covers up to 20 panels on a single-storey roof, then $275 for 21–25 panels, $330 for 26–30 and $440 for 31–40 (about $11 per extra panel); double-storey roofs add $50. Against $300–$500/year of losses on a soiled system, an annual or biennial clean recovers its cost quickly — and we bundle it with window, roof or gutter cleaning to share the visit cost."
         ]
       },
       {
@@ -453,9 +453,9 @@ export const GUIDES = [
       {
         heading: "What blocked gutters actually cost you",
         paragraphs: [
-          "The damage list from our own callouts: ceiling and cornice water staining, rotted fascia and eaves linings, overflow undermining paths and garden beds, mosquito breeding in standing water, and grass literally growing in the gutter line. Blocked gutters holding damp organic matter against steel also rust gutters out years early — replacement runs into thousands of dollars, against $220–$550 for a single-storey clean.",
+          "The damage list from our own callouts: ceiling and cornice water staining, rotted fascia and eaves linings, overflow undermining paths and garden beds, mosquito breeding in standing water, and grass literally growing in the gutter line. Blocked gutters holding damp organic matter against steel also rust gutters out years early — replacement runs into thousands of dollars, against $275–$385 for a single-storey clean.",
           "There's also a fire angle: dry leaf-packed gutters are an ember trap, and hinterland and semi-rural properties are advised to keep gutters clear through bushfire season for exactly that reason.",
-          "In summary it's one of the cheapest forms of insurance a Queensland homeowner can buy: gutter cleaning on the Gold Coast runs $220–$550 for a single-storey home and $330–$770 for a double-storey, depending on size and how full the gutters are. Every clean includes checking downpipes actually flow — a clear gutter draining into a blocked downpipe still overflows."
+          "In summary it's one of the cheapest forms of insurance a Queensland homeowner can buy: gutter cleaning on the Gold Coast runs $275–$385 for a single-storey home and $440–$660 for a double-storey, depending on bedrooms and how full the gutters are. Every clean includes checking downpipes actually flow — a clear gutter draining into a blocked downpipe still overflows."
         ]
       },
       {
@@ -497,7 +497,7 @@ export const GUIDES = [
     h1: "Why Does My House Grow Mould Outside — and How Do I Remove It?",
     updated: "2026-07-17",
     directAnswer:
-      "Green and black growth on Gold Coast house exteriors is algae and mould feeding on moisture in our humid subtropical climate — it appears fastest on southern walls, shaded sides and textured surfaces like render. The safe removal method is soft washing: low-pressure application of a biodegradable solution that kills the growth at its root, rather than high-pressure blasting, which damages paint and render and leaves roots behind to regrow within months. A professional house softwash on the Gold Coast costs from $495 for a small single-storey home.",
+      "Green and black growth on Gold Coast house exteriors is algae and mould feeding on moisture in our humid subtropical climate — it appears fastest on southern walls, shaded sides and textured surfaces like render. The safe removal method is soft washing: low-pressure application of a biodegradable solution that kills the growth at its root, rather than high-pressure blasting, which damages paint and render and leaves roots behind to regrow within months. A professional house softwash on the Gold Coast costs from $385 for a small single-storey home.",
     sections: [
       {
         heading: "Why the south side of your house is always the green one",
@@ -516,7 +516,7 @@ export const GUIDES = [
       {
         heading: "What a house softwash costs on the Gold Coast",
         paragraphs: [
-          "Guide prices: from $495 for a small single-storey home or small office, $770 for a large single-storey or small double-storey, $990 for an XL single or large double-storey, and $1,200+ for XL double-storey homes and beyond. That covers walls, eaves, and exterior surfaces — and we pre-wet and rinse gardens as standard to protect your plants.",
+          "Guide prices: $385 for a single-storey home with up to 2 bedrooms, $495 for 3 bedrooms and $660 for 4 bedrooms; double-storey homes are $880, $1,100 and $1,390 for 3, 4 and 5 bedrooms. Heavy cobwebs or grime add 20%, and larger homes or heavy mould are quoted after a look. That covers walls, eaves, and exterior surfaces — and we pre-wet and rinse gardens as standard to protect your plants.",
           "How often? Most Gold Coast homes look freshly painted again with a softwash every 2–3 years. Shaded, south-facing or heavily gardened homes lean toward every 1–2 years. Doing it before growth is established is noticeably cheaper than letting lichen colonise render — lichen takes more product, more dwell time and more care."
         ]
       },
