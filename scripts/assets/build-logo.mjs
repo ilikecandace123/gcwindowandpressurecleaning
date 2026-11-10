@@ -23,23 +23,18 @@ const PANE = "#ffffff";
 const ACCENT = "#7cc8f5";
 const ACCENT_2 = "#2b8bd0";
 
-// Same drawing as <LogoMark />. `simple` drops the wave and sparkle and
-// thickens the lines so the 16px favicon stays readable.
+// Same drawing as <LogoMark />. `simple` thickens the blade, handle and edge
+// so the 16px favicon stays readable.
 function markSvg({ size, simple = false }) {
-  const frame = simple ? 5 : 3;
-  const bar = simple ? 4 : 2.5;
-  const inset = frame / 2 + 3;
-  const side = 48 - inset * 2;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="${size}" height="${size}">
-  <rect x="${inset}" y="${inset}" width="${side}" height="${side}" rx="7" fill="${PANE}" stroke="${INK}" stroke-width="${frame}"/>
-  <path d="${simple ? "M11 34a13 13 0 0 1 26 0z" : "M13 31.5a11 11 0 0 1 22 0z"}" fill="${ACCENT}"/>
-  <path d="M24 ${inset}v${side}M${inset} 24h${side}" stroke="${INK}" stroke-width="${bar}"/>
-  ${
-    simple
-      ? ""
-      : `<path d="M8 35.5c2.7-2.6 5.3-2.6 8 0s5.3 2.6 8 0 5.3-2.6 8 0 5.3 2.6 8 0" fill="none" stroke="${INK}" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M33.5 9.5l1.4 3.6 3.6 1.4-3.6 1.4-1.4 3.6-1.4-3.6-3.6-1.4 3.6-1.4z" fill="${ACCENT}"/>`
-  }
+  const blade = simple ? 12 : 8;
+  const handle = simple ? 10 : 6;
+  const edge = simple ? 7 : 4;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="${size}" height="${size}">
+  <rect x="8" y="8" width="80" height="80" rx="16" fill="${ACCENT}"/>
+  <path d="M38 20L76 58L46 88H24A16 16 0 0 1 8 72V50Z" fill="${PANE}" opacity=".95"/>
+  <path d="M38 20L76 58" stroke="${INK}" stroke-width="${blade}" stroke-linecap="round"/>
+  <path d="M57 39L78 18" stroke="${INK}" stroke-width="${handle}" stroke-linecap="round"/>
+  <rect x="8" y="8" width="80" height="80" rx="16" fill="none" stroke="${INK}" stroke-width="${edge}"/>
 </svg>`;
 }
 
@@ -47,8 +42,7 @@ const fontUrl = (f) => "file://" + out("fonts/" + f);
 
 function page({ width, height, background, body }) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>
-@font-face{font-family:Fraunces;font-weight:100 900;font-style:normal;src:url("${fontUrl("fraunces-latin.woff2")}") format("woff2")}
-@font-face{font-family:Fraunces;font-weight:100 900;font-style:italic;src:url("${fontUrl("fraunces-latin-italic.woff2")}") format("woff2")}
+@font-face{font-family:"Source Sans 3";font-weight:200 900;font-style:normal;src:url("${fontUrl("source-sans-3-latin.woff2")}") format("woff2")}
 html,body{margin:0;width:${width}px;height:${height}px;background:${background};overflow:hidden}
 body{display:flex;align-items:center;justify-content:center}
 </style></head><body>${body}</body></html>`;
@@ -93,18 +87,18 @@ try {
     }
   }
 
-  // Wide logo: mark + two-line wordmark on paper.
+  // Wide logo: mark + two-line wordmark in bold capitals on paper.
   const wordmark = `<div style="display:flex;align-items:center;gap:30px">
-    ${markSvg({ size: 150 })}
-    <div style="font-family:Fraunces,serif;font-weight:700;font-size:52px;line-height:1.05;letter-spacing:-.015em;color:${INK};white-space:nowrap">
+    ${markSvg({ size: 132 })}
+    <div style="font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:46px;line-height:1.08;letter-spacing:.035em;text-transform:uppercase;color:${INK};white-space:nowrap">
       <div>Gold Coast Window</div>
-      <div><span style="font-style:italic;font-weight:500;color:${ACCENT_2}">&amp;</span> Pressure Cleaning</div>
+      <div><span style="color:${ACCENT_2}">&amp;</span> Pressure Cleaning</div>
     </div></div>`;
   fs.writeFileSync(out("images/logo.png"), await shot({ width: 750, height: 500, background: PAPER, body: wordmark }));
 
   // Square icons: the mark on paper with breathing room.
-  fs.writeFileSync(out("images/icon-512.png"), await shot({ width: 512, height: 512, background: PAPER, body: markSvg({ size: 400 }) }));
-  fs.writeFileSync(out("images/apple-touch-icon.png"), await shot({ width: 180, height: 180, background: PAPER, body: markSvg({ size: 144 }) }));
+  fs.writeFileSync(out("images/icon-512.png"), await shot({ width: 512, height: 512, background: PAPER, body: markSvg({ size: 440 }) }));
+  fs.writeFileSync(out("images/apple-touch-icon.png"), await shot({ width: 180, height: 180, background: PAPER, body: markSvg({ size: 158 }) }));
 
   // Favicon: transparent, edge to edge; the simplified mark at 16px.
   const ico = [];
