@@ -1,7 +1,9 @@
 import React from "react";
 import { spellAnd } from "../lib/headingText";
+import { useLocation } from "react-router-dom";
 import { Star, Phone } from "lucide-react";
 import QuoteCTA from "./QuoteCTA";
+import { pickHeroReview, GOOGLE_REVIEWS_URL } from "../data/heroReviews";
 
 // "Roof Cleaning Gold Coast — Tile, Metal & Concrete Roofs" and "Window
 // Cleaning in Burleigh Heads" both read better with the second half set in
@@ -19,6 +21,9 @@ export function splitHeadline(headline) {
 // card tucked under it on the right. The card only overlaps the bottom edge
 // of the photo, so the photo stays visible. On phones the order is headline,
 // photo, quote card, trust points.
+// On desktop the left column is shorter than the photo + quote card, so a real
+// Google review for the page's service fills the space under the phone number.
+// It is hidden on phones, where the layout has no gap.
 // id="quote" is the scroll target for the "Get a Quote" buttons.
 export default function QuoteHero({
   headline,
@@ -31,6 +36,8 @@ export default function QuoteHero({
   imageAlt = "",
 }) {
   const [lead, tail] = splitHeadline(headline);
+  const { pathname } = useLocation();
+  const review = pickHeroReview({ pathname, headline });
   return (
     <section id="quote" className="no-rule dots scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 lg:pt-14 pb-10 lg:pb-16">
@@ -100,6 +107,27 @@ export default function QuoteHero({
               </a>
               <span className="text-sm text-ink-3">Call us. We actually answer.</span>
             </div>
+
+            {review && (
+              <figure className="hidden lg:block card shadow-hard-accent-sm mt-10 max-w-[560px] px-7 py-6">
+                <div className="flex items-center gap-0.5 text-accent" aria-label="5 out of 5 stars" role="img">
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <Star key={i} className="w-[18px] h-[18px] fill-current" aria-hidden="true" />
+                  ))}
+                </div>
+                <blockquote className="font-display text-[20px] xl:text-[21px] leading-[1.42] text-ink mt-3.5">
+                  “{review.text}”
+                </blockquote>
+                <figcaption className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 mt-4 text-[15px]">
+                  <span className="font-bold text-ink">
+                    {review.name} <span className="font-normal text-ink-3">· Google review</span>
+                  </span>
+                  <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="font-bold text-accent-3 hover:underline">
+                    Read all reviews →
+                  </a>
+                </figcaption>
+              </figure>
+            )}
           </div>
         </div>
       </div>
