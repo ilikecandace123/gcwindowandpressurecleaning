@@ -26,7 +26,7 @@ export default function PressureCleaning() {
     description: "Professional pressure cleaning provides superior results that last significantly longer than DIY attempts or surface-level cleaning."
   },
   {
-    title: "Removes Deep Grime & Mould",
+    title: "Removes Deep Grime and Mould",
     description: "Eliminate stubborn mould, mildew, algae, and organic stains that compromise both appearance and safety of hard surfaces."
   },
   {
@@ -173,7 +173,7 @@ export default function PressureCleaning() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <h3 className="text-xl font-semibold mb-4 text-ochre-3">Driveways & Concrete</h3>
+              <h3 className="text-xl font-semibold mb-4 text-ochre-3">Driveways and Concrete</h3>
               <p className="text-ink-2 mb-4">
                 Remove oil stains, tyre marks, and years of built-up grime to restore your driveway's appearance.
               </p>
@@ -185,7 +185,7 @@ export default function PressureCleaning() {
             </div>
             
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <h3 className="text-xl font-semibold mb-4 text-moss">Walkways & Paths</h3>
+              <h3 className="text-xl font-semibold mb-4 text-moss">Walkways and Paths</h3>
               <p className="text-ink-2 mb-4">
                 Make walkways safe and attractive by removing slip-hazard mould and restoring original appearance.
               </p>
@@ -197,7 +197,7 @@ export default function PressureCleaning() {
             </div>
             
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <h3 className="text-xl font-semibold mb-4 text-ochre-3">Patios & Outdoor Areas</h3>
+              <h3 className="text-xl font-semibold mb-4 text-ochre-3">Patios and Outdoor Areas</h3>
               <p className="text-ink-2 mb-4">
                 Transform outdoor entertainment areas by removing stains and organic growth for a fresh, clean look.
               </p>

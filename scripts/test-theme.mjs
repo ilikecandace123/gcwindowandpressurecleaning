@@ -94,6 +94,22 @@ console.log("\nHeader, logo and static pages:");
   }
 }
 
+console.log("\nHeadings spell out \"and\":");
+{
+  const helper = read("src/lib/headingText.js");
+  ok("spellAnd helper exists", /export function spellAnd/.test(helper));
+  for (const f of ["src/components/QuoteHero.jsx", "src/components/FAQ.jsx", "src/components/Benefits.jsx"]) {
+    ok(`${f} spells out "and" in its heading`, read(f).includes("spellAnd("));
+  }
+  const literal = [];
+  for (const f of files.filter((f) => f.endsWith(".jsx"))) {
+    for (const m of read(f).matchAll(/<h[1-4]\b[^>]*>([^<{]*?)<\/h[1-4]>/g)) {
+      if (/\s(&amp;|&)\s/.test(m[1])) literal.push(`${f}: ${m[1].trim()}`);
+    }
+  }
+  ok("no heading written with an ampersand", literal.length === 0, literal.slice(0, 6).join(" | "));
+}
+
 console.log("\nHero photo is not covered by the quote card:");
 {
   for (const f of ["src/components/QuoteHero.jsx", "src/pages/InstantQuoteLanding.jsx"]) {

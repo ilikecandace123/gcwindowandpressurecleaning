@@ -16,7 +16,7 @@ const REGION_INFO = {
     description: "The heart of the Gold Coast from Burleigh to Broadbeach — busy tourist hubs with high-rise living and ocean exposure."
   },
   central: {
-    label: "Central & Inland",
+    label: "Central and Inland",
     description: "Growing suburban communities from Robina to Southport — family homes and commercial properties benefiting from regular maintenance."
   },
   hinterland: {
@@ -28,7 +28,7 @@ const REGION_INFO = {
     description: "Rapidly growing corridor from Helensvale to Ormeau — modern developments and established homes needing expert exterior care."
   },
   nsw_tweed: {
-    label: "Northern NSW & Tweed",
+    label: "Northern NSW and Tweed",
     description: "We proudly service across the border — from Tweed Heads to Kingscliff and beyond."
   }
 };

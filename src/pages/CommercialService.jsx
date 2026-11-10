@@ -122,7 +122,7 @@ export default function CommercialService() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
-                Built for Commercial & Strata Operators
+                Built for Commercial and Strata Operators
               </h2>
               <p className="text-lg text-ink-2 mb-6 leading-relaxed">
                 We work with facility managers, building managers, strata committees, retail operators
@@ -238,7 +238,7 @@ export default function CommercialService() {
                 { icon: "🦅", title: "Heavy Bird Activity", desc: "Coastal ibis, cormorants, cockatoos, and mynas deposit acidic droppings that create hotspots on commercial arrays, causing cell damage and generation loss." },
                 { icon: "💧", title: "Subtropical Humidity", desc: "High year-round humidity traps dust and pollen on panel surfaces and promotes algae growth — a problem far less common in drier Australian commercial markets." },
                 { icon: "🌸", title: "Hinterland Pollen", desc: "Native species in the hinterland shed heavy pollen loads during spring and summer that coat commercial solar arrays in a yellow-brown film." },
-                { icon: "🚗", title: "Industrial & Traffic Pollution", desc: "Fine rubber and bitumen particles from the M1 corridor and nearby industrial areas build up as a dark greasy film on commercial solar panels." },
+                { icon: "🚗", title: "Industrial and Traffic Pollution", desc: "Fine rubber and bitumen particles from the M1 corridor and nearby industrial areas build up as a dark greasy film on commercial solar panels." },
                 { icon: "☀️", title: "Intense UV Bonding", desc: "Gold Coast's high UV intensity accelerates the bonding of organic matter to panel glass on commercial rooftops, requiring professional-grade techniques to remove safely." }
               ].map((item, i) => (
                 <div key={i} className="bg-paper-white rounded-[14px] border-2 border-ink p-6">

@@ -995,7 +995,7 @@ export const SERVICES = [
         description: "Our specialised techniques and professional-grade equipment deliver crystal clear, streak-free windows that sparkle in the sunlight."
       },
       {
-        title: "Interior & Exterior Service",
+        title: "Interior and Exterior Service",
         description: "Complete window cleaning service covers both inside and outside surfaces for maximum clarity and brightness in your home or office."
       },
       {
@@ -1003,7 +1003,7 @@ export const SERVICES = [
         description: "Our professional equipment and safety training allow us to safely clean windows up to 4 storeys high, reaching areas you can't."
       },
       {
-        title: "Includes Tracks & Flyscreens",
+        title: "Includes Tracks and Flyscreens",
         description: "Comprehensive service includes cleaning window tracks, frames, and flyscreens for complete window maintenance."
       },
       {
@@ -1072,7 +1072,7 @@ export const SERVICES = [
     shortDesc: "Professional roof cleaning to remove moss, algae, and debris",
     benefits: [
       {
-        title: "Prevents Damage & Extends Life",
+        title: "Prevents Damage and Extends Life",
         description: "Regular cleaning removes destructive moss, algae, and lichen that trap moisture and cause tile cracking and rust in Gold Coast's humid subtropical climate."
       },
       {
@@ -1099,7 +1099,7 @@ export const SERVICES = [
     process: [
       {
         step: 1,
-        title: "Safety Setup & Inspection",
+        title: "Safety Setup and Inspection",
         description: "Assess roof condition, identify cracked tiles, rusted flashings, and blocked valleys. Set up non-slip footwear, harness points, and safety equipment."
       },
       {
@@ -1119,7 +1119,7 @@ export const SERVICES = [
       },
       {
         step: 5,
-        title: "Gutter & Valley Flush",
+        title: "Gutter and Valley Flush",
         description: "Clear debris dislodged during cleaning from valleys, gutters, and downpipes to ensure free water flow."
       },
       {
@@ -1183,7 +1183,7 @@ export const SERVICES = [
         description: "Effectively removes mould, mildew, algae, and weathered stains while preserving the integrity of your home's exterior."
       },
       {
-        title: "Kills Mould & Mildew at Source",
+        title: "Kills Mould and Mildew at Source",
         description: "Our cleaning solutions eliminate mould, mildew, and algae spores, preventing rapid regrowth compared to pressure washing alone."
       },
       {
@@ -1217,7 +1217,7 @@ export const SERVICES = [
       },
       {
         step: 4,
-        title: "Final Rinse & Inspection",
+        title: "Final Rinse and Inspection",
         description: "Thorough rinsing ensures all cleaning solution is removed and your home looks pristine."
       }
     ],
@@ -1445,7 +1445,7 @@ export const SERVICES = [
     process: [
       {
         step: 1,
-        title: "Safety & Access Assessment",
+        title: "Safety and Access Assessment",
         description: "Assess roof safety, panel layout, and electrical systems before beginning. Confirm deionised water supply and access equipment for safe rooftop work."
       },
       {
@@ -1465,7 +1465,7 @@ export const SERVICES = [
       },
       {
         step: 5,
-        title: "Output Check & Photo Report",
+        title: "Output Check and Photo Report",
         description: "Final inspection confirms panels are clean and connections are undisturbed. Before/after photos provided on request to document the clean."
       }
     ],
@@ -1524,7 +1524,7 @@ export const SERVICES = [
         description: "Bird droppings and nesting debris drop solar panel efficiency significantly. Mesh keeps panels clean and performing at their best."
       },
       {
-        title: "Stops Droppings & Mess",
+        title: "Stops Droppings and Mess",
         description: "Bird droppings are acidic and damage panels and the roof directly beneath them. Mesh keeps birds out from under the panels entirely."
       },
       {
@@ -1532,7 +1532,7 @@ export const SERVICES = [
         description: "Bird nests under panels harbour mites, lice and bacteria. Solar panel mesh keeps your roof and home clean and healthy."
       },
       {
-        title: "Humane & Long Lasting",
+        title: "Humane and Long Lasting",
         description: "Exclusion-only mesh doesn't harm birds — we simply stop them getting under the panels. Marine-grade steel mesh and clips last 10+ years."
       },
       {
@@ -1548,7 +1548,7 @@ export const SERVICES = [
       },
       {
         step: 2,
-        title: "Clean & Clear",
+        title: "Clean and Clear",
         description: "Remove existing nests, droppings and debris from under the panels, then disinfect the area before installation."
       },
       {
@@ -1558,7 +1558,7 @@ export const SERVICES = [
       },
       {
         step: 4,
-        title: "Final Check & Guarantee",
+        title: "Final Check and Guarantee",
         description: "Verify full coverage with no gaps. We guarantee our bird proofing work against failure for long term peace of mind."
       }
     ],
@@ -1605,17 +1605,17 @@ export const COMMERCIAL_SERVICES = [
     intro: "A clean, streak-free glass facade is the first impression your customers, tenants and residents see. We deliver professional commercial window cleaning across the Gold Coast on schedules that suit your trading hours and minimise disruption to staff, customers and residents. Fully insured, SWMS-documented, and experienced with everything from ground-floor shopfronts through to multi-storey strata towers.",
     benefits: [
       { title: "Fixed Scheduled Maintenance", description: "Weekly, fortnightly, monthly or quarterly cleaning programs with a fixed cost per visit so you can budget confidently and never miss a clean." },
-      { title: "After-Hours & Weekend Service", description: "We work around your trading hours — early mornings, evenings or weekends — so customers and staff are never interrupted." },
-      { title: "High-Rise & Reach-and-Wash Systems", description: "Pure-water reach poles up to 4+ storeys and traditional rope access partners for taller facades, covering almost any commercial or strata building." },
-      { title: "Strata & Body Corporate Specialists", description: "Detailed quotes, invoices and reports designed for body corporate committees, building managers and strata managers." },
+      { title: "After-Hours and Weekend Service", description: "We work around your trading hours — early mornings, evenings or weekends — so customers and staff are never interrupted." },
+      { title: "High-Rise and Reach-and-Wash Systems", description: "Pure-water reach poles up to 4+ storeys and traditional rope access partners for taller facades, covering almost any commercial or strata building." },
+      { title: "Strata and Body Corporate Specialists", description: "Detailed quotes, invoices and reports designed for body corporate committees, building managers and strata managers." },
       { title: "$20 Million Public Liability", description: "Fully insured with $20 million public liability and workers compensation. Certificates of currency provided on request for tenders and compliance." },
-      { title: "SWMS & Site Safety", description: "Site-specific Safe Work Method Statements, JSA documentation, WHS inductions and police-checked technicians for every commercial job." }
+      { title: "SWMS and Site Safety", description: "Site-specific Safe Work Method Statements, JSA documentation, WHS inductions and police-checked technicians for every commercial job." }
     ],
     process: [
       { step: 1, title: "Site Inspection", description: "Walkthrough of your facade, access points and safety requirements to build an accurate, fixed-price scope." },
-      { step: 2, title: "SWMS & Scheduling", description: "Produce site-specific SWMS, lock in a cleaning schedule, and coordinate with building management and tenants." },
+      { step: 2, title: "SWMS and Scheduling", description: "Produce site-specific SWMS, lock in a cleaning schedule, and coordinate with building management and tenants." },
       { step: 3, title: "Professional Clean", description: "Pure-water reach-and-wash on external glass, traditional squeegee on interior and low-level glass, frames and tracks wiped down." },
-      { step: 4, title: "Sign-Off & Reporting", description: "Completion report with photos where required, itemised invoice, and a locked-in date for the next scheduled visit." }
+      { step: 4, title: "Sign-Off and Reporting", description: "Completion report with photos where required, itemised invoice, and a locked-in date for the next scheduled visit." }
     ],
     faqs: [
       { question: "How much does commercial window cleaning cost on the Gold Coast?", answer: "Commercial window cleaning on the Gold Coast is $220–$440 for most apartments and small offices (inside and out). Single-storey homes and medium businesses are $385–$550, including deep track and screen cleaning. Double-storey and larger businesses or offices are $500–$800, including deep track and screen cleaning. Large commercial buildings, car dealerships, shopping centres and large properties with lots of glass are $800+ and require a site visit. All prices are a guide — contact us for a free, no-obligation quote." },
@@ -1638,15 +1638,15 @@ export const COMMERCIAL_SERVICES = [
       { title: "Protects Your Roof Asset", description: "Removing moss, lichen and algae prevents tile degradation and rust, extending the serviceable life of a major capital asset by years." },
       { title: "Soft Wash Safe for All Profiles", description: "Low-pressure soft-wash methodology is safe on Colorbond, metal deck, Kliplok, terracotta and concrete tile roofs commonly used on commercial buildings." },
       { title: "Large-Area Pricing", description: "Efficient systems and dedicated commercial crews mean competitive square-metre pricing for warehouses, factory roofs, shopping centres and multi-unit strata." },
-      { title: "Sinking Fund & Capital Works Ready", description: "We provide the detailed scope documentation, photos and invoices strata committees need for sinking fund or capital works approval." },
+      { title: "Sinking Fund and Capital Works Ready", description: "We provide the detailed scope documentation, photos and invoices strata committees need for sinking fund or capital works approval." },
       { title: "Minimal Business Disruption", description: "We work around your operations and can access most commercial roofs without interrupting staff, tenants or customers below." },
-      { title: "Licensed & Insured", description: "Fully insured with $20 million public liability, height safety trained, and SWMS-documented for every commercial roof site." }
+      { title: "Licensed and Insured", description: "Fully insured with $20 million public liability, height safety trained, and SWMS-documented for every commercial roof site." }
     ],
     process: [
       { step: 1, title: "Roof Assessment", description: "Drone and ground inspection of your roof condition, profile and access, producing a detailed fixed-price scope." },
       { step: 2, title: "Pre-Treatment", description: "Apply biodegradable treatment to kill moss, lichen and algae at the root so regrowth is dramatically slower." },
       { step: 3, title: "Soft Wash Clean", description: "Low-pressure rinse across the entire roof surface, restoring original colour and removing built-up contamination." },
-      { step: 4, title: "Gutter & Downpipe Flush", description: "Flush debris out of gutters and downpipes dislodged during the clean, and provide a completion report with photos." }
+      { step: 4, title: "Gutter and Downpipe Flush", description: "Flush debris out of gutters and downpipes dislodged during the clean, and provide a completion report with photos." }
     ],
     faqs: [
       { question: "Can you clean large commercial roofs like warehouses or shopping centres?", answer: "Yes. We regularly service large commercial roof areas including warehouses, factories, schools, retail centres and strata towers. We have the crews, equipment and insurance to handle jobs from a single retail tenancy through to multi-thousand square metre industrial roofs." },
@@ -1669,15 +1669,15 @@ export const COMMERCIAL_SERVICES = [
     intro: "Mould, mildew and algae on building facades signal neglect to customers and devalue strata property. Our commercial softwash service uses low-pressure biodegradable cleaning to restore render, painted walls, cladding, brickwork and multi-unit strata facades across the Gold Coast — without damaging paintwork or finishes.",
     benefits: [
       { title: "Restores Facade Appearance", description: "Brings rendered and painted facades back to like-new appearance in a fraction of the cost of repainting — a common strata sinking fund win." },
-      { title: "Safe for Paint & Render", description: "Low-pressure soft wash technique is safe for paint, render, acrylic coatings, fibre cement and all modern commercial cladding systems." },
+      { title: "Safe for Paint and Render", description: "Low-pressure soft wash technique is safe for paint, render, acrylic coatings, fibre cement and all modern commercial cladding systems." },
       { title: "Kills Mould at the Source", description: "Biodegradable treatment kills mould, mildew and algae spores so results last much longer than pressure washing alone." },
-      { title: "Strata & Multi-Unit Specialists", description: "Experienced with multi-unit townhouse complexes, apartment blocks and mixed-use developments, coordinating with residents and committees." },
-      { title: "Improves Tenant & Customer Perception", description: "A clean, well-maintained facade directly improves leasing outcomes, customer perception and property value for owners and investors." },
+      { title: "Strata and Multi-Unit Specialists", description: "Experienced with multi-unit townhouse complexes, apartment blocks and mixed-use developments, coordinating with residents and committees." },
+      { title: "Improves Tenant and Customer Perception", description: "A clean, well-maintained facade directly improves leasing outcomes, customer perception and property value for owners and investors." },
       { title: "Minimal Disruption", description: "We schedule around trading hours and tenants and protect landscaping, signage and parking throughout the clean." }
     ],
     process: [
       { step: 1, title: "Site Walkthrough", description: "Identify finish types, problem areas and access requirements, then produce a fixed-price scope." },
-      { step: 2, title: "Protection & Prep", description: "Protect landscaping, signage, electrical and entry points before work starts." },
+      { step: 2, title: "Protection and Prep", description: "Protect landscaping, signage, electrical and entry points before work starts." },
       { step: 3, title: "Soft Wash Clean", description: "Apply biodegradable treatment, dwell, and low-pressure rinse across the full facade." },
       { step: 4, title: "Final Inspection", description: "Walk the finished facade with the client or building manager and provide a completion report." }
     ],
@@ -1700,11 +1700,11 @@ export const COMMERCIAL_SERVICES = [
     intro: "Commercial hard surfaces take a beating — oil, tyre marks, gum, grease and grime build up fast on carparks, footpaths, loading docks and industrial slabs. Our commercial pressure cleaning crews restore concrete, pavers and exposed aggregate across the Gold Coast using industrial hot-water equipment and surface cleaners, on schedules that suit your operations.",
     benefits: [
       { title: "Heavy-Duty Industrial Equipment", description: "High-flow hot-water pressure units and surface cleaners deliver fast, even results across large commercial areas that domestic units can't touch." },
-      { title: "Gum, Oil & Tyre Mark Removal", description: "Specialist treatments and degreasers to handle chewing gum, oil stains, tyre marks, rubber and fuel spills on commercial hardstand." },
+      { title: "Gum, Oil and Tyre Mark Removal", description: "Specialist treatments and degreasers to handle chewing gum, oil stains, tyre marks, rubber and fuel spills on commercial hardstand." },
       { title: "Scheduled Maintenance Programs", description: "Monthly, quarterly or annual programs keep carparks, entries and footpaths consistently presentable at a predictable fixed price." },
       { title: "After-Hours Operations", description: "Overnight and weekend work for retail centres, hospitality and offices so trading is never affected." },
-      { title: "Strata & Facility Manager Ready", description: "Detailed quotes, invoices and progress reports designed for strata committees and facility managers." },
-      { title: "Fully Insured & Compliant", description: "$20 million public liability, site-specific SWMS, JSA and workers compensation for every commercial pressure cleaning job." }
+      { title: "Strata and Facility Manager Ready", description: "Detailed quotes, invoices and progress reports designed for strata committees and facility managers." },
+      { title: "Fully Insured and Compliant", description: "$20 million public liability, site-specific SWMS, JSA and workers compensation for every commercial pressure cleaning job." }
     ],
     process: [
       { step: 1, title: "Site Inspection", description: "Walk the site to map problem areas, measure square metres and confirm water access and run-off management." },
@@ -1738,10 +1738,10 @@ export const COMMERCIAL_SERVICES = [
       { title: "Height Safety Compliant", description: "All technicians are height safety trained, with site-specific SWMS, harnesses, anchor points and $20 million public liability." }
     ],
     process: [
-      { step: 1, title: "Roof & Gutter Inspection", description: "Assess roof, gutter and downpipe condition, and identify any damage before work begins." },
+      { step: 1, title: "Roof and Gutter Inspection", description: "Assess roof, gutter and downpipe condition, and identify any damage before work begins." },
       { step: 2, title: "Vacuum Debris Removal", description: "Industrial gutter vacuums remove leaves, sludge and debris from every run without mess." },
       { step: 3, title: "Downpipe Flush", description: "Downpipes are flushed to confirm free flow and to clear any blockages identified during inspection." },
-      { step: 4, title: "Photo Report & Sign-Off", description: "Photo report of every section cleaned, noting any damage to flag to the building manager or strata committee." }
+      { step: 4, title: "Photo Report and Sign-Off", description: "Photo report of every section cleaned, noting any damage to flag to the building manager or strata committee." }
     ],
     faqs: [
       { question: "How much does commercial gutter cleaning cost on the Gold Coast?", answer: "Commercial gutter cleaning on the Gold Coast is quoted per site after a look, because access, roof height and gutter length vary so much. As a guide, a building the size of a single-storey home is $275–$385 and a double-storey $440–$660, including downpipe flushing. Large industrial, strata or multi-building sites are quoted on inspection. All prices are a guide — every property is individual, so contact us for a free, no-obligation quote." },
@@ -1762,17 +1762,17 @@ export const COMMERCIAL_SERVICES = [
     intro: "Commercial solar arrays lose significant output to dust, bird droppings, salt and pollution — and at scale, lost generation means lost money every day. Our commercial solar cleaning team services large rooftop arrays on warehouses, offices, schools, strata buildings and retail centres across the Gold Coast, restoring generation and protecting your solar investment.",
     benefits: [
       { title: "Measurable Generation Recovery", description: "Professional cleaning routinely restores 10-30% lost generation on dirty commercial arrays — paying for itself in a single billing cycle for many sites." },
-      { title: "Pure Water & Deionised Systems", description: "Pure water and deionised rinse systems leave zero streaks or residue, as recommended by tier-1 panel manufacturers." },
+      { title: "Pure Water and Deionised Systems", description: "Pure water and deionised rinse systems leave zero streaks or residue, as recommended by tier-1 panel manufacturers." },
       { title: "Warranty-Safe Methodology", description: "Soft-brush and pure-water technique is aligned with Tier-1 panel manufacturer warranty requirements — no high-pressure, no abrasive chemicals." },
       { title: "Large-Array Capability", description: "Equipped to clean hundreds of panels per visit on warehouses, industrial sheds, strata roofs and school buildings." },
-      { title: "Bird Dropping & Salt Removal", description: "Bird droppings and coastal salt buildup cause hotspots and permanent cell damage if left — we remove both safely without damage." },
-      { title: "Height Safety & Insurance", description: "Height safety trained, SWMS-documented and carrying $20 million public liability for every commercial solar job." }
+      { title: "Bird Dropping and Salt Removal", description: "Bird droppings and coastal salt buildup cause hotspots and permanent cell damage if left — we remove both safely without damage." },
+      { title: "Height Safety and Insurance", description: "Height safety trained, SWMS-documented and carrying $20 million public liability for every commercial solar job." }
     ],
     process: [
       { step: 1, title: "Array Inspection", description: "Visual inspection of the array for soiling, damage, hotspots and access constraints to build a fixed-price scope." },
       { step: 2, title: "Safe Roof Access", description: "Set up height safety anchors and access routes in accordance with the site-specific SWMS." },
       { step: 3, title: "Pure Water Clean", description: "Soft-brush and deionised pure-water clean across the full array, removing dust, salt, pollen and bird droppings." },
-      { step: 4, title: "Final Rinse & Report", description: "Final rinse, visual verification, and a photo report highlighting any damage or issues identified on the array." }
+      { step: 4, title: "Final Rinse and Report", description: "Final rinse, visual verification, and a photo report highlighting any damage or issues identified on the array." }
     ],
     faqs: [
       { question: "How much does commercial solar panel cleaning cost on the Gold Coast?", answer: "Commercial solar panel cleaning on the Gold Coast starts from $220, which covers up to 20 panels; 21–25 panels is $275, 26–30 is $330 and 31–40 is $440. Large commercial arrays over 40 panels on warehouses, schools and strata buildings are quoted based on panel count and access requirements. All prices are a guide — every system is different, so contact us for a free, no-obligation quote." },
@@ -1795,18 +1795,18 @@ export const COMMERCIAL_SERVICES = [
     subhead: "Pigeon Mesh • Warranty Safe • Large Arrays",
     intro: "Pigeons and mynas nesting under commercial solar arrays cause droppings, noise complaints, corrosion, fire risk and permanent damage to panels and roofing. Our commercial bird proofing team installs marine-grade stainless mesh around entire commercial and strata solar arrays across the Gold Coast — humane, warranty-safe and built to last.",
     benefits: [
-      { title: "Stops Pigeons & Mynas Permanently", description: "Marine-grade stainless mesh permanently excludes pigeons and mynas from nesting under your commercial array — no ongoing pest control costs." },
+      { title: "Stops Pigeons and Mynas Permanently", description: "Marine-grade stainless mesh permanently excludes pigeons and mynas from nesting under your commercial array — no ongoing pest control costs." },
       { title: "Protects the Solar Investment", description: "Droppings and nesting material cause corrosion, hotspots and fire risk. Bird proofing protects both panels and the roof underneath." },
       { title: "Warranty-Safe Panel Clips", description: "Stainless panel clips attach mesh without drilling into frames, keeping your panel and roof warranties intact." },
-      { title: "Humane & Exclusion-Only", description: "Mesh simply prevents access — no harm to birds, no spikes, no poisons. A strata- and community-friendly solution." },
+      { title: "Humane and Exclusion-Only", description: "Mesh simply prevents access — no harm to birds, no spikes, no poisons. A strata- and community-friendly solution." },
       { title: "Marine-Grade Durability", description: "316 stainless mesh rated for coastal Gold Coast conditions with a 10-year product life and our workmanship warranty." },
-      { title: "Clean-Out & Disinfect Included", description: "We clean out all existing nesting material, droppings and mess before fitting the mesh so the roof is left properly sanitised." }
+      { title: "Clean-Out and Disinfect Included", description: "We clean out all existing nesting material, droppings and mess before fitting the mesh so the roof is left properly sanitised." }
     ],
     process: [
       { step: 1, title: "Array Inspection", description: "Inspect the array, measure perimeter and assess nesting and droppings to produce a fixed-price quote." },
-      { step: 2, title: "Clean Out & Sanitise", description: "Remove all nesting material and droppings, then disinfect panels and underlying roof area." },
+      { step: 2, title: "Clean Out and Sanitise", description: "Remove all nesting material and droppings, then disinfect panels and underlying roof area." },
       { step: 3, title: "Mesh Installation", description: "Install marine-grade stainless mesh around the entire array using warranty-safe panel clips." },
-      { step: 4, title: "Final Inspection & Guarantee", description: "Walk the installed mesh with the client and issue product and workmanship warranty documentation." }
+      { step: 4, title: "Final Inspection and Guarantee", description: "Walk the installed mesh with the client and issue product and workmanship warranty documentation." }
     ],
     faqs: [
       { question: "How much does commercial solar panel bird proofing cost on the Gold Coast?", answer: "Commercial solar panel bird proofing on the Gold Coast costs $25–$35 per metre, depending on how dirty the roof and panels are. This price includes cleaning the roof and solar panels, plus supply and installation of marine-grade stainless mesh. Large commercial arrays on warehouses and strata buildings are quoted based on array perimeter after a site inspection. All prices are a guide — every installation is different, so contact us for a free, no-obligation quote." },

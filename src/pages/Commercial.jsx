@@ -128,28 +128,28 @@ export default function Commercial() {
           <h2 className="text-3xl font-bold text-ink mb-6">Who We Work With</h2>
           <div className="grid sm:grid-cols-2 gap-6 text-ink-2">
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <h3 className="font-semibold text-ink mb-2">Strata &amp; body corporate</h3>
+              <h3 className="font-semibold text-ink mb-2">Strata and body corporate</h3>
               <p className="text-sm">
                 Detailed quotes, invoices and completion reports written for committees and strata managers. Scheduled
                 programs across the whole scheme, with access arranged around residents.
               </p>
             </div>
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <h3 className="font-semibold text-ink mb-2">Offices, retail &amp; hospitality</h3>
+              <h3 className="font-semibold text-ink mb-2">Offices, retail and hospitality</h3>
               <p className="text-sm">
                 Early-morning, evening and weekend cleans so trading is never interrupted. Fixed per-visit pricing
                 that budgets cleanly.
               </p>
             </div>
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <h3 className="font-semibold text-ink mb-2">Property &amp; facilities managers</h3>
+              <h3 className="font-semibold text-ink mb-2">Property and facilities managers</h3>
               <p className="text-sm">
                 One point of contact for every building in a portfolio. Certificates of currency, SWMS and JSA
                 documentation supplied for tenders and compliance.
               </p>
             </div>
             <div className="bg-paper-white rounded-[14px] border-2 border-ink p-6">
-              <h3 className="font-semibold text-ink mb-2">Builders &amp; handovers</h3>
+              <h3 className="font-semibold text-ink mb-2">Builders and handovers</h3>
               <p className="text-sm">
                 Post-construction glass, render and pavement cleans to bring a new building up to handover standard.
               </p>

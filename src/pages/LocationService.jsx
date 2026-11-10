@@ -176,7 +176,7 @@ export default function LocationService() {
     } else if (suburb.region === "hinterland") {
       basePoints.push({
         icon: <CheckCircle className="w-6 h-6 text-moss" />,
-        title: "Tree & Debris Specialists",
+        title: "Tree and Debris Specialists",
         description: `Expert at managing tree coverage, fallen leaves, and natural debris common to ${suburb.name} hinterland properties.`
       });
     }

@@ -19,11 +19,11 @@ export default function HouseSoftWash() {
     description: "Our gentle softwash technique safely cleans delicate surfaces like painted walls, render, and weatherboard without damage."
   },
   {
-    title: "Complete Mould & Dirt Removal",
+    title: "Complete Mould and Dirt Removal",
     description: "Specialised treatments eliminate mould, mildew, dirt, and organic stains at their source for long-lasting results."
   },
   {
-    title: "Removes Spider Webs & Wasp Nests",
+    title: "Removes Spider Webs and Wasp Nests",
     description: "Comprehensive cleaning includes removal of spider webs, wasp nests, and other pest-related issues around your property."
   },
   {

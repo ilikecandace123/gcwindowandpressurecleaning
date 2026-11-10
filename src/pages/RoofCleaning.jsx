@@ -24,7 +24,7 @@ export default function RoofCleaning() {
       description: "Gold Coast's coastal salt aerosol accelerates paint degradation and rust on metal roofs. Regular cleaning removes salt deposits before they break down protective coatings, preserving Colorbond and Zincalume surfaces."
     },
     {
-      title: "Boosts Curb Appeal & Property Value",
+      title: "Boosts Curb Appeal and Property Value",
       description: "A clean roof transforms a property's appearance. Real estate agents consistently report that clean roofs improve first impressions and can add measurable value — particularly important in Gold Coast's competitive property market."
     },
     {
@@ -32,7 +32,7 @@ export default function RoofCleaning() {
       description: "Our soft-wash process follows manufacturer guidelines for all major roof types. High-pressure cleaning voids many tile and membrane warranties — our low-pressure technique protects your coverage."
     },
     {
-      title: "EPA-Compliant & Safe",
+      title: "EPA-Compliant and Safe",
       description: "Our anti-microbial solutions are biodegradable and safe for families, pets, gardens, and the Gold Coast's waterways. All runoff is managed in compliance with local council environmental requirements."
     },
     {

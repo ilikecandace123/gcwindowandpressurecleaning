@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { spellAnd } from "../lib/headingText";
 import { Link } from "react-router-dom";
 import { ChevronDown, ChevronUp, BookOpen } from "lucide-react";
 
@@ -17,7 +18,7 @@ export default function FAQ({ faqs, title = "Frequently Asked Questions", subtit
         <div className="mb-6">
           <p className="eyebrow">Questions</p>
           <h2 className="text-3xl md:text-[40px] font-bold text-ink leading-[1.1] mt-3">
-            {title}
+            {spellAnd(title)}
           </h2>
           {subtitle && <p className="text-lg text-ink-2 mt-3">{subtitle}</p>}
         </div>

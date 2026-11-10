@@ -35,11 +35,11 @@ export default function BirdProofing() {
       description: "Our galvanised steel mesh is UV stable and rust resistant — built to last 10+ years in Gold Coast coastal conditions."
     },
     {
-      title: "Humane & Effective",
+      title: "Humane and Effective",
       description: "Our exclusion-only mesh doesn't harm birds. It simply stops them getting underneath your panels so they nest elsewhere."
     },
     {
-      title: "Health & Hygiene",
+      title: "Health and Hygiene",
       description: "Bird droppings and nests under panels harbour mites, lice and harmful bacteria. Solar panel mesh keeps your roof clean and healthy."
     }
   ];
@@ -190,7 +190,7 @@ export default function BirdProofing() {
               <div className="w-16 h-16 bg-ochre-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="font-display text-2xl font-bold text-ochre-3">2</span>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Clean & Disinfect</h3>
+              <h3 className="text-xl font-semibold mb-3">Clean and Disinfect</h3>
               <p className="text-ink-2">
                 Remove existing nests, droppings and debris from under the panels. Disinfect the area before mesh goes on.
               </p>

@@ -233,11 +233,11 @@ export default function SolarPanelCleaning() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-8 mb-12">
             {[
-              { num: "1", title: "Safety & Access", desc: "We assess roof access, set up fall-arrest anchors, and confirm system isolation before any technician steps onto your roof." },
+              { num: "1", title: "Safety and Access", desc: "We assess roof access, set up fall-arrest anchors, and confirm system isolation before any technician steps onto your roof." },
               { num: "2", title: "Panel Inspection", desc: "Each panel is inspected for hotspots, micro-cracks, loose frames, bird damage, and shading issues before cleaning begins." },
               { num: "3", title: "Purified Water Pre-Rinse", desc: "We pre-rinse with deionised (purified) water. Tap water leaves calcium scale — purified water is required by most manufacturers to protect the anti-reflective coating." },
               { num: "4", title: "Soft-Brush Scrub", desc: "Panels are scrubbed with a soft-bristle brush and pH-neutral solution that removes all organic matter, salt deposits, and bird droppings without scratching." },
-              { num: "5", title: "Report & Output Check", desc: "We provide before/after photos, a written condition report, and advise on any panel issues spotted. You'll see the difference — and so will your inverter." }
+              { num: "5", title: "Report and Output Check", desc: "We provide before/after photos, a written condition report, and advise on any panel issues spotted. You'll see the difference — and so will your inverter." }
             ].map((step, i) => (
               <div key={i} className="border-t-2 border-ink pt-4">
                 <span className="block font-display italic text-2xl text-ochre-2 mb-2">0{step.num}</span>

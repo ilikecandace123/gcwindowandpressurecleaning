@@ -1,4 +1,5 @@
 import React from "react";
+import { spellAnd } from "../lib/headingText";
 import { Star, Phone } from "lucide-react";
 import QuoteCTA from "./QuoteCTA";
 
@@ -6,7 +7,7 @@ import QuoteCTA from "./QuoteCTA";
 // Cleaning in Burleigh Heads" both read better with the second half set in
 // italic ochre. Splits on an em dash first, then on the place phrase.
 export function splitHeadline(headline) {
-  const text = String(headline || "");
+  const text = spellAnd(String(headline || ""));
   const dash = text.split(" — ");
   if (dash.length === 2) return [dash[0], dash[1]];
   const m = text.match(/^(.+?)\s+((?:on the|in|across the)\s+[A-Z].*)$/);

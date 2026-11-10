@@ -156,7 +156,7 @@ export default function GutterCleaning() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
             <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mb-6">
-              Comprehensive Gutter Cleaning & Maintenance
+              Comprehensive Gutter Cleaning and Maintenance
             </h2>
             <p className="text-xl text-ink-2 max-w-3xl">
               Our thorough gutter cleaning service removes all debris, clears downpipes, checks for damage, 

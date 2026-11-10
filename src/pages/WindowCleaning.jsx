@@ -21,7 +21,7 @@ export default function WindowCleaning() {
     description: "Our specialised techniques and professional-grade equipment deliver crystal clear, streak-free windows that sparkle in the sunlight."
   },
   {
-    title: "Interior & Exterior Service",
+    title: "Interior and Exterior Service",
     description: "Complete window cleaning service covers both inside and outside surfaces for maximum clarity and brightness in your home or office."
   },
   {
@@ -29,7 +29,7 @@ export default function WindowCleaning() {
     description: "Our professional equipment and safety training allow us to safely clean windows up to 4 storeys high, reaching areas you can't."
   },
   {
-    title: "Includes Tracks & Flyscreens",
+    title: "Includes Tracks and Flyscreens",
     description: "Comprehensive service includes cleaning window tracks, frames, and flyscreens for complete window maintenance."
   },
   {
@@ -264,7 +264,7 @@ export default function WindowCleaning() {
           </div>
 
           <div className="bg-paper-2 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold text-ink mb-4">Safety & Access Expertise</h3>
+            <h3 className="text-2xl font-bold text-ink mb-4">Safety and Access Expertise</h3>
             <p className="text-lg text-ink-2 mb-6">
               Our team is trained and equipped for safe high-access window cleaning up to 4 storeys. 
               We use professional-grade safety equipment and follow strict safety protocols.

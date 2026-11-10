@@ -61,7 +61,7 @@ export default function Services() {
   },
   {
     imageUrl: "/images/commercial-softwash-secondary.jpg",
-    title: "House & Building Softwash",
+    title: "House and Building Softwash",
     description: "Gentle surface-safe cleaning removes mould, dirt, spider webs, and wasp nests without damage.",
     benefits: ["Safe for surfaces", "Removes mould", "Long-lasting results"],
     slug: "house-softwash"

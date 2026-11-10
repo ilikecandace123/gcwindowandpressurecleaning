@@ -61,7 +61,7 @@ export const PLAN_BENEFITS = [
     description: "Pre-booked, priority scheduling — so the job's just done.",
   },
   {
-    title: "Massive savings & benefits",
+    title: "Massive savings and benefits",
     description: "Up to $150 off every single visit compared to a one-time clean.",
   },
   {
