@@ -139,6 +139,25 @@
     @apply rounded-[14px] overflow-hidden border-2 border-ink shadow-hard-accent-sm sm:shadow-hard-accent;
   }
 
+  /* A photo shown in full (FullPhoto). The frame is the photo's own shape;
+     a tall photo is capped in height and the frame narrows to suit. */
+  .photo-fit {
+    --photo-max-h: 420px;
+    width: min(100%, calc(var(--photo-max-h) * var(--photo-ratio, 1.5)));
+    @apply mx-auto;
+  }
+  @media (min-width: 1024px) {
+    .photo-fit {
+      --photo-max-h: 500px;
+    }
+  }
+
+  /* Job photo at the top of a recent-work card: whole photo, tall ones
+     capped in height with the card colour either side. */
+  .job-photo {
+    @apply block w-full h-auto max-h-[26rem] object-contain bg-paper-2 border-b-2 border-ink;
+  }
+
   /* Text link with an accent underline. */
   .link {
     @apply font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-3;
@@ -162,3 +181,115 @@ main section section {
   max-height: calc(100dvh - 4rem);
   -webkit-overflow-scrolling: touch;
 }
+
+/* ── Home page (redesign 11/2026) ─────────────────────────────────────────
+   One big photo at the top with a solid panel that fades into it, a moving
+   service strip, and drag before/after sliders. Layout values that depend on
+   the chosen photo arrive as custom properties from HomeHero.jsx. */
+main .home-page section { border-top: 0; }
+.home-hero {
+  position: relative;
+  overflow: hidden;
+}
+.home-hero--navy { --hero-rgb: 23, 35, 59; }
+.home-hero--blue { --hero-rgb: 124, 200, 245; }
+.home-hero__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: var(--hero-pos-mobile, 50% 50%);
+}
+.home-hero__fade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--hero-rgb), 0.5) 0,
+    rgba(var(--hero-rgb), 0.1) 90px,
+    rgba(var(--hero-rgb), 0.1) 190px,
+    rgba(var(--hero-rgb), 0.92) 320px,
+    rgb(var(--hero-rgb)) 385px
+  );
+}
+.home-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.1;
+  padding: 15px 28px;
+  min-height: 62px;
+  white-space: nowrap;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.home-hero__btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
+@media (min-width: 768px) {
+  .home-hero__img {
+    left: var(--hero-left, 39%);
+    width: calc(100% - var(--hero-left, 39%));
+    height: 100%;
+    object-position: var(--hero-pos, 0% 50%);
+  }
+  .home-hero__fade {
+    background: linear-gradient(180deg, rgba(var(--hero-rgb), 0.55) 0, rgba(var(--hero-rgb), 0) 130px), linear-gradient(
+      90deg,
+      rgb(var(--hero-rgb)) 0,
+      rgb(var(--hero-rgb)) var(--hero-solid, 43%),
+      rgba(var(--hero-rgb), 0.75) calc((var(--hero-solid, 43%) + var(--hero-clear, 63%)) / 2 - 3%),
+      rgba(var(--hero-rgb), 0) var(--hero-clear, 63%)
+    );
+  }
+}
+
+/* Moving service strip */
+.home-strip {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 16px 0;
+}
+.home-strip__run {
+  display: flex;
+  flex: none;
+  gap: 30px;
+  padding-right: 30px;
+  animation: home-strip-run 28s linear infinite;
+}
+.home-strip:hover .home-strip__run { animation-play-state: paused; }
+@keyframes home-strip-run {
+  to { transform: translateX(-100%); }
+}
+@media (min-width: 640px) {
+  .home-strip { padding: 22px 0; }
+  .home-strip__run { gap: 56px; padding-right: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-strip__run { animation: none; }
+}
+
+/* Quote start: the line that joins the four step dots */
+.home-quote-steps { position: relative; }
+.home-quote-steps::before {
+  content: "";
+  position: absolute;
+  left: 12.5%;
+  right: 12.5%;
+  top: 35px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Before/after slider: sideways drags move the handle, up/down still scrolls */
+.home-ba {
+  touch-action: pan-y;
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.home-ba img { pointer-events: none; }

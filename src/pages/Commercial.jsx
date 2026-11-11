@@ -61,7 +61,8 @@ export default function Commercial() {
         subheading={
           "Offices, retail, hospitality, body corporate and strata — every exterior cleaning service under one insured, SWMS-documented contractor."
         }
-        backgroundImage={"/images/commercial-window-hero.jpg"}
+        backgroundImage={"/images/commercial-strata-hero.jpg"}
+        imageAlt={"Two cleaners on a boom lift pressure washing the outside of a commercial building at night"}
       />
 
       {/* Trust strip — same one the commercial hubs use */}

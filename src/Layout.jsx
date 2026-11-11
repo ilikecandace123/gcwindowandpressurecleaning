@@ -4,12 +4,29 @@ import { Link, useLocation } from "react-router-dom";
 import QuoteCTA from "./components/QuoteCTA";
 import { Phone, Star, Shield, Users, Menu, X, ChevronDown } from "lucide-react";
 import Logo from "./components/Logo";
+import { HOME_HERO } from "./data/homePage";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = React.useState(false);
   const [commercialDropdownOpen, setCommercialDropdownOpen] = React.useState(false);
+
+  // Home page only: the header floats over the big photo at the top, see-through
+  // with light text, until the visitor scrolls or opens the menu. Then it is
+  // the same solid header every other page has.
+  const isHome = location.pathname === "/";
+  const [scrolled, setScrolled] = React.useState(false);
+  useEffect(() => {
+    if (!isHome) return undefined;
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+  const overlay = isHome && !scrolled && !mobileMenuOpen;
+  const lightHeader = overlay && HOME_HERO.theme !== "blue";
+  const navText = lightHeader ? "text-paper hover:text-accent" : "text-ink hover:text-accent-3";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -36,7 +53,7 @@ export default function Layout({ children, currentPageName }) {
   return (
     <div className="min-h-screen bg-paper">
       {/* Trust Bar */}
-      <div className="bg-ink text-paper text-[13px] tracking-wide py-1.5 hidden sm:block">
+      <div className={`bg-ink text-paper text-[13px] tracking-wide py-1.5 hidden ${isHome ? "" : "sm:block"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center gap-5">
           <div className="flex items-center">
             <Shield className="w-3.5 h-3.5 mr-1.5 text-accent" />
@@ -56,23 +73,23 @@ export default function Layout({ children, currentPageName }) {
       </div>
 
       {/* Header */}
-      <header className="bg-paper shadow-[0_2px_0_#17233b] sticky top-0 z-50">
+      <header className={`sticky top-0 z-50 transition-colors duration-200 ${isHome ? "-mb-16" : ""} ${overlay ? "bg-transparent" : "bg-paper shadow-[0_2px_0_#17233b]"}`}>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center gap-4 h-16">
             {/* Logo */}
             <Link to="/" aria-label="Gold Coast Window and Pressure Cleaning, home" className="flex items-center flex-shrink-0 min-w-0">
-              <Logo wordmarkClassName="hidden min-[375px]:block lg:hidden xl:block" />
+              <Logo onInk={lightHeader} wordmarkClassName="hidden min-[375px]:block lg:hidden xl:block" />
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1 flex-shrink-0">
+            <nav className={`hidden lg:flex items-center gap-1 flex-shrink-0 rounded-full px-1.5 py-0.5 ${overlay ? (lightHeader ? "bg-paper/15 backdrop-blur-sm" : "bg-ink/10") : ""}`}>
               {/* Services Dropdown */}
               <div
                 className="relative"
                 onMouseEnter={() => setServicesDropdownOpen(true)}
                 onMouseLeave={() => setServicesDropdownOpen(false)}
               >
-                <button onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-[15px] font-semibold text-ink hover:text-accent-3 transition-colors whitespace-nowrap">
+                <button onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)} className={`flex items-center gap-1 px-3 py-2 text-[15px] font-semibold ${navText} transition-colors whitespace-nowrap`}>
                   Residential
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -111,7 +128,7 @@ export default function Layout({ children, currentPageName }) {
                 onMouseEnter={() => setCommercialDropdownOpen(true)}
                 onMouseLeave={() => setCommercialDropdownOpen(false)}
               >
-                <button onClick={() => setCommercialDropdownOpen(!commercialDropdownOpen)} className="flex items-center gap-1 px-3 py-2 text-[15px] font-semibold text-ink hover:text-accent-3 transition-colors whitespace-nowrap">
+                <button onClick={() => setCommercialDropdownOpen(!commercialDropdownOpen)} className={`flex items-center gap-1 px-3 py-2 text-[15px] font-semibold ${navText} transition-colors whitespace-nowrap`}>
                   Commercial & Strata
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${commercialDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -144,8 +161,8 @@ export default function Layout({ children, currentPageName }) {
                   </div>
               </div>
 
-              <Link to="/window-cleaning-plans/" className="px-3 py-2 text-[15px] font-semibold text-ink hover:text-accent-3 transition-colors whitespace-nowrap">Window Cleaning Plans</Link>
-              <Link to="/guides/" className="px-3 py-2 text-[15px] font-semibold text-ink hover:text-accent-3 transition-colors whitespace-nowrap">Guides</Link>
+              <Link to="/window-cleaning-plans/" className={`px-3 py-2 text-[15px] font-semibold ${navText} transition-colors whitespace-nowrap`}>Window Cleaning Plans</Link>
+              <Link to="/guides/" className={`px-3 py-2 text-[15px] font-semibold ${navText} transition-colors whitespace-nowrap`}>Guides</Link>
 
             </nav>
 
@@ -158,7 +175,7 @@ export default function Layout({ children, currentPageName }) {
                 <span className="hidden sm:inline">Get Instant Quote</span>
                 <span className="sm:hidden">Quote</span>
               </Link>
-              <a href="tel:0752308293" aria-label="Call (07) 5230 8293" className="btn btn-ink btn-sm !px-3 sm:!px-5 whitespace-nowrap">
+              <a href="tel:0752308293" aria-label="Call (07) 5230 8293" className={`btn btn-sm !px-3 sm:!px-5 whitespace-nowrap ${lightHeader ? "bg-paper-white text-ink border-paper-white hover:bg-paper-2" : "btn-ink"}`}>
                 <Phone className="w-4 h-4 sm:mr-1.5" />
                 <span className="hidden sm:inline">(07) 5230 8293</span>
               </a>
@@ -167,7 +184,7 @@ export default function Layout({ children, currentPageName }) {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-                className="lg:hidden ml-0.5 p-2 text-ink hover:bg-paper-2 rounded-lg transition-colors"
+                className={`lg:hidden ml-0.5 p-2 rounded-lg transition-colors ${lightHeader ? "text-paper hover:bg-paper/15" : "text-ink hover:bg-paper-2"}`}
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -258,8 +275,9 @@ export default function Layout({ children, currentPageName }) {
 
       {/* Quote chooser at the bottom of every page — except the instant-quote
           wizard and the per-service quote landing pages, which have their own
-          lead capture built in */}
-      {currentPageName !== "InstantQuote" && currentPageName !== "InstantQuoteLanding" && <QuoteCTA variant="section" />}
+          lead capture built in, and the home page, which has the quote on the
+          page and ends on its own call to action */}
+      {currentPageName !== "InstantQuote" && currentPageName !== "InstantQuoteLanding" && !isHome && <QuoteCTA variant="section" />}
 
       {/* Footer */}
       <footer className="bg-ink text-paper border-t-2 border-ink">

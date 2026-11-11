@@ -3,6 +3,7 @@ import { spellAnd } from "../lib/headingText";
 import { useLocation } from "react-router-dom";
 import { Star, Phone } from "lucide-react";
 import QuoteCTA from "./QuoteCTA";
+import FullPhoto from "./FullPhoto";
 import { pickHeroReview, GOOGLE_REVIEWS_URL } from "../data/heroReviews";
 
 // "Roof Cleaning Gold Coast — Tile, Metal & Concrete Roofs" and "Window
@@ -18,8 +19,8 @@ export function splitHeadline(headline) {
 
 // Page hero used at the top of every page: headline, trust points and the
 // phone number on the left; the page photo in an ink frame with the quote
-// card tucked under it on the right. The card only overlaps the bottom edge
-// of the photo, so the photo stays visible. On phones the order is headline,
+// card under it on the right. The photo is shown in full, in its own shape
+// (FullPhoto), and the card never covers it. On phones the order is headline,
 // photo, quote card, trust points.
 // On desktop the left column is shorter than the photo + quote card, so a real
 // Google review for the page's service fills the space under the phone number.
@@ -32,7 +33,6 @@ export default function QuoteHero({
   eyebrow = "Gold Coast · Northern NSW · Brisbane",
   bullets = ["Fully insured", "Police-checked staff", "5.0 stars from 2500+ customers"],
   backgroundImage = "/images/services-banner.jpg",
-  imagePosition = "center",
   imageAlt = "",
 }) {
   const [lead, tail] = splitHeadline(headline);
@@ -60,21 +60,7 @@ export default function QuoteHero({
 
           {/* Photo + quote card */}
           <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2">
-            <div className="photo-frame aspect-[16/10] lg:aspect-[2/1] xl:aspect-[16/9] bg-paper-2">
-              <picture>
-                <source srcSet={backgroundImage ? backgroundImage.replace(".jpg", ".webp") : ""} type="image/webp" />
-                <img
-                  src={backgroundImage}
-                  alt={imageAlt}
-                  aria-hidden={imageAlt ? undefined : "true"}
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: imagePosition }}
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
-                />
-              </picture>
-            </div>
+            <FullPhoto src={backgroundImage} alt={imageAlt} eager className="photo-frame bg-paper-2" />
             <div className="relative mt-6 lg:mt-7 lg:-ml-8 lg:mr-8">
               <QuoteCTA variant="hero" />
             </div>

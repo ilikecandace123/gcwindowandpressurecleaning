@@ -5,6 +5,7 @@ import PageSEO from "../components/PageSEO";
 import GoogleReviews from "../components/GoogleReviews";
 import NotFound from "./NotFound";
 import QuoteWizard from "../quote/QuoteWizard";
+import FullPhoto, { photoSize } from "../components/FullPhoto";
 import { getQuoteLanding, landingExamples, landingFaqs, landingFromPrice, landingPath } from "../data/quoteLanding";
 import { getRecentJobsByService } from "../data/recentJobs";
 import { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
@@ -63,7 +64,6 @@ function Landing({ landing }) {
   // service's stock hero. Real beats stock every time.
   const heroJob = jobs[0] || null;
   const heroImage = heroJob ? heroJob.photo : landing.image;
-  const heroWebp = heroJob ? null : landing.image.replace(".jpg", ".webp");
 
   // "Gutter Cleaning Gold Coast — See Your Price in 2 Minutes": the keyword
   // part stays upright, the promise after the dash is set in italic accent.
@@ -148,27 +148,19 @@ function Landing({ landing }) {
               </div>
             </div>
 
-            {/* Photo on top, quote card tucked under its bottom edge so the photo
+            {/* Photo on top, shown in full; quote card under it so the photo
                 stays visible (Skagen, 10/11/2026: the card was covering it). */}
             <div>
-              <div className="relative photo-frame aspect-[4/3] lg:aspect-[2/1] xl:aspect-[16/9] bg-paper-2">
-                <picture>
-                  {heroWebp && <source srcSet={heroWebp} type="image/webp" />}
-                  <img
-                    src={heroImage}
-                    alt={heroJob ? heroJob.alt || `${landing.name} job in ${titleCase(heroJob.suburb)}` : ""}
-                    className="w-full h-full object-cover"
-                    loading="eager"
-                    decoding="async"
-                    fetchPriority="high"
-                    width={1296}
-                    height={972}
-                  />
-                </picture>
+              <FullPhoto
+                src={heroImage}
+                alt={heroJob ? heroJob.alt || `${landing.name} job in ${titleCase(heroJob.suburb)}` : ""}
+                eager
+                className="relative photo-frame bg-paper-2"
+              >
                 <span className="absolute top-3.5 left-3.5 bg-ink text-paper text-[11px] tracking-[.1em] uppercase px-2.5 py-1.5 rounded">
                   {heroJob ? `Real job · ${titleCase(heroJob.suburb)} · ${monthYear(heroJob.date)}` : "Gold Coast · fully insured"}
                 </span>
-              </div>
+              </FullPhoto>
 
               <div
                 ref={cardRef}
@@ -259,7 +251,7 @@ function Landing({ landing }) {
             <div className={`grid gap-6 ${jobs.length > 1 ? "md:grid-cols-2" : ""}`}>
               {jobs.map((job) => (
                 <figure key={job.photo} className="bg-paper-white border-2 border-ink rounded-[14px] overflow-hidden">
-                  <img src={job.photo} alt={job.alt || `Recent job in ${titleCase(job.suburb)}`} width={1200} height={900} className="w-full h-64 sm:h-72 object-cover border-b-2 border-ink" loading="lazy" decoding="async" />
+                  <img src={job.photo} alt={job.alt || `Recent job in ${titleCase(job.suburb)}`} {...photoSize(job.photo)} className="job-photo" loading="lazy" decoding="async" />
                   <figcaption className="p-5">
                     <div className="text-[12px] tracking-[.1em] uppercase font-bold text-accent-3 mb-2">
                       {titleCase(job.suburb)} · {monthYear(job.date)}
