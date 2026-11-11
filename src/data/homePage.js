@@ -168,6 +168,8 @@ export const HOME_SLIDERS = [
 export const HOME_COMPARE = [
   { what: "Fully insured", us: "Yes, every job", them: "Not always" },
   { what: "Police-checked staff", us: "Everyone who comes to your home", them: "Rarely" },
+  { what: "Polite", us: "Always", them: "Hit and miss" },
+  { what: "Treats your home with care", us: "Like it’s our own", them: "In a rush" },
   { what: "Price before you book", us: "Instant online quote", them: "Call, wait, site visit" },
   { what: "Answers the phone", us: "(07) 5230 8293", them: "Voicemail" },
   { what: "Reviews you can check", us: `5.0 from ${GOOGLE_REVIEW_COUNT_SEED} Google reviews`, them: "Hard to find" },
