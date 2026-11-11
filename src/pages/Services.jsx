@@ -161,11 +161,11 @@ export default function Services() {
             <div>
               <p className="eyebrow eyebrow-plain !text-accent">Why people pick us</p>
               <h2 className="text-[34px] sm:text-[50px] font-bold leading-[1.05] mt-3 mb-5">
-                Built around what usually <em className="italic font-semibold text-accent">goes wrong.</em>
+                People you’re happy to have <em className="italic font-semibold text-accent">at your place.</em>
               </h2>
               <p className="text-[18.5px] leading-relaxed text-paper/85">
-                No-shows, quotes you have to chase, jobs half done. We set this up to fix all of it: your price before you book, a phone that
-                gets answered, and insured, police-checked people at your home.
+                Everyone who comes to your home is police-checked and fully insured. You see your price before you book, and when you call,
+                we actually answer.
               </p>
             </div>
             <dl className="grid grid-cols-3 gap-x-5 gap-y-7">
@@ -207,7 +207,7 @@ export default function Services() {
                   <span className="sr-only">What matters</span>
                 </th>
                 <th scope="col" className="w-[41%] bg-ink text-paper rounded-t-[20px] font-display font-bold text-[15px] sm:text-[21px] leading-tight px-2.5 sm:px-5 py-4 sm:py-5">
-                  Gold Coast Window &amp; Pressure Cleaning
+                  Us
                 </th>
                 <th scope="col" className="w-[30%] font-bold text-ink px-2.5 sm:px-5 py-4">
                   The cheapest quote
