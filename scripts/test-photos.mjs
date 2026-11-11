@@ -41,7 +41,7 @@ console.log("\nPhoto size list:");
   const missing = Object.keys(real).filter((k) => !k.startsWith("/images/jobs/") && !saved[k]);
   ok("every site photo is listed (run: npm run image-sizes)", missing.length === 0, missing.slice(0, 5).join(" | "));
   const pkg = JSON.parse(read("package.json"));
-  ok("the build rewrites the list first", pkg.scripts.build.startsWith("node scripts/assets/build-image-sizes.mjs && "));
+  ok("the build rewrites the list first (npm prebuild)", pkg.scripts.prebuild === "node scripts/assets/build-image-sizes.mjs" && pkg.scripts["prebuild:meta-only"] === pkg.scripts.prebuild);
 }
 
 console.log("\nPage photo at the top of each page:");

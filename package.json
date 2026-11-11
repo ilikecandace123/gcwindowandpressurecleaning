@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/assets/build-image-sizes.mjs && vite build && node scripts/write-openapi.mjs && node scripts/write-agent-skills.mjs && node scripts/write-agent-catalog.mjs && node scripts/prerender.mjs && node scripts/prerender-content.mjs && (pip3 install beautifulsoup4 markdownify --quiet 2>/dev/null || pip3 install beautifulsoup4 markdownify --break-system-packages --quiet) && python3 scripts/generate_markdown_mirrors.py",
-    "build:meta-only": "node scripts/assets/build-image-sizes.mjs && vite build && node scripts/write-openapi.mjs && node scripts/write-agent-skills.mjs && node scripts/write-agent-catalog.mjs && node scripts/prerender.mjs",
+    "prebuild": "node scripts/assets/build-image-sizes.mjs",
+    "build": "vite build && node scripts/write-openapi.mjs && node scripts/write-agent-skills.mjs && node scripts/write-agent-catalog.mjs && node scripts/prerender.mjs && node scripts/prerender-content.mjs && (pip3 install beautifulsoup4 markdownify --quiet 2>/dev/null || pip3 install beautifulsoup4 markdownify --break-system-packages --quiet) && python3 scripts/generate_markdown_mirrors.py",
+    "prebuild:meta-only": "node scripts/assets/build-image-sizes.mjs",
+    "build:meta-only": "vite build && node scripts/write-openapi.mjs && node scripts/write-agent-skills.mjs && node scripts/write-agent-catalog.mjs && node scripts/prerender.mjs",
     "prerender": "node scripts/prerender.mjs",
     "prerender:content": "node scripts/prerender-content.mjs",
     "mirrors": "python3 scripts/generate_markdown_mirrors.py",

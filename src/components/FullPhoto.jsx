@@ -5,7 +5,7 @@ import IMAGE_SIZES from "../data/imageSizes.json";
 // are showing in full properly"). The frame takes the photo's own shape. A
 // tall photo is capped in height and the frame narrows to match, so the
 // whole picture is still in view. Sizes come from src/data/imageSizes.json,
-// which scripts/assets/build-image-sizes.mjs rewrites on every build.
+// which scripts/assets/build-image-sizes.mjs rewrites before every build.
 const FALLBACK = [1200, 900];
 
 export function photoSize(src) {

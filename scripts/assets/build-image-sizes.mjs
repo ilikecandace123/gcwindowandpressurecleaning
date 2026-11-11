@@ -1,7 +1,7 @@
 // Writes src/data/imageSizes.json: the pixel size of every photo in
 // public/images. FullPhoto uses it to give each photo a frame of its own
 // shape, so nothing is cropped and the page does not jump while it loads.
-// Runs at the start of every build, so photos added later are picked up.
+// Runs before every build (npm "prebuild"), so photos added later are picked up.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
