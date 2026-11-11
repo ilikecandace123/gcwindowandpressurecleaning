@@ -207,7 +207,7 @@ export default function Services() {
                   <span className="sr-only">What matters</span>
                 </th>
                 <th scope="col" className="w-[41%] bg-ink text-paper rounded-t-[20px] font-display font-bold text-[15px] sm:text-[21px] leading-tight px-2.5 sm:px-5 py-4 sm:py-5">
-                  Gold Coast Window &amp; Pressure Cleaning
+                  Us
                 </th>
                 <th scope="col" className="w-[30%] font-bold text-ink px-2.5 sm:px-5 py-4">
                   The cheapest quote
