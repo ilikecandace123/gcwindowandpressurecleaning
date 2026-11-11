@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import PhoneNumber from "../components/PhoneNumber";
 import { Link, useParams } from "react-router-dom";
 import { Phone, Zap, ArrowRight, ChevronDown, ChevronUp, Camera } from "lucide-react";
 import PageSEO from "../components/PageSEO";
@@ -142,9 +143,9 @@ function Landing({ landing }) {
 
               <div className="hidden lg:flex items-center gap-4 mt-8">
                 <a href="tel:0752308293" className="btn btn-outline">
-                  <Phone className="w-4 h-4 mr-2" /> (07) 5230 8293
+                  <Phone className="w-4 h-4 mr-2.5" /> <PhoneNumber call />
                 </a>
-                <span className="text-sm text-ink-2">Or skip the call and use the quote tool. We answer texts too.</span>
+                <span className="text-sm text-ink-2">Or skip the call and use the quote tool.</span>
               </div>
             </div>
 
@@ -173,7 +174,7 @@ function Landing({ landing }) {
             </div>
 
             <a href="tel:0752308293" className="lg:hidden btn btn-outline">
-              <Phone className="w-4 h-4 mr-2" /> Prefer to talk? (07) 5230 8293
+              <Phone className="w-4 h-4 mr-2.5" /> <PhoneNumber call />
             </a>
           </div>
         </div>
@@ -278,7 +279,7 @@ function Landing({ landing }) {
               Get my instant quote <ArrowRight className="w-5 h-5 ml-2" />
             </button>
             <a href="tel:0752308293" className="btn btn-lg btn-outline-on-ink">
-              <Phone className="w-5 h-5 mr-2" /> (07) 5230 8293
+              <Phone className="w-5 h-5 mr-2.5" /> <PhoneNumber />
             </a>
           </div>
           <p className="text-sm text-paper-2/60 mt-6">

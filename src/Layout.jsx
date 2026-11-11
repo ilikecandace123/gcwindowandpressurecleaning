@@ -1,5 +1,6 @@
 
 import React, { useEffect } from "react";
+import PhoneNumber from "./components/PhoneNumber";
 import { Link, useLocation } from "react-router-dom";
 import QuoteCTA from "./components/QuoteCTA";
 import { Phone, Star, Shield, Users, Menu, X, ChevronDown } from "lucide-react";
@@ -177,7 +178,7 @@ export default function Layout({ children, currentPageName }) {
               </Link>
               <a href="tel:0752308293" aria-label="Call (07) 5230 8293" className={`btn btn-sm !px-3 sm:!px-5 whitespace-nowrap ${lightHeader ? "bg-paper-white text-ink border-paper-white hover:bg-paper-2" : "btn-ink"}`}>
                 <Phone className="w-4 h-4 sm:mr-1.5" />
-                <span className="hidden sm:inline">(07) 5230 8293</span>
+                <PhoneNumber className="hidden sm:inline-flex" />
               </a>
 
               {/* Mobile menu button */}
@@ -330,6 +331,7 @@ export default function Layout({ children, currentPageName }) {
                 <Phone className="w-5 h-5 mr-2 text-accent" />
                 (07) 5230 8293
               </a>
+              <p className="text-[15px] font-semibold text-paper-2/85 mt-1.5">We actually answer.</p>
               <div className="space-y-2.5 text-[15px] text-paper-2/85 mt-4">
                 <Link to="/instant-quote/" className="block hover:text-accent transition-colors">Get an instant quote</Link>
                 <Link to="/about/" className="block hover:text-accent transition-colors">About Us</Link>

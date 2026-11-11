@@ -1,4 +1,5 @@
 import React from "react";
+import PhoneNumber from "../components/PhoneNumber";
 import QuoteHero from "../components/QuoteHero";
 import { Link } from "react-router-dom";
 import { Shield, Users, Star, Phone, Award, Clock, MapPin, CheckCircle } from "lucide-react";
@@ -147,8 +148,8 @@ export default function About() {
           <p className="text-xl text-paper-2 mb-8">Get in touch for a free, no-obligation quote.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:0752308293" className="btn btn-lg btn-outline-on-ink">
-              <Phone className="w-5 h-5 mr-2" />
-              (07) 5230 8293
+              <Phone className="w-5 h-5 mr-2.5" />
+              <PhoneNumber />
             </a>
             <a href="#quote" className="btn btn-lg btn-primary">
               Get Free Quote

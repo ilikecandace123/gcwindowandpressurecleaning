@@ -88,6 +88,20 @@ console.log("\nHeader and page furniture:");
   ok("home page skips the bottom quote chooser (quote is on the page)", /!isHome && <QuoteCTA variant="section" \/>/.test(layout));
   const page = read("src/pages/Services.jsx");
   ok("page has the quote scroll target", /<section id="quote"/.test(page));
+  {
+    const strip = read("src/components/home/ServiceStrip.jsx");
+    ok("every strip item is a link in every run (no plain-text copies)", strip.includes("<Link to={s.to}") && !strip.includes("<span>{s.label}</span>") && strip.includes("tabIndex={copy ? -1 : undefined}"));
+  }
+  {
+    // "Say we actually answer under the phone number on all pages" (12/11/2026)
+    const number = read("src/components/PhoneNumber.jsx");
+    ok("PhoneNumber puts 'We actually answer' under the number", number.includes("(07) 5230 8293") && number.includes("We actually answer"));
+    for (const f of ["src/Layout.jsx", "src/components/QuoteHero.jsx", "src/components/home/HomeHero.jsx"]) {
+      ok(`${f} shows the number with the line under it`, read(f).includes("<PhoneNumber"));
+    }
+    ok("footer says we actually answer under the number", layout.includes("We actually answer."));
+    ok("instant quote landing pages do not mention texts", !/answer texts/i.test(read("src/pages/InstantQuoteLanding.jsx")));
+  }
   ok("strip stands still for reduced motion", /prefers-reduced-motion: reduce\) \{\s*\.home-strip__run \{ animation: none; \}/.test(read("src/index.css")));
 }
 

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PhoneNumber from "../components/PhoneNumber";
 import FactIcon from "../components/FactIcon";
 import QuoteHero from "../components/QuoteHero";
 import { useParams, Link } from "react-router-dom";
@@ -562,8 +563,8 @@ export default function LocationService() {
               href="tel:0752308293"
               className="btn btn-lg btn-outline-on-ink"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              (07) 5230 8293
+              <Phone className="w-5 h-5 mr-2.5" />
+              <PhoneNumber />
             </a>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import PhoneNumber from "./PhoneNumber";
 import { spellAnd } from "../lib/headingText";
 import { useLocation } from "react-router-dom";
 import { Star, Phone } from "lucide-react";
@@ -89,9 +90,8 @@ export default function QuoteHero({
 
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-7">
               <a href="tel:0752308293" className="btn btn-outline">
-                <Phone className="w-4 h-4 mr-2" /> (07) 5230 8293
+                <Phone className="w-4 h-4 mr-2.5" /> <PhoneNumber call />
               </a>
-              <span className="text-sm text-ink-3">Call us. We actually answer.</span>
             </div>
 
             {review && (
