@@ -1,5 +1,6 @@
 
 import React from "react";
+import PhoneNumber from "../components/PhoneNumber";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, Phone, X } from "lucide-react";
 import GoogleReviews from "../components/GoogleReviews";
@@ -145,7 +146,7 @@ export default function Services() {
                   Get Instant Quote <ArrowRight className="w-5 h-5 ml-2" />
                 </a>
                 <a href="tel:0752308293" className="btn btn-lg btn-outline-on-ink">
-                  <Phone className="w-5 h-5 mr-2" /> (07) 5230 8293
+                  <Phone className="w-5 h-5 mr-2.5" /> <PhoneNumber />
                 </a>
               </div>
             </div>
@@ -259,7 +260,7 @@ export default function Services() {
               Get your instant quote <ArrowRight className="w-5 h-5 ml-2" />
             </a>
             <a href="tel:0752308293" className="btn btn-lg btn-outline">
-              <span>Call (07) 5230 8293</span>
+              <PhoneNumber call />
             </a>
           </div>
         </div>

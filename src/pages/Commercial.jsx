@@ -1,4 +1,5 @@
 import React from "react";
+import PhoneNumber from "../components/PhoneNumber";
 import { Link } from "react-router-dom";
 import { Shield, FileCheck, Clock, HardHat, ArrowRight, Building2 } from "lucide-react";
 import QuoteHero from "../components/QuoteHero";
@@ -180,7 +181,7 @@ export default function Commercial() {
               href="tel:0752308293"
               className="btn btn-lg btn-outline-on-ink"
             >
-              Call (07) 5230 8293
+              <PhoneNumber call />
             </a>
           </div>
         </div>

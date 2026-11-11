@@ -1,4 +1,5 @@
 import React from "react";
+import PhoneNumber from "../PhoneNumber";
 import { Phone, Star } from "lucide-react";
 import { HOME_HERO, HERO_PHOTOS } from "../../data/homePage";
 
@@ -50,7 +51,7 @@ export default function HomeHero() {
               </span>
             </a>
             <a href="tel:0752308293" className={`home-hero__btn border-2 ${blue ? "border-ink text-ink" : "border-paper/70 text-paper"}`}>
-              <Phone className="w-[18px] h-[18px] mr-2" /> Call (07) 5230 8293
+              <Phone className="w-[18px] h-[18px] mr-2.5" /> <PhoneNumber call />
             </a>
           </div>
         </div>
