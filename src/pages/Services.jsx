@@ -1,9 +1,13 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, Check, Phone, X } from "lucide-react";
 import GoogleReviews from "../components/GoogleReviews";
-import QuoteHero from "../components/QuoteHero";
+import HomeHero from "../components/home/HomeHero";
+import ServiceStrip from "../components/home/ServiceStrip";
+import HomeQuoteStart from "../components/home/HomeQuoteStart";
+import BeforeAfter from "../components/home/BeforeAfter";
+import { HOME_SERVICES, HOME_STATS, HOME_SLIDERS, HOME_COMPARE } from "../data/homePage";
 import FAQ from "../components/FAQ";
 import PageSEO from "../components/PageSEO";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema, buildFAQSchema } from "../data/schema";
@@ -43,60 +47,14 @@ const HOME_FAQS = [
   }
 ];
 
+// Home page. Layout chosen by Skagen from mock-ups (11/2026): big photo top,
+// moving service strip, instant quote on the page, photo service cards,
+// "why" band with drag before/after sliders, an "us vs the cheapest quote"
+// table, the real Google reviews, FAQs and a closing call to action.
+// Content lives in src/data/homePage.js.
 export default function Services() {
-  const services = [
-  {
-    imageUrl: "/images/roof-cleaning-1.jpg",
-    title: "Roof Cleaning",
-    description: "Professional manufacturer-recommended process extends roof life, improves curb appeal, and prevents costly damage.",
-    benefits: ["Extends roof life", "Boosts curb appeal", "Prevents damage"],
-    slug: "roof-cleaning"
-  },
-  {
-    imageUrl: "/images/window-hero.jpg",
-    title: "Window Cleaning",
-    description: "Streak-free interior and exterior window cleaning up to 4 storeys. Includes tracks and flyscreens.",
-    benefits: ["Streak-free results", "Up to 4 storeys", "Includes extras"],
-    slug: "window-cleaning"
-  },
-  {
-    imageUrl: "/images/commercial-softwash-secondary.jpg",
-    title: "House and Building Softwash",
-    description: "Gentle surface-safe cleaning removes mould, dirt, spider webs, and wasp nests without damage.",
-    benefits: ["Safe for surfaces", "Removes mould", "Long-lasting results"],
-    slug: "house-softwash"
-  },
-  {
-    imageUrl: "/images/pressure-1.jpg",
-    title: "Pressure Cleaning",
-    description: "Industrial-grade cleaning for concrete, driveways, walkways, and patios. Deep clean that lasts.",
-    benefits: ["Industrial grade", "Deep cleaning", "Long-lasting"],
-    slug: "pressure-cleaning"
-  },
-  {
-    imageUrl: "/images/gutter-1.jpg",
-    title: "Gutter Cleaning",
-    description: "Complete gutter cleaning and maintenance to prevent water damage and keep your property storm-ready.",
-    benefits: ["Prevents water damage", "Storm ready", "Complete maintenance"],
-    slug: "gutter-cleaning"
-  },
-  {
-    imageUrl: "/images/solar-panel-hero.jpg",
-    title: "Solar Panel Cleaning",
-    description: "Professional solar panel cleaning to restore efficiency and maximise your energy output.",
-    benefits: ["Restores efficiency", "Maximises output", "Extends panel life"],
-    slug: "solar-panel-cleaning"
-  },
-  {
-    imageUrl: "/images/bird-proofing-hero.jpg",
-    title: "Solar Panel Bird Proofing",
-    description: "Marine-grade mesh that stops pigeons and mynas nesting under your solar panels. Warranty-safe and humane.",
-    benefits: ["Protects solar panels", "Restores energy output", "Warranty safe"],
-    slug: "bird-proofing"
-  }];
-
   return (
-    <div className="min-h-screen">
+    <div className="home-page min-h-screen">
       <PageSEO
         title="Gold Coast Window and Pressure Cleaning | Free Quote"
         description="Gold Coast's trusted window, pressure, roof, gutter and solar panel cleaning. Fully insured, police-checked staff. Free quote — call (07) 5230 8293."
@@ -110,69 +68,72 @@ export default function Services() {
           buildFAQSchema(HOME_FAQS)
         ]}
       />
-      {/* Hero with Quote Form */}
-      <QuoteHero
-        headline="Professional Window & Exterior Cleaning on the Gold Coast"
-        subheading="Local • Quality • Trustworthy"
-        backgroundImage="/images/services-banner.jpg"
-        imagePosition="48% 33%"
-      />
 
-      {/* Services Grid */}
-      <section className="py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 lg:mb-12 max-w-3xl">
-            <p className="eyebrow">What we do</p>
-            <h2 className="text-3xl md:text-[44px] font-bold text-ink leading-[1.08] mt-3 mb-3">
-              Choose Your Service
-            </h2>
-            <p className="text-xl text-ink-2">
-              Professional exterior cleaning services tailored to your needs
-            </p>
+      <HomeHero />
+      <ServiceStrip />
+
+      {/* Instant quote, first step on the page. id="quote" is the scroll
+          target for every "Get your instant quote" button on this page. */}
+      <section id="quote" className="no-rule scroll-mt-20 bg-gradient-to-b from-accent-50 to-paper-white py-14 sm:py-20">
+        <div className="max-w-[640px] mx-auto px-4 sm:px-6 text-center">
+          <p className="eyebrow eyebrow-plain">Instant quote</p>
+          <h2 className="text-[34px] sm:text-[50px] font-bold text-ink leading-[1.05] mt-2.5">See your price now</h2>
+          <p className="text-[18px] sm:text-[19px] text-ink-2 mt-3.5 mb-8 max-w-[520px] mx-auto">
+            Tick what you need, answer a couple of quick questions and your price shows straight away.
+          </p>
+          <HomeQuoteStart />
+          <p className="text-[16px] text-ink-2 mt-6">
+            Prefer to talk?{" "}
+            <a href="tel:0752308293" className="link">
+              Call (07) 5230 8293
+            </a>
+            . We actually answer.
+          </p>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="no-rule pt-4 pb-16 sm:pb-24 bg-paper-white">
+        <div className="max-w-[1180px] mx-auto px-4 sm:px-7">
+          <div className="text-center mb-9 sm:mb-11">
+            <p className="eyebrow eyebrow-plain">What we do</p>
+            <h2 className="text-[34px] sm:text-[50px] font-bold text-ink leading-[1.05] mt-2.5">Pick your service</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
-            {services.map((service, index) =>
-            <Link
-              key={index}
-              to={`/${service.slug}/`}
-              className="group card overflow-hidden flex flex-col transition-all duration-150 hover:shadow-hard hover:-translate-x-[2px] hover:-translate-y-[2px]">
-
-                <div className="aspect-[4/3] overflow-hidden border-b-2 border-ink bg-paper-2">
-                  <picture>
-                    <source srcSet={service.imageUrl.replace('.jpg', '.webp')} type="image/webp" />
-                    <img src={service.imageUrl} alt={service.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300" decoding="async" width="600" height="400" />
-                  </picture>
-                </div>
-
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-ink mb-2">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-ink-2 mb-4 leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  <ul className="space-y-1.5 mb-6 text-[15px] font-semibold text-ink-2">
-                    {service.benefits.map((benefit, i) =>
-                  <li key={i} className="flex items-center gap-2 before:content-['✓'] before:text-moss before:font-bold">
-                        {benefit}
-                      </li>
-                  )}
-                  </ul>
-
-                  <div className="mt-auto flex items-center font-bold text-ink underline decoration-accent decoration-2 underline-offset-4">
-                    Learn More
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-[18px]">
+            {HOME_SERVICES.map((service) => (
+              <Link
+                key={service.slug}
+                to={`/${service.slug}/`}
+                className="group relative block aspect-[5/6] rounded-[22px] overflow-hidden bg-ink text-paper"
+              >
+                <picture>
+                  <source srcSet={service.image.replace(".jpg", ".webp")} type="image/webp" />
+                  <img
+                    src={service.image}
+                    alt={service.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="800"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                </picture>
+                <span className="absolute inset-0 bg-gradient-to-b from-ink/0 from-[38%] to-ink/95" aria-hidden="true" />
+                <span className="absolute top-4 left-4 bg-accent text-ink font-bold text-[13.5px] px-3.5 py-1.5 rounded-full">{service.pill}</span>
+                <div className="absolute left-[22px] right-[22px] bottom-5">
+                  <h3 className="text-[26px] sm:text-[30px] font-bold leading-[1.08] mb-1.5">{service.title}</h3>
+                  <span className="block text-[16px] leading-snug text-paper/90">{service.text}</span>
+                  <span className="mt-2.5 inline-flex items-center font-bold text-accent text-[16px]">
+                    {service.go} <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" />
+                  </span>
                 </div>
               </Link>
-            )}
+            ))}
 
             {/* Fills the last row beside the seventh service */}
-            <div className="md:col-span-1 lg:col-span-2 rounded-[14px] border-2 border-ink bg-ink text-paper p-7 lg:p-10 flex flex-col justify-center">
-              <p className="eyebrow !text-accent">More than one job?</p>
+            <div className="lg:col-span-2 rounded-[22px] bg-ink text-paper p-7 lg:p-10 flex flex-col justify-center min-h-[300px]">
+              <p className="eyebrow eyebrow-plain !text-accent">More than one job?</p>
               <h3 className="text-3xl lg:text-[40px] font-bold leading-[1.08] mt-3 mb-3">
                 Price the whole place <em className="italic font-medium text-accent">in one go</em>
               </h3>
@@ -180,9 +141,9 @@ export default function Services() {
                 Tick every service you need and the instant quote prices them together, about two minutes, no phone call required.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Link to="/instant-quote/" className="btn btn-lg btn-primary-on-ink">
+                <a href="#quote" className="btn btn-lg btn-primary-on-ink">
                   Get Instant Quote <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
+                </a>
                 <a href="tel:0752308293" className="btn btn-lg btn-outline-on-ink">
                   <Phone className="w-5 h-5 mr-2" /> (07) 5230 8293
                 </a>
@@ -192,30 +153,112 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Why people pick us + before/after sliders */}
+      <section className="no-rule bg-ink text-paper py-16 sm:py-24">
+        <div className="max-w-[1180px] mx-auto px-4 sm:px-7">
+          <div className="grid lg:grid-cols-2 gap-9 lg:gap-16 items-center">
+            <div>
+              <p className="eyebrow eyebrow-plain !text-accent">Why people pick us</p>
+              <h2 className="text-[34px] sm:text-[50px] font-bold leading-[1.05] mt-3 mb-5">
+                Built around what usually <em className="italic font-semibold text-accent">goes wrong.</em>
+              </h2>
+              <p className="text-[18.5px] leading-relaxed text-paper/85">
+                No-shows, quotes you have to chase, jobs half done. We set this up to fix all of it: your price before you book, a phone that
+                gets answered, and insured, police-checked people at your home.
+              </p>
+            </div>
+            <dl className="grid grid-cols-3 gap-x-5 gap-y-7">
+              {HOME_STATS.map((stat) => (
+                <div key={stat.label} className="border-t-2 border-accent/40 pt-3.5 flex flex-col-reverse justify-end">
+                  <dt className="text-[15.5px] text-paper/80 mt-1">{stat.label}</dt>
+                  <dd className="font-display font-bold text-accent leading-none text-[30px] sm:text-[44px]">{stat.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="mt-14 sm:mt-20 text-center">
+            <h2 className="text-[32px] sm:text-[44px] font-bold leading-[1.08]">Don’t take our word for it.</h2>
+            <p className="text-[18.5px] text-paper/85 mt-3 mb-8">Drag the slider on each photo. Real jobs, real homes.</p>
+            <div className="grid md:grid-cols-2 gap-5 sm:gap-[22px] text-left">
+              {HOME_SLIDERS.map((job) => (
+                <BeforeAfter key={job.label} {...job} />
+              ))}
+            </div>
+            <a href="#quote" className="btn btn-lg btn-primary-on-ink mt-9">
+              Get your instant quote <ArrowRight className="w-5 h-5 ml-2" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Us vs the cheapest quote */}
+      <section className="no-rule py-16 sm:py-24 bg-paper-white">
+        <div className="max-w-[900px] mx-auto px-3 sm:px-7">
+          <div className="text-center mb-9 sm:mb-11">
+            <p className="eyebrow eyebrow-plain">Us vs the cheapest quote</p>
+            <h2 className="text-[32px] sm:text-[50px] font-bold text-ink leading-[1.05] mt-2.5">Hiring a cleaner shouldn’t be a gamble</h2>
+          </div>
+          <table className="home-compare w-full border-separate border-spacing-0 text-[13.5px] sm:text-[16.5px]">
+            <thead>
+              <tr>
+                <th scope="col" className="w-[29%]">
+                  <span className="sr-only">What matters</span>
+                </th>
+                <th scope="col" className="w-[41%] bg-ink text-paper rounded-t-[20px] font-display font-bold text-[15px] sm:text-[21px] leading-tight px-2.5 sm:px-5 py-4 sm:py-5">
+                  Gold Coast Window &amp; Pressure Cleaning
+                </th>
+                <th scope="col" className="w-[30%] font-bold text-ink px-2.5 sm:px-5 py-4">
+                  The cheapest quote
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {HOME_COMPARE.map((row, i) => {
+                const last = i === HOME_COMPARE.length - 1;
+                return (
+                  <tr key={row.what}>
+                    <th scope="row" className={`text-left font-bold text-ink px-2.5 sm:px-5 py-3.5 sm:py-4 ${last ? "" : "border-b border-dashed border-rule"}`}>
+                      {row.what}
+                    </th>
+                    <td className={`bg-ink text-paper px-2.5 sm:px-5 py-3.5 sm:py-4 ${last ? "rounded-b-[20px]" : "border-b border-paper/15"}`}>
+                      <span className="flex items-center gap-2 sm:gap-2.5">
+                        <span className="w-[22px] h-[22px] rounded-full bg-accent text-ink flex-none flex items-center justify-center">
+                          <Check className="w-3.5 h-3.5" strokeWidth={3.5} aria-hidden="true" />
+                        </span>
+                        {row.us}
+                      </span>
+                    </td>
+                    <td className={`text-ink-2 px-2.5 sm:px-5 py-3.5 sm:py-4 ${last ? "" : "border-b border-dashed border-rule"}`}>
+                      <span className="flex items-center gap-2 sm:gap-2.5">
+                        <X className="w-[18px] h-[18px] text-brick flex-none" strokeWidth={3} aria-hidden="true" />
+                        {row.them}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* Google Reviews */}
       <GoogleReviews />
 
       {/* FAQ Section */}
       <FAQ faqs={HOME_FAQS} title="Frequently Asked Questions" subtitle="Common questions about our Gold Coast exterior cleaning services" />
 
-      {/* CTA Section */}
-      <section className="no-rule py-16 bg-ink text-paper">
+      {/* Closing call to action */}
+      <section className="no-rule py-16 sm:py-20 bg-accent text-ink">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-[40px] font-bold mb-4">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-paper-2/85 mb-8">We can usually have a free quote to you within 15 minutes.
-
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#quote" className="btn btn-lg btn-primary-on-ink">
-
-              Get Free Quote
+          <h2 className="text-[40px] sm:text-[60px] font-bold leading-[1.04]">Get your price now.</h2>
+          <p className="text-xl mt-3 mb-7">About two minutes online, or call and we’ll sort it on the phone.</p>
+          <div className="flex flex-col sm:flex-row gap-3.5 justify-center">
+            <a href="#quote" className="btn btn-lg btn-ink">
+              Get your instant quote <ArrowRight className="w-5 h-5 ml-2" />
             </a>
-            <a
-              href="tel:0752308293"
-              className="btn btn-lg btn-outline-on-ink">
-
+            <a href="tel:0752308293" className="btn btn-lg btn-outline">
               <span>Call (07) 5230 8293</span>
             </a>
           </div>

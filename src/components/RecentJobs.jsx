@@ -1,6 +1,7 @@
 import React from "react";
 import { Camera } from "lucide-react";
 import { getRecentJobs } from "../data/recentJobs";
+import { photoSize } from "./FullPhoto";
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 function monthYear(date) {
@@ -28,9 +29,8 @@ export default function RecentJobs({ suburbSlug, suburbName, serviceSlug, jobs: 
               <img
                 src={job.photo}
                 alt={job.alt || `Recent job in ${suburbName || "the Gold Coast"}`}
-                width={1200}
-                height={900}
-                className="w-full h-72 object-cover border-b-2 border-ink"
+                {...photoSize(job.photo)}
+                className="job-photo"
                 loading="lazy"
                 decoding="async"
               />

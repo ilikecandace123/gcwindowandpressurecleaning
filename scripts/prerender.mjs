@@ -228,7 +228,7 @@ async function main() {
     description:
       "Commercial and strata exterior cleaning on the Gold Coast: windows, roofs, pressure cleaning, softwash, gutters, solar and bird proofing. $20M insured.",
     canonical: `${SITE}/commercial`,
-    image: "/images/commercial-window-hero.jpg",
+    image: "/images/commercial-strata-hero.jpg",
     jsonLd: [
       buildLocalBusinessSchema(),
       buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Commercial & Strata", url: "/commercial" }])
