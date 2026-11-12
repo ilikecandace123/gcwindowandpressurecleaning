@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
+import { getDvaSource } from "../lib/dvaSource";
 import { calculateQuote, formatMoney, trackingEstimate, leadQuoteData } from "./engine";
 import {
   buildQuestionSteps,
@@ -441,6 +442,9 @@ export default function QuoteWizard({
         d.wantsToBook = extra.booking || "";
         return d;
       })(),
+      // Set when the visitor is on, or came from, a /dva/ page (src/lib/dvaSource.js).
+      // n8n adds a "DVA enquiry" note to the ServiceM8 job.
+      dvaPage: getDvaSource(),
       source: "instant-quote",
       // Google Ads click attribution (gclid / gbraid / wbraid, click time,
       // landing page, utm_*) — empty strings when the visit wasn't from an ad.
@@ -1496,6 +1500,13 @@ export default function QuoteWizard({
             <span className="text-3xl font-extrabold">{formatMoney(quote.total)}</span>
           </div>
         </div>
+
+        {getDvaSource() && (
+          <p className="text-sm text-ink bg-paper-2 border border-rule rounded-xl px-4 py-3 text-center mb-7 -mt-3">
+            DVA client? This is our normal fixed price for private work. Work that DVA has approved is billed to DVA at
+            DVA&rsquo;s own rate instead. Tell us your approval and we&rsquo;ll sort it out.
+          </p>
+        )}
 
         {quote.partial && (
           <p className="text-sm text-ink bg-paper-2 border border-rule rounded-xl px-4 py-3 text-center mb-7 -mt-3">
