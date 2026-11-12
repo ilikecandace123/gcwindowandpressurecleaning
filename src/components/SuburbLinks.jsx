@@ -31,7 +31,7 @@ export default function SuburbLinks({ serviceSlug, serviceName, basePath = "", s
             <MapPin className="w-4 h-4" /> Local to you
           </p>
           <h2 className="text-3xl md:text-[38px] md:leading-[1.1] font-bold text-ink mb-3">{serviceName} Near You</h2>
-          <p className="text-ink-2 text-lg">We provide professional {serviceName.toLowerCase()} across the Gold Coast and Northern NSW</p>
+          <p className="text-ink-2 text-lg">We provide professional {serviceName.toLowerCase().replace(/^dva /, "DVA ")} across the Gold Coast and Northern NSW</p>
         </div>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">

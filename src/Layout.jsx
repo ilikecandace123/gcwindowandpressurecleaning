@@ -120,6 +120,9 @@ export default function Layout({ children, currentPageName }) {
                     <Link to="/bird-proofing/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors">
                       Solar Panel Bird Proofing
                     </Link>
+                    <Link to="/dva/" className="block px-4 py-2.5 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 transition-colors border-t border-rule mt-1">
+                      DVA Clients (Veterans)
+                    </Link>
                   </div>
               </div>
 
@@ -223,6 +226,9 @@ export default function Layout({ children, currentPageName }) {
               <Link to="/bird-proofing/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
                 Solar Panel Bird Proofing
               </Link>
+              <Link to="/dva/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
+                DVA Clients (Veterans)
+              </Link>
 
               <div className="px-3 pt-3 pb-1 text-xs font-bold text-accent-3 uppercase tracking-[.12em]">Commercial & Strata</div>
               <Link to="/commercial/window-cleaning/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-[15px] text-ink hover:text-accent-3 hover:bg-paper-2 rounded-lg transition-colors pl-6">
@@ -319,6 +325,7 @@ export default function Layout({ children, currentPageName }) {
                   <Link to="/gutter-cleaning/" className="block hover:text-accent transition-colors">Gutter Cleaning</Link>
                   <Link to="/solar-panel-cleaning/" className="block hover:text-accent transition-colors">Solar Panel Cleaning</Link>
                   <Link to="/bird-proofing/" className="block hover:text-accent transition-colors">Solar Panel Bird Proofing</Link>
+                  <Link to="/dva/" className="block hover:text-accent transition-colors">DVA Cleaning for Veterans</Link>
                   <Link to="/commercial/" className="block hover:text-accent transition-colors">Commercial &amp; Strata</Link>
                   <Link to="/guides/" className="block hover:text-accent transition-colors">Expert Guides</Link>
                 </div>
