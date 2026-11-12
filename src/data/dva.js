@@ -13,15 +13,15 @@
 export const DVA_CHECKED = "2026-11-12";
 
 // Claims about our own business that are only shown once the owner confirms
-// them. Flip to true after confirming; the page copy updates itself.
+// them. Both confirmed by the owner on 12/11/2026.
 //   screeningChecks: every cleaner holds a Working with Children Check
 //     (Blue Card in QLD) and a working-with-vulnerable-people check
 //     (NDIS Worker Screening), which DVA lists for a "suitable provider".
 //   capRate: DVA jobs are charged at or below DVA's standard maximum hourly
 //     rate, so an approved veteran pays nothing out of pocket.
 export const DVA_CONFIRMED = {
-  screeningChecks: false,
-  capRate: false,
+  screeningChecks: true,
+  capRate: true,
 };
 
 export const DVA_FACTS = {

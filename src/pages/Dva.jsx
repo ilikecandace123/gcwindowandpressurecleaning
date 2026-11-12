@@ -265,7 +265,7 @@ export function DvaService() {
             What DVA {page.name.toLowerCase()} costs
           </h2>
           <ul className="mt-6 space-y-3 text-lg text-ink-2">
-            <li><strong className="text-ink">Household Services:</strong> charged by the hour, up to DVA's standard rate of {F.hhsHourlyRate} an hour inc GST ({F.hhsHourlyRateYear}), invoiced to DVA.</li>
+            <li><strong className="text-ink">Household Services:</strong> charged by the hour at or under DVA's standard rate of {F.hhsHourlyRate} an hour inc GST ({F.hhsHourlyRateYear}) and invoiced to DVA, so approved hours cost you nothing.</li>
             <li><strong className="text-ink">Veterans' Home Care:</strong> {F.vhcCoPayPerHour} an hour co-payment, capped at {F.vhcCoPayCap} in 12 months, paid to your VHC provider.</li>
             <li><strong className="text-ink">Not covered by DVA:</strong> {page.privatePrice}</li>
           </ul>
