@@ -367,13 +367,25 @@ export default function QuoteWizard({
     return out;
   }
 
+  // Quotes started on (or after visiting) a /dva/ page carry this at the front
+  // of the customer-note line. n8n copies that line onto the ServiceM8 job as
+  // "Customer note // ...", so the office sees it is a DVA enquiry before
+  // quoting. DVA-approved work is billed to DVA at DVA's rate, never at the
+  // website's fixed prices.
+  function dvaNote() {
+    const page = getDvaSource();
+    if (!page) return "";
+    const said = contact.notes.trim() ? " Customer wrote: " : "";
+    return `DVA PAGE ENQUIRY (came from website page ${page}). Ask what DVA has approved before quoting. DVA-approved work is billed to DVA at the DVA hourly rate, not the website price.${said}`;
+  }
+
   function buildDescription({ booking, partial } = {}) {
     const lines = [];
     if (mode === "details") {
       lines.push("QUOTE REQUEST (online) — customer chose to leave details only.");
       if (contact.quotePref === "visit") lines.push("QUOTE PREFERENCE: wants us to VISIT the property to quote.");
       else if (contact.quotePref === "phone") lines.push("QUOTE PREFERENCE: happy with a price over the PHONE.");
-      if (contact.notes.trim()) lines.push(`Message: ${contact.notes.trim()}`);
+      if (dvaNote() || contact.notes.trim()) lines.push(`Message: ${dvaNote()}${contact.notes.trim()}`);
       return lines.join("\n");
     }
     if (partial) {
@@ -415,7 +427,7 @@ export default function QuoteWizard({
       for (const add of quote.postFloorAdds || []) lines.push(`• ${add.label}: ${formatMoney(add.amount)}`);
     }
     if (booking) lines.push(`WANTS TO BOOK: ${booking === "yes" ? "YES — please lock in a time" : "Not yet — follow up"}`);
-    if (contact.notes.trim()) lines.push(`Customer note: ${contact.notes.trim()}`);
+    if (dvaNote() || contact.notes.trim()) lines.push(`Customer note: ${dvaNote()}${contact.notes.trim()}`);
     return lines.join("\n");
   }
 
