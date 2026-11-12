@@ -373,3 +373,79 @@ export function dvaServiceSchema(page, name) {
     },
   };
 }
+
+// ── Suburb pages: /dva/<service>/<suburb>/ ──────────────────────────────────
+// One page per service per suburb in src/data/locations.js. Not in the menus;
+// reached from the "near you" lists on the DVA service pages and the sitemap.
+// Each page carries the suburb's own notes (property mix, local conditions)
+// plus a service-and-region paragraph, so pages differ by more than the name.
+const REGION_NOTES = {
+  "window-cleaning": {
+    south_coast: "Ocean-facing glass here picks up salt within days, and salt left to bake etches the surface. A regular clean costs far less than replacing pitted glass.",
+    central_coast: "Between the sea breeze and the canals, glass and balcony doors here carry a salt film most of the year, and tracks fill with grit fast.",
+    central: "Away from the beach the problem is dust, traffic film and sprinkler spots rather than salt, with spider webs around frames and screens.",
+    hinterland: "Under the trees it's pollen, sap and cobwebs, and shaded windows grow green mould on frames and tracks.",
+    northern: "With building work still going on across the northern corridor, fine dust settles on glass and screens between cleans.",
+    nsw_tweed: "We cross the border every week. DVA is a federal program, so your approval works the same in New South Wales as in Queensland.",
+  },
+  "gutter-cleaning": {
+    south_coast: "Palm fronds, pandanus and Norfolk pine needles block gutters here, and salt air rusts any gutter that stays wet and full.",
+    central_coast: "Palms and street trees drop into gutters all year, and salt air speeds up rust wherever leaves hold water.",
+    central: "Gum leaves and poinciana pods are the usual culprits, and one summer storm will overflow a half-blocked gutter.",
+    hinterland: "This is the hardest area on gutters. Heavy tree cover can fill them in a few months, so many homes here need three or four cleans a year.",
+    northern: "Newer estates have fewer trees but lots of building dust and roof grit, which sets like mud in the gutters after rain.",
+    nsw_tweed: "We cross the border every week. DVA is a federal program, so your approval works the same in New South Wales as in Queensland.",
+  },
+  "solar-panel-cleaning": {
+    south_coast: "Salt spray dries into a film on panels this close to the surf, and rain doesn't shift it. Gulls and pigeons add to it.",
+    central_coast: "Panels near the beach and canals build up a salt film that rain won't wash off, plus plenty of bird droppings.",
+    central: "Dust, traffic film and bird droppings are the main output killers away from the coast.",
+    hinterland: "Leaf litter, pollen and lichen build up on panels under trees, and shaded edges grow moss.",
+    northern: "Construction dust settles on panels across the northern corridor and bakes on in the sun.",
+    nsw_tweed: "We cross the border every week. DVA is a federal program, so your approval works the same in New South Wales as in Queensland.",
+  },
+};
+
+export function dvaSuburbPath(serviceSlug, suburbSlug) {
+  return `/dva/${serviceSlug}/${suburbSlug}`;
+}
+
+export function dvaSuburbPage(serviceSlug, suburb) {
+  const base = DVA_PAGES[serviceSlug];
+  if (!base || !suburb) return null;
+  const lower = base.name.toLowerCase();
+  const place = suburb.name;
+  const title = `DVA ${base.name} ${place} | Gold Coast`;
+  const description = `DVA ${lower} in ${place} (${suburb.postcode}) for Gold Card and White Card holders. Police-checked, insured, and we invoice DVA. Call (07) 5230 8293.`;
+  const regionNote = REGION_NOTES[serviceSlug][suburb.region] || "";
+  const solar = serviceSlug === "solar-panel-cleaning";
+  const directAnswer = solar
+    ? `We clean solar panels for DVA clients in ${place} (${suburb.postcode}). DVA pays for solar panel cleaning only when it is on your Household Services approval, so check your determination letter first. If it is approved we charge at or under DVA's ${F.hhsHourlyRate} an hour and invoice DVA. If it isn't, our private price starts at $220 for up to 20 panels on a single-storey roof.`
+    : `Yes, we do DVA ${lower} in ${place} (${suburb.postcode}). If ${lower} is on your Household Services approval, we charge at or under DVA's standard rate of ${F.hhsHourlyRate} an hour inc GST and invoice DVA directly, so approved hours cost you nothing. Veterans' Home Care also covers ${serviceSlug === "window-cleaning" ? "windows" : "gutters"} (up to ${F.vhcHoursPerYear} hours a year), through the provider named on your Care Plan.`;
+  const faqs = [
+    {
+      question: `Do you do DVA ${lower} in ${place}?`,
+      answer: `Yes. We work in ${place} and the suburbs around it${suburb.nearbySuburbs?.length ? `, including ${suburb.nearbySuburbs.slice(0, 3).join(", ")}` : ""}. Call (07) 5230 8293 with your DVA file number and what's approved, and we will book a time.`,
+    },
+    {
+      question: solar ? `Will DVA pay for solar panel cleaning in ${place}?` : `Will DVA pay for ${lower} in ${place}?`,
+      answer: solar
+        ? `Only if solar panel cleaning is on your Household Services approval. It isn't on DVA's Veterans' Home Care task list. DVA's rules are the same in every suburb, so check your determination letter or call DVA on ${F.dvaPhone}.`
+        : `If it's on your approval, yes. DVA's rules are the same in every suburb: Household Services pays your chosen provider up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}, and Veterans' Home Care covers up to ${F.vhcHoursPerYear} hours of home and garden maintenance a year for a ${F.vhcCoPayPerHour}-an-hour co-payment.`,
+    },
+    ...base.faqs.slice(1),
+  ];
+  return {
+    path: dvaSuburbPath(serviceSlug, suburb.slug),
+    name: base.name,
+    title,
+    description,
+    h1: `DVA ${base.name} in ${place}`,
+    subheading: base.subheading,
+    image: base.image,
+    imageAlt: base.imageAlt,
+    directAnswer,
+    regionNote,
+    faqs,
+  };
+}

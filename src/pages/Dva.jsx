@@ -10,7 +10,9 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import PhoneNumber from "../components/PhoneNumber";
 import NotFound from "./NotFound";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
-import { DVA_HUB, DVA_PAGES, DVA_SERVICES, DVA_FACTS as F, DVA_STEPS, dvaRequirements, dvaServiceSchema } from "../data/dva";
+import { DVA_HUB, DVA_PAGES, DVA_SERVICES, DVA_FACTS as F, DVA_STEPS, dvaRequirements, dvaServiceSchema, dvaSuburbPage } from "../data/dva";
+import { SUBURBS, getSuburbBySlug } from "../data/locations";
+import SuburbLinks from "../components/SuburbLinks";
 
 const SITE = "https://gcwindowandpressurecleaning.com.au";
 
@@ -258,23 +260,7 @@ export function DvaService() {
         </div>
       </section>
 
-      <section className="py-16 bg-paper-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="eyebrow">Pricing</p>
-          <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mt-3">
-            What DVA {page.name.toLowerCase()} costs
-          </h2>
-          <ul className="mt-6 space-y-3 text-lg text-ink-2">
-            <li><strong className="text-ink">Household Services:</strong> charged by the hour at or under DVA's standard rate of {F.hhsHourlyRate} an hour inc GST ({F.hhsHourlyRateYear}) and invoiced to DVA, so approved hours cost you nothing.</li>
-            <li><strong className="text-ink">Veterans' Home Care:</strong> {F.vhcCoPayPerHour} an hour co-payment, capped at {F.vhcCoPayCap} in 12 months, paid to your VHC provider.</li>
-            <li><strong className="text-ink">Not covered by DVA:</strong> {page.privatePrice}</li>
-          </ul>
-          <p className="mt-6 text-ink-2">
-            Want to see a private price for your home now?{" "}
-            <Link to="/instant-quote/" className="link font-bold">Get an instant quote</Link>.
-          </p>
-        </div>
-      </section>
+      <Pricing page={page} />
 
       <Programs />
       <Requirements />
@@ -283,9 +269,135 @@ export function DvaService() {
       <QuoteForm serviceName={`DVA ${page.name}`} />
       <FAQ faqs={page.faqs} title={`DVA ${page.name} FAQ`} />
       <ServiceCards exclude={service} />
+      <SuburbLinks basePath="/dva" serviceSlug={service} serviceName={`DVA ${page.name}`} showAll />
       <section className="py-10 bg-paper-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-ink-2">
           Not a DVA client? See our standard <Link to={`/${service}/`} className="link font-bold">{page.name.toLowerCase()} page</Link>.
+        </div>
+      </section>
+      <Sources />
+    </div>
+  );
+}
+
+function Pricing({ page }) {
+  return (
+    <section className="py-16 bg-paper-white">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="eyebrow">Pricing</p>
+        <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mt-3">
+          What DVA {page.name.toLowerCase()} costs
+        </h2>
+        <ul className="mt-6 space-y-3 text-lg text-ink-2">
+          <li><strong className="text-ink">Household Services:</strong> charged by the hour at or under DVA's standard rate of {F.hhsHourlyRate} an hour inc GST ({F.hhsHourlyRateYear}) and invoiced to DVA, so approved hours cost you nothing.</li>
+          <li><strong className="text-ink">Veterans' Home Care:</strong> {F.vhcCoPayPerHour} an hour co-payment, capped at {F.vhcCoPayCap} in 12 months, paid to your VHC provider.</li>
+          <li><strong className="text-ink">Not covered by DVA:</strong> {page.privatePrice}</li>
+        </ul>
+        <p className="mt-6 text-ink-2">
+          Want to see a private price for your home now?{" "}
+          <Link to="/instant-quote/" className="link font-bold">Get an instant quote</Link>.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+// /dva/<service>/<suburb>/ — the DVA service page localised to one suburb.
+export function DvaSuburb() {
+  const { service, suburb: suburbSlug } = useParams();
+  const base = DVA_PAGES[service];
+  const suburb = getSuburbBySlug(suburbSlug);
+  const page = dvaSuburbPage(service, suburb);
+  if (!base || !suburb || !page) return <NotFound />;
+  const lower = base.name.toLowerCase();
+  const crumbs = [
+    { name: "DVA Cleaning", url: "/dva/" },
+    { name: `DVA ${base.name}`, url: `${base.path}/` },
+    { name: suburb.name, url: `${page.path}/` },
+  ];
+  const jsonLd = [
+    buildLocalBusinessSchema(),
+    { ...dvaServiceSchema(page, `DVA ${base.name} in ${suburb.name}`), areaServed: { "@type": "City", name: suburb.name } },
+    buildBreadcrumbSchema([{ name: "Home", url: "/" }, ...crumbs]),
+    buildFAQSchema(page.faqs),
+  ];
+  const nearby = (suburb.nearbySuburbs || [])
+    .map((n) => SUBURBS.find((s) => s.name === n))
+    .filter(Boolean);
+  return (
+    <div>
+      <PageSEO title={page.title} description={page.description} canonical={`${SITE}${page.path}/`} image={page.image} jsonLd={jsonLd} />
+      <QuoteHero headline={page.h1} subheading={page.subheading} backgroundImage={page.image} imageAlt={page.imageAlt} />
+      <Breadcrumbs items={crumbs} />
+      <DirectAnswer text={page.directAnswer} />
+
+      <section className="py-16 bg-paper">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
+          <div>
+            <p className="eyebrow">{suburb.name}, {suburb.postcode}</p>
+            <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mt-3 mb-6">
+              {base.name} for veterans in {suburb.name}
+            </h2>
+            <p className="text-lg text-ink-2 leading-relaxed mb-4">{suburb.propertyMix}</p>
+            <p className="text-lg text-ink-2 leading-relaxed mb-4">{suburb.environmentalNote}</p>
+            {page.regionNote && <p className="text-lg text-ink-2 leading-relaxed mb-4">{page.regionNote}</p>}
+            <p className="text-lg text-ink-2 leading-relaxed">{suburb.localHook}</p>
+          </div>
+          <div>
+            <p className="eyebrow">What's included</p>
+            <h2 className="text-3xl font-bold text-ink mt-3 mb-6">Our DVA {lower} service</h2>
+            <ul className="space-y-3">
+              {base.included.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-ink-2 text-lg">
+                  <span className="w-2 h-2 bg-accent rounded-full mt-2.5 flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <Pricing page={base} />
+      <Programs />
+      <Requirements />
+      <Steps />
+      <GoogleReviews />
+      <QuoteForm serviceName={`DVA ${base.name}`} />
+      <FAQ faqs={page.faqs} title={`DVA ${base.name} in ${suburb.name}: FAQ`} />
+
+      <section className="py-16 bg-paper-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-ink mb-6">More for DVA clients in {suburb.name}</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {DVA_SERVICES.filter((s) => s.slug !== service).map((s) => (
+              <Link key={s.slug} to={`/dva/${s.slug}/${suburb.slug}/`} className="flex items-center justify-between p-4 bg-paper rounded-lg hover:bg-paper-2 transition-colors border border-rule">
+                <span className="font-medium text-ink">DVA {s.name} in {suburb.name}</span>
+                <ArrowRight className="w-4 h-4 text-accent-3 flex-shrink-0" />
+              </Link>
+            ))}
+            <Link to={`/${service}/${suburb.slug}/`} className="flex items-center justify-between p-4 bg-paper rounded-lg hover:bg-paper-2 transition-colors border border-rule">
+              <span className="font-medium text-ink">{base.name} in {suburb.name} (not DVA)</span>
+              <ArrowRight className="w-4 h-4 text-accent-3 flex-shrink-0" />
+            </Link>
+            <Link to={`${base.path}/`} className="flex items-center justify-between p-4 bg-paper rounded-lg hover:bg-paper-2 transition-colors border border-rule">
+              <span className="font-medium text-ink">DVA {base.name}, all Gold Coast</span>
+              <ArrowRight className="w-4 h-4 text-accent-3 flex-shrink-0" />
+            </Link>
+          </div>
+          {nearby.length > 0 && (
+            <>
+              <h2 className="text-2xl font-bold text-ink mt-12 mb-6">DVA {lower} in nearby suburbs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {nearby.map((n) => (
+                  <Link key={n.slug} to={`/dva/${service}/${n.slug}/`} className="flex items-center justify-between p-4 bg-paper rounded-lg hover:bg-paper-2 transition-colors border border-rule">
+                    <span className="font-medium text-ink">{n.name}</span>
+                    <ArrowRight className="w-4 h-4 text-accent-3 flex-shrink-0" />
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
       <Sources />

@@ -108,7 +108,7 @@ async function main() {
   const { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema, buildFAQSchema, buildArticleSchema } = await loadSchemaBuilders();
   const { GUIDES } = await import(pathToFileURL(path.join(ROOT, "src/data/guides.js")).href);
   const { QUOTE_LANDINGS, landingFaqs, landingPath } = await import(pathToFileURL(path.join(ROOT, "src/data/quoteLanding.js")).href);
-  const { DVA_HUB, DVA_PAGES, dvaServiceSchema } = await import(pathToFileURL(path.join(ROOT, "src/data/dva.js")).href);
+  const { DVA_HUB, DVA_PAGES, dvaServiceSchema, dvaSuburbPage } = await import(pathToFileURL(path.join(ROOT, "src/data/dva.js")).href);
   const indexHtml = fs.readFileSync(path.join(DIST, "index.html"), "utf8");
 
   const routes = [];
@@ -280,6 +280,32 @@ async function main() {
         buildFAQSchema(page.faqs),
       ],
     });
+  }
+
+  // DVA suburb pages: /dva/<service>/<suburb>/ (same data as src/pages/Dva.jsx DvaSuburb).
+  for (const base of Object.values(DVA_PAGES)) {
+    const serviceSlug = base.path.split("/").pop();
+    for (const suburb of SUBURBS) {
+      const page = dvaSuburbPage(serviceSlug, suburb);
+      routes.push({
+        path: page.path,
+        title: page.title,
+        description: page.description,
+        canonical: `${SITE}${page.path}`,
+        image: page.image,
+        jsonLd: [
+          buildLocalBusinessSchema(),
+          { ...dvaServiceSchema(page, `DVA ${base.name} in ${suburb.name}`), areaServed: { "@type": "City", name: suburb.name } },
+          buildBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "DVA Cleaning", url: "/dva/" },
+            { name: `DVA ${base.name}`, url: `${base.path}/` },
+            { name: suburb.name, url: `${page.path}/` },
+          ]),
+          buildFAQSchema(page.faqs),
+        ],
+      });
+    }
   }
 
   // Expert guides hub + articles (AI-search / AI Overviews content)

@@ -30,6 +30,7 @@ const Commercial = lazy(() => import('./pages/Commercial'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const DvaHub = lazy(() => import('./pages/Dva').then((m) => ({ default: m.DvaHub })));
 const DvaService = lazy(() => import('./pages/Dva').then((m) => ({ default: m.DvaService })));
+const DvaSuburb = lazy(() => import('./pages/Dva').then((m) => ({ default: m.DvaSuburb })));
 
 const RouteFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-paper">
@@ -72,6 +73,7 @@ function App() {
           {/* DVA (veterans) section — must come BEFORE the generic /:service/:suburb route */}
           <Route path="/dva" element={<Layout currentPageName="Dva"><DvaHub /></Layout>} />
           <Route path="/dva/:service" element={<Layout currentPageName="DvaService"><DvaService /></Layout>} />
+          <Route path="/dva/:service/:suburb" element={<Layout currentPageName="DvaSuburb"><DvaSuburb /></Layout>} />
 
           {/* Commercial service + suburb pages (must come BEFORE the generic /:service/:suburb route) */}
           <Route path="/commercial" element={<Layout currentPageName="Commercial"><Commercial /></Layout>} />
