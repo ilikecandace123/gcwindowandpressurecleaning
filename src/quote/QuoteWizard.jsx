@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
+import { getDvaSource } from "../lib/dvaSource";
 import { calculateQuote, formatMoney, trackingEstimate, leadQuoteData } from "./engine";
 import {
   buildQuestionSteps,
@@ -366,13 +367,25 @@ export default function QuoteWizard({
     return out;
   }
 
+  // Quotes started on (or after visiting) a /dva/ page carry this at the front
+  // of the customer-note line. n8n copies that line onto the ServiceM8 job as
+  // "Customer note // ...", so the office sees it is a DVA enquiry before
+  // quoting. DVA-approved work is billed to DVA at DVA's rate, never at the
+  // website's fixed prices.
+  function dvaNote() {
+    const page = getDvaSource();
+    if (!page) return "";
+    const said = contact.notes.trim() ? " Customer wrote: " : "";
+    return `DVA PAGE ENQUIRY (came from website page ${page}). Ask what DVA has approved before quoting. DVA-approved work is billed to DVA at the DVA hourly rate, not the website price.${said}`;
+  }
+
   function buildDescription({ booking, partial } = {}) {
     const lines = [];
     if (mode === "details") {
       lines.push("QUOTE REQUEST (online) — customer chose to leave details only.");
       if (contact.quotePref === "visit") lines.push("QUOTE PREFERENCE: wants us to VISIT the property to quote.");
       else if (contact.quotePref === "phone") lines.push("QUOTE PREFERENCE: happy with a price over the PHONE.");
-      if (contact.notes.trim()) lines.push(`Message: ${contact.notes.trim()}`);
+      if (dvaNote() || contact.notes.trim()) lines.push(`Message: ${dvaNote()}${contact.notes.trim()}`);
       return lines.join("\n");
     }
     if (partial) {
@@ -414,7 +427,7 @@ export default function QuoteWizard({
       for (const add of quote.postFloorAdds || []) lines.push(`• ${add.label}: ${formatMoney(add.amount)}`);
     }
     if (booking) lines.push(`WANTS TO BOOK: ${booking === "yes" ? "YES — please lock in a time" : "Not yet — follow up"}`);
-    if (contact.notes.trim()) lines.push(`Customer note: ${contact.notes.trim()}`);
+    if (dvaNote() || contact.notes.trim()) lines.push(`Customer note: ${dvaNote()}${contact.notes.trim()}`);
     return lines.join("\n");
   }
 
@@ -441,6 +454,9 @@ export default function QuoteWizard({
         d.wantsToBook = extra.booking || "";
         return d;
       })(),
+      // Set when the visitor is on, or came from, a /dva/ page (src/lib/dvaSource.js).
+      // n8n adds a "DVA enquiry" note to the ServiceM8 job.
+      dvaPage: getDvaSource(),
       source: "instant-quote",
       // Google Ads click attribution (gclid / gbraid / wbraid, click time,
       // landing page, utm_*) — empty strings when the visit wasn't from an ad.
@@ -1496,6 +1512,13 @@ export default function QuoteWizard({
             <span className="text-3xl font-extrabold">{formatMoney(quote.total)}</span>
           </div>
         </div>
+
+        {getDvaSource() && (
+          <p className="text-sm text-ink bg-paper-2 border border-rule rounded-xl px-4 py-3 text-center mb-7 -mt-3">
+            DVA client? This is our normal fixed price for private work. Work that DVA has approved is billed to DVA at
+            DVA&rsquo;s own rate instead. Tell us your approval and we&rsquo;ll sort it out.
+          </p>
+        )}
 
         {quote.partial && (
           <p className="text-sm text-ink bg-paper-2 border border-rule rounded-xl px-4 py-3 text-center mb-7 -mt-3">

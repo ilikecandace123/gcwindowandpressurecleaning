@@ -34,6 +34,11 @@ export const DVA_FACTS = {
 
 const F = DVA_FACTS;
 
+// Shown wherever the DVA hourly rate appears, so nobody reads it as our price
+// list (owner, 12/11/2026: DVA's hourly rate must never be mixed up with our
+// normal pricing).
+export const DVA_RATE_NOTE = `The ${F.hhsHourlyRate} hourly rate is set by DVA and applies only to work DVA has approved for you. It is not our normal pricing. All other work is quoted as a fixed price for the job, not by the hour.`;
+
 export const DVA_SERVICES = [
   { slug: "window-cleaning", name: "Window Cleaning", image: "/images/window-hero.jpg" },
   { slug: "gutter-cleaning", name: "Gutter Cleaning", image: "/images/gutter-1.jpg" },
@@ -70,8 +75,8 @@ export function dvaRequirements() {
       us: "Yes. We already work with DVA clients and upload each invoice to DVA ourselves, so you don't handle paperwork.",
     },
     {
-      requirement: `Charge no more than DVA's standard maximum rate (${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear})`,
-      us: `Yes. DVA work is charged by the hour at or under ${F.hhsHourlyRate}, so approved hours cost you nothing.`,
+      requirement: `Bill DVA-approved work at no more than DVA's own rate (${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear})`,
+      us: "Yes. DVA-approved work is billed to DVA at or under DVA's rate, so approved hours cost you nothing. That rate applies to DVA work only.",
       confirm: "capRate",
     },
   ];
@@ -88,15 +93,15 @@ export const DVA_HUB = {
   subheading: "Help for Gold Card and White Card holders across the Gold Coast, with DVA invoiced for you.",
   image: "/images/window-hero.jpg",
   imageAlt: "Clean, streak-free windows on a Gold Coast home",
-  directAnswer: `Yes, DVA can pay for window cleaning, gutter cleaning and, in some cases, solar panel cleaning. Household Services compensation pays for help around the home that you can no longer manage because of an accepted service-related condition. You choose your own provider, and DVA's standard maximum rate in ${F.hhsHourlyRateYear} is ${F.hhsHourlyRate} an hour including GST. We charge at or under that rate and send the invoice to DVA, so approved hours cost you nothing.`,
+  directAnswer: `Yes, DVA can pay for window cleaning, gutter cleaning and, in some cases, solar panel cleaning. Household Services compensation pays for help around the home that you can no longer manage because of an accepted service-related condition. You choose your own provider, and DVA sets its own hourly rate for that work (up to ${F.hhsHourlyRate} including GST in ${F.hhsHourlyRateYear}). We bill DVA at or under DVA's rate, so approved hours cost you nothing. That rate is for DVA-approved work only. Everything else we do is a fixed price for the job.`,
   faqs: [
     {
       question: "Does DVA pay for window cleaning?",
-      answer: `Yes. DVA lists cleaning of external and internal windows among the home and garden tasks it can help with. Under Household Services compensation it is paid when window cleaning is on your approval, at up to DVA's standard rate of ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}.`,
+      answer: `Yes. DVA lists cleaning of external and internal windows among the home and garden tasks it can help with. Under Household Services compensation it is paid when window cleaning is on your approval, at DVA's own rate of up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}.`,
     },
     {
       question: "Does DVA pay for gutter cleaning?",
-      answer: `Yes. DVA lists gutter cleaning among the home and garden tasks it can help with. Under Household Services compensation it is paid when gutter cleaning is on your approval, at up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}.`,
+      answer: `Yes. DVA lists gutter cleaning among the home and garden tasks it can help with. Under Household Services compensation it is paid when gutter cleaning is on your approval, at DVA's own rate of up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}.`,
     },
     {
       question: "Does DVA pay for solar panel cleaning?",
@@ -116,7 +121,7 @@ export const DVA_HUB = {
     },
     {
       question: "Will I have to pay anything?",
-      answer: `For approved Household Services hours, no. We charge at or under DVA's standard rate of ${F.hhsHourlyRate} an hour inc GST and send the invoice to DVA. Anything outside your approval is quoted in writing first, and you decide.`,
+      answer: `For approved Household Services hours, no. We bill DVA at or under DVA's own rate (${F.hhsHourlyRate} an hour inc GST) and send the invoice to DVA. That rate is for DVA-approved work only. Anything outside your approval is quoted in writing first as a fixed price for the job, and you decide.`,
     },
     {
       question: "What does DVA not cover?",
@@ -141,7 +146,7 @@ export const DVA_PAGES = {
     subheading: "Clear glass, clean tracks and safe hands on the ladder, with DVA invoiced for you.",
     image: "/images/window-hero.jpg",
     imageAlt: "Freshly cleaned windows on a Gold Coast home",
-    directAnswer: `DVA can pay for window cleaning. It lists cleaning of internal and external windows among the home and garden tasks it can help with, and Household Services compensation pays for it when it is on your approval, at up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}. We clean glass, frames, sills, tracks and flyscreens, charge at or under DVA's rate and upload the invoice to DVA ourselves.`,
+    directAnswer: `DVA can pay for window cleaning. It lists cleaning of internal and external windows among the home and garden tasks it can help with, and Household Services compensation pays for it when it is on your approval, at DVA's own rate of up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}. We clean glass, frames, sills, tracks and flyscreens, bill DVA at or under DVA's rate and upload the invoice ourselves.`,
     included: [
       "Glass washed and squeegeed inside and out, or outside only if that is what's approved",
       "Frames, sills and ledges wiped down",
@@ -165,11 +170,11 @@ export const DVA_PAGES = {
       },
     ],
     privatePrice:
-      "Paying privately, most Gold Coast homes are $385–$550 for a single-storey home inside and out with tracks and screens, and $500–$800 for double-storey. Apartments are around $220–$440. Exterior only costs less.",
+      "Our normal prices are fixed per job, not hourly. Most Gold Coast homes are $385–$550 for a single-storey home inside and out with tracks and screens, and $500–$800 for double-storey. Apartments are around $220–$440. Exterior only costs less.",
     faqs: [
       {
         question: "Can DVA pay for window cleaning?",
-        answer: `Yes. Internal and external window cleaning is on DVA's list of home and garden help. Through Household Services compensation it is paid when it's on your approval, at up to ${F.hhsHourlyRate} an hour inc GST.`,
+        answer: `Yes. Internal and external window cleaning is on DVA's list of home and garden help. Through Household Services compensation it is paid when it's on your approval, at DVA's own rate of up to ${F.hhsHourlyRate} an hour inc GST.`,
       },
       {
         question: "How often can I have my windows cleaned through DVA?",
@@ -200,7 +205,7 @@ export const DVA_PAGES = {
     subheading: "Gutters cleared and downpipes flowing, so no one in the house needs to climb a ladder.",
     image: "/images/gutter-1.jpg",
     imageAlt: "A gutter packed with leaves, then cleared and flowing",
-    directAnswer: `DVA can pay for gutter cleaning. It lists gutter cleaning among the home and garden tasks it can help with, and Household Services compensation pays for it when it is on your approval, at up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}. We clear the gutters, flush every downpipe, take the waste away and upload the invoice to DVA ourselves.`,
+    directAnswer: `DVA can pay for gutter cleaning. It lists gutter cleaning among the home and garden tasks it can help with, and Household Services compensation pays for it when it is on your approval, at DVA's own rate of up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}. We clear the gutters, flush every downpipe, take the waste away and upload the invoice to DVA ourselves.`,
     included: [
       "Leaves, sludge and seed pods removed from every gutter run",
       "Downpipes flushed and tested so water reaches the drain",
@@ -223,11 +228,11 @@ export const DVA_PAGES = {
       },
     ],
     privatePrice:
-      "Paying privately, gutter cleaning is $275–$385 for a single-storey home and $440–$660 for double-storey, with downpipes flushed. Packed gutters add 10% and gutters with plants growing in them add 20%.",
+      "Our normal prices are fixed per job, not hourly. Gutter cleaning is $275–$385 for a single-storey home and $440–$660 for double-storey, with downpipes flushed. Packed gutters add 10% and gutters with plants growing in them add 20%.",
     faqs: [
       {
         question: "Does DVA pay for gutter cleaning?",
-        answer: `Yes. Gutter cleaning is on DVA's list of home and garden help. Through Household Services compensation it is paid when it's on your approval, at up to ${F.hhsHourlyRate} an hour inc GST.`,
+        answer: `Yes. Gutter cleaning is on DVA's list of home and garden help. Through Household Services compensation it is paid when it's on your approval, at DVA's own rate of up to ${F.hhsHourlyRate} an hour inc GST.`,
       },
       {
         question: "How many hours of gutter cleaning will DVA fund?",
@@ -262,7 +267,7 @@ export const DVA_PAGES = {
     subheading: "Pure-water cleaning that's safe for your panels, with a straight answer on whether DVA will pay.",
     image: "/images/solar-panel-hero.jpg",
     imageAlt: "Solar panels on a Gold Coast roof after cleaning",
-    directAnswer: `Solar panel cleaning is not on DVA's published list of home and garden tasks, so DVA pays for it only if your Household Services approval includes it. Check your determination letter or call DVA on ${F.dvaPhone}. If it is approved, we charge up to DVA's ${F.hhsHourlyRate} an hour and invoice DVA. If it isn't, our private price starts at $220 for up to 20 panels on a single-storey roof.`,
+    directAnswer: `Solar panel cleaning is not on DVA's published list of home and garden tasks, so DVA pays for it only if your Household Services approval includes it. Check your determination letter or call DVA on ${F.dvaPhone}. If it is approved, we bill DVA at or under DVA's own rate (${F.hhsHourlyRate} an hour), which applies to DVA-approved work only. If it isn't, our normal price is fixed per job, not hourly, and starts at $220 for up to 20 panels on a single-storey roof.`,
     included: [
       "Panels washed with purified water and soft brushes, with no detergent or high pressure, so warranties stay intact",
       "Bird droppings, salt film, pollen and lichen removed",
@@ -286,7 +291,7 @@ export const DVA_PAGES = {
       },
     ],
     privatePrice:
-      "Paying privately, solar panel cleaning starts at $220 for up to 20 panels on a single-storey roof. It is $275 for 21–25 panels, $330 for 26–30 and $440 for 31–40. Double-storey roofs add $50.",
+      "Our normal prices are fixed per job, not hourly. Solar panel cleaning starts at $220 for up to 20 panels on a single-storey roof. It is $275 for 21–25 panels, $330 for 26–30 and $440 for 31–40. Double-storey roofs add $50.",
     faqs: [
       {
         question: "Does DVA pay for solar panel cleaning?",
@@ -405,8 +410,8 @@ export function dvaSuburbPage(serviceSlug, suburb) {
   const regionNote = REGION_NOTES[serviceSlug][suburb.region] || "";
   const solar = serviceSlug === "solar-panel-cleaning";
   const directAnswer = solar
-    ? `We clean solar panels for DVA clients in ${place} (${suburb.postcode}). DVA pays for solar panel cleaning only when it is on your Household Services approval, so check your determination letter first. If it is approved we charge at or under DVA's ${F.hhsHourlyRate} an hour and invoice DVA. If it isn't, our private price starts at $220 for up to 20 panels on a single-storey roof.`
-    : `Yes, we do DVA ${lower} in ${place} (${suburb.postcode}). If ${lower} is on your Household Services approval, we charge at or under DVA's standard rate of ${F.hhsHourlyRate} an hour inc GST and invoice DVA directly, so approved hours cost you nothing.`;
+    ? `We clean solar panels for DVA clients in ${place} (${suburb.postcode}). DVA pays for solar panel cleaning only when it is on your Household Services approval, so check your determination letter first. If it is approved, we bill DVA at or under DVA's own rate (${F.hhsHourlyRate} an hour), which applies to DVA-approved work only. If it isn't, our normal price is fixed per job, not hourly, and starts at $220 for up to 20 panels on a single-storey roof.`
+    : `Yes, we do DVA ${lower} in ${place} (${suburb.postcode}). If ${lower} is on your Household Services approval, we bill DVA at or under DVA's own rate (${F.hhsHourlyRate} an hour inc GST), so approved hours cost you nothing. That rate is for DVA-approved work only. Anything else is a fixed price for the job.`;
   const faqs = [
     {
       question: `Do you do DVA ${lower} in ${place}?`,
@@ -416,7 +421,7 @@ export function dvaSuburbPage(serviceSlug, suburb) {
       question: solar ? `Will DVA pay for solar panel cleaning in ${place}?` : `Will DVA pay for ${lower} in ${place}?`,
       answer: solar
         ? `Only if solar panel cleaning is on your Household Services approval. It isn't on DVA's published list of home and garden tasks. DVA's rules are the same in every suburb, so check your determination letter or call DVA on ${F.dvaPhone}.`
-        : `If it's on your approval, yes. DVA's rules are the same in every suburb: Household Services pays your chosen provider up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}. We charge at or under that and invoice DVA.`,
+        : `If it's on your approval, yes. DVA's rules are the same in every suburb: Household Services pays your chosen provider at DVA's own rate (up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}). We bill DVA at or under that. It is DVA's rate for approved work, not our normal pricing.`,
     },
     ...base.faqs.slice(1),
   ];

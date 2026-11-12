@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { Phone, ArrowRight, ExternalLink } from "lucide-react";
 import QuoteHero from "../components/QuoteHero";
 import QuoteForm from "../components/QuoteForm";
@@ -10,7 +10,8 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import PhoneNumber from "../components/PhoneNumber";
 import NotFound from "./NotFound";
 import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildFAQSchema } from "../data/schema";
-import { DVA_HUB, DVA_PAGES, DVA_SERVICES, DVA_FACTS as F, DVA_STEPS, dvaRequirements, dvaServiceSchema, dvaSuburbPage } from "../data/dva";
+import { DVA_HUB, DVA_PAGES, DVA_SERVICES, DVA_FACTS as F, DVA_STEPS, DVA_RATE_NOTE, dvaRequirements, dvaServiceSchema, dvaSuburbPage } from "../data/dva";
+import { markDvaVisit } from "../lib/dvaSource";
 import { SUBURBS, getSuburbBySlug } from "../data/locations";
 import SuburbLinks from "../components/SuburbLinks";
 
@@ -20,6 +21,13 @@ const SOURCES = [
   { label: "DVA: Household services compensation", href: "https://www.dva.gov.au/access-benefits/claims-and-compensation-for-illness-or-injury/household-services-compensation" },
   { label: "DVA: Help with home and garden upkeep", href: "https://www.dva.gov.au/what-we-help-with/care-at-home-and-aged-care-services/living-independently/help-with-home-and-garden-upkeep" },
 ];
+
+// Remember that this visitor was on a DVA page, so a quote they send later
+// (here or on /instant-quote/) is marked as a DVA enquiry on the job.
+function useDvaVisit() {
+  const { pathname } = useLocation();
+  useEffect(() => { markDvaVisit(pathname); }, [pathname]);
+}
 
 function DirectAnswer({ text }) {
   return (
@@ -46,15 +54,16 @@ function Programs() {
         <div className="card p-7 mt-8">
           <ul className="space-y-3 text-ink-2 text-lg">
             <li><strong className="text-ink">You choose the provider.</strong> That can be us.</li>
-            <li><strong className="text-ink">Standard hourly rate:</strong> up to {F.hhsHourlyRate} an hour inc GST in {F.hhsHourlyRateYear}. A provider can charge up to this without further DVA approval.</li>
+            <li><strong className="text-ink">DVA's hourly rate (DVA-approved work only):</strong> up to {F.hhsHourlyRate} an hour inc GST in {F.hhsHourlyRateYear}. A provider can bill DVA up to this without further DVA approval.</li>
             <li><strong className="text-ink">Weekly limit:</strong> {F.hhsWeeklyMaxMrca} under the MRCA from {F.hhsWeeklyMaxFrom}.</li>
             <li><strong className="text-ink">Payment:</strong> DVA pays the provider directly or reimburses you. We invoice DVA for you.</li>
             <li><strong className="text-ink">New claims:</strong> since 1 July 2026 all new claims are assessed under the MRCA. Email {F.hhsEmail}.</li>
           </ul>
         </div>
         <p className="text-ink-2 mt-8 max-w-3xl">
-          Need more than your approval covers, or a job it doesn't include? We can do the extra privately, quoted in writing first.
+          Need more than your approval covers, or a job it doesn't include? We can do the extra privately, quoted in writing first as a fixed price for the job.
         </p>
+        <p className="mt-4 max-w-3xl border-l-4 border-accent bg-paper-2 rounded-r-xl px-5 py-4 text-ink font-semibold">{DVA_RATE_NOTE}</p>
       </div>
     </section>
   );
@@ -170,6 +179,7 @@ function Sources() {
 
 export function DvaHub() {
   const page = DVA_HUB;
+  useDvaVisit();
   const jsonLd = [
     buildLocalBusinessSchema(),
     dvaServiceSchema(page, "DVA Window, Gutter and Solar Panel Cleaning"),
@@ -196,6 +206,7 @@ export function DvaHub() {
 
 export function DvaService() {
   const { service } = useParams();
+  useDvaVisit();
   const page = DVA_PAGES[service];
   if (!page) return <NotFound />;
   const jsonLd = [
@@ -265,19 +276,31 @@ export function DvaService() {
 function Pricing({ page }) {
   return (
     <section className="py-16 bg-paper-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="eyebrow">Pricing</p>
         <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mt-3">
           What DVA {page.name.toLowerCase()} costs
         </h2>
-        <ul className="mt-6 space-y-3 text-lg text-ink-2">
-          <li><strong className="text-ink">Household Services:</strong> charged by the hour at or under DVA's standard rate of {F.hhsHourlyRate} an hour inc GST ({F.hhsHourlyRateYear}) and invoiced to DVA, so approved hours cost you nothing.</li>
-          <li><strong className="text-ink">Not covered by DVA:</strong> {page.privatePrice}</li>
-        </ul>
-        <p className="mt-6 text-ink-2">
-          Want to see a private price for your home now?{" "}
-          <Link to="/instant-quote/" className="link font-bold">Get an instant quote</Link>.
+        <p className="text-lg text-ink-2 mt-4 max-w-3xl">
+          There are two separate prices, and they don't mix. Which one applies depends on whether DVA has approved the work.
         </p>
+        <div className="grid md:grid-cols-2 gap-8 mt-8">
+          <div className="card p-7">
+            <h3 className="text-2xl font-bold text-ink">DVA-approved work</h3>
+            <p className="text-ink-2 mt-3 text-lg">
+              Billed to DVA at DVA's own hourly rate, up to {F.hhsHourlyRate} an hour inc GST ({F.hhsHourlyRateYear}). You pay nothing for approved hours.
+            </p>
+            <p className="text-ink-2 mt-3">This rate is set by DVA. It only applies to work on your Household Services approval.</p>
+          </div>
+          <div className="card p-7">
+            <h3 className="text-2xl font-bold text-ink">Everything else</h3>
+            <p className="text-ink-2 mt-3 text-lg">{page.privatePrice}</p>
+            <p className="text-ink-2 mt-3">
+              <Link to="/instant-quote/" className="link font-bold">Get an instant quote</Link> to see the fixed price for your home.
+            </p>
+          </div>
+        </div>
+        <p className="mt-8 max-w-3xl border-l-4 border-accent bg-paper-2 rounded-r-xl px-5 py-4 text-ink font-semibold">{DVA_RATE_NOTE}</p>
       </div>
     </section>
   );
@@ -286,6 +309,7 @@ function Pricing({ page }) {
 // /dva/<service>/<suburb>/ — the DVA service page localised to one suburb.
 export function DvaSuburb() {
   const { service, suburb: suburbSlug } = useParams();
+  useDvaVisit();
   const base = DVA_PAGES[service];
   const suburb = getSuburbBySlug(suburbSlug);
   const page = dvaSuburbPage(service, suburb);
