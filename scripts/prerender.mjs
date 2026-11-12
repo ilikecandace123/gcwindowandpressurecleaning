@@ -108,6 +108,7 @@ async function main() {
   const { buildLocalBusinessSchema, buildServiceSchema, buildBreadcrumbSchema, buildOrganizationSchema, buildWebSiteSchema, buildFAQSchema, buildArticleSchema } = await loadSchemaBuilders();
   const { GUIDES } = await import(pathToFileURL(path.join(ROOT, "src/data/guides.js")).href);
   const { QUOTE_LANDINGS, landingFaqs, landingPath } = await import(pathToFileURL(path.join(ROOT, "src/data/quoteLanding.js")).href);
+  const { DVA_HUB, DVA_PAGES, dvaServiceSchema } = await import(pathToFileURL(path.join(ROOT, "src/data/dva.js")).href);
   const indexHtml = fs.readFileSync(path.join(DIST, "index.html"), "utf8");
 
   const routes = [];
@@ -245,6 +246,41 @@ async function main() {
       buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "Privacy Policy", url: "/privacy" }])
     ],
   });
+
+  // DVA (veterans) section: /dva/ hub + one page per service (src/data/dva.js,
+  // the same titles, descriptions and FAQs src/pages/Dva.jsx renders).
+  routes.push({
+    path: DVA_HUB.path,
+    title: DVA_HUB.title,
+    description: DVA_HUB.description,
+    canonical: `${SITE}${DVA_HUB.path}`,
+    image: DVA_HUB.image,
+    jsonLd: [
+      buildLocalBusinessSchema(),
+      dvaServiceSchema(DVA_HUB, "DVA Window, Gutter and Solar Panel Cleaning"),
+      buildBreadcrumbSchema([{ name: "Home", url: "/" }, { name: "DVA Cleaning", url: "/dva/" }]),
+      buildFAQSchema(DVA_HUB.faqs),
+    ],
+  });
+  for (const page of Object.values(DVA_PAGES)) {
+    routes.push({
+      path: page.path,
+      title: page.title,
+      description: page.description,
+      canonical: `${SITE}${page.path}`,
+      image: page.image,
+      jsonLd: [
+        buildLocalBusinessSchema(),
+        dvaServiceSchema(page, `DVA ${page.name}`),
+        buildBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "DVA Cleaning", url: "/dva/" },
+          { name: `DVA ${page.name}`, url: `${page.path}/` },
+        ]),
+        buildFAQSchema(page.faqs),
+      ],
+    });
+  }
 
   // Expert guides hub + articles (AI-search / AI Overviews content)
   routes.push({
@@ -476,7 +512,11 @@ async function main() {
   // Whole sections that changed on a given date. The commercial templates were
   // corrected on 04/09/2026 (duplicated "Commercial" in every h1 and Service
   // schema), which is a real content change on all 574 commercial URLs.
-  const SECTION_LASTMOD = [{ prefix: "/commercial/", date: "2026-09-04" }];
+  const SECTION_LASTMOD = [
+    { prefix: "/commercial/", date: "2026-09-04" },
+    { prefix: "/dva/", date: "2026-11-12" }, // DVA section created
+  ];
+  LASTMOD_OVERRIDES["/dva"] = "2026-11-12"; // created
 
   function lastmodFor(path) {
     if (LASTMOD_OVERRIDES[path]) return LASTMOD_OVERRIDES[path];
@@ -494,6 +534,7 @@ async function main() {
       r.path === "/" ||
       r.path.startsWith("/guides") ||
       r.path.startsWith("/instant-quote/") ||
+      r.path === "/dva" || r.path.startsWith("/dva/") ||
       (r.path.split("/").filter(Boolean).length === 1 && !r.path.startsWith("/commercial/") && r.path !== "/services")
   );
   const residentialRoutes = routes.filter(
@@ -501,7 +542,8 @@ async function main() {
       r.path.split("/").filter(Boolean).length === 2 &&
       !r.path.startsWith("/commercial/") &&
       !r.path.startsWith("/guides/") &&
-      !r.path.startsWith("/instant-quote/")
+      !r.path.startsWith("/instant-quote/") &&
+      !r.path.startsWith("/dva/")
   );
   const commercialRoutes = routes.filter((r) => r.path.startsWith("/commercial/"));
 
@@ -518,6 +560,7 @@ async function main() {
     if (path === "/") return { priority: "1.0", changefreq: "weekly" };
     if (SERVICE_SLUGS.has(path)) return { priority: "0.9", changefreq: "monthly" };
     if (path.startsWith("/instant-quote/")) return { priority: "0.8", changefreq: "monthly" };
+    if (path === "/dva" || path.startsWith("/dva/")) return { priority: "0.8", changefreq: "monthly" };
     if (SECTION_HUBS.has(path)) return { priority: "0.9", changefreq: "monthly" };
     if (path === "/guides" || path.startsWith("/guides/")) return { priority: "0.8", changefreq: "monthly" };
     if (UTILITY_PATHS.has(path)) return { priority: "0.8", changefreq: "monthly" };
