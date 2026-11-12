@@ -18,7 +18,6 @@ const SITE = "https://gcwindowandpressurecleaning.com.au";
 
 const SOURCES = [
   { label: "DVA: Household services compensation", href: "https://www.dva.gov.au/access-benefits/claims-and-compensation-for-illness-or-injury/household-services-compensation" },
-  { label: "DVA: Veterans' Home Care (VHC)", href: "https://www.dva.gov.au/vhc" },
   { label: "DVA: Help with home and garden upkeep", href: "https://www.dva.gov.au/what-we-help-with/care-at-home-and-aged-care-services/living-independently/help-with-home-and-garden-upkeep" },
 ];
 
@@ -36,42 +35,25 @@ function DirectAnswer({ text }) {
 function Programs() {
   return (
     <section className="py-16 bg-paper">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-10">
-          <p className="eyebrow">How DVA pays</p>
-          <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mt-3">
-            Two ways DVA can pay for your cleaning
-          </h2>
-          <p className="text-lg text-ink-2 mt-4">
-            Most DVA clients get home help through one of these. Your determination letter or Care Plan says which.
-          </p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="card p-7">
-            <h3 className="text-2xl font-bold text-ink">Household Services compensation</h3>
-            <p className="text-ink-2 mt-2">For tasks you can no longer manage because of an accepted service-related injury or illness.</p>
-            <ul className="mt-5 space-y-3 text-ink-2">
-              <li><strong className="text-ink">You choose the provider.</strong> That can be us.</li>
-              <li><strong className="text-ink">Standard hourly rate:</strong> up to {F.hhsHourlyRate} an hour inc GST in {F.hhsHourlyRateYear}. A provider can charge up to this without further DVA approval.</li>
-              <li><strong className="text-ink">Weekly limit:</strong> {F.hhsWeeklyMaxMrca} under the MRCA from {F.hhsWeeklyMaxFrom}.</li>
-              <li><strong className="text-ink">Payment:</strong> DVA pays the provider directly or reimburses you.</li>
-              <li><strong className="text-ink">New claims:</strong> since 1 July 2026 all new claims are assessed under the MRCA. Email {F.hhsEmail}.</li>
-            </ul>
-          </div>
-          <div className="card p-7">
-            <h3 className="text-2xl font-bold text-ink">Veterans' Home Care (VHC)</h3>
-            <p className="text-ink-2 mt-2">For Gold Card and White Card holders who have trouble with jobs around the home.</p>
-            <ul className="mt-5 space-y-3 text-ink-2">
-              <li><strong className="text-ink">Home and garden maintenance</strong> includes gutters, internal and external windows, light globes, ceiling fans, split-system air conditioners and lawn mowing.</li>
-              <li><strong className="text-ink">Hours:</strong> up to {F.vhcHoursPerYear} hours in any 12 months.</li>
-              <li><strong className="text-ink">Co-payment:</strong> {F.vhcCoPayPerHour} an hour, capped at {F.vhcCoPayCap} in 12 months. It can be waived if you can't afford it.</li>
-              <li><strong className="text-ink">Provider:</strong> named on your VHC Care Plan by the assessment agency.</li>
-              <li><strong className="text-ink">To apply:</strong> call the VHC assessment agency on {F.vhcAssessmentPhone}.</li>
-            </ul>
-          </div>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="eyebrow">How DVA pays</p>
+        <h2 className="text-3xl md:text-[40px] md:leading-[1.1] font-bold text-ink mt-3">
+          How DVA Household Services pays for your cleaning
+        </h2>
+        <p className="text-lg text-ink-2 mt-4 max-w-3xl">
+          Household Services compensation is for tasks around the home that you can no longer manage because of an accepted service-related injury or illness. Your determination letter lists what's approved.
+        </p>
+        <div className="card p-7 mt-8">
+          <ul className="space-y-3 text-ink-2 text-lg">
+            <li><strong className="text-ink">You choose the provider.</strong> That can be us.</li>
+            <li><strong className="text-ink">Standard hourly rate:</strong> up to {F.hhsHourlyRate} an hour inc GST in {F.hhsHourlyRateYear}. A provider can charge up to this without further DVA approval.</li>
+            <li><strong className="text-ink">Weekly limit:</strong> {F.hhsWeeklyMaxMrca} under the MRCA from {F.hhsWeeklyMaxFrom}.</li>
+            <li><strong className="text-ink">Payment:</strong> DVA pays the provider directly or reimburses you. We invoice DVA for you.</li>
+            <li><strong className="text-ink">New claims:</strong> since 1 July 2026 all new claims are assessed under the MRCA. Email {F.hhsEmail}.</li>
+          </ul>
         </div>
         <p className="text-ink-2 mt-8 max-w-3xl">
-          You can't have VHC home and garden maintenance while you're approved for Household Services under the MRCA. Need more than your plan covers, or a job it doesn't include? We can do the extra privately, quoted in writing first.
+          Need more than your approval covers, or a job it doesn't include? We can do the extra privately, quoted in writing first.
         </p>
       </div>
     </section>
@@ -151,7 +133,7 @@ function ServiceCards({ exclude }) {
           {exclude && (
             <Link to="/dva/" className="block p-6 card hover:shadow-hard-sm hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
               <h3 className="text-xl font-semibold text-ink mb-2">DVA rates and requirements</h3>
-              <p className="text-ink-2">Household Services and Veterans' Home Care explained, with DVA's current rates.</p>
+              <p className="text-ink-2">How DVA Household Services pays, with DVA's current rates.</p>
               <span className="inline-flex items-center mt-4 font-bold text-accent-3">
                 Read more <ArrowRight className="w-4 h-4 ml-1.5" />
               </span>
@@ -290,7 +272,6 @@ function Pricing({ page }) {
         </h2>
         <ul className="mt-6 space-y-3 text-lg text-ink-2">
           <li><strong className="text-ink">Household Services:</strong> charged by the hour at or under DVA's standard rate of {F.hhsHourlyRate} an hour inc GST ({F.hhsHourlyRateYear}) and invoiced to DVA, so approved hours cost you nothing.</li>
-          <li><strong className="text-ink">Veterans' Home Care:</strong> {F.vhcCoPayPerHour} an hour co-payment, capped at {F.vhcCoPayCap} in 12 months, paid to your VHC provider.</li>
           <li><strong className="text-ink">Not covered by DVA:</strong> {page.privatePrice}</li>
         </ul>
         <p className="mt-6 text-ink-2">

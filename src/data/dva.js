@@ -6,7 +6,6 @@
 // Re-check them each July (household services limits are indexed on 1 July)
 // and each January (the standard hourly rate is published per calendar year).
 //   - Household services: https://www.dva.gov.au/access-benefits/claims-and-compensation-for-illness-or-injury/household-services-compensation
-//   - Veterans' Home Care: https://www.dva.gov.au/vhc
 //   - Home and garden upkeep: https://www.dva.gov.au/what-we-help-with/care-at-home-and-aged-care-services/living-independently/help-with-home-and-garden-upkeep
 //   - Policy manual (tasks that are not household services): https://clik.dva.gov.au/military-compensation-mrca-manuals-and-resources-library/household-services-and-attendant-care-policy-manual/1-1-2-what-tasks-are-not-household-services
 
@@ -29,10 +28,6 @@ export const DVA_FACTS = {
   hhsHourlyRateYear: "2026",
   hhsWeeklyMaxMrca: "$633.47",
   hhsWeeklyMaxFrom: "1 July 2026",
-  vhcHoursPerYear: 15,
-  vhcCoPayPerHour: "$5",
-  vhcCoPayCap: "$75",
-  vhcAssessmentPhone: "1300 550 450",
   dvaPhone: "1800 VETERAN (1800 838 372)",
   hhsEmail: "hhs@dva.gov.au",
 };
@@ -88,28 +83,28 @@ export const DVA_HUB = {
   path: "/dva",
   title: "DVA Window, Gutter and Solar Cleaning | Gold Coast",
   description:
-    "DVA window cleaning, gutter cleaning and solar panel cleaning on the Gold Coast. How Household Services and Veterans' Home Care pay, rates and who qualifies.",
+    "DVA window cleaning, gutter cleaning and solar panel cleaning on the Gold Coast. How DVA Household Services pays, the current rates and who qualifies.",
   h1: "DVA Cleaning for Veterans — Windows, Gutters and Solar",
   subheading: "Help for Gold Card and White Card holders across the Gold Coast, with DVA invoiced for you.",
   image: "/images/window-hero.jpg",
   imageAlt: "Clean, streak-free windows on a Gold Coast home",
-  directAnswer: `Yes, DVA can pay for window cleaning, gutter cleaning and, in some cases, solar panel cleaning. There are two routes. Household Services compensation pays for help you can no longer manage because of an accepted service-related condition, and you choose your own provider: DVA's standard maximum rate in ${F.hhsHourlyRateYear} is ${F.hhsHourlyRate} an hour including GST. Veterans' Home Care covers up to ${F.vhcHoursPerYear} hours of home and garden maintenance a year, including gutters and windows, for a ${F.vhcCoPayPerHour}-an-hour co-payment capped at ${F.vhcCoPayCap}, delivered by the provider named on your Care Plan.`,
+  directAnswer: `Yes, DVA can pay for window cleaning, gutter cleaning and, in some cases, solar panel cleaning. Household Services compensation pays for help around the home that you can no longer manage because of an accepted service-related condition. You choose your own provider, and DVA's standard maximum rate in ${F.hhsHourlyRateYear} is ${F.hhsHourlyRate} an hour including GST. We charge at or under that rate and send the invoice to DVA, so approved hours cost you nothing.`,
   faqs: [
     {
       question: "Does DVA pay for window cleaning?",
-      answer: `Yes. DVA lists cleaning of external and internal windows as a home and garden task it can help with. Through Veterans' Home Care it sits inside the ${F.vhcHoursPerYear}-hour yearly home and garden maintenance allowance. Through Household Services compensation it is paid when window cleaning is on your approval, at up to DVA's standard rate of ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}.`,
+      answer: `Yes. DVA lists cleaning of external and internal windows among the home and garden tasks it can help with. Under Household Services compensation it is paid when window cleaning is on your approval, at up to DVA's standard rate of ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}.`,
     },
     {
       question: "Does DVA pay for gutter cleaning?",
-      answer: `Yes, gutter cleaning is named in DVA's Veterans' Home Care home and garden maintenance services, and it can be included in a Household Services approval. Under Veterans' Home Care you pay a co-payment of ${F.vhcCoPayPerHour} an hour, capped at ${F.vhcCoPayCap} in any 12 months.`,
+      answer: `Yes. DVA lists gutter cleaning among the home and garden tasks it can help with. Under Household Services compensation it is paid when gutter cleaning is on your approval, at up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}.`,
     },
     {
       question: "Does DVA pay for solar panel cleaning?",
-      answer: "Solar panel cleaning is not on DVA's published Veterans' Home Care task list, so don't count on it there. Under Household Services compensation it is paid only if your approval covers it. Check your determination letter or ask DVA. If it isn't covered, we can clean your panels privately and tell you the price before we start.",
+      answer: "Solar panel cleaning is not on DVA's published list of home and garden tasks, so it is paid only if your Household Services approval covers it. Check your determination letter or ask DVA. If it isn't covered, we can clean your panels privately and tell you the price before we start.",
     },
     {
-      question: "What is the difference between Household Services and Veterans' Home Care?",
-      answer: `Household Services is compensation for tasks you can't do because of an accepted service-related injury or illness. You pick the provider and DVA pays up to a weekly limit (${F.hhsWeeklyMaxMrca} under the MRCA from ${F.hhsWeeklyMaxFrom}). Veterans' Home Care is a needs-based program for Veteran Card holders who have trouble with daily tasks at home. An assessment agency approves the hours and names the provider on your Care Plan. You can't get VHC home and garden maintenance while you are approved for Household Services under the MRCA.`,
+      question: "What is DVA Household Services compensation?",
+      answer: `It is compensation for household tasks you can't do because of an accepted service-related injury or illness. DVA assesses what you need, you pick the provider, and DVA pays the provider or reimburses you up to a weekly limit (${F.hhsWeeklyMaxMrca} under the MRCA from ${F.hhsWeeklyMaxFrom}).`,
     },
     {
       question: "Who is eligible for DVA home and garden help?",
@@ -120,18 +115,12 @@ export const DVA_HUB = {
       answer: `Fill in DVA's household services claim form and email it to ${F.hhsEmail}, or post it to GPO Box 9998, Brisbane QLD 4001. Since 1 July 2026 every new claim is assessed under the MRCA, whenever and wherever you served. Once you're approved, you choose a provider, and that can be us.`,
     },
     {
-      question: "How do I get Veterans' Home Care?",
-      answer: `Call the VHC assessment agency on ${F.vhcAssessmentPhone}. If services are approved you will receive a Care Plan listing the services, the period, your co-payment and the provider who will deliver them. Your plan is reviewed about every six months.`,
-    },
-    {
       question: "Will I have to pay anything?",
-      answer: DVA_CONFIRMED.capRate
-        ? `For approved Household Services hours, no. We charge at or under DVA's standard rate and invoice DVA directly. Under Veterans' Home Care the ${F.vhcCoPayPerHour}-an-hour co-payment (capped at ${F.vhcCoPayCap} a year) is paid to your VHC provider. Anything outside your approval is quoted in writing first, and you decide.`
-        : `For approved Household Services hours, DVA pays the provider. You don't need further DVA approval for a provider to charge up to the published standard rate of ${F.hhsHourlyRate} an hour. Under Veterans' Home Care you pay a ${F.vhcCoPayPerHour}-an-hour co-payment, capped at ${F.vhcCoPayCap} a year, which can be waived if you can't afford it. Anything outside your approval is quoted in writing first, and you decide.`,
+      answer: `For approved Household Services hours, no. We charge at or under DVA's standard rate of ${F.hhsHourlyRate} an hour inc GST and send the invoice to DVA. Anything outside your approval is quoted in writing first, and you decide.`,
     },
     {
       question: "What does DVA not cover?",
-      answer: "DVA's household services policy excludes household maintenance such as painting, window or fence repairs, plumbing, electrical work, tree work, pest control, landscaping and removing large rubbish. It also excludes vehicle cleaning. Veterans' Home Care maintenance is aimed at safety jobs a handyperson can do. You may also need to pay for supplies or tip fees.",
+      answer: "DVA's household services policy excludes household maintenance such as painting, window or fence repairs, plumbing, electrical work, tree work, pest control, landscaping and removing large rubbish. It also excludes vehicle cleaning.",
     },
     {
       question: "Which areas do you cover for DVA clients?",
@@ -145,14 +134,14 @@ export const DVA_PAGES = {
   "window-cleaning": {
     path: "/dva/window-cleaning",
     name: "Window Cleaning",
-    title: "DVA Window Cleaning Gold Coast | Veterans' Home Care",
+    title: "DVA Window Cleaning Gold Coast | Household Services",
     description:
       "DVA window cleaning on the Gold Coast for Gold and White Card holders. Inside and out, tracks and screens. We invoice DVA directly. Call (07) 5230 8293.",
     h1: "DVA Window Cleaning on the Gold Coast",
     subheading: "Clear glass, clean tracks and safe hands on the ladder, with DVA invoiced for you.",
     image: "/images/window-hero.jpg",
     imageAlt: "Freshly cleaned windows on a Gold Coast home",
-    directAnswer: `DVA can pay for window cleaning. Veterans' Home Care lists cleaning of internal and external windows as home and garden maintenance (up to ${F.vhcHoursPerYear} hours a year, ${F.vhcCoPayPerHour} an hour co-payment, capped at ${F.vhcCoPayCap}). Household Services compensation pays for window cleaning when it is on your approval, at up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}. We clean glass, frames, sills, tracks and flyscreens, and upload the invoice to DVA ourselves.`,
+    directAnswer: `DVA can pay for window cleaning. It lists cleaning of internal and external windows among the home and garden tasks it can help with, and Household Services compensation pays for it when it is on your approval, at up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}. We clean glass, frames, sills, tracks and flyscreens, charge at or under DVA's rate and upload the invoice to DVA ourselves.`,
     included: [
       "Glass washed and squeegeed inside and out, or outside only if that is what's approved",
       "Frames, sills and ledges wiped down",
@@ -180,11 +169,11 @@ export const DVA_PAGES = {
     faqs: [
       {
         question: "Can DVA pay for window cleaning?",
-        answer: `Yes. Internal and external window cleaning is on DVA's list of home and garden help. Through Veterans' Home Care it counts toward your ${F.vhcHoursPerYear} hours a year of home and garden maintenance. Through Household Services it is paid when it's on your approval, at up to ${F.hhsHourlyRate} an hour inc GST.`,
+        answer: `Yes. Internal and external window cleaning is on DVA's list of home and garden help. Through Household Services compensation it is paid when it's on your approval, at up to ${F.hhsHourlyRate} an hour inc GST.`,
       },
       {
         question: "How often can I have my windows cleaned through DVA?",
-        answer: `It depends on your approval. A Household Services approval sets the hours and frequency. Veterans' Home Care home and garden maintenance is capped at ${F.vhcHoursPerYear} hours in 12 months, shared with other tasks like gutters and lawn mowing, so most VHC clients have windows done once or twice a year.`,
+        answer: "It depends on your approval. Your Household Services determination letter sets the hours and how often. Near the beach, most homes need the outside glass done every three to six months to keep salt off.",
       },
       {
         question: "Do you clean upstairs windows for DVA clients?",
@@ -198,24 +187,20 @@ export const DVA_PAGES = {
         question: "Do I need to be home?",
         answer: "For the first visit, yes, so we can agree what's included and check access. After that, outside-only cleans can be done while you are out if you are happy with that.",
       },
-      {
-        question: "Can you clean my windows if I'm on Veterans' Home Care?",
-        answer: "Veterans' Home Care work is done by the provider named on your VHC Care Plan. If you want windows done more often than your plan allows, or work your plan doesn't cover, we can do it privately at our normal prices.",
-      },
     ],
   },
 
   "gutter-cleaning": {
     path: "/dva/gutter-cleaning",
     name: "Gutter Cleaning",
-    title: "DVA Gutter Cleaning Gold Coast | Veterans' Home Care",
+    title: "DVA Gutter Cleaning Gold Coast | Household Services",
     description:
       "DVA gutter cleaning on the Gold Coast. Gutters cleared and downpipes flushed, so no one in the house climbs a ladder. We invoice DVA. Call (07) 5230 8293.",
     h1: "DVA Gutter Cleaning on the Gold Coast",
     subheading: "Gutters cleared and downpipes flowing, so no one in the house needs to climb a ladder.",
     image: "/images/gutter-1.jpg",
     imageAlt: "A gutter packed with leaves, then cleared and flowing",
-    directAnswer: `DVA can pay for gutter cleaning. It is named in Veterans' Home Care home and garden maintenance (up to ${F.vhcHoursPerYear} hours a year, with a ${F.vhcCoPayPerHour}-an-hour co-payment capped at ${F.vhcCoPayCap}) and can be part of a Household Services approval at up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}. We clear the gutters, flush every downpipe and take the waste away.`,
+    directAnswer: `DVA can pay for gutter cleaning. It lists gutter cleaning among the home and garden tasks it can help with, and Household Services compensation pays for it when it is on your approval, at up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}. We clear the gutters, flush every downpipe, take the waste away and upload the invoice to DVA ourselves.`,
     included: [
       "Leaves, sludge and seed pods removed from every gutter run",
       "Downpipes flushed and tested so water reaches the drain",
@@ -242,11 +227,11 @@ export const DVA_PAGES = {
     faqs: [
       {
         question: "Does DVA pay for gutter cleaning?",
-        answer: `Yes. Gutter cleaning is one of the home and garden maintenance services in Veterans' Home Care, and it can be included in a Household Services approval. Under VHC you pay ${F.vhcCoPayPerHour} an hour, capped at ${F.vhcCoPayCap} in 12 months.`,
+        answer: `Yes. Gutter cleaning is on DVA's list of home and garden help. Through Household Services compensation it is paid when it's on your approval, at up to ${F.hhsHourlyRate} an hour inc GST.`,
       },
       {
         question: "How many hours of gutter cleaning will DVA fund?",
-        answer: `Veterans' Home Care allows up to ${F.vhcHoursPerYear} hours of home and garden maintenance in a 12-month period, shared across gutters, windows, lawns and similar jobs. Household Services hours are set by your individual approval. We tell you how long your gutters will take before we book.`,
+        answer: "Household Services hours are set by your individual approval, so check your determination letter. We tell you how long your gutters will take before we book.",
       },
       {
         question: "Do you clean gutter guard for DVA clients?",
@@ -262,7 +247,7 @@ export const DVA_PAGES = {
       },
       {
         question: "Do you take the rubbish away?",
-        answer: "Yes. Gutter waste is bagged and taken with us. Under Veterans' Home Care you may need to pay for supplies or tip fees, and we will tell you before we start if there are any.",
+        answer: "Yes. Gutter waste is bagged and taken with us.",
       },
     ],
   },
@@ -277,7 +262,7 @@ export const DVA_PAGES = {
     subheading: "Pure-water cleaning that's safe for your panels, with a straight answer on whether DVA will pay.",
     image: "/images/solar-panel-hero.jpg",
     imageAlt: "Solar panels on a Gold Coast roof after cleaning",
-    directAnswer: `Solar panel cleaning is not on DVA's published Veterans' Home Care task list, so VHC usually won't cover it. Under Household Services compensation it is paid only if your approval includes it. Check your determination letter or call DVA on ${F.dvaPhone}. If it is approved, we charge up to DVA's ${F.hhsHourlyRate} an hour and invoice DVA. If it isn't, our private price starts at $220 for up to 20 panels on a single-storey roof.`,
+    directAnswer: `Solar panel cleaning is not on DVA's published list of home and garden tasks, so DVA pays for it only if your Household Services approval includes it. Check your determination letter or call DVA on ${F.dvaPhone}. If it is approved, we charge up to DVA's ${F.hhsHourlyRate} an hour and invoice DVA. If it isn't, our private price starts at $220 for up to 20 panels on a single-storey roof.`,
     included: [
       "Panels washed with purified water and soft brushes, with no detergent or high pressure, so warranties stay intact",
       "Bird droppings, salt film, pollen and lichen removed",
@@ -305,7 +290,7 @@ export const DVA_PAGES = {
     faqs: [
       {
         question: "Does DVA pay for solar panel cleaning?",
-        answer: "Sometimes. It isn't listed in DVA's Veterans' Home Care home and garden maintenance tasks. Under Household Services compensation DVA only pays for tasks on your approval, so check your determination letter. If you're not sure, call DVA and ask whether solar panel cleaning can be included.",
+        answer: "Sometimes. It isn't on DVA's published list of home and garden tasks. Under Household Services compensation DVA only pays for tasks on your approval, so check your determination letter. If you're not sure, call DVA and ask whether solar panel cleaning can be included.",
       },
       {
         question: "What should I ask DVA about solar panel cleaning?",
@@ -330,7 +315,7 @@ export const DVA_PAGES = {
 export const DVA_STEPS = [
   {
     title: "Check what you're approved for",
-    body: "Look at your Household Services determination letter, or your VHC Care Plan, for the tasks and hours approved. Not sure? Call DVA on 1800 VETERAN (1800 838 372).",
+    body: "Look at your Household Services determination letter for the tasks and hours approved. Not sure? Call DVA on 1800 VETERAN (1800 838 372).",
   },
   {
     title: "Call or send us your details",
@@ -421,7 +406,7 @@ export function dvaSuburbPage(serviceSlug, suburb) {
   const solar = serviceSlug === "solar-panel-cleaning";
   const directAnswer = solar
     ? `We clean solar panels for DVA clients in ${place} (${suburb.postcode}). DVA pays for solar panel cleaning only when it is on your Household Services approval, so check your determination letter first. If it is approved we charge at or under DVA's ${F.hhsHourlyRate} an hour and invoice DVA. If it isn't, our private price starts at $220 for up to 20 panels on a single-storey roof.`
-    : `Yes, we do DVA ${lower} in ${place} (${suburb.postcode}). If ${lower} is on your Household Services approval, we charge at or under DVA's standard rate of ${F.hhsHourlyRate} an hour inc GST and invoice DVA directly, so approved hours cost you nothing. Veterans' Home Care also covers ${serviceSlug === "window-cleaning" ? "windows" : "gutters"} (up to ${F.vhcHoursPerYear} hours a year), through the provider named on your Care Plan.`;
+    : `Yes, we do DVA ${lower} in ${place} (${suburb.postcode}). If ${lower} is on your Household Services approval, we charge at or under DVA's standard rate of ${F.hhsHourlyRate} an hour inc GST and invoice DVA directly, so approved hours cost you nothing.`;
   const faqs = [
     {
       question: `Do you do DVA ${lower} in ${place}?`,
@@ -430,8 +415,8 @@ export function dvaSuburbPage(serviceSlug, suburb) {
     {
       question: solar ? `Will DVA pay for solar panel cleaning in ${place}?` : `Will DVA pay for ${lower} in ${place}?`,
       answer: solar
-        ? `Only if solar panel cleaning is on your Household Services approval. It isn't on DVA's Veterans' Home Care task list. DVA's rules are the same in every suburb, so check your determination letter or call DVA on ${F.dvaPhone}.`
-        : `If it's on your approval, yes. DVA's rules are the same in every suburb: Household Services pays your chosen provider up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}, and Veterans' Home Care covers up to ${F.vhcHoursPerYear} hours of home and garden maintenance a year for a ${F.vhcCoPayPerHour}-an-hour co-payment.`,
+        ? `Only if solar panel cleaning is on your Household Services approval. It isn't on DVA's published list of home and garden tasks. DVA's rules are the same in every suburb, so check your determination letter or call DVA on ${F.dvaPhone}.`
+        : `If it's on your approval, yes. DVA's rules are the same in every suburb: Household Services pays your chosen provider up to ${F.hhsHourlyRate} an hour inc GST in ${F.hhsHourlyRateYear}. We charge at or under that and invoice DVA.`,
     },
     ...base.faqs.slice(1),
   ];
