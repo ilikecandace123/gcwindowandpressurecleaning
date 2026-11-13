@@ -18,8 +18,8 @@ export const HOME_HERO = {
   photo: "roof",
   theme: "navy",
   rating: "Rated 5.0 on Google",
-  headline: "Your place,",
-  headlineAccent: "properly clean.",
+  headline: "Your place",
+  headlineAccent: "cleaned properly.",
   sub: "Windows, roofs, gutters, solar and driveways across the Gold Coast, Northern NSW and Brisbane. See your price online in 2 minutes.",
 };
 
